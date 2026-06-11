@@ -193,54 +193,50 @@ ul,ol{list-style:none}
 .section-title-kr{font-family:var(--font-serif-kr);font-size:clamp(13px,1.3vw,17px);opacity:.4;letter-spacing:6px;margin-top:6px}
 
 /* ==================== STICKY PRODUCTS — 粘性滚动 ==================== */
-.products-sticky{position:relative;background:var(--ink-deep);padding:0}
-.sticky-viewport{height:100vh;position:sticky;top:0;overflow:hidden;display:flex;flex-direction:column;transition:background-color .8s var(--ease-out);transform:translateZ(0);-webkit-transform:translateZ(0)}
-.sticky-header-title{font-family:var(--font-serif);font-weight:900;font-size:clamp(24px,3.5vw,40px);letter-spacing:4px;opacity:.32;transition:opacity .5s,color .8s var(--ease-out)}
-.sticky-header-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.35;margin-bottom:10px;transition:color .8s var(--ease-out)}
-.sticky-header{flex-shrink:0;padding:clamp(60px,8vw,100px) clamp(24px,4vw,48px) 0;text-align:center;position:relative;z-index:5;pointer-events:none}
-.products-watermark{position:absolute;left:8%;top:35%;width:200px;height:260px;opacity:.02;z-index:0;pointer-events:none;color:var(--rice);transform:rotate(-12deg)}
-.sticky-product{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(6vh) scale(.97);transition:opacity .65s var(--ease-out),transform .65s var(--ease-out);pointer-events:none;will-change:transform,opacity;contain:layout style}
-.sticky-product.active{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
-.sticky-product.exit-up{opacity:0;transform:translateY(-6vh) scale(1.01);pointer-events:none}
-.sticky-product.exit-down{opacity:0;transform:translateY(6vh) scale(.97);pointer-events:none}
-.sticky-product-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px);display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,60px);align-items:center;min-height:100vh}
-.sticky-product-visual{display:flex;align-items:center;justify-content:center;position:relative}
-.sticky-product-icon{width:clamp(160px,28vw,360px);height:clamp(160px,28vw,360px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(56px,10vw,120px);border:2px dashed currentColor;opacity:.35;transition:opacity .6s var(--ease-out);position:relative;overflow:hidden;contain:layout style paint}
-.sticky-product.active .sticky-product-icon{opacity:.45}
-/* Product image hover swap — 俯拍默认 / 45° hover */
-.sticky-product-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;transition:opacity .5s ease,transform .5s ease}
-.sticky-product-img-top{opacity:1;transform:scale(1)}
-.sticky-product-img-angle{opacity:0;transform:scale(1.05)}
-.sticky-product-visual:hover .sticky-product-img-top{opacity:0;transform:scale(.95)}
-.sticky-product-visual:hover .sticky-product-img-angle{opacity:1;transform:scale(1)}
-.sticky-product-info{display:flex;flex-direction:column;gap:8px}
-.sticky-product-name{font-family:var(--font-serif);font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:clamp(4px,1vw,12px);writing-mode:vertical-rl;line-height:1.1}
-.sticky-product-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.3vw,20px);opacity:.5;letter-spacing:4px}
-.sticky-product-desc{font-family:var(--font-sans);font-size:clamp(13px,1.1vw,15px);line-height:2;opacity:.7;max-width:340px}
-.sticky-product-spice{display:flex;gap:5px;margin-top:8px;align-items:center}
-.sticky-product-spice-label{font-size:10px;opacity:.45;letter-spacing:2px;margin-right:4px}
+.products-sticky{position:relative;background:var(--ink-deep);padding:0;overflow:hidden}
+.products-carousel{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.products-carousel-track{flex:1;position:relative;overflow:hidden}
+.products-carousel-inner{display:flex;height:100%;transition:transform .6s cubic-bezier(.25,.46,.45,.94);will-change:transform}
+.products-carousel-slide{flex:0 0 100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.products-slide-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px);display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
+.products-slide-visual{display:flex;align-items:center;justify-content:center;position:relative}
+.products-slide-icon{width:clamp(160px,28vw,360px);height:clamp(160px,28vw,360px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(56px,10vw,120px);border:2px dashed currentColor;opacity:.35;position:relative;overflow:hidden;contain:layout style paint}
+.products-slide-info{display:flex;flex-direction:column;gap:8px}
+.products-slide-name{font-family:var(--font-serif);font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:clamp(4px,1vw,12px);writing-mode:vertical-rl;line-height:1.1}
+.products-slide-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.3vw,20px);opacity:.5;letter-spacing:4px}
+.products-slide-desc{font-family:var(--font-sans);font-size:clamp(13px,1.1vw,15px);line-height:2;opacity:.7;max-width:340px}
+.products-slide-spice{display:flex;gap:5px;margin-top:8px;align-items:center}
+.products-slide-spice-label{font-size:10px;opacity:.45;letter-spacing:2px;margin-right:4px}
 .spice-dot{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.12;transition:all .3s}
 .spice-dot.on{opacity:1;background:var(--seal)}
-/* Product colors — 背景色由 sticky-viewport 动态切换，产品卡片不再设背景 */
-.sp1{color:var(--ink-deep)}.sp1 .spice-dot.on{background:var(--ink)}
-.sp2{color:var(--rice)}
-.sp3{color:var(--rice)}
-.sp4{color:var(--rice)}
-.sp5{color:var(--rice)}
-.sp6{color:var(--rice)}
-.sp7{color:var(--ink-deep)}.sp7 .spice-dot.on{background:var(--ink)}
-.sp8{color:var(--rice)}
-
-/* Sticky progress indicator */
-.sticky-progress{position:fixed;right:clamp(16px,2vw,32px);top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:8px;opacity:0;transition:opacity .4s}
-.sticky-progress.visible{opacity:1}
-.sticky-progress-dot{width:6px;height:6px;border-radius:50%;background:var(--rice);opacity:.15;transition:all .4s var(--ease-out);cursor:pointer;will-change:transform}
-.sticky-progress-dot.active{opacity:1;background:var(--seal);transform:scale(1.5)}
-
-/* Sticky product counter */
-.sticky-counter{position:fixed;bottom:clamp(24px,3vw,40px);right:clamp(24px,3vw,40px);z-index:100;font-family:var(--font-display);font-size:clamp(14px,1.5vw,20px);opacity:0;transition:opacity .4s;letter-spacing:2px}
-.sticky-counter.visible{opacity:.4}
-.sticky-counter-current{color:var(--seal);font-weight:700;font-size:clamp(24px,3vw,40px)}
+/* Carousel nav */
+.carousel-nav{position:absolute;bottom:clamp(24px,4vw,48px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:10}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--rice);opacity:.2;cursor:pointer;transition:all .4s var(--ease-out)}
+.carousel-dot.active{opacity:1;background:var(--seal);transform:scale(1.4)}
+.carousel-arrow{width:36px;height:36px;border:1px solid rgba(245,240,232,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.4;transition:opacity .3s;font-size:14px;background:none}
+.carousel-arrow:hover{opacity:.8}
+.carousel-counter{font-family:var(--font-display);font-size:clamp(12px,1.2vw,16px);opacity:.35;letter-spacing:2px}
+.carousel-counter-current{color:var(--seal);font-weight:700;font-size:clamp(20px,2.5vw,32px)}
+/* Product slide colors */
+.slide-0{color:var(--ink-deep)}.slide-0 .spice-dot.on{background:var(--ink)}
+.slide-1{color:var(--rice)}
+.slide-2{color:var(--rice)}
+.slide-3{color:var(--rice)}
+.slide-4{color:var(--rice)}
+.slide-5{color:var(--rice)}
+.slide-6{color:var(--ink-deep)}.slide-6 .spice-dot.on{background:var(--ink)}
+.slide-7{color:var(--rice)}
+/* Mobile: stack layout */
+@media(max-width:768px){
+  .products-slide-inner{grid-template-columns:1fr;padding:clamp(60px,8vw,100px) 20px 20px;text-align:center}
+  .products-slide-name{writing-mode:horizontal-tb;font-size:clamp(28px,7vw,48px);letter-spacing:8px}
+  .products-slide-kr{margin:0 auto}
+  .products-slide-desc{margin:0 auto}
+  .products-slide-spice{justify-content:center}
+  .carousel-nav{bottom:16px}
+  .carousel-arrow{display:none}
+}
+.sticky-progress,.sticky-counter{display:none}
 
 /* ==================== FOUR SEASONS ==================== */
 .seasons{position:relative}
@@ -342,7 +338,7 @@ ul,ol{list-style:none}
   .gift-grid{grid-template-columns:1fr;max-width:440px}
   .footer-top{grid-template-columns:1fr 1fr;gap:28px}
   .sticky-product-inner{grid-template-columns:1fr;text-align:center}
-  .sticky-product-name{writing-mode:horizontal-tb;font-size:clamp(28px,4vw,44px)}
+  .products-slide-name{writing-mode:horizontal-tb;font-size:clamp(28px,4vw,44px)}
   .sticky-product-info{align-items:center}
   .sticky-product-desc{max-width:100%}
   .sticky-product-icon{width:120px;height:120px;font-size:48px}
@@ -378,20 +374,20 @@ ul,ol{list-style:none}
   .footer-azalea{width:26px;height:36px;margin-bottom:8px}
   .gift-grid{grid-template-columns:1fr}
   .sticky-progress,.sticky-counter{display:none}
-  .sticky-product-inner{padding:80px 20px 20px}
+
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 /* ==================== LANGUAGE FONT SWITCH ==================== */
 body[data-lang="ko"]{font-family:var(--font-sans-kr)}
-body[data-lang="ko"] .nav-logo-cn,body[data-lang="ko"] .hero-declaration,body[data-lang="ko"] .section-title,body[data-lang="ko"] .season-name,body[data-lang="ko"] .sticky-product-name,body[data-lang="ko"] .story-title,body[data-lang="ko"] .gift-title,body[data-lang="ko"] .gift-name,body[data-lang="ko"] .cta-banner-title{font-family:var(--font-serif-kr)}
+body[data-lang="ko"] .nav-logo-cn,body[data-lang="ko"] .hero-declaration,body[data-lang="ko"] .section-title,body[data-lang="ko"] .season-name,body[data-lang="ko"] .products-slide-name,body[data-lang="ko"] .story-title,body[data-lang="ko"] .gift-title,body[data-lang="ko"] .gift-name,body[data-lang="ko"] .cta-banner-title{font-family:var(--font-serif-kr)}
 body[data-lang="ko"] .nav-logo-kr,body[data-lang="ko"] .hero-declaration-kr{font-family:var(--font-serif)}
 /* Korean: swap hero hierarchy — 해란저 becomes primary, 海兰菹 becomes secondary */
 body[data-lang="ko"] .hero-declaration{font-size:clamp(22px,3.5vw,44px);opacity:.3;letter-spacing:clamp(8px,2vw,20px)}
 body[data-lang="ko"] .hero-declaration-kr{font-size:clamp(56px,12vw,140px);opacity:1;letter-spacing:clamp(12px,3vw,36px)}
 body[data-lang="en"]{font-family:'Inter',sans-serif}
-body[data-lang="en"] .nav-logo-cn,body[data-lang="en"] .hero-declaration,body[data-lang="en"] .section-title,body[data-lang="en"] .season-name,body[data-lang="en"] .sticky-product-name,body[data-lang="en"] .story-title,body[data-lang="en"] .gift-title,body[data-lang="en"] .gift-name,body[data-lang="en"] .cta-banner-title{font-family:var(--font-display)}
+body[data-lang="en"] .nav-logo-cn,body[data-lang="en"] .hero-declaration,body[data-lang="en"] .section-title,body[data-lang="en"] .season-name,body[data-lang="en"] .products-slide-name,body[data-lang="en"] .story-title,body[data-lang="en"] .gift-title,body[data-lang="en"] .gift-name,body[data-lang="en"] .cta-banner-title{font-family:var(--font-display)}
 /* English: horizontal layout for latin text */
 body[data-lang="en"] .hero-text{flex-direction:column;align-items:center}
 body[data-lang="en"] .hero-text-col{flex-direction:row}
@@ -399,7 +395,7 @@ body[data-lang="en"] .hero-declaration{writing-mode:horizontal-tb;font-size:clam
 body[data-lang="en"] .hero-declaration-kr{writing-mode:horizontal-tb;font-size:clamp(14px,1.8vw,22px);letter-spacing:clamp(6px,1.5vw,16px);opacity:.35;margin-top:clamp(8px,1.5vw,16px)}
 body[data-lang="en"] .hero-seal-wrap{padding-top:clamp(20px,3vw,40px)}
 body[data-lang="ja"]{font-family:var(--font-sans-jp)}
-body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[data-lang="ja"] .section-title,body[data-lang="ja"] .season-name,body[data-lang="ja"] .sticky-product-name,body[data-lang="ja"] .story-title,body[data-lang="ja"] .gift-title,body[data-lang="ja"] .gift-name,body[data-lang="ja"] .cta-banner-title{font-family:var(--font-serif-jp)}
+body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[data-lang="ja"] .section-title,body[data-lang="ja"] .season-name,body[data-lang="ja"] .products-slide-name,body[data-lang="ja"] .story-title,body[data-lang="ja"] .gift-title,body[data-lang="ja"] .gift-name,body[data-lang="ja"] .cta-banner-title{font-family:var(--font-serif-jp)}
 
 .section-explore {
     display: flex;
@@ -478,8 +474,6 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 </div>
 
 <!-- Sticky product progress -->
-<div class="sticky-progress" id="stickyProgress"></div>
-<div class="sticky-counter" id="stickyCounter"></div>
 
 <!-- ==================== HERO — 全出血大图 + 极简文案 ==================== -->
 <section class="hero" id="hero">
@@ -942,8 +936,8 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 </div>
 
 <!-- ==================== PRODUCTS — 粘性滚动 ==================== -->
-<section class="products-sticky" id="products" data-sticky-count="8">
-  <div class="sticky-viewport" id="stickyViewport">
+<section class="products-sticky" id="products">
+  <div class="products-carousel" id="productsCarousel">
     <div class="products-watermark">
   <svg viewBox="0 0 250 320" fill="none">
     <g fill="currentColor" stroke="none" opacity=".3">
@@ -953,100 +947,202 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
   </svg>
 </div>
     <div class="sticky-header"><div class="sticky-header-label" data-i18n="products.label">Products · 产品殿堂</div><div class="sticky-header-title" data-i18n="products.title">每一味，都有性格</div></div>
-    <div class="sticky-product sp1 active" data-index="0">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🥬</div><div class="sticky-product-img sticky-product-img-angle">🥬</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p1.name">原味辣白菜</div>
-          <div class="sticky-product-kr" data-i18n="products.p1.name.sub">배추김치</div>
-          <div class="sticky-product-desc" data-i18n="products.p1.desc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-track">
+      <div class="products-carousel-inner" id="carouselInner">
+    <div class="products-carousel-slide slide-0" data-slide="0" data-bg="#E8EDE5">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🥬</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p1.name">原味辣白菜</div>
+          <div class="products-slide-kr" data-i18n="products.p1.name.sub">배추김치</div>
+          <div class="products-slide-desc" data-i18n="products.p1.desc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp2" data-index="1">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🌶️</div><div class="sticky-product-img sticky-product-img-angle">🌶️</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p2.name">甜味辣白菜</div>
-          <div class="sticky-product-kr" data-i18n="products.p2.name.sub">맛김치</div>
-          <div class="sticky-product-desc" data-i18n="products.p2.desc">甜与辣的温柔对话。延边特有的甜辣配方，一入口先是清甜，然后辣意缓缓升起。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-1" data-slide="1" data-bg="#D4654A">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🌶️</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p2.name">甜味辣白菜</div>
+          <div class="products-slide-kr" data-i18n="products.p2.name.sub">맛김치</div>
+          <div class="products-slide-desc" data-i18n="products.p2.desc">甜与辣的温柔对话。延边特有的甜辣配方，一入口先是清甜，然后辣意缓缓升起。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp3" data-index="2">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🍆</div><div class="sticky-product-img sticky-product-img-angle">🍆</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p3.name">茄子干鱿鱼丝</div>
-          <div class="sticky-product-kr" data-i18n="products.p3.name.sub">가지채 오징어</div>
-          <div class="sticky-product-desc" data-i18n="products.p3.desc">干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-2" data-slide="2" data-bg="#5C3A4E">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🍆</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p3.name">茄子干鱿鱼丝</div>
+          <div class="products-slide-kr" data-i18n="products.p3.name.sub">가지채 오징어</div>
+          <div class="products-slide-desc" data-i18n="products.p3.desc">干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp4" data-index="3">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🥕</div><div class="sticky-product-img sticky-product-img-angle">🥕</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p4.name">萝卜块</div>
-          <div class="sticky-product-kr" data-i18n="products.p4.name.sub">깍두기</div>
-          <div class="sticky-product-desc" data-i18n="products.p4.desc">方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-3" data-slide="3" data-bg="#CC4422">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🥕</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p4.name">萝卜块</div>
+          <div class="products-slide-kr" data-i18n="products.p4.name.sub">깍두기</div>
+          <div class="products-slide-desc" data-i18n="products.p4.desc">方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp5" data-index="4">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🌿</div><div class="sticky-product-img sticky-product-img-angle">🌿</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p5.name">苏子叶</div>
-          <div class="sticky-product-kr" data-i18n="products.p5.name.sub">깻잎</div>
-          <div class="sticky-product-desc" data-i18n="products.p5.desc">一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-4" data-slide="4" data-bg="#3D6B4F">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🌿</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p5.name">苏子叶</div>
+          <div class="products-slide-kr" data-i18n="products.p5.name.sub">깻잎</div>
+          <div class="products-slide-desc" data-i18n="products.p5.desc">一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp6" data-index="5">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🥩</div><div class="sticky-product-img sticky-product-img-angle">🥩</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p6.name">牛板筋</div>
-          <div class="sticky-product-kr" data-i18n="products.p6.name.sub">우설건강</div>
-          <div class="sticky-product-desc" data-i18n="products.p6.desc">牛板筋的韧劲配上辣椒的火热，越嚼越香，是下酒菜的绝对王者。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-5" data-slide="5" data-bg="#6B3A2A">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🥩</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p6.name">牛板筋</div>
+          <div class="products-slide-kr" data-i18n="products.p6.name.sub">우설건강</div>
+          <div class="products-slide-desc" data-i18n="products.p6.desc">牛板筋的韧劲配上辣椒的火热，越嚼越香，是下酒菜的绝对王者。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp7" data-index="6">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🐟</div><div class="sticky-product-img sticky-product-img-angle">🐟</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p7.name">香辣明太鱼</div>
-          <div class="sticky-product-kr" data-i18n="products.p7.name.sub">명태조림</div>
-          <div class="sticky-product-desc" data-i18n="products.p7.desc">明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-6" data-slide="6" data-bg="#C4A46C">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🐟</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p7.name">香辣明太鱼</div>
+          <div class="products-slide-kr" data-i18n="products.p7.name.sub">명태조림</div>
+          <div class="products-slide-desc" data-i18n="products.p7.desc">明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="sticky-product sp8" data-index="7">
-      <div class="sticky-product-inner">
-        <div class="sticky-product-visual"><div class="sticky-product-icon"><div class="sticky-product-img sticky-product-img-top">🌸</div><div class="sticky-product-img sticky-product-img-angle">🌸</div></div></div>
-        <div class="sticky-product-info">
-          <div class="sticky-product-name" data-i18n="products.p8.name">桔梗</div>
-          <div class="sticky-product-kr" data-i18n="products.p8.name.sub">도라지</div>
-          <div class="sticky-product-desc" data-i18n="products.p8.desc">山间的桔梗根，清苦回甘。撕成细丝拌上辣椒酱，是延边人记忆里的味道。</div>
-          <div class="sticky-product-spice"><span class="sticky-product-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span></div>
+    <div class="products-carousel-slide slide-7" data-slide="7" data-bg="#7B8FA1">
+      <div class="products-slide-inner">
+        <div class="products-slide-visual">
+          <div class="products-slide-icon">🌸</div>
+        </div>
+        <div class="products-slide-info">
+          <div class="products-slide-name" data-i18n="products.p8.name">桔梗</div>
+          <div class="products-slide-kr" data-i18n="products.p8.name.sub">도라지</div>
+          <div class="products-slide-desc" data-i18n="products.p8.desc">山间的桔梗根，清苦回甘。撕成细丝拌上辣椒酱，是延边人记忆里的味道。</div>
+          <div class="products-slide-spice">
+            <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
+          </div>
         </div>
       </div>
+    </div>
+      </div>
+    </div>
+    <div class="carousel-nav" id="carouselNav">
+      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous">◀</button>
+      <div id="carouselDots"></div>
+      <button class="carousel-arrow" id="carouselNext" aria-label="Next">▶</button>
+      <div class="carousel-counter" id="carouselCounter"></div>
     </div>
   </div>
   <div class="section-explore reveal">
     <a href="products.html" data-i18n="products.explore">探索产品殿堂 →</a>
   </div>
 </section>
-<!-- 韩屋弧线分隔：产品 → 故事 -->
+
+<!-- ==================== MARQUEE ==================== -->
+<div class="marquee">
+  <div class="marquee-inner" id="marqueeInner"></div>
+</div>
+
+<!-- ==================== FOUR SEASONS ==================== -->
+<section class="section seasons" id="seasons">
+  <!-- 四季金达莱暗纹 -->
+  <div class="seasons-watermark">
+    <svg viewBox="0 0 280 360" fill="none">
+      <g fill="currentColor" stroke="none">
+        <g transform="translate(100,60) scale(1.4)"><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/><circle cx="0" cy="0" r="3"/></g>
+        <g transform="translate(180,160) scale(1)"><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/><circle cx="0" cy="0" r="3"/></g>
+        <g transform="translate(120,250) scale(.8)"><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/><circle cx="0" cy="0" r="3"/></g>
+        <path d="M 100 74 Q 95 130 98 200 Q 100 260 105 300" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M 180 174 Q 175 230 180 300" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </svg>
+  </div>
+  <div class="section-header reveal">
+    <div class="section-label" data-i18n="seasons.label">Four Seasons · 四季发酵</div>
+    <div class="section-title" data-i18n="seasons.title">时间是最好的匠人</div>
+    <div class="section-title-kr" data-i18n="seasons.title.sub">시간이 만드는 맛</div>
+  </div>
+  <div class="seasons-grid">
+    <div class="season-card season-spring reveal reveal-delay-1">
+      <div class="season-char" data-i18n="seasons.spring.char">春</div>
+      <div class="season-num" data-i18n="seasons.spring.num">01 / Spring</div>
+      <div class="season-name" data-i18n="seasons.spring.name">春·腌</div>
+      <div class="season-name-kr" data-i18n="seasons.spring.name.sub">봄 · 담그기</div>
+      <div class="season-desc" data-i18n="seasons.spring.desc">霜降后的白菜，最是脆嫩。抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。每一层都均匀、每一抹都用心。</div>
+    
+      <div class="season-proverb" data-i18n="seasons.spring.proverb">「꽃이 피면 봄이 온다」</div></div>
+    <div class="season-card season-summer reveal reveal-delay-2">
+      <div class="season-char" data-i18n="seasons.summer.char">夏</div>
+      <div class="season-num" data-i18n="seasons.summer.num">02 / Summer</div>
+      <div class="season-name" data-i18n="seasons.summer.name">夏·酵</div>
+      <div class="season-name-kr" data-i18n="seasons.summer.name.sub">여름 · 발효</div>
+      <div class="season-desc" data-i18n="seasons.summer.desc">温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺其自然。</div>
+    
+      <div class="season-proverb" data-i18n="seasons.summer.proverb">「여름 밤은 짧다」</div></div>
+    <div class="season-card season-autumn reveal reveal-delay-1">
+      <div class="season-char" data-i18n="seasons.autumn.char">秋</div>
+      <div class="season-num" data-i18n="seasons.autumn.num">03 / Autumn</div>
+      <div class="season-name" data-i18n="seasons.autumn.name">秋·熟</div>
+      <div class="season-name-kr" data-i18n="seasons.autumn.name.sub">가을 · 익음</div>
+      <div class="season-desc" data-i18n="seasons.autumn.desc">三个月的等待，酸与辣达成平衡。开坛的瞬间，香气扑面。这是时间赋予的味道，人工无法替代。</div>
+    
+      <div class="season-proverb" data-i18n="seasons.autumn.proverb">「가을 하늘은 높다」</div></div>
+    <div class="season-card season-winter reveal reveal-delay-2">
+      <div class="season-char" data-i18n="seasons.winter.char">冬</div>
+      <div class="season-num" data-i18n="seasons.winter.num">04 / Winter</div>
+      <div class="season-name" data-i18n="seasons.winter.name">冬·享</div>
+      <div class="season-name-kr" data-i18n="seasons.winter.name.sub">겨울 · 즐김</div>
+      <div class="season-desc" data-i18n="seasons.winter.desc">延边的冬天漫长而寒冷。一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是冬日的仪式。</div>
+      <div class="season-proverb" data-i18n="seasons.winter.proverb">「첫눈이 오면 김치 담근다」</div>
+    </div>
+  </div>
+</section>
+<!-- 韩屋弧线分隔：四季 → 产品 -->
 <div class="section-divider">
   <svg viewBox="0 0 1200 60" preserveAspectRatio="none" fill="none">
     <path d="M 0 40 Q 100 8 200 24 Q 350 55 500 18 Q 600 4 700 18 Q 850 50 1000 24 Q 1100 8 1200 32" stroke="rgba(196,114,127,.18)" stroke-width="1.5" fill="none"/>
@@ -1554,128 +1650,89 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ====== STICKY SCROLL —— 粘性滚动段落式叙事（rAF优化） ======
-const stickySection = document.getElementById('products');
-const stickyViewport = document.getElementById('stickyViewport');
-const stickyProducts = document.querySelectorAll('.sticky-product');
-const stickyProgress = document.getElementById('stickyProgress');
-const stickyCounter = document.getElementById('stickyCounter');
-const totalProducts = stickyProducts.length;
+// ====== PRODUCTS CAROUSEL ======
+const carouselInner = document.getElementById('carouselInner');
+const carouselDots = document.getElementById('carouselDots');
+const carouselCounter = document.getElementById('carouselCounter');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const slides = document.querySelectorAll('.products-carousel-slide');
+const totalSlides = slides.length;
+let currentCarouselSlide = 0;
+let carouselTimer = null;
+let touchStartX = 0;
+let touchEndX = 0;
+const carouselSection = document.getElementById('products');
 
-// Product background colors for viewport
-const productBgs = ['#E8EDE5','#D4654A','#5C3A4E','#CC4422','#3D6B4F','#6B3A2A','#C4A46C','#7B8FA1'];
-// Header text color: light bg → dark text, dark bg → light text
-const productHeaderColors = ['var(--ink-deep)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink-deep)','var(--rice)'];
+// Product background colors
+const slideBgs = ['#E8EDE5','#D4654A','#5C3A4E','#CC4422','#3D6B4F','#6B3A2A','#C4A46C','#7B8FA1'];
+const headerColors = ['var(--ink-deep)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink-deep)','var(--rice)'];
 
-// Build progress dots
-for (let i = 0; i < totalProducts; i++) {
+// Set initial bg
+const carouselEl = document.getElementById('productsCarousel');
+if (carouselEl) carouselEl.style.backgroundColor = slideBgs[0];
+
+// Build dots
+for (let i = 0; i < totalSlides; i++) {
   const dot = document.createElement('div');
-  dot.className = 'sticky-progress-dot' + (i === 0 ? ' active' : '');
-  dot.dataset.index = i;
-  dot.addEventListener('click', () => {
-    const sectionTop = stickySection.offsetTop;
-    const targetScroll = sectionTop + (i * window.innerHeight) + 10;
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-  });
-  stickyProgress.appendChild(dot);
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToSlide(i));
+  carouselDots.appendChild(dot);
 }
 
-// Set section height = 100vh * (totalProducts + 1) — 额外1屏缓冲，让最后一个产品有完整展示空间
-stickySection.style.height = ((totalProducts + 1) * 100) + 'vh';
-
-// Set initial viewport bg and header color
-stickyViewport.style.backgroundColor = productBgs[0];
-const initHeaderTitle = stickyViewport.querySelector('.sticky-header-title');
-const initHeaderLabel = stickyViewport.querySelector('.sticky-header-label');
-if (initHeaderTitle) initHeaderTitle.style.color = productHeaderColors[0];
-if (initHeaderLabel) initHeaderLabel.style.color = productHeaderColors[0];
-
-let currentSticky = 0;
-let isStickyVisible = false;
-let rafPending = false;
-let prevStickyIndex = -1; // track for cleanup
-
-function updateSticky() {
-  const rect = stickySection.getBoundingClientRect();
-  const sectionTop = -rect.top;
-  const viewH = window.innerHeight;
-  
-  isStickyVisible = rect.top < viewH && rect.bottom > 0;
-  
-  if (!isStickyVisible) {
-    stickyProgress.classList.remove('visible');
-    stickyCounter.classList.remove('visible');
-    rafPending = false;
-    return;
-  }
-  
-  stickyProgress.classList.add('visible');
-  stickyCounter.classList.add('visible');
-  
-  // Calculate which product to show — use midpoint threshold for smoother switching
-  const newIndex = Math.min(totalProducts - 1, Math.max(0, Math.floor(sectionTop / viewH)));
-  
-  if (newIndex !== currentSticky) {
-    const direction = newIndex > currentSticky ? 'exit-up' : 'exit-down';
-    const oldIndex = currentSticky;
-    
-    // Exit old
-    stickyProducts[oldIndex].classList.remove('active');
-    stickyProducts[oldIndex].classList.add(direction);
-    
-    // Activate new
-    stickyProducts[newIndex].classList.remove('exit-up', 'exit-down');
-    stickyProducts[newIndex].classList.add('active');
-    
-    // Smooth background color transition on viewport
-    stickyViewport.style.backgroundColor = productBgs[newIndex];
-    // Update header text color to match background
-    const headerTitle = stickyViewport.querySelector('.sticky-header-title');
-    const headerLabel = stickyViewport.querySelector('.sticky-header-label');
-    if (headerTitle) headerTitle.style.color = productHeaderColors[newIndex];
-    if (headerLabel) headerLabel.style.color = productHeaderColors[newIndex];
-    
-    // Clean up old exit class after transition
-    if (prevStickyIndex >= 0 && prevStickyIndex !== newIndex) {
-      stickyProducts[prevStickyIndex].classList.remove('exit-up', 'exit-down');
-    }
-    prevStickyIndex = oldIndex;
-    
-    currentSticky = newIndex;
-    
-    // Update progress dots
-    stickyProgress.querySelectorAll('.sticky-progress-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSticky);
-    });
-  }
-  
+function goToSlide(index) {
+  currentCarouselSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+  carouselInner.style.transform = `translateX(-${currentCarouselSlide * 100}%)`;
+  // Update dots
+  carouselDots.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentCarouselSlide);
+  });
   // Update counter
-  stickyCounter.innerHTML = `<span class="sticky-counter-current">${String(currentSticky + 1).padStart(2, '0')}</span> / ${String(totalProducts).padStart(2, '0')}`;
-  
-  rafPending = false;
+  carouselCounter.innerHTML = `<span class="carousel-counter-current">${String(currentCarouselSlide + 1).padStart(2, '0')}</span> / ${String(totalSlides).padStart(2, '0')}`;
+  // Update bg color
+  if (carouselEl) carouselEl.style.backgroundColor = slideBgs[currentCarouselSlide];
+  // Update header text color
+  const headerTitle = carouselEl.querySelector('.sticky-header-title');
+  const headerLabel = carouselEl.querySelector('.sticky-header-label');
+  if (headerTitle) headerTitle.style.color = headerColors[currentCarouselSlide];
+  if (headerLabel) headerLabel.style.color = headerColors[currentCarouselSlide];
+  // Reset auto-play timer
+  resetCarouselTimer();
 }
 
-// rAF-throttled scroll handler for buttery smoothness
-function onScroll() {
-  if (!rafPending) {
-    rafPending = true;
-    requestAnimationFrame(updateSticky);
+function nextSlide() { goToSlide(currentCarouselSlide + 1); }
+function prevSlide() { goToSlide(currentCarouselSlide - 1); }
+
+carouselNext.addEventListener('click', nextSlide);
+carouselPrev.addEventListener('click', prevSlide);
+
+// Auto-play every 5s
+function resetCarouselTimer() {
+  clearInterval(carouselTimer);
+  carouselTimer = setInterval(nextSlide, 5000);
+}
+resetCarouselTimer();
+
+// Pause on hover
+carouselSection.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+carouselSection.addEventListener('mouseleave', resetCarouselTimer);
+
+// Touch swipe support
+const track = document.querySelector('.products-carousel-track');
+track.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+track.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) nextSlide();
+    else prevSlide();
   }
-}
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', () => {
-  stickySection.style.height = ((totalProducts + 1) * 100) + 'vh';
-  requestAnimationFrame(updateSticky);
-});
+}, { passive: true });
 
-// Clean up exit classes via transitionend (only from the product itself, not children)
-stickyProducts.forEach((el) => {
-  el.addEventListener('transitionend', (e) => {
-    if (e.target === el && e.propertyName === 'opacity') {
-      el.classList.remove('exit-up', 'exit-down');
-    }
-  });
-});
+// Initialize counter
+goToSlide(0);
 
 // ====== SMOOTH ANCHOR ======
 document.querySelectorAll('a[href^="#"]').forEach(a => {
