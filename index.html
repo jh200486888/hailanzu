@@ -893,13 +893,15 @@ function onMainScroll() {
       const sy = window.scrollY;
       nav.classList.toggle('scrolled', sy > 60);
       // Hero parallax
-      if (heroParallaxNeeded && heroText) {
+      if (heroText) {
         if (sy < window.innerHeight) {
+          heroParallaxNeeded = true;
           const r = sy / window.innerHeight;
           heroText.style.transform = 'translateY(calc(-50% + ' + (r * 50) + 'px))';
-          heroText.style.opacity = 1 - r * 1.2;
+          heroText.style.opacity = Math.max(0, 1 - r * 1.2);
         } else {
           heroParallaxNeeded = false;
+          heroText.style.opacity = 0;
         }
       }
       mainRafPending = false;
