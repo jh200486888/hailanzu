@@ -197,11 +197,11 @@ ul,ol{list-style:none}
 /* Product image hover swap — 俯拍默认 / 45° hover */
 .sticky-product-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;transition:opacity .5s ease,transform .5s ease}
 .sticky-product-img-top{opacity:1;transform:scale(1)}
-.sticky-product-img-angle{opacity:0;transform:scale(1.05)}
-.sticky-product-visual:hover .sticky-product-img-top{opacity:0;transform:scale(.95)}
-.sticky-product-visual:hover .sticky-product-img-angle{opacity:1;transform:scale(1)}
-.sticky-product-icon.show-angle .sticky-product-img-top{opacity:0;transform:scale(.95)}
-.sticky-product-icon.show-angle .sticky-product-img-angle{opacity:1;transform:scale(1)}
+.sticky-product-img-angle{opacity:0;transform:perspective(600px) rotateX(25deg) rotateY(-10deg) scale(1.1)}
+.sticky-product-visual{touch-action:manipulation;cursor:pointer}.sticky-product-visual:hover .sticky-product-img-top{opacity:0;transform:scale(.95)}
+.sticky-product-visual:hover .sticky-product-img-angle{opacity:1;transform:perspective(600px) rotateX(25deg) rotateY(-10deg) scale(1.1)}
+.sticky-product-icon.show-angle .sticky-product-img-top{opacity:0;transform:scale(.9) rotateX(-5deg)}
+.sticky-product-icon.show-angle .sticky-product-img-angle{opacity:1;transform:perspective(600px) rotateX(25deg) rotateY(-10deg) scale(1.1)}
 .sticky-product-info{display:flex;flex-direction:column;gap:8px}
 .sticky-product-name{font-family:var(--font-serif);font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:clamp(4px,1vw,12px);writing-mode:vertical-rl;line-height:1.1}
 .sticky-product-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.3vw,20px);opacity:.5;letter-spacing:4px}
@@ -1226,16 +1226,45 @@ for (let i = 0; i < totalProducts; i++) {
 
 // Mobile: tap to toggle top/angle product view
 let tappedProduct = null;
+let tapPreventClick = false;
 document.querySelectorAll('.sticky-product-visual').forEach(visual => {
+  let touchStartX, touchStartY, touchStartTime;
+  // Touch-based tap detection for mobile (more reliable than click in scroll areas)
+  visual.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchStartTime = Date.now();
+  }, { passive: true });
+  visual.addEventListener('touchend', (e) => {
+    const touch = e.changedTouches[0];
+    const dx = Math.abs(touch.clientX - touchStartX);
+    const dy = Math.abs(touch.clientY - touchStartY);
+    const dt = Date.now() - touchStartTime;
+    if (dx < 20 && dy < 20 && dt < 400) {
+      e.preventDefault();
+      tapPreventClick = true;
+      setTimeout(() => { tapPreventClick = false; }, 500);
+      const icon = visual.querySelector('.sticky-product-icon');
+      if (!icon) return;
+      if (tappedProduct === icon) {
+        icon.classList.remove('show-angle');
+        tappedProduct = null;
+      } else {
+        if (tappedProduct) tappedProduct.classList.remove('show-angle');
+        icon.classList.add('show-angle');
+        tappedProduct = icon;
+      }
+    }
+  });
+  // Click for desktop (skip if touch already handled)
   visual.addEventListener('click', () => {
+    if (tapPreventClick) return;
     const icon = visual.querySelector('.sticky-product-icon');
     if (!icon) return;
     if (tappedProduct === icon) {
-      // Second tap: toggle back
       icon.classList.remove('show-angle');
       tappedProduct = null;
     } else {
-      // First tap: show angle view
       if (tappedProduct) tappedProduct.classList.remove('show-angle');
       icon.classList.add('show-angle');
       tappedProduct = icon;
