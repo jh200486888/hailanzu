@@ -43,7 +43,7 @@
             box-sizing: border-box;
         }
 
-        html {
+        html { overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
@@ -52,7 +52,6 @@
             background-color: var(--rice);
             color: var(--ink);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -1958,10 +1957,17 @@
             });
         });
 
-        // Scroll effect for nav
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        // Robust scroll detection (iOS Safari compatible)
+        let lastScrollY = 0;
+        function checkScroll() {
+            const sy = window.scrollY || window.pageYOffset;
+            if (sy !== lastScrollY) {
+                lastScrollY = sy;
+                nav.classList.toggle('scrolled', sy > 50);
+            }
+            requestAnimationFrame(checkScroll);
+        }
+        requestAnimationFrame(checkScroll);
 
         // Language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
