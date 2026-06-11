@@ -48,7 +48,7 @@
             overscroll-behavior-x: none;
         }
 
-        /* Clip overflowing decorative elements to prevent page width expansion */
+        /* Clip overflowing decorative elements to prevent page width expansion on Android */
         section, footer { overflow: hidden; }
 
         /* ===== Navigation ===== */
@@ -394,7 +394,7 @@
             position: relative; z-index: 1;
         }
         @media (max-width: 900px) { .footer-content { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
-        @media (max-width: 600px) { .footer-content { grid-template-columns: 1fr; gap: 2rem; } }
+        @media (max-width: 600px) { .footer-content { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; } }
         .footer-col h4 { font-family: var(--font-serif); font-size: 1rem; color: var(--rice); margin-bottom: 1rem; }
         .footer-col p, .footer-col a {
             font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice-dim);

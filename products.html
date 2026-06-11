@@ -55,7 +55,7 @@
             overscroll-behavior-x: none;
         }
 
-        /* Clip overflowing decorative elements to prevent page width expansion */
+        /* Clip overflowing decorative elements to prevent page width expansion on Android */
         section, footer { overflow: hidden; }
 
         /* Navigation */
@@ -1086,8 +1086,8 @@
             }
 
             .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem 2rem;
             }
 
             .footer-brand {
