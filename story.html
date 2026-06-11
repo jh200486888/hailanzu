@@ -43,7 +43,7 @@
             box-sizing: border-box;
         }
 
-        html { overflow-x: hidden;
+        html {
             scroll-behavior: smooth;
         }
 
@@ -52,11 +52,10 @@
             background-color: var(--rice);
             color: var(--ink);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Navigation */
-        
-        /* ===== NAVIGATION ===== */
         .nav {
             position: fixed;
             top: 0;
@@ -68,35 +67,57 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(15,36,32,.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15,36,32,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(245,240,232,0.08);
             transition: all 0.3s var(--ease-out);
         }
+
         .nav.scrolled {
-            background: rgba(15,36,32,.95);
-            box-shadow: 0 2px 20px rgba(0,0,0,.15);
+            background: rgba(15,36,32,0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
         }
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
             color: var(--rice);
-            flex-shrink: 0;
         }
-        .pot-icon { width: 36px; height: 36px; }
-        .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
-        .nav-logo-text .zh { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; }
-        .nav-logo-text .kr { font-family: var(--font-sans-kr); font-size: 0.7rem; color: var(--rice-dim); letter-spacing: 0.02em; }
+
+        .pot-icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .nav-logo-text .zh {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-logo-text .kr {
+            font-family: var(--font-sans-kr);
+            font-size: 0.7rem;
+            color: var(--rice-dim);
+            letter-spacing: 0.02em;
+        }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 2rem;
-            flex: 1;
-            justify-content: center;
         }
+
         .nav-link {
             font-family: var(--font-sans);
             font-size: 0.9rem;
@@ -106,6 +127,7 @@
             padding: 0.25rem 0;
             transition: color 0.3s;
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -116,20 +138,22 @@
             background: var(--azalea);
             transition: width 0.3s var(--ease-out);
         }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link.active { color: var(--azalea); }
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-shrink: 0;
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
+
+        .nav-link.active {
+            color: var(--azalea);
+        }
+
         .lang-switch {
             display: flex;
             gap: 0.5rem;
             align-items: center;
         }
+
         .lang-btn {
             font-family: var(--font-body);
             font-size: 0.75rem;
@@ -141,13 +165,22 @@
             border-radius: 3px;
             transition: all 0.2s;
         }
-        .lang-btn:hover, .lang-btn.active {
+
+        .lang-btn:hover,
+        .lang-btn.active {
             background: var(--rice);
             color: var(--ink-deep);
         }
 
-        /* Hamburger - mobile only */
-        .nav-hamburger {
+        /* Mobile: hide top lang-switch, use panel instead */
+        @media (max-width: 768px) {
+            .nav .lang-switch {
+                display: none;
+            }
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
             display: none;
             flex-direction: column;
             justify-content: center;
@@ -157,116 +190,122 @@
             cursor: pointer;
             background: none;
             border: none;
-            padding: 8px;
+            padding: 0;
             z-index: 1001;
         }
-        .nav-hamburger span {
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .hamburger span {
             display: block;
-            width: 22px;
-            height: 1.5px;
+            width: 100%;
+            height: 2px;
             background: var(--rice);
             transition: all 0.3s var(--ease-out);
         }
-        .nav.expanded .nav-hamburger span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
-        .nav.expanded .nav-hamburger span:nth-child(2) { opacity: 0; }
-        .nav.expanded .nav-hamburger span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
-        /* Nav Panel - full screen overlay */
-        .nav-panel {
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4.5px, 4.5px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.5px, -4.5px);
+        }
+
+        .mobile-nav {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            z-index: 998;
-            background: rgba(15,36,32,.98);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s var(--ease-out);
-        }
-        .nav-panel.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-        .nav-panel-inner {
-            display: flex;
+            background: rgba(15,36,32,0.98);
+            backdrop-filter: blur(30px);
+            z-index: 1001;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-        }
-        .nav-panel-item {
-            font-family: var(--font-serif);
-            text-decoration: none;
-            color: var(--rice);
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 700;
-            letter-spacing: 12px;
+            gap: 2rem;
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s var(--ease-out);
-            cursor: pointer;
-            position: relative;
-        }
-        .nav-panel.open .nav-panel-item { opacity: 0.5; transform: translateY(0); }
-        .nav-panel.open .nav-panel-item:nth-child(1) { transition-delay: 0.1s; }
-        .nav-panel.open .nav-panel-item:nth-child(2) { transition-delay: 0.18s; }
-        .nav-panel.open .nav-panel-item:nth-child(3) { transition-delay: 0.26s; }
-        .nav-panel.open .nav-panel-item:nth-child(4) { transition-delay: 0.34s; }
-        .nav-panel.open .nav-panel-item:nth-child(5) { transition-delay: 0.42s; }
-        .nav-panel-item:hover { opacity: 1 !important; }
-        .nav-panel-item::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--azalea);
-            transition: width 0.4s var(--ease-out);
-        }
-        .nav-panel-item:hover::after { width: 100%; }
-        .nav-panel-item-kr {
-            font-family: var(--font-serif-kr);
-            font-size: clamp(12px, 1.5vw, 16px);
-            opacity: 0.25;
-            letter-spacing: 4px;
-            margin-top: -2px;
-            margin-bottom: 16px;
-            display: block;
-            font-weight: 400;
-        }
-        .nav-panel-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 1.2rem;
-            color: var(--rice);
-            opacity: 0.4;
-            cursor: pointer;
-            letter-spacing: 2px;
-            transition: opacity 0.3s;
-            background: none;
-            border: none;
-        }
-        .nav-panel-close:hover { opacity: 1; }
-
-        .nav.expanded {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            visibility: hidden;
+            transition: all 0.4s var(--ease-out);
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .lang-switch { display: none; }
-            .nav-hamburger { display: flex; }
+            .mobile-nav {
+                display: flex;
+            }
         }
 
+        .mobile-nav.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--rice);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--azalea);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(245,240,232,0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--rice);
+            transition: all 0.3s;
+        }
+
+        .mobile-nav-close:hover {
+            background: var(--azalea);
+            color: white;
+        }
+
+        .mobile-lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .mobile-lang-switch .lang-btn {
+            border-color: var(--rice);
+            color: var(--rice);
+        }
+
+        .mobile-lang-switch .lang-btn:hover,
+        .mobile-lang-switch .lang-btn.active {
+            background: var(--rice);
+            color: var(--ink-deep);
+        }
 
         /* Hero Section */
         .hero {
@@ -1148,14 +1187,15 @@
 </head>
 <body>
     <!-- Navigation -->
-        <nav class="nav" id="nav">
-        <a href="index.html" class="nav-logo">
-            <svg class="pot-icon" viewBox="0 0 50 50">
-                <ellipse class="pot-knob" cx="25" cy="8" rx="4" ry="3"/>
-                <path class="pot-lid" d="M12 15 Q25 5 38 15 L36 18 Q25 10 14 18 Z"/>
-                <path class="pot-ear-l" d="M8 20 Q6 25 8 30 Q10 32 12 30 Q10 25 12 20 Q10 18 8 20"/>
-                <path class="pot-ear-r" d="M42 20 Q44 25 42 30 Q40 32 38 30 Q40 25 38 20 Q40 18 42 20"/>
-                <path class="pot-body" d="M12 18 Q10 20 10 25 L10 38 Q10 42 15 43 L35 43 Q40 42 40 38 L40 25 Q40 20 38 18"/>
+    <nav class="nav" id="nav">
+        <a href="index-folk.html" class="nav-logo">
+            <svg class="pot-icon" viewBox="0 0 40 40" fill="none">
+                <ellipse cx="20" cy="32" rx="14" ry="6" fill="#C4727F"/>
+                <path d="M6 32 C6 20 10 12 20 12 C30 12 34 20 34 32" fill="#C4727F"/>
+                <ellipse cx="20" cy="12" rx="10" ry="3" fill="#D4A84B"/>
+                <path d="M12 12 Q20 8 28 12" stroke="#1A3C34" stroke-width="1.5" fill="none"/>
+                <path d="M14 18 Q20 15 26 18" stroke="#1A3C34" stroke-width="0.8" fill="none" opacity="0.5"/>
+                <path d="M12 24 Q20 21 28 24" stroke="#1A3C34" stroke-width="0.8" fill="none" opacity="0.5"/>
             </svg>
             <div class="nav-logo-text">
                 <span class="zh">海兰菹</span>
@@ -1165,34 +1205,39 @@
         <div class="nav-links">
             <a href="seasons.html" class="nav-link" data-i18n="nav.seasons">四季发酵</a>
             <a href="products.html" class="nav-link" data-i18n="nav.products">产品殿堂</a>
-            <a href="story.html" class="nav-link" class="active" data-i18n="nav.story">延边风土</a>
+            <a href="story.html" class="nav-link active" data-i18n="nav.story">延边风土</a>
             <a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
             <a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
         </div>
-        <div class="nav-right">
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="zh">中</button>
-                <button class="lang-btn" data-lang="ko">한</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="ja">日</button>
-            </div>
-            <div class="nav-hamburger" id="hamburger" role="button" aria-label="菜单">
-                <span></span><span></span><span></span>
-            </div>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="zh">中</button>
+            <button class="lang-btn" data-lang="ko">한</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
         </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
-    <div class="nav-panel" id="navPanel">
-        <div class="nav-panel-inner">
-        <a class="nav-panel-item" href="seasons.html"><span data-i18n="nav.seasons">四季发酵</span><span class="nav-panel-item-kr" data-i18n="nav.seasons.sub">사계절 발효</span></a>
-        <a class="nav-panel-item" href="products.html"><span data-i18n="nav.products">产品殿堂</span><span class="nav-panel-item-kr" data-i18n="nav.products.sub">제품 전시</span></a>
-        <a class="nav-panel-item" href="story.html"><span data-i18n="nav.story">延边风土</span><span class="nav-panel-item-kr" data-i18n="nav.story.sub">연변 풍토</span></a>
-        <a class="nav-panel-item" href="gift.html"><span data-i18n="nav.gift">高端礼盒</span><span class="nav-panel-item-kr" data-i18n="nav.gift.sub">프리미엄 선물</span></a>
-        <a class="nav-panel-item" href="contact.html"><span data-i18n="nav.contact">联系我们</span><span class="nav-panel-item-kr" data-i18n="nav.contact.sub">문의하기</span></a>
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+        <a href="index-folk.html" data-i18n="nav.home">首页</a><br>
+                <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a>
+        <a href="products.html" data-i18n="nav.products">产品殿堂</a>
+        <a href="story.html" class="active" data-i18n="nav.story">延边风土</a>
+        <a href="gift.html" data-i18n="nav.gift">高端礼盒</a>
+        <a href="contact.html" data-i18n="nav.contact">联系我们</a>
+        <div class="mobile-lang-switch">
+            <button class="lang-btn active" data-lang="zh">中</button>
+            <button class="lang-btn" data-lang="ko">한</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
         </div>
-        <button class="nav-panel-close" id="navPanelClose">✕</button>
     </div>
-
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1664,7 +1709,7 @@
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footer.nav">导航</h4>
-                <a href="index.html" data-i18n="nav.home">首页</a><br>
+                <a href="index-folk.html" data-i18n="nav.home">首页</a><br>
                 <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a><br>
                 <a href="products.html" data-i18n="nav.products">产品殿堂</a><br>
                 <a href="story.html" data-i18n="nav.story">延边风土</a><br>
@@ -1962,46 +2007,36 @@
             currentLang = detectBrowserLang();
         }
 
-        
-        // Navigation - nav-panel system
-        const nav = document.getElementById('nav');
+        // Navigation
         const hamburger = document.getElementById('hamburger');
-        const navPanel = document.getElementById('navPanel');
-        const navPanelClose = document.getElementById('navPanelClose');
-        let panelOpen = false;
-
-        function openPanel() {
-            panelOpen = true;
-            nav.classList.add('expanded');
-            navPanel.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closePanel() {
-            panelOpen = false;
-            nav.classList.remove('expanded');
-            navPanel.classList.remove('open');
-            document.body.style.overflow = '';
-        }
+        const mobileNav = document.getElementById('mobileNav');
+        const nav = document.getElementById('nav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
 
         hamburger.addEventListener('click', () => {
-            panelOpen ? closePanel() : openPanel();
-        });
-        navPanelClose.addEventListener('click', closePanel);
-        navPanel.querySelectorAll('.nav-panel-item').forEach(item => {
-            item.addEventListener('click', () => { closePanel(); });
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
         });
 
-        // Scroll detection
-        let lastScrollY = 0;
-        function checkScroll() {
-            const sy = window.scrollY || window.pageYOffset;
-            if (sy !== lastScrollY) {
-                lastScrollY = sy;
-                nav.classList.toggle('scrolled', sy > 50);
-            }
-            requestAnimationFrame(checkScroll);
-        }
-        requestAnimationFrame(checkScroll);
+        mobileNavClose.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll effect for nav
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
         // Language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
