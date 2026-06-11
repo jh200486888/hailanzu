@@ -143,9 +143,19 @@ ul,ol{list-style:none}
 /* 极简文案 —— 只有一句话 */
 .hero-flower{position:absolute;z-index:3;pointer-events:none;opacity:0;transition:opacity 2s ease-in-out}
 .hero-flower.active{opacity:1}
-.hero-flower-right{right:-20px;top:8%;width:360px;height:460px;animation:flowerSwayR 8s ease-in-out infinite;will-change:transform}
-.hero-flower-left{left:-40px;bottom:12%;width:260px;height:330px;animation:flowerSwayL 10s ease-in-out infinite reverse;will-change:transform}
-.hero-flower-right svg,.hero-flower-left svg{width:100%;height:100%}
+.hero-flower svg{width:100%;height:100%}
+/* ① 金达莱——右侧上方 */
+.hero-flower[data-flower="0"]{right:-10px;top:4%;width:340px;height:440px;animation:flowerSwayR 8s ease-in-out infinite;will-change:transform}
+/* ② 桃花——左侧中上 */
+.hero-flower[data-flower="1"]{left:-25px;top:10%;width:320px;height:420px;animation:flowerSwayL 9s ease-in-out infinite;will-change:transform}
+/* ③ 梨花——右侧下方 */
+.hero-flower[data-flower="2"]{right:-5px;bottom:3%;width:350px;height:430px;animation:flowerSwayR 7s ease-in-out infinite;will-change:transform}
+/* ④ 杏花——左侧下方 */
+.hero-flower[data-flower="3"]{left:-15px;bottom:8%;width:330px;height:440px;animation:flowerSwayL 8s ease-in-out infinite;will-change:transform}
+/* ⑤ 冰凌花——右侧中上偏上 */
+.hero-flower[data-flower="4"]{right:-10px;top:12%;width:300px;height:400px;animation:flowerSwayR 10s ease-in-out infinite;will-change:transform}
+/* ⑥ 蒲公英——左侧偏下 */
+.hero-flower[data-flower="5"]{left:-10px;bottom:5%;width:340px;height:430px;animation:flowerSwayL 9s ease-in-out infinite;will-change:transform}
 @keyframes flowerSwayR{0%,100%{transform:translateZ(0) translateX(0) rotate(0deg)}50%{transform:translateZ(0) translateX(-6px) rotate(.8deg)}}
 @keyframes flowerSwayL{0%,100%{transform:translateZ(0) scaleX(-1) translateX(0) rotate(0deg)}50%{transform:translateZ(0) scaleX(-1) translateX(-6px) rotate(1deg)}}
 .hero-text{position:absolute;z-index:5;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:clamp(20px,4vw,60px)}
@@ -490,507 +500,357 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
     <div class="hero-dot" data-slide="4"></div>
     <div class="hero-dot" data-slide="5"></div>
   </div>
-  <!-- Hero 花卉剪影装饰 —— 六屏六花 -->
-  <!-- ① 金达莱花（진달래）右 -->
-  <div class="hero-flower hero-flower-right active" data-flower="0">
-    <svg viewBox="0 0 350 450" fill="none">
-      <g opacity=".35" fill="#C4727F" stroke="none">
-        <!-- 5瓣花组1（最大） -->
-        <g transform="translate(120,80) scale(1.2)">
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3"/>
-        </g>
-        <!-- 5瓣花组2 -->
-        <g transform="translate(220,160) scale(.9)">
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3"/>
-        </g>
-        <!-- 5瓣花组3（小） -->
-        <g transform="translate(160,260) scale(.7)">
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3"/>
-        </g>
-        <ellipse cx="190" cy="130" rx="4" ry="8" transform="rotate(15 190 130)"/>
-        <ellipse cx="140" cy="200" rx="3" ry="6" transform="rotate(-10 140 200)"/>
-        <path d="M 120 94 Q 115 140 110 200 Q 108 260 120 280" fill="none" stroke="#C4727F" stroke-width="1.5"/>
-        <path d="M 220 174 Q 210 220 200 280" fill="none" stroke="#C4727F" stroke-width="1"/>
-        <path d="M 160 274 Q 155 320 158 400" fill="none" stroke="#C4727F" stroke-width="1"/>
-        <path d="M 110 170 Q 90 160 85 170 Q 90 180 110 175" fill="#C4727F" opacity=".5"/>
-        <path d="M 200 240 Q 220 230 225 240 Q 220 250 200 245" fill="#C4727F" opacity=".4"/>
-      </g>
-    </svg>
+  <!-- Hero 花卉剪影装饰 —— 六屏六花，各花独特造型与位置 -->
+  <!-- ① 金达莱花（진달래）—— 粉紫5瓣波浪尖 -->
+  <div class="hero-flower active" data-flower="0">
+    <svg viewBox="0 0 340 440" fill="none">
+  <g opacity=".35">
+    <g transform="translate(110,75)">
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#B8688A" transform="rotate(0)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#C47898" transform="rotate(72)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#B8688A" transform="rotate(144)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#C47898" transform="rotate(216)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#B8688A" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="4" fill="#8B4060"/>
+      <circle cx="-2" cy="-3" r="1" fill="#6B2040"/>
+      <circle cx="3" cy="-1" r="1" fill="#6B2040"/>
+    </g>
+    <g transform="translate(225,175) scale(.82) rotate(15)">
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#C47898" transform="rotate(0)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#B8688A" transform="rotate(72)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#C47898" transform="rotate(144)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#B8688A" transform="rotate(216)"/>
+      <path d="M0,-8 C3,-20 10,-30 8,-46 C7,-52 3,-50 1,-44 C-1,-50 -3,-52 -5,-46 C-8,-34 -4,-22 0,-8" fill="#C47898" transform="rotate(288)"/>
+      <circle cx="0" cy="0" r="3.5" fill="#8B4060"/>
+    </g>
+    <g transform="translate(160,280) scale(.55) rotate(-8)">
+      <path d="M0,-6 C2,-14 7,-22 5,-34 C4,-38 2,-36 1,-30 C-1,-36 -2,-38 -4,-34 C-6,-26 -3,-16 0,-6" fill="#A85878"/>
+      <path d="M0,-6 C2,-14 7,-22 5,-34 C4,-38 2,-36 1,-30 C-1,-36 -2,-38 -4,-34 C-6,-26 -3,-16 0,-6" fill="#984868" transform="rotate(72)"/>
+      <path d="M0,-6 C2,-14 7,-22 5,-34 C4,-38 2,-36 1,-30 C-1,-36 -2,-38 -4,-34 C-6,-26 -3,-16 0,-6" fill="#A85878" transform="rotate(144)"/>
+      <circle cx="0" cy="0" r="2.5" fill="#7B3050"/>
+    </g>
+    <ellipse cx="190" cy="140" rx="3" ry="6" fill="#A85878" transform="rotate(25 190 140)"/>
+    <path d="M110 67 Q100 130 95 200 Q90 270 100 340 Q105 380 118 430" fill="none" stroke="#8B5070" stroke-width="2" opacity=".6"/>
+    <path d="M225 177 Q215 240 208 310 Q204 370 215 430" fill="none" stroke="#8B5070" stroke-width="1.5" opacity=".5"/>
+    <path d="M160 286 Q155 340 158 400" fill="none" stroke="#8B5070" stroke-width="1" opacity=".4"/>
+    <path d="M98 210 Q75 198 70 210 Q78 222 100 216" fill="#7B6070" opacity=".35"/>
+    <path d="M210 280 Q232 268 236 282 Q228 294 212 286" fill="#7B6070" opacity=".3"/>
+  </g>
+</svg>
   </div>
-  <!-- ① 金达莱花 左 -->
-  <div class="hero-flower hero-flower-left active" data-flower="0">
-    <svg viewBox="0 0 250 320" fill="none">
-      <g opacity=".25" fill="#C4727F" stroke="none">
-        <g transform="translate(80,100) scale(.8)">
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3"/>
-        </g>
-        <g transform="translate(160,200) scale(.6)">
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3"/>
-        </g>
-        <path d="M 80 114 Q 75 160 78 240 Q 80 280 85 310" fill="none" stroke="#C4727F" stroke-width="1"/>
-        <path d="M 160 214 Q 155 250 160 300" fill="none" stroke="#C4727F" stroke-width=".8"/>
-        <ellipse cx="120" cy="160" rx="3" ry="6" transform="rotate(20 120 160)"/>
-      </g>
-    </svg>
+  <!-- ② 桃花（복숭아꽃）—— 柔粉圆润5瓣，红色花蕊丝 -->
+  <div class="hero-flower" data-flower="1">
+    <svg viewBox="0 0 320 420" fill="none">
+  <g opacity=".32">
+    <g transform="translate(100,80)">
+      <ellipse cx="0" cy="-16" rx="11" ry="16" fill="#E8A0B8" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-16" rx="11" ry="16" fill="#E8AEC4" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-16" rx="11" ry="16" fill="#E8A0B8" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-16" rx="11" ry="16" fill="#E8AEC4" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-16" rx="11" ry="16" fill="#E8A0B8" transform="rotate(288)"/>
+      <line x1="0" y1="0" x2="0" y2="-9" stroke="#C07050" stroke-width=".6"/>
+      <line x1="0" y1="0" x2="5" y2="-7" stroke="#C07050" stroke-width=".6"/>
+      <line x1="0" y1="0" x2="-5" y2="-7" stroke="#C07050" stroke-width=".6"/>
+      <line x1="0" y1="0" x2="7" y2="-4" stroke="#C07050" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-7" y2="-4" stroke="#C07050" stroke-width=".5"/>
+      <circle cx="0" cy="-9" r="1" fill="#B86040"/>
+      <circle cx="5" cy="-7" r="1" fill="#B86040"/>
+      <circle cx="-5" cy="-7" r="1" fill="#B86040"/>
+      <circle cx="7" cy="-4" r=".8" fill="#B86040"/>
+      <circle cx="-7" cy="-4" r=".8" fill="#B86040"/>
+      <circle cx="0" cy="0" r="2.5" fill="#D09070"/>
+    </g>
+    <g transform="translate(215,170) scale(.78) rotate(12)">
+      <ellipse cx="0" cy="-14" rx="10" ry="14" fill="#E8AEC4" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-14" rx="10" ry="14" fill="#E8A0B8" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-14" rx="10" ry="14" fill="#E8AEC4" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-14" rx="10" ry="14" fill="#E8A0B8" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-14" rx="10" ry="14" fill="#E8AEC4" transform="rotate(288)"/>
+      <line x1="0" y1="0" x2="0" y2="-8" stroke="#C07050" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="4" y2="-6" stroke="#C07050" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-4" y2="-6" stroke="#C07050" stroke-width=".5"/>
+      <circle cx="0" cy="-8" r=".8" fill="#B86040"/>
+      <circle cx="4" cy="-6" r=".8" fill="#B86040"/>
+      <circle cx="-4" cy="-6" r=".8" fill="#B86040"/>
+      <circle cx="0" cy="0" r="2" fill="#D09070"/>
+    </g>
+    <g transform="translate(155,270) scale(.5) rotate(-5)">
+      <ellipse cx="-3" cy="-7" rx="5" ry="11" fill="#D890A8" transform="rotate(-15)"/>
+      <ellipse cx="3" cy="-7" rx="5" ry="11" fill="#D890A8" transform="rotate(15)"/>
+      <ellipse cx="0" cy="-5" rx="4" ry="9" fill="#E8A0B8"/>
+      <path d="M-4,2 Q-8,8 -3,10 Q0,6 3,10 Q8,8 4,2" fill="#6B8050" opacity=".5"/>
+    </g>
+    <ellipse cx="178" cy="130" rx="3.5" ry="7" fill="#D890A8" transform="rotate(30 178 130)"/>
+    <path d="M100 64 Q85 130 80 200 Q78 270 90 330 Q95 370 112 410" fill="none" stroke="#8B6B50" stroke-width="2.5" opacity=".5"/>
+    <path d="M215 156 Q205 220 198 290 Q194 350 206 410" fill="none" stroke="#8B6B50" stroke-width="1.8" opacity=".4"/>
+    <path d="M155 276 Q150 330 153 390" fill="none" stroke="#8B6B50" stroke-width="1.2" opacity=".35"/>
+    <path d="M82 220 Q58 208 52 222 Q62 234 86 228" fill="#7B8050" opacity=".35"/>
+    <path d="M200 270 Q222 258 226 272 Q218 284 202 278" fill="#7B8050" opacity=".3"/>
+  </g>
+</svg>
   </div>
-
-  <!-- ② 桃花（복숭아꽃）右 -->
-  <div class="hero-flower hero-flower-right" data-flower="1">
-    <svg viewBox="0 0 350 450" fill="none">
-      <g opacity=".32" fill="#E8A0B0" stroke="none">
-        <!-- 桃花5瓣——花瓣更圆润饱满 -->
-        <g transform="translate(130,90) scale(1.1)">
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3" fill="#E8C0A0"/>
-        </g>
-        <g transform="translate(210,180) scale(.85)">
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3" fill="#E8C0A0"/>
-        </g>
-        <g transform="translate(155,270) scale(.65)">
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3" fill="#E8C0A0"/>
-        </g>
-        <!-- 花苞 -->
-        <ellipse cx="185" cy="140" rx="4" ry="7" transform="rotate(20 185 140)"/>
-        <ellipse cx="135" cy="210" rx="3" ry="5" transform="rotate(-15 135 210)"/>
-        <!-- 枝条 -->
-        <path d="M 130 103 Q 125 150 120 210 Q 118 270 125 290" fill="none" stroke="#E8A0B0" stroke-width="1.5"/>
-        <path d="M 210 193 Q 200 240 195 290" fill="none" stroke="#E8A0B0" stroke-width="1"/>
-        <path d="M 155 283 Q 150 330 153 400" fill="none" stroke="#E8A0B0" stroke-width=".8"/>
-        <!-- 叶子 -->
-        <path d="M 120 180 Q 100 170 95 180 Q 100 190 120 185" fill="#E8A0B0" opacity=".4"/>
-        <path d="M 195 250 Q 215 240 220 250 Q 215 260 195 255" fill="#E8A0B0" opacity=".35"/>
+  <!-- ③ 梨花（배꽃）—— 白色5瓣微缺口，簇生花序 -->
+  <div class="hero-flower" data-flower="2">
+    <svg viewBox="0 0 350 430" fill="none">
+  <g opacity=".28">
+    <g transform="translate(120,80)">
+      <g transform="translate(-20,-5) scale(.88)">
+        <path d="M0,-14 C5,-22 14,-30 13,-40 C12,-46 8,-48 6,-42 C4,-48 2,-48 0,-42 C-2,-48 -4,-48 -6,-42 C-8,-48 -12,-46 -13,-40 C-14,-30 -5,-22 0,-14" fill="#E8E4DC" transform="rotate(0)"/>
+        <path d="M0,-14 C5,-22 14,-30 13,-40 C12,-46 8,-48 6,-42 C4,-48 2,-48 0,-42 C-2,-48 -4,-48 -6,-42 C-8,-48 -12,-46 -13,-40 C-14,-30 -5,-22 0,-14" fill="#F0ECE4" transform="rotate(72)"/>
+        <path d="M0,-14 C5,-22 14,-30 13,-40 C12,-46 8,-48 6,-42 C4,-48 2,-48 0,-42 C-2,-48 -4,-48 -6,-42 C-8,-48 -12,-46 -13,-40 C-14,-30 -5,-22 0,-14" fill="#E8E4DC" transform="rotate(144)"/>
+        <path d="M0,-14 C5,-22 14,-30 13,-40 C12,-46 8,-48 6,-42 C4,-48 2,-48 0,-42 C-2,-48 -4,-48 -6,-42 C-8,-48 -12,-46 -13,-40 C-14,-30 -5,-22 0,-14" fill="#F0ECE4" transform="rotate(216)"/>
+        <path d="M0,-14 C5,-22 14,-30 13,-40 C12,-46 8,-48 6,-42 C4,-48 2,-48 0,-42 C-2,-48 -4,-48 -6,-42 C-8,-48 -12,-46 -13,-40 C-14,-30 -5,-22 0,-14" fill="#E8E4DC" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="3" fill="#A0A880"/>
+        <line x1="0" y1="-2" x2="0" y2="-10" stroke="#808060" stroke-width=".4"/>
+        <line x1="0" y1="-2" x2="4" y2="-8" stroke="#808060" stroke-width=".4"/>
+        <line x1="0" y1="-2" x2="-4" y2="-8" stroke="#808060" stroke-width=".4"/>
       </g>
-    </svg>
+      <g transform="translate(20,-8) scale(.82)">
+        <path d="M0,-13 C4,-20 13,-28 12,-38 C11,-44 7,-46 5,-40 C3,-46 2,-46 0,-40 C-2,-46 -3,-46 -5,-40 C-7,-46 -11,-44 -12,-38 C-13,-28 -4,-20 0,-13" fill="#F0ECE4" transform="rotate(0)"/>
+        <path d="M0,-13 C4,-20 13,-28 12,-38 C11,-44 7,-46 5,-40 C3,-46 2,-46 0,-40 C-2,-46 -3,-46 -5,-40 C-7,-46 -11,-44 -12,-38 C-13,-28 -4,-20 0,-13" fill="#E8E4DC" transform="rotate(72)"/>
+        <path d="M0,-13 C4,-20 13,-28 12,-38 C11,-44 7,-46 5,-40 C3,-46 2,-46 0,-40 C-2,-46 -3,-46 -5,-40 C-7,-46 -11,-44 -12,-38 C-13,-28 -4,-20 0,-13" fill="#F0ECE4" transform="rotate(144)"/>
+        <path d="M0,-13 C4,-20 13,-28 12,-38 C11,-44 7,-46 5,-40 C3,-46 2,-46 0,-40 C-2,-46 -3,-46 -5,-40 C-7,-46 -11,-44 -12,-38 C-13,-28 -4,-20 0,-13" fill="#E8E4DC" transform="rotate(216)"/>
+        <path d="M0,-13 C4,-20 13,-28 12,-38 C11,-44 7,-46 5,-40 C3,-46 2,-46 0,-40 C-2,-46 -3,-46 -5,-40 C-7,-46 -11,-44 -12,-38 C-13,-28 -4,-20 0,-13" fill="#F0ECE4" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="2.5" fill="#A0A880"/>
+      </g>
+      <g transform="translate(0,16) scale(.68)">
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#E8E4DC" transform="rotate(0)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#F0ECE4" transform="rotate(72)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#E8E4DC" transform="rotate(144)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#F0ECE4" transform="rotate(216)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#E8E4DC" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="2" fill="#A0A880"/>
+      </g>
+    </g>
+    <g transform="translate(235,210) scale(.75) rotate(10)">
+      <g transform="translate(-12,0) scale(.72)">
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#F0ECE4" transform="rotate(0)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#E8E4DC" transform="rotate(72)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#F0ECE4" transform="rotate(144)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#E8E4DC" transform="rotate(216)"/>
+        <path d="M0,-12 C4,-18 11,-24 10,-34 C9,-38 6,-40 4,-35 C3,-40 1,-40 0,-35 C-1,-40 -3,-40 -4,-35 C-6,-40 -9,-38 -10,-34 C-11,-24 -4,-18 0,-12" fill="#F0ECE4" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="2" fill="#A0A880"/>
+      </g>
+      <g transform="translate(14,-4) scale(.6)">
+        <path d="M0,-10 C3,-16 9,-22 8,-30 C7,-34 5,-36 3,-31 C2,-36 1,-36 0,-31 C-1,-36 -2,-36 -3,-31 C-5,-36 -7,-34 -8,-30 C-9,-22 -3,-16 0,-10" fill="#E8E4DC" transform="rotate(0)"/>
+        <path d="M0,-10 C3,-16 9,-22 8,-30 C7,-34 5,-36 3,-31 C2,-36 1,-36 0,-31 C-1,-36 -2,-36 -3,-31 C-5,-36 -7,-34 -8,-30 C-9,-22 -3,-16 0,-10" fill="#F0ECE4" transform="rotate(72)"/>
+        <path d="M0,-10 C3,-16 9,-22 8,-30 C7,-34 5,-36 3,-31 C2,-36 1,-36 0,-31 C-1,-36 -2,-36 -3,-31 C-5,-36 -7,-34 -8,-30 C-9,-22 -3,-16 0,-10" fill="#E8E4DC" transform="rotate(144)"/>
+        <path d="M0,-10 C3,-16 9,-22 8,-30 C7,-34 5,-36 3,-31 C2,-36 1,-36 0,-31 C-1,-36 -2,-36 -3,-31 C-5,-36 -7,-34 -8,-30 C-9,-22 -3,-16 0,-10" fill="#F0ECE4" transform="rotate(216)"/>
+        <path d="M0,-10 C3,-16 9,-22 8,-30 C7,-34 5,-36 3,-31 C2,-36 1,-36 0,-31 C-1,-36 -2,-36 -3,-31 C-5,-36 -7,-34 -8,-30 C-9,-22 -3,-16 0,-10" fill="#E8E4DC" transform="rotate(288)"/>
+        <circle cx="0" cy="0" r="1.8" fill="#A0A880"/>
+      </g>
+    </g>
+    <ellipse cx="168" cy="160" rx="3" ry="6" fill="#D8D8CC" transform="rotate(25 168 160)"/>
+    <path d="M120 65 Q105 130 100 200 Q95 270 108 340 Q112 380 128 420" fill="none" stroke="#7A7A60" stroke-width="2" opacity=".45"/>
+    <path d="M235 206 Q225 270 220 340 Q216 380 228 420" fill="none" stroke="#7A7A60" stroke-width="1.5" opacity=".35"/>
+    <path d="M102 240 Q78 228 72 242 Q82 254 108 248" fill="#808060" opacity=".3"/>
+    <path d="M222 300 Q244 288 248 302 Q240 314 224 308" fill="#808060" opacity=".25"/>
+  </g>
+</svg>
   </div>
-  <!-- ② 桃花 左 -->
-  <div class="hero-flower hero-flower-left" data-flower="1">
-    <svg viewBox="0 0 250 320" fill="none">
-      <g opacity=".22" fill="#E8A0B0" stroke="none">
-        <g transform="translate(80,100) scale(.75)">
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3" fill="#E8C0A0"/>
-        </g>
-        <g transform="translate(155,200) scale(.55)">
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="10" ry="13" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3" fill="#E8C0A0"/>
-        </g>
-        <path d="M 80 113 Q 75 160 78 240 Q 80 280 85 310" fill="none" stroke="#E8A0B0" stroke-width="1"/>
-        <path d="M 155 213 Q 150 250 155 300" fill="none" stroke="#E8A0B0" stroke-width=".8"/>
-        <ellipse cx="120" cy="155" rx="3" ry="5" transform="rotate(20 120 155)"/>
-      </g>
-    </svg>
+  <!-- ④ 杏花（살구꽃）—— 浅粉椭圆5瓣，极长红色花蕊 -->
+  <div class="hero-flower" data-flower="3">
+    <svg viewBox="0 0 330 440" fill="none">
+  <g opacity=".3">
+    <g transform="translate(110,90)">
+      <ellipse cx="0" cy="-15" rx="9" ry="16" fill="#F0C0CC" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-15" rx="9" ry="16" fill="#F8D0D8" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-15" rx="9" ry="16" fill="#F0C0CC" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-15" rx="9" ry="16" fill="#F8D0D8" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-15" rx="9" ry="16" fill="#F0C0CC" transform="rotate(288)"/>
+      <line x1="0" y1="2" x2="-2" y2="-14" stroke="#C03030" stroke-width=".7"/>
+      <line x1="0" y1="2" x2="3" y2="-13" stroke="#C03030" stroke-width=".7"/>
+      <line x1="0" y1="2" x2="6" y2="-10" stroke="#C03030" stroke-width=".6"/>
+      <line x1="0" y1="2" x2="-6" y2="-10" stroke="#C03030" stroke-width=".6"/>
+      <line x1="0" y1="2" x2="0" y2="-15" stroke="#C03030" stroke-width=".6"/>
+      <line x1="0" y1="2" x2="8" y2="-7" stroke="#C03030" stroke-width=".5"/>
+      <line x1="0" y1="2" x2="-8" y2="-7" stroke="#C03030" stroke-width=".5"/>
+      <circle cx="-2" cy="-14" r=".9" fill="#D04040"/>
+      <circle cx="3" cy="-13" r=".9" fill="#D04040"/>
+      <circle cx="6" cy="-10" r=".9" fill="#D04040"/>
+      <circle cx="-6" cy="-10" r=".9" fill="#D04040"/>
+      <circle cx="0" cy="-15" r=".9" fill="#D04040"/>
+      <circle cx="8" cy="-7" r=".8" fill="#D04040"/>
+      <circle cx="-8" cy="-7" r=".8" fill="#D04040"/>
+      <circle cx="0" cy="2" r="2.5" fill="#E08080"/>
+    </g>
+    <g transform="translate(225,190) scale(.78) rotate(15)">
+      <ellipse cx="0" cy="-13" rx="8" ry="14" fill="#F8D0D8" transform="rotate(0)"/>
+      <ellipse cx="0" cy="-13" rx="8" ry="14" fill="#F0C0CC" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-13" rx="8" ry="14" fill="#F8D0D8" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-13" rx="8" ry="14" fill="#F0C0CC" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-13" rx="8" ry="14" fill="#F8D0D8" transform="rotate(288)"/>
+      <line x1="0" y1="1" x2="-1" y2="-11" stroke="#C03030" stroke-width=".6"/>
+      <line x1="0" y1="1" x2="3" y2="-10" stroke="#C03030" stroke-width=".6"/>
+      <line x1="0" y1="1" x2="-4" y2="-9" stroke="#C03030" stroke-width=".5"/>
+      <line x1="0" y1="1" x2="0" y2="-13" stroke="#C03030" stroke-width=".5"/>
+      <circle cx="-1" cy="-11" r=".8" fill="#D04040"/>
+      <circle cx="3" cy="-10" r=".8" fill="#D04040"/>
+      <circle cx="-4" cy="-9" r=".7" fill="#D04040"/>
+      <circle cx="0" cy="-13" r=".7" fill="#D04040"/>
+      <circle cx="0" cy="1" r="2" fill="#E08080"/>
+    </g>
+    <g transform="translate(160,290) scale(.5) rotate(-8)">
+      <ellipse cx="-3" cy="-7" rx="5" ry="11" fill="#E8B0BC" transform="rotate(-12)"/>
+      <ellipse cx="3" cy="-7" rx="5" ry="11" fill="#E8B0BC" transform="rotate(12)"/>
+      <ellipse cx="0" cy="-5" rx="4" ry="9" fill="#F0C0CC"/>
+      <path d="M-4,2 Q-7,7 -2,9 Q0,5 2,9 Q7,7 4,2" fill="#6B8050" opacity=".5"/>
+    </g>
+    <ellipse cx="188" cy="150" rx="3" ry="6" fill="#E8B0BC" transform="rotate(28 188 150)"/>
+    <path d="M110 75 Q95 140 90 215 Q88 280 100 345 Q104 385 118 425" fill="none" stroke="#8B7060" stroke-width="2" opacity=".5"/>
+    <path d="M225 178 Q215 245 208 320 Q204 370 218 425" fill="none" stroke="#8B7060" stroke-width="1.5" opacity=".4"/>
+    <path d="M160 295 Q155 350 158 410" fill="none" stroke="#8B7060" stroke-width="1" opacity=".3"/>
+    <path d="M92 250 Q68 238 62 252 Q72 264 96 258" fill="#7A8060" opacity=".3"/>
+    <path d="M210 300 Q232 288 236 302 Q228 314 212 308" fill="#7A8060" opacity=".25"/>
+  </g>
+</svg>
   </div>
-
-  <!-- ③ 梨花（배꽃）右 -->
-  <div class="hero-flower hero-flower-right" data-flower="2">
-    <svg viewBox="0 0 350 450" fill="none">
-      <g opacity=".3" fill="#D8D4CC" stroke="none">
-        <!-- 梨花5瓣——花瓣较宽较圆，纯白偏灰 -->
-        <g transform="translate(125,85) scale(1.15)">
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C8C0A0"/>
-        </g>
-        <g transform="translate(215,170) scale(.85)">
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C8C0A0"/>
-        </g>
-        <g transform="translate(160,260) scale(.6)">
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C8C0A0"/>
-        </g>
-        <ellipse cx="180" cy="130" rx="3" ry="6" transform="rotate(12 180 130)"/>
-        <ellipse cx="140" cy="200" rx="2.5" ry="5" transform="rotate(-8 140 200)"/>
-        <path d="M 125 97 Q 120 145 115 210 Q 112 270 120 285" fill="none" stroke="#D8D4CC" stroke-width="1.5"/>
-        <path d="M 215 182 Q 205 230 200 280" fill="none" stroke="#D8D4CC" stroke-width="1"/>
-        <path d="M 160 272 Q 155 320 158 400" fill="none" stroke="#D8D4CC" stroke-width=".8"/>
-        <path d="M 115 175 Q 95 165 90 175 Q 95 185 115 180" fill="#A8B898" opacity=".4"/>
-        <path d="M 200 245 Q 220 235 225 245 Q 220 255 200 250" fill="#A8B898" opacity=".35"/>
-      </g>
-    </svg>
+  <!-- ⑤ 冰凌花（복수초）—— 金黄7瓣杯状，短粗茎 -->
+  <div class="hero-flower" data-flower="4">
+    <svg viewBox="0 0 300 400" fill="none">
+  <g opacity=".3">
+    <g transform="translate(115,110)">
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(0)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(51.4)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(102.8)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(154.3)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(205.7)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(257.1)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(308.5)"/>
+      <circle cx="0" cy="0" r="4" fill="#A08030"/>
+      <circle cx="-2" cy="-2" r="1" fill="#806020"/>
+      <circle cx="2" cy="-1" r="1" fill="#806020"/>
+    </g>
+    <g transform="translate(210,200) scale(.72) rotate(8)">
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(0)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(51.4)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(102.8)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(154.3)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(205.7)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#D4A84B" transform="rotate(257.1)"/>
+      <path d="M0,0 C-3,-8 -8,-22 -6,-36 C-5,-42 -2,-44 0,-38 C2,-44 5,-42 6,-36 C8,-22 3,-8 0,0" fill="#E0B858" transform="rotate(308.5)"/>
+      <circle cx="0" cy="0" r="3" fill="#A08030"/>
+    </g>
+    <g transform="translate(160,290) scale(.5) rotate(-5)">
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#D4A84B" transform="rotate(0)"/>
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#E0B858" transform="rotate(51.4)"/>
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#D4A84B" transform="rotate(102.8)"/>
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#E0B858" transform="rotate(154.3)"/>
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#D4A84B" transform="rotate(205.7)"/>
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#E0B858" transform="rotate(257.1)"/>
+      <path d="M0,0 C-2,-6 -6,-16 -5,-28 C-4,-32 -2,-34 0,-30 C2,-34 4,-32 5,-28 C6,-16 2,-6 0,0" fill="#D4A84B" transform="rotate(308.5)"/>
+      <circle cx="0" cy="0" r="2" fill="#A08030"/>
+    </g>
+    <circle cx="88" cy="75" r="1.5" fill="#E8E0C0" opacity=".3"/>
+    <circle cx="245" cy="115" r="1" fill="#E8E0C0" opacity=".25"/>
+    <circle cx="185" cy="310" r="1.2" fill="#E8E0C0" opacity=".2"/>
+    <circle cx="55" cy="190" r=".8" fill="#E8E0C0" opacity=".2"/>
+    <path d="M115 110 Q113 175 115 240 Q117 300 122 360" fill="none" stroke="#7A9060" stroke-width="2.5" opacity=".5"/>
+    <path d="M210 200 Q206 260 208 320 Q210 360 215 380" fill="none" stroke="#7A9060" stroke-width="1.8" opacity=".4"/>
+    <path d="M115 220 Q90 210 84 224 Q94 236 118 228" fill="#7A9060" opacity=".4"/>
+    <path d="M208 280 Q232 270 238 282 Q228 294 210 288" fill="#7A9060" opacity=".35"/>
+    <path d="M117 280 Q140 272 145 284 Q135 294 118 288" fill="#7A9060" opacity=".3"/>
+  </g>
+</svg>
   </div>
-  <!-- ③ 梨花 左 -->
-  <div class="hero-flower hero-flower-left" data-flower="2">
-    <svg viewBox="0 0 250 320" fill="none">
-      <g opacity=".2" fill="#D8D4CC" stroke="none">
-        <g transform="translate(80,100) scale(.75)">
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C8C0A0"/>
-        </g>
-        <g transform="translate(155,200) scale(.55)">
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-12" rx="11" ry="12" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C8C0A0"/>
-        </g>
-        <path d="M 80 112 Q 75 160 78 240 Q 80 280 85 310" fill="none" stroke="#D8D4CC" stroke-width="1"/>
-        <path d="M 155 212 Q 150 250 155 300" fill="none" stroke="#D8D4CC" stroke-width=".8"/>
-        <ellipse cx="120" cy="155" rx="2.5" ry="5" transform="rotate(18 120 155)"/>
-      </g>
-    </svg>
-  </div>
-
-  <!-- ④ 杏花（살구꽃）右 -->
-  <div class="hero-flower hero-flower-right" data-flower="3">
-    <svg viewBox="0 0 350 450" fill="none">
-      <g opacity=".32" fill="#D4A0A0" stroke="none">
-        <!-- 杏花5瓣——花瓣椭圆，浅粉偏红 -->
-        <g transform="translate(125,80) scale(1.1)">
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3.5" fill="#C86060"/>
-        </g>
-        <g transform="translate(220,165) scale(.85)">
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3.5" fill="#C86060"/>
-        </g>
-        <g transform="translate(150,265) scale(.65)">
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3.5" fill="#C86060"/>
-        </g>
-        <ellipse cx="185" cy="128" rx="4" ry="7" transform="rotate(18 185 128)"/>
-        <ellipse cx="130" cy="200" rx="3" ry="5.5" transform="rotate(-12 130 200)"/>
-        <path d="M 125 93 Q 118 140 115 205 Q 112 268 120 285" fill="none" stroke="#D4A0A0" stroke-width="1.5"/>
-        <path d="M 220 178 Q 210 225 205 280" fill="none" stroke="#D4A0A0" stroke-width="1"/>
-        <path d="M 150 278 Q 145 325 148 400" fill="none" stroke="#D4A0A0" stroke-width=".8"/>
-        <path d="M 115 175 Q 95 165 90 175 Q 95 185 115 180" fill="#A8B898" opacity=".4"/>
-        <path d="M 205 245 Q 225 235 230 245 Q 225 255 205 250" fill="#A8B898" opacity=".35"/>
-      </g>
-    </svg>
-  </div>
-  <!-- ④ 杏花 左 -->
-  <div class="hero-flower hero-flower-left" data-flower="3">
-    <svg viewBox="0 0 250 320" fill="none">
-      <g opacity=".2" fill="#D4A0A0" stroke="none">
-        <g transform="translate(80,100) scale(.75)">
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3.5" fill="#C86060"/>
-        </g>
-        <g transform="translate(155,200) scale(.55)">
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(72)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(144)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(216)"/>
-          <ellipse cx="0" cy="-13" rx="9" ry="14" transform="rotate(288)"/>
-          <circle cx="0" cy="0" r="3.5" fill="#C86060"/>
-        </g>
-        <path d="M 80 113 Q 75 160 78 240 Q 80 280 85 310" fill="none" stroke="#D4A0A0" stroke-width="1"/>
-        <path d="M 155 213 Q 150 250 155 300" fill="none" stroke="#D4A0A0" stroke-width=".8"/>
-        <ellipse cx="120" cy="155" rx="3" ry="5" transform="rotate(15 120 155)"/>
-      </g>
-    </svg>
-  </div>
-
-  <!-- ⑤ 冰凌花（복수초）右 -->
-  <div class="hero-flower hero-flower-right" data-flower="4">
-    <svg viewBox="0 0 350 450" fill="none">
-      <g opacity=".35" stroke="none">
-        <!-- 冰凌花——金黄色杯状花，花瓣较窄，茎短粗 -->
-        <g transform="translate(130,90) scale(1.2)">
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(51.4)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(102.8)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(154.3)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(205.7)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(257.1)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(308.5)"/>
-          <circle cx="0" cy="0" r="3" fill="#A08030"/>
-        </g>
-        <g transform="translate(210,175) scale(.9)">
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(51.4)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(102.8)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(154.3)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(205.7)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(257.1)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(308.5)"/>
-          <circle cx="0" cy="0" r="3" fill="#A08030"/>
-        </g>
-        <g transform="translate(155,270) scale(.7)">
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(51.4)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(102.8)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(154.3)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(205.7)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(257.1)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(308.5)"/>
-          <circle cx="0" cy="0" r="3" fill="#A08030"/>
-        </g>
-        <!-- 冰雪碎片装饰 -->
-        <circle cx="100" cy="140" r="1.5" fill="#D4A84B" opacity=".3"/>
-        <circle cx="240" cy="120" r="1" fill="#D4A84B" opacity=".2"/>
-        <circle cx="180" cy="320" r="1.2" fill="#D4A84B" opacity=".25"/>
-        <!-- 茎 -->
-        <path d="M 130 102 Q 128 150 125 210 Q 123 270 130 290" fill="none" stroke="#7A9060" stroke-width="2"/>
-        <path d="M 210 187 Q 205 235 200 285" fill="none" stroke="#7A9060" stroke-width="1.5"/>
-        <path d="M 155 280 Q 150 325 153 400" fill="none" stroke="#7A9060" stroke-width="1"/>
-        <!-- 叶子 -->
-        <path d="M 125 190 Q 105 180 100 192 Q 108 200 125 195" fill="#7A9060" opacity=".5"/>
-        <path d="M 200 255 Q 220 248 225 258 Q 218 265 200 260" fill="#7A9060" opacity=".4"/>
-      </g>
-    </svg>
-  </div>
-  <!-- ⑤ 冰凌花 左 -->
-  <div class="hero-flower hero-flower-left" data-flower="4">
-    <svg viewBox="0 0 250 320" fill="none">
-      <g opacity=".22" stroke="none">
-        <g transform="translate(80,100) scale(.75)">
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(51.4)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(102.8)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(154.3)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(205.7)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(257.1)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(308.5)"/>
-          <circle cx="0" cy="0" r="3" fill="#A08030"/>
-        </g>
-        <g transform="translate(155,200) scale(.55)">
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(0)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(51.4)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(102.8)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(154.3)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(205.7)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(257.1)"/>
-          <ellipse cx="0" cy="-10" rx="6" ry="12" fill="#D4A84B" transform="rotate(308.5)"/>
-          <circle cx="0" cy="0" r="3" fill="#A08030"/>
-        </g>
-        <path d="M 80 110 Q 75 160 78 240 Q 80 280 85 310" fill="none" stroke="#7A9060" stroke-width="1"/>
-        <path d="M 155 210 Q 150 250 155 300" fill="none" stroke="#7A9060" stroke-width=".8"/>
-      </g>
-    </svg>
-  </div>
-
-  <!-- ⑥ 蒲公英（민들레）右 -->
-  <div class="hero-flower hero-flower-right" data-flower="5">
-    <svg viewBox="0 0 350 450" fill="none">
-      <g opacity=".3" stroke="none">
-        <!-- 蒲公英绒球——放射状细丝 -->
-        <g transform="translate(130,90)">
-          <line x1="0" y1="0" x2="0" y2="-30" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="9" y2="-28" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="18" y2="-24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="26" y2="-15" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="30" y2="-5" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="30" y2="5" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="26" y2="15" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="18" y2="24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="9" y2="28" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="0" y2="30" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-9" y2="28" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-18" y2="24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-26" y2="15" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-30" y2="5" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-30" y2="-5" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-26" y2="-15" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-18" y2="-24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-9" y2="-28" stroke="#D0D0C0" stroke-width=".6"/>
-          <!-- 绒球顶部小圆点 -->
-          <circle cx="0" cy="-30" r="1.2" fill="#E8E8D8"/>
-          <circle cx="9" cy="-28" r="1.2" fill="#E8E8D8"/>
-          <circle cx="18" cy="-24" r="1.2" fill="#E8E8D8"/>
-          <circle cx="26" cy="-15" r="1.2" fill="#E8E8D8"/>
-          <circle cx="30" cy="-5" r="1.2" fill="#E8E8D8"/>
-          <circle cx="30" cy="5" r="1.2" fill="#E8E8D8"/>
-          <circle cx="26" cy="15" r="1.2" fill="#E8E8D8"/>
-          <circle cx="18" cy="24" r="1.2" fill="#E8E8D8"/>
-          <circle cx="9" cy="28" r="1.2" fill="#E8E8D8"/>
-          <circle cx="0" cy="30" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-9" cy="28" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-18" cy="24" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-26" cy="15" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-30" cy="5" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-30" cy="-5" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-26" cy="-15" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-18" cy="-24" r="1.2" fill="#E8E8D8"/>
-          <circle cx="-9" cy="-28" r="1.2" fill="#E8E8D8"/>
-          <circle cx="0" cy="0" r="3" fill="#C0B890"/>
-        </g>
-        <!-- 第二组（小绒球） -->
-        <g transform="translate(220,180) scale(.7)">
-          <line x1="0" y1="0" x2="0" y2="-28" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="8" y2="-26" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="16" y2="-22" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="24" y2="-14" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="28" y2="-4" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="28" y2="6" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="24" y2="14" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="16" y2="22" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="8" y2="26" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="0" y2="28" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-8" y2="26" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-16" y2="22" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-24" y2="14" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-28" y2="4" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-28" y2="-6" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-24" y2="-14" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-16" y2="-22" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-8" y2="-26" stroke="#D0D0C0" stroke-width=".6"/>
-          <circle cx="0" cy="-28" r="1" fill="#E8E8D8"/>
-          <circle cx="8" cy="-26" r="1" fill="#E8E8D8"/>
-          <circle cx="16" cy="-22" r="1" fill="#E8E8D8"/>
-          <circle cx="24" cy="-14" r="1" fill="#E8E8D8"/>
-          <circle cx="28" cy="-4" r="1" fill="#E8E8D8"/>
-          <circle cx="28" cy="6" r="1" fill="#E8E8D8"/>
-          <circle cx="24" cy="14" r="1" fill="#E8E8D8"/>
-          <circle cx="16" cy="22" r="1" fill="#E8E8D8"/>
-          <circle cx="8" cy="26" r="1" fill="#E8E8D8"/>
-          <circle cx="0" cy="28" r="1" fill="#E8E8D8"/>
-          <circle cx="-8" cy="26" r="1" fill="#E8E8D8"/>
-          <circle cx="-16" cy="22" r="1" fill="#E8E8D8"/>
-          <circle cx="-24" cy="14" r="1" fill="#E8E8D8"/>
-          <circle cx="-28" cy="4" r="1" fill="#E8E8D8"/>
-          <circle cx="-28" cy="-6" r="1" fill="#E8E8D8"/>
-          <circle cx="-24" cy="-14" r="1" fill="#E8E8D8"/>
-          <circle cx="-16" cy="-22" r="1" fill="#E8E8D8"/>
-          <circle cx="-8" cy="-26" r="1" fill="#E8E8D8"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C0B890"/>
-        </g>
-        <!-- 飘散的种子 -->
-        <g opacity=".4">
-          <line x1="260" y1="100" x2="265" y2="80" stroke="#E8E8D8" stroke-width=".4"/>
-          <circle cx="266" cy="78" r=".8" fill="#E8E8D8"/>
-          <line x1="280" y1="140" x2="290" y2="120" stroke="#E8E8D8" stroke-width=".4"/>
-          <circle cx="291" cy="118" r=".8" fill="#E8E8D8"/>
-          <line x1="270" y1="220" x2="280" y2="200" stroke="#E8E8D8" stroke-width=".4"/>
-          <circle cx="281" cy="198" r=".8" fill="#E8E8D8"/>
-          <line x1="100" y1="160" x2="95" y2="140" stroke="#E8E8D8" stroke-width=".4"/>
-          <circle cx="94" cy="138" r=".8" fill="#E8E8D8"/>
-        </g>
-        <!-- 茎 -->
-        <path d="M 130 120 Q 128 170 125 230 Q 123 290 130 310" fill="none" stroke="#8A9A70" stroke-width="1.5"/>
-        <path d="M 220 210 Q 215 260 210 310" fill="none" stroke="#8A9A70" stroke-width="1"/>
-        <!-- 叶子 -->
-        <path d="M 125 200 Q 100 188 95 200 Q 102 210 125 205" fill="#8A9A70" opacity=".45"/>
-        <path d="M 210 265 Q 230 255 235 265 Q 228 275 210 270" fill="#8A9A70" opacity=".35"/>
-      </g>
-    </svg>
-  </div>
-  <!-- ⑥ 蒲公英 左 -->
-  <div class="hero-flower hero-flower-left" data-flower="5">
-    <svg viewBox="0 0 250 320" fill="none">
-      <g opacity=".2" stroke="none">
-        <g transform="translate(80,100) scale(.7)">
-          <line x1="0" y1="0" x2="0" y2="-26" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="8" y2="-24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="15" y2="-20" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="22" y2="-13" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="26" y2="-4" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="26" y2="5" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="22" y2="13" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="15" y2="20" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="8" y2="24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="0" y2="26" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-8" y2="24" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-15" y2="20" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-22" y2="13" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-26" y2="4" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-26" y2="-5" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-22" y2="-13" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-15" y2="-20" stroke="#D0D0C0" stroke-width=".6"/>
-          <line x1="0" y1="0" x2="-8" y2="-24" stroke="#D0D0C0" stroke-width=".6"/>
-          <circle cx="0" cy="-26" r="1" fill="#E8E8D8"/>
-          <circle cx="8" cy="-24" r="1" fill="#E8E8D8"/>
-          <circle cx="15" cy="-20" r="1" fill="#E8E8D8"/>
-          <circle cx="22" cy="-13" r="1" fill="#E8E8D8"/>
-          <circle cx="26" cy="-4" r="1" fill="#E8E8D8"/>
-          <circle cx="26" cy="5" r="1" fill="#E8E8D8"/>
-          <circle cx="22" cy="13" r="1" fill="#E8E8D8"/>
-          <circle cx="15" cy="20" r="1" fill="#E8E8D8"/>
-          <circle cx="8" cy="24" r="1" fill="#E8E8D8"/>
-          <circle cx="0" cy="26" r="1" fill="#E8E8D8"/>
-          <circle cx="-8" cy="24" r="1" fill="#E8E8D8"/>
-          <circle cx="-15" cy="20" r="1" fill="#E8E8D8"/>
-          <circle cx="-22" cy="13" r="1" fill="#E8E8D8"/>
-          <circle cx="-26" cy="4" r="1" fill="#E8E8D8"/>
-          <circle cx="-26" cy="-5" r="1" fill="#E8E8D8"/>
-          <circle cx="-22" cy="-13" r="1" fill="#E8E8D8"/>
-          <circle cx="-15" cy="-20" r="1" fill="#E8E8D8"/>
-          <circle cx="-8" cy="-24" r="1" fill="#E8E8D8"/>
-          <circle cx="0" cy="0" r="2.5" fill="#C0B890"/>
-        </g>
-        <path d="M 80 118 Q 75 165 78 240 Q 80 280 85 310" fill="none" stroke="#8A9A70" stroke-width="1"/>
-        <path d="M 155 210 Q 150 250 155 300" fill="none" stroke="#8A9A70" stroke-width=".8"/>
-      </g>
-    </svg>
+  <!-- ⑥ 蒲公英（민들레）—— 放射绒球，飘散种子 -->
+  <div class="hero-flower" data-flower="5">
+    <svg viewBox="0 0 340 430" fill="none">
+  <g opacity=".3">
+    <g transform="translate(130,95)">
+      <line x1="0" y1="0" x2="0" y2="-32" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="5" y2="-31" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="10" y2="-30" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="15" y2="-28" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="20" y2="-25" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="24" y2="-21" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="27" y2="-16" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="30" y2="-11" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="31" y2="-6" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="32" y2="0" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="31" y2="6" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="30" y2="11" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="27" y2="16" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="24" y2="21" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="20" y2="25" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="15" y2="28" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="10" y2="30" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="5" y2="31" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="0" y2="32" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-5" y2="31" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-10" y2="30" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-15" y2="28" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-20" y2="25" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-24" y2="21" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-27" y2="16" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-30" y2="11" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-31" y2="6" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-32" y2="0" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-31" y2="-6" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-30" y2="-11" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-27" y2="-16" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-24" y2="-21" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-20" y2="-25" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-15" y2="-28" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-10" y2="-30" stroke="#D8D8C8" stroke-width=".5"/>
+      <line x1="0" y1="0" x2="-5" y2="-31" stroke="#D8D8C8" stroke-width=".5"/>
+      <circle cx="0" cy="-32" r="1.5" fill="#E8E8D8"/>
+      <circle cx="5" cy="-31" r="1.5" fill="#E8E8D8"/>
+      <circle cx="10" cy="-30" r="1.5" fill="#E8E8D8"/>
+      <circle cx="15" cy="-28" r="1.4" fill="#E8E8D8"/>
+      <circle cx="20" cy="-25" r="1.4" fill="#E8E8D8"/>
+      <circle cx="24" cy="-21" r="1.3" fill="#E8E8D8"/>
+      <circle cx="27" cy="-16" r="1.3" fill="#E8E8D8"/>
+      <circle cx="30" cy="-11" r="1.2" fill="#E8E8D8"/>
+      <circle cx="31" cy="-6" r="1.2" fill="#E8E8D8"/>
+      <circle cx="32" cy="0" r="1.2" fill="#E8E8D8"/>
+      <circle cx="31" cy="6" r="1.2" fill="#E8E8D8"/>
+      <circle cx="30" cy="11" r="1.3" fill="#E8E8D8"/>
+      <circle cx="27" cy="16" r="1.3" fill="#E8E8D8"/>
+      <circle cx="24" cy="21" r="1.4" fill="#E8E8D8"/>
+      <circle cx="20" cy="25" r="1.4" fill="#E8E8D8"/>
+      <circle cx="15" cy="28" r="1.5" fill="#E8E8D8"/>
+      <circle cx="10" cy="30" r="1.5" fill="#E8E8D8"/>
+      <circle cx="5" cy="31" r="1.5" fill="#E8E8D8"/>
+      <circle cx="0" cy="32" r="1.5" fill="#E8E8D8"/>
+      <circle cx="-5" cy="31" r="1.5" fill="#E8E8D8"/>
+      <circle cx="-10" cy="30" r="1.5" fill="#E8E8D8"/>
+      <circle cx="-15" cy="28" r="1.5" fill="#E8E8D8"/>
+      <circle cx="-20" cy="25" r="1.4" fill="#E8E8D8"/>
+      <circle cx="-24" cy="21" r="1.4" fill="#E8E8D8"/>
+      <circle cx="-27" cy="16" r="1.3" fill="#E8E8D8"/>
+      <circle cx="-30" cy="11" r="1.3" fill="#E8E8D8"/>
+      <circle cx="-31" cy="6" r="1.2" fill="#E8E8D8"/>
+      <circle cx="-32" cy="0" r="1.2" fill="#E8E8D8"/>
+      <circle cx="-31" cy="-6" r="1.2" fill="#E8E8D8"/>
+      <circle cx="-30" cy="-11" r="1.3" fill="#E8E8D8"/>
+      <circle cx="-27" cy="-16" r="1.3" fill="#E8E8D8"/>
+      <circle cx="-24" cy="-21" r="1.4" fill="#E8E8D8"/>
+      <circle cx="-20" cy="-25" r="1.4" fill="#E8E8D8"/>
+      <circle cx="-15" cy="-28" r="1.5" fill="#E8E8D8"/>
+      <circle cx="-10" cy="-30" r="1.5" fill="#E8E8D8"/>
+      <circle cx="-5" cy="-31" r="1.5" fill="#E8E8D8"/>
+      <circle cx="0" cy="0" r="4" fill="#C0B890"/>
+    </g>
+    <g opacity=".5">
+      <line x1="190" y1="75" x2="198" y2="52" stroke="#E8E8D8" stroke-width=".4"/>
+      <circle cx="199" cy="50" r="1" fill="#E8E8D8"/>
+      <line x1="205" y1="115" x2="218" y2="92" stroke="#E8E8D8" stroke-width=".4"/>
+      <circle cx="219" cy="90" r="1" fill="#E8E8D8"/>
+      <line x1="198" y1="145" x2="212" y2="125" stroke="#E8E8D8" stroke-width=".4"/>
+      <circle cx="213" cy="123" r=".9" fill="#E8E8D8"/>
+      <line x1="98" y1="125" x2="88" y2="102" stroke="#E8E8D8" stroke-width=".4"/>
+      <circle cx="87" cy="100" r=".9" fill="#E8E8D8"/>
+      <line x1="180" y1="165" x2="195" y2="148" stroke="#E8E8D8" stroke-width=".4"/>
+      <circle cx="196" cy="146" r=".8" fill="#E8E8D8"/>
+      <line x1="78" y1="88" x2="68" y2="66" stroke="#E8E8D8" stroke-width=".4"/>
+      <circle cx="67" cy="64" r=".8" fill="#E8E8D8"/>
+    </g>
+    <path d="M130 127 Q128 200 130 280 Q132 350 138 410" fill="none" stroke="#8A9A70" stroke-width="2" opacity=".5"/>
+    <path d="M130 220 Q110 210 105 220 L110 215 Q100 205 92 215 L100 208 Q88 200 80 210 L90 202 Q82 195 78 205 Q90 215 105 222 Q120 228 132 224" fill="#8A9A70" opacity=".4"/>
+    <path d="M132 310 Q152 300 158 310 L152 305 Q162 298 168 306 L160 300 Q170 292 175 300 Q165 308 152 312 Q140 316 132 312" fill="#8A9A70" opacity=".35"/>
+  </g>
+</svg>
   </div>
   <div class="hero-text">
     <div class="hero-text-col">
