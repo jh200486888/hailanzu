@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>延边风土 | 海兰菹 HAILANZU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,12 +53,11 @@
             color: var(--ink);
             line-height: 1.6;
             overflow-x: hidden;
-            overscroll-behavior: none;
         }
 
         /* Navigation */
         .nav {
-            position: fixed;
+            position: sticky;
             top: 0;
             left: 0;
             right: 0;
@@ -70,13 +69,11 @@
             justify-content: space-between;
             background: rgba(15,36,32,0.95);
             border-bottom: 1px solid rgba(245,240,232,0.08);
-            transition: all 0.3s var(--ease-out);
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
+            transition: background 0.3s, box-shadow 0.3s;
         }
 
         .nav.scrolled {
-            background: rgba(15,36,32,0.95);
+            background: rgba(15,36,32,0.98);
             box-shadow: 0 2px 20px rgba(0,0,0,0.15);
         }
 
