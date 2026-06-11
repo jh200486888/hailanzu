@@ -224,12 +224,14 @@
             gap: 2rem;
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
             transition: all 0.4s var(--ease-out);
         }
 
         .mobile-nav.open {
             opacity: 1;
             visibility: visible;
+            pointer-events: all;
         }
 
         .mobile-nav a {
