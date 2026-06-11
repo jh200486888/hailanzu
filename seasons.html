@@ -43,13 +43,21 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-sans);
             background-color: var(--rice);
             color: var(--ink);
             line-height: 1.6;
+            overscroll-behavior-x: none;
+        }
+
+
+        .page-wrap {
+            overflow-x: hidden;
+            max-width: 100vw;
+            position: relative;
         }
 
         /* ===== Navigation ===== */
@@ -435,6 +443,9 @@
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="ja">日</button>
         </div>
+
+    <div class="page-wrap">
+
     </div>
 
     <!-- Hero -->
@@ -915,6 +926,8 @@
             <p>© 2026 海兰菹 HAILANZU. <span data-i18n="footer.rights">版权所有</span></p>
         </div>
     </footer>
+    </div>
+
 
     <script>
         // i18n

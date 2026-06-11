@@ -45,7 +45,6 @@
 
         html {
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
 
         body {
@@ -53,6 +52,14 @@
             background-color: var(--rice);
             color: var(--ink);
             line-height: 1.6;
+            overscroll-behavior-x: none;
+        }
+
+
+        .page-wrap {
+            overflow-x: hidden;
+            max-width: 100vw;
+            position: relative;
         }
 
         /* Navigation */
@@ -1244,6 +1251,9 @@
             <button class="lang-btn" data-lang="en">EN</button>
             <button class="lang-btn" data-lang="ja">日</button>
         </div>
+
+    <div class="page-wrap">
+
     </div>
 
     <!-- Hero Section -->
@@ -1646,6 +1656,8 @@
             </svg>
         </div>
     </footer>
+    </div>
+
 
     <script>
         // Product Data
