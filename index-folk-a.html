@@ -1214,6 +1214,8 @@ const totalProducts = stickyProducts.length;
 const productBgs = ['#E8EDE5','#D4654A','#5C3A4E','#CC4422','#3D6B4F','#6B3A2A','#C4A46C','#7B8FA1'];
 // Header text color: light bg → dark text, dark bg → light text
 const productHeaderColors = ['var(--ink-deep)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink-deep)','var(--rice)'];
+const productTextColors = ['var(--ink)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink)','var(--rice)'];
+const productIconColors = ['#2B5043','rgba(245,240,232,.3)','#2B5043','#2B5043','#2B5043','#2B5043','#2B5043','rgba(245,240,232,.3)'];
 
 // Build progress dots
 for (let i = 0; i < totalProducts; i++) {
@@ -1237,6 +1239,10 @@ const initHeaderTitle = stickyViewport.querySelector('.sticky-header-title');
 const initHeaderLabel = stickyViewport.querySelector('.sticky-header-label');
 if (initHeaderTitle) initHeaderTitle.style.color = productHeaderColors[0];
 if (initHeaderLabel) initHeaderLabel.style.color = productHeaderColors[0];
+document.querySelectorAll('.sticky-product-info').forEach(el => el.style.color = productTextColors[0]);
+document.querySelectorAll('.spice-label').forEach(el => el.style.color = productTextColors[0]);
+document.querySelectorAll('.spice-dot').forEach(el => el.style.borderColor = productTextColors[0]);
+document.querySelectorAll('.sticky-product-icon').forEach(el => el.style.color = productIconColors[0]);
 
 let currentSticky = 0;
 let isStickyVisible = false;
@@ -1282,6 +1288,11 @@ function updateSticky() {
     const headerLabel = stickyViewport.querySelector('.sticky-header-label');
     if (headerTitle) headerTitle.style.color = productHeaderColors[newIndex];
     if (headerLabel) headerLabel.style.color = productHeaderColors[newIndex];
+    const textColor = productTextColors[newIndex];
+    stickyViewport.querySelectorAll('.sticky-product-info').forEach(el => el.style.color = textColor);
+    stickyViewport.querySelectorAll('.spice-label').forEach(el => el.style.color = textColor);
+    stickyViewport.querySelectorAll('.spice-dot:not(.on)').forEach(el => el.style.borderColor = textColor);
+    stickyViewport.querySelectorAll('.sticky-product-icon').forEach(el => el.style.color = productIconColors[newIndex]);
     
     // Clean up old exit class after transition
     if (prevStickyIndex >= 0 && prevStickyIndex !== newIndex) {
