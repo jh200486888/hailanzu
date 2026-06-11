@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高端礼盒 | 海兰菹 HAILANZU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azalea: #C4727F;
+            --azalea-dark: #8B4A5A;
+            --ink: #1A3C34;
+            --ink-deep: #0F2420;
+            --ink-light: #2A5A4E;
+            --ink-mid: #1E4A40;
+            --seal: #C8102E;
+            --seal-glow: rgba(200,16,46,.25);
+            --seal-dark: #9B0D23;
+            --rice: #F5F0E8;
+            --rice-dim: #E8E0D4;
+            --rice-deep: #D4CBBD;
+            --gold: #B8860B;
+            --gold-dim: rgba(184,134,11,.15);
+            --gold-light: #D4A84B;
+            --brown: #3D2B1F;
+            --brown-light: #6B5744;
+            --font-serif: 'Noto Serif SC', serif;
+            --font-sans: 'Noto Sans SC', sans-serif;
+            --font-serif-kr: 'Noto Serif KR', serif;
+            --font-sans-kr: 'Noto Sans KR', sans-serif;
+            --font-serif-jp: 'Noto Serif JP', serif;
+            --font-sans-jp: 'Noto Sans JP', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', 'Noto Sans SC', sans-serif;
+            --ease-out: cubic-bezier(.22,1,.36,1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--rice);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== Navigation ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 1000; padding: 0 2rem; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(15,36,32,0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(245,240,232,0.08);
+            transition: all 0.3s var(--ease-out);
+        }
+        .nav.scrolled { background: rgba(15,36,32,0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+
+        .nav-logo {
+            display: flex; align-items: center; gap: 0.75rem;
+            text-decoration: none; color: var(--rice);
+        }
+        .pot-icon { width: 36px; height: 36px; }
+        .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .nav-logo-text .zh { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; }
+        .nav-logo-text .kr { font-family: var(--font-sans-kr); font-size: 0.7rem; color: var(--rice-dim); letter-spacing: 0.02em; }
+
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-link {
+            font-family: var(--font-sans); font-size: 0.9rem; color: var(--rice);
+            text-decoration: none; position: relative; padding: 0.25rem 0; transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+            background: var(--azalea); transition: width 0.3s var(--ease-out);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: var(--azalea); }
+
+        .lang-switch { display: flex; gap: 0.5rem; align-items: center; }
+        .lang-btn {
+            font-family: var(--font-body); font-size: 0.75rem; padding: 0.3rem 0.6rem;
+            border: 1px solid var(--rice); background: transparent; color: var(--rice);
+            cursor: pointer; border-radius: 3px; transition: all 0.2s;
+        }
+        .lang-btn:hover, .lang-btn.active { background: var(--rice); color: var(--ink-deep); }
+
+        @media (max-width: 768px) {
+            .nav .lang-switch { display: none; }
+        }
+
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 5px;
+            width: 28px; height: 28px; cursor: pointer; background: none; border: none;
+            padding: 0; z-index: 1001;
+        }
+        .hamburger span { display: block; width: 100%; height: 2px; background: var(--rice); transition: all 0.3s var(--ease-out); }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none; }
+        }
+
+        .mobile-nav {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,36,32,0.98); backdrop-filter: blur(30px);
+            z-index: 1001; flex-direction: column; justify-content: center;
+            align-items: center; gap: 2rem; opacity: 0; visibility: hidden;
+            transition: all 0.4s var(--ease-out);
+        }
+        @media (max-width: 768px) { .mobile-nav { display: flex; } }
+        .mobile-nav.open { opacity: 1; visibility: visible; }
+        .mobile-nav a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--rice); text-decoration: none; transition: color 0.3s; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--azalea); }
+        .mobile-nav-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px;
+            border: none; background: rgba(245,240,232,0.1); border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--rice); transition: all 0.3s;
+        }
+        .mobile-nav-close:hover { background: var(--azalea); color: white; }
+        .mobile-lang-switch { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .mobile-lang-switch .lang-btn { border-color: var(--rice); color: var(--rice); }
+        .mobile-lang-switch .lang-btn:hover, .mobile-lang-switch .lang-btn.active { background: var(--rice); color: var(--ink-deep); }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 120px 2rem 80px; overflow: hidden;
+            background: linear-gradient(180deg, #0A0A0A 0%, var(--ink-deep) 40%, #1A1A0A 100%);
+        }
+        .hero-glow {
+            position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+            width: 400px; height: 400px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(184,134,11,0.12) 0%, transparent 70%);
+            pointer-events: none; animation: glowPulse 4s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+        }
+        .hero-content { text-align: center; position: relative; z-index: 2; }
+        .hero-title-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        @media (min-width: 768px) { .hero-title-wrap { flex-direction: row; gap: 3rem; } }
+        .hero-subtitle-kr {
+            writing-mode: vertical-rl; font-family: var(--font-serif-kr);
+            font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 600; color: var(--gold);
+            letter-spacing: 0.3em; text-orientation: upright;
+        }
+        .hero-title-zh {
+            writing-mode: vertical-rl; font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: var(--rice);
+            letter-spacing: 0.4em; text-orientation: upright;
+        }
+        .hero-seal { width: 110px; height: 110px; opacity: 0.9; }
+
+        .hero-marquee {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+            background: linear-gradient(90deg, transparent, rgba(184,134,11,0.1), transparent);
+            overflow: hidden; display: flex; align-items: center;
+        }
+        .marquee-track { display: flex; animation: marquee 35s linear infinite; white-space: nowrap; }
+        .marquee-item { font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice); opacity: 0.7; padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .marquee-divider { width: 20px; height: 20px; color: var(--gold); }
+        .dahlia-icon { fill: none; stroke: currentColor; stroke-width: 1.2; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ===== Gift Tiers ===== */
+        .tier {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 6rem 2rem; position: relative; overflow: hidden;
+        }
+        .tier-inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            position: relative; z-index: 2;
+        }
+        @media (max-width: 900px) { .tier-inner { grid-template-columns: 1fr; gap: 3rem; } }
+
+        .tier:nth-child(even) .tier-inner { direction: rtl; }
+        .tier:nth-child(even) .tier-inner > * { direction: ltr; }
+        @media (max-width: 900px) { .tier:nth-child(even) .tier-inner { direction: ltr; } }
+
+        .tier-visual {
+            position: relative; height: 400px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .tier-icon { width: 280px; height: 280px; }
+
+        .tier-text { }
+        .tier-label {
+            font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.3em;
+            margin-bottom: 0.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out);
+        }
+        .tier-label.visible { opacity: 1; transform: translateY(0); }
+        .tier-name {
+            font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700; margin-bottom: 0.25rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.1s;
+        }
+        .tier-name.visible { opacity: 1; transform: translateY(0); }
+        .tier-name-kr {
+            font-family: var(--font-serif-kr); font-size: 1.1rem; margin-bottom: 0.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.15s;
+        }
+        .tier-name-kr.visible { opacity: 1; transform: translateY(0); }
+        .tier-tagline {
+            font-family: var(--font-serif); font-size: 1rem; font-style: italic;
+            margin-bottom: 1.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.2s;
+        }
+        .tier-tagline.visible { opacity: 1; transform: translateY(0); }
+        .tier-desc {
+            font-family: var(--font-sans); font-size: 0.95rem; line-height: 1.9;
+            margin-bottom: 2rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.25s;
+        }
+        .tier-desc.visible { opacity: 1; transform: translateY(0); }
+
+        .tier-includes {
+            margin-bottom: 2rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.3s;
+        }
+        .tier-includes.visible { opacity: 1; transform: translateY(0); }
+        .tier-includes-title {
+            font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.15em;
+            margin-bottom: 0.75rem;
+        }
+        .tier-includes ul { list-style: none; }
+        .tier-includes li {
+            font-family: var(--font-sans); font-size: 0.9rem; padding: 0.3rem 0;
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .tier-includes li::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+        }
+
+        .tier-price {
+            font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 1.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.35s;
+        }
+        .tier-price.visible { opacity: 1; transform: translateY(0); }
+
+        .tier-cta {
+            display: inline-block; font-family: var(--font-sans); font-size: 0.9rem;
+            padding: 0.8rem 2rem; border-radius: 4px; text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.4s;
+        }
+        .tier-cta.visible { opacity: 1; transform: translateY(0); }
+
+        /* Tier-specific styles */
+        .tier-essential {
+            background: linear-gradient(135deg, var(--rice) 0%, var(--rice-dim) 50%, #E5DDD0 100%);
+            color: var(--brown);
+        }
+        .tier-essential .tier-label { color: var(--seal); }
+        .tier-essential .tier-name-kr { color: var(--seal); }
+        .tier-essential .tier-includes li::before { background: var(--seal); }
+        .tier-essential .tier-price { color: var(--seal-dark); }
+        .tier-essential .tier-cta { background: var(--seal); color: white; }
+        .tier-essential .tier-cta:hover { background: var(--seal-dark); }
+
+        .tier-classic {
+            background: linear-gradient(135deg, var(--brown) 0%, #2A1E16 50%, #1A1210 100%);
+            color: var(--rice);
+        }
+        .tier-classic .tier-label { color: var(--gold); }
+        .tier-classic .tier-name-kr { color: var(--gold); }
+        .tier-classic .tier-tagline { color: var(--gold-light); }
+        .tier-classic .tier-includes li::before { background: var(--gold); }
+        .tier-classic .tier-price { color: var(--gold-light); }
+        .tier-classic .tier-cta { background: var(--gold); color: var(--ink-deep); }
+        .tier-classic .tier-cta:hover { background: var(--gold-light); }
+
+        .tier-supreme {
+            background: #0A0A0A; color: var(--rice);
+        }
+        .tier-supreme .tier-label { color: var(--gold); }
+        .tier-supreme .tier-name-kr { color: var(--gold); }
+        .tier-supreme .tier-tagline { color: var(--gold-light); }
+        .tier-supreme .tier-includes li::before { background: var(--gold); }
+        .tier-supreme .tier-price { color: var(--gold-light); }
+        .tier-supreme .tier-cta {
+            background: transparent; color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+        .tier-supreme .tier-cta:hover { background: var(--gold); color: var(--ink-deep); }
+
+        /* Supreme gold glow */
+        .supreme-glow {
+            position: absolute; inset: 0; pointer-events: none;
+            background: radial-gradient(ellipse at 50% 50%, rgba(184,134,11,0.06) 0%, transparent 60%);
+            animation: supremeGlow 5s ease-in-out infinite;
+        }
+        @keyframes supremeGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Hanok Divider */
+        .hanok-divider { width: 100%; height: 80px; position: relative; overflow: hidden; }
+        .hanok-divider svg { position: absolute; bottom: 0; left: 0; right: 0; width: 100%; opacity: 0.15; }
+
+        /* ===== Customization ===== */
+        .custom-section {
+            background: var(--ink-deep); padding: 6rem 2rem; color: var(--rice);
+        }
+        .custom-title {
+            font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem);
+            text-align: center; margin-bottom: 1rem;
+        }
+        .custom-subtitle {
+            font-family: var(--font-sans); font-size: 0.95rem; color: var(--rice-dim);
+            text-align: center; margin-bottom: 3rem;
+        }
+        .custom-steps {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        @media (max-width: 768px) { .custom-steps { grid-template-columns: 1fr; } }
+        .custom-step {
+            text-align: center; padding: 2rem; position: relative;
+        }
+        .custom-step-num {
+            font-family: var(--font-display); font-size: 3rem; font-weight: 700;
+            color: var(--gold); opacity: 0.3; line-height: 1; margin-bottom: 1rem;
+        }
+        .custom-step-title {
+            font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.75rem;
+        }
+        .custom-step-desc {
+            font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice-dim); line-height: 1.7;
+        }
+        .custom-cta-wrap { text-align: center; margin-top: 3rem; }
+        .custom-cta {
+            display: inline-block; font-family: var(--font-sans); font-size: 0.95rem;
+            padding: 1rem 3rem; background: var(--seal); color: white;
+            border: none; border-radius: 4px; cursor: pointer; text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+        }
+        .custom-cta:hover { background: var(--seal-dark); transform: translateY(-2px); }
+
+        /* ===== Corporate ===== */
+        .corporate-section {
+            background: var(--ink); padding: 6rem 2rem; color: var(--rice);
+        }
+        .corporate-title {
+            font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem);
+            text-align: center; margin-bottom: 3rem;
+        }
+        .corporate-grid {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        @media (max-width: 768px) { .corporate-grid { grid-template-columns: 1fr; } }
+        .corporate-card {
+            padding: 2rem; border: 1px solid rgba(245,240,232,0.1); border-radius: 8px;
+            text-align: center; transition: all 0.3s var(--ease-out);
+        }
+        .corporate-card:hover { border-color: var(--gold); background: rgba(184,134,11,0.05); }
+        .corporate-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .corporate-card-title { font-family: var(--font-serif); font-size: 1rem; margin-bottom: 0.5rem; }
+        .corporate-card-desc { font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice-dim); line-height: 1.7; }
+        .corporate-cta-wrap { text-align: center; margin-top: 2rem; }
+        .corporate-cta {
+            display: inline-block; font-family: var(--font-sans); font-size: 0.9rem;
+            padding: 0.7rem 2rem; border: 1px solid var(--gold); color: var(--gold);
+            text-decoration: none; border-radius: 4px; transition: all 0.3s var(--ease-out);
+        }
+        .corporate-cta:hover { background: var(--gold); color: var(--ink-deep); }
+
+        /* ===== Footer ===== */
+        .footer { background: var(--ink-deep); color: var(--rice); padding: 6rem 2rem 2rem; position: relative; }
+        .footer-skyline {
+            position: absolute; top: 0; left: 0; right: 0; height: 60px;
+            transform: translateY(-1px); opacity: 0.15;
+        }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
+            position: relative; z-index: 1;
+        }
+        @media (max-width: 900px) { .footer-content { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+        @media (max-width: 600px) { .footer-content { grid-template-columns: 1fr; gap: 2rem; } }
+        .footer-col h4 { font-family: var(--font-serif); font-size: 1rem; color: var(--rice); margin-bottom: 1rem; }
+        .footer-col p, .footer-col a {
+            font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice-dim);
+            line-height: 1.8; text-decoration: none; transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--azalea); }
+        .footer-bottom {
+            max-width: 1200px; margin: 4rem auto 0; padding-top: 2rem;
+            border-top: 1px solid rgba(245,240,232,0.1); text-align: center;
+            position: relative; z-index: 1;
+        }
+        .footer-bottom p { font-family: var(--font-sans); font-size: 0.8rem; color: var(--rice-dim); opacity: 0.6; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease-out); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index-folk.html" class="nav-logo">
+            <svg class="pot-icon" viewBox="0 0 40 40" fill="none">
+                <ellipse cx="20" cy="32" rx="14" ry="6" fill="#C4727F"/>
+                <path d="M6 32 C6 20 10 12 20 12 C30 12 34 20 34 32" fill="#C4727F"/>
+                <ellipse cx="20" cy="12" rx="10" ry="3" fill="#D4A84B"/>
+                <path d="M12 12 Q20 8 28 12" stroke="#1A3C34" stroke-width="1.5" fill="none"/>
+                <path d="M14 18 Q20 15 26 18" stroke="#1A3C34" stroke-width="0.8" fill="none" opacity="0.5"/>
+                <path d="M12 24 Q20 21 28 24" stroke="#1A3C34" stroke-width="0.8" fill="none" opacity="0.5"/>
+            </svg>
+            <div class="nav-logo-text">
+                <span class="zh">海兰菹</span>
+                <span class="kr">해란저</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="seasons.html" class="nav-link" data-i18n="nav.seasons">四季发酵</a>
+            <a href="products.html" class="nav-link" data-i18n="nav.products">产品殿堂</a>
+            <a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
+            <a href="gift.html" class="nav-link active" data-i18n="nav.gift">高端礼盒</a>
+            <a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="zh">中</button>
+            <button class="lang-btn" data-lang="ko">한</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
+        </div>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+        <a href="index-folk.html" data-i18n="nav.home">首页</a><br>
+                <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a>
+        <a href="products.html" data-i18n="nav.products">产品殿堂</a>
+        <a href="story.html" data-i18n="nav.story">延边风土</a>
+        <a href="gift.html" class="active" data-i18n="nav.gift">高端礼盒</a>
+        <a href="contact.html" data-i18n="nav.contact">联系我们</a>
+        <div class="mobile-lang-switch">
+            <button class="lang-btn active" data-lang="zh">中</button>
+            <button class="lang-btn" data-lang="ko">한</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-title-wrap">
+                <span class="hero-subtitle-kr" data-i18n-kr="hero.title.kr">프리미엄 선물</span>
+                <span class="hero-title-zh" data-i18n="hero.title">高端礼盒</span>
+                <svg class="hero-seal" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" fill="none" stroke="#C8102E" stroke-width="2.5"/>
+                    <circle cx="50" cy="50" r="39" fill="none" stroke="#C8102E" stroke-width="1.2"/>
+                    <text x="50" y="43" text-anchor="middle" fill="#C8102E" font-size="12" font-weight="700" font-family="'Noto Serif SC', serif">海兰菹</text>
+                    <text x="50" y="58" text-anchor="middle" fill="#C8102E" font-size="7" font-weight="600" font-family="'Inter', sans-serif" letter-spacing="1">HAILANZU</text>
+                    <circle cx="50" cy="70" r="3" fill="#C8102E"/>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-marquee">
+            <div class="marquee-track">
+                <span class="marquee-item">菹味·初识 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">菹味·家宴 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">菹味·珍礼 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">定制专属礼盒 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <!-- Duplicate -->
+                <span class="marquee-item">菹味·初识 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">菹味·家宴 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">菹味·珍礼 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">定制专属礼盒 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Tier -->
+    <section class="tier tier-essential" id="essential">
+        <div class="tier-inner">
+            <div class="tier-visual">
+                <svg class="tier-icon" viewBox="0 0 280 280" fill="none">
+                    <rect x="60" y="80" width="160" height="140" rx="8" fill="#E8E0D4" stroke="#3D2B1F" stroke-width="1.5"/>
+                    <rect x="60" y="70" width="160" height="30" rx="4" fill="#D4CBBD" stroke="#3D2B1F" stroke-width="1.5"/>
+                    <path d="M120 70 L120 55 Q140 45 160 55 L160 70" fill="#D4CBBD" stroke="#3D2B1F" stroke-width="1"/>
+                    <text x="140" y="155" text-anchor="middle" fill="#3D2B1F" font-family="serif" font-size="14" font-weight="600">Essential</text>
+                    <text x="140" y="175" text-anchor="middle" fill="#6B5744" font-family="sans-serif" font-size="10">菹味·初识</text>
+                    <circle cx="100" cy="200" r="8" fill="rgba(200,16,46,0.15)" stroke="#C8102E" stroke-width="0.5"/>
+                    <circle cx="140" cy="200" r="8" fill="rgba(200,16,46,0.15)" stroke="#C8102E" stroke-width="0.5"/>
+                    <circle cx="180" cy="200" r="8" fill="rgba(200,16,46,0.15)" stroke="#C8102E" stroke-width="0.5"/>
+                </svg>
+            </div>
+            <div class="tier-text">
+                <div class="tier-label" data-i18n="essential.label">ESSENTIAL</div>
+                <h2 class="tier-name" data-i18n="essential.name">菹味·初识</h2>
+                <div class="tier-name-kr" data-i18n-kr="essential.name.kr">저미·첫만남</div>
+                <div class="tier-tagline" data-i18n="essential.tagline">初次相遇，便知深浅</div>
+                <p class="tier-desc" data-i18n="essential.desc">入门之选，收录三款经典泡菜。牛皮纸礼盒包装，简约而不简单。适合初识海兰菹的朋友，也适合日常餐桌的佐餐良伴。</p>
+                <div class="tier-includes">
+                    <div class="tier-includes-title" data-i18n="essential.includes_title">礼盒内含</div>
+                    <ul>
+                        <li data-i18n="essential.i1">原味辣白菜 × 1</li>
+                        <li data-i18n="essential.i2">甜味辣白菜 × 1</li>
+                        <li data-i18n="essential.i3">萝卜块 × 1</li>
+                    </ul>
+                </div>
+                <div class="tier-price" data-i18n="essential.price">¥ 168</div>
+                <a href="contact.html" class="tier-cta" data-i18n="essential.cta">咨询订购</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="hanok-divider" style="background: var(--brown);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0 80 L0 50 Q60 20 120 40 T240 30 T360 45 T480 25 T600 40 T720 20 T840 35 T960 25 T1080 40 T1200 30 T1320 45 T1440 35 L1440 80 Z" fill="#3D2B1F"/>
+            <path d="M0 80 L0 60 Q80 40 160 55 T320 45 T480 60 T640 50 T800 65 T960 55 T1120 70 T1280 60 T1440 70 L1440 80 Z" fill="#2A1E16"/>
+        </svg>
+    </div>
+
+    <!-- Classic Tier -->
+    <section class="tier tier-classic" id="classic">
+        <div class="tier-inner">
+            <div class="tier-visual">
+                <svg class="tier-icon" viewBox="0 0 280 280" fill="none">
+                    <rect x="55" y="70" width="170" height="160" rx="4" fill="#2A1E16" stroke="#B8860B" stroke-width="1.5"/>
+                    <rect x="55" y="60" width="170" height="25" rx="2" fill="#3D2B1F" stroke="#B8860B" stroke-width="1"/>
+                    <line x1="65" y1="72" x2="65" y2="225" stroke="#B8860B" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="215" y1="72" x2="215" y2="225" stroke="#B8860B" stroke-width="0.5" opacity="0.3"/>
+                    <text x="140" y="150" text-anchor="middle" fill="#B8860B" font-family="serif" font-size="14" font-weight="600">Classic</text>
+                    <text x="140" y="170" text-anchor="middle" fill="#D4A84B" font-family="sans-serif" font-size="10">菹味·家宴</text>
+                    <rect x="80" y="185" width="20" height="25" rx="2" fill="rgba(184,134,11,0.15)" stroke="#B8860B" stroke-width="0.5"/>
+                    <rect x="110" y="185" width="20" height="25" rx="2" fill="rgba(184,134,11,0.15)" stroke="#B8860B" stroke-width="0.5"/>
+                    <rect x="140" y="185" width="20" height="25" rx="2" fill="rgba(184,134,11,0.15)" stroke="#B8860B" stroke-width="0.5"/>
+                    <rect x="170" y="185" width="20" height="25" rx="2" fill="rgba(184,134,11,0.15)" stroke="#B8860B" stroke-width="0.5"/>
+                    <text x="140" y="240" text-anchor="middle" fill="rgba(184,134,11,0.5)" font-family="sans-serif" font-size="8">含手写贺卡</text>
+                </svg>
+            </div>
+            <div class="tier-text">
+                <div class="tier-label" data-i18n="classic.label">CLASSIC</div>
+                <h2 class="tier-name" data-i18n="classic.name">菹味·家宴</h2>
+                <div class="tier-name-kr" data-i18n-kr="classic.name.kr">저미·가연</div>
+                <div class="tier-tagline" data-i18n="classic.tagline">一桌好味，从此不同</div>
+                <p class="tier-desc" data-i18n="classic.desc">经典之选，收录五款招牌泡菜。实木礼盒，内附手写贺卡，每一笔都是心意。适合家宴分享，也是赠予知己的不二之选。</p>
+                <div class="tier-includes">
+                    <div class="tier-includes-title" data-i18n="classic.includes_title">礼盒内含</div>
+                    <ul>
+                        <li data-i18n="classic.i1">原味辣白菜 × 1</li>
+                        <li data-i18n="classic.i2">甜味辣白菜 × 1</li>
+                        <li data-i18n="classic.i3">茄子干鱿鱼丝 × 1</li>
+                        <li data-i18n="classic.i4">苏子叶 × 1</li>
+                        <li data-i18n="classic.i5">牛板筋 × 1</li>
+                    </ul>
+                </div>
+                <div class="tier-price" data-i18n="classic.price">¥ 328</div>
+                <a href="contact.html" class="tier-cta" data-i18n="classic.cta">咨询订购</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="hanok-divider" style="background: #0A0A0A;">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0 80 L0 50 Q60 20 120 40 T240 30 T360 45 T480 25 T600 40 T720 20 T840 35 T960 25 T1080 40 T1200 30 T1320 45 T1440 35 L1440 80 Z" fill="#0A0A0A"/>
+            <path d="M0 80 L0 60 Q80 40 160 55 T320 45 T480 60 T640 50 T800 65 T960 55 T1120 70 T1280 60 T1440 70 L1440 80 Z" fill="#050505"/>
+        </svg>
+    </div>
+
+    <!-- Supreme Tier -->
+    <section class="tier tier-supreme" id="supreme">
+        <div class="supreme-glow"></div>
+        <div class="tier-inner">
+            <div class="tier-visual">
+                <svg class="tier-icon" viewBox="0 0 280 280" fill="none">
+                    <rect x="50" y="65" width="180" height="170" rx="2" fill="#0A0A0A" stroke="#B8860B" stroke-width="1"/>
+                    <rect x="45" y="55" width="190" height="25" rx="2" fill="#0A0A0A" stroke="#B8860B" stroke-width="1"/>
+                    <path d="M130 55 L130 40 Q140 32 150 40 L150 55" fill="none" stroke="#B8860B" stroke-width="1"/>
+                    <rect x="55" y="70" width="170" height="160" rx="1" fill="none" stroke="rgba(184,134,11,0.3)" stroke-width="0.5"/>
+                    <text x="140" y="145" text-anchor="middle" fill="#B8860B" font-family="serif" font-size="16" font-weight="600">Supreme</text>
+                    <text x="140" y="167" text-anchor="middle" fill="#D4A84B" font-family="sans-serif" font-size="10">菹味·珍礼</text>
+                    <circle cx="80" cy="195" r="10" fill="rgba(184,134,11,0.1)" stroke="#B8860B" stroke-width="0.5"/>
+                    <circle cx="110" cy="195" r="10" fill="rgba(184,134,11,0.1)" stroke="#B8860B" stroke-width="0.5"/>
+                    <circle cx="140" cy="195" r="10" fill="rgba(184,134,11,0.1)" stroke="#B8860B" stroke-width="0.5"/>
+                    <circle cx="170" cy="195" r="10" fill="rgba(184,134,11,0.1)" stroke="#B8860B" stroke-width="0.5"/>
+                    <circle cx="200" cy="195" r="10" fill="rgba(184,134,11,0.1)" stroke="#B8860B" stroke-width="0.5"/>
+                    <text x="140" y="225" text-anchor="middle" fill="rgba(184,134,11,0.5)" font-family="sans-serif" font-size="8">全系列 · 人参 · 米酒</text>
+                    <!-- Gold shimmer lines -->
+                    <line x1="70" y1="85" x2="210" y2="85" stroke="rgba(184,134,11,0.15)" stroke-width="0.5"/>
+                    <line x1="70" y1="235" x2="210" y2="235" stroke="rgba(184,134,11,0.15)" stroke-width="0.5"/>
+                </svg>
+            </div>
+            <div class="tier-text">
+                <div class="tier-label" data-i18n="supreme.label">SUPREME</div>
+                <h2 class="tier-name" data-i18n="supreme.name">菹味·珍礼</h2>
+                <div class="tier-name-kr" data-i18n-kr="supreme.name.kr">저미·진례</div>
+                <div class="tier-tagline" data-i18n="supreme.tagline">珍礼之至，无以复加</div>
+                <p class="tier-desc" data-i18n="supreme.desc">至尊之选，收录全系列八款泡菜，另配延边长白山人参、手工米酒。黑漆木盒，暗金锁扣，每一处细节都是对极致的执念。适合最珍重的人，最隆重的场合。</p>
+                <div class="tier-includes">
+                    <div class="tier-includes-title" data-i18n="supreme.includes_title">礼盒内含</div>
+                    <ul>
+                        <li data-i18n="supreme.i1">全系列泡菜 × 8</li>
+                        <li data-i18n="supreme.i2">长白山人参 × 1</li>
+                        <li data-i18n="supreme.i3">手工米酒 × 2</li>
+                        <li data-i18n="supreme.i4">手写贺卡 + 定制丝带</li>
+                    </ul>
+                </div>
+                <div class="tier-price" data-i18n="supreme.price">¥ 688</div>
+                <a href="contact.html" class="tier-cta" data-i18n="supreme.cta">咨询订购</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization -->
+    <section class="custom-section">
+        <h2 class="custom-title reveal" data-i18n="custom.title">定制你的专属礼盒</h2>
+        <p class="custom-subtitle reveal" data-i18n="custom.subtitle">从选品到包装，让每一份礼都独一无二</p>
+        <div class="custom-steps">
+            <div class="custom-step reveal">
+                <div class="custom-step-num">01</div>
+                <div class="custom-step-title" data-i18n="custom.step1_title">选择产品</div>
+                <div class="custom-step-desc" data-i18n="custom.step1_desc">从8款招牌泡菜中自由搭配，3-8款随心组合</div>
+            </div>
+            <div class="custom-step reveal">
+                <div class="custom-step-num">02</div>
+                <div class="custom-step-title" data-i18n="custom.step2_title">选择包装</div>
+                <div class="custom-step-desc" data-i18n="custom.step2_desc">牛皮纸、实木、黑漆木三种礼盒风格可选</div>
+            </div>
+            <div class="custom-step reveal">
+                <div class="custom-step-num">03</div>
+                <div class="custom-step-title" data-i18n="custom.step3_title">手写寄语</div>
+                <div class="custom-step-desc" data-i18n="custom.step3_desc">匠人亲笔书写贺卡，为您传递最真挚的心意</div>
+            </div>
+        </div>
+        <div class="custom-cta-wrap">
+            <a href="contact.html" class="custom-cta" data-i18n="custom.cta">提交定制需求</a>
+        </div>
+    </section>
+
+    <!-- Corporate -->
+    <section class="corporate-section">
+        <h2 class="corporate-title reveal" data-i18n="corp.title">企业定制</h2>
+        <div class="corporate-grid">
+            <div class="corporate-card reveal">
+                <div class="corporate-card-icon">🎁</div>
+                <div class="corporate-card-title" data-i18n="corp.card1_title">批量定制</div>
+                <div class="corporate-card-desc" data-i18n="corp.card1_desc">50份起订，专属包装设计，企业Logo定制</div>
+            </div>
+            <div class="corporate-card reveal">
+                <div class="corporate-card-icon">🤝</div>
+                <div class="corporate-card-title" data-i18n="corp.card2_title">品牌联名</div>
+                <div class="corporate-card-desc" data-i18n="corp.card2_desc">跨界合作，联合开发限定口味与礼盒</div>
+            </div>
+            <div class="corporate-card reveal">
+                <div class="corporate-card-icon">💼</div>
+                <div class="corporate-card-title" data-i18n="corp.card3_title">员工福利</div>
+                <div class="corporate-card-desc" data-i18n="corp.card3_desc">节日礼盒方案，为团队送上一坛匠心好味</div>
+            </div>
+        </div>
+        <div class="corporate-cta-wrap">
+            <a href="contact.html" class="corporate-cta" data-i18n="corp.cta">联系商务合作</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <svg class="footer-skyline" viewBox="0 0 1440 60" preserveAspectRatio="none">
+            <path d="M0 60 L0 40 Q30 25 60 35 T120 30 T180 40 T240 25 T300 35 T360 30 T420 40 T480 25 T540 35 T600 30 T660 40 T720 25 T780 35 T840 30 T900 40 T960 25 T1020 35 T1080 30 T1140 40 T1200 25 T1260 35 T1320 30 T1380 40 T1440 35 L1440 60 Z" fill="#C4727F"/>
+        </svg>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4 data-i18n="footer.brand">海兰菹</h4>
+                <p data-i18n="footer.desc">源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer.nav">导航</h4>
+                <a href="index-folk.html" data-i18n="nav.home">首页</a><br>
+                <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a><br>
+                <a href="products.html" data-i18n="nav.products">产品殿堂</a><br>
+                <a href="story.html" data-i18n="nav.story">延边风土</a><br>
+                <a href="gift.html" data-i18n="nav.gift">高端礼盒</a>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer.connect">联系</h4>
+                <a href="contact.html" data-i18n="nav.contact">联系我们</a><br>
+                <p>business@hailanzu.com</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer.follow">关注</h4>
+                <p data-i18n="footer.wechat">微信公众号</p>
+                <p data-i18n="footer.weibo">微博 @海兰菹</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 海兰菹 HAILANZU. <span data-i18n="footer.rights">版权所有</span></p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            zh: {
+                'nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.contact':'联系我们',
+                'hero.title':'高端礼盒',
+                'essential.label':'ESSENTIAL','essential.name':'菹味·初识','essential.tagline':'初次相遇，便知深浅',
+                'essential.desc':'入门之选，收录三款经典泡菜。牛皮纸礼盒包装，简约而不简单。适合初识海兰菹的朋友，也适合日常餐桌的佐餐良伴。',
+                'essential.includes_title':'礼盒内含','essential.i1':'原味辣白菜 × 1','essential.i2':'甜味辣白菜 × 1','essential.i3':'萝卜块 × 1',
+                'essential.price':'¥ 168','essential.cta':'咨询订购',
+                'classic.label':'CLASSIC','classic.name':'菹味·家宴','classic.tagline':'一桌好味，从此不同',
+                'classic.desc':'经典之选，收录五款招牌泡菜。实木礼盒，内附手写贺卡，每一笔都是心意。适合家宴分享，也是赠予知己的不二之选。',
+                'classic.includes_title':'礼盒内含','classic.i1':'原味辣白菜 × 1','classic.i2':'甜味辣白菜 × 1','classic.i3':'茄子干鱿鱼丝 × 1','classic.i4':'苏子叶 × 1','classic.i5':'牛板筋 × 1',
+                'classic.price':'¥ 328','classic.cta':'咨询订购',
+                'supreme.label':'SUPREME','supreme.name':'菹味·珍礼','supreme.tagline':'珍礼之至，无以复加',
+                'supreme.desc':'至尊之选，收录全系列八款泡菜，另配延边长白山人参、手工米酒。黑漆木盒，暗金锁扣，每一处细节都是对极致的执念。适合最珍重的人，最隆重的场合。',
+                'supreme.includes_title':'礼盒内含','supreme.i1':'全系列泡菜 × 8','supreme.i2':'长白山人参 × 1','supreme.i3':'手工米酒 × 2','supreme.i4':'手写贺卡 + 定制丝带',
+                'supreme.price':'¥ 688','supreme.cta':'咨询订购',
+                'custom.title':'定制你的专属礼盒','custom.subtitle':'从选品到包装，让每一份礼都独一无二',
+                'custom.step1_title':'选择产品','custom.step1_desc':'从8款招牌泡菜中自由搭配，3-8款随心组合',
+                'custom.step2_title':'选择包装','custom.step2_desc':'牛皮纸、实木、黑漆木三种礼盒风格可选',
+                'custom.step3_title':'手写寄语','custom.step3_desc':'匠人亲笔书写贺卡，为您传递最真挚的心意',
+                'custom.cta':'提交定制需求',
+                'corp.title':'企业定制',
+                'corp.card1_title':'批量定制','corp.card1_desc':'50份起订，专属包装设计，企业Logo定制',
+                'corp.card2_title':'品牌联名','corp.card2_desc':'跨界合作，联合开发限定口味与礼盒',
+                'corp.card3_title':'员工福利','corp.card3_desc':'节日礼盒方案，为团队送上一坛匠心好味',
+                'corp.cta':'联系商务合作',
+                'footer.brand':'海兰菹','footer.desc':'源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
+                'footer.nav':'导航','footer.connect':'联系','footer.follow':'关注',
+                'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有'
+            },
+            ko: {
+                'nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.contact':'연락처',
+                'hero.title':'고급 선물세트',
+                'essential.label':'ESSENTIAL','essential.name':'저미·첫만남','essential.tagline':'첫 만남에 깊이를 알다',
+                'essential.desc':'입문 선택, 세 가지 클래식 김치 수록. 크래프트지 선물 상자 포장, 소박하지만 결코 단순하지 않습니다. 해란저를 처음 만나는 분과 일상 식탁에 어울립니다.',
+                'essential.includes_title':'선물 세트 구성','essential.i1':'원래맛 배추김치 × 1','essential.i2':'달콤한 배추김치 × 1','essential.i3':'무 깍두기 × 1',
+                'essential.price':'¥ 168','essential.cta':'주문 문의',
+                'classic.label':'CLASSIC','classic.name':'저미·가연','classic.tagline':'한 상의 좋은 맛, 이후로 달라지다',
+                'classic.desc':'클래식 선택, 다섯 가지 대표 김치 수록. 실목 선물 상자, 손글씨 축하카드 포함, 매 획에 마음을 담다. 가족 만찬과 지인 선물에 최적입니다.',
+                'classic.includes_title':'선물 세트 구성','classic.i1':'원래맛 배추김치 × 1','classic.i2':'달콤한 배추김치 × 1','classic.i3':'가지말린 오징어채 × 1','classic.i4':'들깨잎 × 1','classic.i5':'우둔살 × 1',
+                'classic.price':'¥ 328','classic.cta':'주문 문의',
+                'supreme.label':'SUPREME','supreme.name':'저미·진례','supreme.tagline':'진품의 극치, 더할 나위 없다',
+                'supreme.desc':'최고급 선택, 전 시리즈 8종 김치와 장백산 인삼, 수제 막걸리 포함. 흑칠 목함, 암금 잠금장치, 모든 디테일에 극치를 향한 집념이 담겨 있습니다. 가장 소중한 분과 가장 장엄한 자리에.',
+                'supreme.includes_title':'선물 세트 구성','supreme.i1':'전 시리즈 김치 × 8','supreme.i2':'장백산 인삼 × 1','supreme.i3':'수제 막걸리 × 2','supreme.i4':'손글씨 축하카드 + 맞춤 리본',
+                'supreme.price':'¥ 688','supreme.cta':'주문 문의',
+                'custom.title':'맞춤 선물세트 제작','custom.subtitle':'제품 선택부터 포장까지, 모든 선물이 유일무이하게',
+                'custom.step1_title':'제품 선택','custom.step1_desc':'8종 대표 김치에서 자유롭게 조합, 3-8종 마음대로',
+                'custom.step2_title':'포장 선택','custom.step2_desc':'크래프트지, 실목, 흑칠 목함 세 가지 스타일',
+                'custom.step3_title':'손글씨 메시지','custom.step3_desc':'장인이 직접 축하카드를 써서 진심을 전합니다',
+                'custom.cta':'맞춤 주문 접수',
+                'corp.title':'기업 맞춤',
+                'corp.card1_title':'대량 주문','corp.card1_desc':'50개 이상 주문, 전용 포장 디자인, 기업 로고 각인',
+                'corp.card2_title':'브랜드 콜라보','corp.card2_desc':'크로스오버 협업, 한정 맛과 선물세트 공동 개발',
+                'corp.card3_title':'임직원 복지','corp.card3_desc':'명절 선물세트方案, 팀에 장인 정신의 맛을 선물',
+                'corp.cta':'비즈니스 협력 문의',
+                'footer.brand':'해란저','footer.desc':'연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
+                'footer.nav':'내비게이션','footer.connect':'연락처','footer.follow':'팔로우',
+                'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유'
+            },
+            en: {
+                'nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.contact':'Contact Us',
+                'hero.title':'Luxury Gift Sets',
+                'essential.label':'ESSENTIAL','essential.name':'First Encounter','essential.tagline':'At first taste, depth reveals itself',
+                'essential.desc':'The entry collection featuring three classic kimchi varieties. Kraft paper gift box—simple yet never simplistic. Perfect for first encounters with HAILANZU and everyday dining.',
+                'essential.includes_title':'Includes','essential.i1':'Classic Napa Kimchi × 1','essential.i2':'Sweet Napa Kimchi × 1','essential.i3':'Radish Cubes × 1',
+                'essential.price':'¥ 168','essential.cta':'Inquire to Order',
+                'classic.label':'CLASSIC','classic.name':'Family Feast','classic.tagline':'One table of great flavors, forever changed',
+                'classic.desc':'The classic collection featuring five signature varieties. Solid wood box with handwritten card—every stroke is heartfelt. Ideal for family gatherings and gifts to those who matter.',
+                'classic.includes_title':'Includes','classic.i1':'Classic Napa Kimchi × 1','classic.i2':'Sweet Napa Kimchi × 1','classic.i3':'Eggplant & Squid × 1','classic.i4':'Perilla Leaves × 1','classic.i5':'Beef Tendon × 1',
+                'classic.price':'¥ 328','classic.cta':'Inquire to Order',
+                'supreme.label':'SUPREME','supreme.name':'Treasured Gift','supreme.tagline':'The pinnacle of gifting, beyond compare',
+                'supreme.desc':'The supreme collection—all eight varieties, plus Changbai Mountain ginseng and artisan rice wine. Lacquered black wood box with gold clasps, every detail embodies the pursuit of perfection. For the most cherished, at the most momentous occasions.',
+                'supreme.includes_title':'Includes','supreme.i1':'Full Collection × 8','supreme.i2':'Changbai Ginseng × 1','supreme.i3':'Artisan Rice Wine × 2','supreme.i4':'Handwritten Card + Custom Ribbon',
+                'supreme.price':'¥ 688','supreme.cta':'Inquire to Order',
+                'custom.title':'Customize Your Gift Set','custom.subtitle':'From selection to packaging, every gift is one of a kind',
+                'custom.step1_title':'Choose Products','custom.step1_desc':'Mix freely from 8 signature varieties, 3-8 per box',
+                'custom.step2_title':'Choose Packaging','custom.step2_desc':'Kraft paper, solid wood, or lacquered wood options',
+                'custom.step3_title':'Handwritten Message','custom.step3_desc':'Artisans write your card, conveying your heartfelt words',
+                'custom.cta':'Submit Custom Request',
+                'corp.title':'Corporate Gifting',
+                'corp.card1_title':'Bulk Orders','corp.card1_desc':'50+ units, custom packaging design, logo branding',
+                'corp.card2_title':'Brand Collaboration','corp.card2_desc':'Co-branded limited editions and exclusive gift sets',
+                'corp.card3_title':'Employee Benefits','corp.card3_desc':'Holiday gift sets for your team, crafted with care',
+                'corp.cta':'Contact Business Team',
+                'footer.brand':'HAILANZU','footer.desc':'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
+                'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
+                'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
+            },
+            ja: {
+                'nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.contact':'お問い合わせ',
+                'hero.title':'高級ギフト',
+                'essential.label':'ESSENTIAL','essential.name':'初遇','essential.tagline':'初めての出会いで深みを知る',
+                'essential.desc':'入門セレクション、3種のクラシックキムチを収録。クラフト紙ギフトボックス、シンプルだが決して単純ではない。初めての出会いと日常の食卓に。',
+                'essential.includes_title':'ギフト内容','essential.i1':'定番白菜キムチ × 1','essential.i2':'甘味白菜キムチ × 1','essential.i3':'大根の角切り × 1',
+                'essential.price':'¥ 168','essential.cta':'注文お問い合わせ',
+                'classic.label':'CLASSIC','classic.name':'家宴','classic.tagline':'一桌の良い味、これから変わる',
+                'classic.desc':'クラシックセレクション、5種の代表キムチを収録。無垢材ボックス、手書きメッセージカード付き。家族の集いと大切な方への贈り物に。',
+                'classic.includes_title':'ギフト内容','classic.i1':'定番白菜キムチ × 1','classic.i2':'甘味白菜キムチ × 1','classic.i3':'茄子干しイカ糸 × 1','classic.i4':'エゴマの葉 × 1','classic.i5':'牛スジ × 1',
+                'classic.price':'¥ 328','classic.cta':'注文お問い合わせ',
+                'supreme.label':'SUPREME','supreme.name':'珍礼','supreme.tagline':'贈り物の極致、これ以上なし',
+                'supreme.desc':'最高級セレクション—全8種キムチ、長白山人参、手作りマッコリ付き。漆塗り黒木箱、金留め具、すべてのディテールに究極への執念が込められています。最も大切な方に、最も荘厳な場に。',
+                'supreme.includes_title':'ギフト内容','supreme.i1':'全シリーズキムチ × 8','supreme.i2':'長白山人参 × 1','supreme.i3':'手作りマッコリ × 2','supreme.i4':'手書きカード + カスタムリボン',
+                'supreme.price':'¥ 688','supreme.cta':'注文お問い合わせ',
+                'custom.title':'カスタムギフトボックス','custom.subtitle':'選品から包装まで、すべての贈り物が唯一無二に',
+                'custom.step1_title':'製品を選ぶ','custom.step1_desc':'8種の代表キムチから自由に組み合わせ、3-8種をお好みで',
+                'custom.step2_title':'包装を選ぶ','custom.step2_desc':'クラフト紙、無垢材、漆塗りの3つのスタイル',
+                'custom.step3_title':'手書きメッセージ','custom.step3_desc':'職人が直筆でカードを書き、心を届けます',
+                'custom.cta':'カスタム注文を申し込む',
+                'corp.title':'法人向け',
+                'corp.card1_title':'大量注文','corp.card1_desc':'50個以上、専用パッケージデザイン、ロゴ刻印',
+                'corp.card2_title':'ブランドコラボ','corp.card2_desc':'クロスオーバー協業、限定フレーバーとギフト共同開発',
+                'corp.card3_title':'従業員福利','corp.card3_desc':'ホリデーギフトセット、チームに職人の味を届けます',
+                'corp.cta':'ビジネスチームに連絡',
+                'footer.brand':'海蘭菹','footer.desc':'延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
+                'footer.nav':'ナビゲーション','footer.connect':'連絡先','footer.follow':'フォロー',
+                'footer.wechat':'微信公式アカウント','footer.weibo':'微博 @海蘭菹','footer.rights':'全著作権保有'
+            }
+        };
+
+        const krSubs = {
+            'hero.title.kr':'프리미엄 선물',
+            'essential.name.kr':'저미·첫만남','classic.name.kr':'저미·가연','supreme.name.kr':'저미·진례'
+        };
+
+        let currentLang = localStorage.getItem('hailanzu-lang') || 'zh';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('hailanzu-lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            document.querySelectorAll('[data-i18n-kr]').forEach(el => {
+                const key = el.getAttribute('data-i18n-kr');
+                if (lang === 'ko' && krSubs[key]) {
+                    el.textContent = krSubs[key];
+                }
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.documentElement.lang = lang;
+        }
+
+        if (!localStorage.getItem('hailanzu-lang')) {
+            const bl = navigator.language.slice(0, 2);
+            currentLang = ['zh','ko','en','ja'].includes(bl) ? bl : 'zh';
+        }
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const nav = document.getElementById('nav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileNavClose.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.tier-label, .tier-name, .tier-name-kr, .tier-tagline, .tier-desc, .tier-includes, .tier-price, .tier-cta, .reveal').forEach(el => observer.observe(el));
+
+        document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
+    </script>
+</body>
+</html>
