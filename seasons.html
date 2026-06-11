@@ -43,14 +43,13 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { overflow-x: hidden; scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-sans);
             background-color: var(--rice);
             color: var(--ink);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         /* ===== Navigation ===== */
@@ -124,7 +123,7 @@
             transition: all 0.4s var(--ease-out);
         }
         @media (max-width: 768px) { .mobile-nav { display: flex; } }
-        .mobile-nav.open { opacity: 1; visibility: visible; }
+        .mobile-nav.open { opacity: 1; visibility: visible; pointer-events: all; }
         .mobile-nav a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--rice); text-decoration: none; transition: color 0.3s; }
         .mobile-nav a:hover, .mobile-nav a.active { color: var(--azalea); }
         .mobile-nav-close {
@@ -1082,9 +1081,17 @@
                 document.body.style.overflow = '';
             });
         });
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        // Robust scroll detection (iOS Safari compatible)
+        let lastScrollY = 0;
+        function checkScroll() {
+            const sy = window.scrollY || window.pageYOffset;
+            if (sy !== lastScrollY) {
+                lastScrollY = sy;
+                nav.classList.toggle('scrolled', sy > 50);
+            }
+            requestAnimationFrame(checkScroll);
+        }
+        requestAnimationFrame(checkScroll);
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
         });
