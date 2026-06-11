@@ -836,10 +836,18 @@
 
         .philosophy-text p {
             font-family: var(--font-serif);
-            font-size: 1.3rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
             color: var(--rice);
-            line-height: 2;
+            line-height: 2.2;
             opacity: 0.9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2em;
+        }
+        .philo-line {
+            display: block;
+            letter-spacing: 0.3em;
         }
 
         /* Artisan Quotes */
@@ -1607,7 +1615,7 @@
                 </svg>
             </div>
             <div class="philosophy-text">
-                <p data-i18n="chapter3.philosophy">"好味道，急不得。让时间去说话。"</p>
+                <p data-i18n="chapter3.philosophy"><span class="philo-line">好味道</span><span class="philo-line">急不得</span><span class="philo-line">让时间去说话</span></p>
             </div>
         </div>
     </section>
@@ -1758,7 +1766,7 @@
                 'chapter2.detail': '"手作不是慢，而是对每一棵白菜的尊重。三代人坚持的笨办法，是我们最骄傲的传承。"',
                 'chapter3.number': 'CHAPTER 03',
                 'chapter3.title': '坛中时光',
-                'chapter3.philosophy': '"好味道，急不得。让时间去说话。"',
+                'chapter3.philosophy': '<span class="philo-line">好味道</span><span class="philo-line">急不得</span><span class="philo-line">让时间去说话</span>',
                 'ferment.day': 'DAY',
                 'ferment.of': '/ 90',
                 'process.select': '选料',
