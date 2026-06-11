@@ -192,14 +192,16 @@ ul,ol{list-style:none}
 .sticky-product.exit-down{opacity:0;transform:translateY(6vh) scale(.97);pointer-events:none}
 .sticky-product-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px);display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,60px);align-items:center;min-height:100vh}
 .sticky-product-visual{display:flex;align-items:center;justify-content:center;position:relative}
-.sticky-product-icon{width:clamp(160px,28vw,360px);height:clamp(160px,28vw,360px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(56px,10vw,120px);border:2px dashed currentColor;opacity:.35;transition:opacity .6s var(--ease-out);position:relative;overflow:hidden;contain:layout style paint}
-.sticky-product.active .sticky-product-icon{opacity:.45}
+.sticky-product-icon{width:clamp(160px,28vw,360px);height:clamp(160px,28vw,360px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(56px,10vw,120px);border:2.5px solid currentColor;opacity:.55;transition:opacity .6s var(--ease-out),border-color .6s var(--ease-out);position:relative;overflow:hidden;contain:layout style paint}
+.sticky-product.active .sticky-product-icon{opacity:.65}
 /* Product image hover swap — 俯拍默认 / 45° hover */
 .sticky-product-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;width:100%;height:100%;transition:opacity .5s ease,transform .5s ease}
 .sticky-product-img-top{opacity:1;transform:scale(1)}
 .sticky-product-img-angle{opacity:0;transform:scale(1.05)}
 .sticky-product-visual:hover .sticky-product-img-top{opacity:0;transform:scale(.95)}
 .sticky-product-visual:hover .sticky-product-img-angle{opacity:1;transform:scale(1)}
+.sticky-product-icon.show-angle .sticky-product-img-top{opacity:0;transform:scale(.95)}
+.sticky-product-icon.show-angle .sticky-product-img-angle{opacity:1;transform:scale(1)}
 .sticky-product-info{display:flex;flex-direction:column;gap:8px}
 .sticky-product-name{font-family:var(--font-serif);font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:clamp(4px,1vw,12px);writing-mode:vertical-rl;line-height:1.1}
 .sticky-product-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.3vw,20px);opacity:.5;letter-spacing:4px}
@@ -1206,7 +1208,7 @@ const productBgs = ['#E8EDE5','#D4654A','#5C3A4E','#CC4422','#3D6B4F','#6B3A2A',
 // Header text color: light bg → dark text, dark bg → light text
 const productHeaderColors = ['var(--ink-deep)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink-deep)','var(--rice)'];
 const productTextColors = ['var(--ink)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink)','var(--rice)'];
-const productIconColors = ['#2B5043','rgba(245,240,232,.3)','#2B5043','#2B5043','#2B5043','#2B5043','#2B5043','rgba(245,240,232,.3)'];
+const productIconColors = ['#2B5043','rgba(245,240,232,.5)','#2B5043','#2B5043','#2B5043','#2B5043','#2B5043','rgba(245,240,232,.5)'];
 
 // Build progress dots
 for (let i = 0; i < totalProducts; i++) {
@@ -1220,6 +1222,26 @@ for (let i = 0; i < totalProducts; i++) {
   });
   stickyProgress.appendChild(dot);
 }
+
+
+// Mobile: tap to toggle top/angle product view
+let tappedProduct = null;
+document.querySelectorAll('.sticky-product-visual').forEach(visual => {
+  visual.addEventListener('click', () => {
+    const icon = visual.querySelector('.sticky-product-icon');
+    if (!icon) return;
+    if (tappedProduct === icon) {
+      // Second tap: toggle back
+      icon.classList.remove('show-angle');
+      tappedProduct = null;
+    } else {
+      // First tap: show angle view
+      if (tappedProduct) tappedProduct.classList.remove('show-angle');
+      icon.classList.add('show-angle');
+      tappedProduct = icon;
+    }
+  });
+});
 
 // Set section height = 100vh * (totalProducts + 1) — 额外1屏缓冲，让最后一个产品有完整展示空间
 stickySection.style.height = ((totalProducts + 1) * 100) + 'vh';
