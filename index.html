@@ -97,13 +97,13 @@ ul,ol{list-style:none}
 .nav-panel-close{display:none;position:absolute;top:2rem;right:2rem;font-size:1.2rem;color:var(--rice);opacity:.4;cursor:pointer;letter-spacing:2px;transition:opacity .3s}.nav-panel-close:hover{opacity:1}
 
 /* 右侧语言切换 */
-.nav-links{display:flex;align-items:center;gap:32px;position:absolute;left:50%;transform:translateX(-50%);z-index:10}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:32px;flex:1;z-index:10}
 .nav-links a{font-family:var(--font-serif);color:var(--rice);text-decoration:none;font-size:13px;letter-spacing:3px;opacity:.45;transition:opacity .3s;position:relative;white-space:nowrap}
 .nav-links a:hover{opacity:1}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--seal);transition:width .4s var(--ease-out)}
 .nav-links a:hover::after{width:100%}
 .nav.scrolled .nav-links a{opacity:.55}
-.nav-right{position:absolute;right:40px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:16px;z-index:10}
+.nav-right{display:flex;align-items:center;gap:16px;z-index:10;flex-shrink:0;padding-right:40px}
 .nav-lang{display:flex;gap:2px;font-size:11px;font-family:var(--font-body)}
 .nav-lang span{opacity:.3;cursor:pointer;transition:all .3s;padding:4px 5px;letter-spacing:1px}
 .nav-lang span:hover{opacity:.7}
@@ -337,7 +337,7 @@ ul,ol{list-style:none}
   .nav-links{display:none}
   .nav-logo{padding:0 20px}
   .nav.scrolled .nav-logo{padding:0 16px}
-  .nav-right{right:20px}
+  .nav-right{padding-right:20px}
   .nav-lang{display:none}
   .nav-hamburger{display:flex}
   .hero-text{gap:clamp(16px,5vw,30px)}
