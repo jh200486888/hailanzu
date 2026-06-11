@@ -62,8 +62,6 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
             padding: 0 2rem;
             height: 70px;
             display: flex;
@@ -1961,18 +1959,9 @@
         });
 
         // Scroll effect for nav
-        // iOS Safari: use rAF for scroll detection (momentum scrolling fix)
-        let ticking = false;
-        function updateNav() {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
-            ticking = false;
-        }
         window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateNav);
-                ticking = true;
-            }
-        }, { passive: true });
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
         // Language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
