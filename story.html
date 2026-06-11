@@ -62,6 +62,8 @@
             left: 0;
             right: 0;
             z-index: 1000;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
             padding: 0 2rem;
             height: 70px;
             display: flex;
@@ -239,6 +241,7 @@
             gap: 2rem;
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
             transition: all 0.4s var(--ease-out);
         }
 
@@ -2034,9 +2037,18 @@
         });
 
         // Scroll effect for nav
-        window.addEventListener('scroll', () => {
+        // iOS Safari: use rAF for scroll detection (momentum scrolling fix)
+        let ticking = false;
+        function updateNav() {
             nav.classList.toggle('scrolled', window.scrollY > 50);
-        });
+            ticking = false;
+        }
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateNav);
+                ticking = true;
+            }
+        }, { passive: true });
 
         // Language buttons
         document.querySelectorAll('.lang-btn').forEach(btn => {
