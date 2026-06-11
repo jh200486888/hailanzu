@@ -195,8 +195,8 @@ ul,ol{list-style:none}
 /* ==================== STICKY PRODUCTS — 粘性滚动 ==================== */
 .products-sticky{position:relative;background:var(--ink-deep);padding:0;overflow:hidden}
 .products-carousel{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;flex-direction:column}
-.products-carousel-track{flex:1;position:relative;overflow:hidden}
-.products-carousel-inner{display:flex;height:100%;transition:transform .6s cubic-bezier(.25,.46,.45,.94);will-change:transform}
+.products-carousel-track{flex:1;position:relative;overflow:hidden;touch-action:pan-y;-webkit-overflow-scrolling:touch;cursor:grab}
+.products-carousel-inner{display:flex;height:100%;transition:transform .6s cubic-bezier(.25,.46,.45,.94);will-change:transform;user-select:none;-webkit-user-select:none}
 .products-carousel-slide{flex:0 0 100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .products-slide-inner{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px);display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,4vw,60px);align-items:center}
 .products-slide-visual{display:flex;align-items:center;justify-content:center;position:relative}
@@ -1680,8 +1680,11 @@ for (let i = 0; i < totalSlides; i++) {
   carouselDots.appendChild(dot);
 }
 
-function goToSlide(index) {
-  currentCarouselSlide = ((index % totalSlides) + totalSlides) % totalSlides;
+function goToSlide(index, animate = true) {
+  currentCarouselSlide = Math.max(0, Math.min(totalSlides - 1, index));
+  if (animate) {
+    carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)';
+  }
   carouselInner.style.transform = `translateX(-${currentCarouselSlide * 100}%)`;
   // Update dots
   carouselDots.querySelectorAll('.carousel-dot').forEach((dot, i) => {
@@ -1700,8 +1703,8 @@ function goToSlide(index) {
   resetCarouselTimer();
 }
 
-function nextSlide() { goToSlide(currentCarouselSlide + 1); }
-function prevSlide() { goToSlide(currentCarouselSlide - 1); }
+function nextSlide() { if (currentCarouselSlide < totalSlides - 1) goToSlide(currentCarouselSlide + 1); else goToSlide(0); }
+function prevSlide() { if (currentCarouselSlide > 0) goToSlide(currentCarouselSlide - 1); else goToSlide(totalSlides - 1); }
 
 carouselNext.addEventListener('click', nextSlide);
 carouselPrev.addEventListener('click', prevSlide);
@@ -1717,19 +1720,107 @@ resetCarouselTimer();
 carouselSection.addEventListener('mouseenter', () => clearInterval(carouselTimer));
 carouselSection.addEventListener('mouseleave', resetCarouselTimer);
 
-// Touch swipe support
+// Touch swipe support — enhanced with drag-follow and momentum
 const track = document.querySelector('.products-carousel-track');
+let isDragging = false;
+let dragStartX = 0;
+let dragCurrentX = 0;
+let dragOffset = 0;
+let dragStartTime = 0;
+
+function getCarouselOffset() {
+  return -currentCarouselSlide * track.offsetWidth;
+}
+
+function clampOffset(offset) {
+  const min = -(totalSlides - 1) * track.offsetWidth;
+  const max = 0;
+  return Math.max(min, Math.min(max, offset));
+}
+
 track.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].screenX;
+  isDragging = true;
+  dragStartX = e.changedTouches[0].clientX;
+  dragCurrentX = dragStartX;
+  dragOffset = getCarouselOffset();
+  dragStartTime = Date.now();
+  // Stop auto-play while dragging
+  clearInterval(carouselTimer);
+  // Remove transition for instant drag response
+  carouselInner.style.transition = 'none';
 }, { passive: true });
+
+track.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  dragCurrentX = e.changedTouches[0].clientX;
+  const diff = dragCurrentX - dragStartX;
+  const newOffset = clampOffset(dragOffset + diff);
+  carouselInner.style.transform = `translateX(${newOffset}px)`;
+}, { passive: true });
+
 track.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) nextSlide();
-    else prevSlide();
+  if (!isDragging) return;
+  isDragging = false;
+  // Restore transition
+  carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)';
+  
+  const diff = dragCurrentX - dragStartX;
+  const elapsed = Date.now() - dragStartTime;
+  const velocity = Math.abs(diff) / elapsed; // px/ms
+  
+  // Swipe threshold: shorter distance if fast swipe, longer if slow
+  const threshold = velocity > 0.5 ? 30 : 60;
+  
+  if (Math.abs(diff) > threshold) {
+    if (diff < 0) {
+      // Swipe left → next
+      goToSlide(Math.min(currentCarouselSlide + 1, totalSlides - 1));
+    } else {
+      // Swipe right → prev
+      goToSlide(Math.max(currentCarouselSlide - 1, 0));
+    }
+  } else {
+    // Snap back to current
+    goToSlide(currentCarouselSlide);
   }
 }, { passive: true });
+
+// Also support mouse drag for desktop
+let mouseDragging = false;
+let mouseStartX = 0;
+let mouseDragOffset = 0;
+
+track.addEventListener('mousedown', (e) => {
+  mouseDragging = true;
+  mouseStartX = e.clientX;
+  mouseDragOffset = getCarouselOffset();
+  carouselInner.style.transition = 'none';
+  track.style.cursor = 'grabbing';
+  clearInterval(carouselTimer);
+  e.preventDefault();
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!mouseDragging) return;
+  const diff = e.clientX - mouseStartX;
+  const newOffset = clampOffset(mouseDragOffset + diff);
+  carouselInner.style.transform = `translateX(${newOffset}px)`;
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (!mouseDragging) return;
+  mouseDragging = false;
+  carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)';
+  track.style.cursor = 'grab';
+  
+  const diff = e.clientX - mouseStartX;
+  if (Math.abs(diff) > 60) {
+    if (diff < 0) goToSlide(Math.min(currentCarouselSlide + 1, totalSlides - 1));
+    else goToSlide(Math.max(currentCarouselSlide - 1, 0));
+  } else {
+    goToSlide(currentCarouselSlide);
+  }
+});
 
 // Initialize counter
 goToSlide(0);
