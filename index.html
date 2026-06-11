@@ -143,13 +143,11 @@ ul,ol{list-style:none}
 /* 极简文案 —— 只有一句话 */
 .hero-flower{position:absolute;z-index:1;pointer-events:none;opacity:0;transition:opacity 2s ease-in-out}
 .hero-flower.active{opacity:1}
-.hero-flower-right{right:-20px;top:8%;width:360px;height:460px}
-.hero-flower-left{left:-40px;bottom:12%;width:260px;height:330px;transform:scaleX(-1)}
+.hero-flower-right{right:-20px;top:8%;width:360px;height:460px;animation:flowerSwayR 8s ease-in-out infinite;will-change:transform}
+.hero-flower-left{left:-40px;bottom:12%;width:260px;height:330px;animation:flowerSwayL 10s ease-in-out infinite reverse;will-change:transform}
 .hero-flower-right svg,.hero-flower-left svg{width:100%;height:100%}
-@keyframes flowerSwayR{0%,100%{transform:translateX(0) rotate(0deg)}50%{transform:translateX(-6px) rotate(.8deg)}}
-@keyframes flowerSwayL{0%,100%{transform:scaleX(-1) translateX(0) rotate(0deg)}50%{transform:scaleX(-1) translateX(-6px) rotate(1deg)}}
-.hero-flower-right{animation:flowerSwayR 8s ease-in-out infinite;will-change:transform;transform:translateZ(0)}
-.hero-flower-left{animation:flowerSwayL 10s ease-in-out infinite reverse;will-change:transform}
+@keyframes flowerSwayR{0%,100%{transform:translateZ(0) translateX(0) rotate(0deg)}50%{transform:translateZ(0) translateX(-6px) rotate(.8deg)}}
+@keyframes flowerSwayL{0%,100%{transform:translateZ(0) scaleX(-1) translateX(0) rotate(0deg)}50%{transform:translateZ(0) scaleX(-1) translateX(-6px) rotate(1deg)}}
 .hero-text{position:absolute;z-index:3;left:0;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:clamp(20px,4vw,60px)}
 .hero-text-col{display:flex;flex-direction:column;align-items:center;gap:0}
 .hero-declaration{font-family:var(--font-serif);font-weight:900;font-size:clamp(56px,12vw,140px);letter-spacing:clamp(12px,3vw,36px);writing-mode:vertical-rl;line-height:1.2;animation:heroRevealV 1.4s var(--ease-out) .2s both;color:var(--rice)}
@@ -1367,17 +1365,33 @@ function onMainScroll() {
     requestAnimationFrame(() => {
       const sy = window.scrollY;
       nav.classList.toggle('scrolled', sy > 60);
-      // Hero parallax
+      // Hero parallax — always recalculate when in viewport
       if (heroText) {
         if (sy < window.innerHeight) {
           heroParallaxNeeded = true;
           const r = sy / window.innerHeight;
           heroText.style.transform = 'translateY(calc(-50% + ' + (r * 50) + 'px))';
           heroText.style.opacity = Math.max(0, 1 - r * 1.2);
-        } else {
+        } else if (heroParallaxNeeded) {
+          // Only set once when leaving viewport
           heroParallaxNeeded = false;
-          heroText.style.opacity = 0;
+          heroText.style.opacity = '0';
+          heroText.style.transform = 'translateY(calc(-50% + 50px))';
         }
+      }
+      // Also ensure tagline, dots, scroll hint follow
+      const heroTagline = document.querySelector('.hero-tagline');
+      const heroScroll = document.querySelector('.hero-scroll');
+      const heroDotsEl = document.querySelector('.hero-dots');
+      if (sy < window.innerHeight) {
+        const r = sy / window.innerHeight;
+        if (heroTagline) heroTagline.style.opacity = Math.max(0, 1 - r * 1.5);
+        if (heroScroll) heroScroll.style.opacity = Math.max(0, 1 - r * 2);
+        if (heroDotsEl) heroDotsEl.style.opacity = Math.max(0.15, 1 - r);
+      } else {
+        if (heroTagline) heroTagline.style.opacity = '0';
+        if (heroScroll) heroScroll.style.opacity = '0';
+        if (heroDotsEl) heroDotsEl.style.opacity = '0.15';
       }
       mainRafPending = false;
     });
