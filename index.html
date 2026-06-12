@@ -1269,7 +1269,7 @@ try{
     <div class="products-carousel-slide slide-0" data-slide="0" data-bg="#E8EDE5">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
+          <div class="products-slide-visual-inner" onclick="document.querySelector('.products-slide-detail[data-product=\'0\']').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-01-napa.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1280,21 +1280,15 @@ try{
           <div class="products-slide-desc" data-i18n="products.p1.desc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
-          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail"><div class="products-slide-detail-card">
-          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
-          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
-          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p2.ingredients">白菜、辣椒粉、蒜、糖、鱼露</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p2.pairing">烤肉、拌饭</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p2.weight">300g / 500g</span></div>
-        </div></div></div>
+          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'0\']').classList.toggle('show')">查看详情</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="products-carousel-slide slide-2" data-slide="2" data-bg="#5C3A4E">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
+          <div class="products-slide-visual-inner" onclick="document.querySelector('.products-slide-detail[data-product=\'2\']').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-03-eggplant.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1305,21 +1299,15 @@ try{
           <div class="products-slide-desc" data-i18n="products.p3.desc">干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。</div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
-          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail"><div class="products-slide-detail-card">
-          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
-          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
-          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p4.ingredients">萝卜、辣椒粉、蒜、虾酱</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p4.pairing">白米饭、骨头汤</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p4.weight">250g / 400g</span></div>
-        </div></div></div>
+          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'2\']').classList.toggle('show')">查看详情</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="products-carousel-slide slide-4" data-slide="4" data-bg="#3D6B4F">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
+          <div class="products-slide-visual-inner" onclick="document.querySelector('.products-slide-detail[data-product=\'4\']').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-05-perilla.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1330,21 +1318,15 @@ try{
           <div class="products-slide-desc" data-i18n="products.p5.desc">一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。</div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
-          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail"><div class="products-slide-detail-card">
-          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
-          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
-          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p6.ingredients">牛板筋、辣椒粉、糖、芝麻</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p6.pairing">啤酒、烧酒</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p6.weight">200g / 350g</span></div>
-        </div></div></div>
+          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'4\']').classList.toggle('show')">查看详情</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="products-carousel-slide slide-6" data-slide="6" data-bg="#C4A46C">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
+          <div class="products-slide-visual-inner" onclick="document.querySelector('.products-slide-detail[data-product=\'6\']').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-07-pollack.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1355,20 +1337,52 @@ try{
           <div class="products-slide-desc" data-i18n="products.p7.desc">明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。</div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
-          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail"><div class="products-slide-detail-card">
-          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
-          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
-          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p8.ingredients">桔梗根、辣椒粉、糖、蒜、芝麻</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p8.pairing">白米饭、烧酒</span></div>
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p8.weight">200g / 350g</span></div>
-        </div></div></div>
+          <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'6\']').classList.toggle('show')">查看详情</button>
+          </div>
         </div>
       </div>
     </div>
       </div>
     </div>
-    <div class="carousel-nav" id="carouselNav">
+    
+  <!-- Product Detail Overlays -->
+  <div class="products-slide-detail" data-product="0">
+    <div class="products-slide-detail-card">
+      <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+      <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p2.ingredients">白菜、辣椒粉、蒜、糖、鱼露</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p2.pairing">烤肉、拌饭</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p2.weight">300g / 500g</span></div>
+    </div>
+  </div>
+  <div class="products-slide-detail" data-product="2">
+    <div class="products-slide-detail-card">
+      <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+      <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p4.ingredients">萝卜、辣椒粉、蒜、虾酱</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p4.pairing">白米饭、骨头汤</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p4.weight">250g / 400g</span></div>
+    </div>
+  </div>
+  <div class="products-slide-detail" data-product="4">
+    <div class="products-slide-detail-card">
+      <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+      <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p6.ingredients">牛板筋、辣椒粉、糖、芝麻</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p6.pairing">啤酒、烧酒</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p6.weight">200g / 350g</span></div>
+    </div>
+  </div>
+  <div class="products-slide-detail" data-product="6">
+    <div class="products-slide-detail-card">
+      <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+      <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p8.ingredients">桔梗根、辣椒粉、糖、蒜、芝麻</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p8.pairing">白米饭、烧酒</span></div>
+      <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p8.weight">200g / 350g</span></div>
+    </div>
+  </div>
+<div class="carousel-nav" id="carouselNav">
       <button class="carousel-arrow" id="carouselPrev" aria-label="Previous">◀</button>
       <div id="carouselDots"></div>
       <button class="carousel-arrow" id="carouselNext" aria-label="Next">▶</button>
