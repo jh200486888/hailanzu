@@ -305,20 +305,22 @@ ul,ol{list-style:none}
 .seasons-watermark{position:absolute;right:5%;top:20%;width:280px;height:360px;opacity:.03;z-index:0;pointer-events:none;color:var(--azalea)}
 .seasons-grid{max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:2px;position:relative;z-index:1}
 .section-header{position:relative;z-index:1}
-.season-proverb{margin-top:14px;font-size:12px;color:var(--azalea);opacity:.4;font-style:italic;letter-spacing:2px;position:relative;z-index:2}
-.season-spring .season-proverb{color:var(--azalea-dark)}
-.season-spring::before{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(196,114,127,.1) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.season-proverb{margin-top:14px;font-size:12px;opacity:.5;font-style:italic;letter-spacing:2px;position:relative;z-index:2}
+.season-spring .season-proverb,.season-summer .season-proverb,.season-autumn .season-proverb{color:var(--rice)}
+.season-winter .season-proverb{color:var(--ink-deep)}
+.season-spring::before{content:'';position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:radial-gradient(circle,rgba(245,240,232,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
 .season-card{position:relative;overflow:hidden;cursor:pointer;transition:all .6s var(--ease-out);min-height:clamp(280px,35vw,420px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,3.5vw,52px);contain:layout style paint}
-.season-char{font-family:var(--font-serif);font-weight:900;font-size:clamp(72px,11vw,130px);opacity:.04;position:absolute;top:-6px;right:12px;line-height:1;pointer-events:none;transition:opacity .6s}
-.season-card:hover .season-char{opacity:.09}
+.season-char{font-family:var(--font-serif);font-weight:900;font-size:clamp(72px,11vw,130px);opacity:.08;position:absolute;top:-6px;right:12px;line-height:1;pointer-events:none;transition:opacity .6s;color:var(--rice)}
+.season-winter .season-char{color:var(--ink-deep)}
+.season-card:hover .season-char{opacity:.15}
 .season-num{font-family:var(--font-display);font-size:10px;letter-spacing:4px;margin-bottom:14px;opacity:.25}
 .season-name{font-family:var(--font-serif);font-weight:700;font-size:clamp(28px,3.5vw,48px);margin-bottom:3px;position:relative;z-index:2}
 .season-name-kr{font-family:var(--font-serif-kr);font-size:clamp(12px,1.2vw,16px);opacity:.35;letter-spacing:4px;margin-bottom:clamp(14px,1.8vw,22px);position:relative;z-index:2}
 .season-desc{font-family:var(--font-sans);font-size:clamp(13px,1.1vw,15px);line-height:2;opacity:.7;max-width:320px;position:relative;z-index:2}
-.season-spring{background:#E8EDE5;color:var(--ink-deep)}.season-spring .season-name{color:var(--ink)}
-.season-summer{background:#F5E6D0;color:var(--brown)}.season-summer .season-name{color:#D4654A}
-.season-autumn{background:#F0E4C8;color:var(--brown)}.season-autumn .season-name{color:var(--gold)}
-.season-winter{background:var(--ink);color:var(--rice)}.season-winter .season-name{color:var(--rice)}
+.season-spring{background:#4A6B52;color:var(--rice)}.season-spring .season-name{color:var(--rice)}.season-spring .season-num{color:var(--rice)}.season-spring .season-desc{color:var(--rice)}
+.season-summer{background:#1A3C34;color:var(--rice)}.season-summer .season-name{color:var(--rice)}.season-summer .season-num{color:var(--rice)}.season-summer .season-desc{color:var(--rice)}
+.season-autumn{background:#B8860B;color:var(--rice)}.season-autumn .season-name{color:var(--rice)}.season-autumn .season-num{color:var(--rice)}.season-autumn .season-desc{color:var(--rice)}
+.season-winter{background:#8B9FA8;color:var(--ink-deep)}.season-winter .season-name{color:var(--ink-deep)}.season-winter .season-num{color:var(--ink-deep)}.season-winter .season-desc{color:var(--ink-deep)}
 .season-card:hover{transform:scale(1.01);z-index:5}
 
 /* ==================== STORY ==================== */
@@ -1008,7 +1010,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 
 <!-- ==================== TERROIR — 风土大画幅 ==================== -->
 <section class="terroir" id="terroir">
-  <div class="terroir-slide" data-terroir="0">
+  <div class="terroir-slide active" data-terroir="0">
     <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-changbai.jpg" alt="Changbai Mountain">
     <div class="terroir-slide-overlay"></div>
     <div class="terroir-slide-content">
