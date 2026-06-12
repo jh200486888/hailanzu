@@ -87,30 +87,11 @@ document.addEventListener('DOMContentLoaded', function(){
   // ============ Floating CTA ============
   var floatingCta = document.getElementById('floatingCta');
   if (floatingCta) {
-    var ctaDismissed = localStorage.getItem('hailanzu_cta_hidden');
+    var ctaDismissed = localStorage.getItem('hailanzu_cta_dismissed');
     if (!ctaDismissed || Date.now() - parseInt(ctaDismissed) > 604800000) {
-      setTimeout(function() { floatingCta.classList.add('visible'); }, 3000);
+      setTimeout(function() { floatingCta.classList.add('visible'); }, 2000);
     }
     floatingCta.addEventListener('click', function() {
-      var community = document.getElementById('community');
-      if (community) community.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-  }
-  
-  // ============ Promo Bar ============
-  var promoBar = document.getElementById('promoBar');
-  if (promoBar) {
-    var promoDismissed = localStorage.getItem('hailanzu_banner_dismissed');
-    if (!promoDismissed || Date.now() - parseInt(promoDismissed) > 604800000) {
-      setTimeout(function() { promoBar.classList.add('visible'); }, 1500);
-    }
-    var promoClose = document.getElementById('promoBarClose');
-    if (promoClose) promoClose.addEventListener('click', function() {
-      promoBar.classList.remove('visible');
-      localStorage.setItem('hailanzu_banner_dismissed', Date.now().toString());
-    });
-    var promoBtn = document.getElementById('promoBarBtn');
-    if (promoBtn) promoBtn.addEventListener('click', function() {
       var community = document.getElementById('community');
       if (community) community.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
