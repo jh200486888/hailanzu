@@ -44,8 +44,8 @@
 
 /* ==================== MARKETING - FOOTER UPGRADE ==================== */
 .footer-social-row{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:20px}
-.footer-social-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--rice);opacity:.35;transition:all .3s var(--ease-out);cursor:pointer}
-.footer-social-icon:hover{opacity:1;color:var(--gold);transform:scale(1.1)}
+.footer-social-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(245,240,232,.1);border-radius:50%;color:var(--rice);opacity:.45;transition:all .4s var(--ease-out);cursor:pointer}
+.footer-social-icon:hover{opacity:1;color:var(--gold);border-color:rgba(184,134,11,.4);background:rgba(184,134,11,.06);transform:scale(1.08)}
 
 
 
