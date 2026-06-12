@@ -7,7 +7,399 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <style>:root{--azalea:#C4727F;--azalea-dark:#8B4A5A;--ink:#1A3C34;--ink-deep:#0F2420;--ink-light:#2A5A4E;--ink-mid:#1E4A40;--seal:#C8102E;--seal-glow:rgba(200,16,46,.25);--seal-dark:#9B0D23;--rice:#F5F0E8;--rice-dim:#E8E0D4;--rice-deep:#D4CBBD;--gold:#B8860B;--gold-dim:rgba(184,134,11,.15);--gold-light:#D4A84B;--brown:#3D2B1F;--brown-light:#6B5744;--font-serif:'Noto Serif SC',serif;--font-sans:'Noto Sans SC',sans-serif;--font-serif-kr:'Noto Serif KR',serif;--font-sans-kr:'Noto Sans KR',sans-serif;--font-serif-jp:'Noto Serif JP',serif;--font-sans-jp:'Noto Sans JP',sans-serif;--font-display:'Playfair Display',serif;--font-body:'Inter','Noto Sans SC',sans-serif;--ease-out:cubic-bezier(.22,1,.36,1);--spring:#7BAE6E;--summer:#E8A838;--autumn:#D4654A;--winter:#7B8FA1}html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}body{overflow-x:clip}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--font-sans);background-color:var(--rice);color:var(--ink);line-height:1.6;overscroll-behavior-x:none}section,footer{overflow:hidden}.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(26,60,52,0.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(184,134,11,0.18);transition:all 0.3s var(--ease-out)}.nav.scrolled{background:rgba(26,60,52,0.94);box-shadow:0 2px 24px rgba(0,0,0,0.12),0 1px 0 rgba(184,134,11,0.25)}.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:var(--rice)}.pot-icon{width:36px;height:36px}.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}.nav-logo-text .zh{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;letter-spacing:0.05em}.nav-logo-text .kr{font-family:var(--font-sans-kr);font-size:0.7rem;color:var(--rice-dim);letter-spacing:0.02em}.nav-links{display:flex;align-items:center;gap:2rem}.nav-link{font-family:var(--font-sans);font-size:0.9rem;color:var(--rice);text-decoration:none;position:relative;padding:0.25rem 0;transition:color 0.3s}.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--azalea);transition:width 0.3s var(--ease-out)}.nav-link:hover::after,.nav-link.active::after{width:100%}.nav-link.active{color:var(--azalea)}.lang-switch{display:flex;gap:0.5rem;align-items:center}.lang-btn{font-family:var(--font-body);font-size:0.75rem;padding:0.3rem 0.6rem;border:1px solid var(--rice);background:transparent;color:var(--rice);cursor:pointer;border-radius:3px;transition:all 0.2s}.lang-btn:hover,.lang-btn.active{background:var(--rice);color:var(--ink-deep)}@media (max-width:768px){.nav .lang-switch{display:none}}.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;cursor:pointer;background:none;border:none;padding:0;z-index:1001}.hamburger span{display:block;width:100%;height:2px;background:var(--rice);transition:all 0.3s var(--ease-out)}.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}@media (max-width:768px){.hamburger{display:flex}.nav-links{display:none}}.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,60,52,0.96);backdrop-filter:blur(30px);z-index:1001;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;transition:all 0.4s var(--ease-out)}@media (max-width:768px){.mobile-nav{display:flex}}.mobile-nav.open{opacity:1;visibility:visible;pointer-events:all}.mobile-nav a{font-family:var(--font-serif);font-size:1.8rem;color:var(--rice);text-decoration:none;transition:color 0.3s}.mobile-nav a:hover,.mobile-nav a.active{color:var(--azalea)}.mobile-nav-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:none;background:rgba(245,240,232,0.1);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--rice);transition:all 0.3s}.mobile-nav-close:hover{background:var(--azalea);color:white}.mobile-lang-switch{display:flex;gap:0.5rem;margin-top:1rem}.mobile-lang-switch .lang-btn{border-color:var(--rice);color:var(--rice)}.mobile-lang-switch .lang-btn:hover,.mobile-lang-switch .lang-btn.active{background:var(--rice);color:var(--ink-deep)}.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 2rem 80px;overflow:hidden;background:linear-gradient(180deg,var(--ink) 0%,var(--ink-deep) 50%,var(--ink-mid) 100%)}.hero-totems{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;opacity:0.06;pointer-events:none}.hero-totem{display:flex;align-items:center;justify-content:center;padding:2rem}.hero-totem svg{width:100%;max-width:300px;height:auto}.hero-content{text-align:center;position:relative;z-index:2}.hero-title-wrap{display:flex;flex-direction:column;align-items:center;gap:1.5rem}@media (min-width:768px){.hero-title-wrap{flex-direction:row;gap:3rem}}.hero-subtitle-kr{writing-mode:vertical-rl;font-family:var(--font-serif-kr);font-size:clamp(1.2rem,3vw,2rem);font-weight:600;color:var(--azalea);letter-spacing:0.3em;text-orientation:upright}.hero-title-zh{writing-mode:vertical-rl;font-family:var(--font-serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:var(--rice);letter-spacing:0.4em;text-orientation:upright}.hero-seal{width:110px;height:110px;opacity:0.9}.hero-marquee{position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(90deg,transparent,rgba(196,114,127,0.15),transparent);overflow:hidden;display:flex;align-items:center}.marquee-track{display:flex;animation:marquee 35s linear infinite;white-space:nowrap}.marquee-item{font-family:var(--font-sans);font-size:0.85rem;color:var(--rice);opacity:0.7;padding:0 1.5rem;display:flex;align-items:center;gap:1rem}.marquee-divider{width:20px;height:20px;color:var(--azalea)}.dahlia-icon{fill:none;stroke:currentColor;stroke-width:1.2}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.seasons-section{padding:0}.season-card{min-height:100vh;display:flex;align-items:center;padding:6rem 2rem;position:relative;overflow:hidden}.season-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2}@media (max-width:900px){.season-inner{grid-template-columns:1fr;gap:3rem}}.season-card:nth-child(even) .season-inner{direction:rtl}.season-card:nth-child(even) .season-inner>*{direction:ltr}@media (max-width:900px){.season-card:nth-child(even) .season-inner{direction:ltr}}.season-visual{position:relative;height:400px;display:flex;align-items:center;justify-content:center}.season-totem{width:220px;height:220px;opacity:0.35}.season-text{color:var(--rice)}.season-chapter{font-family:var(--font-display);font-size:0.9rem;letter-spacing:0.2em;margin-bottom:0.75rem;opacity:0;transform:translateY(20px);transition:all 0.8s var(--ease-out)}.season-chapter.visible{opacity:1;transform:translateY(0)}.season-name{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:0.25rem;opacity:0;transform:translateY(20px);transition:all 0.8s var(--ease-out) 0.1s}.season-name.visible{opacity:1;transform:translateY(0)}.season-name-kr{font-family:var(--font-serif-kr);font-size:1.1rem;margin-bottom:0.5rem;opacity:0;transform:translateY(20px);transition:all 0.8s var(--ease-out) 0.15s}.season-name-kr.visible{opacity:1;transform:translateY(0)}.season-period{font-family:var(--font-display);font-size:0.85rem;letter-spacing:0.15em;margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:all 0.8s var(--ease-out) 0.2s}.season-period.visible{opacity:1;transform:translateY(0)}.season-desc{font-family:var(--font-sans);font-size:1rem;line-height:1.9;color:var(--rice-dim);margin-bottom:2rem;opacity:0;transform:translateY(20px);transition:all 0.8s var(--ease-out) 0.25s}.season-desc.visible{opacity:1;transform:translateY(0)}.season-tags{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:all 0.8s var(--ease-out) 0.35s}.season-tags.visible{opacity:1;transform:translateY(0)}.season-tag{font-family:var(--font-sans);font-size:0.8rem;padding:0.4rem 1rem;border:1px solid;border-radius:20px}.season-spring{background:linear-gradient(135deg,#1A3C34 0%,#0F2E1F 50%,#0A2418 100%)}.season-spring .season-chapter{color:var(--spring)}.season-spring .season-name-kr{color:var(--spring)}.season-spring .season-tag{border-color:var(--spring);color:var(--spring)}.season-spring .season-period{color:var(--spring)}.season-summer{background:linear-gradient(135deg,#1A3C34 0%,#2A3420 50%,#1E2A14 100%)}.season-summer .season-chapter{color:var(--summer)}.season-summer .season-name-kr{color:var(--summer)}.season-summer .season-tag{border-color:var(--summer);color:var(--summer)}.season-summer .season-period{color:var(--summer)}.season-autumn{background:linear-gradient(135deg,#1A3C34 0%,#2E1E18 50%,#1A1410 100%)}.season-autumn .season-chapter{color:var(--autumn)}.season-autumn .season-name-kr{color:var(--autumn)}.season-autumn .season-tag{border-color:var(--autumn);color:var(--autumn)}.season-autumn .season-period{color:var(--autumn)}.season-winter{background:linear-gradient(135deg,#1A3C34 0%,#141E28 50%,#0E1620 100%)}.season-winter .season-chapter{color:var(--winter)}.season-winter .season-name-kr{color:var(--winter)}.season-winter .season-tag{border-color:var(--winter);color:var(--winter)}.season-winter .season-period{color:var(--winter)}.hanok-divider{width:100%;height:80px;background:var(--ink-deep);position:relative;overflow:hidden}.hanok-divider svg{position:absolute;bottom:0;left:0;right:0;width:100%;opacity:0.15}.calendar-section{background:var(--ink-deep);padding:6rem 2rem;position:relative;overflow:hidden}.calendar-title{font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--rice);text-align:center;margin-bottom:3rem}.calendar-wrap{max-width:600px;margin:0 auto;position:relative}.calendar-ring{width:100%;aspect-ratio:1;position:relative}.calendar-ring svg{width:100%;height:100%}.calendar-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}.calendar-center-label{font-family:var(--font-sans);font-size:0.8rem;color:var(--rice-dim);letter-spacing:0.1em}.calendar-center-season{font-family:var(--font-serif);font-size:2rem;font-weight:700;color:var(--rice);transition:color 0.4s}.calendar-tabs{display:flex;justify-content:center;gap:1rem;margin-top:2rem}.calendar-tab{font-family:var(--font-sans);font-size:0.9rem;padding:0.5rem 1.5rem;border:1px solid var(--rice-dim);background:transparent;color:var(--rice);cursor:pointer;border-radius:4px;transition:all 0.3s}.calendar-tab:hover,.calendar-tab.active{border-color:var(--azalea);color:var(--azalea)}.calendar-tab[data-season="spring"].active{border-color:var(--spring);color:var(--spring)}.calendar-tab[data-season="summer"].active{border-color:var(--summer);color:var(--summer)}.calendar-tab[data-season="autumn"].active{border-color:var(--autumn);color:var(--autumn)}.calendar-tab[data-season="winter"].active{border-color:var(--winter);color:var(--winter)}.picks-section{background:var(--ink);padding:6rem 2rem}.picks-title{font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);color:var(--rice);text-align:center;margin-bottom:3rem}.picks-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}@media (max-width:768px){.picks-grid{grid-template-columns:1fr}}.pick-card{background:rgba(245,240,232,0.04);border:1px solid rgba(196,114,127,0.15);border-radius:12px;padding:2rem;text-align:center;text-decoration:none;transition:all 0.3s var(--ease-out)}.pick-card:hover{background:rgba(245,240,232,0.08);transform:translateY(-4px)}.pick-emoji{font-size:3rem;margin-bottom:1rem}.pick-name{font-family:var(--font-serif);font-size:1.1rem;color:var(--rice);margin-bottom:0.5rem}.pick-name-kr{font-family:var(--font-sans-kr);font-size:0.8rem;color:var(--azalea);margin-bottom:0.75rem}.pick-desc{font-family:var(--font-sans);font-size:0.85rem;color:var(--rice-dim);line-height:1.7}.footer{background:var(--ink-deep);color:var(--rice);padding:6rem 2rem 2rem;position:relative}.footer-skyline{position:absolute;top:0;left:0;right:0;height:60px;transform:translateY(-1px);opacity:0.15}.footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:3rem;position:relative;z-index:1}@media (max-width:900px){.footer-content{grid-template-columns:repeat(2,1fr);gap:2rem}}@media (max-width:600px){.footer-content{grid-template-columns:repeat(2,1fr);gap:1.5rem 2rem}}.footer-col h4{font-family:var(--font-serif);font-size:1rem;color:var(--rice);margin-bottom:1rem}.footer-col p,.footer-col a{font-family:var(--font-sans);font-size:0.85rem;color:var(--rice-dim);line-height:1.8;text-decoration:none;transition:color 0.3s}.footer-col a:hover{color:var(--azalea)}.footer-bottom{max-width:1200px;margin:4rem auto 0;padding-top:2rem;border-top:1px solid rgba(245,240,232,0.1);text-align:center;position:relative;z-index:1}.footer-bottom p{font-family:var(--font-sans);font-size:0.8rem;color:var(--rice-dim);opacity:0.6}.azalea-silhouette{position:absolute;pointer-events:none;z-index:0}.azalea-right{right:-20px;top:8%;width:350px;height:450px;opacity:0.12;animation:azaleaSway 8s ease-in-out infinite}.azalea-left{left:-40px;bottom:8%;width:250px;height:320px;opacity:0.08;transform:scaleX(-1);animation:azaleaSway 10s ease-in-out infinite reverse}@keyframes azaleaSway{0%,100%{transform:translateX(0) rotate(0deg)}50%{transform:translateX(-6px) rotate(0.8deg)}}.azalea-left{animation-name:azaleaSwayLeft}@keyframes azaleaSwayLeft{0%,100%{transform:scaleX(-1) translateX(0) rotate(0deg)}50%{transform:scaleX(-1) translateX(-6px) rotate(0.8deg)}}.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s var(--ease-out)}.reveal.visible{opacity:1;transform:translateY(0)}</style>
+    <style>
+        :root {
+            --azalea: #C4727F;
+            --azalea-dark: #8B4A5A;
+            --ink: #1A3C34;
+            --ink-deep: #0F2420;
+            --ink-light: #2A5A4E;
+            --ink-mid: #1E4A40;
+            --seal: #C8102E;
+            --seal-glow: rgba(200,16,46,.25);
+            --seal-dark: #9B0D23;
+            --rice: #F5F0E8;
+            --rice-dim: #E8E0D4;
+            --rice-deep: #D4CBBD;
+            --gold: #B8860B;
+            --gold-dim: rgba(184,134,11,.15);
+            --gold-light: #D4A84B;
+            --brown: #3D2B1F;
+            --brown-light: #6B5744;
+            --font-serif: 'Noto Serif SC', serif;
+            --font-sans: 'Noto Sans SC', sans-serif;
+            --font-serif-kr: 'Noto Serif KR', serif;
+            --font-sans-kr: 'Noto Sans KR', sans-serif;
+            --font-serif-jp: 'Noto Serif JP', serif;
+            --font-sans-jp: 'Noto Sans JP', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', 'Noto Sans SC', sans-serif;
+            --ease-out: cubic-bezier(.22,1,.36,1);
+            /* Season accent colors */
+            --spring: #7BAE6E;
+            --summer: #E8A838;
+            --autumn: #D4654A;
+            --winter: #7B8FA1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: clip;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--rice);
+            color: var(--ink);
+            line-height: 1.6;
+            overscroll-behavior-x: none;
+        }
+
+        /* Clip overflowing decorative elements to prevent page width expansion on Android */
+        section, footer { overflow: hidden; }
+
+        /* ===== Navigation ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 1000; padding: 0 2rem; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(26,60,52,0.88);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(184,134,11,0.18);
+            transition: all 0.3s var(--ease-out);
+        }
+        .nav.scrolled { background: rgba(26,60,52,0.94); box-shadow: 0 2px 24px rgba(0,0,0,0.12), 0 1px 0 rgba(184,134,11,0.25); }
+
+        .nav-logo {
+            display: flex; align-items: center; gap: 0.75rem;
+            text-decoration: none; color: var(--rice);
+        }
+        .pot-icon { width: 36px; height: 36px; }
+        .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .nav-logo-text .zh { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; }
+        .nav-logo-text .kr { font-family: var(--font-sans-kr); font-size: 0.7rem; color: var(--rice-dim); letter-spacing: 0.02em; }
+
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-link {
+            font-family: var(--font-sans); font-size: 0.9rem; color: var(--rice);
+            text-decoration: none; position: relative; padding: 0.25rem 0; transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px;
+            background: var(--azalea); transition: width 0.3s var(--ease-out);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: var(--azalea); }
+
+        .lang-switch { display: flex; gap: 0.5rem; align-items: center; }
+        .lang-btn {
+            font-family: var(--font-body); font-size: 0.75rem; padding: 0.3rem 0.6rem;
+            border: 1px solid var(--rice); background: transparent; color: var(--rice);
+            cursor: pointer; border-radius: 3px; transition: all 0.2s;
+        }
+        .lang-btn:hover, .lang-btn.active { background: var(--rice); color: var(--ink-deep); }
+
+        /* Mobile: hide top lang-switch */
+        @media (max-width: 768px) {
+            .nav .lang-switch { display: none; }
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none; flex-direction: column; justify-content: center; gap: 5px;
+            width: 28px; height: 28px; cursor: pointer; background: none; border: none;
+            padding: 0; z-index: 1001;
+        }
+        .hamburger span { display: block; width: 100%; height: 2px; background: var(--rice); transition: all 0.3s var(--ease-out); }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links { display: none; }
+        }
+
+        /* Mobile Nav Panel */
+        .mobile-nav {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26,60,52,0.96); backdrop-filter: blur(30px);
+            z-index: 1001; flex-direction: column; justify-content: center;
+            align-items: center; gap: 2rem; opacity: 0; visibility: hidden;
+            transition: all 0.4s var(--ease-out);
+        }
+        @media (max-width: 768px) { .mobile-nav { display: flex; } }
+        .mobile-nav.open { opacity: 1; visibility: visible; pointer-events: all; }
+        .mobile-nav a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--rice); text-decoration: none; transition: color 0.3s; }
+        .mobile-nav a:hover, .mobile-nav a.active { color: var(--azalea); }
+        .mobile-nav-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px;
+            border: none; background: rgba(245,240,232,0.1); border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; color: var(--rice); transition: all 0.3s;
+        }
+        .mobile-nav-close:hover { background: var(--azalea); color: white; }
+        .mobile-lang-switch { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .mobile-lang-switch .lang-btn { border-color: var(--rice); color: var(--rice); }
+        .mobile-lang-switch .lang-btn:hover, .mobile-lang-switch .lang-btn.active { background: var(--rice); color: var(--ink-deep); }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 120px 2rem 80px; overflow: hidden;
+            background: linear-gradient(180deg, var(--ink) 0%, var(--ink-deep) 50%, var(--ink-mid) 100%);
+        }
+        .hero-totems {
+            position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr; opacity: 0.06; pointer-events: none;
+        }
+        .hero-totem { display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .hero-totem svg { width: 100%; max-width: 300px; height: auto; }
+        .hero-content { text-align: center; position: relative; z-index: 2; }
+        .hero-title-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        @media (min-width: 768px) { .hero-title-wrap { flex-direction: row; gap: 3rem; } }
+        .hero-subtitle-kr {
+            writing-mode: vertical-rl; font-family: var(--font-serif-kr);
+            font-size: clamp(1.2rem, 3vw, 2rem); font-weight: 600; color: var(--azalea);
+            letter-spacing: 0.3em; text-orientation: upright;
+        }
+        .hero-title-zh {
+            writing-mode: vertical-rl; font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; color: var(--rice);
+            letter-spacing: 0.4em; text-orientation: upright;
+        }
+        .hero-seal { width: 110px; height: 110px; opacity: 0.9; }
+
+        /* Hero Marquee */
+        .hero-marquee {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
+            background: linear-gradient(90deg, transparent, rgba(196,114,127,0.15), transparent);
+            overflow: hidden; display: flex; align-items: center;
+        }
+        .marquee-track { display: flex; animation: marquee 35s linear infinite; white-space: nowrap; }
+        .marquee-item { font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice); opacity: 0.7; padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .marquee-divider { width: 20px; height: 20px; color: var(--azalea); }
+        .dahlia-icon { fill: none; stroke: currentColor; stroke-width: 1.2; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ===== Season Cards ===== */
+        .seasons-section { padding: 0; }
+        .season-card {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 6rem 2rem; position: relative; overflow: hidden;
+        }
+        .season-inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            position: relative; z-index: 2;
+        }
+        @media (max-width: 900px) { .season-inner { grid-template-columns: 1fr; gap: 3rem; } }
+
+        /* Alternating layout */
+        .season-card:nth-child(even) .season-inner { direction: rtl; }
+        .season-card:nth-child(even) .season-inner > * { direction: ltr; }
+        @media (max-width: 900px) { .season-card:nth-child(even) .season-inner { direction: ltr; } }
+
+        .season-visual {
+            position: relative; height: 400px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .season-totem { width: 220px; height: 220px; opacity: 0.35; }
+
+        .season-text { color: var(--rice); }
+        .season-chapter {
+            font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.2em;
+            margin-bottom: 0.75rem; opacity: 0; transform: translateY(20px);
+            transition: all 0.8s var(--ease-out);
+        }
+        .season-chapter.visible { opacity: 1; transform: translateY(0); }
+        .season-name {
+            font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700; margin-bottom: 0.25rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.1s;
+        }
+        .season-name.visible { opacity: 1; transform: translateY(0); }
+        .season-name-kr {
+            font-family: var(--font-serif-kr); font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.15s;
+        }
+        .season-name-kr.visible { opacity: 1; transform: translateY(0); }
+        .season-period {
+            font-family: var(--font-display); font-size: 0.85rem;
+            letter-spacing: 0.15em; margin-bottom: 1.5rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.2s;
+        }
+        .season-period.visible { opacity: 1; transform: translateY(0); }
+        .season-desc {
+            font-family: var(--font-sans); font-size: 1rem; line-height: 1.9; color: var(--rice-dim);
+            margin-bottom: 2rem;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.25s;
+        }
+        .season-desc.visible { opacity: 1; transform: translateY(0); }
+
+        .season-tags {
+            display: flex; gap: 1rem; flex-wrap: wrap;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease-out) 0.35s;
+        }
+        .season-tags.visible { opacity: 1; transform: translateY(0); }
+        .season-tag {
+            font-family: var(--font-sans); font-size: 0.8rem; padding: 0.4rem 1rem;
+            border: 1px solid; border-radius: 20px;
+        }
+
+        /* Season-specific backgrounds and accents */
+        .season-spring { background: linear-gradient(135deg, #1A3C34 0%, #0F2E1F 50%, #0A2418 100%); }
+        .season-spring .season-chapter { color: var(--spring); }
+        .season-spring .season-name-kr { color: var(--spring); }
+        .season-spring .season-tag { border-color: var(--spring); color: var(--spring); }
+        .season-spring .season-period { color: var(--spring); }
+
+        .season-summer { background: linear-gradient(135deg, #1A3C34 0%, #2A3420 50%, #1E2A14 100%); }
+        .season-summer .season-chapter { color: var(--summer); }
+        .season-summer .season-name-kr { color: var(--summer); }
+        .season-summer .season-tag { border-color: var(--summer); color: var(--summer); }
+        .season-summer .season-period { color: var(--summer); }
+
+        .season-autumn { background: linear-gradient(135deg, #1A3C34 0%, #2E1E18 50%, #1A1410 100%); }
+        .season-autumn .season-chapter { color: var(--autumn); }
+        .season-autumn .season-name-kr { color: var(--autumn); }
+        .season-autumn .season-tag { border-color: var(--autumn); color: var(--autumn); }
+        .season-autumn .season-period { color: var(--autumn); }
+
+        .season-winter { background: linear-gradient(135deg, #1A3C34 0%, #141E28 50%, #0E1620 100%); }
+        .season-winter .season-chapter { color: var(--winter); }
+        .season-winter .season-name-kr { color: var(--winter); }
+        .season-winter .season-tag { border-color: var(--winter); color: var(--winter); }
+        .season-winter .season-period { color: var(--winter); }
+
+        /* Hanok Divider */
+        .hanok-divider { width: 100%; height: 80px; background: var(--ink-deep); position: relative; overflow: hidden; }
+        .hanok-divider svg { position: absolute; bottom: 0; left: 0; right: 0; width: 100%; opacity: 0.15; }
+
+        /* ===== Fermentation Calendar ===== */
+        .calendar-section {
+            background: var(--ink-deep); padding: 6rem 2rem;
+            position: relative; overflow: hidden;
+        }
+        .calendar-title {
+            font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--rice); text-align: center; margin-bottom: 3rem;
+        }
+        .calendar-wrap {
+            max-width: 600px; margin: 0 auto; position: relative;
+        }
+        .calendar-ring {
+            width: 100%; aspect-ratio: 1; position: relative;
+        }
+        .calendar-ring svg { width: 100%; height: 100%; }
+        .calendar-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            text-align: center; pointer-events: none;
+        }
+        .calendar-center-label {
+            font-family: var(--font-sans); font-size: 0.8rem; color: var(--rice-dim); letter-spacing: 0.1em;
+        }
+        .calendar-center-season {
+            font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--rice);
+            transition: color 0.4s;
+        }
+        .calendar-tabs {
+            display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;
+        }
+        .calendar-tab {
+            font-family: var(--font-sans); font-size: 0.9rem; padding: 0.5rem 1.5rem;
+            border: 1px solid var(--rice-dim); background: transparent; color: var(--rice);
+            cursor: pointer; border-radius: 4px; transition: all 0.3s;
+        }
+        .calendar-tab:hover, .calendar-tab.active { border-color: var(--azalea); color: var(--azalea); }
+        .calendar-tab[data-season="spring"].active { border-color: var(--spring); color: var(--spring); }
+        .calendar-tab[data-season="summer"].active { border-color: var(--summer); color: var(--summer); }
+        .calendar-tab[data-season="autumn"].active { border-color: var(--autumn); color: var(--autumn); }
+        .calendar-tab[data-season="winter"].active { border-color: var(--winter); color: var(--winter); }
+
+        /* ===== Seasonal Picks ===== */
+        .picks-section { background: var(--ink); padding: 6rem 2rem; }
+        .picks-title {
+            font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--rice); text-align: center; margin-bottom: 3rem;
+        }
+        .picks-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+        }
+        @media (max-width: 768px) { .picks-grid { grid-template-columns: 1fr; } }
+        .pick-card {
+            background: rgba(245,240,232,0.04); border: 1px solid rgba(196,114,127,0.15);
+            border-radius: 12px; padding: 2rem; text-align: center;
+            text-decoration: none; transition: all 0.3s var(--ease-out);
+        }
+        .pick-card:hover { background: rgba(245,240,232,0.08); transform: translateY(-4px); }
+        .pick-emoji { font-size: 3rem; margin-bottom: 1rem; }
+        .pick-name { font-family: var(--font-serif); font-size: 1.1rem; color: var(--rice); margin-bottom: 0.5rem; }
+        .pick-name-kr { font-family: var(--font-sans-kr); font-size: 0.8rem; color: var(--azalea); margin-bottom: 0.75rem; }
+        .pick-desc { font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice-dim); line-height: 1.7; }
+
+        /* ===== Footer ===== */
+        .footer { background: var(--ink-deep); color: var(--rice); padding: 6rem 2rem 2rem; position: relative; }
+        .footer-skyline {
+            position: absolute; top: 0; left: 0; right: 0; height: 60px;
+            transform: translateY(-1px); opacity: 0.15;
+        }
+        .footer-content {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem;
+            position: relative; z-index: 1;
+        }
+        @media (max-width: 900px) { .footer-content { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
+        @media (max-width: 600px) { .footer-content { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 2rem; } }
+        .footer-col h4 { font-family: var(--font-serif); font-size: 1rem; color: var(--rice); margin-bottom: 1rem; }
+        .footer-col p, .footer-col a {
+            font-family: var(--font-sans); font-size: 0.85rem; color: var(--rice-dim);
+            line-height: 1.8; text-decoration: none; transition: color 0.3s;
+        }
+        .footer-col a:hover { color: var(--azalea); }
+        .footer-bottom {
+            max-width: 1200px; margin: 4rem auto 0; padding-top: 2rem;
+            border-top: 1px solid rgba(245,240,232,0.1); text-align: center;
+            position: relative; z-index: 1;
+        }
+        .footer-bottom p { font-family: var(--font-sans); font-size: 0.8rem; color: var(--rice-dim); opacity: 0.6; }
+
+        /* Reveal */
+        /* Azalea silhouettes */
+        .azalea-silhouette {
+            position: absolute; pointer-events: none; z-index: 0;
+        }
+        .azalea-right {
+            right: -20px; top: 8%; width: 350px; height: 450px; opacity: 0.12;
+            animation: azaleaSway 8s ease-in-out infinite;
+        }
+        .azalea-left {
+            left: -40px; bottom: 8%; width: 250px; height: 320px; opacity: 0.08;
+            transform: scaleX(-1); animation: azaleaSway 10s ease-in-out infinite reverse;
+        }
+        @keyframes azaleaSway {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            50% { transform: translateX(-6px) rotate(0.8deg); }
+        }
+        .azalea-left { animation-name: azaleaSwayLeft; }
+        @keyframes azaleaSwayLeft {
+            0%, 100% { transform: scaleX(-1) translateX(0) rotate(0deg); }
+            50% { transform: scaleX(-1) translateX(-6px) rotate(0.8deg); }
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease-out); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
 </head>
@@ -556,7 +948,216 @@
         </div>
     </footer>
 
-    <script>const translations = { zh: { 'nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.contact':'联系我们', 'hero.title':'四季发酵', 'spring.chapter':'CHAPTER 01','spring.name':'春·醒','spring.period':'3月 — 5月', 'spring.desc':'冰雪消融，万物萌发。三月的延边，白菜从冬窖中取出，开始第一轮筛选。春日温和的气温是唤醒发酵菌种的最佳时机，金达莱花也在这时漫山遍野地盛开。', 'spring.tag1':'3-8℃ 发酵启动','spring.tag2':'初选白菜','spring.tag3':'金达莱花开', 'summer.chapter':'CHAPTER 02','summer.name':'夏·养','summer.period':'6月 — 8月', 'summer.desc':'日照充沛，辣椒由青转红。延边的夏天短暂而温润，正是辣椒成熟、酱料调配的黄金季节。匠人们依据多年经验，将辣椒粉、蒜泥、姜丝按比例混合，制成每坛泡菜独一无二的灵魂酱料。', 'summer.tag1':'辣椒成熟','summer.tag2':'酱料调配','summer.tag3':'18-25℃ 天然熟成', 'autumn.chapter':'CHAPTER 03','autumn.name':'秋·藏','autumn.period':'9月 — 11月', 'autumn.desc':'丰收的季节，万物入坛。秋天的延边，白菜最是肥美紧实，是做泡菜的最佳时节。家家户户开始忙活——抹酱、入坛、封存，一坛坛泡菜被安放在阴凉的地窖中，开始漫长的发酵之旅。', 'autumn.tag1':'白菜丰收','autumn.tag2':'入坛封存','autumn.tag3':'8-15℃ 缓慢发酵', 'winter.chapter':'CHAPTER 04','winter.name':'冬·品','winter.period':'12月 — 2月', 'winter.desc':'雪中开坛，最醇风味。漫长寒冬中，泡菜在低温下缓慢发酵，风味日渐浓郁。当第一场雪覆盖延边，开坛的那一刻，酸甜辣鲜在舌尖绽放——这是时间给耐心等待者最好的礼物。', 'winter.tag1':'-5~5℃ 深度发酵','winter.tag2':'90天最佳风味','winter.tag3':'雪中开坛', 'calendar.title':'发酵日历','calendar.now':'当前季节', 'tab.spring':'春','tab.summer':'夏','tab.autumn':'秋','tab.winter':'冬', 'picks.title':'当季推荐', 'picks.p1.name':'原味辣白菜','picks.p1.desc':'经典原味，清脆爽口，90天自然发酵', 'picks.p2.name':'甜味辣白菜','picks.p2.desc':'微甜微辣，适合初试者，清爽开胃', 'picks.p3.name':'茄子干鱿鱼丝','picks.p3.desc':'海鲜与蔬菜的碰撞，鲜辣交织', 'footer.brand':'海兰菹','footer.desc':'源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。', 'footer.nav':'导航','footer.connect':'联系','footer.follow':'关注', 'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有' }, ko: { 'nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.contact':'연락처', 'hero.title':'사계절 발효', 'spring.chapter':'CHAPTER 01','spring.name':'봄·깨어남','spring.period':'3월 — 5월', 'spring.desc':'얼음이 녹고 만물이 깨어납니다. 3월의 연변, 배추가 겨울 저장고에서 꺼내어 첫 선별이 시작됩니다. 봄의 온화한 기온은 발효 균을 깨우는 최적의 조건이며, 진달래도 이때 온 산을 수놓습니다.', 'spring.tag1':'3-8℃ 발효 시작','spring.tag2':'배추 첫 선별','spring.tag3':'진달래 개화', 'summer.chapter':'CHAPTER 02','summer.name':'여름·기르기','summer.period':'6월 — 8월', 'summer.desc':'햇살이 넘치고 고추가 붉게 익습니다. 연변의 여름은 짧고 온화하여 고추 수확과 양념 조합의 황금기입니다. 장인들은 다년의 경험으로 고춧가루, 다진 마늘, 생강을 비율대로 섞어 각 항아리만의 양념을 만듭니다.', 'summer.tag1':'고추 수확','summer.tag2':'양념 조합','summer.tag3':'18-25℃ 자연 숙성', 'autumn.chapter':'CHAPTER 03','autumn.name':'가을·저장','autumn.period':'9월 — 11월', 'autumn.desc':'수확의 계절, 만물이 항아리에 들어갑니다. 가을의 연변, 배추가 가장 살이 오르고 단단하여 김치 담그기에 최적입니다. 양념 바르기, 항아리 담기, 밀봉까지—각 항아리가 서늘한 지하 저장고에서 긴 발효 여정을 시작합니다.', 'autumn.tag1':'배추 수확','autumn.tag2':'항아리 밀봉','autumn.tag3':'8-15℃ 완만한 발효', 'winter.chapter':'CHAPTER 04','winter.name':'겨울·맛보기','winter.period':'12월 — 2월', 'winter.desc':'눈 속에서 항아리를 열면 가장 깊은 풍미가 피어납니다. 긴 겨울 동안 김치는 저온에서 천천히 발효하며 맛이 깊어집니다. 첫눈이 연변을 덮을 때 항아리를 열면 새콤달콤매콤한 맛이 혀끝에서 피어나니—이것은 인내심 있는 이에게 시간이 주는 가장 좋은 선물입니다.', 'winter.tag1':'-5~5℃ 깊은 발효','winter.tag2':'90일 최적의 풍미','winter.tag3':'눈 속 개봉', 'calendar.title':'발효 달력','calendar.now':'현재 계절', 'tab.spring':'봄','tab.summer':'여름','tab.autumn':'가을','tab.winter':'겨울', 'picks.title':'이 달의 추천', 'picks.p1.name':'원래맛 배추김치','picks.p1.desc':'클래식 원래맛, 아삭하고 상쾌한 90일 자연 발효', 'picks.p2.name':'달콤한 배추김치','picks.p2.desc':'살짝 달콤하고 매콤, 입문자에게 적합, 상쾌하게 입맛 돋움', 'picks.p3.name':'가지말린 오징어채','picks.p3.desc':'해산물과 채소의 만남, 감칠맛과 매운맛의 교차', 'footer.brand':'해란저','footer.desc':'연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.', 'footer.nav':'내비게이션','footer.connect':'연락처','footer.follow':'팔로우', 'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유' }, en: { 'nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.contact':'Contact Us', 'hero.title':'Seasonal Fermentation', 'spring.chapter':'CHAPTER 01','spring.name':'Spring·Awakening','spring.period':'March — May', 'spring.desc':'Ice melts, all things awaken. In March, cabbages are taken from winter storage for the first selection. The mild spring temperature is ideal for awakening fermentation cultures, as azaleas bloom across the mountains.', 'spring.tag1':'3-8°C Fermentation starts','spring.tag2':'First cabbage selection','spring.tag3':'Azaleas in bloom', 'summer.chapter':'CHAPTER 02','summer.name':'Summer·Cultivation','summer.period':'June — August', 'summer.desc':'Abundant sunshine turns peppers from green to red. Yanbian\'s brief, mild summer is the golden season for pepper harvest and sauce preparation. Artisans blend chili powder, garlic, and ginger by instinct, creating each jar\'s unique soul sauce.', 'summer.tag1':'Pepper harvest','summer.tag2':'Sauce preparation','summer.tag3':'18-25°C Natural ripening', 'autumn.chapter':'CHAPTER 03','autumn.name':'Autumn·Preservation','autumn.period':'September — November', 'autumn.desc':'Harvest season, everything goes into jars. Autumn cabbages are plump and firm—perfect for kimchi. Seasoning, jarring, sealing—each jar begins its long fermentation journey in cool cellars.', 'autumn.tag1':'Cabbage harvest','autumn.tag2':'Jar & seal','autumn.tag3':'8-15°C Slow fermentation', 'winter.chapter':'CHAPTER 04','winter.name':'Winter·Tasting','winter.period':'December — February', 'winter.desc':'Opening jars in the snow, the deepest flavors emerge. Through the long winter, kimchi ferments slowly in low temperatures, growing richer. When the first snow covers Yanbian, the moment of opening—sour, sweet, spicy, umami blooming on the tongue—is time\'s finest gift to the patient.', 'winter.tag1':'-5~5°C Deep fermentation','winter.tag2':'90-day peak flavor','winter.tag3':'Snow jar opening', 'calendar.title':'Fermentation Calendar','calendar.now':'Current Season', 'tab.spring':'Spring','tab.summer':'Summer','tab.autumn':'Autumn','tab.winter':'Winter', 'picks.title':'Seasonal Picks', 'picks.p1.name':'Classic Napa Kimchi','picks.p1.desc':'Original flavor, crisp and refreshing, 90-day natural fermentation', 'picks.p2.name':'Sweet Napa Kimchi','picks.p2.desc':'Mildly sweet and spicy, perfect for beginners, refreshing appetizer', 'picks.p3.name':'Eggplant & Squid','picks.p3.desc':'Seafood meets vegetable, savory and spicy交织', 'footer.brand':'HAILANZU','footer.desc':'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.', 'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow', 'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved' }, ja: { 'nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.contact':'お問い合わせ', 'hero.title':'四季発酵', 'spring.chapter':'CHAPTER 01','spring.name':'春·目覚め','spring.period':'3月 — 5月', 'spring.desc':'雪解けと共に万物が目覚めます。3月の延辺、白菜が冬の貯蔵庫から出され最初の選別が始まります。春の穏やかな気温は発酵菌を呼び覚ます最適な条件、チンダルレもこの時期に山いっぱいに咲きます。', 'spring.tag1':'3-8℃ 発酵開始','spring.tag2':'白菜の第一次選別','spring.tag3':'チンダルレ開花', 'summer.chapter':'CHAPTER 02','summer.name':'夏·育み','summer.period':'6月 — 8月', 'summer.desc':'たっぷりの日差しで唐辛子が赤く熟します。延辺の短く穏やかな夏は、唐辛子の収穫と調味料作りの黄金期。職人は長年の経験で粉唐辛子、ニンニク、生姜を配合し、各瓶唯一の魂のタレを作ります。', 'summer.tag1':'唐辛子収穫','summer.tag2':'タレ調合','summer.tag3':'18-25℃ 天然熟成', 'autumn.chapter':'CHAPTER 03','autumn.name':'秋·貯蔵','autumn.period':'9月 — 11月', 'autumn.desc':'収穫の季節、万物が瓶に納まる。秋の延辺、白菜が最もふっくらと引き締まりキムチ作りに最適。タレ塗り、瓶詰め、密閉——各瓶が涼しい地下貯蔵庫で長い発酵の旅を始めます。', 'autumn.tag1':'白菜収穫','autumn.tag2':'瓶詰め密閉','autumn.tag3':'8-15℃ ゆっくり発酵', 'winter.chapter':'CHAPTER 04','winter.name':'冬·味わい','winter.period':'12月 — 2月', 'winter.desc':'雪の中で瓶を開ければ、最も深い風味が花開く。長い冬の間、キムチは低温でゆっくり発酵し味わいが深まります。初雪が延辺を覆う時、瓶を開ける瞬間——酸味、甘味、辛味、旨味が舌の上で弾ける。これは忍耐強く待った者への時間の最高の贈り物です。', 'winter.tag1':'-5~5℃ 深発酵','winter.tag2':'90日最高の風味','winter.tag3':'雪中開封', 'calendar.title':'発酵カレンダー','calendar.now':'現在の季節', 'tab.spring':'春','tab.summer':'夏','tab.autumn':'秋','tab.winter':'冬', 'picks.title':'今季のおすすめ', 'picks.p1.name':'定番白菜キムチ','picks.p1.desc':'クラシックな味、シャキシャキ爽やか、90日自然発酵', 'picks.p2.name':'甘味白菜キムチ','picks.p2.desc':'ほんのり甘く辛い、初心者向け、さっぱり前菜', 'picks.p3.name':'茄子干しイカ糸','picks.p3.desc':'海鮮と野菜の出会い、旨辛交差', 'footer.brand':'海蘭菹','footer.desc':'延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。', 'footer.nav':'ナビゲーション','footer.connect':'連絡先','footer.follow':'フォロー', 'footer.wechat':'微信公式アカウント','footer.weibo':'微博 @海蘭菹','footer.rights':'全著作権保有' } }; const krSubs = { 'hero.title.kr':'사계절 발효', 'spring.name.kr':'봄·깨어남','summer.name.kr':'여름·기르기', 'autumn.name.kr':'가을·저장','winter.name.kr':'겨울·맛보기', 'picks.p1.name.kr':'원래맛 배추김치','picks.p2.name.kr':'달콤한 배추김치','picks.p3.name.kr':'가지말린 오징어채' }; let currentLang = localStorage.getItem('hailanzu-lang') || 'zh'; function setLanguage(lang) { currentLang = lang; loadLanguageFont(lang); localStorage.setItem('hailanzu-lang', lang); document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (translations[lang] && translations[lang][key]) { el.textContent = translations[lang][key]; } }); document.querySelectorAll('[data-i18n-kr]').forEach(el => { const key = el.getAttribute('data-i18n-kr'); if (lang === 'ko' && krSubs[key]) { el.textContent = krSubs[key]; } }); document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.toggle('active', btn.dataset.lang === lang); }); document.documentElement.lang = lang; } if (!localStorage.getItem('hailanzu-lang')) { const bl = navigator.language.slice(0, 2); currentLang = ['zh','ko','en','ja'].includes(bl) ? bl : 'zh'; } const hamburger = document.getElementById('hamburger'); const mobileNav = document.getElementById('mobileNav'); const nav = document.getElementById('nav'); const mobileNavClose = document.getElementById('mobileNavClose'); hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : ''; }); mobileNavClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileNav.classList.remove('open'); document.body.style.overflow = ''; }); mobileNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); mobileNav.classList.remove('open'); document.body.style.overflow = ''; }); }); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }); document.querySelectorAll('.lang-btn').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.dataset.lang)); }); const seasonNames = { zh: { spring: '春', summer: '夏', autumn: '秋', winter: '冬' } }; document.querySelectorAll('.calendar-tab').forEach(tab => { tab.addEventListener('click', () => { document.querySelectorAll('.calendar-tab').forEach(t => t.classList.remove('active')); tab.classList.add('active'); const s = tab.dataset.season; const seasonEl = document.getElementById('calendarSeason'); const colors = { spring: 'var(--spring)', summer: 'var(--summer)', autumn: 'var(--autumn)', winter: 'var(--winter)' }; seasonEl.style.color = colors[s]; seasonEl.textContent = seasonNames.zh[s] || s; }); }); const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }); document.querySelectorAll('.season-chapter, .season-name, .season-name-kr, .season-period, .season-desc, .season-tags, .reveal').forEach(el => observer.observe(el)); (function() { const m = new Date().getMonth() + 1; let season = 'winter'; if (m >= 3 && m <= 5) season = 'spring'; else if (m >= 6 && m <= 8) season = 'summer'; else if (m >= 9 && m <= 11) season = 'autumn'; const tab = document.querySelector(`.calendar-tab[data-season="${season}"]`); if (tab) tab.click(); })(); document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));</script>
+    <script>
+        // i18n
+        const translations = {
+            zh: {
+                'nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.contact':'联系我们',
+                'hero.title':'四季发酵',
+                'spring.chapter':'CHAPTER 01','spring.name':'春·醒','spring.period':'3月 — 5月',
+                'spring.desc':'冰雪消融，万物萌发。三月的延边，白菜从冬窖中取出，开始第一轮筛选。春日温和的气温是唤醒发酵菌种的最佳时机，金达莱花也在这时漫山遍野地盛开。',
+                'spring.tag1':'3-8℃ 发酵启动','spring.tag2':'初选白菜','spring.tag3':'金达莱花开',
+                'summer.chapter':'CHAPTER 02','summer.name':'夏·养','summer.period':'6月 — 8月',
+                'summer.desc':'日照充沛，辣椒由青转红。延边的夏天短暂而温润，正是辣椒成熟、酱料调配的黄金季节。匠人们依据多年经验，将辣椒粉、蒜泥、姜丝按比例混合，制成每坛泡菜独一无二的灵魂酱料。',
+                'summer.tag1':'辣椒成熟','summer.tag2':'酱料调配','summer.tag3':'18-25℃ 天然熟成',
+                'autumn.chapter':'CHAPTER 03','autumn.name':'秋·藏','autumn.period':'9月 — 11月',
+                'autumn.desc':'丰收的季节，万物入坛。秋天的延边，白菜最是肥美紧实，是做泡菜的最佳时节。家家户户开始忙活——抹酱、入坛、封存，一坛坛泡菜被安放在阴凉的地窖中，开始漫长的发酵之旅。',
+                'autumn.tag1':'白菜丰收','autumn.tag2':'入坛封存','autumn.tag3':'8-15℃ 缓慢发酵',
+                'winter.chapter':'CHAPTER 04','winter.name':'冬·品','winter.period':'12月 — 2月',
+                'winter.desc':'雪中开坛，最醇风味。漫长寒冬中，泡菜在低温下缓慢发酵，风味日渐浓郁。当第一场雪覆盖延边，开坛的那一刻，酸甜辣鲜在舌尖绽放——这是时间给耐心等待者最好的礼物。',
+                'winter.tag1':'-5~5℃ 深度发酵','winter.tag2':'90天最佳风味','winter.tag3':'雪中开坛',
+                'calendar.title':'发酵日历','calendar.now':'当前季节',
+                'tab.spring':'春','tab.summer':'夏','tab.autumn':'秋','tab.winter':'冬',
+                'picks.title':'当季推荐',
+                'picks.p1.name':'原味辣白菜','picks.p1.desc':'经典原味，清脆爽口，90天自然发酵',
+                'picks.p2.name':'甜味辣白菜','picks.p2.desc':'微甜微辣，适合初试者，清爽开胃',
+                'picks.p3.name':'茄子干鱿鱼丝','picks.p3.desc':'海鲜与蔬菜的碰撞，鲜辣交织',
+                'footer.brand':'海兰菹','footer.desc':'源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
+                'footer.nav':'导航','footer.connect':'联系','footer.follow':'关注',
+                'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有'
+            },
+            ko: {
+                'nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.contact':'연락처',
+                'hero.title':'사계절 발효',
+                'spring.chapter':'CHAPTER 01','spring.name':'봄·깨어남','spring.period':'3월 — 5월',
+                'spring.desc':'얼음이 녹고 만물이 깨어납니다. 3월의 연변, 배추가 겨울 저장고에서 꺼내어 첫 선별이 시작됩니다. 봄의 온화한 기온은 발효 균을 깨우는 최적의 조건이며, 진달래도 이때 온 산을 수놓습니다.',
+                'spring.tag1':'3-8℃ 발효 시작','spring.tag2':'배추 첫 선별','spring.tag3':'진달래 개화',
+                'summer.chapter':'CHAPTER 02','summer.name':'여름·기르기','summer.period':'6월 — 8월',
+                'summer.desc':'햇살이 넘치고 고추가 붉게 익습니다. 연변의 여름은 짧고 온화하여 고추 수확과 양념 조합의 황금기입니다. 장인들은 다년의 경험으로 고춧가루, 다진 마늘, 생강을 비율대로 섞어 각 항아리만의 양념을 만듭니다.',
+                'summer.tag1':'고추 수확','summer.tag2':'양념 조합','summer.tag3':'18-25℃ 자연 숙성',
+                'autumn.chapter':'CHAPTER 03','autumn.name':'가을·저장','autumn.period':'9월 — 11월',
+                'autumn.desc':'수확의 계절, 만물이 항아리에 들어갑니다. 가을의 연변, 배추가 가장 살이 오르고 단단하여 김치 담그기에 최적입니다. 양념 바르기, 항아리 담기, 밀봉까지—각 항아리가 서늘한 지하 저장고에서 긴 발효 여정을 시작합니다.',
+                'autumn.tag1':'배추 수확','autumn.tag2':'항아리 밀봉','autumn.tag3':'8-15℃ 완만한 발효',
+                'winter.chapter':'CHAPTER 04','winter.name':'겨울·맛보기','winter.period':'12월 — 2월',
+                'winter.desc':'눈 속에서 항아리를 열면 가장 깊은 풍미가 피어납니다. 긴 겨울 동안 김치는 저온에서 천천히 발효하며 맛이 깊어집니다. 첫눈이 연변을 덮을 때 항아리를 열면 새콤달콤매콤한 맛이 혀끝에서 피어나니—이것은 인내심 있는 이에게 시간이 주는 가장 좋은 선물입니다.',
+                'winter.tag1':'-5~5℃ 깊은 발효','winter.tag2':'90일 최적의 풍미','winter.tag3':'눈 속 개봉',
+                'calendar.title':'발효 달력','calendar.now':'현재 계절',
+                'tab.spring':'봄','tab.summer':'여름','tab.autumn':'가을','tab.winter':'겨울',
+                'picks.title':'이 달의 추천',
+                'picks.p1.name':'원래맛 배추김치','picks.p1.desc':'클래식 원래맛, 아삭하고 상쾌한 90일 자연 발효',
+                'picks.p2.name':'달콤한 배추김치','picks.p2.desc':'살짝 달콤하고 매콤, 입문자에게 적합, 상쾌하게 입맛 돋움',
+                'picks.p3.name':'가지말린 오징어채','picks.p3.desc':'해산물과 채소의 만남, 감칠맛과 매운맛의 교차',
+                'footer.brand':'해란저','footer.desc':'연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
+                'footer.nav':'내비게이션','footer.connect':'연락처','footer.follow':'팔로우',
+                'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유'
+            },
+            en: {
+                'nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.contact':'Contact Us',
+                'hero.title':'Seasonal Fermentation',
+                'spring.chapter':'CHAPTER 01','spring.name':'Spring·Awakening','spring.period':'March — May',
+                'spring.desc':'Ice melts, all things awaken. In March, cabbages are taken from winter storage for the first selection. The mild spring temperature is ideal for awakening fermentation cultures, as azaleas bloom across the mountains.',
+                'spring.tag1':'3-8°C Fermentation starts','spring.tag2':'First cabbage selection','spring.tag3':'Azaleas in bloom',
+                'summer.chapter':'CHAPTER 02','summer.name':'Summer·Cultivation','summer.period':'June — August',
+                'summer.desc':'Abundant sunshine turns peppers from green to red. Yanbian\'s brief, mild summer is the golden season for pepper harvest and sauce preparation. Artisans blend chili powder, garlic, and ginger by instinct, creating each jar\'s unique soul sauce.',
+                'summer.tag1':'Pepper harvest','summer.tag2':'Sauce preparation','summer.tag3':'18-25°C Natural ripening',
+                'autumn.chapter':'CHAPTER 03','autumn.name':'Autumn·Preservation','autumn.period':'September — November',
+                'autumn.desc':'Harvest season, everything goes into jars. Autumn cabbages are plump and firm—perfect for kimchi. Seasoning, jarring, sealing—each jar begins its long fermentation journey in cool cellars.',
+                'autumn.tag1':'Cabbage harvest','autumn.tag2':'Jar & seal','autumn.tag3':'8-15°C Slow fermentation',
+                'winter.chapter':'CHAPTER 04','winter.name':'Winter·Tasting','winter.period':'December — February',
+                'winter.desc':'Opening jars in the snow, the deepest flavors emerge. Through the long winter, kimchi ferments slowly in low temperatures, growing richer. When the first snow covers Yanbian, the moment of opening—sour, sweet, spicy, umami blooming on the tongue—is time\'s finest gift to the patient.',
+                'winter.tag1':'-5~5°C Deep fermentation','winter.tag2':'90-day peak flavor','winter.tag3':'Snow jar opening',
+                'calendar.title':'Fermentation Calendar','calendar.now':'Current Season',
+                'tab.spring':'Spring','tab.summer':'Summer','tab.autumn':'Autumn','tab.winter':'Winter',
+                'picks.title':'Seasonal Picks',
+                'picks.p1.name':'Classic Napa Kimchi','picks.p1.desc':'Original flavor, crisp and refreshing, 90-day natural fermentation',
+                'picks.p2.name':'Sweet Napa Kimchi','picks.p2.desc':'Mildly sweet and spicy, perfect for beginners, refreshing appetizer',
+                'picks.p3.name':'Eggplant & Squid','picks.p3.desc':'Seafood meets vegetable, savory and spicy交织',
+                'footer.brand':'HAILANZU','footer.desc':'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
+                'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
+                'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
+            },
+            ja: {
+                'nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.contact':'お問い合わせ',
+                'hero.title':'四季発酵',
+                'spring.chapter':'CHAPTER 01','spring.name':'春·目覚め','spring.period':'3月 — 5月',
+                'spring.desc':'雪解けと共に万物が目覚めます。3月の延辺、白菜が冬の貯蔵庫から出され最初の選別が始まります。春の穏やかな気温は発酵菌を呼び覚ます最適な条件、チンダルレもこの時期に山いっぱいに咲きます。',
+                'spring.tag1':'3-8℃ 発酵開始','spring.tag2':'白菜の第一次選別','spring.tag3':'チンダルレ開花',
+                'summer.chapter':'CHAPTER 02','summer.name':'夏·育み','summer.period':'6月 — 8月',
+                'summer.desc':'たっぷりの日差しで唐辛子が赤く熟します。延辺の短く穏やかな夏は、唐辛子の収穫と調味料作りの黄金期。職人は長年の経験で粉唐辛子、ニンニク、生姜を配合し、各瓶唯一の魂のタレを作ります。',
+                'summer.tag1':'唐辛子収穫','summer.tag2':'タレ調合','summer.tag3':'18-25℃ 天然熟成',
+                'autumn.chapter':'CHAPTER 03','autumn.name':'秋·貯蔵','autumn.period':'9月 — 11月',
+                'autumn.desc':'収穫の季節、万物が瓶に納まる。秋の延辺、白菜が最もふっくらと引き締まりキムチ作りに最適。タレ塗り、瓶詰め、密閉——各瓶が涼しい地下貯蔵庫で長い発酵の旅を始めます。',
+                'autumn.tag1':'白菜収穫','autumn.tag2':'瓶詰め密閉','autumn.tag3':'8-15℃ ゆっくり発酵',
+                'winter.chapter':'CHAPTER 04','winter.name':'冬·味わい','winter.period':'12月 — 2月',
+                'winter.desc':'雪の中で瓶を開ければ、最も深い風味が花開く。長い冬の間、キムチは低温でゆっくり発酵し味わいが深まります。初雪が延辺を覆う時、瓶を開ける瞬間——酸味、甘味、辛味、旨味が舌の上で弾ける。これは忍耐強く待った者への時間の最高の贈り物です。',
+                'winter.tag1':'-5~5℃ 深発酵','winter.tag2':'90日最高の風味','winter.tag3':'雪中開封',
+                'calendar.title':'発酵カレンダー','calendar.now':'現在の季節',
+                'tab.spring':'春','tab.summer':'夏','tab.autumn':'秋','tab.winter':'冬',
+                'picks.title':'今季のおすすめ',
+                'picks.p1.name':'定番白菜キムチ','picks.p1.desc':'クラシックな味、シャキシャキ爽やか、90日自然発酵',
+                'picks.p2.name':'甘味白菜キムチ','picks.p2.desc':'ほんのり甘く辛い、初心者向け、さっぱり前菜',
+                'picks.p3.name':'茄子干しイカ糸','picks.p3.desc':'海鮮と野菜の出会い、旨辛交差',
+                'footer.brand':'海蘭菹','footer.desc':'延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
+                'footer.nav':'ナビゲーション','footer.connect':'連絡先','footer.follow':'フォロー',
+                'footer.wechat':'微信公式アカウント','footer.weibo':'微博 @海蘭菹','footer.rights':'全著作権保有'
+            }
+        };
+
+        // Korean subtitle translations
+        const krSubs = {
+            'hero.title.kr':'사계절 발효',
+            'spring.name.kr':'봄·깨어남','summer.name.kr':'여름·기르기',
+            'autumn.name.kr':'가을·저장','winter.name.kr':'겨울·맛보기',
+            'picks.p1.name.kr':'원래맛 배추김치','picks.p2.name.kr':'달콤한 배추김치','picks.p3.name.kr':'가지말린 오징어채'
+        };
+
+        let currentLang = localStorage.getItem('hailanzu-lang') || 'zh';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+  loadLanguageFont(lang);
+            localStorage.setItem('hailanzu-lang', lang);
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            // Korean subtitles
+            document.querySelectorAll('[data-i18n-kr]').forEach(el => {
+                const key = el.getAttribute('data-i18n-kr');
+                if (lang === 'ko' && krSubs[key]) {
+                    el.textContent = krSubs[key];
+                }
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.documentElement.lang = lang;
+        }
+
+        if (!localStorage.getItem('hailanzu-lang')) {
+            const bl = navigator.language.slice(0, 2);
+            currentLang = ['zh','ko','en','ja'].includes(bl) ? bl : 'zh';
+        }
+
+        // Navigation
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const nav = document.getElementById('nav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+        mobileNavClose.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
+
+        // Calendar tabs
+        const seasonNames = { zh: { spring: '春', summer: '夏', autumn: '秋', winter: '冬' } };
+        document.querySelectorAll('.calendar-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.calendar-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const s = tab.dataset.season;
+                const seasonEl = document.getElementById('calendarSeason');
+                const colors = { spring: 'var(--spring)', summer: 'var(--summer)', autumn: 'var(--autumn)', winter: 'var(--winter)' };
+                seasonEl.style.color = colors[s];
+                seasonEl.textContent = seasonNames.zh[s] || s;
+            });
+        });
+
+        // Intersection Observer
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.season-chapter, .season-name, .season-name-kr, .season-period, .season-desc, .season-tags, .reveal').forEach(el => observer.observe(el));
+
+        // Auto-detect current season for calendar
+        (function() {
+            const m = new Date().getMonth() + 1;
+            let season = 'winter';
+            if (m >= 3 && m <= 5) season = 'spring';
+            else if (m >= 6 && m <= 8) season = 'summer';
+            else if (m >= 9 && m <= 11) season = 'autumn';
+            const tab = document.querySelector(`.calendar-tab[data-season="${season}"]`);
+            if (tab) tab.click();
+        })();
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
+    </script>
 
 
 <script src="js/common.js"></script>
