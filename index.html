@@ -202,7 +202,7 @@ ul,ol{list-style:none}
 .hero-seal-wrap{display:flex;align-items:flex-end;justify-content:center;padding-top:clamp(20px,3vw,40px);animation:sealStamp .55s var(--ease-out) 1s both}
 .hero-manifesto{position:absolute;right:clamp(32px,6vw,100px);top:50%;transform:translateY(-50%);max-width:200px;z-index:10;pointer-events:none;opacity:0}
 .hero-manifesto-text{font-family:var(--font-serif);font-size:clamp(14px,1.5vw,20px);line-height:2.6;letter-spacing:6px;opacity:1;writing-mode:vertical-rl;color:var(--rice)}
-.hero-manifesto-text span.char{opacity:0;animation:charReveal .3s ease forwards}
+.hero-manifesto-text span.char{opacity:0;animation:charReveal .3s ease forwards}.hero-manifesto-text:not(.typing){visibility:hidden}
 @keyframes charReveal{from{opacity:0;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
 .hero-seal{width:clamp(52px,6.5vw,80px);height:clamp(52px,6.5vw,80px);border:2.5px solid var(--seal);border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-weight:900;font-size:clamp(20px,2.8vw,32px);color:var(--seal);transform:rotate(-8deg);position:relative}
 .hero-seal::before{content:'';position:absolute;inset:4px;border:1px solid var(--seal);border-radius:2px}
@@ -1038,6 +1038,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
       }
     }
 
+    textEl.classList.add('typing');
     textEl.innerHTML = out;
     manifestoEl.style.opacity = '1';
   }
