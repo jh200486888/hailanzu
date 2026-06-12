@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
   });
   
   // Community cards
-  document.querySelectorAll('.community-card[data-platform]').forEach(function(card) {
+  document.querySelectorAll('.community-action-btn[data-platform]').forEach(function(card) {
     card.addEventListener('click', function() { openQR(this.dataset.platform); });
   });
   
