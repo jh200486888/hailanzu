@@ -256,11 +256,16 @@ ul,ol{list-style:none}
 .products-slide-spice-label{font-size:10px;opacity:.45;letter-spacing:2px;margin-right:4px}
 .products-slide-detail-btn{margin-top:16px;font-size:11px;letter-spacing:3px;opacity:.4;cursor:pointer;border:1px solid currentColor;padding:6px 20px;border-radius:2px;transition:all .3s ease;background:none;font-family:var(--font-body)}
 .products-slide-detail-btn:hover{opacity:.8;border-color:var(--seal);color:var(--seal)}
-.products-slide-detail{display:none;margin-top:16px;padding-top:16px;border-top:1px solid rgba(245,240,232,.08)}
-.products-slide-detail.show{display:block;animation:detailFadeIn .4s ease}
-.products-slide-detail-row{display:flex;gap:8px;margin-bottom:6px;font-size:12px;opacity:.5}
-.products-slide-detail-label{opacity:.3;letter-spacing:1px;min-width:48px}
-.products-slide-detail-value{line-height:1.8}
+.products-slide-visual-inner{cursor:pointer}
+.products-slide-detail{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.products-slide-detail.show{opacity:1;pointer-events:auto}
+.products-slide-detail-card{background:rgba(26,60,52,.95);border:1px solid rgba(184,134,11,.3);border-radius:16px;padding:clamp(24px,5vw,48px);max-width:420px;width:90%;position:relative}
+.products-slide-detail-close{position:absolute;top:12px;right:16px;background:none;border:none;color:rgba(245,240,232,.5);font-size:24px;cursor:pointer;line-height:1;padding:4px;transition:color .2s}
+.products-slide-detail-close:hover{color:var(--seal)}
+.products-slide-detail-title{font-family:var(--font-serif);font-size:18px;letter-spacing:4px;margin-bottom:20px;color:var(--rice);border-bottom:1px solid rgba(245,240,232,.1);padding-bottom:12px}
+.products-slide-detail-row{display:flex;gap:12px;margin-bottom:12px;font-size:13px;opacity:.7}
+.products-slide-detail-label{opacity:.4;letter-spacing:1px;min-width:48px;white-space:nowrap}
+.products-slide-detail-value{line-height:1.8;color:var(--rice)}
 @keyframes detailFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .spice-dot{width:6px;height:14px;border-radius:3px 3px 2px 2px;background:currentColor;opacity:.1;transition:all .4s ease;transform:rotate(-15deg)}
 .spice-dot.on{opacity:1;background:var(--seal);box-shadow:0 0 6px var(--seal-glow)}
@@ -1210,7 +1215,7 @@ try{
     <div class="products-carousel-slide slide-0" data-slide="0" data-bg="#E8EDE5">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner">
+          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-01-napa.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1222,19 +1227,20 @@ try{
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail">
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p2.ingredients">白菜、辣椒粉、蒜、糖、鱼露</span></div>
+          <div class="products-slide-detail"><div class="products-slide-detail-card">
+          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p2.ingredients">白菜、辣椒粉、蒜、糖、鱼露</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p2.pairing">烤肉、拌饭</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p2.weight">300g / 500g</span></div>
-          </div>
-          </div>
+        </div></div></div>
         </div>
       </div>
     </div>
     <div class="products-carousel-slide slide-2" data-slide="2" data-bg="#5C3A4E">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner">
+          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-03-eggplant.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1246,19 +1252,20 @@ try{
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail">
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p4.ingredients">萝卜、辣椒粉、蒜、虾酱</span></div>
+          <div class="products-slide-detail"><div class="products-slide-detail-card">
+          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p4.ingredients">萝卜、辣椒粉、蒜、虾酱</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p4.pairing">白米饭、骨头汤</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p4.weight">250g / 400g</span></div>
-          </div>
-          </div>
+        </div></div></div>
         </div>
       </div>
     </div>
     <div class="products-carousel-slide slide-4" data-slide="4" data-bg="#3D6B4F">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner">
+          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-05-perilla.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1270,19 +1277,20 @@ try{
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail">
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p6.ingredients">牛板筋、辣椒粉、糖、芝麻</span></div>
+          <div class="products-slide-detail"><div class="products-slide-detail-card">
+          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p6.ingredients">牛板筋、辣椒粉、糖、芝麻</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p6.pairing">啤酒、烧酒</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p6.weight">200g / 350g</span></div>
-          </div>
-          </div>
+        </div></div></div>
         </div>
       </div>
     </div>
     <div class="products-carousel-slide slide-6" data-slide="6" data-bg="#C4A46C">
       <div class="products-slide-inner">
         <div class="products-slide-visual">
-          <div class="products-slide-visual-inner">
+          <div class="products-slide-visual-inner" onclick="this.closest('.products-carousel-slide').querySelector('.products-slide-detail').classList.toggle('show')">
           <img class="products-slide-img" src="imgs/products/hailanzu-product-07-pollack.jpg" alt="">
           <div class="products-slide-img-overlay"></div>
         </div>
@@ -1294,12 +1302,13 @@ try{
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="this.nextElementSibling.classList.toggle('show')">查看详情</button>
-          <div class="products-slide-detail">
-            <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p8.ingredients">桔梗根、辣椒粉、糖、蒜、芝麻</span></div>
+          <div class="products-slide-detail"><div class="products-slide-detail-card">
+          <button class="products-slide-detail-close" onclick="this.closest('.products-slide-detail').classList.remove('show')">&times;</button>
+          <div class="products-slide-detail-title" data-i18n="products.detailTitle">产品详情</div>
+          <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.ingredient">配料</span><span class="products-slide-detail-value" data-i18n="products.p8.ingredients">桔梗根、辣椒粉、糖、蒜、芝麻</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.pairing">搭配</span><span class="products-slide-detail-value" data-i18n="products.p8.pairing">白米饭、烧酒</span></div>
             <div class="products-slide-detail-row"><span class="products-slide-detail-label" data-i18n="products.spec">规格</span><span class="products-slide-detail-value" data-i18n="products.p8.weight">200g / 350g</span></div>
-          </div>
-          </div>
+        </div></div></div>
         </div>
       </div>
     </div>
@@ -1696,6 +1705,7 @@ const i18n = {
 
   // PRODUCT DETAIL
   'products.detail': { zh:'查看详情', ko:'상세보기', en:'View Details', ja:'詳細を見る' },
+  'products.detailTitle': { zh:'产品详情', ko:'제품 상세', en:'Product Details', ja:'製品詳細' },
   'products.ingredient': { zh:'配料', ko:'재료', en:'Ingredients', ja:'材料' },
   'products.pairing': { zh:'搭配', ko:'어울리는 음식', en:'Perfect Pairing', ja:'合わせ' },
   'products.spec': { zh:'规格', ko:'규격', en:'Size', ja:'仕様' },
