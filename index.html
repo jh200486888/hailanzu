@@ -401,13 +401,13 @@ ul,ol{list-style:none}
 }
 /* ==================== LANGUAGE FONT SWITCH ==================== */
 body[data-lang="ko"]{font-family:var(--font-sans-kr)}
-body[data-lang="ko"] .nav-logo-cn,body[data-lang="ko"] .hero-declaration,body[data-lang="ko"] .section-title,body[data-lang="ko"] .season-name,body[data-lang="ko"] .products-slide-name,body[data-lang="ko"] .story-title,body[data-lang="ko"] .gift-title,body[data-lang="ko"] .gift-name,body[data-lang="ko"] .cta-banner-title{font-family:var(--font-serif-kr)}
+body[data-lang="ko"] .nav-logo-cn,body[data-lang="ko"] .hero-declaration,body[data-lang="ko"] .section-title,body[data-lang="ko"] .terroir-slide-title,body[data-lang="ko"] .season-name,body[data-lang="ko"] .products-slide-name,body[data-lang="ko"] .story-title,body[data-lang="ko"] .gift-title,body[data-lang="ko"] .gift-name,body[data-lang="ko"] .cta-banner-title{font-family:var(--font-serif-kr)}
 body[data-lang="ko"] .nav-logo-kr,body[data-lang="ko"] .hero-declaration-kr{font-family:var(--font-serif)}
 /* Korean: swap hero hierarchy — 해란저 becomes primary, 海兰菹 becomes secondary */
 body[data-lang="ko"] .hero-declaration{font-size:clamp(22px,3.5vw,44px);opacity:.3;letter-spacing:clamp(8px,2vw,20px)}
 body[data-lang="ko"] .hero-declaration-kr{font-size:clamp(56px,12vw,140px);opacity:1;letter-spacing:clamp(12px,3vw,36px)}
 body[data-lang="en"]{font-family:'Inter',sans-serif}
-body[data-lang="en"] .nav-logo-cn,body[data-lang="en"] .hero-declaration,body[data-lang="en"] .section-title,body[data-lang="en"] .season-name,body[data-lang="en"] .products-slide-name,body[data-lang="en"] .story-title,body[data-lang="en"] .gift-title,body[data-lang="en"] .gift-name,body[data-lang="en"] .cta-banner-title{font-family:var(--font-display)}
+body[data-lang="en"] .nav-logo-cn,body[data-lang="en"] .hero-declaration,body[data-lang="en"] .section-title,body[data-lang="en"] .terroir-slide-title,body[data-lang="en"] .season-name,body[data-lang="en"] .products-slide-name,body[data-lang="en"] .story-title,body[data-lang="en"] .gift-title,body[data-lang="en"] .gift-name,body[data-lang="en"] .cta-banner-title{font-family:var(--font-display)}
 /* English: horizontal layout for latin text */
 body[data-lang="en"] .hero-text{flex-direction:column;align-items:center}
 body[data-lang="en"] .hero-text-col{flex-direction:row}
@@ -415,7 +415,7 @@ body[data-lang="en"] .hero-declaration{writing-mode:horizontal-tb;font-size:clam
 body[data-lang="en"] .hero-declaration-kr{writing-mode:horizontal-tb;font-size:clamp(14px,1.8vw,22px);letter-spacing:clamp(6px,1.5vw,16px);opacity:.35;margin-top:clamp(8px,1.5vw,16px)}
 body[data-lang="en"] .hero-seal-wrap{padding-top:clamp(20px,3vw,40px)}
 body[data-lang="ja"]{font-family:var(--font-sans-jp)}
-body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[data-lang="ja"] .section-title,body[data-lang="ja"] .season-name,body[data-lang="ja"] .products-slide-name,body[data-lang="ja"] .story-title,body[data-lang="ja"] .gift-title,body[data-lang="ja"] .gift-name,body[data-lang="ja"] .cta-banner-title{font-family:var(--font-serif-jp)}
+body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[data-lang="ja"] .section-title,body[data-lang="ja"] .terroir-slide-title,body[data-lang="ja"] .season-name,body[data-lang="ja"] .products-slide-name,body[data-lang="ja"] .story-title,body[data-lang="ja"] .gift-title,body[data-lang="ja"] .gift-name,body[data-lang="ja"] .cta-banner-title{font-family:var(--font-serif-jp)}
 
 .section-explore {
     display: flex;
@@ -451,6 +451,43 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
     transform: translateX(4px);
 }
 
+
+/* ==================== TERROIR FULL-BLEED ==================== */
+.terroir{position:relative;height:100vh;overflow:hidden;background:var(--ink-deep)}
+.terroir-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease-in-out;z-index:1}
+.terroir-slide.active{opacity:1;z-index:2}
+.terroir-slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease-out}
+.terroir-slide.active .terroir-slide-img{transform:scale(1.06)}
+.terroir-slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,36,32,.5) 0%,rgba(15,36,32,.2) 40%,rgba(15,36,32,.3) 70%,rgba(15,36,32,.7) 100%);z-index:1}
+.terroir-slide-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;text-align:center;padding:0 clamp(24px,6vw,80px)}
+.terroir-slide-label{font-family:var(--font-sans);font-size:clamp(10px,1.2vw,13px);letter-spacing:6px;text-transform:uppercase;opacity:.5;margin-bottom:16px;color:var(--rice)}
+.terroir-slide-title{font-family:var(--font-serif);font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:clamp(4px,1vw,12px);color:var(--rice);line-height:1.2;margin-bottom:8px;text-shadow:0 2px 40px rgba(0,0,0,.4)}
+.terroir-slide-title-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.5vw,20px);letter-spacing:8px;opacity:.45;color:var(--rice);margin-bottom:24px}
+.terroir-slide-poem{font-family:var(--font-serif);font-size:clamp(13px,1.4vw,17px);letter-spacing:3px;opacity:.6;color:var(--rice);line-height:2;font-style:italic;max-width:500px}
+.terroir-counter{position:absolute;bottom:clamp(30px,5vw,60px);right:clamp(24px,4vw,48px);z-index:10;font-family:var(--font-body);font-size:12px;letter-spacing:3px;color:var(--rice);opacity:.4}
+.terroir-counter-current{font-size:28px;font-weight:300;opacity:.8;vertical-align:baseline}
+.terroir-dots{position:absolute;bottom:clamp(30px,5vw,60px);left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:12px}
+.terroir-dot{width:8px;height:8px;border-radius:50%;background:var(--rice);opacity:.2;cursor:pointer;transition:all .4s var(--ease-out)}
+.terroir-dot.active{opacity:1;transform:scale(1.4)}
+.terroir-nav{position:absolute;top:50%;z-index:10;transform:translateY(-50%);background:none;border:1px solid rgba(245,240,232,.15);color:var(--rice);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:all .3s var(--ease-out);opacity:.5}
+.terroir-nav:hover{opacity:1;border-color:var(--gold);color:var(--gold)}
+.terroir-nav-prev{left:clamp(16px,3vw,40px)}
+.terroir-nav-next{right:clamp(16px,3vw,40px)}
+.terroir-flower{position:absolute;z-index:3;pointer-events:none;opacity:.06}
+.terroir-flower svg{width:100%;height:100%}
+
+@keyframes terroirFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+  .terroir-slide-poem{font-size:clamp(12px,3vw,14px);letter-spacing:2px;line-height:1.8}
+  .terroir-slide-title{letter-spacing:clamp(2px,1vw,6px)}
+  .terroir-dots{display:none}
+  .terroir-nav{width:36px;height:36px;font-size:14px;opacity:.4}
+}
+@media(prefers-reduced-motion:reduce){
+  .terroir-slide{transition:none}
+  .terroir-slide-img{transition:none}
+  .terroir-slide.active .terroir-slide-img{transform:none}
+}
 </style>
 </head>
 <body>
@@ -894,6 +931,67 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 <div class="marquee">
   <div class="marquee-inner" id="marqueeInner"></div>
 </div>
+<!-- ==================== TERROIR FULL-BLEED ==================== -->
+<section class="terroir" id="terroir">
+  <!-- 风土花卉暗纹 -->
+  <div class="terroir-flower" style="right:-40px;top:5%;width:200px;height:260px;opacity:.04">
+    <svg viewBox="0 0 200 260" fill="none"><g fill="currentColor" opacity=".5"><g transform="translate(100,80) scale(.6)"><ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(288)"/><circle cx="0" cy="0" r="3"/></g><path d="M100 80 Q96 140 98 200" fill="none" stroke="currentColor" stroke-width="1"/></g></svg>
+  </div>
+
+  <!-- Slide 1: 长白山 -->
+  <div class="terroir-slide active" data-terroir="0">
+    <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-changbai.jpg" alt="">
+    <div class="terroir-slide-overlay"></div>
+    <div class="terroir-slide-content">
+      <div class="terroir-slide-label" data-i18n="terroir.t0.label">延边 · 연변</div>
+      <div class="terroir-slide-title" data-i18n="terroir.t0.title">长白山</div>
+      <div class="terroir-slide-title-kr" data-i18n="terroir.t0.sub">백두산</div>
+      <div class="terroir-slide-poem" data-i18n="terroir.t0.poem">雪线之上，云海之下，万物在此苏醒</div>
+    </div>
+  </div>
+
+  <!-- Slide 2: 海兰江 -->
+  <div class="terroir-slide" data-terroir="1">
+    <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-hailan.jpg" alt="">
+    <div class="terroir-slide-overlay"></div>
+    <div class="terroir-slide-content">
+      <div class="terroir-slide-label" data-i18n="terroir.t1.label">海兰江 · 해란강</div>
+      <div class="terroir-slide-title" data-i18n="terroir.t1.title">海兰江畔</div>
+      <div class="terroir-slide-title-kr" data-i18n="terroir.t1.sub">해란강변</div>
+      <div class="terroir-slide-poem" data-i18n="terroir.t1.poem">清冽的江水，流淌着千年的发酵记忆</div>
+    </div>
+  </div>
+
+  <!-- Slide 3: 白菜田 -->
+  <div class="terroir-slide" data-terroir="2">
+    <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-cabbage.jpg" alt="">
+    <div class="terroir-slide-overlay"></div>
+    <div class="terroir-slide-content">
+      <div class="terroir-slide-label" data-i18n="terroir.t2.label">沃土 · 옥토</div>
+      <div class="terroir-slide-title" data-i18n="terroir.t2.title">黄心白菜</div>
+      <div class="terroir-slide-title-kr" data-i18n="terroir.t2.sub">노심배추</div>
+      <div class="terroir-slide-poem" data-i18n="terroir.t2.poem">昼夜温差凝练甘甜，每一叶都是大地的馈赠</div>
+    </div>
+  </div>
+
+  <!-- Slide 4: 苹果梨 -->
+  <div class="terroir-slide" data-terroir="3">
+    <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-pear.jpg" alt="">
+    <div class="terroir-slide-overlay"></div>
+    <div class="terroir-slide-content">
+      <div class="terroir-slide-label" data-i18n="terroir.t3.label">果园 · 과원</div>
+      <div class="terroir-slide-title" data-i18n="terroir.t3.title">苹果梨</div>
+      <div class="terroir-slide-title-kr" data-i18n="terroir.t3.sub">사과배</div>
+      <div class="terroir-slide-poem" data-i18n="terroir.t3.poem">山间果园，秋日金色，自然写就的风味密码</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <button class="terroir-nav terroir-nav-prev" id="terroirPrev" aria-label="Previous">&#8249;</button>
+  <button class="terroir-nav terroir-nav-next" id="terroirNext" aria-label="Next">&#8250;</button>
+  <div class="terroir-dots" id="terroirDots"></div>
+  <div class="terroir-counter"><span class="terroir-counter-current" id="terroirCounterCur">01</span> / 04</div>
+</section>
 
 <!-- ==================== FOUR SEASONS ==================== -->
 <section class="section seasons" id="seasons">
@@ -1553,6 +1651,22 @@ const i18n = {
 
   // EAR LABELS
   'ear.products': { zh:'产品', ko:'제품', en:'Products', ja:'製品' },
+  'terroir.t0.label': { zh:'延边 · 연변', ko:'연변 · 延边', en:'Yanbian · 연변', ja:'延辺 · 연변' },
+  'terroir.t0.title': { zh:'长白山', ko:'백두산', en:'Changbai Mountain', ja:'長白山' },
+  'terroir.t0.sub': { zh:'백두산', ko:'长白山', en:'Baekdusan', ja:'白頭山' },
+  'terroir.t0.poem': { zh:'雪线之上，云海之下，万物在此苏醒', ko:'설선 위, 운해 아래, 만물이 여기서 깨어난다', en:'Above the snowline, below the clouds, all things awaken here', ja:'雪線の上、雲海の下、万物がここで目覚める' },
+  'terroir.t1.label': { zh:'海兰江 · 해란강', ko:'해란강 · 海兰江', en:'Hailan River · 해란강', ja:'海蘭江 · 해란강' },
+  'terroir.t1.title': { zh:'海兰江畔', ko:'해란강변', en:'Hailan River Banks', ja:'海蘭江の畔' },
+  'terroir.t1.sub': { zh:'해란강변', ko:'海兰江畔', en:'Hailan River', ja:'海蘭江畔' },
+  'terroir.t1.poem': { zh:'清冽的江水，流淌着千年的发酵记忆', ko:'맑은 강물이 천년의 발효 기억을 흘려보낸다', en:'Crystal waters carry a millennium of fermentation memory', ja:'清らかな水が千年の発酵の記憶を運ぶ' },
+  'terroir.t2.label': { zh:'沃土 · 옥토', ko:'옥토 · 沃土', en:'Fertile Land · 옥토', ja:'沃土 · 옥토' },
+  'terroir.t2.title': { zh:'黄心白菜', ko:'노심배추', en:'Napa Cabbage', ja:'黄心白菜' },
+  'terroir.t2.sub': { zh:'노심배추', ko:'黄心白菜', en:'Golden Heart Cabbage', ja:'ノシム白菜' },
+  'terroir.t2.poem': { zh:'昼夜温差凝练甘甜，每一叶都是大地的馈赠', ko:'일교차가 달콤함을 응축하고, 매 잎이 대지의 선물이다', en:'Day-night温差 condenses sweetness; every leaf is a gift of the land', ja:'昼夜の寒暖差が甘みを凝縮し、一枚一枚が大地の贈り物' },
+  'terroir.t3.label': { zh:'果园 · 과원', ko:'과원 · 果园', en:'Orchard · 과원', ja:'果園 · 과원' },
+  'terroir.t3.title': { zh:'苹果梨', ko:'사과배', en:'Apple Pear', ja:'リンゴ梨' },
+  'terroir.t3.sub': { zh:'사과배', ko:'苹果梨', en:'Apple Pear', ja:'サグベ' },
+  'terroir.t3.poem': { zh:'山间果园，秋日金色，自然写就的风味密码', ko:'산간 과원, 가을의 황금빛, 자연이 쓴 풍미 암호', en:'Mountain orchards, autumn gold — nature’s flavor code', ja:'山間の果園、秋の黄金、自然が記した風味の暗号' },
   'ear.story': { zh:'故事', ko:'이야기', en:'Story', ja:'物語' },
 };
 
@@ -1872,6 +1986,75 @@ document.querySelectorAll('.gift-cta').forEach(btn => {
 
 // Initial call
 updateSticky();
+
+// ====== TERROIR CAROUSEL ======
+(function(){
+  const slides = document.querySelectorAll('.terroir-slide');
+  const dotsContainer = document.getElementById('terroirDots');
+  const counterCur = document.getElementById('terroirCounterCur');
+  const prevBtn = document.getElementById('terroirPrev');
+  const nextBtn = document.getElementById('terroirNext');
+  let current = 0;
+  let timer = null;
+  const total = slides.length;
+
+  // Build dots
+  for(let i=0; i<total; i++){
+    const dot = document.createElement('div');
+    dot.className = 'terroir-dot' + (i===0 ? ' active' : '');
+    dot.dataset.t = i;
+    dot.addEventListener('click', function(){ goTo(parseInt(this.dataset.t)); resetTimer(); });
+    dotsContainer.appendChild(dot);
+  }
+  const dots = dotsContainer.querySelectorAll('.terroir-dot');
+
+  function goTo(idx){
+    slides[current].classList.remove('active');
+    current = ((idx % total) + total) % total;
+    slides[current].classList.add('active');
+    // Animate content
+    const ct = slides[current].querySelector('.terroir-slide-content');
+    if(ct){ ct.style.animation='none'; ct.offsetHeight; ct.style.animation='terroirFadeIn 1.2s ease-out'; }
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===current); });
+    if(counterCur) counterCur.textContent = String(current+1).padStart(2,'0');
+    // Reset image zoom
+    const img = slides[current].querySelector('.terroir-slide-img');
+    if(img){ img.style.transform='scale(1)'; }
+  }
+
+  if(prevBtn) prevBtn.addEventListener('click',function(){ goTo(current-1); resetTimer(); });
+  if(nextBtn) nextBtn.addEventListener('click',function(){ goTo(current+1); resetTimer(); });
+
+  function resetTimer(){ clearInterval(timer); timer=setInterval(function(){ goTo(current+1); },6000); }
+  resetTimer();
+
+  // Touch swipe
+  const section = document.querySelector('.terroir');
+  if(section){
+    let sx=0,sy=0;
+    section.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+    section.addEventListener('touchend',function(e){
+      const dx=e.changedTouches[0].clientX-sx;
+      const dy=e.changedTouches[0].clientY-sy;
+      if(Math.abs(dx)>Math.abs(dy) && Math.abs(dx)>50){
+        if(dx<0) goTo(current+1); else goTo(current-1);
+        resetTimer();
+      }
+    },{passive:true});
+  }
+
+  // Scroll parallax - subtle image zoom on scroll
+  if(section){
+    window.addEventListener('scroll',function(){
+      const rect=section.getBoundingClientRect();
+      if(rect.top<window.innerHeight && rect.bottom>0){
+        const progress=Math.max(0,Math.min(1,1-rect.top/window.innerHeight));
+        const img=slides[current].querySelector('.terroir-slide-img');
+        if(img) img.style.transform='scale('+(1+progress*0.06)+')';
+      }
+    },{passive:true});
+  }
+})();
 </script>
 
 <!-- JSON-LD -->
