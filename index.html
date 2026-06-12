@@ -2249,31 +2249,32 @@ document.querySelectorAll('.gift-cta').forEach(btn => {
 if(typeof setLanguage==='function') setLanguage(currentLang);
 
 // ====== TERROIR CAROUSEL ======
-document.addEventListener('DOMContentLoaded',function(){
+(function initTerroir(){
 try{
-  const slides = document.querySelectorAll('.terroir-slide');
-  const dots = document.querySelectorAll('.terroir-dot');
-  const counterCur = document.querySelector('.terroir-counter-current');
-  const prevBtn = document.getElementById('terroirPrev');
-  const nextBtn = document.getElementById('terroirNext');
-  let current = 0;
-  let timer = null;
-  const total = slides.length;
-  if(total===0) return;
+  var slides = document.querySelectorAll('.terroir-slide');
+  var dots = document.querySelectorAll('.terroir-dot');
+  var counterCur = document.querySelector('.terroir-counter-current');
+  var prevBtn = document.getElementById('terroirPrev');
+  var nextBtn = document.getElementById('terroirNext');
+  var current = 0;
+  var timer = null;
+  var total = slides.length;
+  if(total===0){ console.warn('TERROIR: no slides found'); return; }
 
-  // Initialize: first slide active, rest hidden via opacity
-  slides.forEach((s,i)=>{ s.classList.toggle('active', i===0); });
+  // Initialize: first slide active
+  slides.forEach(function(s,i){ s.classList.toggle('active', i===0); });
+  console.log('TERROIR: initialized', total, 'slides');
 
   function goTo(idx){
     if(total===0) return;
     if(slides[current]) slides[current].classList.remove('active');
     current = ((idx % total) + total) % total;
     if(slides[current]) slides[current].classList.add('active');
-    const ct = slides[current].querySelector('.terroir-slide-content');
+    var ct = slides[current].querySelector('.terroir-slide-content');
     if(ct){ ct.style.animation='none'; void ct.offsetHeight; ct.style.animation=''; }
-    dots.forEach((d,i)=>{ d.classList.toggle('active', i===current); });
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===current); });
     if(counterCur) counterCur.textContent = String(current+1).padStart(2,'0');
-    const img = slides[current].querySelector('.terroir-slide-img');
+    var img = slides[current].querySelector('.terroir-slide-img');
     if(img){ img.style.transform='scale(1)'; }
   }
 
@@ -2283,9 +2284,10 @@ try{
 
   function resetTimer(){ clearInterval(timer); timer=setInterval(function(){goTo(current+1);},6000); }
   resetTimer();
+  console.log('TERROIR: auto-play started, interval 6s');
 
   // Touch swipe
-  const section = document.querySelector('.terroir');
+  var section = document.querySelector('.terroir');
   if(section){
     var sx=0,sy=0;
     section.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
@@ -2311,7 +2313,7 @@ try{
     },{passive:true});
   }
 }catch(e){console.error('TERROIR carousel error:',e);}
-});
+})();
 // Initial call
 </script>
 
