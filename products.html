@@ -6,7 +6,7 @@
     <title>产品殿堂 | 海兰菹 HAILANZU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --azalea: #C4727F;
@@ -1195,6 +1195,8 @@
             animation: fadeInUp 1s var(--ease-out) forwards;
         }
     </style>
+<link rel="preload" href="css/common.css" as="style">
+<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -1218,6 +1220,17 @@
             <a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
             <a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
             <a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
+        </div>
+        <div class="nav-social">
+            <button class="nav-social-btn" data-platform="wechat-work" aria-label="企业微信">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.11.24-.245 0-.06-.024-.118-.04-.177l-.325-1.233a.492.492 0 01.177-.554C23.028 18.135 24 16.413 24 14.508c0-3.367-3.226-5.65-7.062-5.65zm-2.095 2.926c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.19 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.969-.982z"/></svg>
+            </button>
+            <button class="nav-social-btn" data-platform="official" aria-label="公众号">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18z"/></svg>
+            </button>
+            <a class="nav-social-btn" href="https://www.xiaohongshu.com/user/profile/" target="_blank" rel="noopener" aria-label="小红书" data-platform="xhs">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.5 7h-2v7h-1V9h-2V8h5v1z"/></svg>
+            </a>
         </div>
         <div class="lang-switch">
             <button class="lang-btn" data-lang="zh">中</button>
@@ -1311,9 +1324,7 @@
         <div class="products-grid" id="productsGrid">
             <!-- Product 1: Plain Kimchi -->
             <div class="product-card" data-category="kimchi" data-product="plain-kimchi">
-                <div class="product-card-header" style="background: #E8EDE5;">
-                    🥬
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-01-napa.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">原味辣白菜</h3>
                     <p class="product-name-kr">배추김치</p>
@@ -1335,9 +1346,7 @@
 
             <!-- Product 2: Sweet Kimchi -->
             <div class="product-card" data-category="kimchi" data-product="sweet-kimchi">
-                <div class="product-card-header" style="background: #D4654A;">
-                    🌶️
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-02-sweet.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">甜味辣白菜</h3>
                     <p class="product-name-kr">맛김치</p>
@@ -1359,9 +1368,7 @@
 
             <!-- Product 3: Eggplant Squid -->
             <div class="product-card" data-category="meat" data-product="eggplant-squid">
-                <div class="product-card-header" style="background: #5C3A4E;">
-                    🦑
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-03-eggplant.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">茄子干鱿鱼丝</h3>
                     <p class="product-name-kr">가지채 오징어</p>
@@ -1383,9 +1390,7 @@
 
             <!-- Product 4: Radish Cubes -->
             <div class="product-card" data-category="special" data-product="radish-cubes">
-                <div class="product-card-header" style="background: #CC4422;">
-                    🥕
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-04-radish.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">萝卜块</h3>
                     <p class="product-name-kr">깍두기</p>
@@ -1407,9 +1412,7 @@
 
             <!-- Product 5: Perilla Leaves -->
             <div class="product-card" data-category="herb" data-product="perilla-leaves">
-                <div class="product-card-header" style="background: #3D6B4F;">
-                    🌿
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-05-perilla.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">苏子叶</h3>
                     <p class="product-name-kr">깻잎</p>
@@ -1431,9 +1434,7 @@
 
             <!-- Product 6: Beef Tendon -->
             <div class="product-card" data-category="meat" data-product="beef-tendon">
-                <div class="product-card-header" style="background: #6B3A2A;">
-                    🥩
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-06-beef.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">牛板筋</h3>
                     <p class="product-name-kr">우설건강</p>
@@ -1455,9 +1456,7 @@
 
             <!-- Product 7: Spicy Pollack -->
             <div class="product-card" data-category="meat" data-product="spicy-pollack">
-                <div class="product-card-header" style="background: #C4A46C;">
-                    🐟
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-07-pollack.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">香辣明太鱼</h3>
                     <p class="product-name-kr">명태조림</p>
@@ -1479,9 +1478,7 @@
 
             <!-- Product 8: Bellflower Root -->
             <div class="product-card" data-category="herb" data-product="bellflower-root">
-                <div class="product-card-header" style="background: #7B8FA1;">
-                    🌺
-                </div>
+                <div class="product-card-header" style="background: url('imgs/products/hailanzu-product-08-bellflower.jpg') center/cover; min-height:180px;"></div>
                 <div class="product-card-body">
                     <h3 class="product-name">桔梗</h3>
                     <p class="product-name-kr">도라지</p>
@@ -1595,7 +1592,25 @@
     </svg>
 
     <!-- Footer -->
-    <footer class="footer">
+    
+  <!-- 社群引流区 -->
+  <section class="community-section" id="community">
+    <div class="community-inner">
+      <h2 class="community-title" data-i18n="community.title">加入海兰菹味道社群</h2>
+      <p class="community-subtitle" data-i18n="community.subtitle">与1000+泡菜爱好者共享延边风味</p>
+      <div class="community-cards">
+        <div class="community-card" data-platform="wechat-work">
+          <div class="community-card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="var(--rice)"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z"/></svg></div>
+          <div class="community-card-qr"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" opacity="0.25"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5z"/></svg></div></div>
+          <div class="community-card-name" data-i18n="community.wechat-work">企业微信</div>
+          <div class="community-card-desc" data-i18n="community.wechat-work.desc">扫码加入 · 专属试吃装</div>
+        </div>
+      </div>
+      <div class="community-perk"><span class="community-perk-icon">🎁</span><span data-i18n="community.perk">新成员专享：首次加入领取试吃装</span></div>
+    </div>
+  </section>
+
+<footer class="footer">
         <svg class="footer-skyline" viewBox="0 0 1200 80" preserveAspectRatio="none">
             <path fill="var(--ink)" d="M0 80 L0 60 L80 60 L80 40 L100 40 L100 50 L120 50 L120 30 L140 30 L140 45 L160 45 L160 55 L200 55 L200 35 L220 35 L220 50 L240 50 L240 60 L280 60 L280 45 L300 45 L300 55 L340 55 L340 40 L360 40 L360 60 L400 60 L400 30 L420 30 L420 55 L460 55 L460 45 L480 45 L480 60 L520 60 L520 35 L540 35 L540 50 L580 50 L580 40 L600 40 L600 60 L640 60 L640 50 L660 50 L660 60 L700 60 L700 45 L720 45 L720 35 L740 35 L740 55 L780 55 L780 40 L800 40 L800 60 L840 60 L840 50 L860 50 L860 60 L900 60 L900 45 L920 45 L920 35 L940 35 L940 50 L980 50 L980 60 L1020 60 L1020 40 L1040 40 L1040 55 L1080 55 L1080 45 L1100 45 L1100 60 L1140 60 L1140 50 L1160 50 L1160 60 L1200 60 L1200 80 Z"/>
         </svg>
@@ -1654,6 +1669,7 @@
         // Product Data
         const productData = {
             'plain-kimchi': {
+                image: 'imgs/products/hailanzu-product-01-napa.jpg',
                 emoji: '🥬',
                 bgColor: '#E8EDE5',
                 name: { zh: '原味辣白菜', ko: '배추김치', en: 'Plain Napa Kimchi', ja: '白菜キムチ' },
@@ -1668,6 +1684,7 @@
                 spice: 1
             },
             'sweet-kimchi': {
+                image: 'imgs/products/hailanzu-product-02-sweet.jpg',
                 emoji: '🌶️',
                 bgColor: '#D4654A',
                 name: { zh: '甜味辣白菜', ko: '맛김치', en: 'Sweet Spicy Kimchi', ja: '甘辛白菜キムチ' },
@@ -1682,6 +1699,7 @@
                 spice: 2
             },
             'eggplant-squid': {
+                image: 'imgs/products/hailanzu-product-03-eggplant.jpg',
                 emoji: '🦑',
                 bgColor: '#5C3A4E',
                 name: { zh: '茄子干鱿鱼丝', ko: '가지채 오징어', en: 'Eggplant & Dried Squid', ja: '干し茄子イカ' },
@@ -1696,6 +1714,7 @@
                 spice: 3
             },
             'radish-cubes': {
+                image: 'imgs/products/hailanzu-product-04-radish.jpg',
                 emoji: '🥕',
                 bgColor: '#CC4422',
                 name: { zh: '萝卜块', ko: '깍두기', en: 'Radish Cubes', ja: 'カクドゥキ' },
@@ -1710,6 +1729,7 @@
                 spice: 4
             },
             'perilla-leaves': {
+                image: 'imgs/products/hailanzu-product-05-perilla.jpg',
                 emoji: '🌿',
                 bgColor: '#3D6B4F',
                 name: { zh: '苏子叶', ko: '깻잎', en: 'Perilla Leaves', ja: 'エゴマの葉' },
@@ -1724,6 +1744,7 @@
                 spice: 2
             },
             'beef-tendon': {
+                image: 'imgs/products/hailanzu-product-06-beef.jpg',
                 emoji: '🥩',
                 bgColor: '#6B3A2A',
                 name: { zh: '牛板筋', ko: '우설건강', en: 'Beef Tendon', ja: '牛スジ' },
@@ -1738,6 +1759,7 @@
                 spice: 4
             },
             'spicy-pollack': {
+                image: 'imgs/products/hailanzu-product-07-pollack.jpg',
                 emoji: '🐟',
                 bgColor: '#C4A46C',
                 name: { zh: '香辣明太鱼', ko: '명태조림', en: 'Spicy Pollack', ja: '明太子煮' },
@@ -1752,6 +1774,7 @@
                 spice: 3
             },
             'bellflower-root': {
+                image: 'imgs/products/hailanzu-product-08-bellflower.jpg',
                 emoji: '🌺',
                 bgColor: '#7B8FA1',
                 name: { zh: '桔梗', ko: '도라지', en: 'Bellflower Root', ja: 'キキョウ' },
@@ -1867,6 +1890,7 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+  loadLanguageFont(lang);
             localStorage.setItem('hailanzu-lang', lang);
             
             // Update all i18n elements
@@ -2039,8 +2063,15 @@
             const alt1 = document.getElementById('detailEmojiAlt1');
             const alt2 = document.getElementById('detailEmojiAlt2');
             
-            mainEmoji.textContent = data.emoji;
-            mainEmoji.style.background = data.bgColor;
+            if (data.image) {
+                mainEmoji.textContent = '';
+                mainEmoji.style.backgroundImage = 'url(' + data.image + ')';
+                mainEmoji.style.backgroundSize = 'cover';
+                mainEmoji.style.backgroundPosition = 'center';
+            } else {
+                mainEmoji.textContent = data.emoji;
+                mainEmoji.style.background = data.bgColor;
+            }
             alt1.textContent = data.altEmojis ? data.altEmojis[0] : '🍚';
             alt1.style.background = data.bgColor;
             alt2.textContent = data.altEmojis ? data.altEmojis[1] : '🥢';
@@ -2138,8 +2169,28 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            // Auto-open product from URL hash
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#product=')) {
+                const productId = hash.replace('#product=', '');
+                setTimeout(() => showProduct(productId), 300);
+            }
             setLanguage(currentLang);
         });
     </script>
+
+
+<script src="js/common.js"></script>
+
+  <div class="qr-overlay" id="qrOverlay">
+    <div class="qr-popup" id="qrPopup">
+      <button class="qr-popup-close" id="qrPopupClose" aria-label="关闭">✕</button>
+      <div class="qr-popup-title" id="qrPopupTitle"></div>
+      <div class="qr-popup-img" id="qrPopupImg"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" opacity="0.3"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm11-2h2v2h-2v-2zm-4 0h2v6h-2v-6zm6 0h2v2h-2v-2zm0 4h2v4h-4v-2h2v-2zm-2 2h-2v2h2v-2z"/></svg><div class="qr-placeholder-text" data-i18n="qr.placeholder">二维码即将上线</div></div></div>
+      <div class="qr-popup-hint" id="qrPopupHint"></div>
+    </div>
+  </div>
+  <div class="floating-cta" id="floatingCta"><span class="floating-cta-icon">🎁</span><span class="floating-cta-text" data-i18n="cta.floating">关注领试吃</span></div>
+  <div class="promo-bar" id="promoBar"><span class="promo-bar-text" data-i18n="promo.text">新客首单9折 · 企业微信专属</span><button class="promo-bar-btn" id="promoBarBtn" data-i18n="promo.btn">立即加入</button><button class="promo-bar-close" id="promoBarClose" aria-label="关闭">✕</button></div>
 </body>
 </html>
