@@ -522,8 +522,9 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 
 
 /* ==================== TERROIR — 风土大画幅 ==================== */
-.terroir{position:relative;background:var(--ink-deep)}
-.terroir-slide{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.terroir{position:relative;background:var(--ink-deep);height:100vh;overflow:hidden}
+.terroir-slide{position:absolute;inset:0;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 1.5s ease-in-out;pointer-events:none;will-change:opacity}
+.terroir-slide.active{opacity:1;pointer-events:auto}
 .terroir-slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
 .terroir-slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,36,32,.3) 0%,rgba(15,36,32,.15) 40%,rgba(15,36,32,.5) 100%);pointer-events:none}
 .terroir-slide-content{position:relative;z-index:2;max-width:700px;padding:0 clamp(24px,5vw,64px);text-align:center;animation:terroirReveal .8s var(--ease-out) both}
@@ -542,6 +543,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 @keyframes terroirReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 /* mobile */
 @media(max-width:768px){
+  .terroir{height:80vh}
   .terroir-slide{height:80vh}
   .terroir-slide-title{font-size:clamp(24px,6vw,36px)}
   .terroir-nav{gap:12px}
@@ -1016,7 +1018,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
       <div class="terroir-slide-desc" data-i18n="terroir.s1.desc">长白山天池之水，经地下矿脉渗透百公里，在海兰江畔涌出。矿物质丰富的水源，是发酵最忠实的盟友。</div>
     </div>
   </div>
-  <div class="terroir-slide" data-terroir="1" style="display:none">
+  <div class="terroir-slide" data-terroir="1" >
     <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-hailan.jpg" alt="Hailan River">
     <div class="terroir-slide-overlay"></div>
     <div class="terroir-slide-content">
@@ -1026,7 +1028,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
       <div class="terroir-slide-desc" data-i18n="terroir.s2.desc">海兰江冲积平原，昼夜温差可达二十度。白天积累的糖分，夜晚被牢牢锁住——这是大自然为泡菜写好的配方。</div>
     </div>
   </div>
-  <div class="terroir-slide" data-terroir="2" style="display:none">
+  <div class="terroir-slide" data-terroir="2" >
     <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-cabbage.jpg" alt="Napa Cabbage Field">
     <div class="terroir-slide-overlay"></div>
     <div class="terroir-slide-content">
@@ -1036,7 +1038,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
       <div class="terroir-slide-desc" data-i18n="terroir.s3.desc">延边黄心白菜，经霜之后芯叶紧实、甘甜脆嫩。每一棵都在零下八度的寒夜里完成了最关键的糖化——这是无法催促的转化。</div>
     </div>
   </div>
-  <div class="terroir-slide" data-terroir="3" style="display:none">
+  <div class="terroir-slide" data-terroir="3" >
     <img class="terroir-slide-img" src="imgs/terroir/hailanzu-terroir-pear.jpg" alt="Apple Pear Orchard">
     <div class="terroir-slide-overlay"></div>
     <div class="terroir-slide-content">
@@ -2254,11 +2256,16 @@ if(typeof setLanguage==='function') setLanguage(currentLang);
   let current = 0;
   let timer = null;
   const total = slides.length;
+  if(total===0) return;
+
+  // Initialize: first slide active, rest hidden via opacity
+  slides.forEach((s,i)=> s.classList.toggle('active', i===0));
 
   function goTo(idx){
-    slides[current].style.display = 'none';
+    if(total===0) return;
+    slides[current].classList.remove('active');
     current = ((idx % total) + total) % total;
-    slides[current].style.display = 'flex';
+    slides[current].classList.add('active');
     const ct = slides[current].querySelector('.terroir-slide-content');
     if(ct){ ct.style.animation='none'; ct.offsetHeight; ct.style.animation=''; }
     dots.forEach((d,i)=> d.classList.toggle('active', i===current));
