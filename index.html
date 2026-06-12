@@ -542,21 +542,21 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 .terroir-slide-title-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.5vw,20px);opacity:.45;letter-spacing:6px;color:var(--rice);margin-bottom:20px}
 .terroir-slide-desc{font-family:var(--font-serif);font-size:clamp(13px,1.2vw,16px);line-height:1.9;opacity:.7;color:var(--rice);max-width:520px;margin:0 auto}
 .terroir-slide-flower{position:absolute;z-index:1;pointer-events:none;opacity:.06}
-.terroir-nav{position:absolute;bottom:clamp(30px,5vw,60px);left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:20px}
-.terroir-dot{width:8px;height:8px;border-radius:50%;background:var(--rice);opacity:.25;cursor:pointer;transition:all .4s var(--ease-out)}
-.terroir-dot.active{opacity:1;background:var(--seal);transform:scale(1.5)}
-.terroir-arrow{width:36px;height:36px;border:1px solid rgba(245,240,232,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.4;transition:opacity .3s;font-size:14px;background:none}
-.terroir-arrow:hover{opacity:.8}
-.terroir-counter{font-family:var(--font-display);font-size:clamp(12px,1.2vw,16px);opacity:.35;letter-spacing:2px}
-.terroir-counter-current{color:var(--seal);font-weight:700;font-size:clamp(20px,2.5vw,32px)}
+.terroir-nav{position:absolute;bottom:clamp(30px,5vw,60px);left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:16px}
+.terroir-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .6s var(--ease-out);border-radius:1px}
+.terroir-dot.active{opacity:1;width:40px;background:var(--gold)}
+.terroir-arrow{width:32px;height:32px;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.3;transition:opacity .3s;font-size:16px;background:none}
+.terroir-arrow:hover{opacity:.7;color:var(--gold)}
 @keyframes terroirReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 /* mobile */
 @media(max-width:768px){
   .terroir{height:80vh}
   .terroir-slide{height:80vh}
   .terroir-slide-title{font-size:clamp(24px,6vw,36px)}
-  .terroir-nav{gap:12px}
+  .terroir-nav{gap:10px}
   .terroir-arrow{display:none}
+  .terroir-dot{width:14px;height:2px}
+  .terroir-dot.active{width:28px}
 }
 
 </style>
@@ -1117,7 +1117,6 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
     <div class="terroir-dot" data-t="1"></div>
     <div class="terroir-dot" data-t="2"></div>
     <div class="terroir-dot" data-t="3"></div>
-    <div class="terroir-counter"><span class="terroir-counter-current">01</span> / 04</div>
     <div class="terroir-arrow" id="terroirNext">›</div>
   </div>
 </section>
