@@ -1062,6 +1062,70 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
   </div>
 </section>
 
+<!-- TERROIR CAROUSEL — independent script -->
+<script>
+(function(){
+try{
+  var slides=document.querySelectorAll('.terroir-slide');
+  var dots=document.querySelectorAll('.terroir-dot');
+  var counterCur=document.querySelector('.terroir-counter-current');
+  var prevBtn=document.getElementById('terroirPrev');
+  var nextBtn=document.getElementById('terroirNext');
+  var current=0;
+  var timer=null;
+  var total=slides.length;
+  if(total===0) return;
+
+  // Initialize first slide active
+  for(var i=0;i<slides.length;i++){
+    if(i===0) slides[i].classList.add('active');
+    else slides[i].classList.remove('active');
+  }
+
+  function goTo(idx){
+    slides[current].classList.remove('active');
+    current=((idx%total)+total)%total;
+    slides[current].classList.add('active');
+    var ct=slides[current].querySelector('.terroir-slide-content');
+    if(ct){ct.style.animation='none';void ct.offsetHeight;ct.style.animation='';}
+    for(var i=0;i<dots.length;i++){
+      if(i===current) dots[i].classList.add('active');
+      else dots[i].classList.remove('active');
+    }
+    if(counterCur) counterCur.textContent=String(current+1).padStart(2,'0');
+    var img=slides[current].querySelector('.terroir-slide-img');
+    if(img) img.style.transform='scale(1)';
+  }
+
+  if(prevBtn) prevBtn.onclick=function(){goTo(current-1);resetTimer();};
+  if(nextBtn) nextBtn.onclick=function(){goTo(current+1);resetTimer();};
+  for(var i=0;i<dots.length;i++){
+    (function(idx){
+      dots[idx].onclick=function(){goTo(idx);resetTimer();};
+    })(i);
+  }
+
+  function resetTimer(){clearInterval(timer);timer=setInterval(function(){goTo(current+1);},6000);}
+  resetTimer();
+
+  // Touch swipe
+  var section=document.querySelector('.terroir');
+  if(section){
+    var sx=0,sy=0;
+    section.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+    section.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-sx;
+      var dy=e.changedTouches[0].clientY-sy;
+      if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){
+        if(dx<0) goTo(current+1); else goTo(current-1);
+        resetTimer();
+      }
+    },{passive:true});
+  }
+}catch(e){console.error('TERROIR error:',e);}
+})();
+</script>
+
 <!-- ==================== MARQUEE ==================== -->
 <div class="marquee">
   <div class="marquee-inner" id="marqueeInner"></div>
@@ -2248,72 +2312,7 @@ document.querySelectorAll('.gift-cta').forEach(btn => {
 // ====== INITIAL LANGUAGE SETUP ======
 if(typeof setLanguage==='function') setLanguage(currentLang);
 
-// ====== TERROIR CAROUSEL ======
-(function initTerroir(){
-try{
-  var slides = document.querySelectorAll('.terroir-slide');
-  var dots = document.querySelectorAll('.terroir-dot');
-  var counterCur = document.querySelector('.terroir-counter-current');
-  var prevBtn = document.getElementById('terroirPrev');
-  var nextBtn = document.getElementById('terroirNext');
-  var current = 0;
-  var timer = null;
-  var total = slides.length;
-  if(total===0){ console.warn('TERROIR: no slides found'); return; }
 
-  // Initialize: first slide active
-  slides.forEach(function(s,i){ s.classList.toggle('active', i===0); });
-  console.log('TERROIR: initialized', total, 'slides');
-
-  function goTo(idx){
-    if(total===0) return;
-    if(slides[current]) slides[current].classList.remove('active');
-    current = ((idx % total) + total) % total;
-    if(slides[current]) slides[current].classList.add('active');
-    var ct = slides[current].querySelector('.terroir-slide-content');
-    if(ct){ ct.style.animation='none'; void ct.offsetHeight; ct.style.animation=''; }
-    dots.forEach(function(d,i){ d.classList.toggle('active', i===current); });
-    if(counterCur) counterCur.textContent = String(current+1).padStart(2,'0');
-    var img = slides[current].querySelector('.terroir-slide-img');
-    if(img){ img.style.transform='scale(1)'; }
-  }
-
-  if(prevBtn) prevBtn.addEventListener('click',function(){ goTo(current-1); resetTimer(); });
-  if(nextBtn) nextBtn.addEventListener('click',function(){ goTo(current+1); resetTimer(); });
-  dots.forEach(function(d){ d.addEventListener('click',function(){ goTo(parseInt(d.dataset.t)); resetTimer(); }); });
-
-  function resetTimer(){ clearInterval(timer); timer=setInterval(function(){goTo(current+1);},6000); }
-  resetTimer();
-  console.log('TERROIR: auto-play started, interval 6s');
-
-  // Touch swipe
-  var section = document.querySelector('.terroir');
-  if(section){
-    var sx=0,sy=0;
-    section.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
-    section.addEventListener('touchend',function(e){
-      var dx=e.changedTouches[0].clientX-sx;
-      var dy=e.changedTouches[0].clientY-sy;
-      if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){
-        if(dx<0) goTo(current+1); else goTo(current-1);
-        resetTimer();
-      }
-    },{passive:true});
-  }
-
-  // Scroll parallax
-  if(section){
-    window.addEventListener('scroll',function(){
-      var rect=section.getBoundingClientRect();
-      if(rect.top<window.innerHeight && rect.bottom>0){
-        var progress=Math.max(0,Math.min(1,1-rect.top/window.innerHeight));
-        var img=slides[current].querySelector('.terroir-slide-img');
-        if(img) img.style.transform='scale('+(1+progress*0.08)+')';
-      }
-    },{passive:true});
-  }
-}catch(e){console.error('TERROIR carousel error:',e);}
-})();
 // Initial call
 </script>
 
