@@ -1,12 +1,6 @@
 /* ==================== HAILANZU common.css ==================== */
 /* 只包含营销模块样式，其他样式由各页面内联style提供 */
 
-/* ==================== MARKETING - NAV SOCIAL ICONS ==================== */
-.nav-social{display:flex;align-items:center;gap:10px}
-.nav-social-btn{display:flex;align-items:center;justify-content:center;width:28px;height:28px;color:var(--rice);opacity:.4;transition:all .3s var(--ease-out);cursor:pointer;border:none;background:none;padding:0;text-decoration:none}
-.nav-social-btn:hover{opacity:1;color:var(--gold);transform:scale(1.1)}
-.nav-social-btn svg{pointer-events:none}
-
 /* ==================== MARKETING - COMMUNITY SECTION ==================== */
 .community-section{position:relative;background:#0A1A16;padding:clamp(48px,6vw,80px) clamp(24px,4vw,48px);border-top:1px solid rgba(184,134,11,.15)}
 .community-inner{max-width:520px;margin:0 auto;text-align:center}
@@ -47,14 +41,8 @@
 .footer-social-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(245,240,232,.1);border-radius:50%;color:var(--rice);opacity:.45;transition:all .4s var(--ease-out);cursor:pointer}
 .footer-social-icon:hover{opacity:1;color:var(--gold);border-color:rgba(184,134,11,.4);background:rgba(184,134,11,.06);transform:scale(1.08)}
 
-
-
-
-
-
 /* ==================== MARKETING - RESPONSIVE ==================== */
 @media(max-width:768px){
-  .nav-social{display:none}
   .community-actions{flex-direction:column;align-items:center}
   .community-action-btn{width:100%;justify-content:center}
   .floating-cta{right:16px;bottom:20px;width:48px;height:48px;padding:0;border-radius:50%;gap:0;justify-content:center}

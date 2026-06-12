@@ -63,10 +63,6 @@ document.addEventListener('DOMContentLoaded', function(){
   function closeQR() {
     if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
   }
-  
-  // Nav social buttons
-  document.querySelectorAll('.nav-social-btn[data-platform]').forEach(function(btn) {
-    btn.addEventListener('click', function() { openQR(this.dataset.platform); });
   });
   
   // Footer social icons
