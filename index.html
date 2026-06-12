@@ -273,12 +273,12 @@ ul,ol{list-style:none}
 .spice-dot.on{opacity:1;background:var(--seal);box-shadow:0 0 6px var(--seal-glow)}
 /* Carousel nav */
 .carousel-nav{position:absolute;bottom:clamp(24px,4vw,48px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:10}
-.carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--rice);opacity:.2;cursor:pointer;transition:all .4s var(--ease-out)}
-.carousel-dot.active{opacity:1;background:var(--seal);transform:scale(1.4)}
-.carousel-arrow{width:36px;height:36px;border:1px solid rgba(245,240,232,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.4;transition:opacity .3s;font-size:14px;background:none}
-.carousel-arrow:hover{opacity:.8}
-.carousel-counter{font-family:var(--font-display);font-size:clamp(12px,1.2vw,16px);opacity:.35;letter-spacing:2px}
-.carousel-counter-current{color:var(--seal);font-weight:700;font-size:clamp(20px,2.5vw,32px)}
+.carousel-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .6s var(--ease-out);border-radius:1px}
+.carousel-dot.active{opacity:1;width:40px;background:var(--gold)}
+.carousel-arrow{width:32px;height:32px;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.3;transition:opacity .3s;font-size:16px;background:none}
+.carousel-arrow:hover{opacity:.7;color:var(--gold)}
+.carousel-counter{display:none}
+.carousel-counter-current{display:none}
 /* Product slide colors */
 .slide-0{color:var(--ink-deep)}.slide-0 .spice-dot.on{background:var(--seal)}.slide-0 .sticky-header-label,.slide-0 .sticky-header-title{color:var(--ink-deep)}.slide-0 .products-slide-spice-label{color:var(--ink);opacity:.5}
 .slide-1{color:var(--rice)}.slide-1 .spice-dot.on{background:var(--seal)}
@@ -301,9 +301,11 @@ ul,ol{list-style:none}
   .sticky-header{padding:20px 20px 8px}
   .sticky-header-title{font-size:clamp(18px,4.5vw,24px)}
   .products-watermark{display:none}
-  .carousel-nav{display:none}
+  .carousel-nav{gap:10px}
   .carousel-arrow{display:none}
   .carousel-counter{display:none}
+  .carousel-dot{width:14px;height:2px}
+  .carousel-dot.active{width:28px}
 }
 .sticky-progress,.sticky-counter{display:none}
 
