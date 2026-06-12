@@ -272,11 +272,11 @@ ul,ol{list-style:none}
 .spice-dot{width:6px;height:14px;border-radius:3px 3px 2px 2px;background:currentColor;opacity:.1;transition:all .4s ease;transform:rotate(-15deg)}
 .spice-dot.on{opacity:1;background:var(--seal);box-shadow:0 0 6px var(--seal-glow)}
 /* Carousel nav */
-.carousel-nav{position:absolute;bottom:clamp(28px,5vw,56px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:10}
-.carousel-dot{width:24px;height:2px;background:var(--rice);opacity:.15;cursor:pointer;transition:all .5s var(--ease-out);border-radius:1px}
-.carousel-dot.active{opacity:1;width:48px;background:var(--gold);box-shadow:0 0 8px rgba(184,134,11,.3)}
-.carousel-arrow{width:36px;height:36px;border:1px solid rgba(245,240,232,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.35;transition:all .4s var(--ease-out);background:none}
-.carousel-arrow:hover{opacity:1;color:var(--gold);border-color:rgba(184,134,11,.4);background:rgba(184,134,11,.06)}
+.carousel-nav{position:absolute;bottom:clamp(24px,4vw,48px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:10}
+.carousel-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .6s var(--ease-out);border-radius:1px}
+.carousel-dot.active{opacity:1;width:40px;background:var(--gold)}
+.carousel-arrow{width:32px;height:32px;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.3;transition:opacity .3s;font-size:16px;background:none}
+.carousel-arrow:hover{opacity:.7;color:var(--gold)}
 .carousel-counter{display:none}
 .carousel-counter-current{display:none}
 /* Product slide colors */
@@ -301,11 +301,11 @@ ul,ol{list-style:none}
   .sticky-header{padding:20px 20px 8px}
   .sticky-header-title{font-size:clamp(18px,4.5vw,24px)}
   .products-watermark{display:none}
-  .carousel-nav{gap:12px;bottom:clamp(20px,4vw,36px)}
+  .carousel-nav{gap:10px}
   .carousel-arrow{display:none}
   .carousel-counter{display:none}
-  .carousel-dot{width:18px;height:2px}
-  .carousel-dot.active{width:36px}
+  .carousel-dot{width:14px;height:2px}
+  .carousel-dot.active{width:28px}
 }
 .sticky-progress,.sticky-counter{display:none}
 
@@ -544,21 +544,21 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 .terroir-slide-title-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.5vw,20px);opacity:.45;letter-spacing:6px;color:var(--rice);margin-bottom:20px}
 .terroir-slide-desc{font-family:var(--font-serif);font-size:clamp(13px,1.2vw,16px);line-height:1.9;opacity:.7;color:var(--rice);max-width:520px;margin:0 auto}
 .terroir-slide-flower{position:absolute;z-index:1;pointer-events:none;opacity:.06}
-.terroir-nav{position:absolute;bottom:clamp(30px,5vw,60px);left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:20px}
-.terroir-dot{width:24px;height:2px;background:var(--rice);opacity:.15;cursor:pointer;transition:all .5s var(--ease-out);border-radius:1px}
-.terroir-dot.active{opacity:1;width:48px;background:var(--gold);box-shadow:0 0 8px rgba(184,134,11,.3)}
-.terroir-arrow{width:36px;height:36px;border:1px solid rgba(245,240,232,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.35;transition:all .4s var(--ease-out);background:none}
-.terroir-arrow:hover{opacity:1;color:var(--gold);border-color:rgba(184,134,11,.4);background:rgba(184,134,11,.06)}
+.terroir-nav{position:absolute;bottom:clamp(30px,5vw,60px);left:50%;transform:translateX(-50%);z-index:10;display:flex;align-items:center;gap:16px}
+.terroir-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .6s var(--ease-out);border-radius:1px}
+.terroir-dot.active{opacity:1;width:40px;background:var(--gold)}
+.terroir-arrow{width:32px;height:32px;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.3;transition:opacity .3s;font-size:16px;background:none}
+.terroir-arrow:hover{opacity:.7;color:var(--gold)}
 @keyframes terroirReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 /* mobile */
 @media(max-width:768px){
   .terroir{height:80vh}
   .terroir-slide{height:80vh}
   .terroir-slide-title{font-size:clamp(24px,6vw,36px)}
-  .terroir-nav{gap:12px}
+  .terroir-nav{gap:10px}
   .terroir-arrow{display:none}
-  .terroir-dot{width:18px;height:2px}
-  .terroir-dot.active{width:36px}
+  .terroir-dot{width:14px;height:2px}
+  .terroir-dot.active{width:28px}
 }
 
 </style>
@@ -1114,12 +1114,12 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
   </div>
   <!-- Navigation -->
   <div class="terroir-nav">
-    <div class="terroir-arrow" id="terroirPrev"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg></div>
+    <div class="terroir-arrow" id="terroirPrev">‹</div>
     <div class="terroir-dot active" data-t="0"></div>
     <div class="terroir-dot" data-t="1"></div>
     <div class="terroir-dot" data-t="2"></div>
     <div class="terroir-dot" data-t="3"></div>
-    <div class="terroir-arrow" id="terroirNext"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg></div>
+    <div class="terroir-arrow" id="terroirNext">›</div>
   </div>
 </section>
 
@@ -1385,9 +1385,9 @@ try{
     </div>
   </div>
 <div class="carousel-nav" id="carouselNav">
-      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg></button>
+      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous">◀</button>
       <div id="carouselDots"></div>
-      <button class="carousel-arrow" id="carouselNext" aria-label="Next"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg></button>
+      <button class="carousel-arrow" id="carouselNext" aria-label="Next">▶</button>
       <div class="carousel-counter" id="carouselCounter"></div>
     </div>
   </div>
@@ -2318,6 +2318,7 @@ if(typeof setLanguage==='function') setLanguage(currentLang);
       <div class="qr-popup-hint" id="qrPopupHint"></div>
     </div>
   </div>
+  <div class="floating-cta" id="floatingCta"><span class="floating-cta-icon">🎁</span><span class="floating-cta-text" data-i18n="cta.floating">关注领试吃</span></div>
   <div class="promo-bar" id="promoBar"><span class="promo-bar-text" data-i18n="promo.text">新客首单9折 · 企业微信专属</span><button class="promo-bar-btn" id="promoBarBtn" data-i18n="promo.btn">立即加入</button><button class="promo-bar-close" id="promoBarClose" aria-label="关闭">✕</button></div>
 </body>
 </html>

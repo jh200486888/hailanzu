@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if (promoBar) {
     var promoDismissed = localStorage.getItem('hailanzu_banner_dismissed');
     if (!promoDismissed || Date.now() - parseInt(promoDismissed) > 604800000) {
-      setTimeout(function() { promoBar.classList.add('visible'); }, 5000);
+      setTimeout(function() { promoBar.classList.add('visible'); }, 1500);
     }
     var promoClose = document.getElementById('promoBarClose');
     if (promoClose) promoClose.addEventListener('click', function() {
