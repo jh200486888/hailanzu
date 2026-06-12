@@ -456,7 +456,59 @@
     <div class="hero-manifesto-text" data-i18n="hero.manifesto">我们不追赶时间<br>我们让时间<br>成为最珍贵的配料</div>
   </div>
   
-<script>(function(){ var manifestoEl = document.querySelector('.hero-manifesto'); var textEl = document.querySelector('.hero-manifesto-text'); if (!manifestoEl || !textEl) return; function typewrite() { var raw = textEl.getAttribute('data-raw') || textEl.innerHTML; var parts = raw.split(/<br\s*\/?>/i); var out = ''; var delay = 0; var charDelay = 120; for (var p = 0; p < parts.length; p++) { var line = parts[p]; for (var c = 0; c < line.length; c++) { var ch = line[c]; if (ch === ' ' || ch === '\u3000') { out += ch; } else { out += '<span class="char" style="animation-delay:' + delay + 'ms">' + ch + '</span>'; delay += charDelay; } } if (p < parts.length - 1) { out += '<br>'; delay += 200; } } textEl.classList.add('typing'); textEl.innerHTML = out; manifestoEl.style.opacity = '1'; } var originalText = textEl.innerHTML; textEl.setAttribute('data-raw', originalText); setTimeout(typewrite, 1600); var origSetLang = window.setLanguage; if (typeof origSetLang === 'function') { window.setLanguage = function(lang) { origSetLang(lang); setTimeout(function() { var newText = textEl.innerHTML; textEl.setAttribute('data-raw', newText); typewrite(); }, 100); }; } })();</script>
+<script>
+(function(){
+  var manifestoEl = document.querySelector('.hero-manifesto');
+  var textEl = document.querySelector('.hero-manifesto-text');
+  if (!manifestoEl || !textEl) return;
+
+  function typewrite() {
+    var raw = textEl.getAttribute('data-raw') || textEl.innerHTML;
+    var parts = raw.split(/<br\s*\/?>/i);
+    var out = '';
+    var delay = 0;
+    var charDelay = 120;
+
+    for (var p = 0; p < parts.length; p++) {
+      var line = parts[p];
+      for (var c = 0; c < line.length; c++) {
+        var ch = line[c];
+        if (ch === ' ' || ch === '\u3000') {
+          out += ch;
+        } else {
+          out += '<span class="char" style="animation-delay:' + delay + 'ms">' + ch + '</span>';
+          delay += charDelay;
+        }
+      }
+      if (p < parts.length - 1) {
+        out += '<br>';
+        delay += 200;
+      }
+    }
+
+    textEl.classList.add('typing');
+    textEl.innerHTML = out;
+    manifestoEl.style.opacity = '1';
+  }
+
+  var originalText = textEl.innerHTML;
+  textEl.setAttribute('data-raw', originalText);
+
+  setTimeout(typewrite, 1600);
+
+  var origSetLang = window.setLanguage;
+  if (typeof origSetLang === 'function') {
+    window.setLanguage = function(lang) {
+      origSetLang(lang);
+      setTimeout(function() {
+        var newText = textEl.innerHTML;
+        textEl.setAttribute('data-raw', newText);
+        typewrite();
+      }, 100);
+    };
+  }
+})();
+</script>
   <div class="hero-tagline">
     <div class="hero-tagline-text" data-i18n="hero.tagline">延边古法菹味 · The Art of Korean Fermentation</div>
   </div>
@@ -521,7 +573,68 @@
 </section>
 
 <!-- TERROIR CAROUSEL — independent script -->
-<script>(function(){ try{ var slides=document.querySelectorAll('.terroir-slide'); var dots=document.querySelectorAll('.terroir-dot'); var counterCur=document.querySelector('.terroir-counter-current'); var prevBtn=document.getElementById('terroirPrev'); var nextBtn=document.getElementById('terroirNext'); var current=0; var timer=null; var total=slides.length; if(total===0) return; for(var i=0;i<slides.length;i++){ if(i===0) slides[i].classList.add('active'); else slides[i].classList.remove('active'); } function goTo(idx){ slides[current].classList.remove('active'); current=((idx%total)+total)%total; slides[current].classList.add('active'); var ct=slides[current].querySelector('.terroir-slide-content'); if(ct){ct.style.animation='none';void ct.offsetHeight;ct.style.animation='';} for(var i=0;i<dots.length;i++){ if(i===current) dots[i].classList.add('active'); else dots[i].classList.remove('active'); } if(counterCur) counterCur.textContent=String(current+1).padStart(2,'0'); var img=slides[current].querySelector('.terroir-slide-img'); if(img) img.style.transform='scale(1)'; } if(prevBtn) prevBtn.onclick=function(){goTo(current-1);resetTimer();}; if(nextBtn) nextBtn.onclick=function(){goTo(current+1);resetTimer();}; for(var i=0;i<dots.length;i++){ (function(idx){ dots[idx].onclick=function(){goTo(idx);resetTimer();}; })(i); } function resetTimer(){clearInterval(timer);timer=setInterval(function(){goTo(current+1);},6000);} resetTimer(); var section=document.querySelector('.terroir'); if(section){ var sx=0,sy=0; section.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true}); section.addEventListener('touchend',function(e){ var dx=e.changedTouches[0].clientX-sx; var dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){ if(dx<0) goTo(current+1); else goTo(current-1); resetTimer(); } },{passive:true}); } }catch(e){console.error('TERROIR error:',e);} })();</script>
+<script>
+(function(){
+try{
+  var slides=document.querySelectorAll('.terroir-slide');
+  var dots=document.querySelectorAll('.terroir-dot');
+  var counterCur=document.querySelector('.terroir-counter-current');
+  var prevBtn=document.getElementById('terroirPrev');
+  var nextBtn=document.getElementById('terroirNext');
+  var current=0;
+  var timer=null;
+  var total=slides.length;
+  if(total===0) return;
+
+  // Initialize first slide active
+  for(var i=0;i<slides.length;i++){
+    if(i===0) slides[i].classList.add('active');
+    else slides[i].classList.remove('active');
+  }
+
+  function goTo(idx){
+    slides[current].classList.remove('active');
+    current=((idx%total)+total)%total;
+    slides[current].classList.add('active');
+    var ct=slides[current].querySelector('.terroir-slide-content');
+    if(ct){ct.style.animation='none';void ct.offsetHeight;ct.style.animation='';}
+    for(var i=0;i<dots.length;i++){
+      if(i===current) dots[i].classList.add('active');
+      else dots[i].classList.remove('active');
+    }
+    if(counterCur) counterCur.textContent=String(current+1).padStart(2,'0');
+    var img=slides[current].querySelector('.terroir-slide-img');
+    if(img) img.style.transform='scale(1)';
+  }
+
+  if(prevBtn) prevBtn.onclick=function(){goTo(current-1);resetTimer();};
+  if(nextBtn) nextBtn.onclick=function(){goTo(current+1);resetTimer();};
+  for(var i=0;i<dots.length;i++){
+    (function(idx){
+      dots[idx].onclick=function(){goTo(idx);resetTimer();};
+    })(i);
+  }
+
+  function resetTimer(){clearInterval(timer);timer=setInterval(function(){goTo(current+1);},6000);}
+  resetTimer();
+
+  // Touch swipe
+  var section=document.querySelector('.terroir');
+  if(section){
+    var sx=0,sy=0;
+    section.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+    section.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-sx;
+      var dy=e.changedTouches[0].clientY-sy;
+      if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){
+        if(dx<0) goTo(current+1); else goTo(current-1);
+        resetTimer();
+      }
+    },{passive:true});
+  }
+}catch(e){console.error('TERROIR error:',e);}
+})();
+</script>
 
 <!-- ==================== MARQUEE ==================== -->
 <div class="marquee">
@@ -927,7 +1040,706 @@
   </div>
 </footer>
 
-<script>function detectBrowserLang(){var b=(navigator.language||navigator.userLanguage||"").toLowerCase();if(b.startsWith("ko"))return"ko";if(b.startsWith("ja"))return"ja";if(b.startsWith("en"))return"en";return"zh"} const langMap={zh:"zh-CN",ko:"ko",en:"en",ja:"ja"}; const marqueeEl = document.getElementById('marqueeInner'); const nav = document.getElementById('nav'); let navRafPending = false; let mainRafPending = false; function onMainScroll() { if (!mainRafPending) { mainRafPending = true; requestAnimationFrame(() => { const sy = window.scrollY; nav.classList.toggle('scrolled', sy > 60); if (heroText) { if (sy < window.innerHeight) { heroParallaxNeeded = true; const r = sy / window.innerHeight; if (r < 0.01) { heroText.style.transform = ''; heroText.style.opacity = ''; } else { heroText.style.transform = 'translateY(calc(-50% + ' + (r * 50) + 'px))'; heroText.style.opacity = Math.max(0, 1 - r * 1.2); } } else if (heroParallaxNeeded) { heroParallaxNeeded = false; heroText.style.opacity = '0'; heroText.style.transform = 'translateY(calc(-50% + 50px))'; } } const heroTagline = document.querySelector('.hero-tagline'); const heroScroll = document.querySelector('.hero-scroll'); const heroDotsEl = document.querySelector('.hero-dots'); if (sy < window.innerHeight) { const r = sy / window.innerHeight; if (r < 0.01) { if (heroTagline) heroTagline.style.opacity = ''; if (heroScroll) heroScroll.style.opacity = ''; if (heroDotsEl) heroDotsEl.style.opacity = ''; } else { if (heroTagline) heroTagline.style.opacity = Math.max(0, 1 - r * 1.5); if (heroScroll) heroScroll.style.opacity = Math.max(0, 1 - r * 2); if (heroDotsEl) heroDotsEl.style.opacity = Math.max(0.15, 1 - r); } } else { if (heroTagline) heroTagline.style.opacity = '0'; if (heroScroll) heroScroll.style.opacity = '0'; if (heroDotsEl) heroDotsEl.style.opacity = '0.15'; } mainRafPending = false; }); } } window.addEventListener('scroll', onMainScroll, { passive: true }); const navLogo = document.getElementById('navLogo'); const navPanel = document.getElementById('navPanel'); const navPanelClose = document.getElementById('navPanelClose'); const earProducts = document.getElementById('earProducts'); const earStory = document.getElementById('earStory'); let panelOpen = false; function openPanel() { panelOpen = true; nav.classList.add('expanded'); navPanel.classList.add('open'); document.body.style.overflow = 'hidden'; } function closePanel() { panelOpen = false; nav.classList.remove('expanded'); navPanel.classList.remove('open'); document.body.style.overflow = ''; } navLogo.addEventListener('click', (e) => { if (e.target === earProducts) { e.stopPropagation(); closePanel(); window.location.href = 'products.html'; return; } if (e.target === earStory) { e.stopPropagation(); closePanel(); window.location.href = 'story.html'; return; } const potIcon = navLogo.querySelector('.pot-icon'); if (potIcon && potIcon.contains(e.target)) { e.stopPropagation(); panelOpen ? closePanel() : openPanel(); return; } closePanel(); window.scrollTo({ top: 0, behavior: 'smooth' }); }); navPanelClose.addEventListener('click', closePanel); navPanel.querySelectorAll('.nav-panel-item').forEach(item => { item.addEventListener('click', () => { closePanel(); }); }); const hamburger = document.getElementById('hamburger'); hamburger.addEventListener('click', () => { panelOpen ? closePanel() : openPanel(); }); earProducts.addEventListener('click', () => { closePanel(); window.location.href = 'products.html'; }); earStory.addEventListener('click', () => { closePanel(); window.location.href = 'story.html'; }); const i18n = { 'nav.logo.main': { zh:'海兰菹', ko:'해란저', en:'HAILANZU', ja:'海蘭菹' }, 'nav.logo.sub': { zh:'해란저', ko:'海兰菹', en:'해란저', ja:'해란저' }, 'nav.seasons': { zh:'四季发酵', ko:'사계절 발효', en:'Four Seasons', ja:'四季発酵' }, 'nav.seasons.sub': { zh:'사계절 발효', ko:'四季发酵', en:'사계절 발효', ja:'사계절 발효' }, 'nav.products': { zh:'产品殿堂', ko:'제품 전시', en:'The Collection', ja:'製品殿堂' }, 'nav.products.sub': { zh:'제품 전시', ko:'产品殿堂', en:'제품 전시', ja:'제품 전시' }, 'nav.story': { zh:'延边风土', ko:'연변 풍토', en:'Yanbian Heritage', ja:'延辺風土' }, 'nav.story.sub': { zh:'연변 풍토', ko:'延边风土', en:'연변 풍토', ja:'연변 풍토' }, 'nav.gift': { zh:'高端礼盒', ko:'프리미엄 선물', en:'Gift Collection', ja:'高級ギフト' }, 'nav.gift.sub': { zh:'프리미엄 선물', ko:'高端礼盒', en:'프리미엄 선물', ja:'프리미엄 선물' }, 'nav.contact': { zh:'联系我们', ko:'문의하기', en:'Contact', ja:'お問い合わせ' }, 'nav.contact.sub': { zh:'문의하기', ko:'联系我们', en:'문의하기', ja:'문의하기' }, 'hero.declaration': { zh:'海兰菹', ko:'해란저', en:'HAILANZU', ja:'海蘭菹' }, 'hero.declaration.sub': { zh:'해란저', ko:'海兰菹', en:'해란저', ja:'해란저' }, 'hero.seal': { zh:'菹', ko:'저', en:'ZU', ja:'菹' }, 'terroir.s1.label': { zh:'Origin · 长白山', ko:'Origin · 백두산', en:'Origin · Changbai Mountain', ja:'Origin · 長白山' }, 'terroir.s1.title': { zh:'长白之巅，万物之源', ko:'백두산 정상, 만물의 근원', en:'Summit of Changbai, Source of All', ja:'長白の嶺、万物の源' }, 'terroir.s1.title.kr': { zh:'백두산 정상, 만물의 근원', ko:'长白之巅，万物之源', en:'백두산 정상, 만물의 근원', ja:'백두산 정상, 만물의 근원' }, 'terroir.s1.desc': { zh:'长白山天池之水，经地下矿脉渗透百公里，在海兰江畔涌出。矿物质丰富的水源，是发酵最忠实的盟友。', ko:'백두산 천지의 물이 지하 광맥을 따라 백 킬로미터를 흘러 해란강가에서 솟아납니다. 미네랄이 풍부한 수원은 발효의 가장 충실한 동맹입니다.', en:'Water from Tianchi Lake seeps through mineral veins for a hundred kilometers before emerging at the Hailan River. Mineral-rich water is fermentation\u2019s most faithful ally.', ja:'長白山天池の水が地下の鉱脈を百キロ浸透し、海蘭江畔に湧き出る。ミネラル豊かな水源は、発酵の最も忠実な味方。' }, 'terroir.s2.label': { zh:'Water · 海兰江', ko:'Water · 해란강', en:'Water · Hailan River', ja:'Water · 海蘭江' }, 'terroir.s2.title': { zh:'海兰江畔，静水流深', ko:'해란강가, 잔잔한 물결', en:'By the Hailan River, Still Waters Run Deep', ja:'海蘭江畔、静かなる水は深し' }, 'terroir.s2.title.kr': { zh:'해란강가, 잔잔한 물결', ko:'海兰江畔，静水流深', en:'해란강가, 잔잔한 물결', ja:'해란강가, 잔잔한 물결' }, 'terroir.s2.desc': { zh:'海兰江冲积平原，昼夜温差可达二十度。白天积累的糖分，夜晚被牢牢锁住——这是大自然为泡菜写好的配方。', ko:'해란강 충적평원, 일교차가 20도에 달합니다. 낮에 축적된 당분은 밤에 단단히 잠깁니다 — 자연이 김치를 위해 쓴 처방전입니다.', en:'The Hailan River alluvial plain sees temperature swings of twenty degrees. Sugars accumulated by day are locked in by night — nature\u2019s own recipe for kimchi.', ja:'海蘭江沖積平野、昼夜の温差は二十度に達する。昼に蓄積された糖分は夜にしっかり閉じ込められる——自然がキムチのために書いた処方箋。' }, 'terroir.s3.label': { zh:'Soil · 黄心白菜', ko:'Soil · 황심배추', en:'Soil · Yellow-Heart Napa', ja:'Soil · 黄心白菜' }, 'terroir.s3.title': { zh:'霜后白菜，脆如初雪', ko:'서리 후 배추, 첫눈처럼 아삭', en:'Frost-Kissed Cabbage, Crisp as First Snow', ja:'霜後の白菜、初雪のように脆く' }, 'terroir.s3.title.kr': { zh:'서리 후 배추, 첫눈처럼 아삭', ko:'霜后白菜，脆如初雪', en:'서리 후 배추, 첫눈처럼 아삭', ja:'서리 후 배추, 첫눈처럼 아삭' }, 'terroir.s3.desc': { zh:'延边黄心白菜，经霜之后芯叶紧实、甘甜脆嫩。每一棵都在零下八度的寒夜里完成了最关键的糖化——这是无法催促的转化。', ko:'연변 황심배추, 서리를 겪은 후 속잎이 단단하고 달콤하며 아삭합니다. 매 포기는 영하 8도의 차가운 밤에 가장 중요한 당화를 완성합니다 — 서두를 수 없는 변화입니다.', en:'Yanbian yellow-heart napa, after frost, grows tight, sweet, and crisp. Each head completes its crucial saccharification in sub-zero nights — a transformation that cannot be rushed.', ja:'延辺黄心白菜、霜を経て芯葉が締まり、甘く脆い。一つ一つがマイナス8度の寒夜で最も重要な糖化を完了する——急がせることのできない変化。' }, 'terroir.s4.label': { zh:'Fruit · 苹果梨', ko:'Fruit · 사과배', en:'Fruit · Apple Pear', ja:'Fruit · リンゴ梨' }, 'terroir.s4.title': { zh:'苹果梨香，山野馈赠', ko:'사과배 향기, 산야의 선물', en:'Apple Pear Fragrance, Gift of the Wild', ja:'リンゴ梨の香り、山野からの贈り物' }, 'terroir.s4.title.kr': { zh:'사과배 향기, 산야의 선물', ko:'苹果梨香，山野馈赠', en:'사과배 향기, 산야의 선물', ja:'사과배 향기, 산야의 선물' }, 'terroir.s4.desc': { zh:'延边苹果梨，汁水丰沛、酸甜有度。梨汁入酱，是延边泡菜独有的鲜甜密码——一抹果香，让辣味有了温柔的面孔。', ko:'연변 사과배, 즙이 풍부하고 새콤달콤합니다. 배즙을 양념에 넣는 것은 연변 김치만의 비밀 — 과일 향이 매운맛에 부드러운 얼굴을 만들어줍니다.', en:'Yanbian apple pear, brimming with juice, perfectly balanced in sweet and tart. Pear juice in the seasoning is Yanbian kimchi\u2019s secret code — a touch of fruit that gives spice a gentle face.', ja:'延辺リンゴ梨、果汁豊かで甘酸のバランスが絶妙。梨の汁をタレに加えるのは延辺キムチ独自の秘密——果実の香りが辛味に優しい顔を与える。' }, 'hero.manifesto': { zh:'我们不追赶时间<br>我们让时间<br>成为最珍贵的配料', ko:'우리는 시간을 쫓지 않습니다<br>시간이<br>가장 귀한 재료가 되도록 합니다', en:'We do not chase time.<br>We let time<br>become the finest ingredient.', ja:'時間を追いかけない<br>時間こそが<br>最も尊い素材である' }, 'hero.tagline': { zh:'延边古法菹味 · The Art of Korean Fermentation', ko:'연변 고법 저미 · The Art of Korean Fermentation', en:'Ancient Craft of Yanbian Fermentation · 延边古法菹味', ja:'延辺古法菹味 · The Art of Korean Fermentation' }, 'products.detail': { zh:'查看详情', ko:'상세보기', en:'View Details', ja:'詳細を見る' }, 'products.detailTitle': { zh:'产品详情', ko:'제품 상세', en:'Product Details', ja:'製品詳細' }, 'products.ingredient': { zh:'配料', ko:'재료', en:'Ingredients', ja:'材料' }, 'products.pairing': { zh:'搭配', ko:'어울리는 음식', en:'Perfect Pairing', ja:'合わせ' }, 'products.spec': { zh:'规格', ko:'규격', en:'Size', ja:'仕様' }, 'products.p1.ingredients': { zh:'白菜、辣椒粉、蒜、姜、鱼露、盐', ko:'배추, 고춧가루, 마늘, 생강, 젓갈, 소금', en:'Napa cabbage, chili powder, garlic, ginger, fish sauce, salt', ja:'白菜、唐辛子、にんにく、生姜、魚醤、塩' }, 'products.p1.pairing': { zh:'白米饭、清汤', ko:'밥, 맑은 국', en:'Steamed rice, clear soup', ja:'白飯、清湯' }, 'products.p1.weight': { zh:'300g / 500g', ko:'300g / 500g', en:'300g / 500g', ja:'300g / 500g' }, 'products.p2.ingredients': { zh:'白菜、辣椒粉、蒜、糖、鱼露', ko:'배추, 고춧가루, 마늘, 설탕, 젓갈', en:'Napa cabbage, chili powder, garlic, sugar, fish sauce', ja:'白菜、唐辛子、にんにく、砂糖、魚醤' }, 'products.p2.pairing': { zh:'烤肉、拌饭', ko:'고기구이, 비빔밥', en:'BBQ, bibimbap', ja:'焼肉、ビビンバ' }, 'products.p2.weight': { zh:'300g / 500g', ko:'300g / 500g', en:'300g / 500g', ja:'300g / 500g' }, 'products.p3.ingredients': { zh:'茄子干、鱿鱼丝、辣椒粉、糖', ko:'말린 가지, 오징어채, 고춧가루, 설탕', en:'Dried eggplant, squid strips, chili powder, sugar', ja:'干し茄子、イカの糸切り、唐辛子、砂糖' }, 'products.p3.pairing': { zh:'下酒菜、拌面', ko:'안주, 비빔국수', en:'Snack with drinks, noodles', ja:'おつまみ、拌麺' }, 'products.p3.weight': { zh:'250g / 400g', ko:'250g / 400g', en:'250g / 400g', ja:'250g / 400g' }, 'products.p4.ingredients': { zh:'萝卜、辣椒粉、蒜、虾酱', ko:'무, 고춧가루, 마늘, 새우젓', en:'Radish, chili powder, garlic, shrimp paste', ja:'大根、唐辛子、にんにく、蝦醤' }, 'products.p4.pairing': { zh:'白米饭、骨头汤', ko:'밥, 뼈국', en:'Steamed rice, bone soup', ja:'白飯、骨スープ' }, 'products.p4.weight': { zh:'250g / 400g', ko:'250g / 400g', en:'250g / 400g', ja:'250g / 400g' }, 'products.p5.ingredients': { zh:'苏子叶、辣椒粉、蒜、酱油', ko:'깻잎, 고춧가루, 마늘, 간장', en:'Perilla leaves, chili powder, garlic, soy sauce', ja:'エゴマの葉、唐辛子、にんにく、醤油' }, 'products.p5.pairing': { zh:'米饭包饭、烤肉', ko:'쌈밥, 고기구이', en:'Rice wrap, BBQ', ja:'包み飯、焼肉' }, 'products.p5.weight': { zh:'200g / 350g', ko:'200g / 350g', en:'200g / 350g', ja:'200g / 350g' }, 'products.p6.ingredients': { zh:'牛板筋、辣椒粉、糖、芝麻', ko:'우설, 고춧가루, 설탕, 참깨', en:'Beef tendon, chili powder, sugar, sesame', ja:'牛スジ、唐辛子、砂糖、ごま' }, 'products.p6.pairing': { zh:'啤酒、烧酒', ko:'맥주, 소주', en:'Beer, soju', ja:'ビール、焼酎' }, 'products.p6.weight': { zh:'200g / 350g', ko:'200g / 350g', en:'200g / 350g', ja:'200g / 350g' }, 'products.p7.ingredients': { zh:'明太鱼、辣椒粉、糖、蒜', ko:'명태, 고춧가루, 설탕, 마늘', en:'Pollack, chili powder, sugar, garlic', ja:'明太子、唐辛子、砂糖、にんにく' }, 'products.p7.pairing': { zh:'白米饭、汤', ko:'밥, 국', en:'Steamed rice, soup', ja:'白飯、汁物' }, 'products.p7.weight': { zh:'250g / 400g', ko:'250g / 400g', en:'250g / 400g', ja:'250g / 400g' }, 'products.p8.ingredients': { zh:'桔梗根、辣椒粉、蒜、糖', ko:'도라지, 고춧가루, 마늘, 설탕', en:'Bellflower root, chili powder, garlic, sugar', ja:'キキョウ根、唐辛子、にんにく、砂糖' }, 'products.p8.pairing': { zh:'拌饭、小菜', ko:'비빔밥, 반찬', en:'Bibimbap, side dish', ja:'ビビンバ、おかず' }, 'products.p8.weight': { zh:'200g / 350g', ko:'200g / 350g', en:'200g / 350g', ja:'200g / 350g' }, 'marquee': { zh:['原味辣白菜','甜味辣白菜','茄子干辣椒','茄子干鱿鱼丝','桔梗','萝卜块','香辣萝卜条','青年萝卜','酱辣椒干','牛板筋','火爆鸡丝','香葱','苏子叶','香辣木瓜丝','香辣豆皮','酸甜辣椒','酸甜黄瓜','香脆鱼皮','香辣明太鱼','蕨菜','蚬子尖'], ko:['배추김치','맛김치','가지말랭이','가지채 오징어','도라지','깍두기','무채김치','총각무','고추장아찌','우설건강','닭가슴살조림','실파','깻잎','파파야무침','유부김치','단고추무침','오이소박이','생선껍질튀김','명태조림','고사리','조개살무침'], en:['Plain Napa Kimchi','Sweet Spicy Kimchi','Dried Eggplant','Eggplant & Squid','Bellflower Root','Radish Cubes','Spicy Radish Strips','Young Radish','Chili Pepper Pickle','Beef Tendon','Spicy Chicken Shreds','Chives','Perilla Leaves','Papaya Salad','Tofu Skin Kimchi','Sweet & Sour Chili','Sweet & Sour Cucumber','Crispy Fish Skin','Spicy Pollack','Fern Bracken','Clam Tip Kimchi'], ja:['白菜キムチ','甘辛白菜キムチ','干し茄子','干し茄子イカ','キキョウ','カクドゥキ','大根千切りキムチ','若大根','唐辛子漬け','牛スジ','激辛鶏ささみ','ネギ','エゴマの葉','パパヤ和え','油揚げキムチ','甘辛唐辛子','甘酢きゅうり','香脆魚皮','明太子煮','わらび','アサリ和え'] }, 'seasons.label': { zh:'Four Seasons · 四季发酵', ko:'Four Seasons · 사계절 발효', en:'Four Seasons · Seasonal Fermentation', ja:'Four Seasons · 四季発酵' }, 'seasons.title': { zh:'时间是最好的匠人', ko:'시간이 만드는 맛', en:'Time Is the Greatest Artisan', ja:'時間は最良の職人' }, 'seasons.title.sub': { zh:'시간이 만드는 맛', ko:'时间是最好的匠人', en:'시간이 만드는 맛', ja:'시간이 만드는 맛' }, 'seasons.spring.char': { zh:'春', ko:'봄', en:'I', ja:'春' }, 'seasons.spring.num': { zh:'01 / Spring', ko:'01 / Spring', en:'01 / Spring', ja:'01 / Spring' }, 'seasons.spring.name': { zh:'春·腌', ko:'봄 · 담그기', en:'Spring · Cure', ja:'春・漬' }, 'seasons.spring.name.sub': { zh:'봄 · 담그기', ko:'春·腌', en:'봄 · 담그기', ja:'봄 · 담그기' }, 'seasons.spring.desc': { zh:'霜降后的白菜，最是脆嫩。抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。每一层都均匀、每一抹都用心。', ko:'서리 내린 후의 배추가 가장 아삭합니다. 고춧가루, 마늘, 젓갈을 발라 항아리에 층층이 담습니다. 매 층마다 고르게, 매 바름마다 정성스럽게.', en:'Napa cabbage after the first frost — at its crispest. Coated with chili powder, garlic, and fish sauce, layered into the jar. Every layer even, every stroke deliberate.', ja:'霜降後の白菜は最もシャキッとします。唐辛子粉、ニンニク、魚醤を塗り、甕に層々と重ねていきます。一層ごとに均等に、一塗りごとに丁寧に。' }, 'seasons.summer.char': { zh:'夏', ko:'여', en:'II', ja:'夏' }, 'seasons.summer.num': { zh:'02 / Summer', ko:'02 / Summer', en:'02 / Summer', ja:'02 / Summer' }, 'seasons.summer.name': { zh:'夏·酵', ko:'여름 · 발효', en:'Summer · Ferment', ja:'夏・酵' }, 'seasons.summer.name.sub': { zh:'여름 · 발효', ko:'夏·酵', en:'여름 · 발효', ja:'여름 · 발효' }, 'seasons.summer.desc': { zh:'温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺其自然。', ko:'온도가 오르면 유산균이 일하기 시작합니다. 항아리에서 꼬르륵 소리가 나는데, 그것이 발효의 소리입니다. 미생물은 조급함을 모르고, 자연의 순리만 압니다.', en:'As warmth rises, lactobacillus begins its work. The soft gurgle in the jar is the sound of fermentation. Microbes know nothing of haste — only the natural order.', ja:'気温が上がると乳酸菌が働き始めます。甕から聞こえるコポコポという音、それが発酵の声です。微生物は焦りを知らず、自然の理（ことわり）に従うだけ。' }, 'seasons.autumn.char': { zh:'秋', ko:'추', en:'III', ja:'秋' }, 'seasons.autumn.num': { zh:'03 / Autumn', ko:'03 / Autumn', en:'03 / Autumn', ja:'03 / Autumn' }, 'seasons.autumn.name': { zh:'秋·熟', ko:'가을 · 익음', en:'Autumn · Mature', ja:'秋・熟' }, 'seasons.autumn.name.sub': { zh:'가을 · 익음', ko:'秋·熟', en:'가을 · 익음', ja:'가을 · 익음' }, 'seasons.autumn.desc': { zh:'三个月的等待，酸与辣达成平衡。开坛的瞬间，香气扑面。这是时间赋予的味道，人工无法替代。', ko:'석 달의 기다림 끝에 신맛과 매운맛이 균형을 이룹니다. 항아리를 여는 순간, 향기가 온몸을 감쌉니다. 이것은 시간이 부여한 맛, 인공으로 대신할 수 없습니다.', en:'Three months of patience, and sour meets spice in perfect balance. The moment the jar opens, fragrance fills the air. This is a flavor only time can bestow — no shortcut can replicate it.', ja:'三ヶ月の待ち時間、酸味と辛味が完璧なバランスに達します。甕を開けた瞬間、香りが溢れ出す。これは時間だけが与えられる味、人工では代用できません。' }, 'seasons.winter.char': { zh:'冬', ko:'겨', en:'IV', ja:'冬' }, 'seasons.winter.num': { zh:'04 / Winter', ko:'04 / Winter', en:'04 / Winter', ja:'04 / Winter' }, 'seasons.winter.name': { zh:'冬·享', ko:'겨울 · 즐김', en:'Winter · Savor', ja:'冬・享' }, 'seasons.winter.name.sub': { zh:'겨울 · 즐김', ko:'冬·享', en:'겨울 · 즐김', ja:'겨울 · 즐김' }, 'seasons.winter.desc': { zh:'延边的冬天漫长而寒冷。一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是冬日的仪式。', ko:'연변의 겨울은 길고 춥습니다. 밥 한 그릇, 김치 한 접시면 가장 든든한 만족입니다. 화로에 둘러앉아 저를 먹는 것, 겨울의 의식입니다.', en:'Winter in Yanbian is long and cold. A bowl of rice, a dish of kimchi — the most honest satisfaction. Gathering around the hearth to share fermented preserves is winter\'s ritual.', ja:'延辺の冬は長く、厳しい。ご飯一杯、キムチ一皿、それが何よりの満足。炉を囲んで菹を味わうこと、それは冬の儀式です。' }, 'products.label': { zh:'Products · 产品殿堂', ko:'Products · 제품 전시', en:'Products · The Collection', ja:'Products · 製品殿堂' }, 'products.title': { zh:'每一味，都有性格', ko:'각각의 맛에는 개성이 있다', en:'Every Flavor Has a Character', ja:'一つ一つに、個性がある' }, 'products.spice': { zh:'辣度', ko:'매운맛', en:'Spice', ja:'辛さ' }, 'products.p1.name': { zh:'原味辣白菜', ko:'배추김치', en:'Plain Napa Kimchi', ja:'白菜キムチ' }, 'products.p1.name.sub': { zh:'배추김치', ko:'原味辣白菜', en:'배추김치', ja:'배추김치' }, 'products.p1.desc': { zh:'经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。', ko:'정통 원맛, 오직 소금과 시간뿐. 서리 배추의 자연스러운 단맛, 매운맛 없이도 여운이 길게 남습니다.', en:'The classic, unadorned. Only salt and time. The natural sweetness of frost-kissed napa, no hint of spice, yet the finish lingers.', ja:'定番の原味、塩と時間だけ。霜降白菜の自然な甘味、辛さは一切ないのに、余韻が長く続く。' }, 'products.p2.name': { zh:'甜味辣白菜', ko:'맛김치', en:'Sweet Spicy Kimchi', ja:'甘辛白菜キムチ' }, 'products.p2.name.sub': { zh:'맛김치', ko:'甜味辣白菜', en:'맛김치', ja:'맛김치' }, 'products.p2.desc': { zh:'甜与辣的温柔对话。延边特有的甜辣配方，一入口先是清甜，然后辣意缓缓升起。', ko:'달콤함과 매운맛의 부드러운 대화. 연변 특유의 달콤 매운맛 비법, 입에 넣으면 먼저 달콤함, 그리고 매운맛이 천천히 올라옵니다.', en:'A tender dialogue of sweet and heat. Yanbian\'s signature sweet-spicy formula — first the gentle sweetness, then the warmth slowly rising.', ja:'甘さと辛さの優しい対話。延辺特有の甘辛レシピ、口にすればまず甘さ、そして辛さがゆっくりと広がる。' }, 'products.p3.name': { zh:'茄子干鱿鱼丝', ko:'가지채 오징어', en:'Eggplant & Dried Squid', ja:'干し茄子イカ' }, 'products.p3.name.sub': { zh:'가지채 오징어', ko:'茄子干鱿鱼丝', en:'가지채 오징어', ja:'가지채 오징어' }, 'products.p3.desc': { zh:'干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。', ko:'말린 가지의 씹는 맛과 오징어의 감칠맛이 만나, 한 항아리 안에서 육지와 바다의 풍미가 교차합니다.', en:'The chew of dried eggplant meets the umami of squid. In a single jar, land and sea converge.', ja:'干し茄子の噛みごたえとイカの旨味が出会い、一つの甕の中で陸と海の風味が交差する。' }, 'products.p4.name': { zh:'萝卜块', ko:'깍두기', en:'Radish Cubes', ja:'カクドゥキ' }, 'products.p4.name.sub': { zh:'깍두기', ko:'萝卜块', en:'깍두기', ja:'깍두기' }, 'products.p4.desc': { zh:'方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。', ko:'모나게 썬 무, 모든 면에 양념이 듬뿍. 한 입 베어 물면 아삭하는 소리, 신선함과 발효의 하모니.', en:'Cubed radish, every face coated in chili paste. The satisfying crunch is a duet of freshness and fermentation.', ja:'四角に切った大根、すべての面に辛味噌がたっぷり。かじりついた時のパリッという音、新鮮さと発酵のハーモニー。' }, 'products.p5.name': { zh:'苏子叶', ko:'깻잎', en:'Perilla Leaves', ja:'エゴマの葉' }, 'products.p5.name.sub': { zh:'깻잎', ko:'苏子叶', en:'깻잎', ja:'깻잎' }, 'products.p5.desc': { zh:'一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。', ko:'잎 한 장에 여름이 통째로 숨어 있습니다. 깻잎의 풀내음이 양념에 부드럽게 감싸여, 씹을수록 맛이 깊어집니다.', en:'An entire summer hidden in a single leaf. The herbaceous fragrance of perilla, tenderly wrapped in seasoning — the more you chew, the deeper the flavor.', ja:'一枚の葉に夏がまるごと隠れている。エゴマの草の香りが調味料に優しく包まれ、噛むほどに味が深まる。' }, 'products.p6.name': { zh:'牛板筋', ko:'우설건강', en:'Spicy Beef Tendon', ja:'牛スジ辛味和え' }, 'products.p6.name.sub': { zh:'우설건강', ko:'牛板筋', en:'우설건강', ja:'우설건강' }, 'products.p6.desc': { zh:'牛板筋的韧劲配上辣椒的火热，越嚼越香，是下酒菜的绝对王者。', ko:'소 힘줄의 쫄깃함에 고추의 불맛이 더해져, 씹을수록 고소합니다. 안주의 절대 강자.', en:'The resilient chew of beef tendon meets the fire of chili. The more you chew, the richer it gets — the undisputed king of drinking snacks.', ja:'牛スジのコシに唐辛子の炎が加わり、噛むほどに旨味が増す。酒の肴の絶対王者。' }, 'products.p7.name': { zh:'香辣明太鱼', ko:'명태조림', en:'Spicy Pollack', ja:'明太子煮' }, 'products.p7.name.sub': { zh:'명태조림', ko:'香辣明太鱼', en:'명태조림', ja:'명태조림' }, 'products.p7.desc': { zh:'明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。', ko:'명태의 감칠맛에 고추의 매운맛이 더해져, 한 입에 바다의 넓이와 육지의 뜨거움이 함께합니다.', en:'The umami of pollack paired with the intensity of chili — one bite carries the expanse of the sea and the warmth of the land.', ja:'明太魚の旨味に唐辛子の激辛が重なり、一口で海の広がりと陸の熱さが共存する。' }, 'products.p8.name': { zh:'桔梗', ko:'도라지', en:'Bellflower Root', ja:'キキョウ' }, 'products.p8.name.sub': { zh:'도라지', ko:'桔梗', en:'도라지', ja:'도라지' }, 'products.p8.desc': { zh:'山间的桔梗根，清苦回甘。撕成细丝拌上辣椒酱，是延边人记忆里的味道。', ko:'산간의 도라지 뿌리, 쌉싸름하게 달콤한 뒷맛. 가늘게 찢어 고추장에 무치면, 연변 사람들의 기억 속 맛.', en:'Bellflower root from the mountains — gently bitter with a sweet return. Shredded fine and tossed with chili paste, it is the taste of Yanbian memory.', ja:'山間のキキョウの根、ほろ苦く甘い後味。細く裂いて唐辛子味噌で和えれば、延辺の人々の記憶の味。' }, 'story.s1.char': { zh:'江', ko:'강', en:'River', ja:'江' }, 'story.s1.label': { zh:'海兰江 · 해란강', ko:'해란강 · Hailan River', en:'Hailan River · 해란강', ja:'海蘭江 · 해란강' }, 'story.s1.title': { zh:'海兰江畔', ko:'해란강 가에서', en:'By the Hailan River', ja:'海蘭江のほとり' }, 'story.s1.title.sub': { zh:'해란강 가에서', ko:'海兰江畔', en:'해란강 가에서', ja:'해란강 가에서' }, 'story.s1.body': { zh:'延边海兰江流域，长白山脚下的沃土。朝鲜族世代在此居住，将发酵的智慧刻进日常。这里的昼夜温差大、水质清冽，是大自然赐予泡菜最好的条件。每一坛海兰菹，都始于这片土地。', ko:'연변 해란강 유역, 백두산 자락의 비옥한 땅. 조선족이 대대로 살며 발효의 지혜를 일상에 새겨왔습니다. 일교차가 크고 물이 맑아, 자연이 김치에게 준 최고의 조건입니다. 모든 해란저는 이 땅에서 시작됩니다.', en:'The Hailan River basin in Yanbian — fertile soil at the foot of Changbai Mountain. The Korean community has resided here for generations, weaving the wisdom of fermentation into daily life. The dramatic temperature shifts and pristine water are nature\'s finest gifts to kimchi-making. Every jar of HAILANZU begins here.', ja:'延辺海蘭江流域、白頭山の麓の肥沃な大地。朝鮮族が代々暮らし、発酵の知恵を日常に刻んできた。寒暖差が大きく、水が清らかなこの地は、自然がキムチに与えた最高の条件。海蘭菹のすべては、この土地から始まる。' }, 'story.s2.char': { zh:'手', ko:'손', en:'Hands', ja:'手' }, 'story.s2.label': { zh:'手作 · 손맛', ko:'손맛 · Handcrafted', en:'Handcrafted · 손맛', ja:'手作り · 손맛' }, 'story.s2.title': { zh:'古法手作', ko:'전통 수제', en:'Ancient Craft', ja:'古法手作り' }, 'story.s2.title.sub': { zh:'전통 수제', ko:'古法手作', en:'전통 수제', ja:'전통 수제' }, 'story.s2.body': { zh:'从选料到入坛，每一步都靠手与经验。抹酱的力道决定入味深浅，码坛的松紧影响发酵均匀。机器可以复制配方，却复制不了那双手的分寸感。三代人的手艺，是海兰菹最珍贵的秘方。', ko:'재료 선택부터 항아리에 담기까지, 모든 과정은 손과 경험에 의존합니다. 양념 바르는 힘조절이 맛의 깊이를 결정하고, 항아리 채우는 정도가 발효의 균일함에 영향을 미칩니다. 기계는 배합을 복제할 수 있어도, 그 손의 분량감은 복제할 수 없습니다. 삼대에 걸친 솜씨가 해란저의 가장 소중한 비법입니다.', en:'From selecting ingredients to packing the jar, every step relies on hands and experience. The pressure of each stroke determines depth of flavor; the tightness of packing shapes even fermentation. Machines can replicate a formula — but never the intuition of those hands. Three generations of craft: HAILANZU\'s most treasured secret.', ja:'素材の選別から甕詰めまで、すべての工程は手と経験に頼る。塗る力加減が味の深さを決め、詰め方の加減が発酵の均一さを左右する。機械は配合を再現できても、その手の勘所は再現できない。三代にわたる技こそが、海蘭菹の最も尊しい秘伝。' }, 'story.s3.char': { zh:'坛', ko:'항', en:'Jar', ja:'壺' }, 'story.s3.label': { zh:'发酵 · 발효', ko:'발효 · Fermentation', en:'Fermentation · 발효', ja:'発酵 · 발효' }, 'story.s3.title': { zh:'坛中时光', ko:'항아리 속 시간', en:'Time in the Jar', ja:'甕の中の時' }, 'story.s3.title.sub': { zh:'항아리 속 시간', ko:'坛中时光', en:'항아리 속 시간', ja:'항아리 속 시간' }, 'seasons.spring.proverb': { zh:'「꽃이 피면 봄이 온다」— 花开春来', ko:'「꽃이 피면 봄이 온다」— 꽃이 피면 봄이 온다', en:'"When the azaleas bloom, spring has come"', ja:'「꽃이 피면 봄이 온다」— 花咲きて春来る' }, 'seasons.summer.proverb': { zh:'「여름 밤은 짧다」— 夏夜苦短', ko:'「여름 밤은 짧다」— 여름 밤은 짧다', en:'"Summer nights are all too brief"', ja:'「여름 밤은 짧다」— 夏の夜は短し' }, 'seasons.autumn.proverb': { zh:'「가을 하늘은 높다」— 秋高气爽', ko:'「가을 하늘은 높다」— 가을 하늘은 높다', en:'"The autumn sky stretches high and clear"', ja:'「가을 하늘은 높다」— 秋高く澄む' }, 'seasons.winter.proverb': { zh:'「첫눈이 오면 김치 담근다」— 初雪腌泡菜', ko:'「첫눈이 오면 김치 담근다」— 첫눈이 오면 김치 담근다', en:'"When the first snow falls, it is time to make kimchi"', ja:'「첫눈이 오면 김치 담근다」— 初雪降れどきキムチ仕込み' }, 'story.s3.body': { zh:'发酵不是工业流程，是时间的艺术。温度、湿度、天数，每一坛都有自己的"生命节奏"。我们不催促，不加速。等待，是做出好泡菜唯一的方法。每一坛海兰菹，都值得被等待。', ko:'발효는 산업 공정이 아니라 시간의 예술입니다. 온도, 습도, 날수 — 매 항아리마다 자신만의 \'생명 리듬\'이 있습니다. 우리는 재촉하지 않고, 앞당기지 않습니다. 기다림이 좋은 김치를 만드는 유일한 방법입니다. 모든 해란저는 기다릴 가치가 있습니다.', en:'Fermentation is not an industrial process — it is the art of time. Temperature, humidity, days — each jar has its own living rhythm. We do not rush. We do not accelerate. Waiting is the only way to make great kimchi. Every jar of HAILANZU is worth the wait.', ja:'発酵は工業プロセスではない、時間の芸術だ。温度、湿度、日数——甕一つ一つに独自の「生命のリズム」がある。急がず、加速しない。待つことこそが、良いキムチを作る唯一の方法。海蘭菹の甕は、どれも待つ価値がある。' }, 'gift.label': { zh:'Gift Collection · 高端礼盒', ko:'Gift Collection · 프리미엄 선물', en:'Gift Collection · Curated Sets', ja:'Gift Collection · 高級ギフト' }, 'gift.title': { zh:'菹味珍礼', ko:'저미의 귀한 선물', en:'Curated Gift Sets', ja:'菹味珍礼' }, 'gift.title.sub': { zh:'최고의 선물', ko:'菹味珍礼', en:'최고의 선물', ja:'最高の贈り物' }, 'gift.title.en': { zh:'Curated Gift Collection', ko:'Curated Gift Collection', en:'The Art of Gifting', ja:'Curated Gift Collection' }, 'gift.g1.tier': { zh:'Essential', ko:'Essential', en:'Essential', ja:'Essential' }, 'gift.g1.name': { zh:'菹味·初识', ko:'저미 · 첫 만남', en:'First Encounter', ja:'菹味・初遇' }, 'gift.g1.name.sub': { zh:'첫 만남', ko:'菹味·初识', en:'첫 만남', ja:'첫 만남' }, 'gift.g1.item0': { zh:'原味辣白菜 · 300g', ko:'배추김치 · 300g', en:'Plain Napa Kimchi · 300g', ja:'白菜キムチ · 300g' }, 'gift.g1.item1': { zh:'甜味辣白菜 · 300g', ko:'맛김치 · 300g', en:'Sweet Spicy Kimchi · 300g', ja:'甘辛白菜キムチ · 300g' }, 'gift.g1.item2': { zh:'萝卜块 · 250g', ko:'깍두기 · 250g', en:'Radish Cubes · 250g', ja:'カクドゥキ · 250g' }, 'gift.g1.item3': { zh:'手工牛皮纸礼盒', ko:'수공 크라프트 선물 상자', en:'Handcrafted Kraft Box', ja:'手作りクラフトギフトボックス' }, 'gift.g2.tier': { zh:'Classic', ko:'Classic', en:'Classic', ja:'Classic' }, 'gift.g2.name': { zh:'菹味·家宴', ko:'저미 · 가족 만찬', en:'Family Feast', ja:'菹味・家宴' }, 'gift.g2.name.sub': { zh:'가족 만찬', ko:'菹味·家宴', en:'가족 만찬', ja:'가족 만찬' }, 'gift.g2.item0': { zh:'经典泡菜 × 4款', ko:'클래식 김치 × 4종', en:'Classic Kimchi × 4 Varieties', ja:'定番キムチ × 4種' }, 'gift.g2.item1': { zh:'荤味系列 × 2款', ko:'육류 시리즈 × 2종', en:'Meat Selection × 2 Varieties', ja:'肉類シリーズ × 2種' }, 'gift.g2.item2': { zh:'草本系列 × 2款', ko:'허브 시리즈 × 2종', en:'Herbal Selection × 2 Varieties', ja:'薬草シリーズ × 2種' }, 'gift.g2.item3': { zh:'专属手写贺卡', ko:'전용 손글씨 축하카드', en:'Handwritten Greeting Card', ja:'手書きメッセージカード' }, 'gift.g2.item4': { zh:'定制木盒礼盒', ko:'맞춤 목재 선물 상자', en:'Custom Wooden Box', ja:'特製木製ギフトボックス' }, 'gift.g3.tier': { zh:'Supreme', ko:'Supreme', en:'Supreme', ja:'Supreme' }, 'gift.g3.name': { zh:'菹味·珍礼', ko:'저미 · 최고의 선물', en:'The Supreme Gift', ja:'菹味・珍礼' }, 'gift.g3.name.sub': { zh:'최고의 선물', ko:'菹味·珍礼', en:'최고의 선물', ja:'最高の贈り物' }, 'gift.g3.item0': { zh:'全系列泡菜 × 8款', ko:'전 시리즈 김치 × 8종', en:'Full Collection × 8 Varieties', ja:'全シリーズキムチ × 8種' }, 'gift.g3.item1': { zh:'延边人参 · 精选', ko:'연변 인삼 · 엄선', en:'Yanbian Ginseng · Selected', ja:'延辺人参 ・ 厳選' }, 'gift.g3.item2': { zh:'手工米酒 · 2瓶', ko:'수제 막걸리 · 2병', en:'Handcrafted Rice Wine · 2 Bottles', ja:'手作りマッコリ ・ 2本' }, 'gift.g3.item3': { zh:'定制刻字坛器', ko:'맞춤 각인 항아리', en:'Custom Engraved Jar', ja:'名入れ甕' }, 'gift.g3.item4': { zh:'专属手写贺卡', ko:'전용 손글씨 축하카드', en:'Handwritten Greeting Card', ja:'手書きメッセージカード' }, 'gift.g3.item5': { zh:'限量陶瓷礼盒', ko:'한정 도자기 선물 상자', en:'Limited Ceramic Gift Box', ja:'限定陶器ギフトボックス' }, 'gift.cta': { zh:'定制礼盒', ko:'맞춤 선물', en:'Customize Gift', ja:'ギフトをカスタマイズ' }, 'gift.cta.temp': { zh:'即将开放', ko:'곧 오픈', en:'Coming Soon', ja:'まもなく公開' }, 'cta.title': { zh:'开启你的菹味之旅', ko:'저미의 여정을 시작하세요', en:'Begin Your Journey of Fermentation', ja:'菹味の旅を始めよう' }, 'cta.sub': { zh:'Begin Your Journey of Fermentation', ko:'Begin Your Journey of Fermentation', en:'延边古法菹味 · 延边古法菹味', ja:'Begin Your Journey of Fermentation' }, 'cta.btn': { zh:'联系我们', ko:'문의하기', en:'Contact Us', ja:'お問い合わせ' }, 'contact.name': { zh:'姓名', ko:'이름', en:'Name', ja:'お名前' }, 'contact.name.ph': { zh:'请输入姓名', ko:'이름을 입력하세요', en:'Your name', ja:'お名前を入力' }, 'contact.email': { zh:'邮箱', ko:'이메일', en:'Email', ja:'メール' }, 'contact.email.ph': { zh:'请输入邮箱', ko:'이메일을 입력하세요', en:'Your email', ja:'メールアドレスを入力' }, 'contact.subject': { zh:'主题', ko:'주제', en:'Subject', ja:'件名' }, 'contact.subject.biz': { zh:'商务合作', ko:'비즈니스 협력', en:'Business Partnership', ja:'ビジネス提携' }, 'contact.subject.product': { zh:'产品咨询', ko:'제품 문의', en:'Product Inquiry', ja:'製品について' }, 'contact.subject.media': { zh:'媒体采访', ko:'미디어 인터뷰', en:'Media Interview', ja:'メディア取材' }, 'contact.subject.other': { zh:'其他', ko:'기타', en:'Other', ja:'その他' }, 'contact.message': { zh:'留言', ko:'메시지', en:'Message', ja:'メッセージ' }, 'contact.message.ph': { zh:'请输入留言…', ko:'메시지를 입력하세요…', en:'Your message...', ja:'メッセージを入力...' }, 'contact.submit': { zh:'提交', ko:'제출', en:'Submit', ja:'送信' }, 'footer.brand': { zh:'海兰菹 해란저', ko:'해란저 海兰菹', en:'HAILANZU 해란저', ja:'海蘭菹 해란저' }, 'footer.brand.sub': { zh:'延边古法菹味', ko:'연변 고법 저미', en:'Ancient Craft of Yanbian Fermentation', ja:'延辺古法菹味' }, 'footer.brand.en': { zh:'The Art of Korean Fermentation', ko:'The Art of Korean Fermentation', en:'The Art of Korean Fermentation', ja:'The Art of Korean Fermentation' }, 'footer.explore': { zh:'Explore', ko:'둘러보기', en:'Explore', ja:'探索' }, 'footer.shop': { zh:'Shop', ko:'쇼핑', en:'Shop', ja:'ショップ' }, 'footer.contact': { zh:'Contact', ko:'문의', en:'Contact', ja:'お問い合わせ' }, 'footer.explore.i0': { zh:'四季发酵', ko:'사계절 발효', en:'Four Seasons', ja:'四季発酵' }, 'footer.explore.i1': { zh:'产品殿堂', ko:'제품 전시', en:'The Collection', ja:'製品殿堂' }, 'footer.explore.i2': { zh:'延边风土', ko:'연변 풍토', en:'Yanbian Heritage', ja:'延辺風土' }, 'footer.explore.i3': { zh:'高端礼盒', ko:'프리미엄 선물', en:'Gift Collection', ja:'高級ギフト' }, 'footer.shop.i0': { zh:'抖音旗舰店', ko:'도우인 공식점', en:'Douyin Flagship', ja:'抖音旗艦店' }, 'footer.shop.i1': { zh:'淘宝店铺', ko:'타오바오 매장', en:'Taobao Store', ja:'淘宝店' }, 'footer.shop.i2': { zh:'拼多多', ko:'핀둬둬', en:'Pinduoduo', ja:'拼多多' }, 'footer.shop.i3': { zh:'微信客服', ko:'위챗 고객센터', en:'WeChat Service', ja:'WeChatカスタマーサービス' }, 'footer.contact.i0': { zh:'商务合作', ko:'비즈니스 협력', en:'Business Partnership', ja:'ビジネス提携' }, 'footer.contact.i1': { zh:'加入我们', ko:'채용', en:'Join Us', ja:'採用情報' }, 'footer.contact.i2': { zh:'媒体资源', ko:'미디어 자료', en:'Media Resources', ja:'メディアリソース' }, 'footer.copy': { zh:'© 2026 海兰菹 HAILANZU 해란저', ko:'© 2026 해란저 HAILANZU 海兰菹', en:'© 2026 HAILANZU 해란저', ja:'© 2026 海蘭菹 HAILANZU 해란저' }, 'footer.legal': { zh:'隐私政策 · 使用条款', ko:'개인정보처리방침 · 이용약관', en:'Privacy Policy · Terms of Use', ja:'プライバシーポリシー ・ 利用規約' }  , 'community.title': { zh:'加入海兰菹味道社群', ko:'해란저 맛의 공동체에 합류하세요', en:'Join the HAILANZU Community', ja:'海蘭菹の味のコミュニティに参加' }, 'community.subtitle': { zh:'与1000+泡菜爱好者共享延边风味', ko:'1000명 이상의 김치 애호가와 연변의 맛을 나누세요', en:'Share the taste of Yanbian with 1,000+ kimchi lovers', ja:'1000人以上のキムチ愛好家と延辺の味を共有' }, 'community.wechat-work': { zh:'企业微信', ko:'기업 위챗', en:'WeChat Work', ja:'企業WeChat' }, 'community.wechat-work.desc': { zh:'扫码加入 · 专属试吃装', ko:'스캔하여 가입 · 전용 시식 세트', en:'Scan to join · Exclusive tasting kit', ja:'スキャンして参加・限定試食セット' }, 'community.official': { zh:'公众号', ko:'공식 계정', en:'Official Account', ja:'公式アカウント' }, 'community.official.desc': { zh:'扫码关注 · 每周风味故事', ko:'스캔하여 팔로우 · 매주 맛 이야기', en:'Scan to follow · Weekly flavor stories', ja:'スキャンしてフォロー・毎週味のストーリー' }, 'community.xhs': { zh:'小红书', ko:'샤오홍슈', en:'Xiaohongshu', ja:'小紅書' }, 'community.xhs.desc': { zh:'搜索海兰菹 · 笔记灵感', ko:'해란저 검색 · 노트 영감', en:'Search HAILANZU · Note inspiration', ja:'海蘭菹を検索・ノートインスピレーション' }, 'community.perk': { zh:'新成员专享：首次加入领取试吃装', ko:'신규 멤버 전용: 첫 가입 시 시식 세트 수령', en:'New members: receive a tasting kit on first join', ja:'新規メンバー限定：初回参加で試食セットプレゼント' }, 'cta.floating': { zh:'关注领试吃', ko:'팔로우하고 시식 받기', en:'Follow for tasting', ja:'フォローして試食ゲット' }, 'promo.text': { zh:'新客首单9折 · 企业微信专属', ko:'신규 고객 첫 주문 10% 할인 · 기업 위챗 전용', en:'10% off first order · WeChat Work exclusive', ja:'新規初回注文10%オフ・企業WeChat限定' }, 'promo.btn': { zh:'立即加入', ko:'지금 가입', en:'Join now', ja:'今すぐ参加' }, 'qr.placeholder': { zh:'二维码即将上线', ko:'QR 코드 곧 출시', en:'QR code coming soon', ja:'QRコード近日公開' }, 'footer.qr.wechat-work': { zh:'企业微信', ko:'기업 위챗', en:'WeChat Work', ja:'企業WeChat' }, 'footer.qr.official': { zh:'公众号', ko:'공식 계정', en:'Official Account', ja:'公式アカウント' }, 'ear.products': { zh:'产品', ko:'제품', en:'Products', ja:'製品' }, 'ear.story': { zh:'故事', ko:'이야기', en:'Story', ja:'物語' }, }; const savedLang = localStorage.getItem('hailanzu-lang'); let currentLang = savedLang || detectBrowserLang(); function setLanguage(lang) { currentLang = lang; loadLanguageFont(lang); localStorage.setItem('hailanzu-lang', lang); document.documentElement.lang = langMap[lang] || 'zh-CN'; document.body.setAttribute('data-lang', lang); document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.dataset.i18n; if (i18n[key] && i18n[key][lang] !== undefined) { const val = i18n[key][lang]; if (typeof val === 'string' && val.includes('<br>')) { el.innerHTML = val; } else { el.textContent = val; } } }); document.querySelectorAll('.nav-lang span').forEach(s => { s.classList.toggle('active', s.dataset.lang === lang); }); rebuildMarquee(lang); earProducts.setAttribute('data-label', i18n['ear.products'][lang]); earStory.setAttribute('data-label', i18n['ear.story'][lang]); document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.dataset.i18nPlaceholder; if (i18n[key] && i18n[key][lang] !== undefined) el.placeholder = i18n[key][lang]; }); } function rebuildMarquee(lang) { const items = i18n['marquee'][lang]; const azaleaSvg = '<svg class="marquee-azalea" viewBox="0 0 28 28" fill="none"><g transform="translate(14,14)" stroke="currentColor" stroke-width="1.2" fill="none"><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(0)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(72)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(144)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(216)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(288)"/><circle cx="0" cy="0" r="1.5"/></g></svg>'; const html = items.map(p => '<span class="marquee-item">' + p + ' ' + azaleaSvg + '</span>').join(''); marqueeEl.innerHTML = html + html; } document.querySelectorAll('.nav-lang span').forEach(btn => { btn.addEventListener('click', () => setLanguage(btn.dataset.lang)); }); const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }); document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el)); const carouselInner = document.getElementById('carouselInner'); const carouselDots = document.getElementById('carouselDots'); const carouselCounter = document.getElementById('carouselCounter'); const carouselPrev = document.getElementById('carouselPrev'); const carouselNext = document.getElementById('carouselNext'); const slides = document.querySelectorAll('.products-carousel-slide'); const totalSlides = slides.length; let currentCarouselSlide = 0; let carouselTimer = null; let touchStartX = 0; let touchEndX = 0; const carouselSection = document.getElementById('products'); const slideBgs = ['#E8EDE5','#5B3A6B','#3D6B4F','#C4A46C']; const headerColors = ['var(--ink-deep)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink-deep)','var(--rice)']; const carouselEl = document.getElementById('productsCarousel'); if (carouselEl) carouselEl.style.backgroundColor = slideBgs[0]; if (carouselSection) carouselSection.style.backgroundColor = slideBgs[0]; for (let i = 0; i < totalSlides; i++) { const dot = document.createElement('div'); dot.className = 'carousel-dot' + (i === 0 ? ' active' : ''); dot.addEventListener('click', () => goToSlide(i)); if(carouselDots) carouselDots.appendChild(dot); } function goToSlide(index, animate = true) { currentCarouselSlide = Math.max(0, Math.min(totalSlides - 1, index)); if (animate) { if(carouselInner) carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)'; } if(carouselInner) carouselInner.style.transform = `translateX(-${currentCarouselSlide * 100}%)`; carouselDots&&carouselDots.querySelectorAll('.carousel-dot').forEach((dot, i) => { dot.classList.toggle('active', i === currentCarouselSlide); }); if(carouselCounter) carouselCounter.innerHTML = `<span class="carousel-counter-current">${String(currentCarouselSlide + 1).padStart(2, '0')}</span> / ${String(totalSlides).padStart(2, '0')}`; if (carouselEl) carouselEl.style.backgroundColor = slideBgs[currentCarouselSlide]; if (carouselSection) carouselSection.style.backgroundColor = slideBgs[currentCarouselSlide]; const headerTitle = carouselEl.querySelector('.sticky-header-title'); const headerLabel = carouselEl.querySelector('.sticky-header-label'); if (headerTitle) headerTitle.style.color = ''; if (headerLabel) headerLabel.style.color = ''; resetCarouselTimer(); } function nextSlide() { if (currentCarouselSlide < totalSlides - 1) goToSlide(currentCarouselSlide + 1); else goToSlide(0); } function prevSlide() { if (currentCarouselSlide > 0) goToSlide(currentCarouselSlide - 1); else goToSlide(totalSlides - 1); } if(carouselNext) carouselNext.addEventListener('click', nextSlide); if(carouselPrev) carouselPrev.addEventListener('click', prevSlide); function resetCarouselTimer() { clearInterval(carouselTimer); carouselTimer = setInterval(nextSlide, 5000); } resetCarouselTimer(); if(carouselSection) carouselSection.addEventListener('mouseenter', () => clearInterval(carouselTimer)); if(carouselSection) carouselSection.addEventListener('mouseleave', resetCarouselTimer); const track = document.querySelector('.products-carousel-track'); let isDragging = false; let dragStartX = 0; let dragCurrentX = 0; let dragOffset = 0; let dragStartTime = 0; function getCarouselOffset() { return -currentCarouselSlide * track.offsetWidth; } function clampOffset(offset) { const min = -(totalSlides - 1) * track.offsetWidth; const max = 0; return Math.max(min, Math.min(max, offset)); } if(track) track.addEventListener('touchstart', (e) => { isDragging = true; dragStartX = e.changedTouches[0].clientX; dragCurrentX = dragStartX; dragOffset = getCarouselOffset(); dragStartTime = Date.now(); clearInterval(carouselTimer); carouselInner.style.transition = 'none'; }, { passive: true }); if(track) track.addEventListener('touchmove', (e) => { if (!isDragging) return; dragCurrentX = e.changedTouches[0].clientX; const diff = dragCurrentX - dragStartX; const newOffset = clampOffset(dragOffset + diff); carouselInner.style.transform = `translateX(${newOffset}px)`; }, { passive: true }); if(track) track.addEventListener('touchend', (e) => { if (!isDragging) return; isDragging = false; carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)'; const diff = dragCurrentX - dragStartX; const elapsed = Date.now() - dragStartTime; const velocity = Math.abs(diff) / elapsed; // px/ms const threshold = velocity > 0.5 ? 30 : 60; if (Math.abs(diff) > threshold) { if (diff < 0) { goToSlide(Math.min(currentCarouselSlide + 1, totalSlides - 1)); } else { goToSlide(Math.max(currentCarouselSlide - 1, 0)); } } else { goToSlide(currentCarouselSlide); } }, { passive: true }); let mouseDragging = false; let mouseStartX = 0; let mouseDragOffset = 0; if(track) track.addEventListener('mousedown', (e) => { mouseDragging = true; mouseStartX = e.clientX; mouseDragOffset = getCarouselOffset(); carouselInner.style.transition = 'none'; track.style.cursor = 'grabbing'; clearInterval(carouselTimer); e.preventDefault(); }); document.addEventListener('mousemove', (e) => { if (!mouseDragging) return; const diff = e.clientX - mouseStartX; const newOffset = clampOffset(mouseDragOffset + diff); carouselInner.style.transform = `translateX(${newOffset}px)`; }); document.addEventListener('mouseup', (e) => { if (!mouseDragging) return; mouseDragging = false; carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)'; track.style.cursor = 'grab'; const diff = e.clientX - mouseStartX; if (Math.abs(diff) > 60) { if (diff < 0) goToSlide(Math.min(currentCarouselSlide + 1, totalSlides - 1)); else goToSlide(Math.max(currentCarouselSlide - 1, 0)); } else { goToSlide(currentCarouselSlide); } }); goToSlide(0); document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }); const heroText = document.querySelector('.hero-text'); let heroParallaxNeeded = true; const heroSlides = document.querySelectorAll('.hero-bg-slide'); const heroDots = document.querySelectorAll('.hero-dot'); let currentSlide = 0; let heroSlideTimer = null; const heroFlowers = document.querySelectorAll('.hero-flower'); function showSlide(index) { heroSlides.forEach((s, i) => { s.classList.toggle('active', i === index); }); heroDots.forEach((d, i) => { d.classList.toggle('active', i === index); }); heroFlowers.forEach((f) => { f.classList.toggle('active', parseInt(f.dataset.flower) === index); }); currentSlide = index; } function nextHeroSlide() { showSlide((currentSlide + 1) % heroSlides.length); } function startHeroSlideshow() { stopHeroSlideshow(); heroSlideTimer = setInterval(nextHeroSlide, 6000); } function stopHeroSlideshow() { if (heroSlideTimer) { clearInterval(heroSlideTimer); heroSlideTimer = null; } } heroDots.forEach(dot => { dot.addEventListener('click', () => { showSlide(parseInt(dot.dataset.slide)); startHeroSlideshow(); }); }); const heroEl = document.querySelector('.hero'); heroEl.addEventListener('mouseenter', stopHeroSlideshow); heroEl.addEventListener('mouseleave', startHeroSlideshow); document.addEventListener('visibilitychange', () => { document.hidden ? stopHeroSlideshow() : startHeroSlideshow(); }); showSlide(0); startHeroSlideshow(); document.querySelectorAll('.gift-cta').forEach(btn => { btn.addEventListener('click', () => { const tempText = i18n['gift.cta.temp'][currentLang] || 'Coming Soon'; const origText = i18n['gift.cta'][currentLang] || '定制礼盒'; btn.textContent = tempText; btn.style.borderColor = 'var(--gold)'; btn.style.color = 'var(--gold)'; setTimeout(() => { btn.textContent = origText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000); }); }); if(typeof setLanguage==='function') setLanguage(currentLang);</script>
+<script>
+// ====== MARQUEE DATA ======
+// ====== Language Detection ======
+function detectBrowserLang(){var b=(navigator.language||navigator.userLanguage||"").toLowerCase();if(b.startsWith("ko"))return"ko";if(b.startsWith("ja"))return"ja";if(b.startsWith("en"))return"en";return"zh"}
+const langMap={zh:"zh-CN",ko:"ko",en:"en",ja:"ja"};
+
+const marqueeEl = document.getElementById('marqueeInner');
+// Marquee is now built by setLanguage() via i18n['marquee']
+
+// ====== NAV SCROLL ======
+const nav = document.getElementById('nav');
+let navRafPending = false;
+// Merged scroll handler for nav + hero parallax
+let mainRafPending = false;
+function onMainScroll() {
+  if (!mainRafPending) {
+    mainRafPending = true;
+    requestAnimationFrame(() => {
+      const sy = window.scrollY;
+      nav.classList.toggle('scrolled', sy > 60);
+      // Hero parallax — always recalculate when in viewport
+      if (heroText) {
+        if (sy < window.innerHeight) {
+          heroParallaxNeeded = true;
+          const r = sy / window.innerHeight;
+          if (r < 0.01) {
+            // At very top, remove inline styles so CSS animation takes over
+            heroText.style.transform = '';
+            heroText.style.opacity = '';
+          } else {
+            heroText.style.transform = 'translateY(calc(-50% + ' + (r * 50) + 'px))';
+            heroText.style.opacity = Math.max(0, 1 - r * 1.2);
+          }
+        } else if (heroParallaxNeeded) {
+          heroParallaxNeeded = false;
+          heroText.style.opacity = '0';
+          heroText.style.transform = 'translateY(calc(-50% + 50px))';
+        }
+      }
+      // Tagline, scroll hint, dots fade with scroll
+      const heroTagline = document.querySelector('.hero-tagline');
+      const heroScroll = document.querySelector('.hero-scroll');
+      const heroDotsEl = document.querySelector('.hero-dots');
+      if (sy < window.innerHeight) {
+        const r = sy / window.innerHeight;
+        if (r < 0.01) {
+          if (heroTagline) heroTagline.style.opacity = '';
+          if (heroScroll) heroScroll.style.opacity = '';
+          if (heroDotsEl) heroDotsEl.style.opacity = '';
+        } else {
+          if (heroTagline) heroTagline.style.opacity = Math.max(0, 1 - r * 1.5);
+          if (heroScroll) heroScroll.style.opacity = Math.max(0, 1 - r * 2);
+          if (heroDotsEl) heroDotsEl.style.opacity = Math.max(0.15, 1 - r);
+        }
+      } else {
+        if (heroTagline) heroTagline.style.opacity = '0';
+        if (heroScroll) heroScroll.style.opacity = '0';
+        if (heroDotsEl) heroDotsEl.style.opacity = '0.15';
+      }
+      mainRafPending = false;
+    });
+  }
+}
+window.addEventListener('scroll', onMainScroll, { passive: true });
+
+// ====== LOGO即导航 —— 点击坛子展开导航面板 ======
+const navLogo = document.getElementById('navLogo');
+const navPanel = document.getElementById('navPanel');
+const navPanelClose = document.getElementById('navPanelClose');
+const earProducts = document.getElementById('earProducts');
+const earStory = document.getElementById('earStory');
+let panelOpen = false;
+
+function openPanel() {
+  panelOpen = true;
+  nav.classList.add('expanded');
+  navPanel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePanel() {
+  panelOpen = false;
+  nav.classList.remove('expanded');
+  navPanel.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// 点击logo返回首页，点击耳朵导航
+navLogo.addEventListener('click', (e) => {
+  if (e.target === earProducts) {
+    e.stopPropagation();
+    closePanel();
+    window.location.href = 'products.html';
+    return;
+  }
+  if (e.target === earStory) {
+    e.stopPropagation();
+    closePanel();
+    window.location.href = 'story.html';
+    return;
+  }
+  // 点击坛子图标：打开/关闭导航面板
+  const potIcon = navLogo.querySelector('.pot-icon');
+  if (potIcon && potIcon.contains(e.target)) {
+    e.stopPropagation();
+    panelOpen ? closePanel() : openPanel();
+    return;
+  }
+  // 点击文字部分：回到顶部
+  closePanel();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+navPanelClose.addEventListener('click', closePanel);
+// Panel items are now <a> links to subpages, just close panel on click
+navPanel.querySelectorAll('.nav-panel-item').forEach(item => {
+  item.addEventListener('click', () => {
+    closePanel();
+  });
+});
+
+// Mobile hamburger
+const hamburger = document.getElementById('hamburger');
+hamburger.addEventListener('click', () => {
+  panelOpen ? closePanel() : openPanel();
+});
+
+// Ear hover effects
+earProducts.addEventListener('click', () => {
+  closePanel();
+  window.location.href = 'products.html';
+});
+earStory.addEventListener('click', () => {
+  closePanel();
+  window.location.href = 'story.html';
+});
+
+// ====== I18N — 四语切换系统 ======
+const i18n = {
+  // NAV
+  'nav.logo.main': { zh:'海兰菹', ko:'해란저', en:'HAILANZU', ja:'海蘭菹' },
+  'nav.logo.sub': { zh:'해란저', ko:'海兰菹', en:'해란저', ja:'해란저' },
+  'nav.seasons': { zh:'四季发酵', ko:'사계절 발효', en:'Four Seasons', ja:'四季発酵' },
+  'nav.seasons.sub': { zh:'사계절 발효', ko:'四季发酵', en:'사계절 발효', ja:'사계절 발효' },
+  'nav.products': { zh:'产品殿堂', ko:'제품 전시', en:'The Collection', ja:'製品殿堂' },
+  'nav.products.sub': { zh:'제품 전시', ko:'产品殿堂', en:'제품 전시', ja:'제품 전시' },
+  'nav.story': { zh:'延边风土', ko:'연변 풍토', en:'Yanbian Heritage', ja:'延辺風土' },
+  'nav.story.sub': { zh:'연변 풍토', ko:'延边风土', en:'연변 풍토', ja:'연변 풍토' },
+  'nav.gift': { zh:'高端礼盒', ko:'프리미엄 선물', en:'Gift Collection', ja:'高級ギフト' },
+  'nav.gift.sub': { zh:'프리미엄 선물', ko:'高端礼盒', en:'프리미엄 선물', ja:'프리미엄 선물' },
+  'nav.contact': { zh:'联系我们', ko:'문의하기', en:'Contact', ja:'お問い合わせ' },
+  'nav.contact.sub': { zh:'문의하기', ko:'联系我们', en:'문의하기', ja:'문의하기' },
+
+  // HERO
+  'hero.declaration': { zh:'海兰菹', ko:'해란저', en:'HAILANZU', ja:'海蘭菹' },
+  'hero.declaration.sub': { zh:'해란저', ko:'海兰菹', en:'해란저', ja:'해란저' },
+  'hero.seal': { zh:'菹', ko:'저', en:'ZU', ja:'菹' },
+  'terroir.s1.label': { zh:'Origin · 长白山', ko:'Origin · 백두산', en:'Origin · Changbai Mountain', ja:'Origin · 長白山' },
+  'terroir.s1.title': { zh:'长白之巅，万物之源', ko:'백두산 정상, 만물의 근원', en:'Summit of Changbai, Source of All', ja:'長白の嶺、万物の源' },
+  'terroir.s1.title.kr': { zh:'백두산 정상, 만물의 근원', ko:'长白之巅，万物之源', en:'백두산 정상, 만물의 근원', ja:'백두산 정상, 만물의 근원' },
+  'terroir.s1.desc': { zh:'长白山天池之水，经地下矿脉渗透百公里，在海兰江畔涌出。矿物质丰富的水源，是发酵最忠实的盟友。', ko:'백두산 천지의 물이 지하 광맥을 따라 백 킬로미터를 흘러 해란강가에서 솟아납니다. 미네랄이 풍부한 수원은 발효의 가장 충실한 동맹입니다.', en:'Water from Tianchi Lake seeps through mineral veins for a hundred kilometers before emerging at the Hailan River. Mineral-rich water is fermentation\u2019s most faithful ally.', ja:'長白山天池の水が地下の鉱脈を百キロ浸透し、海蘭江畔に湧き出る。ミネラル豊かな水源は、発酵の最も忠実な味方。' },
+  'terroir.s2.label': { zh:'Water · 海兰江', ko:'Water · 해란강', en:'Water · Hailan River', ja:'Water · 海蘭江' },
+  'terroir.s2.title': { zh:'海兰江畔，静水流深', ko:'해란강가, 잔잔한 물결', en:'By the Hailan River, Still Waters Run Deep', ja:'海蘭江畔、静かなる水は深し' },
+  'terroir.s2.title.kr': { zh:'해란강가, 잔잔한 물결', ko:'海兰江畔，静水流深', en:'해란강가, 잔잔한 물결', ja:'해란강가, 잔잔한 물결' },
+  'terroir.s2.desc': { zh:'海兰江冲积平原，昼夜温差可达二十度。白天积累的糖分，夜晚被牢牢锁住——这是大自然为泡菜写好的配方。', ko:'해란강 충적평원, 일교차가 20도에 달합니다. 낮에 축적된 당분은 밤에 단단히 잠깁니다 — 자연이 김치를 위해 쓴 처방전입니다.', en:'The Hailan River alluvial plain sees temperature swings of twenty degrees. Sugars accumulated by day are locked in by night — nature\u2019s own recipe for kimchi.', ja:'海蘭江沖積平野、昼夜の温差は二十度に達する。昼に蓄積された糖分は夜にしっかり閉じ込められる——自然がキムチのために書いた処方箋。' },
+  'terroir.s3.label': { zh:'Soil · 黄心白菜', ko:'Soil · 황심배추', en:'Soil · Yellow-Heart Napa', ja:'Soil · 黄心白菜' },
+  'terroir.s3.title': { zh:'霜后白菜，脆如初雪', ko:'서리 후 배추, 첫눈처럼 아삭', en:'Frost-Kissed Cabbage, Crisp as First Snow', ja:'霜後の白菜、初雪のように脆く' },
+  'terroir.s3.title.kr': { zh:'서리 후 배추, 첫눈처럼 아삭', ko:'霜后白菜，脆如初雪', en:'서리 후 배추, 첫눈처럼 아삭', ja:'서리 후 배추, 첫눈처럼 아삭' },
+  'terroir.s3.desc': { zh:'延边黄心白菜，经霜之后芯叶紧实、甘甜脆嫩。每一棵都在零下八度的寒夜里完成了最关键的糖化——这是无法催促的转化。', ko:'연변 황심배추, 서리를 겪은 후 속잎이 단단하고 달콤하며 아삭합니다. 매 포기는 영하 8도의 차가운 밤에 가장 중요한 당화를 완성합니다 — 서두를 수 없는 변화입니다.', en:'Yanbian yellow-heart napa, after frost, grows tight, sweet, and crisp. Each head completes its crucial saccharification in sub-zero nights — a transformation that cannot be rushed.', ja:'延辺黄心白菜、霜を経て芯葉が締まり、甘く脆い。一つ一つがマイナス8度の寒夜で最も重要な糖化を完了する——急がせることのできない変化。' },
+  'terroir.s4.label': { zh:'Fruit · 苹果梨', ko:'Fruit · 사과배', en:'Fruit · Apple Pear', ja:'Fruit · リンゴ梨' },
+  'terroir.s4.title': { zh:'苹果梨香，山野馈赠', ko:'사과배 향기, 산야의 선물', en:'Apple Pear Fragrance, Gift of the Wild', ja:'リンゴ梨の香り、山野からの贈り物' },
+  'terroir.s4.title.kr': { zh:'사과배 향기, 산야의 선물', ko:'苹果梨香，山野馈赠', en:'사과배 향기, 산야의 선물', ja:'사과배 향기, 산야의 선물' },
+  'terroir.s4.desc': { zh:'延边苹果梨，汁水丰沛、酸甜有度。梨汁入酱，是延边泡菜独有的鲜甜密码——一抹果香，让辣味有了温柔的面孔。', ko:'연변 사과배, 즙이 풍부하고 새콤달콤합니다. 배즙을 양념에 넣는 것은 연변 김치만의 비밀 — 과일 향이 매운맛에 부드러운 얼굴을 만들어줍니다.', en:'Yanbian apple pear, brimming with juice, perfectly balanced in sweet and tart. Pear juice in the seasoning is Yanbian kimchi\u2019s secret code — a touch of fruit that gives spice a gentle face.', ja:'延辺リンゴ梨、果汁豊かで甘酸のバランスが絶妙。梨の汁をタレに加えるのは延辺キムチ独自の秘密——果実の香りが辛味に優しい顔を与える。' },
+  'hero.manifesto': { zh:'我们不追赶时间<br>我们让时间<br>成为最珍贵的配料', ko:'우리는 시간을 쫓지 않습니다<br>시간이<br>가장 귀한 재료가 되도록 합니다', en:'We do not chase time.<br>We let time<br>become the finest ingredient.', ja:'時間を追いかけない<br>時間こそが<br>最も尊い素材である' },
+  'hero.tagline': { zh:'延边古法菹味 · The Art of Korean Fermentation', ko:'연변 고법 저미 · The Art of Korean Fermentation', en:'Ancient Craft of Yanbian Fermentation · 延边古法菹味', ja:'延辺古法菹味 · The Art of Korean Fermentation' },
+
+  // PRODUCT DETAIL
+  'products.detail': { zh:'查看详情', ko:'상세보기', en:'View Details', ja:'詳細を見る' },
+  'products.detailTitle': { zh:'产品详情', ko:'제품 상세', en:'Product Details', ja:'製品詳細' },
+  'products.ingredient': { zh:'配料', ko:'재료', en:'Ingredients', ja:'材料' },
+  'products.pairing': { zh:'搭配', ko:'어울리는 음식', en:'Perfect Pairing', ja:'合わせ' },
+  'products.spec': { zh:'规格', ko:'규격', en:'Size', ja:'仕様' },
+  'products.p1.ingredients': { zh:'白菜、辣椒粉、蒜、姜、鱼露、盐', ko:'배추, 고춧가루, 마늘, 생강, 젓갈, 소금', en:'Napa cabbage, chili powder, garlic, ginger, fish sauce, salt', ja:'白菜、唐辛子、にんにく、生姜、魚醤、塩' },
+  'products.p1.pairing': { zh:'白米饭、清汤', ko:'밥, 맑은 국', en:'Steamed rice, clear soup', ja:'白飯、清湯' },
+  'products.p1.weight': { zh:'300g / 500g', ko:'300g / 500g', en:'300g / 500g', ja:'300g / 500g' },
+  'products.p2.ingredients': { zh:'白菜、辣椒粉、蒜、糖、鱼露', ko:'배추, 고춧가루, 마늘, 설탕, 젓갈', en:'Napa cabbage, chili powder, garlic, sugar, fish sauce', ja:'白菜、唐辛子、にんにく、砂糖、魚醤' },
+  'products.p2.pairing': { zh:'烤肉、拌饭', ko:'고기구이, 비빔밥', en:'BBQ, bibimbap', ja:'焼肉、ビビンバ' },
+  'products.p2.weight': { zh:'300g / 500g', ko:'300g / 500g', en:'300g / 500g', ja:'300g / 500g' },
+  'products.p3.ingredients': { zh:'茄子干、鱿鱼丝、辣椒粉、糖', ko:'말린 가지, 오징어채, 고춧가루, 설탕', en:'Dried eggplant, squid strips, chili powder, sugar', ja:'干し茄子、イカの糸切り、唐辛子、砂糖' },
+  'products.p3.pairing': { zh:'下酒菜、拌面', ko:'안주, 비빔국수', en:'Snack with drinks, noodles', ja:'おつまみ、拌麺' },
+  'products.p3.weight': { zh:'250g / 400g', ko:'250g / 400g', en:'250g / 400g', ja:'250g / 400g' },
+  'products.p4.ingredients': { zh:'萝卜、辣椒粉、蒜、虾酱', ko:'무, 고춧가루, 마늘, 새우젓', en:'Radish, chili powder, garlic, shrimp paste', ja:'大根、唐辛子、にんにく、蝦醤' },
+  'products.p4.pairing': { zh:'白米饭、骨头汤', ko:'밥, 뼈국', en:'Steamed rice, bone soup', ja:'白飯、骨スープ' },
+  'products.p4.weight': { zh:'250g / 400g', ko:'250g / 400g', en:'250g / 400g', ja:'250g / 400g' },
+  'products.p5.ingredients': { zh:'苏子叶、辣椒粉、蒜、酱油', ko:'깻잎, 고춧가루, 마늘, 간장', en:'Perilla leaves, chili powder, garlic, soy sauce', ja:'エゴマの葉、唐辛子、にんにく、醤油' },
+  'products.p5.pairing': { zh:'米饭包饭、烤肉', ko:'쌈밥, 고기구이', en:'Rice wrap, BBQ', ja:'包み飯、焼肉' },
+  'products.p5.weight': { zh:'200g / 350g', ko:'200g / 350g', en:'200g / 350g', ja:'200g / 350g' },
+  'products.p6.ingredients': { zh:'牛板筋、辣椒粉、糖、芝麻', ko:'우설, 고춧가루, 설탕, 참깨', en:'Beef tendon, chili powder, sugar, sesame', ja:'牛スジ、唐辛子、砂糖、ごま' },
+  'products.p6.pairing': { zh:'啤酒、烧酒', ko:'맥주, 소주', en:'Beer, soju', ja:'ビール、焼酎' },
+  'products.p6.weight': { zh:'200g / 350g', ko:'200g / 350g', en:'200g / 350g', ja:'200g / 350g' },
+  'products.p7.ingredients': { zh:'明太鱼、辣椒粉、糖、蒜', ko:'명태, 고춧가루, 설탕, 마늘', en:'Pollack, chili powder, sugar, garlic', ja:'明太子、唐辛子、砂糖、にんにく' },
+  'products.p7.pairing': { zh:'白米饭、汤', ko:'밥, 국', en:'Steamed rice, soup', ja:'白飯、汁物' },
+  'products.p7.weight': { zh:'250g / 400g', ko:'250g / 400g', en:'250g / 400g', ja:'250g / 400g' },
+  'products.p8.ingredients': { zh:'桔梗根、辣椒粉、蒜、糖', ko:'도라지, 고춧가루, 마늘, 설탕', en:'Bellflower root, chili powder, garlic, sugar', ja:'キキョウ根、唐辛子、にんにく、砂糖' },
+  'products.p8.pairing': { zh:'拌饭、小菜', ko:'비빔밥, 반찬', en:'Bibimbap, side dish', ja:'ビビンバ、おかず' },
+  'products.p8.weight': { zh:'200g / 350g', ko:'200g / 350g', en:'200g / 350g', ja:'200g / 350g' },
+
+  // MARQUEE
+  'marquee': { zh:['原味辣白菜','甜味辣白菜','茄子干辣椒','茄子干鱿鱼丝','桔梗','萝卜块','香辣萝卜条','青年萝卜','酱辣椒干','牛板筋','火爆鸡丝','香葱','苏子叶','香辣木瓜丝','香辣豆皮','酸甜辣椒','酸甜黄瓜','香脆鱼皮','香辣明太鱼','蕨菜','蚬子尖'], ko:['배추김치','맛김치','가지말랭이','가지채 오징어','도라지','깍두기','무채김치','총각무','고추장아찌','우설건강','닭가슴살조림','실파','깻잎','파파야무침','유부김치','단고추무침','오이소박이','생선껍질튀김','명태조림','고사리','조개살무침'], en:['Plain Napa Kimchi','Sweet Spicy Kimchi','Dried Eggplant','Eggplant & Squid','Bellflower Root','Radish Cubes','Spicy Radish Strips','Young Radish','Chili Pepper Pickle','Beef Tendon','Spicy Chicken Shreds','Chives','Perilla Leaves','Papaya Salad','Tofu Skin Kimchi','Sweet & Sour Chili','Sweet & Sour Cucumber','Crispy Fish Skin','Spicy Pollack','Fern Bracken','Clam Tip Kimchi'], ja:['白菜キムチ','甘辛白菜キムチ','干し茄子','干し茄子イカ','キキョウ','カクドゥキ','大根千切りキムチ','若大根','唐辛子漬け','牛スジ','激辛鶏ささみ','ネギ','エゴマの葉','パパヤ和え','油揚げキムチ','甘辛唐辛子','甘酢きゅうり','香脆魚皮','明太子煮','わらび','アサリ和え'] },
+
+  // FOUR SEASONS
+  'seasons.label': { zh:'Four Seasons · 四季发酵', ko:'Four Seasons · 사계절 발효', en:'Four Seasons · Seasonal Fermentation', ja:'Four Seasons · 四季発酵' },
+  'seasons.title': { zh:'时间是最好的匠人', ko:'시간이 만드는 맛', en:'Time Is the Greatest Artisan', ja:'時間は最良の職人' },
+  'seasons.title.sub': { zh:'시간이 만드는 맛', ko:'时间是最好的匠人', en:'시간이 만드는 맛', ja:'시간이 만드는 맛' },
+  'seasons.spring.char': { zh:'春', ko:'봄', en:'I', ja:'春' },
+  'seasons.spring.num': { zh:'01 / Spring', ko:'01 / Spring', en:'01 / Spring', ja:'01 / Spring' },
+  'seasons.spring.name': { zh:'春·腌', ko:'봄 · 담그기', en:'Spring · Cure', ja:'春・漬' },
+  'seasons.spring.name.sub': { zh:'봄 · 담그기', ko:'春·腌', en:'봄 · 담그기', ja:'봄 · 담그기' },
+  'seasons.spring.desc': { zh:'霜降后的白菜，最是脆嫩。抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。每一层都均匀、每一抹都用心。', ko:'서리 내린 후의 배추가 가장 아삭합니다. 고춧가루, 마늘, 젓갈을 발라 항아리에 층층이 담습니다. 매 층마다 고르게, 매 바름마다 정성스럽게.', en:'Napa cabbage after the first frost — at its crispest. Coated with chili powder, garlic, and fish sauce, layered into the jar. Every layer even, every stroke deliberate.', ja:'霜降後の白菜は最もシャキッとします。唐辛子粉、ニンニク、魚醤を塗り、甕に層々と重ねていきます。一層ごとに均等に、一塗りごとに丁寧に。' },
+  'seasons.summer.char': { zh:'夏', ko:'여', en:'II', ja:'夏' },
+  'seasons.summer.num': { zh:'02 / Summer', ko:'02 / Summer', en:'02 / Summer', ja:'02 / Summer' },
+  'seasons.summer.name': { zh:'夏·酵', ko:'여름 · 발효', en:'Summer · Ferment', ja:'夏・酵' },
+  'seasons.summer.name.sub': { zh:'여름 · 발효', ko:'夏·酵', en:'여름 · 발효', ja:'여름 · 발효' },
+  'seasons.summer.desc': { zh:'温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺其自然。', ko:'온도가 오르면 유산균이 일하기 시작합니다. 항아리에서 꼬르륵 소리가 나는데, 그것이 발효의 소리입니다. 미생물은 조급함을 모르고, 자연의 순리만 압니다.', en:'As warmth rises, lactobacillus begins its work. The soft gurgle in the jar is the sound of fermentation. Microbes know nothing of haste — only the natural order.', ja:'気温が上がると乳酸菌が働き始めます。甕から聞こえるコポコポという音、それが発酵の声です。微生物は焦りを知らず、自然の理（ことわり）に従うだけ。' },
+  'seasons.autumn.char': { zh:'秋', ko:'추', en:'III', ja:'秋' },
+  'seasons.autumn.num': { zh:'03 / Autumn', ko:'03 / Autumn', en:'03 / Autumn', ja:'03 / Autumn' },
+  'seasons.autumn.name': { zh:'秋·熟', ko:'가을 · 익음', en:'Autumn · Mature', ja:'秋・熟' },
+  'seasons.autumn.name.sub': { zh:'가을 · 익음', ko:'秋·熟', en:'가을 · 익음', ja:'가을 · 익음' },
+  'seasons.autumn.desc': { zh:'三个月的等待，酸与辣达成平衡。开坛的瞬间，香气扑面。这是时间赋予的味道，人工无法替代。', ko:'석 달의 기다림 끝에 신맛과 매운맛이 균형을 이룹니다. 항아리를 여는 순간, 향기가 온몸을 감쌉니다. 이것은 시간이 부여한 맛, 인공으로 대신할 수 없습니다.', en:'Three months of patience, and sour meets spice in perfect balance. The moment the jar opens, fragrance fills the air. This is a flavor only time can bestow — no shortcut can replicate it.', ja:'三ヶ月の待ち時間、酸味と辛味が完璧なバランスに達します。甕を開けた瞬間、香りが溢れ出す。これは時間だけが与えられる味、人工では代用できません。' },
+  'seasons.winter.char': { zh:'冬', ko:'겨', en:'IV', ja:'冬' },
+  'seasons.winter.num': { zh:'04 / Winter', ko:'04 / Winter', en:'04 / Winter', ja:'04 / Winter' },
+  'seasons.winter.name': { zh:'冬·享', ko:'겨울 · 즐김', en:'Winter · Savor', ja:'冬・享' },
+  'seasons.winter.name.sub': { zh:'겨울 · 즐김', ko:'冬·享', en:'겨울 · 즐김', ja:'겨울 · 즐김' },
+  'seasons.winter.desc': { zh:'延边的冬天漫长而寒冷。一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是冬日的仪式。', ko:'연변의 겨울은 길고 춥습니다. 밥 한 그릇, 김치 한 접시면 가장 든든한 만족입니다. 화로에 둘러앉아 저를 먹는 것, 겨울의 의식입니다.', en:'Winter in Yanbian is long and cold. A bowl of rice, a dish of kimchi — the most honest satisfaction. Gathering around the hearth to share fermented preserves is winter\'s ritual.', ja:'延辺の冬は長く、厳しい。ご飯一杯、キムチ一皿、それが何よりの満足。炉を囲んで菹を味わうこと、それは冬の儀式です。' },
+
+  // PRODUCTS
+  'products.label': { zh:'Products · 产品殿堂', ko:'Products · 제품 전시', en:'Products · The Collection', ja:'Products · 製品殿堂' },
+  'products.title': { zh:'每一味，都有性格', ko:'각각의 맛에는 개성이 있다', en:'Every Flavor Has a Character', ja:'一つ一つに、個性がある' },
+  'products.spice': { zh:'辣度', ko:'매운맛', en:'Spice', ja:'辛さ' },
+  'products.p1.name': { zh:'原味辣白菜', ko:'배추김치', en:'Plain Napa Kimchi', ja:'白菜キムチ' },
+  'products.p1.name.sub': { zh:'배추김치', ko:'原味辣白菜', en:'배추김치', ja:'배추김치' },
+  'products.p1.desc': { zh:'经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。', ko:'정통 원맛, 오직 소금과 시간뿐. 서리 배추의 자연스러운 단맛, 매운맛 없이도 여운이 길게 남습니다.', en:'The classic, unadorned. Only salt and time. The natural sweetness of frost-kissed napa, no hint of spice, yet the finish lingers.', ja:'定番の原味、塩と時間だけ。霜降白菜の自然な甘味、辛さは一切ないのに、余韻が長く続く。' },
+  'products.p2.name': { zh:'甜味辣白菜', ko:'맛김치', en:'Sweet Spicy Kimchi', ja:'甘辛白菜キムチ' },
+  'products.p2.name.sub': { zh:'맛김치', ko:'甜味辣白菜', en:'맛김치', ja:'맛김치' },
+  'products.p2.desc': { zh:'甜与辣的温柔对话。延边特有的甜辣配方，一入口先是清甜，然后辣意缓缓升起。', ko:'달콤함과 매운맛의 부드러운 대화. 연변 특유의 달콤 매운맛 비법, 입에 넣으면 먼저 달콤함, 그리고 매운맛이 천천히 올라옵니다.', en:'A tender dialogue of sweet and heat. Yanbian\'s signature sweet-spicy formula — first the gentle sweetness, then the warmth slowly rising.', ja:'甘さと辛さの優しい対話。延辺特有の甘辛レシピ、口にすればまず甘さ、そして辛さがゆっくりと広がる。' },
+  'products.p3.name': { zh:'茄子干鱿鱼丝', ko:'가지채 오징어', en:'Eggplant & Dried Squid', ja:'干し茄子イカ' },
+  'products.p3.name.sub': { zh:'가지채 오징어', ko:'茄子干鱿鱼丝', en:'가지채 오징어', ja:'가지채 오징어' },
+  'products.p3.desc': { zh:'干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。', ko:'말린 가지의 씹는 맛과 오징어의 감칠맛이 만나, 한 항아리 안에서 육지와 바다의 풍미가 교차합니다.', en:'The chew of dried eggplant meets the umami of squid. In a single jar, land and sea converge.', ja:'干し茄子の噛みごたえとイカの旨味が出会い、一つの甕の中で陸と海の風味が交差する。' },
+  'products.p4.name': { zh:'萝卜块', ko:'깍두기', en:'Radish Cubes', ja:'カクドゥキ' },
+  'products.p4.name.sub': { zh:'깍두기', ko:'萝卜块', en:'깍두기', ja:'깍두기' },
+  'products.p4.desc': { zh:'方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。', ko:'모나게 썬 무, 모든 면에 양념이 듬뿍. 한 입 베어 물면 아삭하는 소리, 신선함과 발효의 하모니.', en:'Cubed radish, every face coated in chili paste. The satisfying crunch is a duet of freshness and fermentation.', ja:'四角に切った大根、すべての面に辛味噌がたっぷり。かじりついた時のパリッという音、新鮮さと発酵のハーモニー。' },
+  'products.p5.name': { zh:'苏子叶', ko:'깻잎', en:'Perilla Leaves', ja:'エゴマの葉' },
+  'products.p5.name.sub': { zh:'깻잎', ko:'苏子叶', en:'깻잎', ja:'깻잎' },
+  'products.p5.desc': { zh:'一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。', ko:'잎 한 장에 여름이 통째로 숨어 있습니다. 깻잎의 풀내음이 양념에 부드럽게 감싸여, 씹을수록 맛이 깊어집니다.', en:'An entire summer hidden in a single leaf. The herbaceous fragrance of perilla, tenderly wrapped in seasoning — the more you chew, the deeper the flavor.', ja:'一枚の葉に夏がまるごと隠れている。エゴマの草の香りが調味料に優しく包まれ、噛むほどに味が深まる。' },
+  'products.p6.name': { zh:'牛板筋', ko:'우설건강', en:'Spicy Beef Tendon', ja:'牛スジ辛味和え' },
+  'products.p6.name.sub': { zh:'우설건강', ko:'牛板筋', en:'우설건강', ja:'우설건강' },
+  'products.p6.desc': { zh:'牛板筋的韧劲配上辣椒的火热，越嚼越香，是下酒菜的绝对王者。', ko:'소 힘줄의 쫄깃함에 고추의 불맛이 더해져, 씹을수록 고소합니다. 안주의 절대 강자.', en:'The resilient chew of beef tendon meets the fire of chili. The more you chew, the richer it gets — the undisputed king of drinking snacks.', ja:'牛スジのコシに唐辛子の炎が加わり、噛むほどに旨味が増す。酒の肴の絶対王者。' },
+  'products.p7.name': { zh:'香辣明太鱼', ko:'명태조림', en:'Spicy Pollack', ja:'明太子煮' },
+  'products.p7.name.sub': { zh:'명태조림', ko:'香辣明太鱼', en:'명태조림', ja:'명태조림' },
+  'products.p7.desc': { zh:'明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。', ko:'명태의 감칠맛에 고추의 매운맛이 더해져, 한 입에 바다의 넓이와 육지의 뜨거움이 함께합니다.', en:'The umami of pollack paired with the intensity of chili — one bite carries the expanse of the sea and the warmth of the land.', ja:'明太魚の旨味に唐辛子の激辛が重なり、一口で海の広がりと陸の熱さが共存する。' },
+  'products.p8.name': { zh:'桔梗', ko:'도라지', en:'Bellflower Root', ja:'キキョウ' },
+  'products.p8.name.sub': { zh:'도라지', ko:'桔梗', en:'도라지', ja:'도라지' },
+  'products.p8.desc': { zh:'山间的桔梗根，清苦回甘。撕成细丝拌上辣椒酱，是延边人记忆里的味道。', ko:'산간의 도라지 뿌리, 쌉싸름하게 달콤한 뒷맛. 가늘게 찢어 고추장에 무치면, 연변 사람들의 기억 속 맛.', en:'Bellflower root from the mountains — gently bitter with a sweet return. Shredded fine and tossed with chili paste, it is the taste of Yanbian memory.', ja:'山間のキキョウの根、ほろ苦く甘い後味。細く裂いて唐辛子味噌で和えれば、延辺の人々の記憶の味。' },
+
+  // STORY
+  'story.s1.char': { zh:'江', ko:'강', en:'River', ja:'江' },
+  'story.s1.label': { zh:'海兰江 · 해란강', ko:'해란강 · Hailan River', en:'Hailan River · 해란강', ja:'海蘭江 · 해란강' },
+  'story.s1.title': { zh:'海兰江畔', ko:'해란강 가에서', en:'By the Hailan River', ja:'海蘭江のほとり' },
+  'story.s1.title.sub': { zh:'해란강 가에서', ko:'海兰江畔', en:'해란강 가에서', ja:'해란강 가에서' },
+  'story.s1.body': { zh:'延边海兰江流域，长白山脚下的沃土。朝鲜族世代在此居住，将发酵的智慧刻进日常。这里的昼夜温差大、水质清冽，是大自然赐予泡菜最好的条件。每一坛海兰菹，都始于这片土地。', ko:'연변 해란강 유역, 백두산 자락의 비옥한 땅. 조선족이 대대로 살며 발효의 지혜를 일상에 새겨왔습니다. 일교차가 크고 물이 맑아, 자연이 김치에게 준 최고의 조건입니다. 모든 해란저는 이 땅에서 시작됩니다.', en:'The Hailan River basin in Yanbian — fertile soil at the foot of Changbai Mountain. The Korean community has resided here for generations, weaving the wisdom of fermentation into daily life. The dramatic temperature shifts and pristine water are nature\'s finest gifts to kimchi-making. Every jar of HAILANZU begins here.', ja:'延辺海蘭江流域、白頭山の麓の肥沃な大地。朝鮮族が代々暮らし、発酵の知恵を日常に刻んできた。寒暖差が大きく、水が清らかなこの地は、自然がキムチに与えた最高の条件。海蘭菹のすべては、この土地から始まる。' },
+  'story.s2.char': { zh:'手', ko:'손', en:'Hands', ja:'手' },
+  'story.s2.label': { zh:'手作 · 손맛', ko:'손맛 · Handcrafted', en:'Handcrafted · 손맛', ja:'手作り · 손맛' },
+  'story.s2.title': { zh:'古法手作', ko:'전통 수제', en:'Ancient Craft', ja:'古法手作り' },
+  'story.s2.title.sub': { zh:'전통 수제', ko:'古法手作', en:'전통 수제', ja:'전통 수제' },
+  'story.s2.body': { zh:'从选料到入坛，每一步都靠手与经验。抹酱的力道决定入味深浅，码坛的松紧影响发酵均匀。机器可以复制配方，却复制不了那双手的分寸感。三代人的手艺，是海兰菹最珍贵的秘方。', ko:'재료 선택부터 항아리에 담기까지, 모든 과정은 손과 경험에 의존합니다. 양념 바르는 힘조절이 맛의 깊이를 결정하고, 항아리 채우는 정도가 발효의 균일함에 영향을 미칩니다. 기계는 배합을 복제할 수 있어도, 그 손의 분량감은 복제할 수 없습니다. 삼대에 걸친 솜씨가 해란저의 가장 소중한 비법입니다.', en:'From selecting ingredients to packing the jar, every step relies on hands and experience. The pressure of each stroke determines depth of flavor; the tightness of packing shapes even fermentation. Machines can replicate a formula — but never the intuition of those hands. Three generations of craft: HAILANZU\'s most treasured secret.', ja:'素材の選別から甕詰めまで、すべての工程は手と経験に頼る。塗る力加減が味の深さを決め、詰め方の加減が発酵の均一さを左右する。機械は配合を再現できても、その手の勘所は再現できない。三代にわたる技こそが、海蘭菹の最も尊しい秘伝。' },
+  'story.s3.char': { zh:'坛', ko:'항', en:'Jar', ja:'壺' },
+  'story.s3.label': { zh:'发酵 · 발효', ko:'발효 · Fermentation', en:'Fermentation · 발효', ja:'発酵 · 발효' },
+  'story.s3.title': { zh:'坛中时光', ko:'항아리 속 시간', en:'Time in the Jar', ja:'甕の中の時' },
+  'story.s3.title.sub': { zh:'항아리 속 시간', ko:'坛中时光', en:'항아리 속 시간', ja:'항아리 속 시간' },
+    'seasons.spring.proverb': { zh:'「꽃이 피면 봄이 온다」— 花开春来', ko:'「꽃이 피면 봄이 온다」— 꽃이 피면 봄이 온다', en:'"When the azaleas bloom, spring has come"', ja:'「꽃이 피면 봄이 온다」— 花咲きて春来る' },
+  'seasons.summer.proverb': { zh:'「여름 밤은 짧다」— 夏夜苦短', ko:'「여름 밤은 짧다」— 여름 밤은 짧다', en:'"Summer nights are all too brief"', ja:'「여름 밤은 짧다」— 夏の夜は短し' },
+  'seasons.autumn.proverb': { zh:'「가을 하늘은 높다」— 秋高气爽', ko:'「가을 하늘은 높다」— 가을 하늘은 높다', en:'"The autumn sky stretches high and clear"', ja:'「가을 하늘은 높다」— 秋高く澄む' },
+  'seasons.winter.proverb': { zh:'「첫눈이 오면 김치 담근다」— 初雪腌泡菜', ko:'「첫눈이 오면 김치 담근다」— 첫눈이 오면 김치 담근다', en:'"When the first snow falls, it is time to make kimchi"', ja:'「첫눈이 오면 김치 담근다」— 初雪降れどきキムチ仕込み' },
+  'story.s3.body': { zh:'发酵不是工业流程，是时间的艺术。温度、湿度、天数，每一坛都有自己的"生命节奏"。我们不催促，不加速。等待，是做出好泡菜唯一的方法。每一坛海兰菹，都值得被等待。', ko:'발효는 산업 공정이 아니라 시간의 예술입니다. 온도, 습도, 날수 — 매 항아리마다 자신만의 \'생명 리듬\'이 있습니다. 우리는 재촉하지 않고, 앞당기지 않습니다. 기다림이 좋은 김치를 만드는 유일한 방법입니다. 모든 해란저는 기다릴 가치가 있습니다.', en:'Fermentation is not an industrial process — it is the art of time. Temperature, humidity, days — each jar has its own living rhythm. We do not rush. We do not accelerate. Waiting is the only way to make great kimchi. Every jar of HAILANZU is worth the wait.', ja:'発酵は工業プロセスではない、時間の芸術だ。温度、湿度、日数——甕一つ一つに独自の「生命のリズム」がある。急がず、加速しない。待つことこそが、良いキムチを作る唯一の方法。海蘭菹の甕は、どれも待つ価値がある。' },
+
+  // GIFT
+  'gift.label': { zh:'Gift Collection · 高端礼盒', ko:'Gift Collection · 프리미엄 선물', en:'Gift Collection · Curated Sets', ja:'Gift Collection · 高級ギフト' },
+  'gift.title': { zh:'菹味珍礼', ko:'저미의 귀한 선물', en:'Curated Gift Sets', ja:'菹味珍礼' },
+  'gift.title.sub': { zh:'최고의 선물', ko:'菹味珍礼', en:'최고의 선물', ja:'最高の贈り物' },
+  'gift.title.en': { zh:'Curated Gift Collection', ko:'Curated Gift Collection', en:'The Art of Gifting', ja:'Curated Gift Collection' },
+  'gift.g1.tier': { zh:'Essential', ko:'Essential', en:'Essential', ja:'Essential' },
+  'gift.g1.name': { zh:'菹味·初识', ko:'저미 · 첫 만남', en:'First Encounter', ja:'菹味・初遇' },
+  'gift.g1.name.sub': { zh:'첫 만남', ko:'菹味·初识', en:'첫 만남', ja:'첫 만남' },
+  'gift.g1.item0': { zh:'原味辣白菜 · 300g', ko:'배추김치 · 300g', en:'Plain Napa Kimchi · 300g', ja:'白菜キムチ · 300g' },
+  'gift.g1.item1': { zh:'甜味辣白菜 · 300g', ko:'맛김치 · 300g', en:'Sweet Spicy Kimchi · 300g', ja:'甘辛白菜キムチ · 300g' },
+  'gift.g1.item2': { zh:'萝卜块 · 250g', ko:'깍두기 · 250g', en:'Radish Cubes · 250g', ja:'カクドゥキ · 250g' },
+  'gift.g1.item3': { zh:'手工牛皮纸礼盒', ko:'수공 크라프트 선물 상자', en:'Handcrafted Kraft Box', ja:'手作りクラフトギフトボックス' },
+  'gift.g2.tier': { zh:'Classic', ko:'Classic', en:'Classic', ja:'Classic' },
+  'gift.g2.name': { zh:'菹味·家宴', ko:'저미 · 가족 만찬', en:'Family Feast', ja:'菹味・家宴' },
+  'gift.g2.name.sub': { zh:'가족 만찬', ko:'菹味·家宴', en:'가족 만찬', ja:'가족 만찬' },
+  'gift.g2.item0': { zh:'经典泡菜 × 4款', ko:'클래식 김치 × 4종', en:'Classic Kimchi × 4 Varieties', ja:'定番キムチ × 4種' },
+  'gift.g2.item1': { zh:'荤味系列 × 2款', ko:'육류 시리즈 × 2종', en:'Meat Selection × 2 Varieties', ja:'肉類シリーズ × 2種' },
+  'gift.g2.item2': { zh:'草本系列 × 2款', ko:'허브 시리즈 × 2종', en:'Herbal Selection × 2 Varieties', ja:'薬草シリーズ × 2種' },
+  'gift.g2.item3': { zh:'专属手写贺卡', ko:'전용 손글씨 축하카드', en:'Handwritten Greeting Card', ja:'手書きメッセージカード' },
+  'gift.g2.item4': { zh:'定制木盒礼盒', ko:'맞춤 목재 선물 상자', en:'Custom Wooden Box', ja:'特製木製ギフトボックス' },
+  'gift.g3.tier': { zh:'Supreme', ko:'Supreme', en:'Supreme', ja:'Supreme' },
+  'gift.g3.name': { zh:'菹味·珍礼', ko:'저미 · 최고의 선물', en:'The Supreme Gift', ja:'菹味・珍礼' },
+  'gift.g3.name.sub': { zh:'최고의 선물', ko:'菹味·珍礼', en:'최고의 선물', ja:'最高の贈り物' },
+  'gift.g3.item0': { zh:'全系列泡菜 × 8款', ko:'전 시리즈 김치 × 8종', en:'Full Collection × 8 Varieties', ja:'全シリーズキムチ × 8種' },
+  'gift.g3.item1': { zh:'延边人参 · 精选', ko:'연변 인삼 · 엄선', en:'Yanbian Ginseng · Selected', ja:'延辺人参 ・ 厳選' },
+  'gift.g3.item2': { zh:'手工米酒 · 2瓶', ko:'수제 막걸리 · 2병', en:'Handcrafted Rice Wine · 2 Bottles', ja:'手作りマッコリ ・ 2本' },
+  'gift.g3.item3': { zh:'定制刻字坛器', ko:'맞춤 각인 항아리', en:'Custom Engraved Jar', ja:'名入れ甕' },
+  'gift.g3.item4': { zh:'专属手写贺卡', ko:'전용 손글씨 축하카드', en:'Handwritten Greeting Card', ja:'手書きメッセージカード' },
+  'gift.g3.item5': { zh:'限量陶瓷礼盒', ko:'한정 도자기 선물 상자', en:'Limited Ceramic Gift Box', ja:'限定陶器ギフトボックス' },
+  'gift.cta': { zh:'定制礼盒', ko:'맞춤 선물', en:'Customize Gift', ja:'ギフトをカスタマイズ' },
+  'gift.cta.temp': { zh:'即将开放', ko:'곧 오픈', en:'Coming Soon', ja:'まもなく公開' },
+
+  // CTA BANNER
+  'cta.title': { zh:'开启你的菹味之旅', ko:'저미의 여정을 시작하세요', en:'Begin Your Journey of Fermentation', ja:'菹味の旅を始めよう' },
+  'cta.sub': { zh:'Begin Your Journey of Fermentation', ko:'Begin Your Journey of Fermentation', en:'延边古法菹味 · 延边古法菹味', ja:'Begin Your Journey of Fermentation' },
+  'cta.btn': { zh:'联系我们', ko:'문의하기', en:'Contact Us', ja:'お問い合わせ' },
+  'contact.name': { zh:'姓名', ko:'이름', en:'Name', ja:'お名前' },
+  'contact.name.ph': { zh:'请输入姓名', ko:'이름을 입력하세요', en:'Your name', ja:'お名前を入力' },
+  'contact.email': { zh:'邮箱', ko:'이메일', en:'Email', ja:'メール' },
+  'contact.email.ph': { zh:'请输入邮箱', ko:'이메일을 입력하세요', en:'Your email', ja:'メールアドレスを入力' },
+  'contact.subject': { zh:'主题', ko:'주제', en:'Subject', ja:'件名' },
+  'contact.subject.biz': { zh:'商务合作', ko:'비즈니스 협력', en:'Business Partnership', ja:'ビジネス提携' },
+  'contact.subject.product': { zh:'产品咨询', ko:'제품 문의', en:'Product Inquiry', ja:'製品について' },
+  'contact.subject.media': { zh:'媒体采访', ko:'미디어 인터뷰', en:'Media Interview', ja:'メディア取材' },
+  'contact.subject.other': { zh:'其他', ko:'기타', en:'Other', ja:'その他' },
+  'contact.message': { zh:'留言', ko:'메시지', en:'Message', ja:'メッセージ' },
+  'contact.message.ph': { zh:'请输入留言…', ko:'메시지를 입력하세요…', en:'Your message...', ja:'メッセージを入力...' },
+  'contact.submit': { zh:'提交', ko:'제출', en:'Submit', ja:'送信' },
+
+  // FOOTER
+  'footer.brand': { zh:'海兰菹 해란저', ko:'해란저 海兰菹', en:'HAILANZU 해란저', ja:'海蘭菹 해란저' },
+  'footer.brand.sub': { zh:'延边古法菹味', ko:'연변 고법 저미', en:'Ancient Craft of Yanbian Fermentation', ja:'延辺古法菹味' },
+  'footer.brand.en': { zh:'The Art of Korean Fermentation', ko:'The Art of Korean Fermentation', en:'The Art of Korean Fermentation', ja:'The Art of Korean Fermentation' },
+  'footer.explore': { zh:'Explore', ko:'둘러보기', en:'Explore', ja:'探索' },
+  'footer.shop': { zh:'Shop', ko:'쇼핑', en:'Shop', ja:'ショップ' },
+  'footer.contact': { zh:'Contact', ko:'문의', en:'Contact', ja:'お問い合わせ' },
+  'footer.explore.i0': { zh:'四季发酵', ko:'사계절 발효', en:'Four Seasons', ja:'四季発酵' },
+  'footer.explore.i1': { zh:'产品殿堂', ko:'제품 전시', en:'The Collection', ja:'製品殿堂' },
+  'footer.explore.i2': { zh:'延边风土', ko:'연변 풍토', en:'Yanbian Heritage', ja:'延辺風土' },
+  'footer.explore.i3': { zh:'高端礼盒', ko:'프리미엄 선물', en:'Gift Collection', ja:'高級ギフト' },
+  'footer.shop.i0': { zh:'抖音旗舰店', ko:'도우인 공식점', en:'Douyin Flagship', ja:'抖音旗艦店' },
+  'footer.shop.i1': { zh:'淘宝店铺', ko:'타오바오 매장', en:'Taobao Store', ja:'淘宝店' },
+  'footer.shop.i2': { zh:'拼多多', ko:'핀둬둬', en:'Pinduoduo', ja:'拼多多' },
+  'footer.shop.i3': { zh:'微信客服', ko:'위챗 고객센터', en:'WeChat Service', ja:'WeChatカスタマーサービス' },
+  'footer.contact.i0': { zh:'商务合作', ko:'비즈니스 협력', en:'Business Partnership', ja:'ビジネス提携' },
+  'footer.contact.i1': { zh:'加入我们', ko:'채용', en:'Join Us', ja:'採用情報' },
+  'footer.contact.i2': { zh:'媒体资源', ko:'미디어 자료', en:'Media Resources', ja:'メディアリソース' },
+  'footer.copy': { zh:'© 2026 海兰菹 HAILANZU 해란저', ko:'© 2026 해란저 HAILANZU 海兰菹', en:'© 2026 HAILANZU 해란저', ja:'© 2026 海蘭菹 HAILANZU 해란저' },
+  'footer.legal': { zh:'隐私政策 · 使用条款', ko:'개인정보처리방침 · 이용약관', en:'Privacy Policy · Terms of Use', ja:'プライバシーポリシー ・ 利用規約' }  ,
+  'community.title': { zh:'加入海兰菹味道社群', ko:'해란저 맛의 공동체에 합류하세요', en:'Join the HAILANZU Community', ja:'海蘭菹の味のコミュニティに参加' },
+  'community.subtitle': { zh:'与1000+泡菜爱好者共享延边风味', ko:'1000명 이상의 김치 애호가와 연변의 맛을 나누세요', en:'Share the taste of Yanbian with 1,000+ kimchi lovers', ja:'1000人以上のキムチ愛好家と延辺の味を共有' },
+  'community.wechat-work': { zh:'企业微信', ko:'기업 위챗', en:'WeChat Work', ja:'企業WeChat' },
+  'community.wechat-work.desc': { zh:'扫码加入 · 专属试吃装', ko:'스캔하여 가입 · 전용 시식 세트', en:'Scan to join · Exclusive tasting kit', ja:'スキャンして参加・限定試食セット' },
+  'community.official': { zh:'公众号', ko:'공식 계정', en:'Official Account', ja:'公式アカウント' },
+  'community.official.desc': { zh:'扫码关注 · 每周风味故事', ko:'스캔하여 팔로우 · 매주 맛 이야기', en:'Scan to follow · Weekly flavor stories', ja:'スキャンしてフォロー・毎週味のストーリー' },
+  'community.xhs': { zh:'小红书', ko:'샤오홍슈', en:'Xiaohongshu', ja:'小紅書' },
+  'community.xhs.desc': { zh:'搜索海兰菹 · 笔记灵感', ko:'해란저 검색 · 노트 영감', en:'Search HAILANZU · Note inspiration', ja:'海蘭菹を検索・ノートインスピレーション' },
+  'community.perk': { zh:'新成员专享：首次加入领取试吃装', ko:'신규 멤버 전용: 첫 가입 시 시식 세트 수령', en:'New members: receive a tasting kit on first join', ja:'新規メンバー限定：初回参加で試食セットプレゼント' },
+  'cta.floating': { zh:'关注领试吃', ko:'팔로우하고 시식 받기', en:'Follow for tasting', ja:'フォローして試食ゲット' },
+  'promo.text': { zh:'新客首单9折 · 企业微信专属', ko:'신규 고객 첫 주문 10% 할인 · 기업 위챗 전용', en:'10% off first order · WeChat Work exclusive', ja:'新規初回注文10%オフ・企業WeChat限定' },
+  'promo.btn': { zh:'立即加入', ko:'지금 가입', en:'Join now', ja:'今すぐ参加' },
+  'qr.placeholder': { zh:'二维码即将上线', ko:'QR 코드 곧 출시', en:'QR code coming soon', ja:'QRコード近日公開' },
+  'footer.qr.wechat-work': { zh:'企业微信', ko:'기업 위챗', en:'WeChat Work', ja:'企業WeChat' },
+  'footer.qr.official': { zh:'公众号', ko:'공식 계정', en:'Official Account', ja:'公式アカウント' },
+
+  // EAR LABELS
+  'ear.products': { zh:'产品', ko:'제품', en:'Products', ja:'製品' },
+  'ear.story': { zh:'故事', ko:'이야기', en:'Story', ja:'物語' },
+};
+
+// Auto-detect language from browser on first visit
+const savedLang = localStorage.getItem('hailanzu-lang');
+let currentLang = savedLang || detectBrowserLang();
+function setLanguage(lang) {
+  currentLang = lang;
+  loadLanguageFont(lang);
+  localStorage.setItem('hailanzu-lang', lang);
+  document.documentElement.lang = langMap[lang] || 'zh-CN';
+  document.body.setAttribute('data-lang', lang);
+
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[key] && i18n[key][lang] !== undefined) {
+      // Use innerHTML for elements containing HTML tags
+      const val = i18n[key][lang];
+      if (typeof val === 'string' && val.includes('<br>')) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    }
+  });
+
+  // Update language switcher active state
+  document.querySelectorAll('.nav-lang span').forEach(s => {
+    s.classList.toggle('active', s.dataset.lang === lang);
+  });
+
+  // Rebuild marquee
+  rebuildMarquee(lang);
+
+  // Update ear labels
+  earProducts.setAttribute('data-label', i18n['ear.products'][lang]);
+  earStory.setAttribute('data-label', i18n['ear.story'][lang]);
+  
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (i18n[key] && i18n[key][lang] !== undefined) el.placeholder = i18n[key][lang];
+  });
+}
+
+function rebuildMarquee(lang) {
+  const items = i18n['marquee'][lang];
+  const azaleaSvg = '<svg class="marquee-azalea" viewBox="0 0 28 28" fill="none"><g transform="translate(14,14)" stroke="currentColor" stroke-width="1.2" fill="none"><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(0)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(72)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(144)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(216)"/><ellipse cx="0" cy="-6" rx="3" ry="5.5" transform="rotate(288)"/><circle cx="0" cy="0" r="1.5"/></g></svg>';
+  const html = items.map(p => '<span class="marquee-item">' + p + ' ' + azaleaSvg + '</span>').join('');
+  marqueeEl.innerHTML = html + html;
+}
+
+// Language switcher click handlers
+document.querySelectorAll('.nav-lang span').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+// ====== REVEAL ON SCROLL ======
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ====== PRODUCTS CAROUSEL ======
+const carouselInner = document.getElementById('carouselInner');
+const carouselDots = document.getElementById('carouselDots');
+const carouselCounter = document.getElementById('carouselCounter');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const slides = document.querySelectorAll('.products-carousel-slide');
+const totalSlides = slides.length;
+let currentCarouselSlide = 0;
+let carouselTimer = null;
+let touchStartX = 0;
+let touchEndX = 0;
+const carouselSection = document.getElementById('products');
+
+// Product background colors
+const slideBgs = ['#E8EDE5','#5B3A6B','#3D6B4F','#C4A46C'];
+const headerColors = ['var(--ink-deep)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--rice)','var(--ink-deep)','var(--rice)'];
+
+// Set initial bg
+const carouselEl = document.getElementById('productsCarousel');
+if (carouselEl) carouselEl.style.backgroundColor = slideBgs[0];
+if (carouselSection) carouselSection.style.backgroundColor = slideBgs[0];
+
+// Build dots
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToSlide(i));
+  if(carouselDots) carouselDots.appendChild(dot);
+}
+
+function goToSlide(index, animate = true) {
+  currentCarouselSlide = Math.max(0, Math.min(totalSlides - 1, index));
+  if (animate) {
+    if(carouselInner) carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)';
+  }
+  if(carouselInner) carouselInner.style.transform = `translateX(-${currentCarouselSlide * 100}%)`;
+  // Update dots
+  carouselDots&&carouselDots.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentCarouselSlide);
+  });
+  // Update counter
+  if(carouselCounter) carouselCounter.innerHTML = `<span class="carousel-counter-current">${String(currentCarouselSlide + 1).padStart(2, '0')}</span> / ${String(totalSlides).padStart(2, '0')}`;
+  // Update bg color
+  if (carouselEl) carouselEl.style.backgroundColor = slideBgs[currentCarouselSlide];
+  // Change entire section background for immersive color transition
+  if (carouselSection) carouselSection.style.backgroundColor = slideBgs[currentCarouselSlide];
+  // Update header text color via CSS class (handled by slide-N classes)
+  // Remove old inline colors
+  const headerTitle = carouselEl.querySelector('.sticky-header-title');
+  const headerLabel = carouselEl.querySelector('.sticky-header-label');
+  if (headerTitle) headerTitle.style.color = '';
+  if (headerLabel) headerLabel.style.color = '';
+  // Reset auto-play timer
+  resetCarouselTimer();
+}
+
+function nextSlide() { if (currentCarouselSlide < totalSlides - 1) goToSlide(currentCarouselSlide + 1); else goToSlide(0); }
+function prevSlide() { if (currentCarouselSlide > 0) goToSlide(currentCarouselSlide - 1); else goToSlide(totalSlides - 1); }
+
+if(carouselNext) carouselNext.addEventListener('click', nextSlide);
+if(carouselPrev) carouselPrev.addEventListener('click', prevSlide);
+
+// Auto-play every 5s
+function resetCarouselTimer() {
+  clearInterval(carouselTimer);
+  carouselTimer = setInterval(nextSlide, 5000);
+}
+resetCarouselTimer();
+
+// Pause on hover
+if(carouselSection) carouselSection.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+if(carouselSection) carouselSection.addEventListener('mouseleave', resetCarouselTimer);
+
+// Touch swipe support — enhanced with drag-follow and momentum
+const track = document.querySelector('.products-carousel-track');
+let isDragging = false;
+let dragStartX = 0;
+let dragCurrentX = 0;
+let dragOffset = 0;
+let dragStartTime = 0;
+
+function getCarouselOffset() {
+  return -currentCarouselSlide * track.offsetWidth;
+}
+
+function clampOffset(offset) {
+  const min = -(totalSlides - 1) * track.offsetWidth;
+  const max = 0;
+  return Math.max(min, Math.min(max, offset));
+}
+
+if(track) track.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  dragStartX = e.changedTouches[0].clientX;
+  dragCurrentX = dragStartX;
+  dragOffset = getCarouselOffset();
+  dragStartTime = Date.now();
+  // Stop auto-play while dragging
+  clearInterval(carouselTimer);
+  // Remove transition for instant drag response
+  carouselInner.style.transition = 'none';
+}, { passive: true });
+
+if(track) track.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  dragCurrentX = e.changedTouches[0].clientX;
+  const diff = dragCurrentX - dragStartX;
+  const newOffset = clampOffset(dragOffset + diff);
+  carouselInner.style.transform = `translateX(${newOffset}px)`;
+}, { passive: true });
+
+if(track) track.addEventListener('touchend', (e) => {
+  if (!isDragging) return;
+  isDragging = false;
+  // Restore transition
+  carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)';
+  
+  const diff = dragCurrentX - dragStartX;
+  const elapsed = Date.now() - dragStartTime;
+  const velocity = Math.abs(diff) / elapsed; // px/ms
+  
+  // Swipe threshold: shorter distance if fast swipe, longer if slow
+  const threshold = velocity > 0.5 ? 30 : 60;
+  
+  if (Math.abs(diff) > threshold) {
+    if (diff < 0) {
+      // Swipe left → next
+      goToSlide(Math.min(currentCarouselSlide + 1, totalSlides - 1));
+    } else {
+      // Swipe right → prev
+      goToSlide(Math.max(currentCarouselSlide - 1, 0));
+    }
+  } else {
+    // Snap back to current
+    goToSlide(currentCarouselSlide);
+  }
+}, { passive: true });
+
+// Also support mouse drag for desktop
+let mouseDragging = false;
+let mouseStartX = 0;
+let mouseDragOffset = 0;
+
+if(track) track.addEventListener('mousedown', (e) => {
+  mouseDragging = true;
+  mouseStartX = e.clientX;
+  mouseDragOffset = getCarouselOffset();
+  carouselInner.style.transition = 'none';
+  track.style.cursor = 'grabbing';
+  clearInterval(carouselTimer);
+  e.preventDefault();
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!mouseDragging) return;
+  const diff = e.clientX - mouseStartX;
+  const newOffset = clampOffset(mouseDragOffset + diff);
+  carouselInner.style.transform = `translateX(${newOffset}px)`;
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (!mouseDragging) return;
+  mouseDragging = false;
+  carouselInner.style.transition = 'transform .6s cubic-bezier(.25,.46,.45,.94)';
+  track.style.cursor = 'grab';
+  
+  const diff = e.clientX - mouseStartX;
+  if (Math.abs(diff) > 60) {
+    if (diff < 0) goToSlide(Math.min(currentCarouselSlide + 1, totalSlides - 1));
+    else goToSlide(Math.max(currentCarouselSlide - 1, 0));
+  } else {
+    goToSlide(currentCarouselSlide);
+  }
+});
+
+// Initialize counter
+goToSlide(0);
+
+// ====== SMOOTH ANCHOR ======
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ====== HERO PARALLAX ======
+const heroText = document.querySelector('.hero-text');
+let heroParallaxNeeded = true;
+
+// ====== HERO BACKGROUND SLIDESHOW ======
+const heroSlides = document.querySelectorAll('.hero-bg-slide');
+const heroDots = document.querySelectorAll('.hero-dot');
+let currentSlide = 0;
+let heroSlideTimer = null;
+
+const heroFlowers = document.querySelectorAll('.hero-flower');
+function showSlide(index) {
+  heroSlides.forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+  });
+  heroDots.forEach((d, i) => {
+    d.classList.toggle('active', i === index);
+  });
+  heroFlowers.forEach((f) => {
+    f.classList.toggle('active', parseInt(f.dataset.flower) === index);
+  });
+  currentSlide = index;
+}
+
+function nextHeroSlide() {
+  showSlide((currentSlide + 1) % heroSlides.length);
+}
+
+function startHeroSlideshow() {
+  stopHeroSlideshow();
+  heroSlideTimer = setInterval(nextHeroSlide, 6000);
+}
+
+function stopHeroSlideshow() {
+  if (heroSlideTimer) { clearInterval(heroSlideTimer); heroSlideTimer = null; }
+}
+
+// Click dot to jump
+heroDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    showSlide(parseInt(dot.dataset.slide));
+    // Restart timer after manual interaction
+    startHeroSlideshow();
+  });
+});
+
+// Pause on hover (desktop)
+const heroEl = document.querySelector('.hero');
+heroEl.addEventListener('mouseenter', stopHeroSlideshow);
+heroEl.addEventListener('mouseleave', startHeroSlideshow);
+
+// Pause when not visible
+document.addEventListener('visibilitychange', () => {
+  document.hidden ? stopHeroSlideshow() : startHeroSlideshow();
+});
+
+// Initialize first slide to show first flower
+showSlide(0);
+startHeroSlideshow();
+
+// ====== GIFT CTA ======
+document.querySelectorAll('.gift-cta').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tempText = i18n['gift.cta.temp'][currentLang] || 'Coming Soon';
+    const origText = i18n['gift.cta'][currentLang] || '定制礼盒';
+    btn.textContent = tempText;
+    btn.style.borderColor = 'var(--gold)';
+    btn.style.color = 'var(--gold)';
+    setTimeout(() => { btn.textContent = origText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
+  });
+});
+
+
+// ====== INITIAL LANGUAGE SETUP ======
+if(typeof setLanguage==='function') setLanguage(currentLang);
+
+
+// Initial call
+</script>
 
 <!-- JSON-LD -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"海兰菹","alternateName":"해란저","description":"延边朝鲜族古法泡菜品牌，21款手作菹味，高端礼盒定制","url":"https://hailanzu.com"}</script>
