@@ -271,18 +271,28 @@
             text-align: center;
         }
         .social-title {
-            font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 2rem;
+            font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 2.5rem;
+            letter-spacing: 4px; opacity: .7;
         }
         .social-grid {
-            display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
         }
         .social-item {
-            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-            text-decoration: none; color: var(--rice-dim); transition: color 0.3s;
+            display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+            text-decoration: none; color: var(--rice-dim); transition: all 0.4s;
+            padding: 1rem; border-radius: 12px;
         }
-        .social-item:hover { color: var(--azalea); }
-        .social-icon { font-size: 1.5rem; }
-        .social-name { font-family: var(--font-sans); font-size: 0.85rem; }
+        .social-item:hover { color: var(--gold); }
+        .social-icon {
+            width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+            border: 1px solid rgba(245,240,232,.1); border-radius: 50%;
+            transition: all .4s;
+        }
+        .social-item:hover .social-icon {
+            border-color: rgba(184,134,11,.4); background: rgba(184,134,11,.06);
+            transform: scale(1.08);
+        }
+        .social-name { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 1px; }
 
         /* ===== Footer ===== */
         .footer { background: var(--ink-deep); color: var(--rice); padding: 6rem 2rem 2rem; position: relative; }
@@ -497,20 +507,20 @@
     <section class="social-section">
         <h3 class="social-title" data-i18n="social.title">关注我们</h3>
         <div class="social-grid">
-            <a href="#" class="social-item">
-                <span class="social-icon">💚</span>
+            <a href="#" class="social-item" data-platform="wechat-work">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="9"/><circle cx="22" cy="18" r="7"/><circle cx="9" cy="13" r="0.8" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r="0.8" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="0.7" fill="currentColor" stroke="none"/><circle cx="24" cy="17" r="0.7" fill="currentColor" stroke="none"/></svg></span>
                 <span class="social-name" data-i18n="social.wechat">微信公众号</span>
             </a>
-            <a href="#" class="social-item">
-                <span class="social-icon">📱</span>
-                <span class="social-name" data-i18n="social.weibo">微博</span>
+            <a href="#" class="social-item" data-platform="official">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="22" rx="2"/><line x1="11" y1="10" x2="21" y2="10"/><line x1="11" y1="14" x2="18" y2="14"/><polyline points="14,20 16,22 18,20" stroke-width="1.4"/></svg></span>
+                <span class="social-name" data-i18n="social.weibo">公众号</span>
             </a>
-            <a href="#" class="social-item">
-                <span class="social-icon">🎬</span>
+            <a href="#" class="social-item" data-pending="douyin">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6v14"/><path d="M14 6c3 0 5 2 5 5"/><circle cx="12" cy="22" r="3.5"/><circle cx="22" cy="20" r="3.5"/><line x1="14" y1="18.5" x2="22" y2="16.5"/></svg></span>
                 <span class="social-name" data-i18n="social.douyin">抖音</span>
             </a>
-            <a href="#" class="social-item">
-                <span class="social-icon">📸</span>
+            <a href="https://www.xiaohongshu.com/user/profile/" target="_blank" rel="noopener" class="social-item">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="20" height="22" rx="2"/><line x1="16" y1="5" x2="16" y2="27"/><path d="M10 11h2M10 15h2M10 19h2" stroke-width="1.4"/><path d="M20 11h2M20 15h2M20 19h2" stroke-width="1.4"/></svg></span>
                 <span class="social-name" data-i18n="social.xiaohongshu">小红书</span>
             </a>
         </div>
