@@ -267,24 +267,23 @@
 
         /* ===== Social ===== */
         .social-section {
-            background: var(--ink-deep); padding: 4rem 2rem; color: var(--rice);
+            background: var(--ink-deep); padding: 3.5rem 2rem; color: var(--rice);
             text-align: center;
         }
         .social-title {
-            font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 2.5rem;
-            letter-spacing: 4px; opacity: .7;
+            font-family: var(--font-serif); font-size: 1rem; margin-bottom: 2rem;
+            letter-spacing: 4px; opacity: .5;
         }
         .social-grid {
-            display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+            display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: nowrap;
         }
         .social-item {
-            display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+            display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
             text-decoration: none; color: var(--rice-dim); transition: all 0.4s;
-            padding: 1rem; border-radius: 12px;
         }
         .social-item:hover { color: var(--gold); }
         .social-icon {
-            width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+            width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
             border: 1px solid rgba(245,240,232,.1); border-radius: 50%;
             transition: all .4s;
         }
@@ -292,7 +291,7 @@
             border-color: rgba(184,134,11,.4); background: rgba(184,134,11,.06);
             transform: scale(1.08);
         }
-        .social-name { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 1px; }
+        .social-name { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 1px; opacity: .7; }
 
         /* ===== Footer ===== */
         .footer { background: var(--ink-deep); color: var(--rice); padding: 6rem 2rem 2rem; position: relative; }
@@ -507,20 +506,20 @@
     <section class="social-section">
         <h3 class="social-title" data-i18n="social.title">关注我们</h3>
         <div class="social-grid">
-            <a href="#" class="social-item" data-platform="wechat-work">
-                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="9"/><circle cx="22" cy="18" r="7"/><circle cx="9" cy="13" r="0.8" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r="0.8" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="0.7" fill="currentColor" stroke="none"/><circle cx="24" cy="17" r="0.7" fill="currentColor" stroke="none"/></svg></span>
-                <span class="social-name" data-i18n="social.wechat">微信公众号</span>
+            <a href="weixin://" class="social-item" data-platform="wechat-work">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="9"/><circle cx="22" cy="18" r="7"/><circle cx="9" cy="13" r="0.8" fill="currentColor" stroke="none"/><circle cx="14" cy="13" r="0.8" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="0.7" fill="currentColor" stroke="none"/><circle cx="24" cy="17" r="0.7" fill="currentColor" stroke="none"/></svg></span>
+                <span class="social-name" data-i18n="social.wechat">微信</span>
             </a>
-            <a href="#" class="social-item" data-platform="official">
-                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="22" rx="2"/><line x1="11" y1="10" x2="21" y2="10"/><line x1="11" y1="14" x2="18" y2="14"/><polyline points="14,20 16,22 18,20" stroke-width="1.4"/></svg></span>
-                <span class="social-name" data-i18n="social.weibo">公众号</span>
+            <a href="weixin://" class="social-item" data-platform="official">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="4" width="18" height="22" rx="2"/><line x1="11" y1="10" x2="21" y2="10"/><line x1="11" y1="14" x2="18" y2="14"/><polyline points="14,20 16,22 18,20" stroke-width="1.4"/></svg></span>
+                <span class="social-name" data-i18n="social.official">公众号</span>
             </a>
-            <a href="#" class="social-item" data-pending="douyin">
-                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6v14"/><path d="M14 6c3 0 5 2 5 5"/><circle cx="12" cy="22" r="3.5"/><circle cx="22" cy="20" r="3.5"/><line x1="14" y1="18.5" x2="22" y2="16.5"/></svg></span>
+            <a href="snssdk1128://search/result?keyword=%E6%B5%B7%E5%85%B0%E8%8F%B9" class="social-item" target="_blank" rel="noopener">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6v14"/><path d="M14 6c3 0 5 2 5 5"/><circle cx="12" cy="22" r="3.5"/><circle cx="22" cy="20" r="3.5"/><line x1="14" y1="18.5" x2="22" y2="16.5"/></svg></span>
                 <span class="social-name" data-i18n="social.douyin">抖音</span>
             </a>
-            <a href="https://www.xiaohongshu.com/user/profile/" target="_blank" rel="noopener" class="social-item">
-                <span class="social-icon"><svg viewBox="0 0 32 32" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="20" height="22" rx="2"/><line x1="16" y1="5" x2="16" y2="27"/><path d="M10 11h2M10 15h2M10 19h2" stroke-width="1.4"/><path d="M20 11h2M20 15h2M20 19h2" stroke-width="1.4"/></svg></span>
+            <a href="xhsdiscover://search/result?keyword=%E6%B5%B7%E5%85%B0%E8%8F%B9" class="social-item" target="_blank" rel="noopener">
+                <span class="social-icon"><svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="20" height="22" rx="2"/><line x1="16" y1="5" x2="16" y2="27"/><path d="M10 11h2M10 15h2M10 19h2" stroke-width="1.4"/><path d="M20 11h2M20 15h2M20 19h2" stroke-width="1.4"/></svg></span>
                 <span class="social-name" data-i18n="social.xiaohongshu">小红书</span>
             </a>
         </div>
@@ -596,7 +595,7 @@
                 'faq.q2':'保质期与储存','faq.a2':'未开封冷藏保质期90天，开封后建议7天内食用完毕。冷冻保存可延长至6个月，解冻后口感略有变化。',
                 'faq.q3':'定制周期','faq.a3':'定制礼盒从下单到发货约7-10个工作日，含手写贺卡和定制包装制作时间。大批量订单请提前15天联系。',
                 'faq.q4':'退换政策','faq.a4':'收到商品后如有品质问题，48小时内拍照联系客服，可免费补发。定制商品不支持无理由退换，敬请谅解。',
-                'social.title':'关注我们','social.wechat':'微信公众号','social.weibo':'微博','social.douyin':'抖音','social.xiaohongshu':'小红书',
+                'social.title':'关注我们','social.wechat':'微信','social.official':'公众号','social.douyin':'抖音','social.xiaohongshu':'小红书',
                 'footer.brand':'海兰菹','footer.desc':'源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
                 'footer.nav':'导航','footer.connect':'联系','footer.follow':'关注',
                 'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有'
@@ -618,7 +617,7 @@
                 'faq.q2':'유통기한 및 보관','faq.a2':'미개봉 냉장 보관 90일, 개봉 후 7일 이내 섭취 권장. 냉동 보관 시 6개월까지 연장 가능하나 해동 후 식감이 약간 달라질 수 있습니다.',
                 'faq.q3':'맞춤 주문 기간','faq.a3':'맞춤 선물세트는 주문부터 발송까지 약 7-10 영업일 소요. 대량 주문은 15일 전 연락 바랍니다.',
                 'faq.q4':'교환 및 환불','faq.a4':'수령 후 품질 문제 시 48시간 내 사진과 함께 고객센터 연락 시 무료 재발송. 맞춤 상품은 단순 변심 교환 불가합니다.',
-                'social.title':'팔로우','social.wechat':'위챗 공식 계정','social.weibo':'웨이보','social.douyin':'도우인','social.xiaohongshu':'샤오홍슈',
+                'social.title':'팔로우','social.wechat':'위챗','social.official':'공식 계정','social.douyin':'도우인','social.xiaohongshu':'샤오홍슈',
                 'footer.brand':'해란저','footer.desc':'연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
                 'footer.nav':'내비게이션','footer.connect':'연락처','footer.follow':'팔로우',
                 'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유'
@@ -640,7 +639,7 @@
                 'faq.q2':'Shelf Life & Storage','faq.a2':'Unopened refrigerated: 90 days. After opening, consume within 7 days. Freezer storage extends to 6 months with slight texture change after thawing.',
                 'faq.q3':'Custom Order Timeline','faq.a3':'Custom gift sets take 7-10 business days from order to dispatch, including handwritten card and custom packaging. Bulk orders please contact 15 days ahead.',
                 'faq.q4':'Returns & Exchanges','faq.a4':'Quality issues? Contact us with photos within 48 hours for free replacement. Custom items are not eligible for returns without cause.',
-                'social.title':'Follow Us','social.wechat':'WeChat','social.weibo':'Weibo','social.douyin':'Douyin','social.xiaohongshu':'Xiaohongshu',
+                'social.title':'Follow Us','social.wechat':'WeChat','social.official':'Official','social.douyin':'Douyin','social.xiaohongshu':'Xiaohongshu',
                 'footer.brand':'HAILANZU','footer.desc':'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
                 'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
                 'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
@@ -662,7 +661,7 @@
                 'faq.q2':'賞味期限と保管','faq.a2':'未開封冷蔵90日、開封後7日以内にお召し上がりください。冷凍保存で6ヶ月延長可能ですが、解凍後食感が若干変わります。',
                 'faq.q3':'カスタム注文期間','faq.a3':'カスタムギフトは注文から発送まで7-10営業日。大量注文は15日前にご連絡ください。',
                 'faq.q4':'返品・交換','faq.a4':'品質問題の場合、48時間以内に写真付きでご連絡いただければ無料再送。カスタム商品は返品不可です。',
-                'social.title':'フォロー','social.wechat':'微信公式','social.weibo':'微博','social.douyin':'抖音','social.xiaohongshu':'小紅書',
+                'social.title':'フォロー','social.wechat':'WeChat','social.official':'公式アカウント','social.douyin':'抖音','social.xiaohongshu':'小紅書',
                 'footer.brand':'海蘭菹','footer.desc':'延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
                 'footer.nav':'ナビゲーション','footer.connect':'連絡先','footer.follow':'フォロー',
                 'footer.wechat':'微信公式アカウント','footer.weibo':'微博 @海蘭菹','footer.rights':'全著作権保有'
