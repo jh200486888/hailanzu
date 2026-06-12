@@ -57,7 +57,7 @@
   .nav-social{display:none}
   .community-actions{flex-direction:column;align-items:center}
   .community-action-btn{width:100%;justify-content:center}
-  .floating-cta{right:16px;bottom:20px;padding:14px;border-radius:50%;gap:0}
+  .floating-cta{right:16px;bottom:20px;width:48px;height:48px;padding:0;border-radius:50%;gap:0;justify-content:center}
   .floating-cta-text{display:none}
   .floating-cta svg{width:20px;height:20px}
   .footer-social-row{gap:16px}
