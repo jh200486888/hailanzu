@@ -66,19 +66,31 @@ section,footer{overflow:hidden}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
-.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(30px);z-index:1001;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;pointer-events:none;transition:all 0.4s var(--ease-out)}
-.mobile-nav.open{opacity:1;visibility:visible;pointer-events:all}
-.mobile-nav a{font-family:var(--font-serif);font-size:1.8rem;color:var(--ink);text-decoration:none;transition:color 0.3s}
-.mobile-nav a:hover,.mobile-nav a.active{color:var(--seal)}
-        .mobile-nav a:visited { color: var(--seal); }
-        .mobile-nav a:active { background: transparent; -webkit-tap-highlight-color: transparent; }
-.mobile-nav-close{position:absolute; }
-        .mobile-nav a:focus { outline: none; }
-.mobile-nav-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:none;background:rgba(26,60,52,0.08);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--ink);transition:all 0.3s}
-.mobile-nav-close:hover{background:var(--seal);color:white}
-.mobile-lang-switch{display:flex;gap:0.5rem;margin-top:1rem}
-.mobile-lang-switch .lang-btn{border-color:var(--ink);color:var(--ink)}
-.mobile-lang-switch .lang-btn:hover,.mobile-lang-switch .lang-btn.active{background:var(--ink);color:var(--rice)}
+.nav-panel{position:fixed;top:0;left:0;right:0;bottom:0;z-index:998;background:rgba(15,36,32,.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.4,0,.2,1)}
+.nav-panel.open{opacity:1;pointer-events:all}
+.nav-panel-inner{display:flex;flex-direction:column;align-items:center;gap:8px}
+.nav-panel-item{font-family:var(--font-serif);text-decoration:none;color:var(--rice);font-size:clamp(28px,5vw,48px);font-weight:700;letter-spacing:10px;opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
+.nav-panel.open .nav-panel-item{opacity:.5;transform:translateY(0)}
+.nav-panel.open .nav-panel-item:nth-child(1){transition-delay:.1s}
+.nav-panel.open .nav-panel-item:nth-child(2){transition-delay:.18s}
+.nav-panel.open .nav-panel-item:nth-child(3){transition-delay:.26s}
+.nav-panel.open .nav-panel-item:nth-child(4){transition-delay:.34s}
+.nav-panel.open .nav-panel-item:nth-child(5){transition-delay:.42s}
+.nav-panel.open .nav-panel-item:nth-child(6){transition-delay:.50s}
+.nav-panel.open .nav-panel-item:nth-child(7){transition-delay:.58s}
+.nav-panel-item:hover{opacity:1!important}
+.nav-panel-item:visited{color:var(--rice)}
+.nav-panel-item:focus{outline:none;opacity:1!important}
+.nav-panel-item:active{background:transparent;color:var(--rice);-webkit-tap-highlight-color:transparent}
+.nav-panel-item::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--seal);transition:width .4s cubic-bezier(.4,0,.2,1)}
+.nav-panel-item:hover::after{width:100%}
+.nav-panel-item-kr{font-family:var(--font-serif-kr);font-size:clamp(11px,1.5vw,14px);opacity:.25;letter-spacing:4px;margin-top:-2px;margin-bottom:14px;display:block;font-weight:400}
+.nav-panel-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:none;background:rgba(245,240,232,.06);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--rice);opacity:.4;transition:all .3s;letter-spacing:2px}
+.nav-panel-close:hover{opacity:1;background:rgba(245,240,232,.12)}
+.nav-panel-lang{display:flex;gap:6px;margin-top:24px}
+.nav-panel-lang .lang-btn{border:1px solid rgba(245,240,232,.15);background:none;color:var(--rice);opacity:.3;padding:6px 12px;font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .3s;border-radius:2px;font-family:var(--font-body)}
+.nav-panel-lang .lang-btn:hover{opacity:.7}
+.nav-panel-lang .lang-btn.active{opacity:1;border-color:var(--gold);color:var(--gold)}
 
 /* Hero */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 2rem 80px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%,rgba(196,114,127,0.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(26,60,52,0.12) 0%,transparent 50%),radial-gradient(ellipse at 50% 70%,rgba(200,16,46,0.08) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(184,134,11,0.1) 0%,transparent 50%),var(--rice)}
@@ -330,7 +342,7 @@ section,footer{overflow:hidden}
 
 .lang-switch{display:none}
 .hamburger{display:flex}
-.mobile-nav{display:flex}
+
 .hero-title-wrap{flex-direction:column;gap:1.5rem}
 .hero-title-zh,.hero-subtitle-kr{writing-mode:horizontal-tb}
 .scroll-page{height:calc(100vh - 80px);min-height:400px;gap:8px}
@@ -401,21 +413,23 @@ section,footer{overflow:hidden}
 </div>
 <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav" id="mobileNav">
-<button class="mobile-nav-close" id="mobileNavClose">&#10005;</button>
-<a href="index.html" data-i18n="nav.home">首页</a>
-<a href="seasons.html" data-i18n="nav.seasons">四季发酵</a>
-<a href="products.html" class="active" data-i18n="nav.products">产品殿堂</a>
-<a href="story.html" data-i18n="nav.story">延边风土</a>
-<a href="gift.html" data-i18n="nav.gift">高端礼盒</a>
-<a href="recipes.html" data-i18n="nav.recipes">菹味食谱</a>
-        <a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
-<div class="mobile-lang-switch">
-<button class="lang-btn" data-lang="zh">中</button>
-<button class="lang-btn" data-lang="ko">한</button>
-<button class="lang-btn" data-lang="en">EN</button>
-<button class="lang-btn" data-lang="ja">日</button>
-</div>
+<div class="nav-panel" id="navPanel">
+  <div class="nav-panel-inner">
+    <a class="nav-panel-item" href="index.html"><span data-i18n="nav.home">首页</span><span class="nav-panel-item-kr" data-i18n="nav.home.sub">홈</span></a>
+    <a class="nav-panel-item" href="seasons.html"><span data-i18n="nav.seasons">四季发酵</span><span class="nav-panel-item-kr" data-i18n="nav.seasons.sub">사계절 발효</span></a>
+    <a class="nav-panel-item" href="products.html" style="opacity:1!important"><span data-i18n="nav.products">产品殿堂</span><span class="nav-panel-item-kr" data-i18n="nav.products.sub">제품 전시</span></a>
+    <a class="nav-panel-item" href="story.html"><span data-i18n="nav.story">延边风土</span><span class="nav-panel-item-kr" data-i18n="nav.story.sub">연변 풍토</span></a>
+    <a class="nav-panel-item" href="gift.html"><span data-i18n="nav.gift">高端礼盒</span><span class="nav-panel-item-kr" data-i18n="nav.gift.sub">프리미엄 선물</span></a>
+    <a class="nav-panel-item" href="recipes.html"><span data-i18n="nav.recipes">菹味食谱</span><span class="nav-panel-item-kr" data-i18n="nav.recipes.sub">저 레시피</span></a>
+    <a class="nav-panel-item" href="contact.html"><span data-i18n="nav.contact">联系我们</span><span class="nav-panel-item-kr" data-i18n="nav.contact.sub">문의하기</span></a>
+  </div>
+  <button class="nav-panel-close" id="navPanelClose">&#10005;</button>
+  <div class="nav-panel-lang">
+    <button class="lang-btn" data-lang="zh">中</button>
+    <button class="lang-btn" data-lang="ko">한</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="ja">日</button>
+  </div>
 </div>
 
 <section class="hero">
@@ -556,6 +570,7 @@ var SERIES = [
 var translations = {
     zh: {
         'nav.home': '首页',
+        'nav.home.sub': '홈',
         'nav.seasons': '四季发酵',
         'nav.products': '产品殿堂',
         'nav.story': '延边风土',
@@ -585,6 +600,7 @@ var translations = {
     },
     ko: {
         'nav.home': '홈',
+        'nav.home.sub': '홈',
         'nav.seasons': '사계절 발효',
         'nav.products': '제품 전시',
         'nav.story': '연변 풍토',
@@ -614,6 +630,7 @@ var translations = {
     },
     en: {
         'nav.home': 'Home',
+        'nav.home.sub': 'Home',
         'nav.seasons': 'Seasonal Fermentation',
         'nav.products': 'Products',
         'nav.story': 'Yanbian Heritage',
@@ -643,6 +660,7 @@ var translations = {
     },
     ja: {
         'nav.home': 'ホーム',
+        'nav.home.sub': 'ホーム',
         'nav.seasons': '四季発酵',
         'nav.products': '製品展示',
         'nav.story': '延辺風土',
@@ -702,37 +720,48 @@ if (!localStorage.getItem('hailanzu-lang')) {
 
 /* ======== Navigation ======== */
 var hamburger = document.getElementById('hamburger');
-var mobileNav = document.getElementById('mobileNav');
+var navPanel = document.getElementById('navPanel');
+var navPanelClose = document.getElementById('navPanelClose');
 var nav = document.getElementById('nav');
-var mobileNavClose = document.getElementById('mobileNavClose');
+
+function openPanel() {
+  navPanel.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePanel() {
+  navPanel.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  navPanel.classList.contains('open') ? closePanel() : openPanel();
 });
 
-mobileNavClose.addEventListener('click', function() {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
+navPanelClose.addEventListener('click', closePanel);
+
+navPanel.querySelectorAll('.nav-panel-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    closePanel();
+  });
 });
 
-mobileNav.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-    });
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePanel();
+});
+
+// Language switch in panel
+navPanel.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (typeof window.setLanguage === 'function') {
+      window.setLanguage(btn.getAttribute('data-lang'));
+    }
+  });
 });
 
 window.addEventListener('scroll', function() {
     nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() { setLanguage(btn.dataset.lang); });
-});
 </script>
 
 <script>
