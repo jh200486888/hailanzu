@@ -2213,9 +2213,6 @@ const i18n = {
   'promo.text': { zh:'新客首单9折 · 企业微信专属', ko:'신규 고객 첫 주문 10% 할인 · 기업 위챗 전용', en:'10% off first order · WeChat Work exclusive', ja:'新規初回注文10%オフ・企業WeChat限定' },
   'promo.btn': { zh:'立即加入', ko:'지금 가입', en:'Join now', ja:'今すぐ参加' },
   'qr.placeholder': { zh:'二维码即将上线', ko:'QR 코드 곧 출시', en:'QR code coming soon', ja:'QRコード近日公開' },
-  'qr.search.label': { zh:'微信搜索企业微信', ko:'위챗에서 기업 위챗 검색', en:'Search WeChat Work', ja:'WeChatで企業WeChatを検索' },
-  'qr.search.step': { zh:'1. 打开微信 → 搜索<br>2. 输入 HAILANZU_Official<br>3. 添加企业微信联系人', ko:'1. 위챗 열기 → 검색<br>2. HAILANZU_Official 입력<br>3. 기업 위챗 연락처 추가', en:'1. Open WeChat → Search<br>2. Enter HAILANZU_Official<br>3. Add WeChat Work contact', ja:'1. WeChatを開く → 検索<br>2. HAILANZU_Officialを入力<br>3. 企業WeChat連絡先を追加' },
-  'qr.mobile.hint': { zh:'📱 复制ID后打开微信搜索添加', ko:'📱 ID 복사 후 위챗 검색하여 추가', en:'📱 Copy ID, open WeChat & search', ja:'📱 IDをコピーしてWeChat検索で追加' },
   'footer.qr.wechat-work': { zh:'企业微信', ko:'기업 위챗', en:'WeChat Work', ja:'企業WeChat' },
   'footer.qr.official': { zh:'公众号', ko:'공식 계정', en:'Official Account', ja:'公式アカウント' },
 
@@ -2557,18 +2554,9 @@ if(typeof setLanguage==='function') setLanguage(currentLang);
     <div class="qr-popup" id="qrPopup">
       <button class="qr-popup-close" id="qrPopupClose" aria-label="关闭">✕</button>
       <div class="qr-popup-title" id="qrPopupTitle"></div>
-      <div class="qr-popup-img" id="qrPopupImg">
-        <div class="qr-placeholder">
-          <div class="qr-search-label" data-i18n="qr.search.label">微信搜索企业微信</div>
-          <div class="qr-search-id" onclick="navigator.clipboard&&navigator.clipboard.writeText('HAILANZU_Official').then(function(){var t=this;t.style.color='var(--rice)';setTimeout(function(){t.style.color='var(--gold)'}.bind(t),1200)}.bind(this))" style="cursor:pointer" title="点击复制">HAILANZU_Official</div>
-          <div class="qr-search-divider"></div>
-          <div class="qr-search-step" data-i18n="qr.search.step">1. 打开微信 → 搜索<br>2. 输入 HAILANZU_Official<br>3. 添加企业微信联系人</div>
-        </div>
-      </div>
+      <div class="qr-popup-img" id="qrPopupImg"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" opacity="0.3"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm11-2h2v2h-2v-2zm-4 0h2v6h-2v-6zm6 0h2v2h-2v-2zm0 4h2v4h-4v-2h2v-2zm-2 2h-2v2h2v-2z"/></svg><div class="qr-placeholder-text" data-i18n="qr.placeholder">二维码即将上线</div></div></div>
       <div class="qr-popup-hint" id="qrPopupHint"></div>
-      <div class="qr-mobile-hint" id="qrMobileHint" style="display:none;margin-top:12px;padding:8px 16px;background:rgba(184,134,11,0.12);border-radius:6px;font-size:13px;color:var(--rice);opacity:0.8">
-        <span data-i18n="qr.mobile.hint">📱 复制ID后打开微信搜索添加</span>
-      </div>
+      <div class="qr-mobile-hint" id="qrMobileHint" style="display:none;margin-top:12px;padding:8px 16px;background:rgba(184,134,11,0.12);border-radius:6px;font-size:13px;color:var(--rice);opacity:0.8"><span data-i18n="qr.longpress">📱 长按识别二维码</span></div>
     </div>
   </div>
   <div class="floating-cta" id="floatingCta">
