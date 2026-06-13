@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
+                *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+        a, button { -webkit-tap-highlight-color: transparent; outline: none; }
+:root {
             --azalea: #C4727F;
             --azalea-dark: #8B4A5A;
             --ink: #1A3C34;
@@ -125,6 +127,9 @@
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .nav-links { display: none; }
+        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; }
+        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; }
+
         }
 
         /* Mobile Nav Panel */

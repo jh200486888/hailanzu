@@ -51,7 +51,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+<style>        *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+        a, button { -webkit-tap-highlight-color: transparent; outline: none; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --azalea:#C4727F;--azalea-dark:#8B4A5A;
   --ink:#1A3C34;--ink-deep:#0F2420;--ink-light:#2A5A4E;--ink-mid:#1E4A40;
@@ -436,6 +438,9 @@ ul,ol{list-style:none}
 @media(max-width:768px){
   .nav{justify-content:space-between}
   .nav-links{display:none}
+        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; }
+        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; }
+
   .nav-logo{padding:0 20px}
   .nav.scrolled .nav-logo{padding:0 16px}
   .nav-right{padding-right:20px}

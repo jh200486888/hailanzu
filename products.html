@@ -10,6 +10,8 @@
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
 <style>
+        *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+        a, button { -webkit-tap-highlight-color: transparent; outline: none; }
 :root {
     --azalea: #C4727F;
     --azalea-dark: #8B4A5A;
@@ -285,6 +287,9 @@ section,footer{overflow:hidden}
 /* Responsive */
 @media(max-width:768px){
 .nav-links{display:none}
+        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; }
+        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; }
+
 .lang-switch{display:none}
 .hamburger{display:flex}
 .mobile-nav{display:flex}
