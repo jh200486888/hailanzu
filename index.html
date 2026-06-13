@@ -284,12 +284,12 @@ ul,ol{list-style:none}
 .spice-dot{width:6px;height:14px;border-radius:3px 3px 2px 2px;background:currentColor;opacity:.1;transition:all .4s ease;transform:rotate(-15deg)}
 .spice-dot.on{opacity:1;background:var(--seal);box-shadow:0 0 6px var(--seal-glow)}
 /* Carousel nav — premium redesign */
-.carousel-nav{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);display:flex;align-items:center;justify-content:space-between;z-index:10;padding:0 clamp(16px,3vw,40px);pointer-events:none}
+.carousel-nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:10;pointer-events:none}
 .carousel-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .5s var(--ease-out);border-radius:1px}
 .carousel-dot.active{opacity:1;width:40px;background:var(--gold);box-shadow:0 0 10px rgba(184,134,11,.35)}
-.carousel-arrow{width:44px;height:44px;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:0;transition:all .4s var(--ease-out);background:rgba(245,240,232,.06);pointer-events:all;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.carousel-arrow:hover{opacity:1;color:var(--gold);background:rgba(184,134,11,.15)}
-.products-carousel:hover .carousel-arrow{opacity:.5}
+.carousel-arrow{width:40px;height:40px;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.4;transition:all .4s var(--ease-out);background:rgba(245,240,232,.08);pointer-events:all;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.carousel-arrow:hover{opacity:1;color:var(--gold);background:rgba(184,134,11,.12);box-shadow:0 0 12px rgba(184,134,11,.15)}
+.products-carousel:hover .carousel-arrow{opacity:.6}
 .carousel-counter{display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:11px;letter-spacing:2px;color:var(--rice);opacity:.5;min-width:56px;justify-content:center}
 .carousel-counter-current{display:inline;font-family:'Playfair Display',var(--font-serif);font-size:14px;color:var(--gold);opacity:1;letter-spacing:1px}
 .carousel-counter-sep{opacity:.35;font-size:10px}
@@ -316,8 +316,8 @@ ul,ol{list-style:none}
   .sticky-header{padding:20px 20px 8px}
   .sticky-header-title{font-size:clamp(18px,4.5vw,24px)}
   .products-watermark{display:none}
-  .carousel-nav{padding:0 12px}
-  .carousel-arrow{opacity:.6;width:36px;height:36px}
+  .carousel-nav{bottom:16px;gap:10px}
+  .carousel-arrow{opacity:.5;width:34px;height:34px}
 
   .carousel-counter{font-size:10px;min-width:44px}
   .carousel-counter-current{font-size:12px}
