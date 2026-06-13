@@ -1,1205 +1,2178 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>产品殿堂 | 海兰菹 HAILANZU</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-<link rel="preload" href="css/common.css" as="style">
-<link rel="stylesheet" href="css/common.css">
-<style>
-:root {
-    --azalea: #C4727F;
-    --azalea-dark: #8B4A5A;
-    --ink: #1A3C34;
-    --ink-deep: #0F2420;
-    --ink-light: #2A5A4E;
-    --ink-mid: #1E4A40;
-    --seal: #C8102E;
-    --seal-glow: rgba(200,16,46,.25);
-    --seal-dark: #9B0D23;
-    --rice: #F5F0E8;
-    --rice-dim: #E8E0D4;
-    --rice-deep: #D4CBBD;
-    --gold: #B8860B;
-    --gold-dim: rgba(184,134,11,.15);
-    --gold-light: #D4A84B;
-    --brown: #3D2B1F;
-    --brown-light: #6B5744;
-    --font-serif: 'Noto Serif SC', serif;
-    --font-sans: 'Noto Sans SC', sans-serif;
-    --font-serif-kr: 'Noto Serif KR', serif;
-    --font-sans-kr: 'Noto Sans KR', sans-serif;
-    --font-serif-jp: 'Noto Serif JP', serif;
-    --font-sans-jp: 'Noto Sans JP', sans-serif;
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', 'Noto Sans SC', sans-serif;
-    --ease-out: cubic-bezier(.22,1,.36,1);
-}
-html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
-body{overflow-x:clip;margin:0;padding:0;box-sizing:border-box;font-family:var(--font-sans);background-color:var(--rice);color:var(--ink);line-height:1.6;overscroll-behavior-x:none}
-*{margin:0;padding:0;box-sizing:border-box}
-section,footer{overflow:hidden}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品殿堂 | 海兰菹 HAILANZU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azalea: #C4727F;
+            --azalea-dark: #8B4A5A;
+            --ink: #1A3C34;
+            --ink-deep: #0F2420;
+            --ink-light: #2A5A4E;
+            --ink-mid: #1E4A40;
+            --seal: #C8102E;
+            --seal-glow: rgba(200,16,46,.25);
+            --seal-dark: #9B0D23;
+            --rice: #F5F0E8;
+            --rice-dim: #E8E0D4;
+            --rice-deep: #D4CBBD;
+            --gold: #B8860B;
+            --gold-dim: rgba(184,134,11,.15);
+            --gold-light: #D4A84B;
+            --brown: #3D2B1F;
+            --brown-light: #6B5744;
+            --font-serif: 'Noto Serif SC', serif;
+            --font-sans: 'Noto Sans SC', sans-serif;
+            --font-serif-kr: 'Noto Serif KR', serif;
+            --font-sans-kr: 'Noto Sans KR', sans-serif;
+            --font-serif-jp: 'Noto Serif JP', serif;
+            --font-sans-jp: 'Noto Sans JP', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', 'Noto Sans SC', sans-serif;
+            --ease-out: cubic-bezier(.22,1,.36,1);
+        }
 
-/* Navigation */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,240,232,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(184,134,11,0.15);transition:all 0.3s var(--ease-out)}
-.nav.scrolled{background:rgba(245,240,232,0.97);box-shadow:0 2px 24px rgba(26,60,52,0.1),0 1px 0 rgba(184,134,11,0.2)}
-.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:var(--ink)}
-.pot-icon{width:36px;height:36px;fill:none;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
-.nav-logo-text .zh{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;letter-spacing:0.05em}
-.nav-logo-text .kr{font-family:var(--font-sans-kr);font-size:0.7rem;color:var(--ink-light);letter-spacing:0.02em}
-.nav-links{display:flex;align-items:center;gap:2rem}
-.nav-link{font-family:var(--font-sans);font-size:0.9rem;color:var(--ink);text-decoration:none;position:relative;padding:0.25rem 0;transition:color 0.3s}
-.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--seal);transition:width 0.3s var(--ease-out)}
-.nav-link:hover::after,.nav-link.active::after{width:100%}
-.nav-link.active{color:var(--seal)}
-.lang-switch{display:flex;gap:0.5rem;align-items:center}
-.lang-btn{font-family:var(--font-body);font-size:0.75rem;padding:0.3rem 0.6rem;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;border-radius:3px;transition:all 0.2s}
-.lang-btn:hover,.lang-btn.active{background:var(--ink);color:var(--rice)}
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:28px;height:28px;cursor:pointer;background:none;border:none;padding:0;z-index:1001}
-.hamburger span{display:block;width:100%;height:2px;background:var(--ink);transition:all 0.3s var(--ease-out)}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
-.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(245,240,232,0.98);backdrop-filter:blur(30px);z-index:1001;flex-direction:column;justify-content:center;align-items:center;gap:2rem;opacity:0;visibility:hidden;pointer-events:none;transition:all 0.4s var(--ease-out)}
-.mobile-nav.open{opacity:1;visibility:visible;pointer-events:all}
-.mobile-nav a{font-family:var(--font-serif);font-size:1.8rem;color:var(--ink);text-decoration:none;transition:color 0.3s}
-.mobile-nav a:hover,.mobile-nav a.active{color:var(--seal)}
-.mobile-nav-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:none;background:rgba(26,60,52,0.08);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--ink);transition:all 0.3s}
-.mobile-nav-close:hover{background:var(--seal);color:white}
-.mobile-lang-switch{display:flex;gap:0.5rem;margin-top:1rem}
-.mobile-lang-switch .lang-btn{border-color:var(--ink);color:var(--ink)}
-.mobile-lang-switch .lang-btn:hover,.mobile-lang-switch .lang-btn.active{background:var(--ink);color:var(--rice)}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 2rem 80px;overflow:hidden;background:radial-gradient(ellipse at 30% 20%,rgba(196,114,127,0.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(26,60,52,0.12) 0%,transparent 50%),radial-gradient(ellipse at 50% 70%,rgba(200,16,46,0.08) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(184,134,11,0.1) 0%,transparent 50%),var(--rice)}
-.hero-silhouette-left,.hero-silhouette-right{position:absolute;width:300px;height:auto;opacity:0.08;pointer-events:none}
-.hero-silhouette-left{left:-50px;top:20%}
-.hero-silhouette-right{right:-30px;bottom:15%;opacity:0.2}
-.hero-content{text-align:center;position:relative;z-index:2;animation:fadeInUp 1s var(--ease-out) forwards}
-.hero-title-wrap{display:flex;align-items:center;justify-content:center;gap:3rem}
-.hero-title-zh{writing-mode:vertical-rl;font-family:var(--font-serif);font-size:clamp(3rem,8vw,5rem);font-weight:900;color:var(--ink);letter-spacing:0.3em;text-orientation:upright}
-.hero-subtitle-kr{writing-mode:vertical-rl;font-family:var(--font-serif-kr);font-size:clamp(1.5rem,4vw,2.5rem);font-weight:600;color:var(--ink-light);letter-spacing:0.2em;text-orientation:upright}
-.hero-seal{width:80px;height:80px;opacity:0.9}
-.marquee{position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(90deg,transparent,rgba(196,114,127,0.1),transparent);overflow:hidden;display:flex;align-items:center}
-.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap}
-.marquee-item{font-family:var(--font-sans);font-size:0.85rem;color:var(--ink);padding:0 1.5rem;display:flex;align-items:center;gap:1rem}
-.marquee-divider{width:20px;height:20px;color:var(--azalea)}
-.dahlia-icon{fill:none;stroke:currentColor;stroke-width:1.2}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* Showcase - Scheme C */
-.showcase-section{background:#0a0a0a;padding:32px 0 40px;position:relative}
-.showcase-header{text-align:center;padding:0 24px 4px;letter-spacing:10px;font-size:18px;font-weight:600;color:var(--rice);font-family:var(--font-serif)}
-.showcase-sub{text-align:center;font-size:11px;opacity:0.25;letter-spacing:3px;margin-bottom:4px;color:var(--rice)}
-.showcase-hint{text-align:center;font-size:10px;opacity:0.15;letter-spacing:2px;margin-bottom:20px;color:var(--rice)}
-.scroll-wrap{max-width:1400px;margin:0 auto;padding:0 24px 40px}
-.scroll-page{height:calc(100vh - 100px);min-height:460px;display:flex;flex-direction:column;gap:12px;scroll-snap-align:start}
-.s-row{flex:1;position:relative;background:var(--ink-deep);border-radius:14px;overflow:hidden;border:1px solid rgba(245,240,232,0.05);display:flex}
-.s-row.light-row{background:rgba(245,240,232,0.95);border-color:rgba(26,60,52,0.08)}
-.s-accent{position:absolute;left:0;top:0;width:3px;height:100%;z-index:4}
-.s-left{width:26%;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;z-index:3;border-right:1px solid rgba(245,240,232,0.06)}
-.s-row.light-row .s-left{border-right-color:rgba(26,60,52,0.08)}
-.s-left-title{font-size:24px;letter-spacing:5px;font-weight:700;line-height:1.2;color:var(--rice);font-family:var(--font-serif)}
-.s-row.light-row .s-left-title{color:var(--ink)}
-.s-left-kr{font-size:11px;opacity:0.2;letter-spacing:2px;margin-top:3px;color:var(--rice);font-family:var(--font-sans-kr)}
-.s-row.light-row .s-left-kr{color:var(--ink-light)}
-.s-left-tagline{font-size:10px;opacity:0.25;letter-spacing:1px;margin-top:6px;color:var(--rice);line-height:1.4}
-.s-row.light-row .s-left-tagline{color:var(--ink-light)}
-.s-left-tabs{display:flex;flex-direction:column;gap:5px;margin-top:12px}
-.s-left-tab{padding:4px 10px;border-radius:3px;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all 0.3s;border:1px solid rgba(245,240,232,0.08);opacity:0.4;text-align:center;line-height:1.4;color:var(--rice)}
-.s-row.light-row .s-left-tab{color:var(--ink);border-color:rgba(26,60,52,0.12)}
-.s-left-tab .tab-zh{display:block;font-size:10px;letter-spacing:2px}
-.s-left-tab .tab-kr{display:block;font-size:8px;opacity:0.5;letter-spacing:1px}
-.s-left-tab.active{opacity:1;border-color:rgba(245,240,232,0.2);background:rgba(245,240,232,0.06)}
-.s-row.light-row .s-left-tab.active{border-color:rgba(26,60,52,0.2);background:rgba(26,60,52,0.06)}
-.s-left-tab:hover{opacity:0.7}
-.s-left-nav{margin-top:10px;display:flex;align-items:center;gap:6px}
-.s-left-nav-btn{width:26px;height:26px;border-radius:50%;border:1px solid rgba(245,240,232,0.1);background:transparent;color:var(--rice);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.3s;opacity:0.4}
-.s-row.light-row .s-left-nav-btn{color:var(--ink);border-color:rgba(26,60,52,0.15)}
-.s-left-nav-btn:hover{opacity:1;border-color:rgba(245,240,232,0.3)}
-.s-left-nav-counter{font-size:9px;letter-spacing:1px;opacity:0.25;color:var(--rice)}
-.s-row.light-row .s-left-nav-counter{color:var(--ink-light)}
-.s-product{width:74%;display:flex;align-items:center;justify-content:center;padding:20px 24px}
-.s-card{width:100%;height:100%;border-radius:14px;position:relative;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
-.s-card:hover{transform:scale(1.005);box-shadow:0 0 30px rgba(245,240,232,0.04)}
-.s-card-bg{position:absolute;inset:0;transition:background 0.5s}
-.s-card-img{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:32%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:40px;transition:all 0.3s}
-.s-card-info{position:absolute;bottom:0;left:0;right:0;padding:18px;text-align:center}
-.s-card-name{font-size:18px;letter-spacing:4px;font-weight:600;margin-bottom:4px;color:var(--rice);font-family:var(--font-serif)}
-.s-card-kr{font-size:11px;opacity:0.22;letter-spacing:2px;margin-bottom:5px;color:var(--rice);font-family:var(--font-sans-kr)}
-.s-card-spec{font-size:10px;opacity:0.2;letter-spacing:1px;margin-bottom:6px;color:var(--rice)}
-.s-card-spice{display:flex;gap:4px;justify-content:center}
-.s-card-spice span{width:6px;height:6px;border-radius:50%;background:rgba(245,240,232,0.1)}
-.s-card-spice span.on{background:var(--seal)}
-.s-card-tag{position:absolute;top:12px;right:14px;padding:3px 10px;border-radius:3px;font-size:9px;letter-spacing:1px;background:rgba(0,0,0,0.3);opacity:0.5;color:var(--rice)}
-.s-card-cta{position:absolute;top:12px;left:14px;padding:3px 10px;border-radius:3px;font-size:8px;letter-spacing:1px;background:rgba(245,240,232,0.08);opacity:0;transition:opacity 0.3s;border:1px solid rgba(245,240,232,0.1);color:var(--rice)}
-.s-card:hover .s-card-cta{opacity:0.6}
-.s-card.light-bg .s-card-name{color:var(--ink)}
-.s-card.light-bg .s-card-kr{color:rgba(26,60,52,0.3)}
-.s-card.light-bg .s-card-spec{color:rgba(26,60,52,0.3)}
-.s-card.light-bg .s-card-tag{background:rgba(0,0,0,0.08);color:var(--ink);opacity:0.7}
-.s-card.light-bg .s-card-spice span{background:rgba(26,60,52,0.1)}
-.s-card.light-bg .s-card-spice span.on{background:var(--seal)}
-.s-card.light-bg .s-card-img{background:rgba(255,255,255,0.15)}
-.s-card.light-bg .s-card-cta{background:rgba(26,60,52,0.08);color:var(--ink);border-color:rgba(26,60,52,0.15)}
-.scroll-hint{text-align:center;font-size:9px;letter-spacing:3px;opacity:0.12;margin-top:8px;color:var(--rice)}
-.scroll-hint::after{content:" \2193";animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--rice);
+            color: var(--ink);
+            line-height: 1.6;
+            overscroll-behavior-x: none;
+        }
 
-/* Detail Overlay */
-.detail-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;visibility:hidden;transition:opacity 0.4s,visibility 0.4s}
-.detail-overlay.open{opacity:1;visibility:visible}
-.detail-container{position:absolute;inset:0;display:flex;align-items:stretch;max-width:1200px;margin:0 auto;padding:24px}
-.detail-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(245,240,232,0.12);background:rgba(245,240,232,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s}
-.detail-close:hover{border-color:rgba(245,240,232,0.3);background:rgba(245,240,232,0.08)}
-.detail-close svg{width:16px;height:16px;stroke:var(--rice);stroke-width:2;fill:none;opacity:0.5}
-.detail-left{width:48%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 30px;position:relative}
-.detail-carousel{width:300px;position:relative;margin-bottom:24px}
-.detail-carousel-track{position:relative;width:280px;height:280px;margin:0 auto;overflow:hidden;border-radius:50%}
-.detail-carousel-slide{position:absolute;inset:0;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 0.6s ease,transform 0.6s ease;transform:scale(0.92);pointer-events:none}
-.detail-carousel-slide.active{opacity:1;transform:scale(1);pointer-events:auto}
-.detail-carousel-bg{position:absolute;inset:0;border-radius:50%}
-.detail-carousel-ring{position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(245,240,232,0.08)}
-.detail-carousel-glow{position:absolute;inset:-24px;border-radius:50%;opacity:0.12;filter:blur(40px)}
-.detail-carousel-icon{font-size:72px;position:relative;z-index:2;filter:drop-shadow(0 4px 20px rgba(0,0,0,0.3));margin-bottom:4px}
-.detail-carousel-label{font-size:9px;letter-spacing:2px;opacity:0.35;position:relative;z-index:2;margin-top:6px;color:var(--rice)}
-.detail-carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
-.detail-carousel-dot{width:20px;height:3px;border-radius:2px;background:rgba(245,240,232,0.12);cursor:pointer;transition:all 0.4s}
-.detail-carousel-dot.active{width:32px;background:rgba(245,240,232,0.5)}
-.detail-carousel-arrows{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);pointer-events:none;z-index:5;padding:0 4px}
-.detail-carousel-arrow{width:28px;height:28px;border-radius:50%;border:1px solid rgba(245,240,232,0.1);background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:auto;transition:all 0.3s;opacity:0.4}
-.detail-carousel-arrow:hover{opacity:1;border-color:rgba(245,240,232,0.3);background:rgba(0,0,0,0.5)}
-.detail-carousel-arrow svg{width:10px;height:10px;stroke:var(--rice);stroke-width:2;fill:none;opacity:0.6}
-.detail-overlay.light-overlay .detail-carousel-dot{background:rgba(26,60,52,0.12)}
-.detail-overlay.light-overlay .detail-carousel-dot.active{background:rgba(26,60,52,0.45)}
-.detail-overlay.light-overlay .detail-carousel-arrow{border-color:rgba(26,60,52,0.15);background:rgba(255,255,255,0.3)}
-.detail-overlay.light-overlay .detail-carousel-arrow svg{stroke:var(--ink)}
-.detail-badge{display:flex;align-items:center;gap:6px;margin-top:8px}
-.detail-badge-item{padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:1.5px;border:1px solid rgba(245,240,232,0.1);background:rgba(245,240,232,0.04);color:var(--rice)}
-.detail-spice-row{display:flex;align-items:center;gap:5px;margin-top:12px}
-.detail-spice-label{font-size:9px;letter-spacing:1px;opacity:0.25;margin-right:4px;color:var(--rice)}
-.detail-spice{display:flex;gap:4px}
-.detail-spice span{width:8px;height:8px;border-radius:50%;background:rgba(245,240,232,0.1)}
-.detail-spice span.on{background:var(--seal);box-shadow:0 0 6px rgba(200,16,46,0.4)}
-.detail-right{width:52%;display:flex;flex-direction:column;justify-content:center;padding:40px 30px 40px 20px;border-left:1px solid rgba(245,240,232,0.06)}
-.detail-series{font-size:10px;letter-spacing:3px;opacity:0.25;margin-bottom:8px;text-transform:uppercase;color:var(--rice)}
-.detail-name{font-size:32px;letter-spacing:6px;font-weight:700;line-height:1.2;margin-bottom:4px;color:var(--rice);font-family:var(--font-serif)}
-.detail-name-kr{font-size:14px;letter-spacing:3px;opacity:0.2;margin-bottom:20px;color:var(--rice);font-family:var(--font-sans-kr)}
-.detail-divider{width:40px;height:1px;background:linear-gradient(90deg,rgba(245,240,232,0.2),transparent);margin-bottom:20px}
-.detail-desc{font-size:13px;line-height:2;opacity:0.55;letter-spacing:0.5px;margin-bottom:24px;max-width:420px;color:var(--rice)}
-.detail-desc strong{opacity:1;font-weight:600;letter-spacing:1px}
-.detail-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-.detail-spec-item{padding:10px 14px;border-radius:8px;background:rgba(245,240,232,0.03);border:1px solid rgba(245,240,232,0.05)}
-.detail-spec-label{font-size:9px;letter-spacing:2px;opacity:0.2;margin-bottom:4px;color:var(--rice)}
-.detail-spec-value{font-size:12px;letter-spacing:1px;opacity:0.6;color:var(--rice)}
-.detail-cta-row{display:flex;gap:10px;margin-top:8px}
-.detail-cta{padding:10px 24px;border-radius:6px;font-size:11px;letter-spacing:2px;cursor:pointer;transition:all 0.3s;font-family:inherit;border:none}
-.detail-cta-primary{background:var(--seal);color:#fff}
-.detail-cta-primary:hover{background:#d42038;box-shadow:0 4px 20px rgba(200,16,46,0.3)}
-.detail-cta-secondary{background:rgba(245,240,232,0.06);color:var(--rice);border:1px solid rgba(245,240,232,0.1)}
-.detail-cta-secondary:hover{background:rgba(245,240,232,0.1);border-color:rgba(245,240,232,0.2)}
-.detail-related{margin-top:28px;padding-top:20px;border-top:1px solid rgba(245,240,232,0.06)}
-.detail-related-title{font-size:10px;letter-spacing:2px;opacity:0.2;margin-bottom:12px;color:var(--rice)}
-.detail-related-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
-.detail-related-list::-webkit-scrollbar{height:2px}
-.detail-related-list::-webkit-scrollbar-thumb{background:rgba(245,240,232,0.1);border-radius:2px}
-.detail-related-item{flex-shrink:0;width:80px;padding:8px;border-radius:8px;background:rgba(245,240,232,0.03);border:1px solid rgba(245,240,232,0.05);cursor:pointer;transition:all 0.3s;text-align:center}
-.detail-related-item:hover{background:rgba(245,240,232,0.06);border-color:rgba(245,240,232,0.12)}
-.detail-related-item.active{border-color:rgba(245,240,232,0.2);background:rgba(245,240,232,0.08)}
-.detail-related-icon{font-size:22px;margin-bottom:4px}
-.detail-related-name{font-size:9px;letter-spacing:1px;opacity:0.5;line-height:1.3;color:var(--rice)}
-.detail-overlay.light-overlay .detail-name{color:var(--ink)}
-.detail-overlay.light-overlay .detail-name-kr{color:rgba(26,60,52,0.3)}
-.detail-overlay.light-overlay .detail-desc{color:var(--ink)}
-.detail-overlay.light-overlay .detail-spec-item{background:rgba(26,60,52,0.04);border-color:rgba(26,60,52,0.08)}
-.detail-overlay.light-overlay .detail-spec-label{color:rgba(26,60,52,0.3)}
-.detail-overlay.light-overlay .detail-spec-value{color:rgba(26,60,52,0.7)}
-.detail-overlay.light-overlay .detail-cta-secondary{background:rgba(26,60,52,0.06);color:var(--ink);border-color:rgba(26,60,52,0.12)}
-.detail-overlay.light-overlay .detail-related-item{background:rgba(26,60,52,0.03);border-color:rgba(26,60,52,0.06)}
-.detail-overlay.light-overlay .detail-related-name{color:rgba(26,60,52,0.5)}
-.detail-overlay.light-overlay .detail-badge-item{background:rgba(26,60,52,0.04);border-color:rgba(26,60,52,0.1);color:var(--ink)}
-.detail-overlay.light-overlay .detail-divider{background:linear-gradient(90deg,rgba(26,60,52,0.2),transparent)}
-.detail-overlay.light-overlay .detail-related-title{color:rgba(26,60,52,0.3)}
-.detail-overlay.light-overlay .detail-related-item.active{border-color:rgba(26,60,52,0.2);background:rgba(26,60,52,0.08)}
-.detail-overlay.light-overlay .detail-series{color:rgba(26,60,52,0.3)}
-.detail-overlay.light-overlay .detail-spice-label{color:rgba(26,60,52,0.25)}
-.detail-overlay.light-overlay .detail-carousel-label{color:var(--ink)}
+        /* Clip overflowing decorative elements to prevent page width expansion on Android */
+        section, footer { overflow: hidden; }
 
-/* Community */
-.community-section{position:relative;background:#0A1A16;padding:clamp(48px,6vw,80px) clamp(24px,4vw,48px);border-top:1px solid rgba(184,134,11,0.15)}
-.community-inner{max-width:520px;margin:0 auto;text-align:center}
-.community-title{font-family:var(--font-serif);font-weight:700;font-size:clamp(20px,2.8vw,30px);color:var(--rice);letter-spacing:4px;margin-bottom:8px}
-.community-subtitle{font-family:var(--font-sans);font-weight:300;font-size:clamp(12px,1.4vw,14px);color:rgba(245,240,232,0.35);margin-bottom:clamp(28px,4vw,40px);letter-spacing:1px}
-.community-cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:28px}
-.community-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 24px;border:1px solid rgba(245,240,232,0.1);border-radius:12px;cursor:pointer;transition:all 0.4s var(--ease-out);background:rgba(245,240,232,0.03)}
-.community-card:hover{border-color:rgba(184,134,11,0.35);background:rgba(184,134,11,0.06);transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.2)}
-.community-card-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(245,240,232,0.06)}
-.community-card-qr{width:100px;height:100px;background:var(--rice);border-radius:6px;display:flex;align-items:center;justify-content:center}
-.qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink)}
-.qr-placeholder-text{font-size:11px;color:var(--ink);opacity:0.6;letter-spacing:1px}
-.community-card-name{font-family:var(--font-serif);font-size:13px;letter-spacing:3px;color:var(--rice);opacity:0.7}
-.community-card-desc{font-size:11px;opacity:0.3;letter-spacing:1px;color:var(--rice)}
-.community-perk{font-family:var(--font-sans);font-size:12px;color:var(--gold);opacity:0.5;letter-spacing:1px;display:flex;align-items:center;justify-content:center;gap:6px}
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(245,240,232,0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(184,134,11,0.15);
+            transition: all 0.3s var(--ease-out);
+        }
 
-/* Footer */
-.footer{background:var(--ink-deep);color:var(--rice);padding:6rem 2rem 2rem;position:relative}
-.footer-skyline{position:absolute;top:0;left:0;right:0;height:60px;transform:translateY(-1px);opacity:0.3}
-.footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
-.footer-brand{display:flex;flex-direction:column;gap:1rem}
-.footer-logo{display:flex;align-items:center;gap:0.75rem}
-.footer-logo-text{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--rice)}
-.footer-desc{font-family:var(--font-sans);font-size:0.85rem;color:var(--rice-dim);line-height:1.6}
-.footer-column h4{font-family:var(--font-sans);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;color:var(--gold)}
-.footer-column ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
-.footer-column a{font-family:var(--font-sans);font-size:0.85rem;color:var(--rice-dim);text-decoration:none;transition:color 0.3s}
-.footer-column a:hover{color:var(--azalea)}
-.footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(245,240,232,0.1);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-copyright{font-family:var(--font-sans);font-size:0.8rem;color:var(--rice-dim)}
-.footer-dahlia{width:40px;height:40px;color:var(--azalea);opacity:0.5}
+        .nav.scrolled {
+            background: rgba(245,240,232,0.97);
+            box-shadow: 0 2px 24px rgba(26,60,52,0.1), 0 1px 0 rgba(184,134,11,0.2);
+        }
 
-/* QR Popup */
-.qr-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease-out)}
-.qr-overlay.open{opacity:1;pointer-events:auto}
-.qr-popup{position:relative;background:var(--ink-deep);border:1px solid rgba(184,134,11,0.25);border-radius:12px;padding:32px 36px;text-align:center;transform:scale(0.9);transition:transform 0.3s}
-.qr-overlay.open .qr-popup{transform:scale(1)}
-.qr-popup-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--rice);opacity:0.4;font-size:18px;cursor:pointer;transition:opacity 0.3s;padding:4px}
-.qr-popup-close:hover{opacity:1}
-.qr-popup-title{font-family:var(--font-serif);font-size:16px;color:var(--rice);letter-spacing:3px;margin-bottom:20px}
-.qr-popup-img{width:180px;height:180px;background:var(--rice);border-radius:6px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.qr-popup-hint{font-size:12px;color:rgba(245,240,232,0.4);letter-spacing:1px}
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
 
-/* Floating CTA */
-.floating-cta{position:fixed;right:24px;bottom:32px;z-index:900;display:flex;align-items:center;gap:10px;padding:12px 22px;background:linear-gradient(135deg,var(--ink),var(--ink-deep));border:1px solid rgba(184,134,11,0.35);border-radius:32px;color:var(--gold-light);font-family:var(--font-sans);font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.4),0 0 20px rgba(184,134,11,0.1);transition:all 0.4s var(--ease-out);opacity:0;pointer-events:none;transform:translateY(16px)}
-.floating-cta.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.floating-cta:hover{border-color:rgba(184,134,11,0.6);box-shadow:0 6px 32px rgba(0,0,0,0.5),0 0 30px rgba(184,134,11,0.2);transform:translateY(-2px)}
-.floating-cta svg{flex-shrink:0;opacity:0.85}
+        .pot-icon {
+            width: 36px;
+            height: 36px;
+        }
 
-/* Responsive */
-@media(max-width:768px){
-.nav-links{display:none}
-.lang-switch{display:none}
-.hamburger{display:flex}
-.mobile-nav{display:flex}
-.hero-title-wrap{flex-direction:column;gap:1.5rem}
-.hero-title-zh,.hero-subtitle-kr{writing-mode:horizontal-tb}
-.scroll-page{height:calc(100vh - 80px);min-height:400px;gap:8px}
-.s-left{width:30%;padding:12px 14px}
-.s-product{width:70%;padding:14px 16px}
-.s-left-title{font-size:20px;letter-spacing:4px}
-.s-card-name{font-size:15px;letter-spacing:3px}
-.s-card-img{font-size:32px;width:28%}
-.s-card-info{padding:14px}
-.detail-container{flex-direction:column;padding:16px}
-.detail-left{width:100%;padding:20px 16px 10px}
-.detail-carousel{width:220px}
-.detail-carousel-track{width:180px;height:180px}
-.detail-carousel-icon{font-size:48px}
-.detail-carousel-arrow{width:24px;height:24px}
-.detail-carousel-arrow svg{width:8px;height:8px}
-.detail-right{width:100%;padding:10px 16px 20px;border-left:none;border-top:1px solid rgba(245,240,232,0.06)}
-.detail-name{font-size:24px;letter-spacing:4px}
-.detail-specs{grid-template-columns:1fr 1fr;gap:8px}
-.detail-close{top:12px;right:12px;width:32px;height:32px}
-.detail-related-list{gap:8px}
-.detail-related-item{width:68px;padding:6px}
-.detail-cta-row{flex-direction:column}
-.detail-cta{text-align:center}
-.footer-content{grid-template-columns:repeat(2,1fr);gap:1.5rem 2rem}
-.footer-brand{padding-bottom:1rem;border-bottom:1px solid rgba(245,240,232,0.1)}
-.footer{padding-top:5rem}
-.footer-skyline{height:40px}
-.floating-cta{right:16px;bottom:20px;width:48px;height:48px;padding:0;border-radius:50%;gap:0;justify-content:center}
-.floating-cta-text{display:none}
-.floating-cta svg{width:20px;height:20px}
-}
-</style>
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .nav-logo-text .zh {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-logo-text .kr {
+            font-family: var(--font-sans-kr);
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--ink);
+            text-decoration: none;
+            position: relative;
+            padding: 0.25rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--seal);
+            transition: width 0.3s var(--ease-out);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--seal);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--ink);
+            background: transparent;
+            color: var(--ink);
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: var(--ink);
+            color: var(--rice);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--ink);
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(4.5px, 4.5px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.5px, -4.5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(245,240,232,0.98);
+            backdrop-filter: blur(30px);
+            z-index: 1001;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .mobile-nav.open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--seal);
+        }
+
+        .nav-close {
+            display: none;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(26,60,52,0.08);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--ink);
+            transition: all 0.3s;
+        }
+
+        .mobile-nav-close:hover {
+            background: var(--seal);
+            color: white;
+        }
+
+        .mobile-lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .mobile-lang-switch .lang-btn {
+            border-color: var(--ink);
+            color: var(--ink);
+        }
+
+        .mobile-lang-switch .lang-btn:hover,
+        .mobile-lang-switch .lang-btn.active {
+            background: var(--ink);
+            color: var(--rice);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 2rem 80px;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(196,114,127,0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 30%, rgba(26,60,52,0.12) 0%, transparent 50%),
+                        radial-gradient(ellipse at 50% 70%, rgba(200,16,46,0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 20% 80%, rgba(184,134,11,0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 60%, rgba(61,43,31,0.08) 0%, transparent 50%),
+                        var(--rice);
+        }
+
+        .hero-silhouette-left,
+        .hero-silhouette-right {
+            position: absolute;
+            width: 300px;
+            height: auto;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .hero-silhouette-left {
+            left: -50px;
+            top: 20%;
+        }
+
+        .hero-silhouette-right {
+            right: -30px;
+            bottom: 15%;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .hero-title-zh {
+            writing-mode: vertical-rl;
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--ink);
+            letter-spacing: 0.3em;
+            text-orientation: upright;
+        }
+
+        .hero-subtitle-kr {
+            writing-mode: vertical-rl;
+            font-family: var(--font-serif-kr);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--ink-light);
+            letter-spacing: 0.2em;
+            text-orientation: upright;
+        }
+
+        .hero-seal {
+            width: 80px;
+            height: 80px;
+            opacity: 0.9;
+        }
+
+        /* Marquee */
+        .marquee {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(90deg, transparent, rgba(196,114,127,0.1), transparent);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-track {
+            display: flex;
+            animation: marquee 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--ink);
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .marquee-divider {
+            width: 20px;
+            height: 20px;
+            color: var(--azalea);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Filter Section */
+        .filter-section {
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            background: rgba(245,240,232,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(26,60,52,0.08);
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-btn {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--ink);
+            background: none;
+            border: none;
+            padding: 0.5rem 0;
+            cursor: pointer;
+            position: relative;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--seal);
+            transition: width 0.3s var(--ease-out);
+        }
+
+        .filter-btn.active {
+            color: var(--seal);
+        }
+
+        .filter-btn.active::after {
+            width: 100%;
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+
+        .products-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 C45 10 40 15 40 20 C40 25 45 30 50 35 C55 30 60 25 60 20 C60 15 55 10 50 10 M35 35 C30 35 25 40 25 45 C25 50 30 55 35 55 C40 55 45 50 50 45 C55 50 60 55 65 55 C70 55 75 50 75 45 C75 40 70 35 65 35' fill='none' stroke='%23C4727F' stroke-width='0.5' opacity='0.02'/%3E%3C/svg%3E");
+            background-size: 150px;
+            pointer-events: none;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(26,60,52,0.06);
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .product-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(26,60,52,0.12);
+        }
+
+        .product-card-header {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .product-card-body {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .product-name-kr {
+            font-family: var(--font-sans-kr);
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .product-desc {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--brown-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .product-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .spice-level {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spice-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--ink-light);
+        }
+
+        .spice-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .spice-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--seal);
+            opacity: 0.3;
+        }
+
+        .spice-dot.active {
+            opacity: 1;
+        }
+
+        .spice-text { font-size:10px; opacity:0.4; letter-spacing:1px; margin-left:6px; }
+
+        .detail-link {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--seal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: gap 0.3s;
+        }
+
+        .detail-link:hover {
+            gap: 0.5rem;
+        }
+
+        /* Product Detail Panel */
+        .product-detail {
+            grid-column: 1 / -1;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(26,60,52,0.1);
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.5s var(--ease-out);
+        }
+
+        .product-detail.open {
+            max-height: 800px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        .detail-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .detail-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .detail-emoji {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .detail-carousel {
+            position: relative;
+            width: 150px;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s var(--ease-out);
+        }
+
+        .carousel-slide {
+            min-width: 150px;
+            display: none;
+        }
+
+        .carousel-slide.active {
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0.75rem;
+        }
+
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--rice-deep);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--seal);
+            transform: scale(1.3);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: rgba(245,240,232,0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            opacity: 0;
+        }
+
+        .detail-carousel:hover .carousel-btn {
+            opacity: 1;
+        }
+
+        .carousel-btn:hover {
+            background: var(--seal);
+            color: white;
+        }
+
+        .carousel-prev {
+            left: -8px;
+        }
+
+        .carousel-next {
+            right: -8px;
+        }
+
+        .detail-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--rice);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--ink);
+            transition: all 0.2s;
+        }
+
+        .detail-close:hover {
+            background: var(--seal);
+            color: white;
+        }
+
+        .detail-info {
+            position: relative;
+        }
+
+        .detail-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-title-kr {
+            font-family: var(--font-sans-kr);
+            font-size: 1rem;
+            color: var(--ink-light);
+            margin-bottom: 1rem;
+        }
+
+        .detail-description {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--brown);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--ink-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .meta-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        .meta-value {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--ink);
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--seal);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--seal-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--ink);
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--ink);
+            color: var(--rice);
+        }
+
+        .btn-buy:hover { background: var(--rice); color: var(--ink-deep); }
+
+        /* Recommendation Section */
+        .recommend-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .recommend-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            right: 2rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--azalea), transparent);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--ink);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .recommend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .recommend-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 12px rgba(26,60,52,0.05);
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .recommend-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26,60,52,0.1);
+        }
+
+        .recommend-emoji {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .recommend-info {
+            flex: 1;
+        }
+
+        .recommend-name {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .recommend-name-kr {
+            font-family: var(--font-sans-kr);
+            font-size: 0.75rem;
+            color: var(--ink-light);
+        }
+
+        /* Hanok Divider */
+        .hanok-divider {
+            width: 100%;
+            height: 60px;
+            opacity: 0.15;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--ink-deep);
+            color: var(--rice);
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer-skyline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            transform: translateY(-1px);
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--rice);
+        }
+
+        .footer-desc {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--rice-dim);
+            line-height: 1.6;
+        }
+
+        .footer-column h4 {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-column a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--rice-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--azalea);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(245,240,232,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--rice-dim);
+        }
+
+        .footer-dahlia {
+            width: 40px;
+            height: 40px;
+            color: var(--azalea);
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .products-grid {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .lang-switch {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title-wrap {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .hero-title-zh,
+            .hero-subtitle-kr {
+                writing-mode: horizontal-tb;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem 2rem;
+            }
+
+            .footer-brand {
+                padding-bottom: 1rem;
+                border-bottom: 1px solid rgba(245,240,232,0.1);
+            }
+
+            .footer {
+                padding-top: 5rem;
+            }
+
+            .footer-skyline {
+                height: 40px;
+            }
+
+            .recommend-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-column h4 {
+                font-size: 0.9rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-column a {
+                font-size: 0.9rem;
+            }
+
+            .footer-desc {
+                font-size: 0.8rem;
+            }
+
+            .detail-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .detail-actions {
+                justify-content: center;
+            }
+
+            .detail-meta {
+                justify-content: center;
+            }
+        }
+
+        /* SVG Icons */
+        .pot-icon {
+            fill: none;
+            stroke: var(--ink);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .pot-knob {
+            fill: var(--ink);
+        }
+
+        .pot-lid {
+            fill: var(--ink-light);
+        }
+
+        .pot-body {
+            fill: none;
+        }
+
+        .pot-ear-l,
+        .pot-ear-r {
+            fill: none;
+            cursor: pointer;
+            transition: fill 0.3s;
+        }
+
+        .pot-ear-l:hover,
+        .pot-ear-r:hover {
+            fill: var(--azalea);
+        }
+
+        .dahlia-icon {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.2;
+        }
+
+        .hanok-curve {
+            fill: none;
+            stroke: var(--ink);
+            stroke-width: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s var(--ease-out) forwards;
+        }
+    </style>
 </head>
 <body>
-<nav class="nav" id="nav">
-<a href="index.html" class="nav-logo">
-<svg class="pot-icon" viewBox="0 0 50 50"><ellipse cx="25" cy="8" rx="4" ry="3" fill="var(--ink)"/><path d="M12 15 Q25 5 38 15 L36 18 Q25 10 14 18 Z" fill="var(--ink-light)"/><path d="M8 20 Q6 25 8 30 Q10 32 12 30 Q10 25 12 20 Q10 18 8 20" fill="none"/><path d="M42 20 Q44 25 42 30 Q40 32 38 30 Q40 25 38 20 Q40 18 42 20" fill="none"/><path d="M12 18 Q10 20 10 25 L10 38 Q10 42 15 43 L35 43 Q40 42 40 38 L40 25 Q40 20 38 18" fill="none"/></svg>
-<div class="nav-logo-text"><span class="zh">海兰菹</span><span class="kr">해란저</span></div>
-</a>
-<div class="nav-links">
-<a href="seasons.html" class="nav-link" data-i18n="nav.seasons">四季发酵</a>
-<a href="products.html" class="nav-link active" data-i18n="nav.products">产品殿堂</a>
-<a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
-<a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
-<a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
-</div>
-<div class="lang-switch">
-<button class="lang-btn" data-lang="zh">中</button>
-<button class="lang-btn" data-lang="ko">한</button>
-<button class="lang-btn" data-lang="en">EN</button>
-<button class="lang-btn" data-lang="ja">日</button>
-</div>
-<button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-</nav>
-<div class="mobile-nav" id="mobileNav">
-<button class="mobile-nav-close" id="mobileNavClose">&#10005;</button>
-<a href="index.html" data-i18n="nav.home">首页</a>
-<a href="seasons.html" data-i18n="nav.seasons">四季发酵</a>
-<a href="products.html" class="active" data-i18n="nav.products">产品殿堂</a>
-<a href="story.html" data-i18n="nav.story">延边风土</a>
-<a href="gift.html" data-i18n="nav.gift">高端礼盒</a>
-<a href="contact.html" data-i18n="nav.contact">联系我们</a>
-<div class="mobile-lang-switch">
-<button class="lang-btn" data-lang="zh">中</button>
-<button class="lang-btn" data-lang="ko">한</button>
-<button class="lang-btn" data-lang="en">EN</button>
-<button class="lang-btn" data-lang="ja">日</button>
-</div>
-</div>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index-folk.html" class="nav-logo">
+            <svg class="pot-icon" viewBox="0 0 50 50">
+                <ellipse class="pot-knob" cx="25" cy="8" rx="4" ry="3"/>
+                <path class="pot-lid" d="M12 15 Q25 5 38 15 L36 18 Q25 10 14 18 Z"/>
+                <path class="pot-ear-l" d="M8 20 Q6 25 8 30 Q10 32 12 30 Q10 25 12 20 Q10 18 8 20"/>
+                <path class="pot-ear-r" d="M42 20 Q44 25 42 30 Q40 32 38 30 Q40 25 38 20 Q40 18 42 20"/>
+                <path class="pot-body" d="M12 18 Q10 20 10 25 L10 38 Q10 42 15 43 L35 43 Q40 42 40 38 L40 25 Q40 20 38 18"/>
+            </svg>
+            <div class="nav-logo-text">
+                <span class="zh">海兰菹</span>
+                <span class="kr">해란저</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="seasons.html" class="nav-link" data-i18n="nav.seasons">四季发酵</a>
+            <a href="products.html" class="nav-link active" data-i18n="nav.products">产品殿堂</a>
+            <a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
+            <a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
+            <a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
+        </div>
+        <div class="lang-switch">
+            <button class="lang-btn" data-lang="zh">中</button>
+            <button class="lang-btn" data-lang="ko">한</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
+        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
 
-<section class="hero">
-<svg class="hero-silhouette-left" viewBox="0 0 200 300" fill="var(--ink)"><path d="M100 280 C80 280 60 260 60 240 C60 220 80 200 100 200 C120 200 140 220 140 240 C140 260 120 280 100 280 M80 195 C60 195 40 175 40 155 C40 135 60 115 80 115 C100 115 120 135 100 155 C80 175 100 195 80 195 M120 195 C140 195 160 175 160 155 C160 135 140 115 120 115 C100 115 80 135 100 155 C120 175 100 195 120 195" fill="currentColor" opacity="0.3"/></svg>
-<svg class="hero-silhouette-right" viewBox="0 0 200 300" fill="var(--azalea)"><path d="M100 280 C80 280 60 260 60 240 C60 220 80 200 100 200 C120 200 140 220 140 240 C140 260 120 280 100 280 M80 195 C60 195 40 175 40 155 C40 135 60 115 80 115 C100 115 120 135 100 155 C80 175 100 195 80 195 M120 195 C140 195 160 175 160 155 C160 135 140 115 120 115 C100 115 80 135 100 155 C120 175 100 195 120 195" fill="currentColor"/></svg>
-<div class="hero-content">
-<div class="hero-title-wrap">
-<span class="hero-title-zh" data-i18n="hero.title">产品殿堂</span>
-<span class="hero-subtitle-kr" data-i18n="hero.subtitle">제품 전시</span>
-<svg class="hero-seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="var(--seal)" stroke-width="2"/><circle cx="50" cy="50" r="38" fill="none" stroke="var(--seal)" stroke-width="1"/><text x="50" y="45" text-anchor="middle" font-family="var(--font-serif)" font-size="14" fill="var(--seal)">海兰菹</text><text x="50" y="62" text-anchor="middle" font-family="var(--font-serif-kr)" font-size="10" fill="var(--seal)">해란저</text><text x="50" y="76" text-anchor="middle" font-family="var(--font-display)" font-size="8" fill="var(--seal)" font-style="italic">HAILANZU</text></svg>
-</div>
-</div>
-<div class="marquee"><div class="marquee-track" id="marqueeTrack"></div></div>
-</section>
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+        <a href="index-folk.html" data-i18n="nav.home">首页</a><br>
+                <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a>
+        <a href="products.html" class="active" data-i18n="nav.products">产品殿堂</a>
+        <a href="story.html" data-i18n="nav.story">延边风土</a>
+        <a href="gift.html" data-i18n="nav.gift">高端礼盒</a>
+        <a href="contact.html" data-i18n="nav.contact">联系我们</a>
+        <div class="mobile-lang-switch">
+            <button class="lang-btn" data-lang="zh">中</button>
+            <button class="lang-btn" data-lang="ko">한</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="ja">日</button>
+        </div>
+    </div>
 
-<section class="showcase-section">
-<div class="showcase-header" data-i18n="showcase.title">海兰菹 · 产品殿堂</div>
-<div class="showcase-sub">HAILANZU PRODUCT SANCTUARY</div>
-<div class="showcase-hint" data-i18n="showcase.hint">点击产品卡片查看详情</div>
-<div class="scroll-wrap"><div id="scrollContainer"></div></div>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <svg class="hero-silhouette-left" viewBox="0 0 200 300" fill="var(--ink)">
+            <path d="M100 280 C80 280 60 260 60 240 C60 220 80 200 100 200 C120 200 140 220 140 240 C140 260 120 280 100 280 M80 195 C60 195 40 175 40 155 C40 135 60 115 80 115 C100 115 120 135 100 155 C80 175 100 195 80 195 M120 195 C140 195 160 175 160 155 C160 135 140 115 120 115 C100 115 80 135 100 155 C120 175 100 195 120 195" fill="currentColor" opacity="0.3"/>
+        </svg>
+        <svg class="hero-silhouette-right" viewBox="0 0 200 300" fill="var(--azalea)">
+            <path d="M100 280 C80 280 60 260 60 240 C60 220 80 200 100 200 C120 200 140 220 140 240 C140 260 120 280 100 280 M80 195 C60 195 40 175 40 155 C40 135 60 115 80 115 C100 115 120 135 100 155 C80 175 100 195 80 195 M120 195 C140 195 160 175 160 155 C160 135 140 115 120 115 C100 115 80 135 100 155 C120 175 100 195 120 195" fill="currentColor"/>
+        </svg>
+        
+        <div class="hero-content">
+            <div class="hero-title-wrap">
+                <span class="hero-title-zh">产品殿堂</span>
+                <span class="hero-subtitle-kr">제품 전시</span>
+                <svg class="hero-seal" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--seal)" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="var(--seal)" stroke-width="1"/>
+                    <text x="50" y="45" text-anchor="middle" font-family="var(--font-serif)" font-size="14" fill="var(--seal)">海兰菹</text>
+                    <text x="50" y="62" text-anchor="middle" font-family="var(--font-serif-kr)" font-size="10" fill="var(--seal)">해란저</text>
+                    <text x="50" y="76" text-anchor="middle" font-family="var(--font-display)" font-size="8" fill="var(--seal)" font-style="italic">HAILANZU</text>
+                </svg>
+            </div>
+        </div>
 
-<div class="detail-overlay" id="detailOverlay">
-<div class="detail-close" id="detailClose"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div>
-<div class="detail-container" id="detailContainer">
-<div class="detail-left" id="detailLeft">
-<div class="detail-carousel" id="detailCarousel">
-<div class="detail-carousel-arrows">
-<div class="detail-carousel-arrow" id="carouselPrev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-<div class="detail-carousel-arrow" id="carouselNext"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-</div>
-<div class="detail-carousel-track" id="carouselTrack"></div>
-<div class="detail-carousel-dots" id="carouselDots"></div>
-</div>
-<div class="detail-badge" id="detailBadge"></div>
-<div class="detail-spice-row" id="detailSpiceRow"></div>
-</div>
-<div class="detail-right" id="detailRight">
-<div class="detail-series" id="detailSeries"></div>
-<div class="detail-name" id="detailName"></div>
-<div class="detail-name-kr" id="detailNameKr"></div>
-<div class="detail-divider"></div>
-<div class="detail-desc" id="detailDesc"></div>
-<div class="detail-specs" id="detailSpecs"></div>
-<div class="detail-cta-row">
-<button class="detail-cta detail-cta-primary" data-i18n="cta.buy">立即选购</button>
-<button class="detail-cta detail-cta-secondary" data-i18n="cta.wishlist">加入心愿单</button>
-</div>
-<div class="detail-related" id="detailRelated"></div>
-</div>
-</div>
-</div>
+        <div class="marquee">
+            <div class="marquee-track">
+                <span class="marquee-item">原味辣白菜 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">甜味辣白菜 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">茄子干鱿鱼丝 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">萝卜块 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">苏子叶 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">牛板筋 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">香辣明太鱼 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">桔梗 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <!-- Duplicate for seamless loop -->
+                <span class="marquee-item">原味辣白菜 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">甜味辣白菜 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">茄子干鱿鱼丝 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">萝卜块 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">苏子叶 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">牛板筋 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">香辣明太鱼 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+                <span class="marquee-item">桔梗 <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>
+            </div>
+        </div>
+    </section>
 
-<section class="community-section" id="community">
-<div class="community-inner">
-<h2 class="community-title" data-i18n="community.title">加入海兰菹味道社群</h2>
-<p class="community-subtitle" data-i18n="community.subtitle">与1000+泡菜爱好者共享延边风味</p>
-<div class="community-cards">
-<div class="community-card" data-platform="wechat-work">
-<div class="community-card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="var(--rice)"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z"/></svg></div>
-<div class="community-card-qr"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" opacity="0.25"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5z"/></svg></div></div>
-<div class="community-card-name" data-i18n="community.wechat-work">企业微信</div>
-<div class="community-card-desc" data-i18n="community.wechat-work.desc">扫码加入 · 专属试吃装</div>
-</div>
-</div>
-<div class="community-perk"><span>🎁</span><span data-i18n="community.perk">新成员专享：首次加入领取试吃装</span></div>
-</div>
-</section>
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all" data-i18n="filter.all">全部</button>
+            <button class="filter-btn" data-filter="kimchi" data-i18n="filter.kimchi">辣白菜系</button>
+            <button class="filter-btn" data-filter="meat" data-i18n="filter.meat">荤味系</button>
+            <button class="filter-btn" data-filter="herb" data-i18n="filter.herb">草本系</button>
+            <button class="filter-btn" data-filter="special" data-i18n="filter.special">特产系</button>
+        </div>
+    </section>
 
-<footer class="footer">
-<svg class="footer-skyline" viewBox="0 0 1200 80" preserveAspectRatio="none"><path fill="var(--ink)" d="M0 80 L0 60 L80 60 L80 40 L100 40 L100 50 L120 50 L120 30 L140 30 L140 45 L160 45 L160 55 L200 55 L200 35 L220 35 L220 50 L240 50 L240 60 L280 60 L280 45 L300 45 L300 55 L340 55 L340 40 L360 40 L360 60 L400 60 L400 30 L420 30 L420 55 L460 55 L460 45 L480 45 L480 60 L520 60 L520 35 L540 35 L540 50 L580 50 L580 40 L600 40 L600 60 L640 60 L640 50 L660 50 L660 60 L700 60 L700 45 L720 45 L720 35 L740 35 L740 55 L780 55 L780 40 L800 40 L800 60 L840 60 L840 50 L860 50 L860 60 L900 60 L900 45 L920 45 L920 35 L940 35 L940 50 L980 50 L980 60 L1020 60 L1020 40 L1040 40 L1040 55 L1080 55 L1080 45 L1100 45 L1100 60 L1140 60 L1140 50 L1160 50 L1160 60 L1200 60 L1200 80 Z"/></svg>
-<div class="footer-content">
-<div class="footer-brand">
-<div class="footer-logo">
-<svg viewBox="0 0 50 50" style="width:32px;height:32px;"><ellipse cx="25" cy="8" rx="4" ry="3" fill="var(--rice)"/><path d="M12 15 Q25 5 38 15 L36 18 Q25 10 14 18 Z" fill="var(--rice-dim)"/><path d="M8 20 Q6 25 8 30 Q10 32 12 30 Q10 25 12 20 Q10 18 8 20" stroke="var(--rice-dim)" fill="none"/><path d="M42 20 Q44 25 42 30 Q40 32 38 30 Q40 25 38 20 Q40 18 42 20" stroke="var(--rice-dim)" fill="none"/><path d="M12 18 Q10 20 10 25 L10 38 Q10 42 15 43 L35 43 Q40 42 40 38 L40 25 Q40 20 38 18" stroke="var(--rice-dim)" fill="none"/></svg>
-<span class="footer-logo-text">海兰菹</span>
-</div>
-<p class="footer-desc" data-i18n="footer.desc">源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。</p>
-</div>
-<div class="footer-column"><h4>Explore</h4><ul><li><a href="index.html" data-i18n="nav.home">首页</a></li><li><a href="seasons.html" data-i18n="nav.seasons">四季发酵</a></li><li><a href="story.html" data-i18n="nav.story">延边风土</a></li><li><a href="products.html" data-i18n="nav.products">产品殿堂</a></li></ul></div>
-<div class="footer-column"><h4>Shop</h4><ul><li><a href="gift.html" data-i18n="nav.gift">高端礼盒</a></li><li><a href="contact.html" data-i18n="nav.contact">联系我们</a></li></ul></div>
-<div class="footer-column"><h4>Contact</h4><ul><li><a href="mailto:hello@hailanzu.com">hello@hailanzu.com</a></li><li><a href="tel:+86-433-xxxx">0433-xxxx</a></li></ul></div>
-</div>
-<div class="footer-bottom">
-<p class="footer-copyright">&copy; 2026 海兰菹 HAILANZU. All rights reserved.</p>
-<svg class="footer-dahlia" viewBox="0 0 40 40"><path d="M20 5 C17 5 14 8 14 11 C14 14 17 17 20 20 C23 17 26 14 26 11 C26 8 23 5 20 5 M14 18 C10 18 7 21 7 24 C7 27 10 30 14 30 C16 30 18 29 20 27 C22 29 24 30 26 30 C30 30 33 27 33 24 C33 21 30 18 26 18 C24 18 22 19 20 21 C18 19 16 18 14 18" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-</div>
-</footer>
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="products-grid" id="productsGrid">
+            <!-- Product 1: Plain Kimchi -->
+            <div class="product-card" data-category="kimchi" data-product="plain-kimchi">
+                <div class="product-card-header" style="background: #E8EDE5;">
+                    🥬
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">原味辣白菜</h3>
+                    <p class="product-name-kr">배추김치</p>
+                    <p class="product-desc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot"></span>
+                                <span class="spice-dot"></span>
+                                <span class="spice-dot"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.mild">入门友好</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-<div class="qr-overlay" id="qrOverlay">
-<div class="qr-popup" id="qrPopup">
-<button class="qr-popup-close" id="qrPopupClose" aria-label="Close">&#10005;</button>
-<div class="qr-popup-title" id="qrPopupTitle"></div>
-<div class="qr-popup-img" id="qrPopupImg"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" opacity="0.3"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5z"/></svg><div class="qr-placeholder-text" data-i18n="qr.placeholder">二维码即将上线</div></div></div>
-<div class="qr-popup-hint" id="qrPopupHint"></div>
-</div>
-</div>
+            <!-- Product 2: Sweet Kimchi -->
+            <div class="product-card" data-category="kimchi" data-product="sweet-kimchi">
+                <div class="product-card-header" style="background: #D4654A;">
+                    🌶️
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">甜味辣白菜</h3>
+                    <p class="product-name-kr">맛김치</p>
+                    <p class="product-desc">甜与辣的温柔对话。延边特有的甜辣配方，一入口先是清甜，然后辣意缓缓升起。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot"></span>
+                                <span class="spice-dot"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.medium">微辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-<div class="floating-cta" id="floatingCta">
-<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="11" rx="1"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/><line x1="10" y1="10" x2="10" y2="13"/></svg>
-<span class="floating-cta-text" data-i18n="cta.floating">关注领试吃</span>
-</div>
-<script>
-var SERIES = [
-{id:"jur-yun",name:"菹韵",nameKr:"저운",nameEn:"Jur-yun",nameJa:"菹韻",tagline:"一切从“菹”开始",taglineEn:"It all begins with “Ju”",taglineJa:"すべては「菹」から始まる",color:"#C8102E",aux:"#B8860B",icon:"🥬",light:false,lines:[{id:"jur-yun-classic",name:"经典",nameKr:"경전",nameEn:"Classic",nameJa:"クラシック",color:"#C8102E",products:[{name:"棵状辣白菜",kr:"포기김치",en:"Whole Cabbage Kimchi",ja:"株単位キムチ",spec:"整棵/坛装",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:2,desc:"整棵大白菜入坛发酵，延边最正统的泡菜形态。手撕佐料层层抹入菜叶，自然发酵7天以上。",descEn:"Whole napa cabbage fermented in earthenware. Hand-spread seasoning, naturally fermented 7+ days.",descJa:"株ごと収めた大白菜を甕で発酵。手で調味料を塗り、自然発酵7日以上。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"坛装 2kg/5kg",weightEn:"Jar 2kg/5kg",shelf:"冷藏90天",shelfEn:"Refrigerate 90 days",pairing:"烤肉·石锅拌饭·清汤",pairingEn:"BBQ, Bibimbap, Clear soup"},{name:"精品辣白菜",kr:"프리미엄김치",en:"Premium Sliced Kimchi",ja:"プレミアムキムチ",spec:"切段/袋装",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:2,desc:"精选白菜切段入味，免去手撕的麻烦，保留传统风味同时更方便取食。",descEn:"Premium napa pre-sliced for convenience. Traditional flavor, easier to enjoy.",descJa:"精選白菜を切り口に。伝統の味わいをそのままに手軽に。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 500g/1kg",weightEn:"Bag 500g/1kg",shelf:"冷藏60天",shelfEn:"Refrigerate 60 days",pairing:"白米饭·火锅·日常佐餐",pairingEn:"White rice, Hotpot, Daily side"},{name:"萝卜块泡菜",kr:"깍두기",en:"Radish Cube Kimchi",ja:"カクドゥキ",spec:"块状/袋装",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:3,desc:"脆萝卜切成方丁，裹上辣椒酱料发酵，嘎嘣脆的口感是它最大的魅力。",descEn:"Crisp radish cubes in chili paste. The satisfying crunch is its signature.",descJa:"大根の角切り唐辛子発酵。パリパリ食感が魅力。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 500g/1kg",weightEn:"Bag 500g/1kg",shelf:"冷藏60天",shelfEn:"Refrigerate 60 days",pairing:"拌饭·冷面·清粥",pairingEn:"Bibimbap, Cold noodles, Porridge"},{name:"苹果梨辣白菜",kr:"사과배김치",en:"Apple-Pear Kimchi",ja:"りんご梨キムチ",spec:"切段/袋装",tag:"地域特色",tagEn:"Regional Specialty",tagJa:"地域特産",spice:2,desc:"延边特产苹果梨入馅，梨的清甘融入泡菜的酸辣，独特的果香泡菜。",descEn:"Yanbian apple-pear in the filling. Fruity sweetness blends into spicy tang.",descJa:"延辺特産りんご梨入り。果実の甘みが辛味と融け合う。",origin:"延边·龙井苹果梨产区",originEn:"Yanbian Longjing",weight:"袋装 500g",weightEn:"Bag 500g",shelf:"冷藏60天",shelfEn:"Refrigerate 60 days",pairing:"白切肉·清蒸鱼",pairingEn:"Boiled pork, Steamed fish"},{name:"韩式辣白菜（大包装）",kr:"양념김치（대）",en:"Kimchi Family Pack",ja:"キムチファミリーパック",spec:"切段/大袋",tag:"家庭装",tagEn:"Family Pack",tagJa:"ファミリーパック",spice:2,desc:"大包装家庭装，一袋搞定全家人的泡菜需求。传统配方，适合日常佐餐。",descEn:"Large family-size pack. Traditional recipe for daily meals.",descJa:"大包装ファミリーサイズ。伝統レシピで日常の食卓に。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"大袋 2kg",weightEn:"Large bag 2kg",shelf:"冷藏90天",shelfEn:"Refrigerate 90 days",pairing:"火锅·炒饭·汤底",pairingEn:"Hotpot, Fried rice, Soup base"},{name:"韩式辣白菜（小包装）",kr:"양념김치（소）",en:"Kimchi Taster Pack",ja:"キムチお試しパック",spec:"切段/小袋",tag:"试吃装",tagEn:"Taster Pack",tagJa:"お試しパック",spice:2,desc:"小包装试吃装，第一次认识海兰菹的窗口。分量刚好尝鲜。",descEn:"Small taster pack. Your first introduction to HAILANZU.",descJa:"小包装お試しサイズ。海蘭菹との初めての出会い。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"小袋 250g",weightEn:"Small bag 250g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"白米饭·便当",pairingEn:"White rice, Bento"},{name:"香葱泡菜",kr:"실파김치",en:"Green Onion Kimchi",ja:"ネギキムチ",spec:"整棵/袋装",tag:"深度专业",tagEn:"Connoisseur",tagJa:"ディープ品",spice:2,desc:"香葱整棵浸入辣酱，葱香与酵母的双重发酵，风味浓郁。",descEn:"Whole green onions in chili paste. Double fermentation of onion and yeast.",descJa:"株ごとネギを辛子に漬け。ネギの香りと酵母の二重発酵。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 300g",weightEn:"Bag 300g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"白米饭·拌饭",pairingEn:"White rice, Bibimbap"},{name:"樱菜泡菜",kr:"갓김치",en:"Mustard Leaf Kimchi",ja:"頂菜キムチ",spec:"袋装",tag:"风味小众",tagEn:"Niche Flavor",tagJa:"マイナー味",spice:3,desc:"樱菜叶带辣味，独特的苦香与辣味反差，小众但忠实。",descEn:"Mustard leaves with spicy kick. Bitter-spicy contrast.",descJa:"苦味と辛味のコントラスト。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 300g",weightEn:"Bag 300g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"白粥·拌饭",pairingEn:"Porridge, Bibimbap"},{name:"青年萝卜泡菜",kr:"총각무김치",en:"Young Radish Kimchi",ja:"若大根キムチ",spec:"袋装",tag:"风味补充",tagEn:"Flavor Supplement",tagJa:"風味補充",spice:3,desc:"带叶小萝卜整株腌制，叶的鲜嫩与根的脆爽同时具备。",descEn:"Whole young radishes with leaves. Tender and crisp.",descJa:"葉付き若大根をそのまま漬け。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 500g",weightEn:"Bag 500g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"冷面·拌饭",pairingEn:"Cold noodles, Bibimbap"},{name:"酱油辣椒干",kr:"간장고추장아찌",en:"Soy-Pickled Chilis",ja:"醤油漬け唐辛子",spec:"罐装",tag:"长尾",tagEn:"Long Tail",tagJa:"ロングテール",spice:2,desc:"辣椒干用酱油浸泡，酱香与辣味渐进融合。",descEn:"Dried chilis pickled in soy sauce.",descJa:"乾燥唐辛子の醤油漬け。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"罐装 350g",weightEn:"Jar 350g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"白米饭·拌饭",pairingEn:"White rice, Bibimbap"},{name:"酱茄子干辣椒",kr:"가지장아찌",en:"Eggplant Chili Pickle",ja:"なす味噌漬け",spec:"罐装",tag:"长尾",tagEn:"Long Tail",tagJa:"ロングテール",spice:2,desc:"茄子干与辣椒同罐酱制，陆地与海洋的风味交汇。",descEn:"Dried eggplant and chili in soy pickle.",descJa:"乾燥なすと唐辛子の醤漬け。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"罐装 350g",weightEn:"Jar 350g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"白米饭·白粥",pairingEn:"White rice, Porridge"},{name:"酱茄子干辣椒（小包装）",kr:"가지장아찌（소）",en:"Eggplant Chili Mini",ja:"なす味噌漬けミニ",spec:"小袋",tag:"长尾",tagEn:"Long Tail",tagJa:"ロングテール",spice:2,desc:"小包装版，方便尝鲜和携带。",descEn:"Mini pack for tasting and on-the-go.",descJa:"ミニパックお試しサイズ。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"小袋 150g",weightEn:"Mini bag 150g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"白米饭·便当",pairingEn:"White rice, Bento"}]},{id:"jur-yun-reserve",name:"窖藏",nameKr:"귀장",nameEn:"Reserve",nameJa:"窖蔵",color:"#B8860B",products:[{name:"活菌辣白菜",kr:"생균김치",en:"Live-Culture Kimchi",ja:"生菌キムチ",spec:"坛装/礼盒",tag:"窖藏旗舰",tagEn:"Reserve Flagship",tagJa:"窖蔵旗艦",spice:2,desc:"未经过高温杀菌，保留活菌发酵状态，口感随时间持续变化。",descEn:"Unpasteurized live-culture kimchi. Taste evolves daily.",descJa:"非加熱殺菌、生菌発酵キムチ。日々味わいが変わる。",origin:"延边·窖藏工坊",originEn:"Yanbian Reserve Workshop",weight:"坛装 1.5kg/礼盒",weightEn:"Jar 1.5kg/Gift box",shelf:"冷藏120天",shelfEn:"Refrigerate 120 days",pairing:"品鉴·礼赠·收藏",pairingEn:"Tasting, Gifting, Collection"},{name:"低盐辣白菜",kr:"저염김치",en:"Low-Sodium Kimchi",ja:"低塩キムチ",spec:"袋装",tag:"健康轻食",tagEn:"Healthy Light",tagJa:"ヘルシー軽食",spice:1,desc:"盐度降低40%，不减风味只减负担。",descEn:"40% less sodium. Same flavor, lighter burden.",descJa:"塩分40%オフ。味はそのまま負担だけ軽く。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 500g",weightEn:"Bag 500g",shelf:"冷藏45天",shelfEn:"Refrigerate 45 days",pairing:"轻食·沙拉",pairingEn:"Light meals, Salads"},{name:"年份窖藏辣白菜",kr:"숙성김치",en:"Aged Reserve Kimchi",ja:"熟成窖蔵キムチ",spec:"收藏礼盒",tag:"收藏级",tagEn:"Collector",tagJa:"コレクターズ",spice:2,desc:"窖藏180天以上的深度发酵，酸度圆润醇厚。限量编号。",descEn:"Fermented 180+ days in cellar. Mellow, deep acidity. Limited edition.",descJa:"180日以上の窖蔵深発酵。まろやかな酸味。限定品。",origin:"延边·窖藏工坊",originEn:"Yanbian Reserve Workshop",weight:"收藏礼盒 1kg",weightEn:"Collector box 1kg",shelf:"冷藏180天+",shelfEn:"Refrigerate 180+ days",pairing:"品鉴·高级礼赠",pairingEn:"Tasting, Premium gifting"},{name:"活菌萝卜块泡菜",kr:"생균깍두기",en:"Live-Culture Radish Cubes",ja:"生菌カクドゥキ",spec:"坛装",tag:"酵母延伸",tagEn:"Yeast Extension",tagJa:"酵母エクステンション",spice:3,desc:"活菌发酵萝卜块泡菜，比常规版多一层鲜味和气泡感。",descEn:"Live-culture radish cubes. Extra umami and effervescence.",descJa:"生菌発酵のカクドゥキ。うま味と炭気が追加。",origin:"延边·窖藏工坊",originEn:"Yanbian Reserve Workshop",weight:"坛装 1kg",weightEn:"Jar 1kg",shelf:"冷藏120天",shelfEn:"Refrigerate 120 days",pairing:"冷面·拌饭",pairingEn:"Cold noodles, Bibimbap"},{name:"低盐桔梗泡菜",kr:"저염도라지",en:"Low-Sodium Bellflower",ja:"低塩キキョウ",spec:"袋装",tag:"健康小众",tagEn:"Healthy Niche",tagJa:"ヘルシーマイナー",spice:1,desc:"低盐版桔梗泡菜，保留山野的清苦与回甘。",descEn:"Low-sodium bellflower kimchi. Mountain bitter-sweetness.",descJa:"低塩キキョウキムチ。山野のほろ苦さと甘み。",origin:"延边·山地桔梗产区",originEn:"Yanbian Mountains",weight:"袋装 300g",weightEn:"Bag 300g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"白粥·清淡小菜",pairingEn:"Porridge, Light sides"},{name:"窖藏苏子叶泡菜",kr:"숙성깻잎",en:"Aged Perilla Leaf Kimchi",ja:"熟成エゴマ葉キムチ",spec:"坛装",tag:"收藏级",tagEn:"Collector",tagJa:"コレクターズ",spice:2,desc:"苏子叶经窖藏深度发酵，叶脉中的香气被彻底释放。每年秋季限定。",descEn:"Perilla leaves deep-fermented in cellar. Aromas fully released. Autumn only.",descJa:"エゴマの葉を窖蔵で深発酵。秋季限定。",origin:"延边·窖藏工坊",originEn:"Yanbian Reserve Workshop",weight:"坛装 500g",weightEn:"Jar 500g",shelf:"冷藏180天+",shelfEn:"Refrigerate 180+ days",pairing:"白米饭·烤肉包裹",pairingEn:"White rice, BBQ wrap"}]}],products:[]},
-{id:"jang-xiang",name:"酱香",nameKr:"장향",nameEn:"Jang-xiang",nameJa:"醬香",tagline:"做泡菜的人做的酱",taglineEn:"Sauces by kimchi masters",taglineJa:"キムチ職人が仕込む醤",color:"#6B4226",aux:"#C4A35A",icon:"🫙",light:false,lines:[],products:[{name:"延边黄豆酱",kr:"연변된장",en:"Yanbian Soybean Paste",ja:"延辺味噌",spec:"坛装/罐装",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:1,desc:"春煮、夏晒、秋酿、冬藏——一年只出一缸的延边黄豆酱。",descEn:"Spring-cooked, summer-sunned, autumn-brewed, winter-stored. One batch per year.",descJa:"春煮・夏干・秋醸・冬蔵。年一回の味噌。",origin:"延边·传统酱缸",originEn:"Yanbian Traditional Jar",weight:"坛装 2kg/罐装 500g",weightEn:"Jar 2kg/Can 500g",shelf:"常温12个月",shelfEn:"Room temp 12 months",pairing:"大酱汤·蘸生菜·拌饭",pairingEn:"Doenjang jjigae, Lettuce dip, Bibimbap"},{name:"籽辣椒酱",kr:"씨고추장",en:"Seed Chili Paste",ja:"種唐辛子醤",spec:"罐装",tag:"风味核心",tagEn:"Flavor Core",tagJa:"風味コア",spice:3,desc:"辣椒籽不去，研磨成酱，籽的油脂和辣味双倍释放。",descEn:"Chili seeds ground into paste. Double the nutty aroma and heat.",descJa:"唐辛子の種を挽いてペーストに。種の油と辛味が倍増。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"罐装 350g",weightEn:"Can 350g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"拌饭·烤肉蘸料",pairingEn:"Bibimbap, BBQ dip"},{name:"剁椒酱",kr:"다진고추장",en:"Chopped Chili Paste",ja:"刻み唐辛子醤",spec:"罐装",tag:"风味扩展",tagEn:"Flavor Extension",tagJa:"風味拡張",spice:4,desc:"鲜辣椒粗剁入酱，看得见的辣椒颗粒，尝得到的鲜辣。",descEn:"Fresh chilis coarsely chopped into paste. Visible chunks, vibrant heat.",descJa:"生唐辛子を粗挽き。見える粒、鮮烈な辛さ。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"罐装 350g",weightEn:"Can 350g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"蒸鱼·拌面·火锅蘸料",pairingEn:"Steamed fish, Noodles, Hotpot dip"},{name:"辣白菜拌料",kr:"김치양념",en:"Kimchi Seasoning Mix",ja:"キムチ調味料",spec:"袋装",tag:"菹韵关联",tagEn:"Jur-yun Linked",tagJa:"菹韻リンク",spice:3,desc:"自己做泡菜的调料包，海兰菹同款佐料配方。",descEn:"DIY kimchi seasoning pack. HAILANZU’s own recipe.",descJa:"手作りキムチ用調味料パック。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 200g",weightEn:"Bag 200g",shelf:"常温12个月",shelfEn:"Room temp 12 months",pairing:"自制泡菜·拌菜",pairingEn:"DIY kimchi, Salad"},{name:"苹果梨辣白菜酱料",kr:"사과배김치소스",en:"Apple-Pear Kimchi Sauce",ja:"りんご梨キムチソース",spec:"瓶装",tag:"菹韵关联",tagEn:"Jur-yun Linked",tagJa:"菹韻リンク",spice:2,desc:"从苹果梨辣白菜中提取的风味酱汁，可直接拌饭拌面。",descEn:"Flavorful sauce from apple-pear kimchi. Ready for rice or noodles.",descJa:"りんご梨キムチから抽出した風味ソース。",origin:"延边·龙井苹果梨产区",originEn:"Yanbian Longjing",weight:"瓶装 250ml",weightEn:"Bottle 250ml",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"拌饭·沙拉·蘸料",pairingEn:"Bibimbap, Salad, Dip"},{name:"吸吸袋料理酱",kr:"주머니소스",en:"Squeeze Cooking Sauce",ja:"スクイーズ料理ソース",spec:"袋装",tag:"便利场景",tagEn:"Convenient",tagJa:"便利シーン",spice:2,desc:"挤一挤就能调味的便携酱料袋，野餐、露营、办公室都能用。",descEn:"Squeeze to season. Portable sauce for picnics, camping, office.",descJa:"絞るだけで調味。携帯ソース。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 80g",weightEn:"Pouch 80g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"便当·户外·快速调味",pairingEn:"Bento, Outdoor, Quick seasoning"},{name:"吸吸袋拌饭酱",kr:"주머니비빔장",en:"Squeeze Bibimbap Sauce",ja:"スクイーズビビンバソース",spec:"袋装",tag:"便利场景",tagEn:"Convenient",tagJa:"便利シーン",spice:3,desc:"拌饭专用便携酱，一袋拌一碗，辣甜咸鲜四味均衡。",descEn:"Portable bibimbap sauce. One pouch per bowl.",descJa:"ビビンバ専用ポータブルソース。1袋で1杯。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 80g",weightEn:"Pouch 80g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"拌饭·拌面·便当",pairingEn:"Bibimbap, Noodles, Bento"}]},
-{id:"on-po",name:"温饱",nameKr:"온포",nameEn:"On-po",nameJa:"温飽",tagline:"米谷为礼，团圆为味",taglineEn:"Rice as ceremony, reunion as flavor",taglineJa:"米は礼、団欒は味",color:"#D4CFC4",aux:"#8B7355",icon:"🍚",light:true,lines:[],products:[{name:"米肠",kr:"순대",en:"Sundae (Korean Sausage)",ja:"スンデ",spec:"真空装",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:1,desc:"糯米、猪血、蔬菜灌入肠衣，节庆才有的大菜变成日常美味。",descEn:"Glutinous rice, pork blood, veggies in casings. Festival fare, now everyday.",descJa:"餅米・豚血・野菜の腸詰め。祭りのご馳走が日常の味に。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"真空装 500g",weightEn:"Vacuum pack 500g",shelf:"冷藏7天",shelfEn:"Refrigerate 7 days",pairing:"蘸盐·辣酱·米酒",pairingEn:"Salt dip, Chili sauce, Makgeolli"},{name:"延边炒年糕",kr:"떡볶이",en:"Yanbian Tteokbokki",ja:"延辺トッポッキ",spec:"袋装",tag:"经典小吃",tagEn:"Classic Snack",tagJa:"定番スナック",spice:2,desc:"不同于韩式甜辣酱炒年糕，延边炒年糕用的是辣椒酱直炒。",descEn:"Different from Korean sweet-chili. Yanbian uses chili paste stir-fry.",descJa:"韓国の甘辛と違う。延辺は唐辛子醤で炒める。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 400g",weightEn:"Bag 400g",shelf:"冷藏15天",shelfEn:"Refrigerate 15 days",pairing:"街头小吃·下午茶·夜宵",pairingEn:"Street snack, Tea time, Midnight snack"},{name:"糯米米酒",kr:"찹쌀막걸리",en:"Glutinous Rice Makgeolli",ja:"餅米マッコリ",spec:"瓶装",tag:"旗舰饮品",tagEn:"Flagship Drink",tagJa:"旗艦ドリンク",spice:0,desc:"糯米发酵的微甜低度酒，乳白色液体里有细密的气泡。",descEn:"Mildly sweet low-alcohol rice wine. Milky with fine bubbles.",descJa:"餅米発酵の甘い低度酒。乳白色に細かな炭酸。",origin:"延边·传统酒坊",originEn:"Yanbian Traditional Brewery",weight:"瓶装 750ml",weightEn:"Bottle 750ml",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"米肠·烤肉·节庆餐桌",pairingEn:"Sundae, BBQ, Festival table"},{name:"青提米酒",kr:"청포도막걸리",en:"Green Grape Makgeolli",ja:"青ぶどうマッコリ",spec:"瓶装",tag:"新式风味",tagEn:"New Flavor",tagJa:"ニューフレーバー",spice:0,desc:"青提果肉融入糯米酒，果香与米香交织的清新口感。",descEn:"Green grape in rice wine. Fruity and refreshing.",descJa:"青ぶどう果肉を米酒にブレンド。",origin:"延边·传统酒坊",originEn:"Yanbian Traditional Brewery",weight:"瓶装 500ml",weightEn:"Bottle 500ml",shelf:"冷藏20天",shelfEn:"Refrigerate 20 days",pairing:"下午茶·甜品",pairingEn:"Tea time, Dessert"},{name:"香辣明太鱼",kr:"고추명태",en:"Spicy Pollack",ja:"辛味明太子",spec:"袋装",tag:"海味·经典",tagEn:"Seafood Classic",tagJa:"海の幸定番",spice:3,desc:"明太鱼干裹上辣椒酱，延边最经典的即食海味。",descEn:"Dried pollack in chili paste. Yanbian’s classic ready-to-eat seafood.",descJa:"干し明太魚に唐辛子コーティング。延辺の定番。",origin:"延边·明太鱼加工区",originEn:"Yanbian Pollack Processing",weight:"袋装 200g",weightEn:"Bag 200g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"啤酒·米酒·下酒菜",pairingEn:"Beer, Makgeolli, Bar snack"},{name:"火辣明太鱼",kr:"불명태",en:"Fire Pollack",ja:"激辛明太子",spec:"袋装",tag:"海味·风味",tagEn:"Seafood Flavor",tagJa:"海の幸風味",spice:4,desc:"升级辣度版，越辣越过瘾。",descEn:"Extra spicy version. The hotter the better.",descJa:"辛さアップ版。",origin:"延边·明太鱼加工区",originEn:"Yanbian Pollack Processing",weight:"袋装 200g",weightEn:"Bag 200g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"啤酒·烧酒",pairingEn:"Beer, Soju"},{name:"干明太鱼丝",kr:"북어채",en:"Dried Pollack Strips",ja:"干し明太魚",spec:"袋装",tag:"海味·基础",tagEn:"Seafood Basic",tagJa:"海の幸基本",spice:0,desc:"原味干明太鱼丝，嚼劲十足。",descEn:"Plain dried pollack strips. Pure chewy satisfaction.",descJa:"プレーン干し明太魚。",origin:"延边·明太鱼加工区",originEn:"Yanbian Pollack Processing",weight:"袋装 150g",weightEn:"Bag 150g",shelf:"常温180天",shelfEn:"Room temp 180 days",pairing:"汤底·即食",pairingEn:"Soup base, Snack"},{name:"拌明太鱼丝",kr:"무침북어채",en:"Seasoned Pollack Strips",ja:"味付干し明太魚",spec:"袋装",tag:"海味·即食",tagEn:"Seafood Ready",tagJa:"海の幸即食",spice:2,desc:"调味版明太鱼丝，开袋即食。",descEn:"Seasoned pollack strips. Open and enjoy.",descJa:"味付干し明太魚。",origin:"延边·明太鱼加工区",originEn:"Yanbian Pollack Processing",weight:"袋装 150g",weightEn:"Bag 150g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"下酒菜·即食",pairingEn:"Bar snack, Ready-to-eat"}]},
-{id:"jang-su",name:"长寿·水食",nameKr:"장수·수식",nameEn:"Jang-su",nameJa:"長寿·水食",tagline:"一碗面，祈百岁",taglineEn:"A bowl of noodles, a wish for 100 years",taglineJa:"一碗の麺、百歳への祈り",color:"#5A8A7A",aux:"#E8F0ED",icon:"🍜",light:false,lines:[],products:[{name:"荞麦冷面",kr:"메밀냉면",en:"Buckwheat Cold Noodles",ja:"蕎麦冷麺",spec:"袋装/套盒",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:1,desc:"荞麦面+冷面汤+配菜完整套盒，寿宴上的长寿面。",descEn:"Complete buckwheat noodle kit. Longevity noodles.",descJa:"蕎麦麺＋冷麺スープ＋具材の完全キット。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"套盒 480g",weightEn:"Kit 480g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"烤肉·泡菜·夏日餐桌",pairingEn:"BBQ, Kimchi, Summer table"},{name:"小麦冷面",kr:"밀냉면",en:"Wheat Cold Noodles",ja:"小麦冷麺",spec:"袋装/套盒",tag:"经典",tagEn:"Classic",tagJa:"定番",spice:1,desc:"小麦粉制的冷面，比荞麦面更软糯顺滑。",descEn:"Wheat flour cold noodles. Softer and smoother than buckwheat.",descJa:"小麦粉の冷麺。蕎麦よりなめらか。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"套盒 450g",weightEn:"Kit 450g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"烤肉·拌饭",pairingEn:"BBQ, Bibimbap"},{name:"韩式炸酱面",kr:"자장면",en:"Korean Jajangmyeon",ja:"韓国風ジャージャー麺",spec:"袋装/套盒",tag:"经典",tagEn:"Classic",tagJa:"定番",spice:1,desc:"延边中朝融合的经典面食，黑酱浓香裹住每一根面条。",descEn:"Sino-Korean fusion classic. Rich black bean sauce on every strand.",descJa:"延辺の中朝融合クラシック。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"套盒 420g",weightEn:"Kit 420g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"凉拌小菜·煎饺",pairingEn:"Side dishes, Dumplings"},{name:"大酱汤",kr:"된장찌개",en:"Doenjang Jjigae",ja:"味噌チゲ",spec:"袋装/即食",tag:"场景搭配",tagEn:"Pairing",tagJa:"シーン別",spice:1,desc:"即食大酱汤，配冷面或白饭皆宜。",descEn:"Ready-to-eat soybean paste stew.",descJa:"即席味噌チゲ。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 300g",weightEn:"Bag 300g",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"冷面·白米饭",pairingEn:"Cold noodles, Rice"}]},
-{id:"cheong-so",name:"清素",nameKr:"청소",nameEn:"Cheong-so",nameJa:"清素",tagline:"山寺岁时，清净素心",taglineEn:"Mountain temple, pure vegetarian heart",taglineJa:"山寺の歳時、清らかな素心",color:"#7A9E7E",aux:"#F0EDE5",icon:"🌿",light:false,lines:[],products:[{name:"素辣白菜",kr:"채소김치",en:"Vegetarian Kimchi",ja:"ベジキムチ",spec:"袋装",tag:"旗舰·素食入口",tagEn:"Flagship Veggie",tagJa:"旗艦ベジ",spice:2,desc:"不含鱼露等动物成分，纯素友好的泡菜。",descEn:"No animal products. 100% vegetarian-friendly kimchi.",descJa:"動物性成分不使用。100%ベジタリアン対応。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 500g",weightEn:"Bag 500g",shelf:"冷藏30天",shelfEn:"Refrigerate 30 days",pairing:"白粥·素餐桌",pairingEn:"Porridge, Veggie table"},{name:"拌桔梗",kr:"도라지무침",en:"Seasoned Bellflower Root",ja:"キキョウ和え",spec:"袋装",tag:"山野经典",tagEn:"Mountain Classic",tagJa:"山野定番",spice:2,desc:"山间采挖的桔梗，撕条拌酱，清苦之后有回甘。",descEn:"Wild bellflower root, shredded and seasoned. Bitter then sweet.",descJa:"山のキキョウを裂いて和え。ほろ苦さの後に甘み。",origin:"延边·山地桔梗产区",originEn:"Yanbian Mountains",weight:"袋装 300g",weightEn:"Bag 300g",shelf:"冷藏15天",shelfEn:"Refrigerate 15 days",pairing:"白粥·清饭",pairingEn:"Porridge, Plain rice"},{name:"拌苏子叶",kr:"깻잎무침",en:"Seasoned Perilla Leaves",ja:"エゴマ和え",spec:"袋装",tag:"山野经典",tagEn:"Mountain Classic",tagJa:"山野定番",spice:2,desc:"苏子叶拌辣椒酱，叶脉里的香气被辣酱激发。",descEn:"Perilla leaves in chili sauce. Aromas awakened by spice.",descJa:"エゴマの葉を唐辛子で和え。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 200g",weightEn:"Bag 200g",shelf:"冷藏15天",shelfEn:"Refrigerate 15 days",pairing:"白米饭·烤肉包菜",pairingEn:"White rice, BBQ wrap"},{name:"酸甜小黄瓜",kr:"오이소박이",en:"Sweet-Sour Stuffed Cucumber",ja:"甘酢きゅうり",spec:"袋装",tag:"清爽系",tagEn:"Refreshing",tagJa:"さっぱり系",spice:1,desc:"小黄瓜对切夹馅，酸、甜、辣、脆四味一体。",descEn:"Mini cucumbers halved and stuffed. Sour, sweet, spicy, crisp.",descJa:"ミニきゅうりの甘酢詰め。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 300g",weightEn:"Bag 300g",shelf:"冷藏15天",shelfEn:"Refrigerate 15 days",pairing:"清汤·粥·夏日小菜",pairingEn:"Clear soup, Porridge, Summer sides"}]},
-{id:"sam-yang",name:"参养",nameKr:"삼양",nameEn:"Sam-yang",nameJa:"参養",tagline:"长白百草，参养之道",taglineEn:"Changbai herbs, the ginseng way",taglineJa:"長白の百草、参養の道",color:"#8B6F47",aux:"#A0522D",icon:"🫚",light:false,lines:[],products:[{name:"参鸡汤",kr:"삼계탕",en:"Samgyetang",ja:"参鶏湯",spec:"即食/礼盒",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:0,desc:"整只童子鸡塞入糯米、人参、红枣、栗子，慢炖至骨肉分离。",descEn:"Whole young chicken stuffed with rice, ginseng, jujube, chestnut.",descJa:"若鶏に餅米・人参・棗・栗を詰め、骨が離れるまで煮込む。",origin:"延边·长白山参区",originEn:"Changbai Mountain",weight:"即食装 800g/礼盒",weightEn:"Ready 800g/Gift box",shelf:"冷藏7天/冷冻30天",shelfEn:"Refrigerate 7d/Freeze 30d",pairing:"夏日补身·节庆",pairingEn:"Summer nourishment, Festival"},{name:"人参蜜片",kr:"인삼정과",en:"Ginseng Honey Slices",ja:"人参蜜漬け",spec:"盒装",tag:"便携零食",tagEn:"Portable Snack",tagJa:"携帯スナック",spice:0,desc:"鲜人参切薄片蜜渍，甘甜微苦，随时含一片。",descEn:"Fresh ginseng slices candied in honey. Enjoy anytime.",descJa:"生人参薄切りのはちみつ漬け。",origin:"延边·长白山参区",originEn:"Changbai Mountain",weight:"盒装 60g",weightEn:"Box 60g",shelf:"常温12个月",shelfEn:"Room temp 12 months",pairing:"日常养生·伴手礼",pairingEn:"Daily wellness, Souvenir"},{name:"红参膏/黑参膏",kr:"홍삼액/흑삼액",en:"Red/Black Ginseng Extract",ja:"紅参/黒参エキス",spec:"瓶装/礼盒",tag:"高端礼品",tagEn:"Premium Gift",tagJa:"高級ギフト",spice:0,desc:"九蒸九晒的工艺精华，浓缩成膏。红参温补，黑参更温和。",descEn:"Nine-times steamed & sun-dried essence. Red warms; black is gentler.",descJa:"九蒸九曝の精華を濃縮。",origin:"延边·长白山参区",originEn:"Changbai Mountain",weight:"瓶装 240ml/礼盒",weightEn:"Bottle 240ml/Gift box",shelf:"常温24个月",shelfEn:"Room temp 24 months",pairing:"高端礼赠·日常滋补",pairingEn:"Premium gifting, Daily wellness"}]},
-{id:"so-jo-mi",name:"烧烤调味",nameKr:"소조미",nameEn:"So-jo-mi (BBQ Seasoning)",nameJa:"焼肉調味",tagline:"延边夜市的烟火秘方",taglineEn:"Yanbian night market smoky secrets",taglineJa:"延辺夜市の煙火の秘伝",color:"#D4763A",aux:"#4A4A4A",icon:"🔥",light:false,lines:[],products:[{name:"烧烤干料",kr:"불고기양념（건）",en:"BBQ Dry Rub",ja:"焼肉ドライシーズニング",spec:"袋装",tag:"旗舰·蘸",tagEn:"Flagship Dip",tagJa:"旗艦ディップ",spice:3,desc:"撒一把，焦香翻倍。辣椒粉+苏子粉+芝麻+秘制香料。",descEn:"Sprinkle on for double the aroma. Chili + perilla + sesame + secret spices.",descJa:"一撒きで香ばしさ倍増。",origin:"延边·烧烤调料坊",originEn:"Yanbian BBQ Spice House",weight:"袋装 100g",weightEn:"Bag 100g",shelf:"常温12个月",shelfEn:"Room temp 12 months",pairing:"烤肉·烤鱼·炸鸡",pairingEn:"BBQ, Grilled fish, Fried chicken"},{name:"烧烤湿料",kr:"불고기양념（습）",en:"BBQ Wet Sauce",ja:"焼肉ウェットソース",spec:"瓶装",tag:"旗舰·刷",tagEn:"Flagship Brush",tagJa:"旗艦ブラシ",spice:2,desc:"刷一层，肉汁锁住。甜咸微辣，延边夜市的经典刷料。",descEn:"Brush on to lock in juices. Sweet-salty-spicy night market classic.",descJa:"塗るだけで肉汁ロック。",origin:"延边·烧烤调料坊",originEn:"Yanbian BBQ Spice House",weight:"瓶装 300ml",weightEn:"Bottle 300ml",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"烤肉·烤蔬菜",pairingEn:"BBQ, Grilled vegetables"},{name:"烤肉腌料酱",kr:"불고기마리네이드",en:"BBQ Marinade",ja:"焼肉マリネ",spec:"瓶装",tag:"旗舰·腌",tagEn:"Flagship Marinate",tagJa:"旗艦マリネ",spice:2,desc:"腌一夜，入味到骨。梨汁+酱油+蒜的传统腌料配方。",descEn:"Marinate overnight for deep flavor. Pear juice + soy sauce + garlic.",descJa:"一晩漬けて骨まで味沁み。",origin:"延边·烧烤调料坊",originEn:"Yanbian BBQ Spice House",weight:"瓶装 350ml",weightEn:"Bottle 350ml",shelf:"常温6个月",shelfEn:"Room temp 6 months",pairing:"腌牛肉·腌猪肉·腌鸡翅",pairingEn:"Beef, Pork, Chicken wings"}]},
-{id:"hwa-ral",name:"火辣即食",nameKr:"화랄",nameEn:"Hwa-ral (Fiery Instant)",nameJa:"火辣即食",tagline:"夜市江湖，辣味即行",taglineEn:"Night market江湖, spice on the go",taglineJa:"夜市の江湖、辛さは即行",color:"#E74C3C",aux:"#6C3483",icon:"🌶️",light:false,lines:[],products:[{name:"香辣牛板筋",kr:"매운우설",en:"Spicy Beef Tendon",ja:"辛味牛スジ",spec:"袋装",tag:"旗舰",tagEn:"Flagship",tagJa:"旗艦",spice:4,desc:"嚼到腮帮酸也停不下来的牛板筋，辣椒酱渗透每一条纤维。",descEn:"So addictive your jaw will ache. Chili in every fiber.",descJa:"あごが疲れても止まらない牛スジ。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 120g",weightEn:"Bag 120g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"啤酒·米酒·深夜追剧",pairingEn:"Beer, Makgeolli, Late night"},{name:"火辣肥肠",kr:"매운곱창",en:"Fire Spicy Intestine",ja:"激辛ホルモン",spec:"袋装",tag:"重口味",tagEn:"Bold Flavor",tagJa:"激辛",spice:5,desc:"辣到冒汗也要吃完的肥肠，Q弹有嚼劲。",descEn:"So spicy you’ll sweat but can’t stop. Chewy and resilient.",descJa:"汗だくでも止まらないホルモン。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 150g",weightEn:"Bag 150g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"啤酒·烧酒·夜宵",pairingEn:"Beer, Soju, Midnight snack"},{name:"火辣鸡爪",kr:"매운닭발",en:"Fire Spicy Chicken Feet",ja:"激辛鶏足",spec:"袋装",tag:"经典下酒",tagEn:"Classic Bar Snack",tagJa:"定番おつまみ",spice:4,desc:"脱骨鸡爪泡在辣酱里，连骨头都入了味。",descEn:"Boneless chicken feet in fiery sauce. Flavor to the bone.",descJa:"骨なし鶏足の激辛ソース漬け。",origin:"延边朝鲜族自治州",originEn:"Yanbian",weight:"袋装 200g",weightEn:"Bag 200g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"啤酒·烧酒·深夜食堂",pairingEn:"Beer, Soju, Late night"}]},
-{id:"pung-mul",name:"风物",nameKr:"풍물",nameEn:"Pung-mul (Folk Delights)",nameJa:"風物",tagline:"朝鲜族生活的仪式感",taglineEn:"Rituals of Korean life",taglineJa:"朝鮮族の儀式感",color:"#C4727F",aux:"#E8C170",icon:"🌸",light:false,lines:[],products:[{name:"甘酒（甜米露）",kr:"식혜",en:"Sikhye (Sweet Rice Punch)",ja:"シッケ",spec:"瓶装",tag:"旗舰·饮品",tagEn:"Flagship Drink",tagJa:"旗艦ドリンク",spice:0,desc:"糯米发酵的天然甜饮，不含酒精，有细密的米粒和松子点缀。",descEn:"Naturally sweet fermented rice drink. Non-alcoholic with pine nuts.",descJa:"餅米発酵の天然甘味飲料。ノンアルコール。",origin:"延边·传统酿造坊",originEn:"Yanbian Traditional Brewery",weight:"瓶装 500ml",weightEn:"Bottle 500ml",shelf:"冷藏15天",shelfEn:"Refrigerate 15 days",pairing:"饭后甜饮·夏日清凉",pairingEn:"After-meal, Summer cooler"},{name:"松饼",kr:"송편",en:"Songpyeon",ja:"ソンピョン",spec:"盒装/限定",tag:"节气伴手礼",tagEn:"Seasonal Gift",tagJa:"季節の贈り物",spice:0,desc:"秋夕祭祖的供品，半月形米糕包芝麻或豆沙，蒸时垫松针染上清香。",descEn:"Chuseok offering. Half-moon rice cakes on pine needles.",descJa:"秋夕の供え物。三日月形の餅。",origin:"延边·传统糕坊",originEn:"Yanbian Traditional Bakery",weight:"盒装 300g",weightEn:"Box 300g",shelf:"冷藏3天",shelfEn:"Refrigerate 3 days",pairing:"秋夕祭祖·节庆伴手礼",pairingEn:"Chuseok, Festival gift"},{name:"艾蒿糕",kr:"쑥떡",en:"Mugwort Rice Cake",ja:"よもぎ餅",spec:"盒装",tag:"春季限定",tagEn:"Spring Limited",tagJa:"春期限定",spice:0,desc:"春日的青草味揉进米糕，艾蒿的微苦与糯米的甜糯。",descEn:"Spring herbs in rice cake. Mugwort’s bitterness meets sticky sweetness.",descJa:"春のよもぎ餅。ほろ苦さと甘さ。",origin:"延边·传统糕坊",originEn:"Yanbian Traditional Bakery",weight:"盒装 250g",weightEn:"Box 250g",shelf:"冷藏5天",shelfEn:"Refrigerate 5 days",pairing:"春季茶点·清明",pairingEn:"Spring tea, Qingming"}]},
-{id:"dong-nyeon",name:"童年·集趣",nameKr:"동년·집취",nameEn:"Dong-nyeon (Childhood)",nameJa:"童年·集趣",tagline:"街巷深处的童年甜味",taglineEn:"Sweet memories from deep alleyways",taglineJa:"路地の奥の子供時代の甘味",color:"#F0C75E",aux:"#8B6914",icon:"🍬",light:true,lines:[],products:[{name:"江米条（油蜜果）",kr:"약과",en:"Yakgwa (Honey Pastry)",ja:"薬果",spec:"袋装/盒装",tag:"旗舰·记忆入口",tagEn:"Flagship Memory",tagJa:"旗艦記憶",spice:0,desc:"放学路上最期待的那一口，酥脆的江米条裹着蜂蜜。",descEn:"After-school’s most anticipated. Crispy rice sticks glazed in honey.",descJa:"放課後一番楽しみだった味。",origin:"延边·传统糕坊",originEn:"Yanbian Traditional Bakery",weight:"袋装 200g/盒装 400g",weightEn:"Bag 200g/Box 400g",shelf:"常温60天",shelfEn:"Room temp 60 days",pairing:"茶点·零食·童年回忆",pairingEn:"Tea snack, Childhood memories"},{name:"芝麻糖",kr:"깨엿",en:"Sesame Taffy",ja:"ごま飴",spec:"袋装",tag:"经典零嘴",tagEn:"Classic Snack",tagJa:"定番スナック",spice:0,desc:"白芝麻+麦芽糖，掰一块拉出糖丝，越嚼越香。",descEn:"White sesame + malt sugar. Break off, pull threads, chew for aroma.",descJa:"白ごま＋水飴。ひとかけら割ると飴が引く。",origin:"延边·传统糖坊",originEn:"Yanbian Traditional Candy",weight:"袋装 150g",weightEn:"Bag 150g",shelf:"常温90天",shelfEn:"Room temp 90 days",pairing:"茶点·零嘴·伴手礼",pairingEn:"Tea snack, Souvenir"},{name:"冻梨干",kr:"동냉이말랭이",en:"Dried Frozen Pear",ja:"干し凍梨",spec:"袋装",tag:"延边特色",tagEn:"Yanbian Specialty",tagJa:"延辺特産",spice:0,desc:"冬天冻梨的自然甜味锁进果干，酸甜软糯。",descEn:"Frozen pear’s sweetness locked into dried fruit. Tangy and chewy.",descJa:"冬の凍梨の甘さをドライフルーツに。",origin:"延边·冻梨加工区",originEn:"Yanbian Frozen Pear",weight:"袋装 100g",weightEn:"Bag 100g",shelf:"常温180天",shelfEn:"Room temp 180 days",pairing:"零食·泡茶·冬日限定",pairingEn:"Snack, Tea, Winter only"}]}
-];
+            <!-- Product 3: Eggplant Squid -->
+            <div class="product-card" data-category="meat" data-product="eggplant-squid">
+                <div class="product-card-header" style="background: #5C3A4E;">
+                    🦑
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">茄子干鱿鱼丝</h3>
+                    <p class="product-name-kr">가지채 오징어</p>
+                    <p class="product-desc">干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.hot">中辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-</script>
-<script>
-/* ======== i18n Translations ======== */
-var translations = {
-    zh: {
-        'nav.home': '首页',
-        'nav.seasons': '四季发酵',
-        'nav.products': '产品殿堂',
-        'nav.story': '延边风土',
-        'nav.gift': '高端礼盒',
-        'nav.contact': '联系我们',
-        'hero.title': '产品殿堂',
-        'hero.subtitle': '제품 전시',
-        'showcase.title': '海兰菹 · 产品殿堂',
-        'showcase.hint': '点击产品卡片查看详情',
-        'spice': '辣度',
-        'cta.buy': '立即选购',
-        'cta.wishlist': '加入心愿单',
-        'cta.floating': '关注领试吃',
-        'community.title': '加入海兰菹味道社群',
-        'community.subtitle': '与1000+泡菜爱好者共享延边风味',
-        'community.wechat-work': '企业微信',
-        'community.wechat-work.desc': '扫码加入 · 专属试吃装',
-        'community.perk': '新成员专享：首次加入领取试吃装',
-        'footer.desc': '源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
-        'qr.placeholder': '二维码即将上线',
-        'detail.origin': '产地',
-        'detail.weight': '规格',
-        'detail.shelf': '保质期',
-        'detail.pairing': '搭配推荐',
-        'detail.related': '同系列其他产品',
-        'detail.viewDetail': '点击查看详情 →'
-    },
-    ko: {
-        'nav.home': '홈',
-        'nav.seasons': '사계절 발효',
-        'nav.products': '제품 전시',
-        'nav.story': '연변 풍토',
-        'nav.gift': '고급 선물세트',
-        'nav.contact': '연락처',
-        'hero.title': '제품 전시',
-        'hero.subtitle': '제품 전시',
-        'showcase.title': '해란저 · 제품 전시',
-        'showcase.hint': '제품 카드를 클릭하여 상세 보기',
-        'spice': '매운맛',
-        'cta.buy': '구매하기',
-        'cta.wishlist': '위시리스트 추가',
-        'cta.floating': '관심 · 시식 받기',
-        'community.title': '해란저 맛 커뮤니티 가입',
-        'community.subtitle': '1000+ 김치 애호가와 연변 풍미 공유',
-        'community.wechat-work': '기업 위챗',
-        'community.wechat-work.desc': '스캔하여 가입 · 전용 시식',
-        'community.perk': '신규 멤버 특별: 첫 가입 시 시식 제공',
-        'footer.desc': '연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지켜드립니다.',
-        'qr.placeholder': 'QR 코드 곧 출시',
-        'detail.origin': '원산지',
-        'detail.weight': '규격',
-        'detail.shelf': '유통기한',
-        'detail.pairing': '추천 조합',
-        'detail.related': '같은 시리즈 다른 제품',
-        'detail.viewDetail': '상세 보기 →'
-    },
-    en: {
-        'nav.home': 'Home',
-        'nav.seasons': 'Seasonal Fermentation',
-        'nav.products': 'Products',
-        'nav.story': 'Yanbian Heritage',
-        'nav.gift': 'Luxury Gift Sets',
-        'nav.contact': 'Contact Us',
-        'hero.title': 'Products',
-        'hero.subtitle': '제품 전시',
-        'showcase.title': 'HAILANZU · Product Sanctuary',
-        'showcase.hint': 'Click a product card to view details',
-        'spice': 'Spice',
-        'cta.buy': 'Shop Now',
-        'cta.wishlist': 'Add to Wishlist',
-        'cta.floating': 'Follow for Free Taster',
-        'community.title': 'Join HAILANZU Flavor Community',
-        'community.subtitle': 'Share Yanbian flavors with 1000+ kimchi lovers',
-        'community.wechat-work': 'WeChat Work',
-        'community.wechat-work.desc': 'Scan to join · Exclusive taster',
-        'community.perk': 'New member perk: Free taster on first join',
-        'footer.desc': 'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
-        'qr.placeholder': 'QR code coming soon',
-        'detail.origin': 'Origin',
-        'detail.weight': 'Specs',
-        'detail.shelf': 'Shelf Life',
-        'detail.pairing': 'Pairing',
-        'detail.related': 'Other Products in Series',
-        'detail.viewDetail': 'View Details →'
-    },
-    ja: {
-        'nav.home': 'ホーム',
-        'nav.seasons': '四季発酵',
-        'nav.products': '製品展示',
-        'nav.story': '延辺風土',
-        'nav.gift': '高級ギフト',
-        'nav.contact': 'お問い合わせ',
-        'hero.title': '製品展示',
-        'hero.subtitle': '제품 전시',
-        'showcase.title': '海蘭菹 · 製品殿堂',
-        'showcase.hint': '製品カードをクリックして詳細を見る',
-        'spice': '辛さ',
-        'cta.buy': '今すぐ購入',
-        'cta.wishlist': 'ウィッシュリストに追加',
-        'cta.floating': 'フォローしてお試しGET',
-        'community.title': '海蘭菹味コミュニティに参加',
-        'community.subtitle': '1000+キムチ愛好家と延辺の風味を共有',
-        'community.wechat-work': '企業WeChat',
-        'community.wechat-work.desc': 'スキャンして参加 ・ お試し付き',
-        'community.perk': '新規メンバー特典：初回参加でお試しプレゼント',
-        'footer.desc': '延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
-        'qr.placeholder': 'QRコード近日公開',
-        'detail.origin': '産地',
-        'detail.weight': '仕様',
-        'detail.shelf': '賞味期限',
-        'detail.pairing': 'おすすめ組み合わせ',
-        'detail.related': '同シリーズ他の製品',
-        'detail.viewDetail': '詳細を見る →'
-    }
-};
+            <!-- Product 4: Radish Cubes -->
+            <div class="product-card" data-category="special" data-product="radish-cubes">
+                <div class="product-card-header" style="background: #CC4422;">
+                    🥕
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">萝卜块</h3>
+                    <p class="product-name-kr">깍두기</p>
+                    <p class="product-desc">方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.fiery">辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-var currentLang = localStorage.getItem('hailanzu-lang') || 'zh';
+            <!-- Product 5: Perilla Leaves -->
+            <div class="product-card" data-category="herb" data-product="perilla-leaves">
+                <div class="product-card-header" style="background: #3D6B4F;">
+                    🌿
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">苏子叶</h3>
+                    <p class="product-name-kr">깻잎</p>
+                    <p class="product-desc">苏子叶的清香与辣酱的浓烈，是延边餐桌上的灵魂配角。每片叶子都是手工逐片腌制。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot"></span>
+                                <span class="spice-dot"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.medium">微辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-function detectBrowserLang() {
-    var bl = navigator.language.slice(0, 2);
-    return ['zh', 'ko', 'en', 'ja'].indexOf(bl) >= 0 ? bl : 'zh';
-}
+            <!-- Product 6: Beef Tendon -->
+            <div class="product-card" data-category="meat" data-product="beef-tendon">
+                <div class="product-card-header" style="background: #6B3A2A;">
+                    🥩
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">牛板筋</h3>
+                    <p class="product-name-kr">우설건강</p>
+                    <p class="product-desc">牛板筋的韧劲，是咀嚼的快乐。辣酱渗透每一丝纤维，越嚼越香，欲罢不能。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.fiery">辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-function setLanguage(lang) {
-    currentLang = lang;
-    loadLanguageFont(lang);
-    localStorage.setItem('hailanzu-lang', lang);
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
-        }
-    });
-    document.querySelectorAll('.lang-btn').forEach(function(btn) {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-    document.documentElement.lang = lang;
-    refreshAllCards();
-}
+            <!-- Product 7: Spicy Pollack -->
+            <div class="product-card" data-category="meat" data-product="spicy-pollack">
+                <div class="product-card-header" style="background: #C4A46C;">
+                    🐟
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">香辣明太鱼</h3>
+                    <p class="product-name-kr">명태조림</p>
+                    <p class="product-desc">明太鱼的鲜嫩裹上香辣外衣，每一口都是海洋与火焰的碰撞。延边人的下饭神器。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.hot">中辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-if (!localStorage.getItem('hailanzu-lang')) {
-    currentLang = detectBrowserLang();
-}
+            <!-- Product 8: Bellflower Root -->
+            <div class="product-card" data-category="herb" data-product="bellflower-root">
+                <div class="product-card-header" style="background: #7B8FA1;">
+                    🌺
+                </div>
+                <div class="product-card-body">
+                    <h3 class="product-name">桔梗</h3>
+                    <p class="product-name-kr">도라지</p>
+                    <p class="product-desc">桔梗根的微苦回甘，是山野的味道。清脆爽口，药食同源，朝鲜族的传统智慧。</p>
+                    <div class="product-card-footer">
+                        <div class="spice-level">
+                            <span class="spice-label" data-i18n="spice">辣度</span>
+                            <div class="spice-dots">
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot active"></span>
+                                <span class="spice-dot"></span>
+                                <span class="spice-dot"></span>
+                            </div>
+                            <span class="spice-text" data-i18n="spice.medium">微辣</span>
+                        </div>
+                        <a href="#" class="detail-link" data-i18n="detail.link">了解详情 →</a>
+                    </div>
+                </div>
+            </div>
 
-/* ======== Navigation ======== */
-var hamburger = document.getElementById('hamburger');
-var mobileNav = document.getElementById('mobileNav');
-var nav = document.getElementById('nav');
-var mobileNavClose = document.getElementById('mobileNavClose');
+            <!-- Product Detail Panel -->
+            <div class="product-detail" id="productDetail">
+                <div class="detail-content">
+                    <div class="detail-visual">
+                        <div class="detail-carousel" id="detailCarousel">
+                            <div class="carousel-track" id="carouselTrack">
+                                <div class="carousel-slide active" data-slide="0">
+                                    <div class="detail-emoji" id="detailEmoji">🥬</div>
+                                </div>
+                                <div class="carousel-slide" data-slide="1">
+                                    <div class="detail-emoji detail-emoji-alt" id="detailEmojiAlt1">🍚</div>
+                                </div>
+                                <div class="carousel-slide" data-slide="2">
+                                    <div class="detail-emoji detail-emoji-alt" id="detailEmojiAlt2">🥢</div>
+                                </div>
+                            </div>
+                            <div class="carousel-dots" id="carouselDots">
+                                <span class="carousel-dot active" data-dot="0"></span>
+                                <span class="carousel-dot" data-dot="1"></span>
+                                <span class="carousel-dot" data-dot="2"></span>
+                            </div>
+                            <button class="carousel-btn carousel-prev" id="carouselPrev">‹</button>
+                            <button class="carousel-btn carousel-next" id="carouselNext">›</button>
+                        </div>
+                    </div>
+                    <div class="detail-info">
+                        <button class="detail-close" id="detailClose">✕</button>
+                        <h2 class="detail-title" id="detailTitle">原味辣白菜</h2>
+                        <p class="detail-title-kr" id="detailTitleKr">배추김치</p>
+                        <p class="detail-description" id="detailDesc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</p>
+                        <div class="detail-meta">
+                            <div class="meta-item">
+                                <span class="meta-label"><svg class="meta-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><ellipse cx="10" cy="12" rx="7" ry="4"/><path d="M3 12 Q3 16 10 16 Q17 16 17 12"/><path d="M7 5 Q10 3 13 5" stroke-linecap="round"/></svg> <span data-i18n="detail.ingredients">配料</span></span>
+                                <span class="meta-value" id="detailIngredients">白菜、辣椒粉、蒜、姜、鱼露、盐</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label"><svg class="meta-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 14 Q3 8 10 6 Q17 8 17 14"/><path d="M6 14 L6 15"/><path d="M10 14 L10 15"/><path d="M14 14 L14 15"/><line x1="2" y1="15" x2="18" y2="15" stroke-linecap="round"/></svg> <span data-i18n="detail.pairing">建议搭配</span></span>
+                                <span class="meta-value" id="detailPairing">白米饭、清汤</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label"><svg class="meta-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M10 3 L10 8 M7 5 Q10 2 13 5 M8 8 L12 8"/><circle cx="10" cy="13" r="4"/></svg> <span data-i18n="spice">辣度</span></span>
+                                <div class="spice-dots" id="detailSpice">
+                                    <span class="spice-dot active"></span>
+                                    <span class="spice-dot"></span>
+                                    <span class="spice-dot"></span>
+                                    <span class="spice-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-actions">
+                            <a href="gift.html" class="btn-primary" data-i18n="detail.addToGift">加入礼盒</a>
+                            <a href="contact.html" class="btn-buy" style="display:inline-block;padding:10px 24px;border:1px solid var(--rice);color:var(--rice);font-size:13px;letter-spacing:2px;text-decoration:none;transition:all .3s" data-i18n="detail.buyNow">立即购买</a>
+                            <button class="btn-secondary" id="detailCloseBtn" data-i18n="detail.close">收起</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('open');
-    mobileNav.classList.toggle('open');
-    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-});
+    <!-- Recommendation Section -->
+    <section class="recommend-section">
+        <h2 class="section-title" data-i18n="recommend.title">这些也值得尝</h2>
+        <div class="recommend-grid">
+            <a href="#" class="recommend-card" onclick="showProduct('sweet-kimchi'); return false;">
+                <div class="recommend-emoji" style="background: #D4654A;">🌶️</div>
+                <div class="recommend-info">
+                    <p class="recommend-name">甜味辣白菜</p>
+                    <p class="recommend-name-kr">맛김치</p>
+                </div>
+            </a>
+            <a href="#" class="recommend-card" onclick="showProduct('spicy-pollack'); return false;">
+                <div class="recommend-emoji" style="background: #C4A46C;">🐟</div>
+                <div class="recommend-info">
+                    <p class="recommend-name">香辣明太鱼</p>
+                    <p class="recommend-name-kr">명태조림</p>
+                </div>
+            </a>
+            <a href="#" class="recommend-card" onclick="showProduct('perilla-leaves'); return false;">
+                <div class="recommend-emoji" style="background: #3D6B4F;">🌿</div>
+                <div class="recommend-info">
+                    <p class="recommend-name">苏子叶</p>
+                    <p class="recommend-name-kr">깻잎</p>
+                </div>
+            </a>
+        </div>
+    </section>
 
-mobileNavClose.addEventListener('click', function() {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
-});
+    <!-- Hanok Divider -->
+    <svg class="hanok-divider" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path class="hanok-curve" d="M0 60 Q200 20 400 40 Q600 60 800 30 Q1000 10 1200 40 L1200 60 Z"/>
+        <path class="hanok-curve" d="M0 60 Q150 35 300 50 Q450 65 600 45 Q750 25 900 50 Q1050 70 1200 55" stroke-dasharray="8,4"/>
+    </svg>
 
-mobileNav.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-        hamburger.classList.remove('open');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-    });
-});
+    <!-- Footer -->
+    <footer class="footer">
+        <svg class="footer-skyline" viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <path fill="var(--ink)" d="M0 80 L0 60 L80 60 L80 40 L100 40 L100 50 L120 50 L120 30 L140 30 L140 45 L160 45 L160 55 L200 55 L200 35 L220 35 L220 50 L240 50 L240 60 L280 60 L280 45 L300 45 L300 55 L340 55 L340 40 L360 40 L360 60 L400 60 L400 30 L420 30 L420 55 L460 55 L460 45 L480 45 L480 60 L520 60 L520 35 L540 35 L540 50 L580 50 L580 40 L600 40 L600 60 L640 60 L640 50 L660 50 L660 60 L700 60 L700 45 L720 45 L720 35 L740 35 L740 55 L780 55 L780 40 L800 40 L800 60 L840 60 L840 50 L860 50 L860 60 L900 60 L900 45 L920 45 L920 35 L940 35 L940 50 L980 50 L980 60 L1020 60 L1020 40 L1040 40 L1040 55 L1080 55 L1080 45 L1100 45 L1100 60 L1140 60 L1140 50 L1160 50 L1160 60 L1200 60 L1200 80 Z"/>
+        </svg>
+        
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <svg class="pot-icon" viewBox="0 0 50 50" style="width:32px;height:32px;">
+                        <ellipse cx="25" cy="8" rx="4" ry="3" fill="var(--rice)"/>
+                        <path d="M12 15 Q25 5 38 15 L36 18 Q25 10 14 18 Z" fill="var(--rice-dim)"/>
+                        <path d="M8 20 Q6 25 8 30 Q10 32 12 30 Q10 25 12 20 Q10 18 8 20" stroke="var(--rice-dim)"/>
+                        <path d="M42 20 Q44 25 42 30 Q40 32 38 30 Q40 25 38 20 Q40 18 42 20" stroke="var(--rice-dim)"/>
+                        <path d="M12 18 Q10 20 10 25 L10 38 Q10 42 15 43 L35 43 Q40 42 40 38 L40 25 Q40 20 38 18" stroke="var(--rice-dim)"/>
+                    </svg>
+                    <span class="footer-logo-text">海兰菹</span>
+                </div>
+                <p class="footer-desc" data-i18n="footer.desc">源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。</p>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index-folk.html" data-i18n="nav.home">首页</a><br>
+                <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a></li>
+                    <li><a href="story.html" data-i18n="nav.story">延边风土</a></li>
+                    <li><a href="products.html" data-i18n="nav.products">产品殿堂</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="gift.html" data-i18n="nav.gift">高端礼盒</a></li>
+                    <li><a href="contact.html" data-i18n="nav.contact">联系我们</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:hello@hailanzu.com">hello@hailanzu.com</a></li>
+                    <li><a href="tel:+86-433-xxxx">0433-xxxx</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2026 海兰菹 HAILANZU. All rights reserved.</p>
+            <svg class="footer-dahlia" viewBox="0 0 40 40">
+                <path d="M20 5 C17 5 14 8 14 11 C14 14 17 17 20 20 C23 17 26 14 26 11 C26 8 23 5 20 5 M14 18 C10 18 7 21 7 24 C7 27 10 30 14 30 C16 30 18 29 20 27 C22 29 24 30 26 30 C30 30 33 27 33 24 C33 21 30 18 26 18 C24 18 22 19 20 21 C18 19 16 18 14 18" fill="none" stroke="currentColor" stroke-width="1"/>
+            </svg>
+        </div>
+    </footer>
 
-window.addEventListener('scroll', function() {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() { setLanguage(btn.dataset.lang); });
-});
-</script>
-
-<script>
-/* ======== Marquee ======== */
-(function() {
-    var items = [];
-    SERIES.forEach(function(s) {
-        var prods = s.lines && s.lines.length > 0 ? s.lines[0].products : (s.products || []);
-        prods.slice(0, 3).forEach(function(p) {
-            items.push(p.name);
-        });
-    });
-    var track = document.getElementById('marqueeTrack');
-    var html = '';
-    var allItems = items.concat(items);
-    allItems.forEach(function(item) {
-        html += '<span class="marquee-item">' + item + ' <svg class="marquee-divider" viewBox="0 0 24 24"><path class="dahlia-icon" d="M12 2 C10 2 8 4 8 6 C8 8 10 10 12 12 C14 10 16 8 16 6 C16 4 14 2 12 2 M8 10 C5 10 3 13 3 15 C3 17 5 20 8 20 C10 20 12 18 12 16 C12 18 14 20 16 20 C19 20 21 17 21 15 C21 13 19 10 16 10 C14 10 12 12 12 14 C12 12 10 10 8 10"/></svg></span>';
-    });
-    track.innerHTML = html;
-})();
-</script>
-
-<script>
-/* ======== Showcase Rendering ======== */
-var sectionState = {};
-
-function adjustBrightness(hex, amount) {
-    hex = hex.replace('#', '');
-    var r = Math.min(255, Math.max(0, parseInt(hex.substr(0, 2), 16) + amount));
-    var g = Math.min(255, Math.max(0, parseInt(hex.substr(2, 2), 16) + amount));
-    var b = Math.min(255, Math.max(0, parseInt(hex.substr(4, 2), 16) + amount));
-    return '#' + [r, g, b].map(function(c) { return c.toString(16).padStart(2, '0'); }).join('');
-}
-
-function spiceDots(level, size) {
-    size = size || 6;
-    var s = '';
-    for (var i = 0; i < 5; i++) {
-        s += '<span' + (i < level ? ' class="on"' : '') + ' style="width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:' + (i < level ? 'var(--seal)' : 'rgba(245,240,232,.1)') + '"></span>';
-    }
-    return s;
-}
-
-function getProducts(series, lineIdx) {
-    if (series.lines && series.lines.length > 0) {
-        return series.lines[lineIdx] ? series.lines[lineIdx].products : series.lines[0].products;
-    }
-    return series.products || [];
-}
-
-function getProductName(p) {
-    if (currentLang === 'ko') return p.kr || p.name;
-    if (currentLang === 'en') return p.en || p.name;
-    if (currentLang === 'ja') return p.ja || p.name;
-    return p.name;
-}
-
-function getProductTag(p) {
-    if (currentLang === 'en') return p.tagEn || p.tag;
-    if (currentLang === 'ja') return p.tagJa || p.tag;
-    return p.tag;
-}
-
-function getProductDesc(p) {
-    if (currentLang === 'ko') return p.desc || '';
-    if (currentLang === 'en') return p.descEn || p.desc;
-    if (currentLang === 'ja') return p.descJa || p.desc;
-    return p.desc;
-}
-
-function getSeriesName(s) {
-    if (currentLang === 'ko') return s.nameKr || s.name;
-    if (currentLang === 'en') return s.nameEn || s.name;
-    if (currentLang === 'ja') return s.nameJa || s.name;
-    return s.name;
-}
-
-function getSpecValue(p, key, keyEn) {
-    if (currentLang === 'en') return p[keyEn] || p[key] || '';
-    return p[key] || '';
-}
-
-function renderCard(seriesId, productIdx) {
-    var s = SERIES.find(function(x) { return x.id === seriesId; });
-    if (!s) return;
-    var st = sectionState[seriesId];
-    var products = getProducts(s, st.line);
-    if (productIdx < 0) productIdx = 0;
-    if (productIdx >= products.length) productIdx = products.length - 1;
-    st.product = productIdx;
-    var p = products[productIdx];
-
-    var cardColor = s.color;
-    if (s.lines && s.lines.length > 0 && s.lines[st.line]) {
-        cardColor = s.lines[st.line].color;
-    }
-
-    var bgColor = s.light
-        ? 'linear-gradient(150deg,' + s.color + ',' + adjustBrightness(s.color, -15) + ')'
-        : 'linear-gradient(150deg,' + adjustBrightness(cardColor, -30) + ',' + adjustBrightness(cardColor, -50) + ')';
-
-    var cardEl = document.getElementById('card-' + seriesId);
-    cardEl.className = 's-card' + (s.light ? ' light-bg' : '');
-    cardEl.querySelector('.s-card-bg').style.background = bgColor;
-    cardEl.querySelector('.s-card-img').textContent = s.icon;
-    cardEl.querySelector('.s-card-tag').textContent = getProductTag(p);
-    cardEl.querySelector('.s-card-name').textContent = getProductName(p);
-    cardEl.querySelector('.s-card-kr').textContent = p.kr || '';
-    cardEl.querySelector('.s-card-spec').textContent = p.spec;
-    cardEl.querySelector('.s-card-spice').innerHTML = spiceDots(p.spice);
-
-    var counterEl = document.getElementById('counter-' + seriesId);
-    counterEl.textContent = (productIdx + 1) + ' / ' + products.length;
-}
-
-function switchLine(seriesId, lineIdx) {
-    var s = SERIES.find(function(x) { return x.id === seriesId; });
-    var st = sectionState[seriesId];
-    st.line = lineIdx;
-    var tabsEl = document.getElementById('tabs-' + seriesId);
-    var tabs = tabsEl.querySelectorAll('.s-left-tab');
-    tabs.forEach(function(t, i) {
-        t.className = 's-left-tab' + (i === lineIdx ? ' active' : '');
-        if (i === lineIdx && s.lines[i]) {
-            t.style.borderColor = s.lines[i].color;
-            t.style.background = s.lines[i].color + '18';
-        } else {
-            t.style.borderColor = '';
-            t.style.background = '';
-        }
-        t.innerHTML = '<span class="tab-zh">' + s.lines[i].name + '</span><span class="tab-kr">' + s.lines[i].nameKr + '</span>';
-    });
-    st.product = 0;
-    renderCard(seriesId, 0);
-}
-
-function prevProduct(seriesId) {
-    var st = sectionState[seriesId];
-    renderCard(seriesId, st.product - 1);
-}
-
-function nextProduct(seriesId) {
-    var st = sectionState[seriesId];
-    renderCard(seriesId, st.product + 1);
-}
-
-function refreshAllCards() {
-    SERIES.forEach(function(s) {
-        if (sectionState[s.id]) {
-            renderCard(s.id, sectionState[s.id].product);
-        }
-    });
-}
-
-function buildRow(s) {
-    sectionState[s.id] = { line: 0, product: 0 };
-
-    var row = document.createElement('div');
-    row.className = 's-row' + (s.light ? ' light-row' : '');
-    row.id = 'section-' + s.id;
-
-    var accent = document.createElement('div');
-    accent.className = 's-accent';
-    accent.style.background = s.color;
-    row.appendChild(accent);
-
-    var left = document.createElement('div');
-    left.className = 's-left';
-
-    var title = document.createElement('div');
-    title.className = 's-left-title';
-    title.textContent = s.name;
-    left.appendChild(title);
-
-    var kr = document.createElement('div');
-    kr.className = 's-left-kr';
-    kr.textContent = s.nameKr;
-    left.appendChild(kr);
-
-    if (s.tagline) {
-        var tagline = document.createElement('div');
-        tagline.className = 's-left-tagline';
-        tagline.textContent = s.tagline;
-        left.appendChild(tagline);
-    }
-
-    if (s.lines && s.lines.length > 0) {
-        var tabs = document.createElement('div');
-        tabs.className = 's-left-tabs';
-        tabs.id = 'tabs-' + s.id;
-        s.lines.forEach(function(line, li) {
-            var tab = document.createElement('div');
-            tab.className = 's-left-tab' + (li === 0 ? ' active' : '');
-            tab.innerHTML = '<span class="tab-zh">' + line.name + '</span><span class="tab-kr">' + line.nameKr + '</span>';
-            if (li === 0) {
-                tab.style.borderColor = line.color;
-                tab.style.background = line.color + '18';
+    <script>
+        // Product Data
+        const productData = {
+            'plain-kimchi': {
+                emoji: '🥬',
+                bgColor: '#E8EDE5',
+                name: { zh: '原味辣白菜', ko: '배추김치', en: 'Plain Napa Kimchi', ja: '白菜キムチ' },
+                desc: {
+                    zh: '盐唤醒白菜的脆，时间赋予它回甘。霜降白菜的自然甘甜，不着一丝辣意，却在每一层叶脉里留下悠长的回味。',
+                    ko: '소금이 배추의 아삭함을 깨우고, 시간이 뒷맛을 부여합니다. 서리 내린 배추의 자연스러운 단맛, 매운맛 없이도 매 잎맥에 긴 여운을 남깁니다.',
+                    en: 'Salt awakens the crunch of napa; time grants its sweetness. The natural sweetness of frost-kissed napa, no hint of spice, yet every leaf vein carries a lingering finish.',
+                    ja: '塩が白菜のパリッと感を呼び覚まし、時間が甘い余韻を与える。霜降白菜の自然な甘味、辛さは一切ないのに、葉脈の一本一本に長い余韻が残る。'
+                },
+                ingredients: { zh: '白菜、辣椒粉、蒜、姜、鱼露、盐', ko: '배추, 고춧가루, 마늘, 생강, 어간장, 소금' },
+                pairing: { zh: '白米饭、清汤', ko: '흰 쌀밥, 맑은 국', en: 'White rice, clear soup', ja: 'ご飯、お吸い物' },
+                spice: 1
+            },
+            'sweet-kimchi': {
+                emoji: '🌶️',
+                bgColor: '#D4654A',
+                name: { zh: '甜味辣白菜', ko: '맛김치', en: 'Sweet Spicy Kimchi', ja: '甘辛白菜キムチ' },
+                desc: {
+                    zh: '一入口是甜在先，辣意缓步跟来。苹果梨的果汁融入酱料，让辣味有了果香的柔软面。甜不是讨好，辣不是霸道，两者在舌尖和解。',
+                    ko: '입에 넣으면 먼저 달콤함이, 매운맛이 천천히 따라옵니다. 사과배 즙이 양념에 스며들어 매운맛에 과일 향의 부드러움을 더합니다. 달콤함은 아첨이 아니고, 매운맛은 무례하지 않으며, 둘은 혀끝에서 화해합니다.',
+                    en: 'Sweetness leads, heat follows at its own pace. Apple-pear juice infuses the sauce, softening the chili with fruit fragrance. Sweet is not pandering, heat is not domineering—they reconcile on the tongue.',
+                    ja: '一口目は甘さが先、辛さがゆっくりと続く。リンゴ梨の果汁がタレに溶け込み、辛さに果実の柔らかさを与える。甘さは媚びではなく、辛さは強引ではない——舌の上で二つは和解する。'
+                },
+                ingredients: { zh: '白菜、辣椒粉、蒜、糖、梨汁、鱼露', ko: '배추, 고춧가루, 마늘, 설탕, 배즙, 어간장' },
+                pairing: { zh: '烤肉、石锅拌饭', ko: '불고기, 돌솥비빔밥', en: 'BBQ, bibimbap', ja: '烤肉、石焼ビビンバ' },
+                spice: 2
+            },
+            'eggplant-squid': {
+                emoji: '🦑',
+                bgColor: '#5C3A4E',
+                name: { zh: '茄子干鱿鱼丝', ko: '가지채 오징어', en: 'Eggplant & Dried Squid', ja: '干し茄子イカ' },
+                desc: {
+                    zh: '陆地的嚼劲遇上海洋的鲜香，一口咬下去，两个世界在嘴里相遇。干茄子的韧是慢慢嚼出来的，鱿鱼丝的鲜是一瞬间爆开的。',
+                    ko: '육지의 씹는 맛이 바다의 감칠맛을 만나, 한 입 베어 물면 두 세계가 입안에서 만납니다. 말린 가지의 질긴 맛은 천천히 씹어야 나오고, 오징어채의 감칠맛은 순간적으로 터집니다.',
+                    en: 'The chew of land meets the umami of sea—one bite, two worlds collide in your mouth. The resilience of dried eggplant unfolds slowly as you chew; the savor of squid bursts in an instant.',
+                    ja: '陸のかみごたえが海の旨味と出会い、一口かじれば二つの世界が口の中で交差する。干し茄子の弾力はゆっくり噛んでこそ引き出され、イカ糸の旨味は一瞬で弾ける。'
+                },
+                ingredients: { zh: '茄子干、鱿鱼丝、辣椒粉、蒜、糖', ko: '말린 가지, 오징어채, 고춧가루, 마늘, 설탕' },
+                pairing: { zh: '啤酒、米饭', ko: '맥주, 밥', en: 'Beer, rice', ja: 'ビール、ご飯' },
+                spice: 3
+            },
+            'radish-cubes': {
+                emoji: '🥕',
+                bgColor: '#CC4422',
+                name: { zh: '萝卜块', ko: '깍두기', en: 'Radish Cubes', ja: 'カクドゥキ' },
+                desc: {
+                    zh: '方正的萝卜块，每一面都裹满辣酱。外表火辣，内里清甜——咬开的瞬间，辣与甜在口腔里交替上场。',
+                    ko: '모나게 썬 무, 모든 면에 양념이 듬뿍. 겉은 매콤하고 속은 달콤합니다——한 입 베어 물면 매운맛과 단맛이 입안에서 교대로 등장합니다.',
+                    en: 'Cubed radish, every face coated in chili paste. Fiery outside, sweet within—the moment you bite, heat and sweetness take turns on your palate.',
+                    ja: '四角に切った大根、すべての面に辛味噌がたっぷり。外は辛く、中は甘い——かじった瞬間、辛さと甘さが口の中で交代で登場する。'
+                },
+                ingredients: { zh: '萝卜、辣椒粉、蒜、虾酱、糖', ko: '무, 고춧가루, 마늘, 새우장, 설탕' },
+                pairing: { zh: '韩式汤饭、烤肉', ko: '국밥, 불고기', en: 'Gukbap, BBQ', ja: '韓国汁飯、烤肉' },
+                spice: 4
+            },
+            'perilla-leaves': {
+                emoji: '🌿',
+                bgColor: '#3D6B4F',
+                name: { zh: '苏子叶', ko: '깻잎', en: 'Perilla Leaves', ja: 'エゴマの葉' },
+                desc: {
+                    zh: '一片叶子里，藏着一整个延边的夏天。苏子叶的草本清香被辣酱温柔包裹，每片都是手工逐片腌制——急不得，也偷懒不得。',
+                    ko: '한 잎 속에 연변의 여름이 통째로 숨어 있습니다. 깻잎의 풀내음이 양념에 부드럽게 감싸이고, 매 잎마다 손으로 하나하나 담급니다——서두를 수도, 게을러질 수도 없습니다.',
+                    en: 'An entire Yanbian summer hides in a single leaf. The herbaceous clarity of perilla is gently wrapped in chili paste, each leaf marinated by hand one by one—no rushing, no shortcuts.',
+                    ja: '一枚の葉に、延辺の夏がまるごと隠れている。エゴマの草本の清香が辛味噌に優しく包まれ、一枚一枚手で漬け込む——急いではいけない、手抜きもできない。'
+                },
+                ingredients: { zh: '苏子叶、辣椒粉、蒜、酱油、芝麻', ko: '깻잎, 고춧가루, 마늘, 간장, 참깨' },
+                pairing: { zh: '包饭、烤肉', ko: '쌈밥, 불고기', en: 'Ssam, BBQ', ja: '包み飯、烤肉' },
+                spice: 2
+            },
+            'beef-tendon': {
+                emoji: '🥩',
+                bgColor: '#6B3A2A',
+                name: { zh: '牛板筋', ko: '우설건강', en: 'Beef Tendon', ja: '牛スジ' },
+                desc: {
+                    zh: '越嚼越香，越辣越停不下来。牛板筋的韧是咀嚼的快感，辣酱渗透每一丝纤维，在牙关间释放出层层叠叠的鲜辣。',
+                    ko: '씹을수록 고소하고, 매울수록 멈출 수 없습니다. 우설건강의 질긴 맛은 씹는 쾌감이고, 양념이 모든 섬유에 스며들어 이빨 사이에서 겹겹이 감칠매운맛을 풀어냅니다.',
+                    en: 'The more you chew, the more fragrant; the hotter it gets, the harder to stop. The resilient chew of beef tendon is pure pleasure, as chili paste penetrates every fiber, releasing layers of savory heat between your teeth.',
+                    ja: '噛むほどに香りが立ち、辛いほどに止まらない。牛スジの弾力は噛む快感、辛味噌が繊維の隅々まで染み込み、歯の間から幾重にも重なる旨辛さを放つ。'
+                },
+                ingredients: { zh: '牛板筋、辣椒粉、蒜、糖、酱油', ko: '우설건강, 고춧가루, 마늘, 설탕, 간장' },
+                pairing: { zh: '啤酒、烧酒', ko: '맥주, 소주', en: 'Beer, soju', ja: 'ビール、焼酒' },
+                spice: 4
+            },
+            'spicy-pollack': {
+                emoji: '🐟',
+                bgColor: '#C4A46C',
+                name: { zh: '香辣明太鱼', ko: '명태조림', en: 'Spicy Pollack', ja: '明太子煮' },
+                desc: {
+                    zh: '明太鱼的鲜嫩裹上香辣外衣，鱼肉吸收了辣椒的热烈，辣椒也被鱼肉的鲜润柔化。一碗白饭，一碟明太鱼，足矣。',
+                    ko: '명태의 부드러움에 매콤한 옷을 입혀, 생살은 고추의 열정을 흡수하고 고추는 생살의 감칠함에 부드러워집니다. 흰 쌀밥 한 그릇, 명태 한 접시면 충분합니다.',
+                    en: 'Tender pollack coated in fiery spice—the fish absorbs the chili\'s passion, and the chili is mellowed by the fish\'s savory moisture. A bowl of white rice, a dish of pollack—nothing more is needed.',
+                    ja: '明太魚の柔らかさに辛い衣、魚肉は唐辛子の熱情を吸い、唐辛子は魚肉の旨みで和らぐ。白飯一杯、明太魚一皿——それだけで十分。'
+                },
+                ingredients: { zh: '明太鱼、辣椒粉、蒜、糖、酱油', ko: '명태, 고춧가루, 마늘, 설탕, 간장' },
+                pairing: { zh: '白米饭、米酒', ko: '흰 쌀밥, 막걸리', en: 'White rice, makgeolli', ja: 'ご飯、米酒' },
+                spice: 3
+            },
+            'bellflower-root': {
+                emoji: '🌺',
+                bgColor: '#7B8FA1',
+                name: { zh: '桔梗', ko: '도라지', en: 'Bellflower Root', ja: 'キキョウ' },
+                desc: {
+                    zh: '桔梗根带着山间草木的微苦，咀嚼后却涌出一丝甘甜——药食同源的朝鲜族智慧，把山野的味道装进坛中。',
+                    ko: '도라지뿌리는 산간 초목의 은은한 쓴맛을 품고, 씹은 후에는 한 가닥 단맛이 솟아오릅니다——약식동원의 조선족 지혜가 산야의 맛을 항아리에 담았습니다.',
+                    en: 'Bellflower root carries the gentle bitterness of mountain herbs, yet after chewing, a thread of sweetness emerges—the Korean wisdom of food as medicine, capturing the taste of wild mountains in a jar.',
+                    ja: 'キキョウの根は山の草木のほろ苦さを帯び、噛めば一筋の甘さが湧き上がる——薬食同源の朝鮮族の知恵が、野山の味を甕に封じ込める。'
+                },
+                ingredients: { zh: '桔梗、辣椒粉、蒜、糖、芝麻', ko: '도라지, 고춧가루, 마늘, 설탕, 참깨' },
+                pairing: { zh: '韩式拌饭、清粥', ko: '비빔밥, 맑은粥', en: 'Bibimbap, rice porridge', ja: '韓国拌飯、お粥' },
+                spice: 2
             }
-            tab.onclick = function() { switchLine(s.id, li); };
-            tabs.appendChild(tab);
-        });
-        left.appendChild(tabs);
-    }
+        };
 
-    var nav = document.createElement('div');
-    nav.className = 's-left-nav';
-
-    var prevBtn = document.createElement('div');
-    prevBtn.className = 's-left-nav-btn';
-    prevBtn.innerHTML = '&#9664;';
-    prevBtn.onclick = function() { prevProduct(s.id); };
-    nav.appendChild(prevBtn);
-
-    var counter = document.createElement('div');
-    counter.className = 's-left-nav-counter';
-    counter.id = 'counter-' + s.id;
-    counter.textContent = '1 / ' + getProducts(s, 0).length;
-    nav.appendChild(counter);
-
-    var nextBtn = document.createElement('div');
-    nextBtn.className = 's-left-nav-btn';
-    nextBtn.innerHTML = '&#9654;';
-    nextBtn.onclick = function() { nextProduct(s.id); };
-    nav.appendChild(nextBtn);
-
-    left.appendChild(nav);
-    row.appendChild(left);
-
-    var productArea = document.createElement('div');
-    productArea.className = 's-product';
-
-    var cardColor = s.color;
-    if (s.lines && s.lines.length > 0) cardColor = s.lines[0].color;
-    var bgColor = s.light
-        ? 'linear-gradient(150deg,' + s.color + ',' + adjustBrightness(s.color, -15) + ')'
-        : 'linear-gradient(150deg,' + adjustBrightness(cardColor, -30) + ',' + adjustBrightness(cardColor, -50) + ')';
-
-    var firstProduct = getProducts(s, 0)[0];
-
-    var card = document.createElement('div');
-    card.className = 's-card' + (s.light ? ' light-bg' : '');
-    card.id = 'card-' + s.id;
-    card.innerHTML = '<div class="s-card-bg" style="background:' + bgColor + '"></div>'
-        + '<div class="s-card-img">' + s.icon + '</div>'
-        + '<div class="s-card-tag">' + getProductTag(firstProduct) + '</div>'
-        + '<div class="s-card-cta" data-i18n="detail.viewDetail">' + (translations[currentLang] && translations[currentLang]['detail.viewDetail'] || '点击查看详情 →') + '</div>'
-        + '<div class="s-card-info">'
-        + '<div class="s-card-name">' + getProductName(firstProduct) + '</div>'
-        + '<div class="s-card-kr">' + firstProduct.kr + '</div>'
-        + '<div class="s-card-spec">' + firstProduct.spec + '</div>'
-        + '<div class="s-card-spice">' + spiceDots(firstProduct.spice) + '</div>'
-        + '</div>';
-    card.onclick = function() { openDetail(s.id); };
-    productArea.appendChild(card);
-    row.appendChild(productArea);
-
-    return row;
-}
-
-function buildPage() {
-    var container = document.getElementById('scrollContainer');
-    for (var i = 0; i < SERIES.length; i += 2) {
-        var page = document.createElement('div');
-        page.className = 'scroll-page';
-        page.appendChild(buildRow(SERIES[i]));
-        if (i + 1 < SERIES.length) {
-            page.appendChild(buildRow(SERIES[i + 1]));
-        }
-        if (i === 0) {
-            var hint = document.createElement('div');
-            hint.className = 'scroll-hint';
-            hint.textContent = '上下滑动浏览更多系列';
-            page.appendChild(hint);
-        }
-        container.appendChild(page);
-    }
-}
-
-function setupSwipe() {
-    SERIES.forEach(function(s) {
-        var card = document.getElementById('card-' + s.id);
-        if (!card) return;
-        var startX = 0;
-        card.addEventListener('touchstart', function(e) {
-            startX = e.touches[0].clientX;
-        }, { passive: true });
-        card.addEventListener('touchend', function(e) {
-            var diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 40) {
-                if (diff < 0) nextProduct(s.id);
-                else prevProduct(s.id);
+        // i18n Translations
+        const translations = {
+            zh: {
+                'nav.home': '首页',
+            'nav.seasons': '四季发酵',
+                'nav.products': '产品殿堂',
+                'nav.story': '延边风土',
+                'nav.gift': '高端礼盒',
+                'nav.contact': '联系我们',
+                'filter.all': '全部',
+                'filter.kimchi': '辣白菜系',
+                'filter.meat': '荤味系',
+                'filter.herb': '草本系',
+                'filter.special': '特产系',
+                'spice': '辣度',
+                'detail.link': '了解详情 →',
+                'detail.ingredients': '配料',
+                'detail.pairing': '建议搭配',
+                'detail.addToGift': '加入礼盒',
+                'detail.buyNow': '立即购买',
+                'detail.close': '收起',
+                'spice.mild': '入门友好',
+                'spice.medium': '微辣',
+                'spice.hot': '中辣',
+                'spice.fiery': '辣',
+                'recommend.title': '这些也值得尝',
+                'footer.desc': '源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。'
+            },
+            ko: {
+                'nav.home': '홈',
+            'nav.seasons': '사계절 발효',
+                'nav.products': '제품 전시',
+                'nav.story': '연변 풍토',
+                'nav.gift': '고급 선물세트',
+                'nav.contact': '연락처',
+                'filter.all': '전체',
+                'filter.kimchi': '김치 계열',
+                'filter.meat': '육류 계열',
+                'filter.herb': '허브 계열',
+                'filter.special': '특산 계열',
+                'spice': '매운맛',
+                'detail.link': '자세히 보기 →',
+                'detail.ingredients': '배합료',
+                'detail.pairing': '추천 조합',
+                'detail.addToGift': '선물세트에 추가',
+                'detail.buyNow': '바로 구매',
+                'detail.close': '접기',
+                'spice.mild': '순한맛',
+                'spice.medium': '약간 매운맛',
+                'spice.hot': '중간 매운맛',
+                'spice.fiery': '매운맛',
+                'recommend.title': '이것도 맛보세요',
+                'footer.desc': '연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지켜드립니다.'
+            },
+            en: {
+                'nav.seasons': 'Seasonal Fermentation',
+                'nav.products': 'Products',
+                'nav.story': 'Yanbian Heritage',
+                'nav.gift': 'Luxury Gift Sets',
+                'nav.contact': 'Contact Us',
+                'filter.all': 'All',
+                'filter.kimchi': 'Kimchi Series',
+                'filter.meat': 'Seafood & Meat',
+                'filter.herb': 'Herb Series',
+                'filter.special': 'Specialty',
+                'spice': 'Spice Level',
+                'detail.link': 'View Details →',
+                'detail.ingredients': 'Ingredients',
+                'detail.pairing': 'Perfect Pairing',
+                'detail.addToGift': 'Add to Gift Box',
+                'detail.buyNow': 'Buy Now',
+                'detail.close': 'Close',
+                'spice.mild': 'Mild',
+                'spice.medium': 'Medium',
+                'spice.hot': 'Hot',
+                'spice.fiery': 'Fiery',
+                'recommend.title': 'You Might Also Like',
+                'footer.desc': 'Handcrafted Jangajii kimchi from Yanbian, preserving the authentic flavors through seasonal fermentation.'
+            },
+            ja: {
+                'nav.home': 'ホーム',
+            'nav.seasons': '四季発酵',
+                'nav.products': '製品展示',
+                'nav.story': '延辺風土',
+                'nav.gift': '高級ギフト',
+                'nav.contact': 'お問い合わせ',
+                'filter.all': 'すべて',
+                'filter.kimchi': '白菜キムチ系',
+                'filter.meat': '海鮮・肉系',
+                'filter.herb': 'ハーブ系',
+                'filter.special': '特産品系',
+                'spice': '辛さ',
+                'detail.link': '詳細を見る →',
+                'detail.ingredients': '材料',
+                'detail.pairing': 'おすすめ組み合わせ',
+                'detail.addToGift': 'ギフトに追加',
+                'detail.buyNow': '今すぐ購入',
+                'detail.close': '閉じる',
+                'spice.mild': 'マイルド',
+                'spice.medium': '少し辛い',
+                'spice.hot': '中辛',
+                'spice.fiery': '辛い',
+                'recommend.title': 'こちらもおすすめ',
+                'footer.desc': '延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。'
             }
-        }, { passive: true });
-    });
-}
+        };
 
-buildPage();
-setupSwipe();
-</script>
+        // Language System
+        let currentLang = localStorage.getItem('hailanzu-lang') || 'zh';
 
-<script>
-/* ======== Detail Overlay ======== */
-var carouselTimer = null;
-var carouselIdx = 0;
-var _detailOpen = false;
-
-function buildCarouselSlides(s, p, cardColor) {
-    var labels = [
-        { zh: '\u4ea7\u54c1\u5c55\u793a', en: 'Product View', ja: '\u88fd\u54c1\u5c55\u793a' },
-        { zh: '\u539f\u6599\u7ec6\u8282', en: 'Ingredients', ja: '\u539f\u6599\u8a73\u7d30' },
-        { zh: '\u98df\u7528\u573a\u666f', en: 'Serving Scene', ja: '\u98df\u3079\u308b\u30b7\u30fc\u30f3' }
-    ];
-    var icons = [s.icon, '\u2728', '\ud83c\udf7d\ufe0f'];
-    var brightnessOffsets = [0, -10, 15];
-
-    var langLabels = labels.map(function(l) {
-        if (currentLang === 'en') return l.en;
-        if (currentLang === 'ja') return l.ja;
-        return l.zh;
-    });
-
-    var track = document.getElementById('carouselTrack');
-    track.innerHTML = '';
-    icons.forEach(function(icon, i) {
-        var div = document.createElement('div');
-        div.className = 'detail-carousel-slide' + (i === 0 ? ' active' : '');
-        var gradStart = adjustBrightness(cardColor, -40 + brightnessOffsets[i]);
-        var gradEnd = adjustBrightness(cardColor, -60 + brightnessOffsets[i]);
-        if (s.light) {
-            gradStart = adjustBrightness(s.color, -20 + brightnessOffsets[i]);
-            gradEnd = adjustBrightness(s.color, -35 + brightnessOffsets[i]);
+        function detectBrowserLang() {
+            const browserLang = navigator.language.slice(0, 2);
+            if (['zh', 'ko', 'en', 'ja'].includes(browserLang)) {
+                return browserLang;
+            }
+            return 'zh';
         }
-        div.innerHTML = '<div class="detail-carousel-glow" style="background:' + cardColor + '"></div>'
-            + '<div class="detail-carousel-ring"></div>'
-            + '<div class="detail-carousel-bg" style="background:linear-gradient(150deg,' + gradStart + ',' + gradEnd + ')"></div>'
-            + '<div class="detail-carousel-icon">' + icon + '</div>'
-            + '<div class="detail-carousel-label">' + langLabels[i] + '</div>';
-        track.appendChild(div);
-    });
 
-    var dots = document.getElementById('carouselDots');
-    dots.innerHTML = '';
-    icons.forEach(function(_, i) {
-        var dot = document.createElement('div');
-        dot.className = 'detail-carousel-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = function() { goToSlide(i); };
-        dots.appendChild(dot);
-    });
-
-    carouselIdx = 0;
-    startCarouselAuto();
-}
-
-function goToSlide(idx) {
-    var slides = document.querySelectorAll('.detail-carousel-slide');
-    var dots = document.querySelectorAll('.detail-carousel-dot');
-    if (slides.length === 0) return;
-    carouselIdx = ((idx % slides.length) + slides.length) % slides.length;
-    slides.forEach(function(s, i) {
-        s.className = 'detail-carousel-slide' + (i === carouselIdx ? ' active' : '');
-    });
-    dots.forEach(function(d, i) {
-        d.className = 'detail-carousel-dot' + (i === carouselIdx ? ' active' : '');
-    });
-}
-
-function startCarouselAuto() {
-    stopCarouselAuto();
-    carouselTimer = setInterval(function() {
-        goToSlide(carouselIdx + 1);
-    }, 3000);
-}
-
-function stopCarouselAuto() {
-    if (carouselTimer) {
-        clearInterval(carouselTimer);
-        carouselTimer = null;
-    }
-}
-
-function lockBodyScroll() {
-    _detailOpen = true;
-    document.body.style.touchAction = 'none';
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-}
-
-function unlockBodyScroll() {
-    _detailOpen = false;
-    document.body.style.touchAction = '';
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-}
-
-function openDetail(seriesId, productIdx) {
-    var s = SERIES.find(function(x) { return x.id === seriesId; });
-    if (!s) return;
-    var st = sectionState[seriesId];
-    var products = getProducts(s, st.line);
-    var p = products[productIdx || st.product];
-    if (!p) return;
-
-    var overlay = document.getElementById('detailOverlay');
-    overlay.className = 'detail-overlay open' + (s.light ? ' light-overlay' : '');
-
-    var cardColor = s.color;
-    if (s.lines && s.lines.length > 0 && s.lines[st.line]) {
-        cardColor = s.lines[st.line].color;
-    }
-    buildCarouselSlides(s, p, cardColor);
-
-    var badgeHtml = '';
-    if (p.tag) badgeHtml += '<div class="detail-badge-item">' + getProductTag(p) + '</div>';
-    if (p.spec) badgeHtml += '<div class="detail-badge-item">' + p.spec + '</div>';
-    document.getElementById('detailBadge').innerHTML = badgeHtml;
-
-    var spiceNames = { zh: ['\u4e0d\u8fa3', '\u5fae\u8fa3', '\u4e2d\u8fa3', '\u8fa3', '\u5f88\u8fa3', '\u6781\u8fa3'], en: ['Mild', 'Light', 'Medium', 'Hot', 'Very Hot', 'Extreme'], ja: ['\u8f9b\u304f\u306a\u3044', '\u5fae\u8f9b', '\u4e2d\u8f9b', '\u8f9b\u3044', '\u6fc0\u8f9b', '\u8d85\u8f9b'] };
-    var spiceNameArr = spiceNames[currentLang] || spiceNames.zh;
-    var spiceLabelHtml = '<span class="detail-spice-label">' + (translations[currentLang] && translations[currentLang]['spice'] || '\u8fa3\u5ea6') + '</span><div class="detail-spice">' + spiceDots(p.spice, 8) + '</div><span style="font-size:9px;opacity:.3;margin-left:4px;color:var(--rice)">' + (spiceNameArr[p.spice] || '') + '</span>';
-    document.getElementById('detailSpiceRow').innerHTML = spiceLabelHtml;
-
-    document.getElementById('detailSeries').textContent = getSeriesName(s);
-    document.getElementById('detailName').textContent = getProductName(p);
-    document.getElementById('detailNameKr').textContent = p.kr || '';
-    document.getElementById('detailDesc').innerHTML = getProductDesc(p) || '';
-
-    var specsHtml = '';
-    if (p.origin) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">' + (translations[currentLang] && translations[currentLang]['detail.origin'] || '\u4ea7\u5730') + '</div><div class="detail-spec-value">' + getSpecValue(p, 'origin', 'originEn') + '</div></div>';
-    if (p.weight) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">' + (translations[currentLang] && translations[currentLang]['detail.weight'] || '\u89c4\u683c') + '</div><div class="detail-spec-value">' + getSpecValue(p, 'weight', 'weightEn') + '</div></div>';
-    if (p.shelf) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">' + (translations[currentLang] && translations[currentLang]['detail.shelf'] || '\u4fdd\u8d28\u671f') + '</div><div class="detail-spec-value">' + getSpecValue(p, 'shelf', 'shelfEn') + '</div></div>';
-    if (p.pairing) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">' + (translations[currentLang] && translations[currentLang]['detail.pairing'] || '\u642d\u914d\u63a8\u8350') + '</div><div class="detail-spec-value">' + getSpecValue(p, 'pairing', 'pairingEn') + '</div></div>';
-    document.getElementById('detailSpecs').innerHTML = specsHtml;
-
-    var relHtml = '<div class="detail-related-title">' + (translations[currentLang] && translations[currentLang]['detail.related'] || '\u540c\u7cfb\u5217\u5176\u4ed6\u4ea7\u54c1') + '</div><div class="detail-related-list">';
-    products.forEach(function(rp, ri) {
-        if (ri === (productIdx || st.product)) {
-            relHtml += '<div class="detail-related-item active"><div class="detail-related-icon">' + s.icon + '</div><div class="detail-related-name">' + getProductName(rp) + '</div></div>';
-        } else {
-            relHtml += '<div class="detail-related-item" data-series="' + seriesId + '" data-idx="' + ri + '"><div class="detail-related-icon">' + s.icon + '</div><div class="detail-related-name">' + getProductName(rp) + '</div></div>';
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('hailanzu-lang', lang);
+            
+            // Update all i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update document lang
+            document.documentElement.lang = lang;
+            
+            // Update product card text
+            updateProductCards();
+            
+            // Update product details if open
+            updateProductDetails();
         }
-    });
-    relHtml += '</div>';
-    document.getElementById('detailRelated').innerHTML = relHtml;
 
-    document.querySelectorAll('#detailRelated .detail-related-item:not(.active)').forEach(function(item) {
-        item.addEventListener('click', function() {
-            openDetail(item.dataset.series, parseInt(item.dataset.idx));
+        function updateProductCards() {
+            productCards.forEach(card => {
+                const productId = card.dataset.product;
+                const data = productData[productId];
+                if (!data) return;
+                const nameEl = card.querySelector('.product-name');
+                const descEl = card.querySelector('.product-desc');
+                if (nameEl) nameEl.textContent = data.name[currentLang] || data.name.zh;
+                if (descEl) descEl.textContent = data.desc[currentLang] || data.desc.zh;
+            });
+        }
+
+        function updateProductDetails() {
+            const detail = document.getElementById('productDetail');
+            if (detail.classList.contains('open')) {
+                const currentProduct = detail.dataset.currentProduct;
+                if (currentProduct && productData[currentProduct]) {
+                    const data = productData[currentProduct];
+                    document.getElementById('detailTitle').textContent = data.name[currentLang] || data.name.zh;
+                    document.getElementById('detailTitleKr').textContent = data.name.ko;
+                    document.getElementById('detailDesc').textContent = data.desc[currentLang] || data.desc.zh;
+                    document.getElementById('detailIngredients').textContent = data.ingredients[currentLang] || data.ingredients.zh;
+                    document.getElementById('detailPairing').textContent = data.pairing[currentLang] || data.pairing.zh;
+                    
+                    // Update spice dots
+                    const spiceContainer = document.getElementById('detailSpice');
+                    spiceContainer.innerHTML = '';
+                    for (let i = 1; i <= 4; i++) {
+                        const dot = document.createElement('span');
+                        dot.className = 'spice-dot' + (i <= data.spice ? ' active' : '');
+                        spiceContainer.appendChild(dot);
+                    }
+                }
+            }
+        }
+
+        // Initialize language
+        if (!localStorage.getItem('hailanzu-lang')) {
+            currentLang = detectBrowserLang();
+        }
+
+        // Navigation
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const nav = document.getElementById('nav');
+
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
         });
-    });
 
-    lockBodyScroll();
-}
+        mobileNavClose.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        });
 
-function closeDetail() {
-    var overlay = document.getElementById('detailOverlay');
-    overlay.className = 'detail-overlay';
-    unlockBodyScroll();
-    stopCarouselAuto();
-}
+        // Close mobile nav on link click
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
 
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeDetail();
-});
+        // Scroll effect for nav
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-document.getElementById('carouselPrev').addEventListener('click', function() {
-    goToSlide(carouselIdx - 1);
-    startCarouselAuto();
-});
+        // Language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+        });
 
-document.getElementById('carouselNext').addEventListener('click', function() {
-    goToSlide(carouselIdx + 1);
-    startCarouselAuto();
-});
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
 
-document.getElementById('detailClose').addEventListener('click', closeDetail);
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                
+                // Update active filter button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter cards
+                productCards.forEach(card => {
+                    const category = card.dataset.category;
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                
+                // Close detail panel when filtering
+                closeDetail();
+            });
+        });
 
-document.getElementById('detailOverlay').addEventListener('click', function(e) {
-    if (e.target === this) closeDetail();
-});
+        // Product detail functionality
+        const detailPanel = document.getElementById('productDetail');
+        const detailClose = document.getElementById('detailClose');
+        const detailCloseBtn = document.getElementById('detailCloseBtn');
 
-document.addEventListener('touchmove', function(e) {
-    if (_detailOpen) {
-        var container = document.getElementById('detailContainer');
-        if (container && !container.contains(e.target)) {
-            e.preventDefault();
+        function showProduct(productId) {
+            const data = productData[productId];
+            if (!data) return;
+            
+            detailPanel.dataset.currentProduct = productId;
+            // Carousel emojis are updated in updateCarousel()
+            document.getElementById('detailTitle').textContent = data.name[currentLang] || data.name.zh;
+            document.getElementById('detailTitleKr').textContent = data.name.ko;
+            document.getElementById('detailDesc').textContent = data.desc[currentLang] || data.desc.zh;
+            document.getElementById('detailIngredients').textContent = data.ingredients[currentLang] || data.ingredients.zh;
+            document.getElementById('detailPairing').textContent = data.pairing[currentLang] || data.pairing.zh;
+            
+            // Update spice dots
+            const spiceContainer = document.getElementById('detailSpice');
+            spiceContainer.innerHTML = '';
+            for (let i = 1; i <= 4; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'spice-dot' + (i <= data.spice ? ' active' : '');
+                spiceContainer.appendChild(dot);
+            }
+            
+            // Update carousel
+            updateCarousel(data);
+
+            detailPanel.classList.add('open');
+            detailPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-    }
-}, { passive: false });
-</script>
 
-<script>
-/* ======== QR Popup + Floating CTA ======== */
-var qrOverlay = document.getElementById('qrOverlay');
-var qrPopupClose = document.getElementById('qrPopupClose');
-var qrPopupTitle = document.getElementById('qrPopupTitle');
-var qrPopupHint = document.getElementById('qrPopupHint');
+        let currentSlide = 0;
 
-var pInfo = {
-    'wechat-work': {
-        t: { zh: '\u4f01\u4e1a\u5fae\u4fe1', ko: '\uae30\uc5c5 \uc704\uce5b', en: 'WeChat Work', ja: '\u4f01\u696dWeChat' },
-        h: { zh: '\u626b\u7801\u52a0\u5165\u6d77\u5170\u83f9\u793e\u7fa4', ko: '\uc2a4\uce94\ud558\uc5ec \ud574\ub780\uc800 \ucee4\ubba4\ub2c8\ud2f0 \uac00\uc785', en: 'Scan to join HAILANZU community', ja: '\u30b9\u30ad\u30e3\u30f3\u3057\u3066\u6d77\u862d\u83f9\u30b3\u30df\u30e5\u30cb\u30c6\u30a3\u306b\u53c2\u52a0' }
-    }
-};
+        function updateCarousel(data) {
+            currentSlide = 0;
+            const mainEmoji = document.getElementById('detailEmoji');
+            const alt1 = document.getElementById('detailEmojiAlt1');
+            const alt2 = document.getElementById('detailEmojiAlt2');
+            
+            mainEmoji.textContent = data.emoji;
+            mainEmoji.style.background = data.bgColor;
+            alt1.textContent = data.altEmojis ? data.altEmojis[0] : '🍚';
+            alt1.style.background = data.bgColor;
+            alt2.textContent = data.altEmojis ? data.altEmojis[1] : '🥢';
+            alt2.style.background = data.bgColor;
+            
+            // Reset to first slide
+            goToSlide(0);
+        }
 
-function openQR(platform) {
-    var info = pInfo[platform];
-    if (!info) return;
-    var lang = currentLang || 'zh';
-    if (qrPopupTitle) qrPopupTitle.textContent = info.t[lang] || info.t.zh;
-    if (qrPopupHint) qrPopupHint.textContent = info.h[lang] || info.h.zh;
-    if (qrOverlay) {
-        qrOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-}
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
 
-function closeQR() {
-    if (qrOverlay) {
-        qrOverlay.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-}
+        // Carousel navigation
+        document.getElementById('carouselPrev').addEventListener('click', () => {
+            const total = document.querySelectorAll('.carousel-slide').length;
+            goToSlide((currentSlide - 1 + total) % total);
+        });
 
-if (qrPopupClose) qrPopupClose.addEventListener('click', closeQR);
-if (qrOverlay) qrOverlay.addEventListener('click', function(e) { if (e.target === qrOverlay) closeQR(); });
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeQR(); });
+        document.getElementById('carouselNext').addEventListener('click', () => {
+            const total = document.querySelectorAll('.carousel-slide').length;
+            goToSlide((currentSlide + 1) % total);
+        });
 
-document.querySelectorAll('.community-card[data-platform]').forEach(function(card) {
-    card.addEventListener('click', function() { openQR(this.dataset.platform); });
-});
+        document.querySelectorAll('.carousel-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.dataset.dot));
+            });
+        });
 
-var floatingCta = document.getElementById('floatingCta');
-if (floatingCta) {
-    var ctaDismissed = localStorage.getItem('hailanzu_cta_dismissed');
-    if (!ctaDismissed || Date.now() - parseInt(ctaDismissed) > 604800000) {
-        setTimeout(function() { floatingCta.classList.add('visible'); }, 2000);
-    }
-    floatingCta.addEventListener('click', function() {
-        var community = document.getElementById('community');
-        if (community) community.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-}
+        // Auto-advance carousel every 3s
+        let carouselTimer = null;
 
-/* ======== Init ======== */
-setLanguage(currentLang);
-</script>
+        function startCarouselTimer() {
+            stopCarouselTimer();
+            carouselTimer = setInterval(() => {
+                const total = document.querySelectorAll('.carousel-slide').length;
+                goToSlide((currentSlide + 1) % total);
+            }, 3000);
+        }
 
-<script src="js/common.js"></script>
+        function stopCarouselTimer() {
+            if (carouselTimer) {
+                clearInterval(carouselTimer);
+                carouselTimer = null;
+            }
+        }
+
+        // Start timer when detail panel opens, stop when closes
+        const origOpen = showProduct;
+        const origClose = closeDetail;
+
+        function closeDetail() {
+            detailPanel.classList.remove('open');
+            stopCarouselTimer();
+        }
+
+        productCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.detail-link')) {
+                    e.preventDefault();
+                }
+                const productId = card.dataset.product;
+                showProduct(productId);
+                startCarouselTimer();
+            });
+        });
+
+        detailClose.addEventListener('click', closeDetail);
+        detailCloseBtn.addEventListener('click', closeDetail);
+
+        // Reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        productCards.forEach(card => observer.observe(card));
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage(currentLang);
+        });
+    </script>
 </body>
 </html>
