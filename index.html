@@ -131,6 +131,8 @@ ul,ol{list-style:none}
 .nav-panel.open .nav-panel-item:nth-child(6){transition-delay:.50s}
 .nav-panel.open .nav-panel-item:nth-child(7){transition-delay:.58s}
 .nav-panel-item:hover{opacity:1!important}
+.nav-panel-item:visited{color:var(--rice)}
+.nav-panel-item:focus{outline:none;opacity:1!important}
 .nav-panel-item::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--seal);transition:width .4s var(--ease-out)}
 .nav-panel-item:hover::after{width:100%}
 .nav-panel-item-kr{font-family:var(--font-serif-kr);font-size:clamp(12px,1.5vw,16px);opacity:.25;letter-spacing:4px;margin-top:-2px;margin-bottom:16px;display:block;font-weight:400}
@@ -140,6 +142,8 @@ ul,ol{list-style:none}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:32px;flex:1;z-index:10}
 .nav-links a{font-family:var(--font-serif);color:var(--rice);text-decoration:none;font-size:13px;letter-spacing:3px;opacity:.45;transition:opacity .3s;position:relative;white-space:nowrap}
 .nav-links a:hover{opacity:1}
+.nav-links a:visited{color:var(--rice)}
+.nav-links a:focus{outline:none;opacity:1}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--seal);transition:width .4s var(--ease-out)}
 .nav-links a:hover::after{width:100%}
 .nav.scrolled .nav-links a{opacity:.55}
@@ -1098,7 +1102,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
   <div class="hero-tagline">
     <div class="hero-tagline-text" data-i18n="hero.tagline">延边古法菹味 · The Art of Jangajii Fermentation</div>
     <div class="hero-tagline-sub" style="font-family:'Noto Serif SC',serif;font-size:clamp(11px,1vw,14px);letter-spacing:2px;opacity:.25;margin-top:8px;color:var(--rice)">海兰江的水，零下八度的霜，三代人不肯放手的手艺</div>
-    <div class="hero-zu-explain" data-i18n="hero.zu.explain" style="font-family:'Noto Serif SC',serif;font-size:clamp(10px,0.8vw,12px);letter-spacing:1px;opacity:0;margin-top:12px;color:var(--rice)">菹 zū · 古法腌制，始于先秦</div>
+    <div class="hero-zu-explain" data-i18n="hero.zu.explain" style="font-family:'Playfair Display','Noto Serif SC',serif;font-size:clamp(10px,0.8vw,12px);letter-spacing:1px;opacity:0;margin-top:12px;color:var(--rice)">菹 zū · 古法腌制，始于先秦</div>
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -1780,6 +1784,8 @@ const i18n = {
   'nav.story.sub': { zh:'연변 풍토', ko:'延边风土', en:'연변 풍토', ja:'연변 풍토' },
   'nav.gift': { zh:'高端礼盒', ko:'프리미엄 선물', en:'Gift Collection', ja:'高級ギフト' },
   'nav.gift.sub': { zh:'프리미엄 선물', ko:'高端礼盒', en:'프리미엄 선물', ja:'프리미엄 선물' },
+  'nav.recipes': { zh:'菹味食谱', ko:'저 레시피', en:'Recipes', ja:'レシピ' },
+  'nav.recipes.sub': { zh:'저 레시피', ko:'菹味食谱', en:'저 레시피', ja:'저 레시피' },
   'nav.contact': { zh:'联系我们', ko:'문의하기', en:'Contact', ja:'お問い合わせ' },
   'nav.contact.sub': { zh:'문의하기', ko:'联系我们', en:'문의하기', ja:'문의하기' },
 
