@@ -377,6 +377,123 @@
         }
         .recipe-cta a:hover { background: var(--seal-dark); }
 
+        /* ===== Recipe Video Section ===== */
+        .recipe-video-section {
+            margin-top: 2rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--rice-deep);
+        }
+        .recipe-video-header {
+            display: flex; align-items: center; gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .recipe-video-header-icon {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--seal) 0%, var(--seal-dark) 100%);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 8px rgba(200,16,46,0.25);
+        }
+        .recipe-video-header-icon svg {
+            width: 12px; height: 12px; fill: white; margin-left: 1px;
+        }
+        .recipe-video-title {
+            font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink);
+            letter-spacing: 2px;
+        }
+        .recipe-video-title-sub {
+            font-size: 0.7rem; color: var(--brown-light); margin-left: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .recipe-video-player {
+            position: relative; width: 100%;
+            aspect-ratio: 16 / 9; border-radius: 12px;
+            overflow: hidden; cursor: pointer;
+            background: linear-gradient(145deg, #0F2420 0%, #1A3C34 40%, #0F2420 100%);
+            box-shadow: 0 4px 24px rgba(26,60,52,0.2), inset 0 0 80px rgba(0,0,0,0.15);
+        }
+        .recipe-video-player::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 50%, rgba(196,114,127,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 80% 60% at 30% 40%, rgba(184,134,11,0.04) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .recipe-video-border {
+            position: absolute; inset: 0; border-radius: 12px;
+            border: 1px solid rgba(184,134,11,0.15);
+            pointer-events: none; z-index: 3;
+        }
+        .recipe-video-film-grain {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 2;
+        }
+        .recipe-video-play-btn {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 68px; height: 68px; border-radius: 50%;
+            background: rgba(200,16,46,0.9);
+            border: 2px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 5; transition: all 0.4s var(--ease-out);
+            box-shadow: 0 0 0 0 rgba(200,16,46,0.4), 0 4px 20px rgba(0,0,0,0.3);
+            animation: video-pulse 2.5s ease-in-out infinite;
+        }
+        .recipe-video-play-btn svg {
+            width: 24px; height: 24px; fill: white; margin-left: 3px;
+        }
+        .recipe-video-play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: var(--seal);
+            box-shadow: 0 0 0 0 rgba(200,16,46,0.4), 0 6px 28px rgba(0,0,0,0.4);
+        }
+        @keyframes video-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(200,16,46,0.4), 0 4px 20px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 0 0 12px rgba(200,16,46,0), 0 4px 20px rgba(0,0,0,0.3); }
+        }
+        .recipe-video-text-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 2.5rem 1.5rem 1.2rem; z-index: 4;
+            background: linear-gradient(to top, rgba(15,36,32,0.9) 0%, transparent 100%);
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .recipe-video-recipe-name {
+            font-family: var(--font-serif); font-size: 0.9rem; color: var(--rice);
+            letter-spacing: 1px; opacity: 0.85;
+        }
+        .recipe-video-duration {
+            font-family: var(--font-sans); font-size: 0.7rem; color: var(--rice-dim);
+            background: rgba(0,0,0,0.4); padding: 2px 8px; border-radius: 4px;
+            letter-spacing: 1px; backdrop-filter: blur(4px);
+        }
+        .recipe-video-corner-tl,
+        .recipe-video-corner-tr,
+        .recipe-video-corner-bl,
+        .recipe-video-corner-br {
+            position: absolute; width: 20px; height: 20px; z-index: 4;
+            pointer-events: none;
+        }
+        .recipe-video-corner-tl { top: 10px; left: 10px; border-top: 1.5px solid rgba(184,134,11,0.3); border-left: 1.5px solid rgba(184,134,11,0.3); }
+        .recipe-video-corner-tr { top: 10px; right: 10px; border-top: 1.5px solid rgba(184,134,11,0.3); border-right: 1.5px solid rgba(184,134,11,0.3); }
+        .recipe-video-corner-bl { bottom: 10px; left: 10px; border-bottom: 1.5px solid rgba(184,134,11,0.3); border-left: 1.5px solid rgba(184,134,11,0.3); }
+        .recipe-video-corner-br { bottom: 10px; right: 10px; border-bottom: 1.5px solid rgba(184,134,11,0.3); border-right: 1.5px solid rgba(184,134,11,0.3); }
+        .recipe-video-placeholder-text {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) translateY(30px);
+            font-size: 0.72rem; color: rgba(245,240,232,0.25);
+            letter-spacing: 3px; z-index: 1;
+            font-family: var(--font-sans);
+        }
+
+        @media (max-width: 768px) {
+            .recipe-video-section { margin-top: 1.5rem; padding-top: 1.2rem; }
+            .recipe-video-play-btn { width: 56px; height: 56px; }
+            .recipe-video-play-btn svg { width: 20px; height: 20px; }
+            .recipe-video-corner-tl, .recipe-video-corner-tr,
+            .recipe-video-corner-bl, .recipe-video-corner-br { width: 14px; height: 14px; }
+            .recipe-video-text-overlay { padding: 2rem 1rem 1rem; }
+            .recipe-video-recipe-name { font-size: 0.8rem; }
+        }
+
         @media (max-width: 768px) {
             .recipes-grid { grid-template-columns: 1fr; }
             .recipe-detail { margin: 0; border-radius: 0; min-height: 100vh; }
@@ -713,7 +830,7 @@
             'hero.title':'\u83F9\u5473\u98DF\u8C31','hero.desc':'\u4ECE\u4E00\u575B\u597D\u6CE1\u83DC\u5230\u4E00\u684C\u597D\u5473\u9053',
             'filter.all':'\u5168\u90E8','filter.quick':'\u5FEB\u624B\u83DC','filter.stew':'\u7096\u716E\u9505\u7269','filter.staple':'\u4E3B\u98DF','filter.snack':'\u5C0F\u98DF\u4E0B\u9152',
             'meta.time':'\u65F6\u95F4','meta.servings':'\u4EFD\u91CF','meta.spice':'\u8FA3\u5EA6',
-            'detail.ingredients':'\u98DF\u6750','detail.steps':'\u505A\u6CD5','detail.tip':'\u5C0F\u8D34\u58EB','detail.cta':'\u9009\u4E00\u575B\u597D\u6CE1\u83DC\u5F00\u59CB',
+            'detail.ingredients':'\u98DF\u6750','detail.steps':'\u505A\u6CD5','detail.tip':'\u5C0F\u8D34\u58EB','detail.cta':'\u9009\u4E00\u575B\u597D\u6CE1\u83DC\u5F00\u59CB','detail.video':'\u98DF\u8C31\u89C6\u9891','detail.videoSub':'COOKING VIDEO','detail.videoDuration':'02:30','detail.videoComing':'\u89C6\u9891\u5373\u5C06\u4E0A\u7EBF',
             'footer.brand':'\u6D77\u5170\u83F9','footer.desc':'\u5EF6\u8FB9\u671D\u9C9C\u65CF\u4F20\u7EDF\u624B\u5DE5\u6CE1\u83DC\uFF0C\u4EE5\u56DB\u5B63\u53D1\u9175\u7684\u8010\u5FC3\uFF0C\u5B88\u62A4\u6BCF\u4E00\u575B\u7684\u98CE\u5473\u3002',
             'footer.nav':'\u5BFC\u822A','footer.connect':'\u8054\u7CFB','footer.follow':'\u5173\u6CE8',
             'footer.wechat':'\u5FAE\u4FE1\u516C\u4F17\u53F7','footer.weibo':'\u5FAE\u535A @\u6D77\u5170\u83F9','footer.rights':'\u7248\u6743\u6240\u6709'
@@ -723,7 +840,7 @@
             'hero.title':'\uC800 \uB808\uC2DC\uD53C','hero.desc':'\uC7A5\uC544\uCE58\uD55C \uC7A5\uC544\uCE58\uBD80\uD130 \uC0C1\uC744 \uCC28\uB9AC\uAE4C\uC9C0',
             'filter.all':'\uC804\uCCB4','filter.quick':'\uAC04\uD3B8 \uC694\uB9AC','filter.stew':'\uAD6D\u00B7\uCC0C\uAC1C','filter.staple':'\uC8FC\uC2DD','filter.snack':'\uAC04\uC2DD\u00B7\uC548\uC8FC',
             'meta.time':'\uC2DC\uAC04','meta.servings':'\uC778\uBCF8','meta.spice':'\uB9E4\uC6B4\uB9DB',
-            'detail.ingredients':'\uC7AC\uB8CC','detail.steps':'\uB9CC\uB4DC\uB294 \uBC95','detail.tip':'\uD301','detail.cta':'\uC88B\uC740 \uAE40\uCE58\uCC0C \uD558\uB098\uB85C \uC2DC\uC791\uD558\uAE30',
+            'detail.ingredients':'\uC7AC\uB8CC','detail.steps':'\uB9CC\uB4DC\uB294 \uBC95','detail.tip':'\uD301','detail.cta':'\uC88B\uC740 \uAE40\uCE58\uCC0C \uD558\uB098\uB85C \uC2DC\uC791\uD558\uAE30','detail.video':'\uC694\uB9AC \uB3D9\uC601\uC0C1','detail.videoSub':'COOKING VIDEO','detail.videoDuration':'02:30','detail.videoComing':'\uB3D9\uC601\uC0C1 \uACF5\uAC1C \uC608\uC815',
             'footer.brand':'\uD574\uB780\uC800','footer.desc':'\uC5F0\uBCC0 \uC870\uC120\uC871 \uC804\uD1B5 \uC218\uC81C \uAE40\uCE58\uCC0C, \uC0AC\uACC4\uC808 \uBC1C\uD6A8\uC758 \uC778\uB0B4\uB85C \uB9E4 \uD56D\uC544\uB9AC\uC758 \uD48D\uBBF8\uB97C \uC9C0\uD0B5\uB2C8\uB2E4.',
             'footer.nav':'\uB0B4\uBE44\uAC8C\uC774\uC158','footer.connect':'\uC5F0\uB77D\uCC98','footer.follow':'\uD314\uB85C\uC6B0',
             'footer.wechat':'\uC704\uCC3D \uACF5\uC2DD \uACC4\uC815','footer.weibo':'\uC6E8\uC774\uBCF4 @\uD574\uB730\uC800','footer.rights':'\uBAA8\uB4E0 \uAD8C\uB9AC \uBCF4\uC720'
@@ -733,7 +850,7 @@
             'hero.title':'Recipes','hero.desc':'From a jar of kimchi to a table of flavors',
             'filter.all':'All','filter.quick':'Quick','filter.stew':'Stews','filter.staple':'Mains','filter.snack':'Snacks',
             'meta.time':'Time','meta.servings':'Servings','meta.spice':'Spice',
-            'detail.ingredients':'Ingredients','detail.steps':'Steps','detail.tip':'Tip','detail.cta':'Start with a jar of good kimchi',
+            'detail.ingredients':'Ingredients','detail.steps':'Steps','detail.tip':'Tip','detail.cta':'Start with a jar of good kimchi','detail.video':'Recipe Video','detail.videoSub':'COOKING VIDEO','detail.videoDuration':'02:30','detail.videoComing':'Video Coming Soon',
             'footer.brand':'HAILANZU','footer.desc':'Handcrafted Jangajii kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
             'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
             'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
@@ -743,7 +860,7 @@
             'hero.title':'\u30EC\u30B7\u30D4','hero.desc':'\u4E00\u7F50\u306E\u30AD\u30E0\u30C1\u304B\u3089\u4E00\u5353\u306E\u5473\u3078',
             'filter.all':'\u3059\u3079\u3066','filter.quick':'\u7C21\u5358\u6599\u7406','filter.stew':'\u934B\u7269','filter.staple':'\u4E3B\u98DF','filter.snack':'\u304A\u3064\u307E\u307F',
             'meta.time':'\u6642\u9593','meta.servings':'\u4EBA\u5206','meta.spice':'\u8F9B\u3055',
-            'detail.ingredients':'\u6750\u6599','detail.steps':'\u4F5C\u308A\u65B9','detail.tip':'\u30B3\u30C4','detail.cta':'\u7F8E\u5473\u3057\u3044\u30AD\u30E0\u30C1\u304B\u3089\u59CB\u3081\u3088\u3046',
+            'detail.ingredients':'\u6750\u6599','detail.steps':'\u4F5C\u308A\u65B9','detail.tip':'\u30B3\u30C4','detail.cta':'\u7F8E\u5473\u3057\u3044\u30AD\u30E0\u30C1\u304B\u3089\u59CB\u3081\u3088\u3046','detail.video':'\u30EC\u30B7\u30D4\u52D5\u753B','detail.videoSub':'COOKING VIDEO','detail.videoDuration':'02:30','detail.videoComing':'\u52D5\u753B\u516C\u958B\u4E88\u5B9A',
             'footer.brand':'\u6D77\u862D\u83F9','footer.desc':'\u5EF6\u8FB9\u671D\u9BAE\u65CF\u306E\u4F1D\u7D71\u624B\u4F5C\u308A\u30AD\u30E0\u30C1\u3001\u56DB\u5B63\u306E\u767A\u9175\u6280\u8853\u3067\u4E00\u7F50\u305A\u3064\u306E\u98A8\u5473\u3092\u5927\u5207\u306B\u5B88\u308A\u307E\u3059\u3002',
             'footer.nav':'\u30CA\u30D3\u30B2\u30FC\u30B7\u30E7\u30F3','footer.connect':'\u9023\u7D61\u5148','footer.follow':'\u30D5\u30A9\u30ED\u30FC',
             'footer.wechat':'WeChat\u516C\u5F0F\u30A2\u30AB\u30A6\u30F3\u30C8','footer.weibo':'\u5FAE\u535A @\u6D77\u862D\u83F9','footer.rights':'\u5168\u8457\u4F5C\u6A29\u4FDD\u6709'
@@ -881,6 +998,29 @@
         if (zh.tip) {
             html += '<div class="recipe-tip"><p>' + zh.tip + '</p></div>';
         }
+
+        // Video section
+        html += '<div class="recipe-video-section">';
+        html += '<div class="recipe-video-header">';
+        html += '<div class="recipe-video-header-icon"><svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg></div>';
+        html += '<span class="recipe-video-title">' + t('detail.video') + '</span>';
+        html += '<span class="recipe-video-title-sub">' + t('detail.videoSub') + '</span>';
+        html += '</div>';
+        html += '<div class="recipe-video-player" onclick="this.classList.toggle(\'playing\')">';
+        html += '<div class="recipe-video-border"></div>';
+        html += '<div class="recipe-video-film-grain"></div>';
+        html += '<div class="recipe-video-corner-tl"></div>';
+        html += '<div class="recipe-video-corner-tr"></div>';
+        html += '<div class="recipe-video-corner-bl"></div>';
+        html += '<div class="recipe-video-corner-br"></div>';
+        html += '<div class="recipe-video-play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg></div>';
+        html += '<div class="recipe-video-text-overlay">';
+        html += '<div class="recipe-video-recipe-name">' + txt.title + '</div>';
+        html += '<div class="recipe-video-duration">' + t('detail.videoDuration') + '</div>';
+        html += '</div>';
+        html += '<div class="recipe-video-placeholder-text">' + t('detail.videoComing') + '</div>';
+        html += '</div>';
+        html += '</div>';
 
         html += '<div class="recipe-cta"><a href="products.html">' + t('detail.cta') + '</a></div>';
 
