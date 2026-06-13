@@ -90,6 +90,7 @@
 
         .nav-links { display: flex; align-items: center; gap: 2rem; }
         .nav-link {
+            -webkit-tap-highlight-color: transparent;
             font-family: var(--font-sans); font-size: 0.9rem; color: var(--rice);
             text-decoration: none; position: relative; padding: 0.25rem 0; transition: color 0.3s;
         }
@@ -127,10 +128,10 @@
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .nav-links { display: none; }
-        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; }
-        .nav-link:visited { color: inherit; }
+        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; -webkit-tap-highlight-color: transparent; }
+        .nav-link:visited { color: var(--ink); }
         .nav-link:focus { outline: none; }
-        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; }
+        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; -webkit-tap-highlight-color: transparent; }
 
         }
 
@@ -147,6 +148,7 @@
         .mobile-nav a { font-family: var(--font-serif); font-size: 1.8rem; color: var(--rice); text-decoration: none; transition: color 0.3s; }
         .mobile-nav a:hover, .mobile-nav a.active { color: var(--azalea); }
         .mobile-nav a:visited { color: var(--azalea); }
+        .mobile-nav a:active { background: transparent; -webkit-tap-highlight-color: transparent; }
         .mobile-nav a:focus { outline: none; }
         .mobile-nav-close {
             position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px;

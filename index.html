@@ -133,6 +133,7 @@ ul,ol{list-style:none}
 .nav-panel-item:hover{opacity:1!important}
 .nav-panel-item:visited{color:var(--rice)}
 .nav-panel-item:focus{outline:none;opacity:1!important}
+.nav-panel-item:active{background:transparent;color:var(--rice);-webkit-tap-highlight-color:transparent}
 .nav-panel-item::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--seal);transition:width .4s var(--ease-out)}
 .nav-panel-item:hover::after{width:100%}
 .nav-panel-item-kr{font-family:var(--font-serif-kr);font-size:clamp(12px,1.5vw,16px);opacity:.25;letter-spacing:4px;margin-top:-2px;margin-bottom:16px;display:block;font-weight:400}
@@ -140,10 +141,11 @@ ul,ol{list-style:none}
 
 /* 右侧语言切换 */
 .nav-links{display:flex;align-items:center;justify-content:center;gap:32px;flex:1;z-index:10}
-.nav-links a{font-family:var(--font-serif);color:var(--rice);text-decoration:none;font-size:13px;letter-spacing:3px;opacity:.45;transition:opacity .3s;position:relative;white-space:nowrap}
+.nav-links a{font-family:var(--font-serif);color:var(--rice);text-decoration:none;font-size:13px;letter-spacing:3px;opacity:.45;transition:opacity .3s;position:relative;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .nav-links a:hover{opacity:1}
 .nav-links a:visited{color:var(--rice)}
 .nav-links a:focus{outline:none;opacity:1}
+.nav-links a:active{background:transparent;color:var(--rice);-webkit-tap-highlight-color:transparent}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--seal);transition:width .4s var(--ease-out)}
 .nav-links a:hover::after{width:100%}
 .nav.scrolled .nav-links a{opacity:.55}
@@ -446,8 +448,8 @@ ul,ol{list-style:none}
 @media(max-width:768px){
   .nav{justify-content:space-between}
   .nav-links{display:none}
-        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; }
-        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; }
+        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; -webkit-tap-highlight-color: transparent; }
+        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; -webkit-tap-highlight-color: transparent; }
 
   .nav-logo{padding:0 20px}
   .nav.scrolled .nav-logo{padding:0 16px}

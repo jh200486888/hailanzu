@@ -54,7 +54,7 @@ section,footer{overflow:hidden}
 .nav-logo-text .zh{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;letter-spacing:0.05em}
 .nav-logo-text .kr{font-family:var(--font-sans-kr);font-size:0.7rem;color:var(--ink-light);letter-spacing:0.02em}
 .nav-links{display:flex;align-items:center;gap:2rem}
-.nav-link{font-family:var(--font-sans);font-size:0.9rem;color:var(--ink);text-decoration:none;position:relative;padding:0.25rem 0;transition:color 0.3s}
+.nav-link{-webkit-tap-highlight-color:transparent;font-family:var(--font-sans);font-size:0.9rem;color:var(--ink);text-decoration:none;position:relative;padding:0.25rem 0;transition:color 0.3s}
 .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--seal);transition:width 0.3s var(--ease-out)}
 .nav-link:hover::after,.nav-link.active::after{width:100%}
 .nav-link.active{color:var(--seal)}
@@ -70,7 +70,8 @@ section,footer{overflow:hidden}
 .mobile-nav.open{opacity:1;visibility:visible;pointer-events:all}
 .mobile-nav a{font-family:var(--font-serif);font-size:1.8rem;color:var(--ink);text-decoration:none;transition:color 0.3s}
 .mobile-nav a:hover,.mobile-nav a.active{color:var(--seal)}
-        .mobile-nav a:visited { color: var(--seal)}
+        .mobile-nav a:visited { color: var(--seal); }
+        .mobile-nav a:active { background: transparent; -webkit-tap-highlight-color: transparent; }
 .mobile-nav-close{position:absolute; }
         .mobile-nav a:focus { outline: none; }
 .mobile-nav-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border:none;background:rgba(26,60,52,0.08);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--ink);transition:all 0.3s}
@@ -322,10 +323,10 @@ section,footer{overflow:hidden}
 /* Responsive */
 @media(max-width:768px){
 .nav-links{display:none}
-        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; }
-        .nav-link:visited { color: inherit; }
+        .nav-link:active, .nav-link:focus-visible { background: transparent; color: inherit; -webkit-tap-highlight-color: transparent; }
+        .nav-link:visited { color: var(--rice); }
         .nav-link:focus { outline: none; }
-        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; }
+        .nav-hamburger:active, .nav-hamburger:focus-visible { background: transparent; -webkit-tap-highlight-color: transparent; }
 
 .lang-switch{display:none}
 .hamburger{display:flex}
