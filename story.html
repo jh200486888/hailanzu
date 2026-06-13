@@ -879,7 +879,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         /* Timeline */
         .timeline-section {
             background: var(--ink-deep);
-            padding: 6rem 2rem;
+            padding: clamp(3rem,6vw,6rem) clamp(1.5rem,4vw,2rem);
             position: relative;
             overflow: hidden;
         }
@@ -892,7 +892,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         }
 
         .timeline-content {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -903,117 +903,194 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--rice);
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem,4vw,4rem);
+            letter-spacing: 4px;
         }
 
         .timeline-track {
             position: relative;
-            padding: 2rem 0;
         }
 
         .timeline-line {
             position: absolute;
             top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--azalea), var(--gold-light), var(--azalea), transparent);
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--azalea) 50%, var(--gold) 80%, transparent 100%);
             transform: translateY(-50%);
+            opacity: 0.4;
         }
 
         .timeline-items {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             position: relative;
-        }
-
-        @media (max-width: 768px) {
-            .timeline-items {
-                flex-direction: column;
-                gap: 2rem;
-                padding-left: 2rem;
-            }
-            .timeline-line {
-                top: 0;
-                bottom: 0;
-                left: 8px;
-                right: auto;
-                width: 2px;
-                height: auto;
-                transform: none;
-                background: linear-gradient(180deg, transparent, var(--azalea), var(--gold-light), var(--azalea), transparent);
-            }
         }
 
         .timeline-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
             position: relative;
+            padding: 0 0.5rem;
         }
 
-        @media (max-width: 768px) {
-            .timeline-item {
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 1.5rem;
-            }
+        .timeline-item:nth-child(odd) {
+            padding-top: 0;
+            padding-bottom: 4.5rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-bottom: 0;
+            padding-top: 4.5rem;
         }
 
         .timeline-node {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: var(--azalea);
-            border: 3px solid var(--ink-deep);
+            background: var(--ink-deep);
+            border: 2px solid var(--gold);
             position: relative;
             z-index: 2;
+            flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(184,134,11,0.25);
+        }
+
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(184,134,11,0.15);
         }
 
         .timeline-node::after {
             content: '';
             position: absolute;
-            inset: -4px;
+            inset: -12px;
             border-radius: 50%;
-            background: var(--azalea);
+            border: 1px solid rgba(184,134,11,0.06);
+        }
+
+        .timeline-connector {
+            width: 1px;
+            height: 28px;
+            background: linear-gradient(180deg, var(--gold), transparent);
             opacity: 0.3;
-            animation: pulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.1; }
+        .timeline-item:nth-child(odd) .timeline-connector {
+            order: -1;
         }
 
-        .timeline-info {
+        .timeline-card {
+            background: rgba(245,240,232,0.03);
+            border: 1px solid rgba(184,134,11,0.12);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
             text-align: center;
+            position: relative;
+            backdrop-filter: blur(4px);
         }
 
-        @media (max-width: 768px) {
-            .timeline-info {
-                text-align: left;
-            }
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(184,134,11,0.3), transparent);
         }
 
         .timeline-year {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: clamp(1.8rem, 2.5vw, 2.2rem);
             font-weight: 700;
-            color: var(--gold-light);
+            color: var(--gold);
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
         .timeline-event {
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
+            font-family: var(--font-serif);
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
             color: var(--rice-dim);
-            margin-top: 0.5rem;
-            max-width: 180px;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item.reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+
+        .timeline-item.reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .timeline-items {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 0;
+            }
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0.25rem 4.5rem 0.25rem;
+            }
+            .timeline-card {
+                padding: 0.8rem 0.6rem;
+            }
+            .timeline-event {
+                font-size: 0.78rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .timeline-event {
-                max-width: none;
+            .timeline-line {
+                top: 0;
+                bottom: auto;
+                left: 11px;
+                right: auto;
+                width: 1px;
+                height: 100%;
+                transform: none;
+                background: linear-gradient(180deg, transparent, var(--gold), var(--azalea), var(--gold), transparent);
+                opacity: 0.3;
+            }
+            .timeline-items {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+                padding-left: 2.5rem;
+            }
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+                align-items: flex-start;
+                padding: 0;
+                gap: 1rem;
+            }
+            .timeline-node {
+                position: absolute;
+                left: -2.5rem;
+                top: 0.3rem;
+            }
+            .timeline-connector {
+                display: none;
+            }
+            .timeline-card {
+                text-align: left;
+                flex: 1;
+            }
+            .timeline-year {
+                font-size: 1.4rem;
             }
         }
 
@@ -1853,35 +1930,40 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 <div class="timeline-items">
                     <div class="timeline-item reveal">
                         <div class="timeline-node"></div>
-                        <div class="timeline-info">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card">
                             <div class="timeline-year">1950</div>
                             <p class="timeline-event" data-i18n="timeline.1950">延边山村，第一坛手工泡菜诞生</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
                         <div class="timeline-node"></div>
-                        <div class="timeline-info">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card">
                             <div class="timeline-year">1980</div>
                             <p class="timeline-event" data-i18n="timeline.1980">技艺传承，从祖父到父亲</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
                         <div class="timeline-node"></div>
-                        <div class="timeline-info">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card">
                             <div class="timeline-year">2000</div>
                             <p class="timeline-event" data-i18n="timeline.2000">品牌创立，海兰菹正式命名</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
                         <div class="timeline-node"></div>
-                        <div class="timeline-info">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card">
                             <div class="timeline-year">2010</div>
                             <p class="timeline-event" data-i18n="timeline.2010">走出延边，进入全国高端超市</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
                         <div class="timeline-node"></div>
-                        <div class="timeline-info">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card">
                             <div class="timeline-year">2026</div>
                             <p class="timeline-event" data-i18n="timeline.2026">走向全国，让世界品尝延边</p>
                         </div>
@@ -2307,6 +2389,23 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         document.querySelectorAll('.chapter-number, .chapter-title, .chapter-title-kr, .chapter-desc, .data-highlights, .process-step, .reveal').forEach(el => {
             observer.observe(el);
         });
+
+        /* Timeline items staggered reveal */
+        const timelineItems = document.querySelectorAll('.timeline-item.reveal');
+        if (timelineItems.length) {
+            const tlObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const idx = Array.from(timelineItems).indexOf(entry.target);
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, idx * 200);
+                        tlObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            timelineItems.forEach(el => tlObserver.observe(el));
+        }
 
         // Process steps animation with delay
         const processSteps = document.querySelectorAll('.process-step');
