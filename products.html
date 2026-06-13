@@ -66,7 +66,7 @@ section,footer{overflow:hidden}
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
-.nav-panel{position:fixed;top:0;left:0;right:0;bottom:0;z-index:998;background:rgba(15,36,32,.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.4,0,.2,1)}
+.nav-panel{position:fixed;top:0;left:0;right:0;bottom:0;z-index:998;background:rgba(15,36,32,.98);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s cubic-bezier(.4,0,.2,1)}
 .nav-panel.open{opacity:1;pointer-events:all}
 .nav-panel-inner{display:flex;flex-direction:column;align-items:center;gap:8px}
 .nav-panel-item{font-family:var(--font-serif);text-decoration:none;color:var(--rice);font-size:clamp(28px,5vw,48px);font-weight:700;letter-spacing:10px;opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer;position:relative}
