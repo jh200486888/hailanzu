@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function(){
   function closeQR() {
     if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
   }
-  });
   
   // Footer social icons
   document.querySelectorAll('.footer-social-icon[data-platform]').forEach(function(icon) {
