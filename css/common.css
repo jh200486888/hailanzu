@@ -25,9 +25,13 @@
 .qr-popup-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--rice);opacity:.4;font-size:18px;cursor:pointer;transition:opacity .3s;padding:4px}
 .qr-popup-close:hover{opacity:1}
 .qr-popup-title{font-family:var(--font-serif);font-size:16px;color:var(--rice);letter-spacing:3px;margin-bottom:20px}
-.qr-popup-img{width:180px;height:180px;background:var(--rice);border-radius:6px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.qr-popup-img .qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink)}
-.qr-placeholder-text{font-size:11px;color:var(--ink);opacity:.6;letter-spacing:1px}
+.qr-popup-img{width:200px;min-height:120px;background:rgba(245,240,232,0.04);border:1px solid rgba(184,134,11,0.15);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 16px;padding:20px 16px;gap:10px}
+.qr-popup-img .qr-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--rice)}
+.qr-placeholder-text{font-size:11px;color:var(--rice);opacity:.5;letter-spacing:1px}
+.qr-search-id{font-family:var(--font-serif);font-size:18px;font-weight:700;color:var(--gold);letter-spacing:2px;word-break:break-all}
+.qr-search-label{font-size:12px;color:var(--rice);opacity:.6;letter-spacing:1px}
+.qr-search-step{font-size:11px;color:var(--rice);opacity:.45;letter-spacing:0.5px;line-height:1.7}
+.qr-search-divider{width:40px;height:1px;background:rgba(184,134,11,0.2);margin:2px 0}
 .qr-popup-hint{font-size:12px;color:rgba(245,240,232,.4);letter-spacing:1px}
 
 /* ==================== MARKETING - PROMO BAR ==================== */
@@ -54,7 +58,8 @@
   .qr-popup{width:calc(100vw - 48px);max-width:300px;padding:24px 20px;border-radius:10px}
   .qr-popup-close{top:8px;right:10px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px;opacity:.6}
   .qr-popup-title{font-size:14px;letter-spacing:2px;margin-bottom:16px}
-  .qr-popup-img{width:160px;height:160px;margin:0 auto 12px}
+  .qr-popup-img{width:180px;min-height:100px;margin:0 auto 12px;padding:16px 12px}
+  .qr-search-id{font-size:16px}
   .qr-popup-hint{font-size:11px;line-height:1.6}
   .qr-mobile-hint{margin-top:10px!important;padding:6px 12px!important;font-size:12px!important}
 }
