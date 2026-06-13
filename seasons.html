@@ -6,7 +6,7 @@
     <title>四季发酵 | 海兰菹 HAILANZU</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --azalea: #C4727F;
@@ -40,6 +40,15 @@
             --summer: #E8A838;
             --autumn: #D4654A;
             --winter: #7B8FA1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        body {
+            overflow-x: clip;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -391,11 +400,13 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease-out); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
+<link rel="preload" href="css/common.css" as="style">
+<link rel="stylesheet" href="css/common.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
-        <a href="index-folk.html" class="nav-logo">
+        <a href="index.html" class="nav-logo">
             <svg class="pot-icon" viewBox="0 0 40 40" fill="none">
                 <ellipse cx="20" cy="32" rx="14" ry="6" fill="#C4727F"/>
                 <path d="M6 32 C6 20 10 12 20 12 C30 12 34 20 34 32" fill="#C4727F"/>
@@ -415,8 +426,7 @@
             <a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
             <a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
             <a href="contact.html" class="nav-link" data-i18n="nav.contact">联系我们</a>
-        </div>
-        <div class="lang-switch">
+        </div>        <div class="lang-switch">
             <button class="lang-btn active" data-lang="zh">中</button>
             <button class="lang-btn" data-lang="ko">한</button>
             <button class="lang-btn" data-lang="en">EN</button>
@@ -617,7 +627,7 @@
                 <h2 class="season-name" data-i18n="spring.name">春·醒</h2>
                 <div class="season-name-kr" data-i18n-kr="spring.name.kr">봄·깨어남</div>
                 <div class="season-period" data-i18n="spring.period">3月 — 5月</div>
-                <p class="season-desc" data-i18n="spring.desc">冰雪消融，万物萌发。三月的风还带着寒意，但坛中的菌种已经醒来。霜降后入窖的白菜，在春日温和的温度中被逐一唤醒。金达莱花开满山野的时候，新一轮的发酵刚刚开始。</p>
+                <p class="season-desc" data-i18n="spring.desc">冰雪消融，万物萌发。三月的延边，白菜从冬窖中取出，开始第一轮筛选。春日温和的气温是唤醒发酵菌种的最佳时机，金达莱花也在这时漫山遍野地盛开。</p>
                 <div class="season-tags">
                     <span class="season-tag" data-i18n="spring.tag1">3-8℃ 发酵启动</span>
                     <span class="season-tag" data-i18n="spring.tag2">初选白菜</span>
@@ -675,7 +685,7 @@
                 <h2 class="season-name" data-i18n="summer.name">夏·养</h2>
                 <div class="season-name-kr" data-i18n-kr="summer.name.kr">여름·기르기</div>
                 <div class="season-period" data-i18n="summer.period">6月 — 8月</div>
-                <p class="season-desc" data-i18n="summer.desc">日照充沛，辣椒由青转红。匠人们在这个季节调配灵魂酱料——辣椒粉、蒜泥、姜丝、苹果梨汁，按三代人摸索出的比例混合。阳光越烈，酱料越香。坛中的微生物不懂急躁，只懂顺势而为。</p>
+                <p class="season-desc" data-i18n="summer.desc">日照充沛，辣椒由青转红。延边的夏天短暂而温润，正是辣椒成熟、酱料调配的黄金季节。匠人们依据多年经验，将辣椒粉、蒜泥、姜丝按比例混合，制成每坛泡菜独一无二的灵魂酱料。</p>
                 <div class="season-tags">
                     <span class="season-tag" data-i18n="summer.tag1">辣椒成熟</span>
                     <span class="season-tag" data-i18n="summer.tag2">酱料调配</span>
@@ -733,15 +743,11 @@
                 <h2 class="season-name" data-i18n="autumn.name">秋·藏</h2>
                 <div class="season-name-kr" data-i18n-kr="autumn.name.kr">가을·저장</div>
                 <div class="season-period" data-i18n="autumn.period">9月 — 11月</div>
-                <p class="season-desc" data-i18n="autumn.desc">秋风入坛，万物归藏。白菜一年中最肥美紧实的时刻，家家户户忙着抹酱、入坛、封存。三十天的等待，酸与辣握手言和。开坛的瞬间，香气扑面——无人能催的味道。</p>
+                <p class="season-desc" data-i18n="autumn.desc">丰收的季节，万物入坛。秋天的延边，白菜最是肥美紧实，是做泡菜的最佳时节。家家户户开始忙活——抹酱、入坛、封存，一坛坛泡菜被安放在阴凉的地窖中，开始漫长的发酵之旅。</p>
                 <div class="season-tags">
                     <span class="season-tag" data-i18n="autumn.tag1">白菜丰收</span>
                     <span class="season-tag" data-i18n="autumn.tag2">入坛封存</span>
                     <span class="season-tag" data-i18n="autumn.tag3">8-15℃ 缓慢发酵</span>
-                </div>
-                <div class="ferment-health" style="margin-top:20px;padding:16px;border-left:2px solid rgba(212,101,74,0.3);font-size:clamp(12px,1vw,14px);line-height:2;opacity:0.5">
-                    <p data-i18n="ferment.health">发酵不是魔术，是微生物的诚实劳动。在延边12-15℃的天然低温下，乳酸菌不紧不慢地工作三十天，把白菜里的糖转化为乳酸，把辣椒的烈驯成温柔。每一口海兰菹，都是活菌在舌尖继续发酵的证据。</p>
-                    <p style="margin-top:8px;font-style:italic;opacity:0.7" data-i18n="ferment.health.sub">这也是为什么我们不加防腐剂——活的东西，不需要死的药来保。</p>
                 </div>
             </div>
         </div>
@@ -789,10 +795,10 @@
                 <h2 class="season-name" data-i18n="winter.name">冬·品</h2>
                 <div class="season-name-kr" data-i18n-kr="winter.name.kr">겨울·맛보기</div>
                 <div class="season-period" data-i18n="winter.period">12月 — 2月</div>
-                <p class="season-desc" data-i18n="winter.desc">雪中开坛，最醇风味。漫长寒冬中，泡菜在低温下缓慢发酵，风味日渐浓郁。当第一场雪覆盖延边，开坛的瞬间，酸甜辣鲜在舌尖绽放——这是时间给耐心等待者最好的礼物。围炉食菹，是延边人最古老的冬日仪式。</p>
+                <p class="season-desc" data-i18n="winter.desc">雪中开坛，最醇风味。漫长寒冬中，泡菜在低温下缓慢发酵，风味日渐浓郁。当第一场雪覆盖延边，开坛的那一刻，酸甜辣鲜在舌尖绽放——这是时间给耐心等待者最好的礼物。</p>
                 <div class="season-tags">
                     <span class="season-tag" data-i18n="winter.tag1">-5~5℃ 深度发酵</span>
-                    <span class="season-tag" data-i18n="winter.tag2">30天最佳风味</span>
+                    <span class="season-tag" data-i18n="winter.tag2">90天最佳风味</span>
                     <span class="season-tag" data-i18n="winter.tag3">雪中开坛</span>
                 </div>
             </div>
@@ -873,7 +879,7 @@
                 <div class="pick-emoji">🥬</div>
                 <div class="pick-name" data-i18n="picks.p1.name">原味辣白菜</div>
                 <div class="pick-name-kr" data-i18n-kr="picks.p1.name.kr">원래맛 배추김치</div>
-                <div class="pick-desc" data-i18n="picks.p1.desc">经典原味，清脆爽口，30天自然发酵</div>
+                <div class="pick-desc" data-i18n="picks.p1.desc">经典原味，清脆爽口，90天自然发酵</div>
             </a>
             <a href="products.html" class="pick-card reveal">
                 <div class="pick-emoji">🌶️</div>
@@ -891,7 +897,25 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    
+  <!-- 社群引流区 -->
+  <section class="community-section" id="community">
+    <div class="community-inner">
+      <h2 class="community-title" data-i18n="community.title">加入海兰菹味道社群</h2>
+      <p class="community-subtitle" data-i18n="community.subtitle">与1000+泡菜爱好者共享延边风味</p>
+      <div class="community-cards">
+        <div class="community-card" data-platform="wechat-work">
+          <div class="community-card-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="var(--rice)"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348z"/></svg></div>
+          <div class="community-card-qr"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" opacity="0.25"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5z"/></svg></div></div>
+          <div class="community-card-name" data-i18n="community.wechat-work">企业微信</div>
+          <div class="community-card-desc" data-i18n="community.wechat-work.desc">扫码加入 · 专属试吃装</div>
+        </div>
+      </div>
+      <div class="community-perk"><span class="community-perk-icon">🎁</span><span data-i18n="community.perk">新成员专享：首次加入领取试吃装</span></div>
+    </div>
+  </section>
+
+<footer class="footer">
         <svg class="footer-skyline" viewBox="0 0 1440 60" preserveAspectRatio="none">
             <path d="M0 60 L0 40 Q30 25 60 35 T120 30 T180 40 T240 25 T300 35 T360 30 T420 40 T480 25 T540 35 T600 30 T660 40 T720 25 T780 35 T840 30 T900 40 T960 25 T1020 35 T1080 30 T1140 40 T1200 25 T1260 35 T1320 30 T1380 40 T1440 35 L1440 60 Z" fill="#C4727F"/>
         </svg>
@@ -902,7 +926,7 @@
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footer.nav">导航</h4>
-                <a href="index-folk.html" data-i18n="nav.home">首页</a><br>
+                <a href="index.html" data-i18n="nav.home">首页</a><br>
                 <a href="seasons.html" data-i18n="nav.seasons">四季发酵</a><br>
                 <a href="products.html" data-i18n="nav.products">产品殿堂</a><br>
                 <a href="story.html" data-i18n="nav.story">延边风土</a><br>
@@ -931,23 +955,21 @@
                 'nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.contact':'联系我们',
                 'hero.title':'四季发酵',
                 'spring.chapter':'CHAPTER 01','spring.name':'春·醒','spring.period':'3月 — 5月',
-                'spring.desc':'冰雪消融，万物萌发。三月的风还带着寒意，但坛中的菌种已经醒来。霜降后入窖的白菜，在春日温和的温度中被逐一唤醒。金达莱花开满山野的时候，新一轮的发酵刚刚开始。',
+                'spring.desc':'冰雪消融，万物萌发。三月的延边，白菜从冬窖中取出，开始第一轮筛选。春日温和的气温是唤醒发酵菌种的最佳时机，金达莱花也在这时漫山遍野地盛开。',
                 'spring.tag1':'3-8℃ 发酵启动','spring.tag2':'初选白菜','spring.tag3':'金达莱花开',
                 'summer.chapter':'CHAPTER 02','summer.name':'夏·养','summer.period':'6月 — 8月',
-                'summer.desc':'日照充沛，辣椒由青转红。匠人们在这个季节调配灵魂酱料——辣椒粉、蒜泥、姜丝、苹果梨汁，按三代人摸索出的比例混合。阳光越烈，酱料越香。坛中的微生物不懂急躁，只懂顺势而为。',
+                'summer.desc':'日照充沛，辣椒由青转红。延边的夏天短暂而温润，正是辣椒成熟、酱料调配的黄金季节。匠人们依据多年经验，将辣椒粉、蒜泥、姜丝按比例混合，制成每坛泡菜独一无二的灵魂酱料。',
                 'summer.tag1':'辣椒成熟','summer.tag2':'酱料调配','summer.tag3':'18-25℃ 天然熟成',
                 'autumn.chapter':'CHAPTER 03','autumn.name':'秋·藏','autumn.period':'9月 — 11月',
-                'autumn.desc':'秋风入坛，万物归藏。白菜一年中最肥美紧实的时刻，家家户户忙着抹酱、入坛、封存。三十天的等待，酸与辣握手言和。开坛的瞬间，香气扑面——无人能催的味道。',
+                'autumn.desc':'丰收的季节，万物入坛。秋天的延边，白菜最是肥美紧实，是做泡菜的最佳时节。家家户户开始忙活——抹酱、入坛、封存，一坛坛泡菜被安放在阴凉的地窖中，开始漫长的发酵之旅。',
                 'autumn.tag1':'白菜丰收','autumn.tag2':'入坛封存','autumn.tag3':'8-15℃ 缓慢发酵',
-                'ferment.health':'发酵不是魔术，是微生物的诚实劳动。在延边12-15℃的天然低温下，乳酸菌不紧不慢地工作三十天，把白菜里的糖转化为乳酸，把辣椒的烈驯成温柔。每一口海兰菹，都是活菌在舌尖继续发酵的证据。',
-                'ferment.health.sub':'这也是为什么我们不加防腐剂——活的东西，不需要死的药来保。',
                 'winter.chapter':'CHAPTER 04','winter.name':'冬·品','winter.period':'12月 — 2月',
-                'winter.desc':'雪中开坛，最醇风味。漫长寒冬中，泡菜在低温下缓慢发酵，风味日渐浓郁。当第一场雪覆盖延边，开坛的瞬间，酸甜辣鲜在舌尖绽放——这是时间给耐心等待者最好的礼物。围炉食菹，是延边人最古老的冬日仪式。',
-                'winter.tag1':'-5~5℃ 深度发酵','winter.tag2':'30天最佳风味','winter.tag3':'雪中开坛',
+                'winter.desc':'雪中开坛，最醇风味。漫长寒冬中，泡菜在低温下缓慢发酵，风味日渐浓郁。当第一场雪覆盖延边，开坛的那一刻，酸甜辣鲜在舌尖绽放——这是时间给耐心等待者最好的礼物。',
+                'winter.tag1':'-5~5℃ 深度发酵','winter.tag2':'90天最佳风味','winter.tag3':'雪中开坛',
                 'calendar.title':'发酵日历','calendar.now':'当前季节',
                 'tab.spring':'春','tab.summer':'夏','tab.autumn':'秋','tab.winter':'冬',
                 'picks.title':'当季推荐',
-                'picks.p1.name':'原味辣白菜','picks.p1.desc':'经典原味，清脆爽口，30天自然发酵',
+                'picks.p1.name':'原味辣白菜','picks.p1.desc':'经典原味，清脆爽口，90天自然发酵',
                 'picks.p2.name':'甜味辣白菜','picks.p2.desc':'微甜微辣，适合初试者，清爽开胃',
                 'picks.p3.name':'茄子干鱿鱼丝','picks.p3.desc':'海鲜与蔬菜的碰撞，鲜辣交织',
                 'footer.brand':'海兰菹','footer.desc':'源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
@@ -958,23 +980,21 @@
                 'nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.contact':'연락처',
                 'hero.title':'사계절 발효',
                 'spring.chapter':'CHAPTER 01','spring.name':'봄·깨어남','spring.period':'3월 — 5월',
-                'spring.desc':'눈과 얼음이 녹고 만물이 움트는 계절. 3월 바람에는 아직 찬 기운이 남아 있지만, 항아리 속 균은 이미 깨어납니다. 서리 후 저장한 배추가 봄날 온화한 온도에 하나둘 깨어납니다. 진달래가 산야를 수놓을 때, 새로운 발효가 막 시작됩니다.',
+                'spring.desc':'얼음이 녹고 만물이 깨어납니다. 3월의 연변, 배추가 겨울 저장고에서 꺼내어 첫 선별이 시작됩니다. 봄의 온화한 기온은 발효 균을 깨우는 최적의 조건이며, 진달래도 이때 온 산을 수놓습니다.',
                 'spring.tag1':'3-8℃ 발효 시작','spring.tag2':'배추 첫 선별','spring.tag3':'진달래 개화',
                 'summer.chapter':'CHAPTER 02','summer.name':'여름·기르기','summer.period':'6월 — 8월',
-                'summer.desc':'일조가 풍부하고 고추가 푸른색에서 붉은색으로 익어갑니다. 장인들은 이 계절에 영혼의 양념을 조합합니다 — 고춧가루, 다진 마늘, 생강채, 사과배 주스를 3대에 걸쳐 터득한 비율로 섞습니다. 해가 뜨거울수록 양념은 더 향긋해집니다. 항아리 속 미생물은 조급함을 모르고, 순리에 따를 뿐입니다.',
+                'summer.desc':'햇살이 넘치고 고추가 붉게 익습니다. 연변의 여름은 짧고 온화하여 고추 수확과 양념 조합의 황금기입니다. 장인들은 다년의 경험으로 고춧가루, 다진 마늘, 생강을 비율대로 섞어 각 항아리만의 양념을 만듭니다.',
                 'summer.tag1':'고추 수확','summer.tag2':'양념 조합','summer.tag3':'18-25℃ 자연 숙성',
                 'autumn.chapter':'CHAPTER 03','autumn.name':'가을·저장','autumn.period':'9월 — 11월',
-                'autumn.desc':'가을바람이 항아리에 들고, 만물이 저장됩니다. 배추가 일 년 중 가장 살찌고 단단한 시기, 집집마다 양념 바르기, 항아리 담기, 밀봉하기로 바쁩니다. 30일의 기다림 끝에 신맛과 매운맛이 화해합니다. 항아리를 여는 순간, 향기가 확 끼칩니다 — 누구도 서두르게 할 수 없는 맛.',
+                'autumn.desc':'수확의 계절, 만물이 항아리에 들어갑니다. 가을의 연변, 배추가 가장 살이 오르고 단단하여 김치 담그기에 최적입니다. 양념 바르기, 항아리 담기, 밀봉까지—각 항아리가 서늘한 지하 저장고에서 긴 발효 여정을 시작합니다.',
                 'autumn.tag1':'배추 수확','autumn.tag2':'항아리 밀봉','autumn.tag3':'8-15℃ 완만한 발효',
-                'ferment.health':'발효는 마술이 아니라 미생물의 정직한 노동입니다. 연변 12-15℃의 천연 저온에서 유산균은 서두르지 않고 30일간 일합니다. 배추의 당을 유산으로 바꾸고, 고추의 매움을 부드럽게 길들입니다. 한 입의 해란저는 입안에서 계속 발효되는 살아있는 균의 증거입니다.',
-                'ferment.health.sub':'그래서 우리는 보존제를 넣지 않습니다 — 살아있는 것에는 죽은 약이 필요 없으니까요.',
                 'winter.chapter':'CHAPTER 04','winter.name':'겨울·맛보기','winter.period':'12월 — 2월',
-                'winter.desc':'눈 속에서 항아리를 열면 가장 깊은 풍미. 길고 추운 겨울, 김치가 저온에서 천천히 발효되며 풍미가 날로 짙어집니다. 첫눈이 연변을 덮을 때, 항아리를 여는 순간, 신맛과 단맛과 매운맛과 감칠맛이 혀끝에서 피어납니다 — 이것은 인내하는 자에게 시간이 주는 가장 좋은 선물입니다. 화로에 둘러앉아 저를 먹는 것, 연변 사람들의 가장 오래된 겨울 의식입니다.',
-                'winter.tag1':'-5~5℃ 깊은 발효','winter.tag2':'30일 최적의 풍미','winter.tag3':'눈 속 개봉',
+                'winter.desc':'눈 속에서 항아리를 열면 가장 깊은 풍미가 피어납니다. 긴 겨울 동안 김치는 저온에서 천천히 발효하며 맛이 깊어집니다. 첫눈이 연변을 덮을 때 항아리를 열면 새콤달콤매콤한 맛이 혀끝에서 피어나니—이것은 인내심 있는 이에게 시간이 주는 가장 좋은 선물입니다.',
+                'winter.tag1':'-5~5℃ 깊은 발효','winter.tag2':'90일 최적의 풍미','winter.tag3':'눈 속 개봉',
                 'calendar.title':'발효 달력','calendar.now':'현재 계절',
                 'tab.spring':'봄','tab.summer':'여름','tab.autumn':'가을','tab.winter':'겨울',
                 'picks.title':'이 달의 추천',
-                'picks.p1.name':'원래맛 배추김치','picks.p1.desc':'클래식 원래맛, 아삭하고 상쾌한 30일 자연 발효',
+                'picks.p1.name':'원래맛 배추김치','picks.p1.desc':'클래식 원래맛, 아삭하고 상쾌한 90일 자연 발효',
                 'picks.p2.name':'달콤한 배추김치','picks.p2.desc':'살짝 달콤하고 매콤, 입문자에게 적합, 상쾌하게 입맛 돋움',
                 'picks.p3.name':'가지말린 오징어채','picks.p3.desc':'해산물과 채소의 만남, 감칠맛과 매운맛의 교차',
                 'footer.brand':'해란저','footer.desc':'연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
@@ -985,26 +1005,24 @@
                 'nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.contact':'Contact Us',
                 'hero.title':'Seasonal Fermentation',
                 'spring.chapter':'CHAPTER 01','spring.name':'Spring·Awakening','spring.period':'March — May',
-                'spring.desc':'Ice and snow melt, all things awaken. The March wind still carries a chill, but the cultures in the jar are already stirring. Cabbage stored after the first frost is gently reawakened by spring\'s mild warmth. When azaleas blanket the hillsides, a new round of fermentation has just begun.',
+                'spring.desc':'Ice melts, all things awaken. In March, cabbages are taken from winter storage for the first selection. The mild spring temperature is ideal for awakening fermentation cultures, as azaleas bloom across the mountains.',
                 'spring.tag1':'3-8°C Fermentation starts','spring.tag2':'First cabbage selection','spring.tag3':'Azaleas in bloom',
                 'summer.chapter':'CHAPTER 02','summer.name':'Summer·Cultivation','summer.period':'June — August',
-                'summer.desc':'Abundant sunshine turns chilies from green to red. Artisans blend the soul seasoning — chili powder, garlic, ginger, apple-pear juice — in proportions honed over three generations. The fiercer the sun, the more fragrant the paste. The microbes in the jar know nothing of haste — only the natural order.',
+                'summer.desc':'Abundant sunshine turns peppers from green to red. Yanbian\'s brief, mild summer is the golden season for pepper harvest and sauce preparation. Artisans blend chili powder, garlic, and ginger by instinct, creating each jar\'s unique soul sauce.',
                 'summer.tag1':'Pepper harvest','summer.tag2':'Sauce preparation','summer.tag3':'18-25°C Natural ripening',
                 'autumn.chapter':'CHAPTER 03','autumn.name':'Autumn·Preservation','autumn.period':'September — November',
-                'autumn.desc':'Autumn wind enters the jar, all things are stored away. Cabbage at its plumpest and firmest — every household busy with coating, packing, sealing. Thirty days of patience, and sour meets spice in reconciliation. The moment the jar opens, fragrance fills the air — a flavor no one can rush.',
+                'autumn.desc':'Harvest season, everything goes into jars. Autumn cabbages are plump and firm—perfect for kimchi. Seasoning, jarring, sealing—each jar begins its long fermentation journey in cool cellars.',
                 'autumn.tag1':'Cabbage harvest','autumn.tag2':'Jar & seal','autumn.tag3':'8-15°C Slow fermentation',
-                'ferment.health':'Fermentation is no magic — it is the honest labor of microorganisms. At Yanbian\'s natural 12-15°C, lactobacillus works unhurriedly for thirty days, converting cabbage sugars into lactic acid, taming chili\'s fire into tenderness. Every bite of HAILANZU is proof of living cultures still fermenting on your tongue.',
-                'ferment.health.sub':'That is why we add no preservatives — living things need no dead chemicals to preserve them.',
                 'winter.chapter':'CHAPTER 04','winter.name':'Winter·Tasting','winter.period':'December — February',
-                'winter.desc':'Opening the jar in the snow — the deepest flavor. Through the long, cold winter, kimchi ferments slowly in low temperatures, growing richer by the day. When the first snow blankets Yanbian, the moment the jar opens, sour, sweet, spicy, and savory bloom on the tongue — time\'s finest gift to those who wait. Gathering around the hearth to share fermented preserves is Yanbian\'s most ancient winter ritual.',
-                'winter.tag1':'-5~5°C Deep fermentation','winter.tag2':'30-day peak flavor','winter.tag3':'Snow jar opening',
+                'winter.desc':'Opening jars in the snow, the deepest flavors emerge. Through the long winter, kimchi ferments slowly in low temperatures, growing richer. When the first snow covers Yanbian, the moment of opening—sour, sweet, spicy, umami blooming on the tongue—is time\'s finest gift to the patient.',
+                'winter.tag1':'-5~5°C Deep fermentation','winter.tag2':'90-day peak flavor','winter.tag3':'Snow jar opening',
                 'calendar.title':'Fermentation Calendar','calendar.now':'Current Season',
                 'tab.spring':'Spring','tab.summer':'Summer','tab.autumn':'Autumn','tab.winter':'Winter',
                 'picks.title':'Seasonal Picks',
-                'picks.p1.name':'Classic Napa Kimchi','picks.p1.desc':'Original flavor, crisp and refreshing, 30-day natural fermentation',
+                'picks.p1.name':'Classic Napa Kimchi','picks.p1.desc':'Original flavor, crisp and refreshing, 90-day natural fermentation',
                 'picks.p2.name':'Sweet Napa Kimchi','picks.p2.desc':'Mildly sweet and spicy, perfect for beginners, refreshing appetizer',
                 'picks.p3.name':'Eggplant & Squid','picks.p3.desc':'Seafood meets vegetable, savory and spicy交织',
-                'footer.brand':'HAILANZU','footer.desc':'Handcrafted Jangajii kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
+                'footer.brand':'HAILANZU','footer.desc':'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
                 'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
                 'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
             },
@@ -1012,23 +1030,21 @@
                 'nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.contact':'お問い合わせ',
                 'hero.title':'四季発酵',
                 'spring.chapter':'CHAPTER 01','spring.name':'春·目覚め','spring.period':'3月 — 5月',
-                'spring.desc':'雪と氷が溶け、万物が芽吹く。3月の風にはまだ寒さが残るが、甕の中の菌はすでに目覚めている。霜降り後に貯蔵された白菜が、春の穏やかな温度で一つ一つ呼び覚まされる。ツツジが山野を彩る頃、新たな発酵が始まったばかり。',
+                'spring.desc':'雪解けと共に万物が目覚めます。3月の延辺、白菜が冬の貯蔵庫から出され最初の選別が始まります。春の穏やかな気温は発酵菌を呼び覚ます最適な条件、チンダルレもこの時期に山いっぱいに咲きます。',
                 'spring.tag1':'3-8℃ 発酵開始','spring.tag2':'白菜の第一次選別','spring.tag3':'チンダルレ開花',
                 'summer.chapter':'CHAPTER 02','summer.name':'夏·育み','summer.period':'6月 — 8月',
-                'summer.desc':'日照りが豊かで、唐辛子が青から赤へと熟す。職人たちはこの季節に魂の調味料を調合する——唐辛子粉、ニンニクのみじん切り、生姜の千切り、リンゴ梨の果汁を、三代にわたり磨き上げた配合で混ぜ合わせる。日差しが強いほど、調味料は香り高くなる。甕の中の微生物は焦りを知らず、自然の理に従うのみ。',
+                'summer.desc':'たっぷりの日差しで唐辛子が赤く熟します。延辺の短く穏やかな夏は、唐辛子の収穫と調味料作りの黄金期。職人は長年の経験で粉唐辛子、ニンニク、生姜を配合し、各瓶唯一の魂のタレを作ります。',
                 'summer.tag1':'唐辛子収穫','summer.tag2':'タレ調合','summer.tag3':'18-25℃ 天然熟成',
                 'autumn.chapter':'CHAPTER 03','autumn.name':'秋·貯蔵','autumn.period':'9月 — 11月',
-                'autumn.desc':'秋風が甕に入り、万物が蔵に納まる。白菜が一年で最も肥え締まる季節、各家各户が塗り、詰め、封に忙しい。三十日の待ち時間、酸味と辛味が手を取り合う。甕を開けた瞬間、香りが溢れ出す——誰も急がせられない味。',
+                'autumn.desc':'収穫の季節、万物が瓶に納まる。秋の延辺、白菜が最もふっくらと引き締まりキムチ作りに最適。タレ塗り、瓶詰め、密閉——各瓶が涼しい地下貯蔵庫で長い発酵の旅を始めます。',
                 'autumn.tag1':'白菜収穫','autumn.tag2':'瓶詰め密閉','autumn.tag3':'8-15℃ ゆっくり発酵',
-                'ferment.health':'発酵は魔法ではない——微生物の正直な労働です。延辺の天然低温12-15℃で、乳酸菌は急がず30日間働き、白菜の糖を乳酸に変え、唐辛子の烈しさを優しさに飼いならします。一口の海蘭菹は、舌の上でまだ発酵し続ける生きた菌の証です。',
-                'ferment.health.sub':'だから保存料を入れない——生きているものに、死んだ薬は要らないのです。',
                 'winter.chapter':'CHAPTER 04','winter.name':'冬·味わい','winter.period':'12月 — 2月',
-                'winter.desc':'雪の中で甕を開ける——最も深い風味。長く厳しい冬の中、キムチは低温でゆっくりと発酵し、日ごとに味わい深くなる。初雪が延辺を覆う時、甕を開けた瞬間、酸・甘・辛・鮮が舌先で花開く——待ち続けた者への時間の最高の贈り物。炉を囲んで菹を味わうこと、延辺の人々の最も古い冬の儀式。',
-                'winter.tag1':'-5~5℃ 深発酵','winter.tag2':'30日最高の風味','winter.tag3':'雪中開封',
+                'winter.desc':'雪の中で瓶を開ければ、最も深い風味が花開く。長い冬の間、キムチは低温でゆっくり発酵し味わいが深まります。初雪が延辺を覆う時、瓶を開ける瞬間——酸味、甘味、辛味、旨味が舌の上で弾ける。これは忍耐強く待った者への時間の最高の贈り物です。',
+                'winter.tag1':'-5~5℃ 深発酵','winter.tag2':'90日最高の風味','winter.tag3':'雪中開封',
                 'calendar.title':'発酵カレンダー','calendar.now':'現在の季節',
                 'tab.spring':'春','tab.summer':'夏','tab.autumn':'秋','tab.winter':'冬',
                 'picks.title':'今季のおすすめ',
-                'picks.p1.name':'定番白菜キムチ','picks.p1.desc':'クラシックな味、シャキシャキ爽やか、30日自然発酵',
+                'picks.p1.name':'定番白菜キムチ','picks.p1.desc':'クラシックな味、シャキシャキ爽やか、90日自然発酵',
                 'picks.p2.name':'甘味白菜キムチ','picks.p2.desc':'ほんのり甘く辛い、初心者向け、さっぱり前菜',
                 'picks.p3.name':'茄子干しイカ糸','picks.p3.desc':'海鮮と野菜の出会い、旨辛交差',
                 'footer.brand':'海蘭菹','footer.desc':'延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
@@ -1049,6 +1065,7 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+  loadLanguageFont(lang);
             localStorage.setItem('hailanzu-lang', lang);
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1141,5 +1158,21 @@
         // Init
         document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
     </script>
+
+
+<script src="js/common.js"></script>
+
+  <div class="qr-overlay" id="qrOverlay">
+    <div class="qr-popup" id="qrPopup">
+      <button class="qr-popup-close" id="qrPopupClose" aria-label="关闭">✕</button>
+      <div class="qr-popup-title" id="qrPopupTitle"></div>
+      <div class="qr-popup-img" id="qrPopupImg"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" opacity="0.3"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm11-2h2v2h-2v-2zm-4 0h2v6h-2v-6zm6 0h2v2h-2v-2zm0 4h2v4h-4v-2h2v-2zm-2 2h-2v2h2v-2z"/></svg><div class="qr-placeholder-text" data-i18n="qr.placeholder">二维码即将上线</div></div></div>
+      <div class="qr-popup-hint" id="qrPopupHint"></div>
+    </div>
+  </div>
+  <div class="floating-cta" id="floatingCta">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="11" rx="1"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/><line x1="10" y1="10" x2="10" y2="13"/></svg>
+    <span class="floating-cta-text" data-i18n="cta.floating">关注领试吃</span>
+  </div>
 </body>
 </html>
