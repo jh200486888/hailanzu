@@ -283,22 +283,24 @@ ul,ol{list-style:none}
 @keyframes detailFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .spice-dot{width:6px;height:14px;border-radius:3px 3px 2px 2px;background:currentColor;opacity:.1;transition:all .4s ease;transform:rotate(-15deg)}
 .spice-dot.on{opacity:1;background:var(--seal);box-shadow:0 0 6px var(--seal-glow)}
-/* Carousel nav */
-.carousel-nav{position:absolute;bottom:clamp(28px,5vw,56px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:10}
-.carousel-dot{width:24px;height:2px;background:var(--rice);opacity:.15;cursor:pointer;transition:all .5s var(--ease-out);border-radius:1px}
-.carousel-dot.active{opacity:1;width:48px;background:var(--gold);box-shadow:0 0 8px rgba(184,134,11,.3)}
-.carousel-arrow{width:36px;height:36px;border:1px solid rgba(245,240,232,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.35;transition:all .4s var(--ease-out);background:none}
-.carousel-arrow:hover{opacity:1;color:var(--gold);border-color:rgba(184,134,11,.4);background:rgba(184,134,11,.06)}
-.carousel-counter{display:none}
-.carousel-counter-current{display:none}
+/* Carousel nav — premium redesign */
+.carousel-nav{position:absolute;bottom:clamp(28px,5vw,56px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:10;padding:10px 24px;background:rgba(0,0,0,.18);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:40px;border:1px solid rgba(245,240,232,.06)}
+.carousel-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .5s var(--ease-out);border-radius:1px}
+.carousel-dot.active{opacity:1;width:40px;background:var(--gold);box-shadow:0 0 10px rgba(184,134,11,.35)}
+.carousel-arrow{width:32px;height:32px;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.4;transition:all .4s var(--ease-out);background:rgba(245,240,232,.04)}
+.carousel-arrow:hover{opacity:1;color:var(--gold);background:rgba(184,134,11,.1)}
+.carousel-counter{display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:11px;letter-spacing:2px;color:var(--rice);opacity:.5;min-width:56px;justify-content:center}
+.carousel-counter-current{display:inline;font-family:'Playfair Display',var(--font-serif);font-size:14px;color:var(--gold);opacity:1;letter-spacing:1px}
+.carousel-counter-sep{opacity:.35;font-size:10px}
+.carousel-counter-total{opacity:.45;font-size:11px}
 /* Product slide colors */
-.slide-0{color:var(--ink-deep)}.slide-0 .spice-dot.on{background:var(--seal)}.slide-0 .sticky-header-label,.slide-0 .sticky-header-title{color:var(--ink-deep)}.slide-0 .products-slide-spice-label{color:var(--ink);opacity:.5}
+.slide-0{color:var(--ink-deep)}.slide-0 .spice-dot.on{background:var(--seal)}.slide-0 .sticky-header-label,.slide-0 .sticky-header-title{color:var(--ink-deep)}.slide-0 .products-slide-spice-label{color:var(--ink);opacity:.5}.slide-0 .carousel-nav{background:rgba(255,255,255,.25);border-color:rgba(0,0,0,.06)}.slide-0 .carousel-counter,.slide-0 .carousel-counter-total{color:var(--ink)}.slide-0 .carousel-dot{background:var(--ink)}.slide-0 .carousel-arrow{color:var(--ink);background:rgba(0,0,0,.04)}
 .slide-1{color:var(--rice)}.slide-1 .spice-dot.on{background:var(--seal)}
 .slide-2{color:var(--rice)}.slide-2 .spice-dot.on{background:var(--seal)}
 .slide-3{color:var(--rice)}.slide-3 .spice-dot.on{background:var(--seal)}
 .slide-4{color:var(--rice)}.slide-4 .spice-dot.on{background:var(--seal)}
 .slide-5{color:var(--rice)}.slide-5 .spice-dot.on{background:var(--seal)}
-.slide-6{color:var(--ink-deep)}.slide-6 .spice-dot.on{background:var(--seal)}.slide-6 .sticky-header-label,.slide-6 .sticky-header-title{color:var(--ink-deep)}.slide-6 .products-slide-spice-label{color:var(--ink);opacity:.5}
+.slide-6{color:var(--ink-deep)}.slide-6 .spice-dot.on{background:var(--seal)}.slide-6 .sticky-header-label,.slide-6 .sticky-header-title{color:var(--ink-deep)}.slide-6 .products-slide-spice-label{color:var(--ink);opacity:.5}.slide-6 .carousel-nav{background:rgba(255,255,255,.25);border-color:rgba(0,0,0,.06)}.slide-6 .carousel-counter,.slide-6 .carousel-counter-total{color:var(--ink)}.slide-6 .carousel-dot{background:var(--ink)}.slide-6 .carousel-arrow{color:var(--ink);background:rgba(0,0,0,.04)}
 .slide-7{color:var(--rice)}.slide-7 .spice-dot.on{background:var(--seal)}
 /* Mobile: stack layout */
 @media(max-width:768px){
@@ -313,11 +315,12 @@ ul,ol{list-style:none}
   .sticky-header{padding:20px 20px 8px}
   .sticky-header-title{font-size:clamp(18px,4.5vw,24px)}
   .products-watermark{display:none}
-  .carousel-nav{gap:12px;bottom:clamp(20px,4vw,36px)}
-  .carousel-arrow{display:none}
-  .carousel-counter{display:none}
-  .carousel-dot{width:18px;height:2px}
-  .carousel-dot.active{width:36px}
+  .carousel-nav{gap:10px;bottom:clamp(20px,4vw,36px);padding:8px 16px}
+  .carousel-arrow{width:28px;height:28px;opacity:.5}
+  .carousel-counter{font-size:10px;min-width:44px}
+  .carousel-counter-current{font-size:12px}
+  .carousel-dot{width:16px;height:2px}
+  .carousel-dot.active{width:32px}
 }
 .sticky-progress,.sticky-counter{display:none}
 
@@ -515,7 +518,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 .section-explore {
     display: flex;
     justify-content: center;
-    padding: 8px 0 16px;
+    padding: 0 0 20px;
     position: relative;
     z-index: 5;
 }
@@ -524,22 +527,23 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
     align-items: center;
     gap: 8px;
     font-family: var(--font-body);
-    font-size: 0.8rem;
-    letter-spacing: 3px;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--azalea);
     text-decoration: none;
-    opacity: 0.75;
+    opacity: 0.55;
     transition: all 0.4s var(--ease-out);
-    padding: 8px 0;
+    padding: 6px 0;
 }
 .section-explore a:hover {
     opacity: 1;
     gap: 14px;
+    color: var(--gold);
 }
 .section-explore a::after {
-    content: '→';
-    font-size: 1rem;
+    content: '\2192';
+    font-size: 0.9rem;
     transition: transform 0.3s var(--ease-out);
 }
 .section-explore a:hover::after {
@@ -1432,10 +1436,10 @@ try{
     </div>
   </div>
 <div class="carousel-nav" id="carouselNav">
-      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg></button>
+      <div class="carousel-counter" id="carouselCounter"><span class="carousel-counter-current">01</span><span class="carousel-counter-sep">/</span><span class="carousel-counter-total">04</span></div>
+      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg></button>
       <div id="carouselDots"></div>
-      <button class="carousel-arrow" id="carouselNext" aria-label="Next"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg></button>
-      <div class="carousel-counter" id="carouselCounter"></div>
+      <button class="carousel-arrow" id="carouselNext" aria-label="Next"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg></button>
     </div>
   </div>
   <div class="section-explore reveal">
@@ -2118,7 +2122,10 @@ function goToSlide(index, animate = true) {
     dot.classList.toggle('active', i === currentCarouselSlide);
   });
   // Update counter
-  if(carouselCounter) carouselCounter.innerHTML = `<span class="carousel-counter-current">${String(currentCarouselSlide + 1).padStart(2, '0')}</span> / ${String(totalSlides).padStart(2, '0')}`;
+  var ccCur = carouselCounter ? carouselCounter.querySelector('.carousel-counter-current') : null;
+  var ccTotal = carouselCounter ? carouselCounter.querySelector('.carousel-counter-total') : null;
+  if(ccCur) ccCur.textContent = String(currentCarouselSlide + 1).padStart(2, '0');
+  if(ccTotal) ccTotal.textContent = String(totalSlides).padStart(2, '0');
   // Update bg color
   if (carouselEl) carouselEl.style.backgroundColor = slideBgs[currentCarouselSlide];
   // Change entire section background for immersive color transition
