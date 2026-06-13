@@ -584,6 +584,16 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 }
 
 @media(max-width:768px){.qr-mobile-hint{display:block!important}}
+
+/* Community Sidebar */
+.community-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;gap:0}
+.sidebar-item{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:linear-gradient(135deg,var(--ink),var(--ink-deep));border:1px solid rgba(184,134,11,0.2);border-right:none;border-radius:8px 0 0 8px;cursor:pointer;transition:all 0.3s var(--ease-out);color:var(--rice);font-size:18px;position:relative}
+.sidebar-item:hover{width:52px;background:linear-gradient(135deg,var(--ink-light),var(--ink));border-color:rgba(184,134,11,0.4);box-shadow:-2px 0 12px rgba(0,0,0,0.3)}
+.sidebar-item+.sidebar-item{border-top:none}
+.sidebar-tooltip{position:absolute;right:52px;top:50%;transform:translateY(-50%);background:var(--ink-deep);color:var(--rice);font-size:12px;letter-spacing:1px;padding:6px 12px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.sidebar-item:hover .sidebar-tooltip{opacity:1}
+@media(max-width:768px){.community-sidebar{top:auto;bottom:80px;transform:none;flex-direction:row;right:0}.sidebar-item{width:40px;height:40px;border-radius:8px 0 0 8px;border-right:none;border-bottom:none}.sidebar-item+.sidebar-item{border-top:1px solid rgba(184,134,11,0.2)}.sidebar-tooltip{display:none}}
+
 </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
@@ -2381,5 +2391,12 @@ try{
 })();
 }catch(e){}
 </script>
+
+<div class="community-sidebar" id="communitySidebar">
+<div class="sidebar-item" onclick="document.getElementById('qrOverlay').classList.add('open');lockBodyScroll()"><span>&#x1F4AC;</span><span class="sidebar-tooltip" data-i18n="sidebar.wechat">加入社群</span></div>
+<div class="sidebar-item" onclick="window.location.href='gift.html'"><span>&#x1F381;</span><span class="sidebar-tooltip" data-i18n="sidebar.gift">高端礼盒</span></div>
+<div class="sidebar-item" onclick="window.location.href='contact.html'"><span>&#x1F4DE;</span><span class="sidebar-tooltip" data-i18n="sidebar.contact">联系我们</span></div>
+</div>
+
 </body>
 </html>

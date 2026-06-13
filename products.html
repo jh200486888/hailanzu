@@ -248,6 +248,21 @@ section,footer{overflow:hidden}
 .detail-overlay.light-overlay .detail-spice-label{color:rgba(26,60,52,0.6)!important}
 
 
+
+/* Trust Badges */
+.trust-section{background:linear-gradient(180deg,var(--ink-deep) 0%,var(--ink) 100%);padding:clamp(40px,5vw,60px) clamp(24px,4vw,48px);border-top:1px solid rgba(184,134,11,0.1)}
+.trust-inner{max-width:1000px;margin:0 auto;text-align:center}
+.trust-title{font-family:var(--font-serif);font-size:clamp(16px,2vw,20px);color:var(--rice);letter-spacing:4px;margin-bottom:8px}
+.trust-subtitle{font-family:var(--font-sans);font-size:12px;color:var(--rice);opacity:0.4;letter-spacing:1px;margin-bottom:clamp(24px,3vw,36px)}
+.trust-grid{display:flex;justify-content:center;gap:clamp(16px,2.5vw,32px);flex-wrap:wrap}
+.trust-badge{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 16px;background:rgba(245,240,232,0.03);border:1px solid rgba(245,240,232,0.08);border-radius:12px;width:clamp(100px,14vw,140px);transition:all 0.3s}
+.trust-badge:hover{border-color:rgba(184,134,11,0.25);background:rgba(245,240,232,0.05);transform:translateY(-2px)}
+.trust-badge-icon{width:44px;height:44px;border-radius:50%;background:rgba(184,134,11,0.1);display:flex;align-items:center;justify-content:center}
+.trust-badge-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.trust-badge-name{font-size:11px;color:var(--rice);opacity:0.7;letter-spacing:1px;line-height:1.4}
+.trust-badge-status{font-size:9px;color:var(--gold);opacity:0.6;letter-spacing:1px}
+@media(max-width:600px){.trust-grid{gap:10px}.trust-badge{width:calc(33% - 8px);padding:14px 8px}.trust-badge-icon{width:36px;height:36px}.trust-badge-icon svg{width:18px;height:18px}.trust-badge-name{font-size:10px}}
+
 /* Community */
 .community-section{position:relative;background:#0A1A16;padding:clamp(48px,6vw,80px) clamp(24px,4vw,48px);border-top:1px solid rgba(184,134,11,0.15)}
 .community-inner{max-width:520px;margin:0 auto;text-align:center}
@@ -340,6 +355,16 @@ section,footer{overflow:hidden}
 }
 
 @media(max-width:768px){.qr-mobile-hint{display:block!important}}
+
+/* Community Sidebar */
+.community-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;gap:0}
+.sidebar-item{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:linear-gradient(135deg,var(--ink),var(--ink-deep));border:1px solid rgba(184,134,11,0.2);border-right:none;border-radius:8px 0 0 8px;cursor:pointer;transition:all 0.3s var(--ease-out);color:var(--rice);font-size:18px;position:relative}
+.sidebar-item:hover{width:52px;background:linear-gradient(135deg,var(--ink-light),var(--ink));border-color:rgba(184,134,11,0.4);box-shadow:-2px 0 12px rgba(0,0,0,0.3)}
+.sidebar-item+.sidebar-item{border-top:none}
+.sidebar-tooltip{position:absolute;right:52px;top:50%;transform:translateY(-50%);background:var(--ink-deep);color:var(--rice);font-size:12px;letter-spacing:1px;padding:6px 12px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.sidebar-item:hover .sidebar-tooltip{opacity:1}
+@media(max-width:768px){.community-sidebar{top:auto;bottom:80px;transform:none;flex-direction:row;right:0}.sidebar-item{width:40px;height:40px;border-radius:8px 0 0 8px;border-right:none;border-bottom:none}.sidebar-item+.sidebar-item{border-top:1px solid rgba(184,134,11,0.2)}.sidebar-tooltip{display:none}}
+
 </style>
 </head>
 <body>
@@ -429,6 +454,21 @@ section,footer{overflow:hidden}
 </div>
 </div>
 </div>
+
+
+<section class="trust-section">
+<div class="trust-inner">
+<h3 class="trust-title" data-i18n="trust.title">品质背书</h3>
+<p class="trust-subtitle" data-i18n="trust.subtitle">每一份认证，都是对品质的承诺</p>
+<div class="trust-grid">
+<div class="trust-badge"><div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div><div class="trust-badge-name" data-i18n="trust.sc">SC食品生产许可</div><div class="trust-badge-status" data-i18n="trust.certified">已认证</div></div>
+<div class="trust-badge"><div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="trust-badge-name" data-i18n="trust.geo">延边地理标志</div><div class="trust-badge-status" data-i18n="trust.certified">已认证</div></div>
+<div class="trust-badge"><div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="trust-badge-name" data-i18n="trust.report">第三方检测报告</div><div class="trust-badge-status" data-i18n="trust.certified">已认证</div></div>
+<div class="trust-badge"><div class="trust-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="trust-badge-name" data-i18n="trust.zero">零添加承诺</div><div class="trust-badge-status" data-i18n="trust.certified">已认证</div></div>
+<div class="trust-badge"><div class="trust-badge-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg></div><div class="trust-badge-name" data-i18n="trust.organic">绿色食品认证</div><div class="trust-badge-status" data-i18n="trust.pending">申请中</div></div>
+</div>
+</div>
+</section>
 
 <section class="community-section" id="community">
 <div class="community-inner">
@@ -1256,5 +1296,12 @@ try{
 })();
 }catch(e){}
 </script>
+
+<div class="community-sidebar" id="communitySidebar">
+<div class="sidebar-item" onclick="document.getElementById('qrOverlay').classList.add('open');lockBodyScroll()"><span>&#x1F4AC;</span><span class="sidebar-tooltip" data-i18n="sidebar.wechat">加入社群</span></div>
+<div class="sidebar-item" onclick="window.location.href='gift.html'"><span>&#x1F381;</span><span class="sidebar-tooltip" data-i18n="sidebar.gift">高端礼盒</span></div>
+<div class="sidebar-item" onclick="window.location.href='contact.html'"><span>&#x1F4DE;</span><span class="sidebar-tooltip" data-i18n="sidebar.contact">联系我们</span></div>
+</div>
+
 </body>
 </html>

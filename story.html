@@ -906,6 +906,10 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             display: block;
             margin-top: 0.25rem;
         }
+        .artisan-portrait{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,rgba(196,114,127,0.25),rgba(184,134,11,0.2));border:2px solid rgba(196,114,127,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;position:relative;overflow:hidden}
+        .artisan-portrait svg{width:36px;height:36px;opacity:0.5}
+        @media(max-width:900px){.artisan-portrait{width:60px;height:60px}.artisan-portrait svg{width:28px;height:28px}}
+
 
         /* Timeline */
         .timeline-section {
@@ -1178,6 +1182,16 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 }
 
 @media(max-width:768px){.qr-mobile-hint{display:block!important}}
+
+/* Community Sidebar */
+.community-sidebar{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;gap:0}
+.sidebar-item{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:linear-gradient(135deg,var(--ink),var(--ink-deep));border:1px solid rgba(184,134,11,0.2);border-right:none;border-radius:8px 0 0 8px;cursor:pointer;transition:all 0.3s var(--ease-out);color:var(--rice);font-size:18px;position:relative}
+.sidebar-item:hover{width:52px;background:linear-gradient(135deg,var(--ink-light),var(--ink));border-color:rgba(184,134,11,0.4);box-shadow:-2px 0 12px rgba(0,0,0,0.3)}
+.sidebar-item+.sidebar-item{border-top:none}
+.sidebar-tooltip{position:absolute;right:52px;top:50%;transform:translateY(-50%);background:var(--ink-deep);color:var(--rice);font-size:12px;letter-spacing:1px;padding:6px 12px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.sidebar-item:hover .sidebar-tooltip{opacity:1}
+@media(max-width:768px){.community-sidebar{top:auto;bottom:80px;transform:none;flex-direction:row;right:0}.sidebar-item{width:40px;height:40px;border-radius:8px 0 0 8px;border-right:none;border-bottom:none}.sidebar-item+.sidebar-item{border-top:1px solid rgba(184,134,11,0.2)}.sidebar-tooltip{display:none}}
+
 </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
@@ -1634,7 +1648,8 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             <h2 class="artisan-title" data-i18n="artisan.title">匠人心语</h2>
             <div class="quotes-grid">
                 <div class="quote-card reveal">
-                    <svg class="quote-mark" viewBox="0 0 40 40">
+                    <div class="artisan-portrait"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="15" r="8" stroke="var(--rice)" stroke-width="1.5" fill="none"/><path d="M6 38c0-8 6-14 14-14s14 6 14 14" stroke="var(--rice)" stroke-width="1.5" fill="none"/></svg></div>
+                     viewBox="0 0 40 40">
                         <circle cx="20" cy="20" r="18" fill="none" stroke="#C8102E" stroke-width="1.5"/>
                         <text x="20" y="26" text-anchor="middle" fill="#C8102E" font-size="20" font-family="serif">"</text>
                     </svg>
@@ -1645,7 +1660,8 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                     </div>
                 </div>
                 <div class="quote-card reveal">
-                    <svg class="quote-mark" viewBox="0 0 40 40">
+                    <div class="artisan-portrait"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="15" r="8" stroke="var(--rice)" stroke-width="1.5" fill="none"/><path d="M6 38c0-8 6-14 14-14s14 6 14 14" stroke="var(--rice)" stroke-width="1.5" fill="none"/></svg></div>
+                     viewBox="0 0 40 40">
                         <circle cx="20" cy="20" r="18" fill="none" stroke="#C8102E" stroke-width="1.5"/>
                         <text x="20" y="26" text-anchor="middle" fill="#C8102E" font-size="20" font-family="serif">"</text>
                     </svg>
@@ -1656,7 +1672,8 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                     </div>
                 </div>
                 <div class="quote-card reveal">
-                    <svg class="quote-mark" viewBox="0 0 40 40">
+                    <div class="artisan-portrait"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="15" r="8" stroke="var(--rice)" stroke-width="1.5" fill="none"/><path d="M6 38c0-8 6-14 14-14s14 6 14 14" stroke="var(--rice)" stroke-width="1.5" fill="none"/></svg></div>
+                     viewBox="0 0 40 40">
                         <circle cx="20" cy="20" r="18" fill="none" stroke="#C8102E" stroke-width="1.5"/>
                         <text x="20" y="26" text-anchor="middle" fill="#C8102E" font-size="20" font-family="serif">"</text>
                     </svg>
@@ -2247,5 +2264,12 @@ try{
 })();
 }catch(e){}
 </script>
+
+<div class="community-sidebar" id="communitySidebar">
+<div class="sidebar-item" onclick="document.getElementById('qrOverlay').classList.add('open');lockBodyScroll()"><span>&#x1F4AC;</span><span class="sidebar-tooltip" data-i18n="sidebar.wechat">加入社群</span></div>
+<div class="sidebar-item" onclick="window.location.href='gift.html'"><span>&#x1F381;</span><span class="sidebar-tooltip" data-i18n="sidebar.gift">高端礼盒</span></div>
+<div class="sidebar-item" onclick="window.location.href='contact.html'"><span>&#x1F4DE;</span><span class="sidebar-tooltip" data-i18n="sidebar.contact">联系我们</span></div>
+</div>
+
 </body>
 </html>
