@@ -1099,14 +1099,12 @@ function stopCarouselAuto() {
 
 function lockBodyScroll() {
     _detailOpen = true;
-    document.body.style.touchAction = 'pan-y';
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 }
 
 function unlockBodyScroll() {
     _detailOpen = false;
-    document.body.style.touchAction = '';
     document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
 }
@@ -1199,6 +1197,13 @@ document.getElementById('detailOverlay').addEventListener('click', function(e) {
 
 document.addEventListener('touchmove', function(e) {
     if (_detailOpen) {
+        var target = e.target;
+        while (target && target !== document.body) {
+            if (target.classList && (target.classList.contains('detail-related-list') || target.classList.contains('detail-carousel-track'))) {
+                return;
+            }
+            target = target.parentElement;
+        }
         var container = document.getElementById('detailContainer');
         if (container && !container.contains(e.target)) {
             e.preventDefault();
@@ -1239,7 +1244,7 @@ function closeQR() {
         qrOverlay.classList.remove('open');
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
-        document.body.style.touchAction = '';
+        
     }
 }
 
