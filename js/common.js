@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var lang = getLang();
     if (popupTitle) popupTitle.textContent = info.t[lang] || info.t.zh;
     if (popupHint) popupHint.textContent = info.h[lang] || info.h.zh;
-    if (overlay) { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    if (overlay) { overlay.classList.add('open'); document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden'; }
   }
   window.openQR = openQR;
   
   function closeQR() {
-    if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (overlay) { overlay.classList.remove('open'); document.documentElement.style.overflow = ''; document.body.style.overflow = ''; document.body.style.touchAction = ''; }
   }
   
   // Footer social icons
