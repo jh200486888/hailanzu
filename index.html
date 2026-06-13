@@ -51,7 +51,43 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-<style>        *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+<style>
+/* ===== UGC 用户评价·食用场景 ===== */
+.ugc-section{background:var(--ink-deep);padding:5rem 2rem 4rem;position:relative;overflow:hidden}
+.ugc-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.25}
+.ugc-header{text-align:center;margin-bottom:3.5rem}
+.ugc-label{display:inline-block;font-family:var(--font-sans);font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,134,11,0.35);padding:0.3em 1em;border-radius:20px;margin-bottom:1rem}
+.ugc-title{font-family:var(--font-serif);font-size:2.2rem;color:var(--rice);margin-bottom:0.5rem;letter-spacing:0.05em}
+.ugc-subtitle{font-family:var(--font-sans);font-size:0.95rem;color:var(--rice-dim);opacity:0.7}
+.ugc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.ugc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s}
+.ugc-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.ugc-card-wide{grid-column:span 2}
+.ugc-card-wide .ugc-img-wrap{height:220px}
+.ugc-card-wide .ugc-body{flex-direction:row;align-items:flex-start;gap:1rem}
+.ugc-card-wide .ugc-text{-webkit-line-clamp:3}
+.ugc-img-wrap{height:180px;overflow:hidden;position:relative}
+.ugc-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.ugc-card:hover .ugc-img-wrap img{transform:scale(1.05)}
+.ugc-body{padding:1.2rem 1.5rem;display:flex;flex-direction:column;gap:0.6rem}
+.ugc-stars{color:var(--gold);font-size:0.85rem;letter-spacing:2px}
+.ugc-text{font-family:var(--font-sans);font-size:0.88rem;color:var(--rice);line-height:1.7;opacity:0.85;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ugc-author{display:flex;align-items:center;gap:0.3rem;margin-top:0.3rem}
+.ugc-name{font-family:var(--font-sans);font-size:0.8rem;font-weight:600;color:var(--rice)}
+.ugc-tag{font-family:var(--font-sans);font-size:0.75rem;color:var(--azalea);opacity:0.8}
+@media(max-width:1024px){
+  .ugc-grid{grid-template-columns:repeat(2,1fr)}
+  .ugc-card-wide{grid-column:span 2}
+}
+@media(max-width:640px){
+  .ugc-section{padding:3.5rem 1.2rem 3rem}
+  .ugc-title{font-size:1.6rem}
+  .ugc-grid{grid-template-columns:1fr}
+  .ugc-card-wide{grid-column:span 1}
+  .ugc-card-wide .ugc-body{flex-direction:column}
+  .ugc-img-wrap{height:200px}
+}
+        *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
         a, button { -webkit-tap-highlight-color: transparent; outline: none; }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -1592,6 +1628,84 @@ try{
     </div>
   </section>
 
+
+<!-- ========== 用户评价·食用场景 ========== -->
+<section class="ugc-section" id="ugcSection">
+  <div class="ugc-header">
+    <span class="ugc-label" data-i18n="ugc.label">真实食客说</span>
+    <h2 class="ugc-title" data-i18n="ugc.title">一坛泡菜，百种日常</h2>
+    <p class="ugc-subtitle" data-i18n="ugc.subtitle">来自海兰菹食客的真实分享</p>
+  </div>
+  <div class="ugc-grid">
+    <div class="ugc-card ugc-card-wide">
+      <div class="ugc-img-wrap"><img src="imgs/ugc/scene-01-kimchi-pot.webp" alt="" loading="lazy"></div>
+      <div class="ugc-body">
+        <div class="ugc-stars">★★★★★</div>
+        <p class="ugc-text" data-i18n="ugc.r1.text">冰箱里永远有一坛海兰菹。加班回来拌碗冷面，切几片辣白菜，比外卖快，比外卖香。那个酸度刚刚好，不是工业醋精的尖酸，是慢慢发酵出来的温润酸。</p>
+        <div class="ugc-author">
+          <span class="ugc-name" data-i18n="ugc.r1.name">小鱼</span>
+          <span class="ugc-tag" data-i18n="ugc.r1.tag">· 复购6次</span>
+        </div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-img-wrap"><img src="imgs/ugc/scene-04-tofu-soup.webp" alt="" loading="lazy"></div>
+      <div class="ugc-body">
+        <div class="ugc-stars">★★★★★</div>
+        <p class="ugc-text" data-i18n="ugc.r2.text">泡菜豆腐汤的灵魂就是泡菜！海兰菹下锅那一刻，满屋子都是发酵的酸香。汤底不需要再加调料，泡菜自带的所有味道就够了。</p>
+        <div class="ugc-author">
+          <span class="ugc-name" data-i18n="ugc.r2.name">崔姐</span>
+          <span class="ugc-tag" data-i18n="ugc.r2.tag">· 延边人</span>
+        </div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-img-wrap"><img src="imgs/ugc/scene-02-bbq.webp" alt="" loading="lazy"></div>
+      <div class="ugc-body">
+        <div class="ugc-stars">★★★★★</div>
+        <p class="ugc-text" data-i18n="ugc.r3.text">烤肉搭档！五花肉配辣白菜解腻绝了，朋友来家里聚餐必买。他们说比超市里的好吃太多，问我在哪买的——延边的味道真的不一样。</p>
+        <div class="ugc-author">
+          <span class="ugc-name" data-i18n="ugc.r3.name">阿哲</span>
+          <span class="ugc-tag" data-i18n="ugc.r3.tag">· 烤肉爱好者</span>
+        </div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-img-wrap"><img src="imgs/ugc/scene-05-family-cook.webp" alt="" loading="lazy"></div>
+      <div class="ugc-body">
+        <div class="ugc-stars">★★★★★</div>
+        <p class="ugc-text" data-i18n="ugc.r4.text">带孩子一起做泡菜煎饼，海兰菹切成丁拌进面糊，两面煎到金黄，小朋友一口气吃三张。零添加三个字让我很放心。</p>
+        <div class="ugc-author">
+          <span class="ugc-name" data-i18n="ugc.r4.name">慧珍</span>
+          <span class="ugc-tag" data-i18n="ugc.r4.tag">· 宝妈</span>
+        </div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-img-wrap"><img src="imgs/ugc/scene-03-bibimbap.webp" alt="" loading="lazy"></div>
+      <div class="ugc-body">
+        <div class="ugc-stars">★★★★★</div>
+        <p class="ugc-text" data-i18n="ugc.r5.text">石锅拌饭的灵魂配菜！辣白菜的脆度保留得特别好，热石锅滋滋作响的时候铺上去，每一粒米都裹着泡菜的酸辣汁。</p>
+        <div class="ugc-author">
+          <span class="ugc-name" data-i18n="ugc.r5.name">KIM J</span>
+          <span class="ugc-tag" data-i18n="ugc.r5.tag">· 韩料控</span>
+        </div>
+      </div>
+    </div>
+    <div class="ugc-card ugc-card-wide">
+      <div class="ugc-img-wrap"><img src="imgs/ugc/scene-06-ferment-jars.webp" alt="" loading="lazy"></div>
+      <div class="ugc-body">
+        <div class="ugc-stars">★★★★★</div>
+        <p class="ugc-text" data-i18n="ugc.r6.text">去延边旅游偶然买到的，回来就念念不忘。那种发酵的深度是超市泡菜比不了的——后来才知道人家是30天慢发酵。从此只买海兰菹。</p>
+        <div class="ugc-author">
+          <span class="ugc-name" data-i18n="ugc.r6.name">陈小慢</span>
+          <span class="ugc-tag" data-i18n="ugc.r6.tag">· 旅行美食家</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <!-- 韩屋天际线 -->
   <div class="footer-skyline">
@@ -2000,7 +2114,28 @@ const i18n = {
   'footer.contact.i1': { zh:'加入我们', ko:'채용', en:'Join Us', ja:'採用情報' },
   'footer.contact.i2': { zh:'媒体资源', ko:'미디어 자료', en:'Media Resources', ja:'メディアリソース' },
   'footer.copy': { zh:'© 2026 海兰菹 HAILANZU 해란저', ko:'© 2026 해란저 HAILANZU 海兰菹', en:'© 2026 HAILANZU 해란저', ja:'© 2026 海蘭菹 HAILANZU 해란저' },
-  'footer.legal': { zh:'隐私政策 · 使用条款', ko:'개인정보처리방침 · 이용약관', en:'Privacy Policy · Terms of Use', ja:'プライバシーポリシー ・ 利用規約' }  ,
+  'footer.legal': { zh:'隐私政策 · 使用条款', ko:'개인정보처리방침 · 이용약관', en:'Privacy Policy · Terms of Use', ja:'プライバシーポリシー ・ 利用規約' },
+  'ugc.label': { zh:'真实食客说', ko:'실제 식객의 이야기', en:'Real Reviews', ja:'リアルな食客の声' },
+  'ugc.title': { zh:'一坛泡菜，百种日常', ko:'한 단지 김치, 백 가지 일상', en:'One Jar, Hundred Ways', ja:'一壺のキムチ、百の日常' },
+  'ugc.subtitle': { zh:'来自海兰菹食客的真实分享', ko:'해란저 식객들의 진짜 이야기', en:'Authentic stories from HAILANZU food lovers', ja:'海兰菹食客たちの本音シェア' },
+  'ugc.r1.text': { zh:'冰箱里永远有一坛海兰菹。加班回来拌碗冷面，切几片辣白菜，比外卖快，比外卖香。那个酸度刚刚好，不是工业醋精的尖酸，是慢慢发酵出来的温润酸。', ko:'냉장고엔 항상 해란저가 있어요. 퇴근 후 냉면에 김치 몇 잎, 배달보다 빠르고 맛있어요. 그 산미가 딱 좋아요, 공장 식초가 아니라 천천히 발효된 부드러운 산미.', en:'There’s always a jar of HAILANZU in my fridge. After late shifts, cold noodles with kimchi—faster and tastier than takeout. That tang is just right: not sharp industrial vinegar, but a mellow sourness born from slow fermentation.', ja:'冷蔵庫にはいつも海兰菹。残業帰りに冷麺に白菜キムチを数枚—デリバリーより早くて美味しい。あの酸味は工場の酢っぱさじゃなく、ゆっくり発酵されたまろやかな酸味。' },
+  'ugc.r1.name': { zh:'小鱼', ko:'새우', en:'Xiaoyu', ja:'小魚' },
+  'ugc.r1.tag': { zh:'· 复购6次', ko:'· 6회 재구매', en:'· 6× repurchase', ja:'· 6回リピート' },
+  'ugc.r2.text': { zh:'泡菜豆腐汤的灵魂就是泡菜！海兰菹下锅那一刻，满屋子都是发酵的酸香。汤底不需要再加调料，泡菜自带的所有味道就够了。', ko:'순두부찌개의 영혼은 김치! 해란저가 들어가는 순간 온 집에 발효의 향이 퍼져요. 국물 양념 따로 필요 없어요, 김치 맛으로 충분하니까.', en:'The soul of kimchi tofu stew IS the kimchi! The moment HAILANZU hits the pot, the whole room fills with fermented aroma. No extra seasoning needed—the kimchi brings it all.', ja:'キムチ豆腐チゲの魂はキムチ！海兰菹を鍋に入れた瞬間、部屋中に発酵の香りが広がる。スープの調味料は不要—キムチの味だけで十分。' },
+  'ugc.r2.name': { zh:'崔姐', ko:'최 언니', en:'Sister Choi', ja:'チェ姉さん' },
+  'ugc.r2.tag': { zh:'· 延边人', ko:'· 연변인', en:'· Yanbian local', ja:'· 延辺人' },
+  'ugc.r3.text': { zh:'烤肉搭档！五花肉配辣白菜解腻绝了，朋友来家里聚餐必买。他们说比超市里的好吃太多，问我在哪买的——延边的味道真的不一样。', ko:'고기 파트너! 삼겹살에 김치 짱이에요. 친구들이 오면 꼭 사요. 마트보다 훨씬 맛있다고 어디서 샀냐고 묻죠—연변 맛은 진짜 달라요.', en:'BBQ’s best mate! Pork belly + kimchi = the ultimate grease-cutter. Must-buy when friends come over. They say it’s way better than supermarket stuff—Yanbian flavor hits different.', ja:'焼肉の相方！豚バラに白菜キムチで油っこさが消える、友達が来たら必ず買う。スーパーよりずっと美味しいってどこで買った？って聞かれる—延辺の味は本当に違う。' },
+  'ugc.r3.name': { zh:'阿哲', ko:'아철', en:'Azhe', ja:'アツェ' },
+  'ugc.r3.tag': { zh:'· 烤肉爱好者', ko:'· 고기러버', en:'· BBQ lover', ja:'· 焼肉好き' },
+  'ugc.r4.text': { zh:'带孩子一起做泡菜煎饼，海兰菹切成丁拌进面糊，两面煎到金黄，小朋友一口气吃三张。零添加三个字让我很放心。', ko:'아이랑 김치전 만들었어요. 해란저 잘게 썰어 반죽에 넣고 노릇노릇 구우면 애가 세 장이나 먹어요. 무첨가 세 글자가安心이에요.', en:'Made kimchi pancakes with my kid—diced HAILANZU in the batter, pan-fried golden. My little one ate three in a row. “Zero additives” gives me real peace of mind.', ja:'子供と一緒にキムチチジミを作った。海兰菹を刻んで生地に混ぜ、こんがり焼いたら子どもが3枚も食べた。「無添加」の三文字が安心。' },
+  'ugc.r4.name': { zh:'慧珍', ko:'혜진', en:'Hyejin', ja:'ヘジン' },
+  'ugc.r4.tag': { zh:'· 宝妈', ko:'· 엄마', en:'· Mom', ja:'· ママ' },
+  'ugc.r5.text': { zh:'石锅拌饭的灵魂配菜！辣白菜的脆度保留得特别好，热石锅滋滋作响的时候铺上去，每一粒米都裹着泡菜的酸辣汁。', ko:'돌솥비빔밥의 영혼 반찬! 김치의 아삭함이 살아있어요. 지글지글 돌솥에 올리면 밥알마다 김치 양념이 묻어요.', en:'The soul side for stone-pot bibimbap! The crunch is perfectly preserved. Sizzling hot stone + kimchi on top = every grain coated in tangy-spicy goodness.', ja:'石焼ビビンバの魂の付け合わせ！白菜キムチのシャキシャキ感がすごい。ジュージュー音を立てる石鍋に乗せれば、お米の一粒一粒にキムチの酸辣汁が絡む。' },
+  'ugc.r5.name': { zh:'KIM J', ko:'김지', en:'KIM J', ja:'KIM J' },
+  'ugc.r5.tag': { zh:'· 韩料控', ko:'· 한식러버', en:'· Korean foodie', ja:'· 韓食フリーク' },
+  'ugc.r6.text': { zh:'去延边旅游偶然买到的，回来就念念不忘。那种发酵的深度是超市泡菜比不了的——后来才知道人家是30天慢发酵。从此只买海兰菹。', ko:'연변 여행에서 우연히 샀는데 못 잊겠더라고요. 그 발효의 깊이는 마트 김치랑 비교가 안 돼요—나중에 30일 저온발효인 걸 알았죠. 그때부터 해란저만 사요.', en:'Found it by chance while traveling in Yanbian, couldn’t stop thinking about it. That depth of fermentation is miles beyond supermarket kimchi—later learned it’s 30-day slow-fermented. HAILANZU only from then on.', ja:'延辺旅行で偶然買ったのに忘れられなかった。あの発酵の深みはスーパーキムチとは比べ物にならない—後で30日低温発酵だと知った。それから海兰菹一筋。' },
+  'ugc.r6.name': { zh:'陈小慢', ko:'천샤오만', en:'Chen', ja:'チェン' },
+  'ugc.r6.tag': { zh:'· 旅行美食家', ko:'· 여행 미식가', en:'· Traveling foodie', ja:'・旅するフーディー' },
   'community.title': { zh:'加入海兰菹味道社群', ko:'해란저 맛의 공동체에 합류하세요', en:'Join the HAILANZU Community', ja:'海蘭菹の味のコミュニティに参加' },
   'community.subtitle': { zh:'与1000+泡菜爱好者共享延边风味', ko:'1000명 이상의 김치 애호가와 연변의 맛을 나누세요', en:'Share the taste of Yanbian with 1,000+ kimchi lovers', ja:'1000人以上のキムチ愛好家と延辺の味を共有' },
   'community.wechat-work': { zh:'企业微信', ko:'기업 위챗', en:'WeChat Work', ja:'企業WeChat' },
