@@ -98,7 +98,7 @@ ul,ol{list-style:none}
 /* Logo文字 —— 滚动时隐藏 */
 .nav-logo-text{display:flex;flex-direction:column;gap:0;overflow:hidden;transition:all .5s var(--ease-out);max-width:200px;opacity:1}
 .nav-logo-cn{font-family:var(--font-serif);font-weight:900;font-size:16px;letter-spacing:4px;line-height:1.2;white-space:nowrap;transition:all .5s var(--ease-out)}
-.nav-logo-kr{font-family:var(--font-serif-kr);font-size:10px;opacity:.35;letter-spacing:2px;white-space:nowrap;transition:all .5s var(--ease-out)}
+.nav-logo-kr{font-family:var(--font-serif-kr);font-size:10px;opacity:.5;letter-spacing:2px;white-space:nowrap;transition:all .5s var(--ease-out)}
 
 /* 滚动收缩态 */
 .nav.scrolled{background:rgba(15,36,32,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
@@ -229,7 +229,7 @@ ul,ol{list-style:none}
 .section-divider{height:60px;overflow:hidden;position:relative}
 .section-divider svg{position:absolute;bottom:0;left:0;width:100%;height:100%}
 .section-header{max-width:1200px;margin:0 auto;padding:0 clamp(24px,4vw,48px);margin-bottom:clamp(48px,6vw,80px)}
-.section-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.4;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.section-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.55;margin-bottom:12px;display:flex;align-items:center;gap:12px}
 .section-label::before{content:'';width:20px;height:1px;background:var(--rice);opacity:.3}
 .section-title{font-family:var(--font-serif);font-weight:900;font-size:clamp(28px,4vw,48px);line-height:1.2;letter-spacing:2px}
 .section-title-kr{font-family:var(--font-serif-kr);font-size:clamp(13px,1.3vw,17px);opacity:.4;letter-spacing:6px;margin-top:6px}
@@ -238,7 +238,7 @@ ul,ol{list-style:none}
 .products-sticky{position:relative;background:var(--ink-deep);padding:0;overflow:hidden;transition:background-color .8s ease}
 .products-watermark{position:absolute;right:5%;top:15%;width:200px;height:260px;opacity:.03;z-index:0;pointer-events:none;color:var(--azalea)}
 .sticky-header{position:relative;z-index:2;padding:clamp(24px,4vw,48px) clamp(24px,4vw,48px) 0;text-align:center}
-.sticky-header-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.4;margin-bottom:8px}
+.sticky-header-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.55;margin-bottom:8px}
 .sticky-header-title{font-family:var(--font-serif);font-weight:900;font-size:clamp(20px,3.5vw,36px);letter-spacing:2px}
 .products-carousel{position:relative;width:100%;height:100vh;overflow:hidden;display:flex;flex-direction:column;transition:background-color .8s ease}
 .products-carousel-track{flex:1;position:relative;overflow:hidden;touch-action:pan-y;-webkit-overflow-scrolling:touch;cursor:grab}
@@ -255,8 +255,8 @@ ul,ol{list-style:none}
 .products-slide-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.3vw,20px);opacity:.5;letter-spacing:4px}
 .products-slide-desc{font-family:var(--font-sans);font-size:clamp(13px,1.1vw,15px);line-height:2;opacity:.7;max-width:340px}
 .products-slide-spice{display:flex;gap:5px;margin-top:8px;align-items:center}
-.products-slide-spice-label{font-size:10px;opacity:.45;letter-spacing:2px;margin-right:4px}
-.products-slide-detail-btn{margin-top:16px;font-size:11px;letter-spacing:3px;opacity:.4;cursor:pointer;border:1px solid currentColor;padding:6px 20px;border-radius:2px;transition:all .3s ease;background:none;font-family:var(--font-body)}
+.products-slide-spice-label{font-size:10px;opacity:.6;letter-spacing:2px;margin-right:4px}
+.products-slide-detail-btn{margin-top:16px;font-size:11px;letter-spacing:3px;opacity:.6;cursor:pointer;border:1px solid currentColor;padding:6px 20px;border-radius:2px;transition:all .3s ease;background:none;font-family:var(--font-body)}
 .products-slide-detail-btn:hover{opacity:.8;border-color:var(--seal);color:var(--seal)}
 .products-slide-visual-inner{cursor:pointer}
 .products-slide-detail{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s ease}
@@ -322,7 +322,7 @@ ul,ol{list-style:none}
 .season-char{font-family:var(--font-serif);font-weight:900;font-size:clamp(72px,11vw,130px);opacity:.08;position:absolute;top:-6px;right:12px;line-height:1;pointer-events:none;transition:opacity .6s;color:var(--rice)}
 .season-winter .season-char{color:var(--ink-deep)}
 .season-card:hover .season-char{opacity:.15}
-.season-num{font-family:var(--font-display);font-size:10px;letter-spacing:4px;margin-bottom:14px;opacity:.25}
+.season-num{font-family:var(--font-display);font-size:10px;letter-spacing:4px;margin-bottom:14px;opacity:.45}
 .season-name{font-family:var(--font-serif);font-weight:700;font-size:clamp(28px,3.5vw,48px);margin-bottom:3px;position:relative;z-index:2}
 .season-name-kr{font-family:var(--font-serif-kr);font-size:clamp(12px,1.2vw,16px);opacity:.35;letter-spacing:4px;margin-bottom:clamp(14px,1.8vw,22px);position:relative;z-index:2}
 .season-desc{font-family:var(--font-sans);font-size:clamp(13px,1.1vw,15px);line-height:2;opacity:.7;max-width:320px;position:relative;z-index:2}
@@ -340,7 +340,7 @@ ul,ol{list-style:none}
 .story-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:45vh}
 .story-bg-char{font-family:var(--font-serif);font-weight:900;font-size:clamp(100px,18vw,180px);opacity:.04;user-select:none;line-height:1;transition:opacity .6s}
 .story-block:hover .story-bg-char{opacity:.07}
-.story-visual-label{position:absolute;bottom:clamp(20px,3vw,36px);left:clamp(20px,3vw,36px);font-family:var(--font-body);font-size:10px;letter-spacing:4px;text-transform:uppercase;opacity:.3}
+.story-visual-label{position:absolute;bottom:clamp(20px,3vw,36px);left:clamp(20px,3vw,36px);font-family:var(--font-body);font-size:10px;letter-spacing:4px;text-transform:uppercase;opacity:.5}
 .story-text{padding:clamp(36px,4.5vw,72px) clamp(24px,3.5vw,56px);display:flex;flex-direction:column;justify-content:center;background:var(--ink-deep)}
 .story-num{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:700;color:var(--seal);opacity:.2;margin-bottom:16px;line-height:1}
 .story-title{font-family:var(--font-serif);font-weight:700;font-size:clamp(24px,3vw,40px);margin-bottom:3px;line-height:1.3}
@@ -360,7 +360,7 @@ ul,ol{list-style:none}
 .gift-card:hover{border-color:var(--gold);transform:translateY(-6px);background:rgba(26,60,52,.6);box-shadow:0 16px 50px rgba(0,0,0,.2)}
 .gift-card.featured{border-color:rgba(184,134,11,.35)}
 .gift-card.featured::after{content:'至臻';position:absolute;top:18px;right:18px;font-family:var(--font-serif);font-size:9px;letter-spacing:2px;padding:3px 8px;border:1px solid var(--gold);color:var(--gold);opacity:.5}
-.gift-tier{font-family:var(--font-display);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.6;margin-bottom:18px}
+.gift-tier{font-family:var(--font-display);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:.7;margin-bottom:18px}
 .gift-name{font-family:var(--font-serif);font-weight:700;font-size:clamp(20px,2.2vw,28px);margin-bottom:2px}
 .gift-name-kr{font-family:var(--font-serif-kr);font-size:12px;opacity:.45;letter-spacing:3px;margin-bottom:clamp(14px,1.8vw,24px)}
 .gift-items{margin-bottom:auto;padding-bottom:clamp(16px,2vw,32px)}
@@ -380,7 +380,7 @@ ul,ol{list-style:none}
 .contact-form.show{display:block}
 @keyframes contactFormIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .contact-form-row{margin-bottom:16px;text-align:left}
-.contact-form-row label{display:block;font-size:11px;letter-spacing:2px;opacity:.5;margin-bottom:6px}
+.contact-form-row label{display:block;font-size:11px;letter-spacing:2px;opacity:.65;margin-bottom:6px}
 .contact-form-input{width:100%;padding:10px 14px;background:rgba(245,240,232,.12);border:1px solid rgba(245,240,232,.15);border-radius:2px;color:var(--rice);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color .3s}
 .contact-form-input:focus{border-color:var(--rice)}
 .contact-form-input::placeholder{color:rgba(245,240,232,.25)}
@@ -401,11 +401,11 @@ ul,ol{list-style:none}
 .footer-top{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(24px,4vw,60px);padding-bottom:clamp(28px,4vw,56px);border-bottom:1px solid rgba(245,240,232,.04)}
 .footer-brand-name{font-family:var(--font-serif);font-weight:900;font-size:18px;letter-spacing:5px;margin-bottom:5px;text-align:center}
 .footer-brand-kr{font-family:var(--font-serif-kr);font-size:12px;opacity:.4;letter-spacing:4px;margin-bottom:10px;text-align:center}
-.footer-brand-sub{font-family:var(--font-display);font-style:italic;font-size:11px;opacity:.3;letter-spacing:2px;text-align:center}
-.footer-col-title{font-size:9px;letter-spacing:4px;text-transform:uppercase;opacity:.3;margin-bottom:14px}
+.footer-brand-sub{font-family:var(--font-display);font-style:italic;font-size:11px;opacity:.5;letter-spacing:2px;text-align:center}
+.footer-col-title{font-size:10px;letter-spacing:4px;text-transform:uppercase;opacity:.5;margin-bottom:14px}
 .footer-col a{display:block;font-size:12px;opacity:.5;margin-bottom:9px;transition:opacity .3s}
 .footer-col a:hover{opacity:.7}
-.footer-bottom{max-width:1200px;margin:clamp(20px,3vw,36px) auto 0;display:flex;justify-content:space-between;font-size:11px;opacity:.28}
+.footer-bottom{max-width:1200px;margin:clamp(20px,3vw,36px) auto 0;display:flex;justify-content:space-between;font-size:11px;opacity:.5}
 
 /* ==================== REVEAL ==================== */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
@@ -539,7 +539,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 .terroir-slide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
 .terroir-slide-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,36,32,.3) 0%,rgba(15,36,32,.15) 40%,rgba(15,36,32,.5) 100%);pointer-events:none}
 .terroir-slide-content{position:relative;z-index:2;max-width:700px;padding:0 clamp(24px,5vw,64px);text-align:center;animation:terroirReveal .8s var(--ease-out) both}
-.terroir-slide-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.5;margin-bottom:16px;color:var(--rice)}
+.terroir-slide-label{font-family:var(--font-body);font-size:10px;letter-spacing:6px;text-transform:uppercase;opacity:.6;margin-bottom:16px;color:var(--rice)}
 .terroir-slide-title{font-family:var(--font-serif);font-weight:900;font-size:clamp(28px,4.5vw,56px);line-height:1.2;letter-spacing:3px;color:var(--rice);margin-bottom:12px}
 .terroir-slide-title-kr{font-family:var(--font-serif-kr);font-size:clamp(14px,1.5vw,20px);opacity:.45;letter-spacing:6px;color:var(--rice);margin-bottom:20px}
 .terroir-slide-desc{font-family:var(--font-serif);font-size:clamp(13px,1.2vw,16px);line-height:1.9;opacity:.7;color:var(--rice);max-width:520px;margin:0 auto}
@@ -566,6 +566,17 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 .hero-tagline-sub{animation:fadeInZu 1.5s ease 1.8s forwards;opacity:0}
 .hero-zu-explain{animation:fadeInZu 1.5s ease 2s forwards}
 @keyframes fadeInZu{to{opacity:.3}}
+
+/* Floating CTA */
+.floating-cta{position:fixed;right:24px;bottom:32px;z-index:900;display:flex;align-items:center;gap:10px;padding:12px 22px;background:linear-gradient(135deg,var(--ink,#1A3C34),var(--ink-deep,#0A1A16));border:1px solid rgba(184,134,11,0.35);border-radius:32px;color:var(--gold-light,#D4A853);font-family:var(--font-sans);font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,0.4),0 0 20px rgba(184,134,11,0.1);transition:all 0.4s ease-out;opacity:0;pointer-events:none;transform:translateY(16px)}
+.floating-cta.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.floating-cta:hover{border-color:rgba(184,134,11,0.6);box-shadow:0 6px 32px rgba(0,0,0,0.5),0 0 30px rgba(184,134,11,0.2);transform:translateY(-2px)}
+.floating-cta svg{flex-shrink:0;opacity:0.85}
+@media(max-width:768px){
+.floating-cta{right:16px;bottom:20px;width:48px;height:48px;padding:0;border-radius:50%;gap:0;justify-content:center}
+.floating-cta-text{display:none}
+.floating-cta svg{width:20px;height:20px}
+}
 </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
@@ -1277,7 +1288,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p1.name">原味辣白菜</div>
           <div class="products-slide-kr" data-i18n="products.p1.name.sub">배추김치</div>
           <div class="products-slide-desc" data-i18n="products.p1.desc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</div>
-          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.6;font-size:11px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'0\']').classList.toggle('show')">查看详情</button>
@@ -1297,7 +1308,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p3.name">茄子干鱿鱼丝</div>
           <div class="products-slide-kr" data-i18n="products.p3.name.sub">가지채 오징어</div>
           <div class="products-slide-desc" data-i18n="products.p3.desc">干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。</div>
-          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.6;font-size:11px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'2\']').classList.toggle('show')">查看详情</button>
@@ -1317,7 +1328,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p5.name">苏子叶</div>
           <div class="products-slide-kr" data-i18n="products.p5.name.sub">깻잎</div>
           <div class="products-slide-desc" data-i18n="products.p5.desc">一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。</div>
-          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.6;font-size:11px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'4\']').classList.toggle('show')">查看详情</button>
@@ -1337,7 +1348,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p7.name">香辣明太鱼</div>
           <div class="products-slide-kr" data-i18n="products.p7.name.sub">명태조림</div>
           <div class="products-slide-desc" data-i18n="products.p7.desc">明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。</div>
-          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.6;font-size:11px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'6\']').classList.toggle('show')">查看详情</button>
@@ -2318,5 +2329,18 @@ if(typeof setLanguage==='function') setLanguage(currentLang);
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="11" rx="1"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/><line x1="10" y1="10" x2="10" y2="13"/></svg>
     <span class="floating-cta-text" data-i18n="cta.floating">关注领试吃</span>
   </div>
+<script>
+try{
+var _fcta=document.getElementById('floatingCta');
+if(_fcta){
+var _d=localStorage.getItem('hailanzu_cta_dismissed');
+if(!_d||Date.now()-parseInt(_d)>604800000){setTimeout(function(){_fcta.classList.add('visible')},2000)}
+_fcta.addEventListener('click',function(){
+var _cm=document.getElementById('community')||document.querySelector('.community-section');
+if(_cm)_cm.scrollIntoView({behavior:'smooth',block:'center'});
+});
+}
+}catch(e){}
+</script>
 </body>
 </html>
