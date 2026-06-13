@@ -1099,7 +1099,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         }
         @keyframes hanokFadeIn {
             from { opacity: 0; transform: translateY(-50%) translateX(20px); }
-            to { opacity: 1; transform: translateY(-50%) translateX(0); }
+            to { opacity: 0.65; transform: translateY(-50%) translateX(0); }
         }
         @media (max-width: 768px) {
             .hanok-illustration {
@@ -1119,13 +1119,13 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             }
             @keyframes hanokFadeInMobile {
                 from { opacity: 0; transform: translateX(-50%) translateY(15px); }
-                to { opacity: 0.85; transform: translateX(-50%) translateY(0); }
+                to { opacity: 0.55; transform: translateX(-50%) translateY(0); }
             }
         }
         @media (max-width: 480px) {
             .hanok-illustration {
                 width: clamp(130px, 42vw, 200px);
-                opacity: 0.6;
+                opacity: 0.4;
                 bottom: 14%;
             }
         }
