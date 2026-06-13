@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Sitemap: https://jh200486888.github.io/hailanzu/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
