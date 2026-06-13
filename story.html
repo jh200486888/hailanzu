@@ -1101,20 +1101,23 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 right: auto;
                 left: 50%;
                 transform: translateX(-50%);
-                bottom: 12%;
+                bottom: 18%;
                 top: auto;
-                width: clamp(140px, 45vw, 220px);
-                opacity: 0.6;
+                width: clamp(150px, 50vw, 240px);
+                opacity: 0.7;
                 animation: hanokFadeInMobile 2s var(--ease-out) 0.5s forwards;
+                z-index: 1;
             }
             @keyframes hanokFadeInMobile {
                 from { opacity: 0; transform: translateX(-50%) translateY(15px); }
-                to { opacity: 0.6; transform: translateX(-50%) translateY(0); }
+                to { opacity: 0.7; transform: translateX(-50%) translateY(0); }
             }
         }
         @media (max-width: 480px) {
             .hanok-illustration {
-                display: none;
+                width: clamp(120px, 40vw, 180px);
+                opacity: 0.45;
+                bottom: 15%;
             }
         }
 
