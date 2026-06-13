@@ -50,7 +50,7 @@
   </script>
 
     <title>四季发酵 | 海兰菹 HAILANZU</title>
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
     <style>
                 *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
         a, button { -webkit-tap-highlight-color: transparent; outline: none; }
@@ -492,8 +492,14 @@
 @media(max-width:768px){.community-sidebar{top:auto;bottom:100px;transform:none;flex-direction:column;right:8px;gap:4px}.sidebar-item{width:38px;height:38px;border-radius:10px;border:1px solid rgba(184,134,11,0.15);font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}.sidebar-item:active{transform:scale(0.92)}.sidebar-tooltip{display:none}}
 
 </style>
-<link rel="preload" href="css/common.css" as="style">
+<link rel="preload" href="css/common.css" as="style"><link rel="preload" href="js/common.js" as="script">
 <link rel="stylesheet" href="css/common.css">
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="products.html">
+<link rel="prefetch" href="recipes.html">
+<link rel="prefetch" href="story.html">
+<link rel="prefetch" href="gift.html">
+<link rel="prefetch" href="contact.html">
 </head>
 <body>
     <!-- Navigation -->
@@ -1326,7 +1332,6 @@
         document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
     </script>
 
-
 <script src="js/common.js"></script>
 
   <div class="qr-overlay" id="qrOverlay">
@@ -1409,7 +1414,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="sidebar-item" onclick="window.location.href='gift.html'"><span>&#x1F381;</span><span class="sidebar-tooltip" data-i18n="sidebar.gift">高端礼盒</span></div>
 <div class="sidebar-item" onclick="window.location.href='contact.html'"><span>&#x1F4DE;</span><span class="sidebar-tooltip" data-i18n="sidebar.contact">联系我们</span></div>
 </div>
-
 
 </body>
 </html>

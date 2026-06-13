@@ -58,7 +58,7 @@
   </script>
 
     <title>延边风土 | 海兰菹 HAILANZU</title>
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
     <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
                 *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
@@ -446,7 +446,6 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             height: 100%;
             opacity: 0.8;
         }
-
 
         .chapter-text {
             color: var(--rice);
@@ -875,7 +874,6 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         .artisan-portrait svg{width:36px;height:36px;opacity:0.5}
         @media(max-width:900px){.artisan-portrait{width:60px;height:60px}.artisan-portrait svg{width:28px;height:28px}}
 
-
         /* Timeline */
         .timeline-section {
             background: var(--ink-deep);
@@ -1259,7 +1257,6 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             }
         }
 
-
         @keyframes azaleaSway {
             0%, 100% { transform: translateX(0) rotate(0deg); }
             50% { transform: translateX(-4px) rotate(0.5deg); }
@@ -1320,7 +1317,13 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         setVH();
         window.addEventListener('resize', setVH);
         </script>
-        </head>
+        <link rel="prefetch" href="index.html">
+<link rel="prefetch" href="products.html">
+<link rel="prefetch" href="recipes.html">
+<link rel="prefetch" href="seasons.html">
+<link rel="prefetch" href="gift.html">
+<link rel="prefetch" href="contact.html">
+</head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
@@ -2479,7 +2482,6 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         });
     </script>
 
-
 <script src="js/common.js"></script>
 
   <div class="qr-overlay" id="qrOverlay">
@@ -2562,7 +2564,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="sidebar-item" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="opacity:0;transition:opacity .3s"><span>&#x2191;</span><span class="sidebar-tooltip" data-i18n="sidebar.backtop">返回顶部</span></div>
 
 </div>
-
 
 </body>
 </html>

@@ -56,7 +56,7 @@
       ]
     }
     </script>
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
     <style>
         *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
         a, button { -webkit-tap-highlight-color: transparent; outline: none; }
@@ -599,8 +599,14 @@
 .sidebar-item:hover .sidebar-tooltip{opacity:1}
 @media(max-width:768px){.community-sidebar{top:auto;bottom:100px;transform:none;flex-direction:column;right:8px;gap:4px}.sidebar-item{width:38px;height:38px;border-radius:10px;border:1px solid rgba(184,134,11,0.15);font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}.sidebar-item:active{transform:scale(0.92)}.sidebar-tooltip{display:none}}
     </style>
-    <link rel="preload" href="css/common.css" as="style">
+    <link rel="preload" href="css/common.css" as="style"><link rel="preload" href="js/common.js" as="script">
     <link rel="stylesheet" href="css/common.css">
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="products.html">
+<link rel="prefetch" href="story.html">
+<link rel="prefetch" href="seasons.html">
+<link rel="prefetch" href="gift.html">
+<link rel="prefetch" href="contact.html">
 </head>
 <body>
     <!-- Navigation -->
@@ -1222,7 +1228,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="sidebar-item" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="opacity:0;transition:opacity .3s"><span>&#x2191;</span><span class="sidebar-tooltip" data-i18n="sidebar.backtop">返回顶部</span></div>
 
 </div>
-
 
 </body>
 </html>

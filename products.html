@@ -99,8 +99,8 @@
   </script>
 
 <title>产品殿堂 | 海兰菹 HAILANZU</title>
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="preload" href="css/common.css" as="style">
+<link rel="stylesheet" href="fonts/fonts.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
+<link rel="preload" href="css/common.css" as="style"><link rel="preload" href="js/common.js" as="script">
 <link rel="stylesheet" href="css/common.css">
 <style>
         *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
@@ -360,8 +360,6 @@ section,footer{overflow:hidden}
 .detail-overlay.light-overlay .detail-desc{opacity:0.85}
 .detail-overlay.light-overlay .detail-spice-label{color:rgba(26,60,52,0.6)!important}
 
-
-
 /* Trust Badges */
 .trust-section{background:linear-gradient(180deg,var(--ink-deep) 0%,var(--ink) 100%);padding:clamp(40px,5vw,60px) clamp(24px,4vw,48px);border-top:1px solid rgba(184,134,11,0.1)}
 .trust-inner{max-width:1000px;margin:0 auto;text-align:center}
@@ -483,6 +481,12 @@ section,footer{overflow:hidden}
 @media(max-width:768px){.community-sidebar{top:auto;bottom:100px;transform:none;flex-direction:column;right:8px;gap:4px}.sidebar-item{width:38px;height:38px;border-radius:10px;border:1px solid rgba(184,134,11,0.15);font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}.sidebar-item:active{transform:scale(0.92)}.sidebar-tooltip{display:none}}
 
 </style>
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="recipes.html">
+<link rel="prefetch" href="story.html">
+<link rel="prefetch" href="seasons.html">
+<link rel="prefetch" href="gift.html">
+<link rel="prefetch" href="contact.html">
 </head>
 <body>
 <nav class="nav" id="nav">
@@ -576,7 +580,6 @@ section,footer{overflow:hidden}
 </div>
 </div>
 </div>
-
 
 <section class="trust-section">
 <div class="trust-inner">
@@ -1519,7 +1522,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="sidebar-item" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="opacity:0;transition:opacity .3s"><span>&#x2191;</span><span class="sidebar-tooltip" data-i18n="sidebar.backtop">返回顶部</span></div>
 
 </div>
-
 
 </body>
 </html>
