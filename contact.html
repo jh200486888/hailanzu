@@ -193,6 +193,10 @@
         .info-title { font-family: var(--font-serif); font-size: 1.1rem; margin-bottom: 0.75rem; }
         .info-content { font-family: var(--font-sans); font-size: 0.95rem; color: var(--rice); margin-bottom: 0.5rem; }
         .info-note { font-family: var(--font-sans); font-size: 0.8rem; color: var(--rice-dim); }
+        .wechat-copy { cursor: pointer; transition: color 0.3s; position: relative; }
+        .wechat-copy:hover { color: var(--gold-light); }
+        .copy-toast { font-size: 0.75rem; color: var(--gold-light); opacity: 0; transition: opacity 0.4s; margin-top: 4px; }
+        .copy-toast.show { opacity: 1; }
 
         /* ===== Form ===== */
         .form-section {
@@ -233,6 +237,25 @@
             cursor: pointer; transition: all 0.3s var(--ease-out); letter-spacing: 0.1em;
         }
         .form-submit:hover { background: var(--seal-dark); }
+        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-success {
+            display: none; text-align: center; padding: 3rem 1rem;
+        }
+        .form-success.show { display: block; }
+        .form-success-icon {
+            width: 64px; height: 64px; margin: 0 auto 1.5rem;
+            border-radius: 50%; background: rgba(184,134,11,0.12);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+        }
+        .form-success h3 {
+            font-family: var(--font-serif); font-size: 1.3rem; color: var(--rice);
+            margin-bottom: 0.75rem;
+        }
+        .form-success p {
+            font-family: var(--font-sans); font-size: 0.9rem; color: var(--rice-dim);
+            line-height: 1.6;
+        }
 
         /* ===== FAQ ===== */
         .faq-section {
@@ -388,7 +411,8 @@
             <a href="products.html" class="nav-link" data-i18n="nav.products">产品殿堂</a>
             <a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
             <a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
-            <a href="contact.html" class="nav-link active" data-i18n="nav.contact">联系我们</a>
+            <a href="recipes.html" data-i18n="nav.recipes">菹味食谱</a>
+        <a href="contact.html" data-i18n="nav.contact">联系我们</a>
         </div>        <div class="lang-switch">
             <button class="lang-btn active" data-lang="zh">中</button>
             <button class="lang-btn" data-lang="ko">한</button>
@@ -406,7 +430,8 @@
         <a href="products.html" data-i18n="nav.products">产品殿堂</a>
         <a href="story.html" data-i18n="nav.story">延边风土</a>
         <a href="gift.html" data-i18n="nav.gift">高端礼盒</a>
-        <a href="contact.html" class="active" data-i18n="nav.contact">联系我们</a>
+        <a href="recipes.html" data-i18n="nav.recipes">菹味食谱</a>
+        <a href="contact.html" data-i18n="nav.contact">联系我们</a>
         <div class="mobile-lang-switch">
             <button class="lang-btn active" data-lang="zh">中</button>
             <button class="lang-btn" data-lang="ko">한</button>
@@ -454,8 +479,9 @@
             <div class="info-card reveal">
                 <div class="info-icon">💬</div>
                 <div class="info-title" data-i18n="info.wechat_title">微信</div>
-                <div class="info-content">HAILANZU_Official</div>
+                <div class="info-content wechat-copy" id="wechatId" onclick="copyWechatId()" title="点击复制">HAILANZU_Official <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:middle;opacity:0.5"><rect x="6" y="6" width="10" height="10" rx="1.5"/><path d="M4 14V4a1.5 1.5 0 011.5-1.5H14"/></svg></div>
                 <div class="info-note" data-i18n="info.wechat_note">添加请备注来意</div>
+                <div class="copy-toast" id="copyToast" data-i18n="info.copied">✓ 已复制</div>
             </div>
             <div class="info-card reveal">
                 <div class="info-icon">📍</div>
@@ -484,6 +510,19 @@
                 <input type="tel" class="form-input" data-i18n-placeholder="form.phone_ph" placeholder="您的手机号">
             </div>
             <div class="form-row">
+                <label class="form-label" data-i18n="form.product">意向产品</label>
+                <select class="form-select" id="productSelect">
+                    <option value="" data-i18n="form.product_ph">请选择（可选）</option>
+                    <option value="classic" data-i18n="form.prod_classic">菹韵·经典系列</option>
+                    <option value="aged" data-i18n="form.prod_aged">菹韵·窖藏系列</option>
+                    <option value="sauce" data-i18n="form.prod_sauce">酱香系列</option>
+                    <option value="warm" data-i18n="form.prod_warm">温饱系列</option>
+                    <option value="longevity" data-i18n="form.prod_longevity">长寿·水食系列</option>
+                    <option value="gift" data-i18n="form.prod_gift">礼盒系列</option>
+                    <option value="custom" data-i18n="form.prod_custom">企业定制</option>
+                </select>
+            </div>
+            <div class="form-row">
                 <label class="form-label" data-i18n="form.subject">主题</label>
                 <select class="form-select" id="subjectSelect">
                     <option value="business" data-i18n="form.sub_business">商务合作</option>
@@ -498,7 +537,12 @@
                 <label class="form-label" data-i18n="form.message">留言</label>
                 <textarea class="form-textarea" data-i18n-placeholder="form.message_ph" placeholder="请输入您的留言..."></textarea>
             </div>
-            <button type="button" class="form-submit" data-i18n="form.submit">提交留言</button>
+            <button type="button" class="form-submit" id="formSubmitBtn" data-i18n="form.submit">提交留言</button>
+        </div>
+        <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">✓</div>
+            <h3 data-i18n="form.success_title">留言已收到</h3>
+            <p data-i18n="form.success_text">我们会在24小时内回复您，感谢对海兰菹的关注。</p>
         </div>
     </section>
 
@@ -604,7 +648,8 @@
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footer.connect">联系</h4>
-                <a href="contact.html" data-i18n="nav.contact">联系我们</a><br>
+                <a href="recipes.html" data-i18n="nav.recipes">菹味食谱</a>
+        <a href="contact.html" data-i18n="nav.contact">联系我们</a><br>
                 <p>business@hailanzu.com</p>
             </div>
             <div class="footer-col">
@@ -621,7 +666,7 @@
     <script>
         const translations = {
             zh: {
-                'nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.contact':'联系我们',
+                'nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.recipes':'菹味食谱','nav.contact':'联系我们',
                 'hero.title':'联系我们',
                 'info.email_title':'邮箱','info.email_note':'24小时内回复',
                 'info.wechat_title':'微信','info.wechat_note':'添加请备注来意',
@@ -630,8 +675,12 @@
                 'form.name':'姓名','form.name_ph':'您的姓名',
                 'form.email':'邮箱','form.email_ph':'your@email.com','form.phone':'手机号','form.phone_ph':'您的手机号',
                 'form.subject':'主题','form.sub_business':'商务合作','form.sub_product':'产品咨询','form.sub_media':'媒体采访','form.sub_gift':'礼盒定制','form.sub_corporate':'企业定制','form.sub_other':'其他',
+                'form.product':'意向产品','form.product_ph':'请选择（可选）','form.prod_classic':'菹韵·经典系列','form.prod_aged':'菹韵·窖藏系列','form.prod_sauce':'酱香系列','form.prod_warm':'温饱系列','form.prod_longevity':'长寿·水食系列','form.prod_gift':'礼盒系列','form.prod_custom':'企业定制',
                 'form.message':'留言','form.message_ph':'请输入您的留言...',
                 'form.submit':'提交留言',
+                'form.success_title':'留言已收到','form.success_text':'我们会在24小时内回复您，感谢对海兰菹的关注。',
+                'info.copied':'✓ 已复制',
+                'form.err_name':'请输入姓名','form.err_email':'请输入正确的邮箱','form.err_phone':'请输入正确的手机号','form.err_message':'请输入留言内容',
                 'faq.title':'常见问题',
                 'faq.q0':'如何购买','faq.a0':'目前支持以下购买方式：1. 微信小程序搜索"海兰菹"——在线下单，顺丰冷链到家 2. 添加企业微信 HAILANZU_Official——专属客服为你选品 3. 企业定制/批量采购——发送邮件至 business@hailanzu.com | 首次购买推荐"菹味·初识"礼盒，三味入门 ¥168 起。',
                 'faq.q1':'配送范围','faq.a1':'目前支持全国顺丰冷链配送，确保泡菜在最佳温度下送达。偏远地区可能需要额外1-2天配送时间。',
@@ -644,7 +693,7 @@
                 'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有'
             },
             ko: {
-                'nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.contact':'연락처',
+                'nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.recipes':'버지 레시피','nav.contact':'연락처',
                 'hero.title':'연락처',
                 'info.email_title':'이메일','info.email_note':'24시간 이내 회신',
                 'info.wechat_title':'위챗','info.wechat_note':'추가 시 용도를 남겨주세요',
@@ -653,8 +702,12 @@
                 'form.name':'이름','form.name_ph':'이름을 입력하세요',
                 'form.email':'이메일','form.email_ph':'your@email.com','form.phone':'전화번호','form.phone_ph':'전화번호 입력',
                 'form.subject':'주제','form.sub_business':'비즈니스 협력','form.sub_product':'제품 문의','form.sub_media':'미디어 인터뷰','form.sub_gift':'선물세트 맞춤','form.sub_corporate':'기업 맞춤','form.sub_other':'기타',
+                'form.product':'관심 제품','form.product_ph':'선택하세요(선택)','form.prod_classic':'저운·클래식','form.prod_aged':'저운·숙성','form.prod_sauce':'장향','form.prod_warm':'온포','form.prod_longevity':'장수·수식','form.prod_gift':'선물세트','form.prod_custom':'기업 맞춤',
                 'form.message':'메시지','form.message_ph':'메시지를 입력하세요...',
                 'form.submit':'메시지 제출',
+                'form.success_title':'메시지가 접수되었습니다','form.success_text':'24시간 이내에 회신드리겠습니다. 해란저에 관심을 가져주셔서 감사합니다.',
+                'info.copied':'✓ 복사됨',
+                'form.err_name':'이름을 입력하세요','form.err_email':'올바른 이메일을 입력하세요','form.err_phone':'올바른 전화번호를 입력하세요','form.err_message':'메시지를 입력하세요',
                 'faq.title':'자주 묻는 질문',
                 'faq.q0':'구매 방법','faq.a0':'현재 지원하는 구매 방법: 1. 위챗 미니프로그램에서 "해란저" 검색——온라인 주문, 순풍 냉장 배송 2. 기업 위챗 HAILANZU_Official 추가——전용 상담사가 제품 추천 3. 기업 맞춤/대량 구매——business@hailanzu.com으로 메일 발송 | 첫 구매 추천: "저미·첫만남" 선물세트, 세 가지 맛 입문 ¥168부터',
                 'faq.q1':'배송 범위','faq.a1':'전국 순풍 냉장 배송을 지원하며, 김치가 최적의 온도로 배달됩니다. 외곽 지역은 1-2일 추가 소요될 수 있습니다.',
@@ -667,7 +720,7 @@
                 'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유'
             },
             en: {
-                'nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.contact':'Contact Us',
+                'nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.recipes':'Recipes','nav.contact':'Contact Us',
                 'hero.title':'Contact Us',
                 'info.email_title':'Email','info.email_note':'Reply within 24 hours',
                 'info.wechat_title':'WeChat','info.wechat_note':'Please note your purpose',
@@ -676,8 +729,12 @@
                 'form.name':'Name','form.name_ph':'Your name',
                 'form.email':'Email','form.email_ph':'your@email.com','form.phone':'Phone','form.phone_ph':'Your phone number',
                 'form.subject':'Subject','form.sub_business':'Business Cooperation','form.sub_product':'Product Inquiry','form.sub_media':'Media Interview','form.sub_gift':'Gift Set Custom','form.sub_corporate':'Corporate Order','form.sub_other':'Other',
+                'form.product':'Product Interest','form.product_ph':'Select (optional)','form.prod_classic':'Classic Series','form.prod_aged':'Aged Series','form.prod_sauce':'Sauce Series','form.prod_warm':'Comfort Series','form.prod_longevity':'Longevity Series','form.prod_gift':'Gift Sets','form.prod_custom':'Corporate Custom',
                 'form.message':'Message','form.message_ph':'Enter your message...',
                 'form.submit':'Submit Message',
+                'form.success_title':'Message Received','form.success_text':'We will reply within 24 hours. Thank you for your interest in HAILANZU.',
+                'info.copied':'✓ Copied',
+                'form.err_name':'Please enter your name','form.err_email':'Please enter a valid email','form.err_phone':'Please enter a valid phone number','form.err_message':'Please enter your message',
                 'faq.title':'FAQ',
                 'faq.q0':'How to Purchase','faq.a0':'Available purchase methods: 1. Search "HAILANZU" on WeChat Mini Program——order online, SF cold chain delivery to your door 2. Add Enterprise WeChat HAILANZU_Official——dedicated customer service for product selection 3. Corporate custom / bulk orders——email business@hailanzu.com | First-time recommendation: "First Encounter" gift set, three flavors from ¥168',
                 'faq.q1':'Delivery Range','faq.a1':'Nationwide SF cold chain delivery, ensuring kimchi arrives at optimal temperature. Remote areas may need 1-2 extra days.',
@@ -690,7 +747,7 @@
                 'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
             },
             ja: {
-                'nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.contact':'お問い合わせ',
+                'nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.recipes':'レシピ','nav.contact':'お問い合わせ',
                 'hero.title':'お問い合わせ',
                 'info.email_title':'メール','info.email_note':'24時間以内に返信',
                 'info.wechat_title':'微信','info.wechat_note':'追加時にご用件をお書きください',
@@ -699,8 +756,12 @@
                 'form.name':'お名前','form.name_ph':'お名前を入力',
                 'form.email':'メール','form.email_ph':'your@email.com','form.phone':'電話番号','form.phone_ph':'電話番号を入力',
                 'form.subject':'件名','form.sub_business':'ビジネス協力','form.sub_product':'製品相談','form.sub_media':'メディア取材','form.sub_gift':'ギフトセットカスタム','form.sub_corporate':'法人注文','form.sub_other':'その他',
+                'form.product':'希望製品','form.product_ph':'選択してください(任意)','form.prod_classic':'古典シリーズ','form.prod_aged':'熟成シリーズ','form.prod_sauce':'醤香シリーズ','form.prod_warm':'温飽シリーズ','form.prod_longevity':'長寿・水食シリーズ','form.prod_gift':'ギフトセット','form.prod_custom':'法人カスタム',
                 'form.message':'メッセージ','form.message_ph':'メッセージを入力...',
                 'form.submit':'メッセージ送信',
+                'form.success_title':'メッセージ受付完了','form.success_text':'24時間以内に返信いたします。海蘭菹へのご関心ありがとうございます。',
+                'info.copied':'✓ コピーしました',
+                'form.err_name':'お名前を入力してください','form.err_email':'正しいメールアドレスを入力してください','form.err_phone':'正しい電話番号を入力してください','form.err_message':'メッセージを入力してください',
                 'faq.title':'よくある質問',
                 'faq.q0':'購入方法','faq.a0':'ご購入方法：1. WeChatミニプログラムで「海蘭菹」を検索——オンライン注文、順豊冷蔵便でお届け 2. 企業微信 HAILANZU_Official を追加——専属スタッフが製品をご提案 3. 法人カスタム/大量購入——business@hailanzu.com にメール | 初回購入おすすめ：「初遇」ギフトセット、三味入門 ¥168〜',
                 'faq.q1':'配送範囲','faq.a1':'全国順豊冷蔵配送対応。最適な温度でキムチをお届けします。遠隔地は1-2日追加の場合があります。',
@@ -782,6 +843,114 @@
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
         });
+
+        // Copy WeChat ID
+        function copyWechatId() {
+            var text = 'HAILANZU_Official';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function() {
+                    showCopyToast();
+                });
+            } else {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand('copy'); showCopyToast(); } catch(e) {}
+                document.body.removeChild(ta);
+            }
+        }
+        function showCopyToast() {
+            var toast = document.getElementById('copyToast');
+            if (toast) { toast.classList.add('show'); setTimeout(function() { toast.classList.remove('show'); }, 2000); }
+        }
+
+        // Form submit with validation
+        try {
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('formSubmitBtn');
+            if (!btn) return;
+
+            function getErr(key) {
+                var lang = window.currentLang || 'zh';
+                return (window.translations && window.translations[lang] && window.translations[lang][key]) || '';
+            }
+            function showError(input, msg) {
+                clearError(input);
+                var el = document.createElement('div');
+                el.className = 'form-err';
+                el.style.cssText = 'color:var(--seal);font-size:0.8rem;margin-top:4px;font-family:var(--font-sans)';
+                el.textContent = msg;
+                input.parentNode.appendChild(el);
+                input.style.borderColor = 'var(--seal)';
+            }
+            function clearError(input) {
+                var existing = input.parentNode.querySelector('.form-err');
+                if (existing) existing.remove();
+                input.style.borderColor = '';
+            }
+
+            btn.addEventListener('click', function() {
+                var nameEl = document.querySelector('.form-wrap .form-input[type="text"]');
+                var emailEl = document.querySelector('.form-wrap .form-input[type="email"]');
+                var phoneEl = document.querySelector('.form-wrap .form-input[type="tel"]');
+                var subjectEl = document.getElementById('subjectSelect');
+                var productEl = document.getElementById('productSelect');
+                var messageEl = document.querySelector('.form-wrap .form-textarea');
+
+                var valid = true;
+
+                // Clear previous errors
+                [nameEl, emailEl, phoneEl, messageEl].forEach(function(el) { if(el) clearError(el); });
+
+                // Name required
+                if (!nameEl || !nameEl.value.trim()) {
+                    showError(nameEl, getErr('form.err_name'));
+                    if (valid && nameEl) nameEl.focus();
+                    valid = false;
+                }
+
+                // Email required + format
+                var emailVal = emailEl ? emailEl.value.trim() : '';
+                var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailVal || !emailRe.test(emailVal)) {
+                    showError(emailEl, getErr('form.err_email'));
+                    if (valid && emailEl) emailEl.focus();
+                    valid = false;
+                }
+
+                // Phone required + format (11-digit Chinese mobile or international)
+                var phoneVal = phoneEl ? phoneEl.value.replace(/[\s\-]/g, '') : '';
+                var phoneRe = /^(1[3-9]\d{9}|\+?\d{7,15})$/;
+                if (!phoneVal || !phoneRe.test(phoneVal)) {
+                    showError(phoneEl, getErr('form.err_phone'));
+                    if (valid && phoneEl) phoneEl.focus();
+                    valid = false;
+                }
+
+                // Message required
+                if (!messageEl || !messageEl.value.trim()) {
+                    showError(messageEl, getErr('form.err_message'));
+                    if (valid && messageEl) messageEl.focus();
+                    valid = false;
+                }
+
+                if (!valid) return;
+
+                btn.disabled = true;
+                var origText = btn.textContent;
+                btn.textContent = '...';
+                setTimeout(function() {
+                    var formWrap = document.querySelector('.form-wrap');
+                    var success = document.getElementById('formSuccess');
+                    if (formWrap) formWrap.style.display = 'none';
+                    if (success) success.classList.add('show');
+                }, 800);
+            });
+        });
+        } catch(e) {}
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
