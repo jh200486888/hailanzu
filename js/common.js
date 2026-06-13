@@ -97,3 +97,56 @@ document.addEventListener('DOMContentLoaded', function(){
     el.addEventListener('click', function() { openQR('wechat-work'); });
   });
 });
+
+// ============ Deep Link: Open App on Mobile ============
+document.addEventListener('DOMContentLoaded', function() {
+  function openAppOrWeb(scheme, webUrl, e) {
+    var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (!isMobile) return;
+
+    if (e) e.preventDefault();
+
+    var startTime = Date.now();
+    var hidden = false;
+
+    function onVis() {
+      if (document.hidden || document.webkitHidden) hidden = true;
+    }
+    document.addEventListener('visibilitychange', onVis);
+    document.addEventListener('webkitvisibilitychange', onVis);
+
+    var iframe = document.createElement('iframe');
+    iframe.style.cssText = 'display:none;width:0;height:0;border:none;';
+    iframe.src = scheme;
+    document.body.appendChild(iframe);
+
+    setTimeout(function() {
+      document.removeEventListener('visibilitychange', onVis);
+      document.removeEventListener('webkitvisibilitychange', onVis);
+      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+      if (!hidden) window.location.href = webUrl;
+    }, 2000);
+  }
+
+  // Xiaohongshu
+  document.querySelectorAll('[data-app="xhs"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      var webUrl = this.href;
+      var scheme = 'xhsdiscover://search/result?keyword=' + encodeURIComponent('\u6D77\u5170\u83F9');
+      openAppOrWeb(scheme, webUrl, e);
+    });
+  });
+
+  // Douyin
+  document.querySelectorAll('[data-pending="douyin"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        openAppOrWeb('snssdk1128://search/result?keyword=' + encodeURIComponent('\u6D77\u5170\u83F9'), 'https://www.douyin.com/search/%E6%B5%B7%E5%85%B0%E8%8F%B9', e);
+      } else {
+        window.open('https://www.douyin.com/search/%E6%B5%B7%E5%85%B0%E8%8F%B9', '_blank');
+      }
+    });
+  });
+});
