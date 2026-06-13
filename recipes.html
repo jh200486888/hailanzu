@@ -265,10 +265,65 @@
         }
         .recipe-detail-close:hover { background: var(--seal); border-color: var(--seal); }
         .recipe-detail-hero {
-            height: 220px; background: var(--ink-deep);
-            display: flex; align-items: center; justify-content: center;
+            height: 320px; background: var(--ink-deep);
+            position: relative; overflow: hidden;
         }
-        .recipe-detail-hero .recipe-img-placeholder { font-size: 5rem; opacity: 0.12; }
+        .recipe-carousel { position: relative; width: 100%; height: 100%; }
+        .recipe-carousel-slide {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.96); pointer-events: none;
+        }
+        .recipe-carousel-slide.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+        .recipe-carousel-slide-bg {
+            position: absolute; inset: 0;
+        }
+        .recipe-carousel-emoji {
+            font-size: 5rem; position: relative; z-index: 2;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+            margin-bottom: 8px;
+        }
+        .recipe-carousel-label {
+            font-size: 0.7rem; letter-spacing: 2px; opacity: 0.4;
+            position: relative; z-index: 2; color: var(--rice);
+            font-family: var(--font-sans);
+        }
+        .recipe-carousel-dots {
+            position: absolute; bottom: 16px; left: 50%;
+            transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;
+        }
+        .recipe-carousel-dot {
+            width: 20px; height: 3px; border-radius: 2px;
+            background: rgba(245,240,232,0.15); cursor: pointer;
+            transition: all 0.4s;
+        }
+        .recipe-carousel-dot.active {
+            width: 32px; background: rgba(245,240,232,0.5);
+        }
+        .recipe-carousel-arrows {
+            position: absolute; top: 50%; left: 0; right: 0;
+            display: flex; justify-content: space-between;
+            transform: translateY(-50%); padding: 0 12px;
+            z-index: 10; pointer-events: none;
+        }
+        .recipe-carousel-arrow {
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1px solid rgba(245,240,232,0.12);
+            background: rgba(0,0,0,0.3); display: flex;
+            align-items: center; justify-content: center;
+            cursor: pointer; pointer-events: auto;
+            transition: all 0.3s; opacity: 0.5;
+        }
+        .recipe-carousel-arrow:hover {
+            opacity: 1; border-color: rgba(245,240,232,0.3);
+            background: rgba(0,0,0,0.5);
+        }
+        .recipe-carousel-arrow svg {
+            width: 12px; height: 12px; stroke: var(--rice);
+            stroke-width: 2; fill: none;
+        }
         .recipe-detail-content { padding: 2rem; }
         .recipe-detail-content h2 {
             font-family: var(--font-serif); font-size: 1.5rem; color: var(--ink);
@@ -326,7 +381,10 @@
             .recipes-grid { grid-template-columns: 1fr; }
             .recipe-detail { margin: 0; border-radius: 0; min-height: 100vh; }
             .recipe-overlay.open { padding: 0; }
-            .recipe-detail-hero { height: 180px; }
+            .recipe-detail-hero { height: 220px; }
+            .recipe-carousel-emoji { font-size: 3.5rem; }
+            .recipe-carousel-arrow { width: 28px; height: 28px; }
+            .recipe-carousel-label { font-size: 0.6rem; }
             .recipe-detail-content { padding: 1.5rem; }
         }
 
@@ -475,7 +533,36 @@
         <div class="recipe-detail" id="recipeDetail">
             <button class="recipe-detail-close" id="recipeDetailClose">✕</button>
             <div class="recipe-detail-hero" id="detailHero">
-                <div class="recipe-img-placeholder">🍲</div>
+                <div class="recipe-carousel" id="recipeCarousel">
+                    <div class="recipe-carousel-slide active" data-slide="0">
+                        <div class="recipe-carousel-slide-bg" id="carouselBg0"></div>
+                        <div class="recipe-carousel-emoji" id="carouselEmoji0">🍲</div>
+                        <div class="recipe-carousel-label" id="carouselLabel0">成品展示</div>
+                    </div>
+                    <div class="recipe-carousel-slide" data-slide="1">
+                        <div class="recipe-carousel-slide-bg" id="carouselBg1"></div>
+                        <div class="recipe-carousel-emoji" id="carouselEmoji1">🥬</div>
+                        <div class="recipe-carousel-label" id="carouselLabel1">食材特写</div>
+                    </div>
+                    <div class="recipe-carousel-slide" data-slide="2">
+                        <div class="recipe-carousel-slide-bg" id="carouselBg2"></div>
+                        <div class="recipe-carousel-emoji" id="carouselEmoji2">🔥</div>
+                        <div class="recipe-carousel-label" id="carouselLabel2">制作过程</div>
+                    </div>
+                    <div class="recipe-carousel-arrows">
+                        <div class="recipe-carousel-arrow" id="carouselPrev">
+                            <svg viewBox="0 0 12 12"><path d="M8 1L3 6l5 5"/></svg>
+                        </div>
+                        <div class="recipe-carousel-arrow" id="carouselNext">
+                            <svg viewBox="0 0 12 12"><path d="M4 1l5 5-5 5"/></svg>
+                        </div>
+                    </div>
+                    <div class="recipe-carousel-dots">
+                        <div class="recipe-carousel-dot active" data-cslide="0"></div>
+                        <div class="recipe-carousel-dot" data-cslide="1"></div>
+                        <div class="recipe-carousel-dot" data-cslide="2"></div>
+                    </div>
+                </div>
             </div>
             <div class="recipe-detail-content" id="detailContent"></div>
         </div>
@@ -711,13 +798,74 @@
         }, 100);
     }
 
+    // Carousel logic
+    var _carouselIdx = 0;
+    var _carouselTimer = null;
+
+    function _updateCarousel() {
+        document.querySelectorAll('.recipe-carousel-slide').forEach(function(s, i) {
+            s.classList.toggle('active', i === _carouselIdx);
+        });
+        document.querySelectorAll('.recipe-carousel-dot').forEach(function(d, i) {
+            d.classList.toggle('active', i === _carouselIdx);
+        });
+    }
+
+    function _stopCarouselTimer() {
+        if (_carouselTimer) { clearInterval(_carouselTimer); _carouselTimer = null; }
+    }
+
+    function _carouselGo(idx) {
+        _carouselIdx = idx;
+        _updateCarousel();
+        _stopCarouselTimer();
+        _carouselTimer = setInterval(function() {
+            _carouselIdx = (_carouselIdx + 1) % 3;
+            _updateCarousel();
+        }, 3500);
+    }
+
+    document.getElementById('carouselPrev').addEventListener('click', function() {
+        _carouselGo((_carouselIdx - 1 + 3) % 3);
+    });
+    document.getElementById('carouselNext').addEventListener('click', function() {
+        _carouselGo((_carouselIdx + 1) % 3);
+    });
+    document.querySelectorAll('.recipe-carousel-dot').forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            _carouselGo(parseInt(dot.dataset.cslide));
+        });
+    });
+
     function openDetail(r) {
         var txt = getRecipeText(r);
         var zh = r.zh || r.en || {};
         var overlay = document.getElementById('recipeOverlay');
         var hero = document.getElementById('detailHero');
         var content = document.getElementById('detailContent');
-        hero.innerHTML = '<div class="recipe-img-placeholder">' + r.emoji + '</div>';
+        // Populate carousel with recipe data
+        var scenes = [
+            { emoji: r.emoji || '\uD83C\uDF72', label: t('carousel.result') || '\u6210\u54C1\u5C55\u793A', bg: 'linear-gradient(135deg, #1A3C34 0%, #0F2420 100%)' },
+            { emoji: r.ingredientEmoji || '\uD83E\uDD6C', label: t('carousel.ingredient') || '\u98DF\u6750\u7279\u5199', bg: 'linear-gradient(135deg, #2A5A4E 0%, #1A3C34 100%)' },
+            { emoji: r.cookEmoji || '\uD83D\uDD25', label: t('carousel.cooking') || '\u5236\u4F5C\u8FC7\u7A0B', bg: 'linear-gradient(135deg, #3D2B1F 0%, #1A3C34 100%)' }
+        ];
+        scenes.forEach(function(s, i) {
+            var slide = document.querySelector('.recipe-carousel-slide[data-slide="' + i + '"]');
+            if (slide) {
+                slide.querySelector('.recipe-carousel-emoji').textContent = s.emoji;
+                slide.querySelector('.recipe-carousel-label').textContent = s.label;
+                slide.querySelector('.recipe-carousel-slide-bg').style.background = s.bg;
+            }
+        });
+        // Reset carousel to first slide
+        _carouselIdx = 0;
+        _updateCarousel();
+        // Start auto-rotate
+        _stopCarouselTimer();
+        _carouselTimer = setInterval(function() {
+            _carouselIdx = (_carouselIdx + 1) % 3;
+            _updateCarousel();
+        }, 3500);
 
         var html = '<h2>' + txt.title + '</h2>';
         html += '<div class="detail-subtitle">' + txt.subtitle + ' \u00B7 ' + r.time + ' \u00B7 ' + r.servings + '</div>';
@@ -742,6 +890,7 @@
     }
 
     function closeDetail() {
+        _stopCarouselTimer();
         var overlay = document.getElementById('recipeOverlay');
         overlay.classList.remove('open');
         document.body.style.overflow = '';
