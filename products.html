@@ -312,7 +312,7 @@ section,footer{overflow:hidden}
 .detail-spec-label{font-size:10px;letter-spacing:2px;opacity:0.45;margin-bottom:4px;color:var(--rice)}
 .detail-spec-value{font-size:13px;letter-spacing:1px;opacity:0.7;color:var(--rice)}
 .detail-cta-row{display:flex;gap:10px;margin-top:8px}
-.detail-cta{padding:10px 24px;border-radius:6px;font-size:12px;letter-spacing:2px;cursor:pointer;transition:all 0.3s;font-family:inherit;border:none}
+.detail-cta{padding:10px 24px;border-radius:6px;font-size:12px;letter-spacing:2px;cursor:pointer;transition:all 0.3s;font-family:inherit;border:none;text-decoration:none;display:inline-block;text-align:center}
 .detail-cta-primary{background:var(--seal);color:#fff}
 .detail-cta-primary:hover{background:#d42038;box-shadow:0 4px 20px rgba(200,16,46,0.3)}
 .detail-cta-secondary{background:rgba(245,240,232,0.06);color:var(--rice);border:1px solid rgba(245,240,232,0.1)}
@@ -573,8 +573,8 @@ section,footer{overflow:hidden}
 <div class="detail-desc" id="detailDesc"></div>
 <div class="detail-specs" id="detailSpecs"></div>
 <div class="detail-cta-row">
-<button class="detail-cta detail-cta-primary" data-i18n="cta.buy">立即选购</button>
-<button class="detail-cta detail-cta-secondary" data-i18n="cta.wishlist">加入心愿单</button>
+<a class="detail-cta detail-cta-primary" href="contact.html" data-i18n="cta.buy">立即选购</a>
+<a class="detail-cta detail-cta-secondary" href="gift.html" data-i18n="cta.wishlist">加入心愿单</a>
 </div>
 <div class="detail-related" id="detailRelated"></div>
 </div>

@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function(){
       setTimeout(function() { floatingCta.classList.add('visible'); }, 2000);
     }
     floatingCta.addEventListener('click', function() {
-      var community = document.getElementById('community');
-      if (community) community.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (typeof openQR === 'function') { openQR('wechat-work'); }
+      else { var community = document.getElementById('community'); if (community) community.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     });
   }
   

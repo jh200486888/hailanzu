@@ -434,7 +434,7 @@ ul,ol{list-style:none}
 .gift-items{margin-bottom:auto;padding-bottom:clamp(16px,2vw,32px)}
 .gift-items li{font-size:13px;line-height:2.4;opacity:.6;padding-left:14px;position:relative}
 .gift-items li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.5;position:absolute;left:0;top:50%;transform:translateY(-50%)}
-.gift-cta{display:inline-block;padding:12px 28px;border:1.5px solid var(--seal);color:var(--rice);font-family:var(--font-serif);font-size:13px;letter-spacing:3px;transition:all .3s var(--ease-out);margin-top:auto;text-align:center}
+.gift-cta{display:inline-block;padding:12px 28px;border:1.5px solid var(--seal);color:var(--rice);font-family:var(--font-serif);font-size:13px;letter-spacing:3px;transition:all .3s var(--ease-out);margin-top:auto;text-align:center;text-decoration:none;cursor:pointer}
 .gift-cta:hover{background:var(--seal);box-shadow:0 0 36px var(--seal-glow)}
 
 /* ==================== CTA BANNER ==================== */
@@ -607,6 +607,26 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 .newbie-bar{position:fixed;top:80px;left:0;right:0;z-index:999;background:rgba(120,80,50,0.12);text-align:center;padding:8px 0;font-size:12px;letter-spacing:1px;opacity:0.7;cursor:pointer;transition:opacity .3s,background .3s;color:var(--rice);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .newbie-bar:hover{opacity:1;background:rgba(120,80,50,0.2)}
 @media(max-width:768px){.newbie-bar{top:64px;font-size:11px;padding:6px 0;letter-spacing:0.5px}}
+
+/* Lead magnet strip */
+.lead-magnet{position:relative;background:linear-gradient(135deg,rgba(184,134,11,0.08),rgba(184,134,11,0.03));border-top:1px solid rgba(184,134,11,0.2);border-bottom:1px solid rgba(184,134,11,0.2);padding:clamp(28px,4vw,48px) clamp(24px,5vw,64px);text-align:center}
+.lead-magnet-inner{max-width:680px;margin:0 auto}
+.lead-magnet-tag{display:inline-block;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(184,134,11,0.3);padding:4px 14px;border-radius:2px;margin-bottom:16px}
+.lead-magnet-title{font-family:var(--font-serif);font-weight:900;font-size:clamp(20px,2.8vw,32px);color:var(--rice);letter-spacing:2px;margin-bottom:6px}
+.lead-magnet-title-kr{font-family:var(--font-serif-kr);font-size:clamp(13px,1.3vw,17px);opacity:.4;letter-spacing:4px;color:var(--rice);margin-bottom:8px}
+.lead-magnet-desc{font-size:clamp(12px,1.1vw,14px);color:var(--rice);opacity:.6;margin-bottom:clamp(16px,2vw,28px);letter-spacing:1px}
+.lead-magnet-btn{display:inline-block;padding:13px 40px;background:var(--gold);color:var(--ink-deep);font-family:var(--font-serif);font-weight:700;font-size:13px;letter-spacing:3px;transition:all .3s var(--ease-out);cursor:pointer;text-decoration:none}
+.lead-magnet-btn:hover{background:var(--gold-bright,#d4b87a);transform:translateY(-2px);box-shadow:0 6px 24px rgba(184,134,11,0.3)}
+.lead-magnet-azalea{position:absolute;opacity:.03;pointer-events:none}
+.lead-magnet-azalea-l{left:-30px;top:-30px;width:120px;height:120px}
+.lead-magnet-azalea-r{right:-20px;bottom:-20px;width:100px;height:100px;transform:rotate(60deg)}
+@media(max-width:768px){.lead-magnet{padding:24px 20px}.lead-magnet-title{font-size:18px}.lead-magnet-btn{padding:11px 28px;font-size:12px}}
+
+/* CTA banner button group */
+.cta-banner-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-banner-btn-outline{background:transparent;color:var(--rice);border:1.5px solid var(--rice)}
+.cta-banner-btn-outline:hover{background:var(--rice);color:var(--seal)}
+@media(max-width:768px){.cta-banner-btns{flex-direction:column;align-items:center}}
 
 /* ==================== TERROIR — 风土大画幅 ==================== */
 .terroir{position:relative;background:var(--ink-deep);height:100vh;overflow:hidden}
@@ -1290,6 +1310,19 @@ try{
 })();
 </script>
 
+<!-- ==================== LEAD MAGNET ==================== -->
+<section class="lead-magnet" id="leadMagnet">
+  <svg class="lead-magnet-azalea lead-magnet-azalea-l" viewBox="0 0 280 360" fill="currentColor" stroke="none"><g transform="translate(140,180) scale(5)"><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/><circle cx="0" cy="0" r="3"/></g></svg>
+  <svg class="lead-magnet-azalea lead-magnet-azalea-r" viewBox="0 0 280 360" fill="currentColor" stroke="none"><g transform="translate(140,180) scale(4)"><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(72)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(144)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(216)"/><ellipse cx="0" cy="-14" rx="8" ry="14" transform="rotate(288)"/><circle cx="0" cy="0" r="3"/></g></svg>
+  <div class="lead-magnet-inner">
+    <div class="lead-magnet-tag reveal" data-i18n="lead.tag">New Member Exclusive</div>
+    <div class="lead-magnet-title reveal" data-i18n="lead.title">首单9折 · 免费试吃装</div>
+    <div class="lead-magnet-title-kr reveal" data-i18n="lead.title.kr">첫 주문 10% 할인 · 무료 시식 세트</div>
+    <div class="lead-magnet-desc reveal" data-i18n="lead.desc">加入企业微信社群，领取新人专属优惠与试吃装</div>
+    <a class="lead-magnet-btn reveal" href="javascript:void(0)" onclick="openQR('wechat-work')" data-i18n="lead.btn">立即领取 →</a>
+  </div>
+</section>
+
 <!-- ==================== MARQUEE ==================== -->
 <div class="marquee">
   <div class="marquee-inner" id="marqueeInner"></div>
@@ -1577,7 +1610,7 @@ try{
         <li data-i18n="gift.g1.item2">萝卜块 · 250g</li>
         <li data-i18n="gift.g1.item3">手工牛皮纸礼盒</li>
       </ul>
-      <button class="gift-cta" data-i18n="gift.cta">立即选购 →</button>
+      <a class="gift-cta" href="javascript:void(0)" onclick="openQR('wechat-work')" data-i18n="gift.cta">立即选购 →</a>
     </div>
     <div class="gift-card reveal reveal-delay-2">
       <div class="gift-tier" data-i18n="gift.g2.tier">Classic</div>
@@ -1590,7 +1623,7 @@ try{
         <li data-i18n="gift.g2.item3">专属手写贺卡</li>
         <li data-i18n="gift.g2.item4">定制木盒礼盒</li>
       </ul>
-      <button class="gift-cta" data-i18n="gift.cta">立即选购 →</button>
+      <a class="gift-cta" href="javascript:void(0)" onclick="openQR('wechat-work')" data-i18n="gift.cta">立即选购 →</a>
     </div>
     <div class="gift-card featured reveal reveal-delay-3">
       <div class="gift-tier" data-i18n="gift.g3.tier">Supreme</div>
@@ -1604,7 +1637,7 @@ try{
         <li data-i18n="gift.g3.item4">专属手写贺卡</li>
         <li data-i18n="gift.g3.item5">限量陶瓷礼盒</li>
       </ul>
-      <button class="gift-cta" data-i18n="gift.cta">立即选购 →</button>
+      <a class="gift-cta" href="javascript:void(0)" onclick="openQR('wechat-work')" data-i18n="gift.cta">立即选购 →</a>
     </div>
   </div>
   <div class="section-explore reveal">
@@ -1616,7 +1649,10 @@ try{
 <section class="cta-banner" id="contact">
   <div class="cta-banner-title reveal" data-i18n="cta.title">开启你的菹味之旅</div>
   <div class="cta-banner-sub reveal" data-i18n="cta.sub">Begin Your Journey of Fermentation</div>
-  <a href="products.html" class="cta-banner-btn reveal" data-i18n="cta.btn">逛逛产品殿堂 →</a>
+  <div class="cta-banner-btns reveal">
+    <a href="products.html" class="cta-banner-btn" data-i18n="cta.btn">逛逛产品殿堂 →</a>
+    <a href="javascript:void(0)" onclick="openQR('wechat-work')" class="cta-banner-btn cta-banner-btn-outline" data-i18n="cta.consult">咨询购买 →</a>
+  </div>
 
 </section>
 
@@ -2099,7 +2135,12 @@ const i18n = {
   'gift.g3.item4': { zh:'专属手写贺卡', ko:'전용 손글씨 축하카드', en:'Handwritten Greeting Card', ja:'手書きメッセージカード' },
   'gift.g3.item5': { zh:'限量陶瓷礼盒', ko:'한정 도자기 선물 상자', en:'Limited Ceramic Gift Box', ja:'限定陶器ギフトボックス' },
   'gift.cta': { zh:'立即选购 →', ko:'바로 구매 →', en:'Shop Now →', ja:'今すぐ購入 →' },
-  'gift.cta.temp': { zh:'即将开放', ko:'곧 오픈', en:'Coming Soon', ja:'まもなく公開' },
+  'cta.consult': { zh:'咨询购买 →', ko:'구매 상담 →', en:'Consult & Buy →', ja:'購入相談 →' },
+  'lead.tag': { zh:'新客专享', ko:'신규 고객 전용', en:'New Member Exclusive', ja:'新規限定' },
+  'lead.title': { zh:'首单9折 · 免费试吃装', ko:'첫 주문 10% 할인 · 무료 시식 세트', en:'10% Off First Order · Free Tasting Kit', ja:'初回注文10%オフ・無料試食セット' },
+  'lead.title.kr': { zh:'', ko:'첫 주문 10% 할인 · 무료 시식 세트', en:'', ja:'' },
+  'lead.desc': { zh:'加入企业微信社群，领取新人专属优惠与试吃装', ko:'기업 위챗 커뮤니티 가입 후 신규 전용 혜택과 시식 세트를 받으세요', en:'Join our WeChat community for exclusive new member perks and a free tasting kit', ja:'企業WeChatコミュニティに参加して、新規限定特典と無料試食セットを受け取る' },
+  'lead.btn': { zh:'立即领取 →', ko:'지금 받기 →', en:'Claim Now →', ja:'今すぐ受け取る →' },
 
   // CTA BANNER
   'cta.title': { zh:'开启你的菹味之旅', ko:'저미의 여정을 시작하세요', en:'Begin Your Journey of Fermentation', ja:'菹味の旅を始めよう' },
@@ -2492,16 +2533,7 @@ showSlide(0);
 startHeroSlideshow();
 
 // ====== GIFT CTA ======
-document.querySelectorAll('.gift-cta').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const tempText = i18n['gift.cta.temp'][currentLang] || 'Coming Soon';
-    const origText = i18n['gift.cta'][currentLang] || '立即选购 →';
-    btn.textContent = tempText;
-    btn.style.borderColor = 'var(--gold)';
-    btn.style.color = 'var(--gold)';
-    setTimeout(() => { btn.textContent = origText; btn.style.borderColor = ''; btn.style.color = ''; }, 2000);
-  });
-});
+// Gift CTAs now open WeChat Work QR popup directly via onclick
 
 // ====== INITIAL LANGUAGE SETUP ======
 if(typeof setLanguage==='function') setLanguage(currentLang);
@@ -2531,19 +2563,6 @@ if(typeof setLanguage==='function') setLanguage(currentLang);
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="11" rx="1"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/><line x1="10" y1="10" x2="10" y2="13"/></svg>
     <span class="floating-cta-text" data-i18n="cta.floating">关注领试吃</span>
   </div>
-<script>
-try{
-var _fcta=document.getElementById('floatingCta');
-if(_fcta){
-var _d=localStorage.getItem('hailanzu_cta_dismissed');
-if(!_d||Date.now()-parseInt(_d)>604800000){setTimeout(function(){_fcta.classList.add('visible')},2000)}
-_fcta.addEventListener('click',function(){
-var _cm=document.getElementById('community')||document.querySelector('.community-section');
-if(_cm)_cm.scrollIntoView({behavior:'smooth',block:'center'});
-});
-}
-}catch(e){}
-</script>
 
 <script>
 try{
