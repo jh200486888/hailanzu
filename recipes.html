@@ -1194,6 +1194,18 @@
 </script>
 
 <script src="js/common.js"></script>
+<script>
+/* Back to top visibility */
+try{
+document.addEventListener('DOMContentLoaded',function(){
+  var btt=document.getElementById('backToTop');
+  if(!btt)return;
+  window.addEventListener('scroll',function(){
+    btt.style.opacity=window.scrollY>400?'1':'0';
+  },{passive:true});
+});
+}catch(e){}
+</script>
 
 <div class="floating-cta" id="floatingCta">
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="11" rx="1"/><path d="M7 6V4a3 3 0 0 1 6 0v2"/><line x1="10" y1="10" x2="10" y2="13"/></svg>
@@ -1211,15 +1223,6 @@
 
 </div>
 
-// Back to top visibility
-try{
-document.addEventListener('DOMContentLoaded',function(){
-  var btt=document.getElementById('backToTop');
-  if(!btt)return;
-  window.addEventListener('scroll',function(){
-    btt.style.opacity=window.scrollY>400?'1':'0';
-  },{passive:true});
-});
-}catch(e){}
+
 </body>
 </html>

@@ -2578,6 +2578,18 @@ try{
 })();
 }catch(e){}
 </script>
+<script>
+/* Back to top visibility */
+try{
+document.addEventListener('DOMContentLoaded',function(){
+  var btt=document.getElementById('backToTop');
+  if(!btt)return;
+  window.addEventListener('scroll',function(){
+    btt.style.opacity=window.scrollY>400?'1':'0';
+  },{passive:true});
+});
+}catch(e){}
+</script>
 
 <div class="community-sidebar" id="communitySidebar">
 <div class="sidebar-item" onclick="openQR('wechat-work')"><span>&#x1F4AC;</span><span class="sidebar-tooltip" data-i18n="sidebar.wechat">加入社群</span></div>
@@ -2590,15 +2602,6 @@ try{
 
 </div>
 
-// Back to top visibility
-try{
-document.addEventListener('DOMContentLoaded',function(){
-  var btt=document.getElementById('backToTop');
-  if(!btt)return;
-  window.addEventListener('scroll',function(){
-    btt.style.opacity=window.scrollY>400?'1':'0';
-  },{passive:true});
-});
-}catch(e){}
+
 </body>
 </html>
