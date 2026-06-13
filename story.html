@@ -606,20 +606,21 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
         .process-flow {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
         }
 
         .process-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-            width: 100px;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 0 1.5rem;
+            align-items: start;
+            position: relative;
+            padding: 1.8rem 0;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s var(--ease-out);
+            transform: translateY(24px);
+            transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
         }
 
         .process-step.visible {
@@ -627,59 +628,95 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             transform: translateY(0);
         }
 
-        .process-icon {
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--azalea);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--azalea);
+        .process-step-number {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
             position: relative;
+            text-align: center;
+            padding-top: 0.3rem;
         }
 
-        .process-icon svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        .process-step:not(:last-child)::after {
+        .process-step-number::after {
             content: '';
+            display: block;
+            width: 1px;
+            height: calc(100% + 1.8rem);
+            background: linear-gradient(180deg, var(--gold), rgba(184,134,11,0.15));
             position: absolute;
-            left: calc(100% + 0.75rem);
-            top: 50%;
-            width: calc(1.5rem + 0.75rem);
-            height: 2px;
-            background: linear-gradient(90deg, var(--azalea), transparent);
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+        }
+
+        .process-step:last-child .process-step-number::after {
+            display: none;
+        }
+
+        .process-step-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .process-step-title {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--rice);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .process-step-title-kr {
+            font-family: var(--font-sans-kr);
+            font-size: 0.75rem;
+            color: var(--rice-dim);
+            opacity: 0.6;
+        }
+
+        .process-step-desc {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--rice-dim);
+            line-height: 1.7;
+            margin-top: 0.25rem;
+            max-width: 420px;
+        }
+
+        .process-step-card {
+            background: rgba(196,114,127,0.05);
+            border: 1px solid rgba(196,114,127,0.12);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
 
         @media (max-width: 768px) {
-            .process-flow {
-                flex-direction: column;
-                align-items: center;
+            .process-step {
+                grid-template-columns: 40px 1fr;
+                gap: 0 1rem;
+                padding: 1.2rem 0;
             }
-            .process-step:not(:last-child)::after {
-                left: 50%;
-                top: calc(100% + 0.75rem);
-                width: 2px;
-                height: calc(1.5rem + 0.75rem);
-                background: linear-gradient(180deg, var(--azalea), transparent);
+
+            .process-step-number {
+                font-size: 1.5rem;
             }
-        }
 
-        .process-label {
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            color: var(--rice);
-            text-align: center;
-        }
+            .process-step-title {
+                font-size: 1.05rem;
+            }
 
-        .process-label-kr {
-            font-family: var(--font-sans-kr);
-            font-size: 0.7rem;
-            color: var(--rice-dim);
-            opacity: 0.7;
+            .process-step-desc {
+                font-size: 0.8rem;
+                max-width: 100%;
+            }
+
+            .process-step-card {
+                padding: 0.9rem 1.1rem;
+            }
         }
 
         .handcraft-detail {
@@ -1688,69 +1725,74 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 <div class="process-container">
                     <div class="process-flow">
                         <div class="process-step" data-step="1">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2L12 6M12 6C9 6 6 9 6 12C6 15 9 18 12 18C15 18 18 15 18 12C18 9 15 6 12 6Z"/>
-                                </svg>
+                            <div class="process-step-number">01</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.select">选料</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.select.kr">선별</div>
+                                    <div class="process-step-desc" data-i18n="process.select.desc">只选延边秋白菜，霜降后收割，叶厚芯紧，每一棵都经匠人亲手过目</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.select">选料</span>
-                            <span class="process-label-kr" data-i18n-kr="process.select.kr">선별</span>
                         </div>
                         <div class="process-step" data-step="2">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 3V21M12 3C9 3 6 6 6 9M12 3C15 3 18 6 18 9"/>
-                                </svg>
+                            <div class="process-step-number">02</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.wash">清洗</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.wash.kr">세척</div>
+                                    <div class="process-step-desc" data-i18n="process.wash.desc">山泉水三遍净洗，去泥留鲜，盐水浸泡令叶片柔韧服帖</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.wash">清洗</span>
-                            <span class="process-label-kr" data-i18n-kr="process.wash.kr">세척</span>
                         </div>
                         <div class="process-step" data-step="3">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M4 15L12 7L20 15M4 15V19M20 15V19"/>
-                                </svg>
+                            <div class="process-step-number">03</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.sauce">抹酱</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.sauce.kr">양념</div>
+                                    <div class="process-step-desc" data-i18n="process.sauce.desc">祖传酱料层层涂抹，辣椒粉、蒜、姜、鱼露——配比是三代人的秘密</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.sauce">抹酱</span>
-                            <span class="process-label-kr">양념</span>
                         </div>
                         <div class="process-step" data-step="4">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M8 3H16V7L18 21H6L8 7V3Z"/>
-                                </svg>
+                            <div class="process-step-number">04</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.jar">入坛</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.jar.kr">항아리</div>
+                                    <div class="process-step-desc" data-i18n="process.jar.desc">逐层码入陶坛，坛口朝下控水，每坛只装七分满，留给发酵呼吸的空间</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.jar">入坛</span>
-                            <span class="process-label-kr">항아리</span>
                         </div>
                         <div class="process-step" data-step="5">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="8" width="18" height="12" rx="2"/>
-                                    <path d="M7 8V6C7 4 9 2 12 2C15 2 17 4 17 6V8"/>
-                                </svg>
+                            <div class="process-step-number">05</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.seal">封存</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.seal.kr">밀봉</div>
+                                    <div class="process-step-desc" data-i18n="process.seal.desc">黄泥封坛，隔绝空气却留住时间，让微生物在黑暗中安静工作</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.seal">封存</span>
-                            <span class="process-label-kr" data-i18n-kr="process.seal.kr">밀봉</span>
                         </div>
                         <div class="process-step" data-step="6">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="9"/>
-                                    <path d="M12 6V12L16 14"/>
-                                </svg>
+                            <div class="process-step-number">06</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.wait">等待</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.wait.kr">대기</div>
+                                    <div class="process-step-desc" data-i18n="process.wait.desc">坛入地窖，低温慢酵七日至数月，时间是最好的调味师</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.wait">等待</span>
-                            <span class="process-label-kr" data-i18n-kr="process.wait.kr">대기</span>
                         </div>
                         <div class="process-step" data-step="7">
-                            <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2L15 8H21L16 12L18 19L12 15L6 19L8 12L3 8H9L12 2Z"/>
-                                </svg>
+                            <div class="process-step-number">07</div>
+                            <div class="process-step-card">
+                                <div class="process-step-body">
+                                    <div class="process-step-title" data-i18n="process.open">开坛</div>
+                                    <div class="process-step-title-kr" data-i18n-kr="process.open.kr">개봉</div>
+                                    <div class="process-step-desc" data-i18n="process.open.desc">封泥破开的一刻，酸香扑面——三代人的坚守，化作舌尖的惊艳</div>
+                                </div>
                             </div>
-                            <span class="process-label" data-i18n="process.open">开坛</span>
-                            <span class="process-label-kr" data-i18n-kr="process.open.kr">개봉</span>
                         </div>
                     </div>
                     <div class="handcraft-detail">
@@ -2066,12 +2108,19 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'ferment.day': 'DAY',
                 'ferment.of': '/ 30',
                 'process.select': '选料',
+                'process.select.desc': '只选延边秋白菜，霜降后收割，叶厚芯紧，每一棵都经匠人亲手过目',
                 'process.wash': '清洗',
+                'process.wash.desc': '山泉水三遍净洗，去泥留鲜，盐水浸泡令叶片柔韧服帖',
                 'process.sauce': '抹酱',
+                'process.sauce.desc': '祖传酱料层层涂抹，辣椒粉、蒜、姜、鱼露——配比是三代人的秘密',
                 'process.jar': '入坛',
+                'process.jar.desc': '逐层码入陶坛，坛口朝下控水，每坛只装七分满，留给发酵呼吸的空间',
                 'process.seal': '封存',
+                'process.seal.desc': '黄泥封坛，隔绝空气却留住时间，让微生物在黑暗中安静工作',
                 'process.wait': '等待',
+                'process.wait.desc': '坛入地窖，低温慢酵七日至数月，时间是最好的调味师',
                 'process.open': '开坛',
+                'process.open.desc': '封泥破开的一刻，酸香扑面——三代人的坚守，化作舌尖的惊艳',
                 'artisan.title': '匠人心语',
                 'artisan.quote1': '"种白菜要看天，做泡菜要看心。天时地利人和，缺一样都不对味。"<br><br>1962年生的金德浩，在祖母身边长大。祖母每次做泡菜时，都用草绳把白菜扎紧，手抹辣椒酱，一层一层——那个抹酱的动作，刻进了他七岁的记忆。2000年，他把这款泡菜命名为"海兰菹"。',
                 'artisan.name1': '金德浩',
@@ -2128,12 +2177,19 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'ferment.day': '일차',
                 'ferment.of': '/ 30',
                 'process.select': '선별',
+                'process.select.desc': '연변 가을배추만 엄선, 강서리 후 수확, 잎이 두껍고 속이 꽉 찬 것만 장인이 직접 골라냅니다',
                 'process.wash': '세척',
+                'process.wash.desc': '산샘물로 세 번 씻고 진흙을 걷어내며, 소금에 절여 잎을 부드럽고 유연하게 만듭니다',
                 'process.sauce': '양념',
+                'process.sauce.desc': '가전 양념을 겹겹이 바르고, 고춧가루·마늘·생강·젓갈—비율은 3대의 비밀입니다',
                 'process.jar': '항아리',
+                'process.jar.desc': '겹겹이 항아리에 담고 아구리를 아래로 물기를 뺀 뒤, 7할만 채워 발효가 숨쉴 공간을 남깁니다',
                 'process.seal': '밀봉',
+                'process.seal.desc': '황흙으로 항아리를 봉하고 공기는 차단하되 시간은 가두어, 미생물이 어둠 속에서 조용히 일하게 합니다',
                 'process.wait': '대기',
+                'process.wait.desc': '항아리를 지하실에 넣고 저온 천천히 발효, 7일에서 수개월—시간이 가장 좋은 조미료입니다',
                 'process.open': '개봉',
+                'process.open.desc': '봉흙을 깨는 순간, 시큼한 향기가 확—3대의 수호가 혀끝의 감동으로 피어납니다',
                 'artisan.title': '장인의 마음',
                 'artisan.quote1': '"배추 심기는 하늘을 보고, 김치 만들기는 마음을 봅니다. 천시지리인화, 하나라도 부족하면 맛이 다릅니다."<br><br>1962년에 태어난 김덕호는 할머니 곁에서 자랐습니다. 할머니가 매번 김치를 만들 때, 짚으로 배추를 꼭 묶고 손으로 고추장을 발라 한 겹 한 겹——그런 발라주는 동작이 일곱 살 그의 기억에 새겨졌습니다. 2000년, 그는 이 김치에 "해란저"라는 이름을 붙였습니다.',
                 'artisan.name1': '김덕호',
@@ -2188,12 +2244,19 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'ferment.day': 'DAY',
                 'ferment.of': '/ 30',
                 'process.select': 'Select',
+                'process.select.desc': 'Only Yanbian autumn cabbages, harvested after the first frost—thick leaves, tight cores, each hand-picked by our artisans',
                 'process.wash': 'Wash',
+                'process.wash.desc': 'Mountain spring water, three thorough rinses—removing soil while preserving freshness, brining to make each leaf supple',
                 'process.sauce': 'Season',
+                'process.sauce.desc': 'Ancestral sauce applied layer by layer—chili powder, garlic, ginger, fish sauce—the ratio is a three-generation secret',
                 'process.jar': 'Jar',
+                'process.jar.desc': 'Layered into earthen jars, inverted to drain, filled only seven-tenths full—leaving room for fermentation to breathe',
                 'process.seal': 'Seal',
+                'process.seal.desc': 'Yellow clay seals the jar, shutting out air but keeping time inside—letting microbes work quietly in the dark',
                 'process.wait': 'Wait',
+                'process.wait.desc': 'Jars rest in the cellar, slow-fermenting at low temperature for weeks to months—time is the finest seasoning',
                 'process.open': 'Open',
+                'process.open.desc': 'The moment the clay breaks open, a tangy aroma fills the air—three generations\u2019 devotion, transformed into a revelation on the tongue',
                 'artisan.title': 'Artisan Voices',
                 'artisan.quote1': '"Growing cabbage depends on heaven, making kimchi depends on the heart. When heaven, earth, and people align—only then is the flavor right."<br><br>Born in 1962, Kim Deokho grew up beside his grandmother. Every time she made kimchi, she tied cabbages tight with straw rope, spreading chili sauce layer by layer — that spreading motion etched into his seven-year-old memory. In 2000, he named this kimchi "HAILANZU."',
                 'artisan.name1': 'Kim Deokho',
@@ -2250,12 +2313,19 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'ferment.day': '日目',
                 'ferment.of': '/ 30',
                 'process.select': '選材',
+                'process.select.desc': '延辺の秋白菜のみを厳選、初霜の後に収穫—葉が厚く芯が締まったものだけ、匠が一つ一つ手で選び抜きます',
                 'process.wash': '洗浄',
+                'process.wash.desc': '山の清水で三度洗い流し、泥を除いて鮮度を保ち、塩水に浸して葉を柔らかくしなやかに',
                 'process.sauce': '味噌塗り',
+                'process.sauce.desc': '家伝の調味料を重ね塗り、唐辛子・にんにく・生姜・魚醤—配合は三代の秘密',
                 'process.jar': '瓶詰め',
+                'process.jar.desc': '一層ずつ陶器瓶に詰め、口を下にして水気を切り、七分目まで—発酵が呼吸する空間を残して',
                 'process.seal': '密封',
+                'process.seal.desc': '黄色い泥で瓶を封じ、空気を遮断して時間を閉じ込め、微生物が暗闇の中で静かに働くのを待つ',
                 'process.wait': '待機',
+                'process.wait.desc': '瓶を地下蔵に納め、低温でゆっくり発酵—七日から数ヶ月、時間こそ最良の調味料',
                 'process.open': '開封',
+                'process.open.desc': '封泥を割る瞬間、酸味ある香りがふわり—三代の守りが舌先の感動へと花開く',
                 'artisan.title': '匠の言葉',
                 'artisan.quote1': '"白菜を植えるには天を見、キムチを作るには心を見ます。天時地利人和、一つ欠けても味が違います。"<br><br>1962年生まれの金徳浩は祖母のそばで育った。祖母がキムチを作るたび、藁縄で白菜を縛り、手で唐辛子醤を塗り、一層ずつ——その塗る動作が七歳の記憶に刻み込まれた。2000年、彼はこのキムチに「海蘭菹」と名付けた。',
                 'artisan.name1': '金徳浩',
@@ -2316,6 +2386,8 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'chapter3.title.kr': '항아리 속 시간',
                 'process.select.kr': '선별',
                 'process.wash.kr': '세척',
+                'process.sauce.kr': '양념',
+                'process.jar.kr': '항아리',
                 'process.seal.kr': '밀봉',
                 'process.wait.kr': '대기',
                 'process.open.kr': '개봉'
@@ -2389,7 +2461,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         }, observerOptions);
 
         // Observe chapter elements
-        document.querySelectorAll('.chapter-number, .chapter-title, .chapter-title-kr, .chapter-desc, .data-highlights, .process-step, .reveal').forEach(el => {
+        document.querySelectorAll('.chapter-number, .chapter-title, .chapter-title-kr, .chapter-desc, .data-highlights, .reveal').forEach(el => {
             observer.observe(el);
         });
 
