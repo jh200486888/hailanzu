@@ -669,6 +669,12 @@ var translations = {
         'nav.story': '延边风土',
         'nav.gift': '高端礼盒',
         'nav.contact': '联系我们',
+        'sidebar.wechat': '加入社群',
+        'sidebar.gift': '高端礼盒',
+        'sidebar.contact': '联系我们',
+        'sidebar.xiaohongshu': '小红书',
+        'sidebar.douyin': '抖音',
+        'sidebar.backtop': '返回顶部',
         'hero.title': '产品殿堂',
         'hero.subtitle': '제품 전시',
         'showcase.title': '海兰菹 · 产品殿堂',
@@ -699,6 +705,12 @@ var translations = {
         'nav.story': '연변 풍토',
         'nav.gift': '고급 선물세트',
         'nav.contact': '연락처',
+        'sidebar.wechat': '커뮤니티',
+        'sidebar.gift': '프리미엄 선물',
+        'sidebar.contact': '문의하기',
+        'sidebar.xiaohongshu': '샤오홍슈',
+        'sidebar.douyin': '도우인',
+        'sidebar.backtop': '맨 위로',
         'hero.title': '제품 전시',
         'hero.subtitle': '제품 전시',
         'showcase.title': '해란저 · 제품 전시',
@@ -729,6 +741,12 @@ var translations = {
         'nav.story': 'Yanbian Heritage',
         'nav.gift': 'Luxury Gift Sets',
         'nav.contact': 'Contact Us',
+        'sidebar.wechat': 'Community',
+        'sidebar.gift': 'Gift Box',
+        'sidebar.contact': 'Contact',
+        'sidebar.xiaohongshu': 'Xiaohongshu',
+        'sidebar.douyin': 'Douyin',
+        'sidebar.backtop': 'Back to Top',
         'hero.title': 'Products',
         'hero.subtitle': '제품 전시',
         'showcase.title': 'HAILANZU · Product Sanctuary',
@@ -759,6 +777,12 @@ var translations = {
         'nav.story': '延辺風土',
         'nav.gift': '高級ギフト',
         'nav.contact': 'お問い合わせ',
+        'sidebar.wechat': 'コミュニティ',
+        'sidebar.gift': 'プレミアムギフト',
+        'sidebar.contact': 'お問い合わせ',
+        'sidebar.xiaohongshu': '小紅書',
+        'sidebar.douyin': '抖音',
+        'sidebar.backtop': 'トップへ',
         'hero.title': '製品展示',
         'hero.subtitle': '제품 전시',
         'showcase.title': '海蘭菹 · 製品殿堂',
@@ -1484,5 +1508,15 @@ try{
 
 </div>
 
+// Back to top visibility
+try{
+document.addEventListener('DOMContentLoaded',function(){
+  var btt=document.getElementById('backToTop');
+  if(!btt)return;
+  window.addEventListener('scroll',function(){
+    btt.style.opacity=window.scrollY>400?'1':'0';
+  },{passive:true});
+});
+}catch(e){}
 </body>
 </html>

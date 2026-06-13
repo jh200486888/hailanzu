@@ -1957,6 +1957,12 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'nav.story': '延边风土',
                 'nav.gift': '高端礼盒',
                 'nav.contact': '联系我们',
+                'sidebar.wechat': '加入社群',
+                'sidebar.gift': '高端礼盒',
+                'sidebar.contact': '联系我们',
+                'sidebar.xiaohongshu': '小红书',
+                'sidebar.douyin': '抖音',
+                'sidebar.backtop': '返回顶部',
                 'chapter1.number': 'CHAPTER 01',
                 'chapter1.title': '海兰江畔',
                 'chapter1.desc1': '延边，全称延边朝鲜族自治州，坐落于长白山北麓。这里是中国朝鲜族最大的聚居地，也是海兰菹的灵魂所在。',
@@ -2013,6 +2019,12 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'nav.story': '연변 풍토',
                 'nav.gift': '고급 선물세트',
                 'nav.contact': '연락처',
+                'sidebar.wechat': '커뮤니티',
+                'sidebar.gift': '프리미엄 선물',
+                'sidebar.contact': '문의하기',
+                'sidebar.xiaohongshu': '샤오홍슈',
+                'sidebar.douyin': '도우인',
+                'sidebar.backtop': '맨 위로',
                 'chapter1.number': 'CHAPTER 01',
                 'chapter1.title': '해란강변',
                 'chapter1.desc1': '연변, 정식 명칭 연변 조선족 자치주, 장백산 북쪽 기슭에 자리하고 있습니다. 이곳은 중국 최대의 조선족 거주지이자 해란저의 영혼이 깃든 곳입니다.',
@@ -2067,6 +2079,12 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'nav.story': 'Yanbian Heritage',
                 'nav.gift': 'Luxury Gift Sets',
                 'nav.contact': 'Contact Us',
+                'sidebar.wechat': 'Community',
+                'sidebar.gift': 'Gift Box',
+                'sidebar.contact': 'Contact',
+                'sidebar.xiaohongshu': 'Xiaohongshu',
+                'sidebar.douyin': 'Douyin',
+                'sidebar.backtop': 'Back to Top',
                 'chapter1.number': 'CHAPTER 01',
                 'chapter1.title': 'Haian Riverside',
                 'chapter1.desc1': 'Yanbian, the Yanbian Korean Autonomous Prefecture, lies at the northern foot of Changbai Mountain. This is the largest Korean ethnic settlement in China, and the soul of HAILANZU.',
@@ -2123,6 +2141,12 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'nav.story': '延辺風土',
                 'nav.gift': '高級ギフト',
                 'nav.contact': 'お問い合わせ',
+                'sidebar.wechat': 'コミュニティ',
+                'sidebar.gift': 'プレミアムギフト',
+                'sidebar.contact': 'お問い合わせ',
+                'sidebar.xiaohongshu': '小紅書',
+                'sidebar.douyin': '抖音',
+                'sidebar.backtop': 'トップへ',
                 'chapter1.number': 'CHAPTER 01',
                 'chapter1.title': '海蘭江畔',
                 'chapter1.desc1': '延辺、正式名称延辺朝鮮族自治州は長白山北麓に位置します。ここは中国最大の朝鮮族居住地であり、海蘭菹の魂の宿る場所です。',
@@ -2428,5 +2452,15 @@ try{
 
 </div>
 
+// Back to top visibility
+try{
+document.addEventListener('DOMContentLoaded',function(){
+  var btt=document.getElementById('backToTop');
+  if(!btt)return;
+  window.addEventListener('scroll',function(){
+    btt.style.opacity=window.scrollY>400?'1':'0';
+  },{passive:true});
+});
+}catch(e){}
 </body>
 </html>

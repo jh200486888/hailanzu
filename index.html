@@ -1926,6 +1926,14 @@ const i18n = {
   'nav.contact': { zh:'联系我们', ko:'문의하기', en:'Contact', ja:'お問い合わせ' },
   'nav.contact.sub': { zh:'문의하기', ko:'联系我们', en:'문의하기', ja:'문의하기' },
 
+  // SIDEBAR
+  'sidebar.wechat': { zh:'加入社群', ko:'커뮤니티', en:'Community', ja:'コミュニティ' },
+  'sidebar.gift': { zh:'高端礼盒', ko:'프리미엄 선물', en:'Gift Box', ja:'プレミアムギフト' },
+  'sidebar.contact': { zh:'联系我们', ko:'문의하기', en:'Contact', ja:'お問い合わせ' },
+  'sidebar.xiaohongshu': { zh:'小红书', ko:'샤오홍슈', en:'Xiaohongshu', ja:'小紅書' },
+  'sidebar.douyin': { zh:'抖音', ko:'도우인', en:'Douyin', ja:'抖音' },
+  'sidebar.backtop': { zh:'返回顶部', ko:'맨 위로', en:'Back to Top', ja:'トップへ' },
+
   // HERO
   'hero.declaration': { zh:'海兰菹', ko:'해란저', en:'HAILANZU', ja:'海蘭菹' },
   'hero.declaration.sub': { zh:'해란저', ko:'海兰菹', en:'해란저', ja:'해란저' },
@@ -2582,5 +2590,15 @@ try{
 
 </div>
 
+// Back to top visibility
+try{
+document.addEventListener('DOMContentLoaded',function(){
+  var btt=document.getElementById('backToTop');
+  if(!btt)return;
+  window.addEventListener('scroll',function(){
+    btt.style.opacity=window.scrollY>400?'1':'0';
+  },{passive:true});
+});
+}catch(e){}
 </body>
 </html>
