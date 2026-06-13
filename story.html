@@ -1083,13 +1083,19 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         /* Hanok illustration in hero */
         .hanok-illustration {
             position: absolute;
-            right: 5%;
+            right: 4%;
             top: 50%;
             transform: translateY(-50%);
-            width: clamp(180px, 22vw, 340px);
+            width: clamp(200px, 28vw, 420px);
             z-index: 1;
             opacity: 0;
             animation: hanokFadeIn 2s var(--ease-out) 0.5s forwards;
+        }
+        .hanok-illustration img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 8px 32px rgba(0,0,0,0.3));
         }
         @keyframes hanokFadeIn {
             from { opacity: 0; transform: translateY(-50%) translateX(20px); }
@@ -1101,23 +1107,26 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 right: auto;
                 left: 50%;
                 transform: translateX(-50%);
-                bottom: 18%;
+                bottom: 16%;
                 top: auto;
-                width: clamp(150px, 50vw, 240px);
-                opacity: 0.7;
+                width: clamp(160px, 55vw, 280px);
+                opacity: 0.85;
                 animation: hanokFadeInMobile 2s var(--ease-out) 0.5s forwards;
                 z-index: 1;
             }
+            .hanok-illustration img {
+                filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));
+            }
             @keyframes hanokFadeInMobile {
                 from { opacity: 0; transform: translateX(-50%) translateY(15px); }
-                to { opacity: 0.7; transform: translateX(-50%) translateY(0); }
+                to { opacity: 0.85; transform: translateX(-50%) translateY(0); }
             }
         }
         @media (max-width: 480px) {
             .hanok-illustration {
-                width: clamp(120px, 40vw, 180px);
-                opacity: 0.45;
-                bottom: 15%;
+                width: clamp(130px, 42vw, 200px);
+                opacity: 0.6;
+                bottom: 14%;
             }
         }
 
@@ -1362,139 +1371,11 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             </svg>
         </div>
 
-        <!-- Hanok illustration - 45-degree view highlighting Korean architecture -->
+        <!-- Hanok illustration - 45-degree view from reference photo -->
         <div class="hanok-illustration">
-            <svg viewBox="0 0 500 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Subtle glow behind hanok -->
-                <defs>
-                    <radialGradient id="hanok-glow" cx="50%" cy="60%" r="50%">
-                        <stop offset="0%" stop-color="rgba(184,134,11,0.08)"/>
-                        <stop offset="100%" stop-color="rgba(26,60,52,0)"/>
-                    </radialGradient>
-                    <linearGradient id="roof-grad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="rgba(245,240,232,0.18)"/>
-                        <stop offset="100%" stop-color="rgba(245,240,232,0.06)"/>
-                    </linearGradient>
-                    <linearGradient id="pillar-grad" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stop-color="rgba(245,240,232,0.15)"/>
-                        <stop offset="50%" stop-color="rgba(245,240,232,0.22)"/>
-                        <stop offset="100%" stop-color="rgba(245,240,232,0.10)"/>
-                    </linearGradient>
-                </defs>
-                <ellipse cx="250" cy="440" rx="200" ry="30" fill="url(#hanok-glow)"/>
-
-                <!-- GROUND / PLATFORM (대청마루 Daecheong) -->
-                <path d="M100 400 L400 400 L420 410 L80 410 Z" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.10)" stroke-width="0.8"/>
-                <!-- Platform stones -->
-                <path d="M85 410 L415 410 L418 418 L82 418 Z" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.07)" stroke-width="0.6"/>
-                <!-- Step stones -->
-                <rect x="200" y="418" width="100" height="6" rx="1" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.06)" stroke-width="0.5"/>
-                <rect x="210" y="424" width="80" height="5" rx="1" fill="rgba(245,240,232,0.02)" stroke="rgba(245,240,232,0.05)" stroke-width="0.5"/>
-
-                <!-- BACK WALL (visible from 45-deg angle) -->
-                <rect x="105" y="280" width="200" height="120" fill="rgba(245,240,232,0.02)" stroke="rgba(245,240,232,0.08)" stroke-width="0.6"/>
-                <!-- Back wall panels (한지 Hanji paper texture) -->
-                <rect x="115" y="290" width="80" height="100" rx="1" fill="rgba(245,240,232,0.02)" stroke="rgba(245,240,232,0.06)" stroke-width="0.4"/>
-                <rect x="205" y="290" width="90" height="100" rx="1" fill="rgba(245,240,232,0.02)" stroke="rgba(245,240,232,0.06)" stroke-width="0.4"/>
-                <!-- Cross lattice on back window (살창) -->
-                <line x1="135" y1="290" x2="135" y2="390" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="155" y1="290" x2="155" y2="390" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="175" y1="290" x2="175" y2="390" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="115" y1="320" x2="195" y2="320" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="115" y1="350" x2="195" y2="350" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="115" y1="370" x2="195" y2="370" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-
-                <!-- SIDE WALL (right side, showing depth from 45-deg) -->
-                <path d="M305 280 L390 260 L390 380 L305 400 Z" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.09)" stroke-width="0.7"/>
-                <!-- Side window lattice -->
-                <rect x="325" y="290" width="45" height="80" rx="1" fill="rgba(245,240,232,0.02)" stroke="rgba(245,240,232,0.06)" stroke-width="0.4"/>
-                <line x1="340" y1="290" x2="340" y2="370" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="355" y1="290" x2="355" y2="370" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="325" y1="320" x2="370" y2="316" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-                <line x1="325" y1="345" x2="370" y2="342" stroke="rgba(245,240,232,0.04)" stroke-width="0.3"/>
-
-                <!-- FRONT PILLARS (기둥) - the signature of hanok -->
-                <rect x="120" y="270" width="8" height="130" rx="2" fill="url(#pillar-grad)" stroke="rgba(184,134,11,0.25)" stroke-width="0.6"/>
-                <rect x="180" y="270" width="8" height="130" rx="2" fill="url(#pillar-grad)" stroke="rgba(184,134,11,0.25)" stroke-width="0.6"/>
-                <rect x="260" y="270" width="8" height="130" rx="2" fill="url(#pillar-grad)" stroke="rgba(184,134,11,0.25)" stroke-width="0.6"/>
-                <rect x="330" y="258" width="7" height="122" rx="2" fill="url(#pillar-grad)" stroke="rgba(184,134,11,0.20)" stroke-width="0.5"/>
-                <rect x="375" y="252" width="7" height="118" rx="2" fill="url(#pillar-grad)" stroke="rgba(184,134,11,0.18)" stroke-width="0.5"/>
-
-                <!-- Pillar bases (주춧돌) -->
-                <ellipse cx="124" cy="400" rx="8" ry="3" fill="rgba(245,240,232,0.06)" stroke="rgba(245,240,232,0.10)" stroke-width="0.4"/>
-                <ellipse cx="184" cy="400" rx="8" ry="3" fill="rgba(245,240,232,0.06)" stroke="rgba(245,240,232,0.10)" stroke-width="0.4"/>
-                <ellipse cx="264" cy="400" rx="8" ry="3" fill="rgba(245,240,232,0.06)" stroke="rgba(245,240,232,0.10)" stroke-width="0.4"/>
-                <ellipse cx="333" cy="400" rx="7" ry="2.5" fill="rgba(245,240,232,0.05)" stroke="rgba(245,240,232,0.08)" stroke-width="0.4"/>
-
-                <!-- BEAMS connecting pillars (보) -->
-                <line x1="120" y1="275" x2="390" y2="258" stroke="rgba(184,134,11,0.20)" stroke-width="1.2"/>
-                <line x1="120" y1="268" x2="390" y2="252" stroke="rgba(184,134,11,0.15)" stroke-width="0.8"/>
-
-                <!-- MAIN ROOF - the defining curved eaves (추녀) -->
-                <!-- Back roof slope -->
-                <path d="M90 275 Q150 220 250 210 Q350 200 410 240" stroke="rgba(184,134,11,0.30)" stroke-width="1.5" fill="none"/>
-                <!-- Front roof slope (deeper curve showing the graceful eave) -->
-                <path d="M70 280 Q100 210 200 185 Q280 168 340 175 Q400 182 430 230" stroke="rgba(184,134,11,0.35)" stroke-width="1.8" fill="none"/>
-
-                <!-- Roof surface - back -->
-                <path d="M90 275 Q150 220 250 210 Q350 200 410 240 L410 248 Q350 208 250 218 Q150 228 90 283 Z" fill="url(#roof-grad)" stroke="none"/>
-
-                <!-- Roof surface - front (visible from angle) -->
-                <path d="M70 280 Q100 210 200 185 Q280 168 340 175 Q400 182 430 230 L430 240 Q400 192 340 183 Q280 176 200 193 Q100 218 70 288 Z" fill="rgba(245,240,232,0.10)" stroke="none"/>
-
-                <!-- Roof ridge (용마루) -->
-                <path d="M80 268 Q200 155 350 170 Q420 178 440 228" stroke="rgba(184,134,11,0.40)" stroke-width="2.0" fill="none"/>
-                <path d="M80 268 Q200 155 350 170 Q420 178 440 228" stroke="rgba(245,240,232,0.08)" stroke-width="3.5" fill="none"/>
-
-                <!-- UP-CURVED EAVES (추녀 끝) - the most iconic feature -->
-                <!-- Left eave tip curling up -->
-                <path d="M70 280 Q58 275 48 260 Q40 248 38 235" stroke="rgba(184,134,11,0.50)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                <path d="M38 235 Q36 228 40 225" stroke="rgba(184,134,11,0.35)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                <!-- Small decorative finial at eave tip -->
-                <circle cx="40" cy="223" r="2.5" fill="rgba(184,134,11,0.30)" stroke="rgba(184,134,11,0.40)" stroke-width="0.6"/>
-
-                <!-- Right eave tip (further away, slightly smaller) -->
-                <path d="M430 230 Q440 225 448 218 Q455 210 458 198" stroke="rgba(184,134,11,0.40)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                <path d="M458 198 Q460 192 456 190" stroke="rgba(184,134,11,0.28)" stroke-width="1.0" fill="none" stroke-linecap="round"/>
-                <circle cx="455" cy="188" r="2" fill="rgba(184,134,11,0.22)" stroke="rgba(184,134,11,0.30)" stroke-width="0.5"/>
-
-                <!-- Roof tile ridgeline details -->
-                <path d="M95 270 Q200 162 345 175 Q415 182 435 232" stroke="rgba(245,240,232,0.06)" stroke-width="0.6" fill="none"/>
-
-                <!-- DAECHUENG (대청) - open wooden floor hall in front -->
-                <!-- Floor planks -->
-                <line x1="110" y1="398" x2="395" y2="378" stroke="rgba(245,240,232,0.05)" stroke-width="0.4"/>
-                <line x1="110" y1="394" x2="395" y2="374" stroke="rgba(245,240,232,0.05)" stroke-width="0.4"/>
-                <line x1="110" y1="390" x2="395" y2="370" stroke="rgba(245,240,232,0.05)" stroke-width="0.4"/>
-
-                <!-- ONDOL section indicator (온돌) - lower portion of back room -->
-                <rect x="115" y="365" width="170" height="25" fill="rgba(184,134,11,0.04)" stroke="rgba(184,134,11,0.08)" stroke-width="0.4" rx="1"/>
-                <!-- Small warm glow from ondol -->
-                <rect x="125" y="372" width="30" height="10" rx="2" fill="rgba(184,134,11,0.06)"/>
-                <rect x="170" y="372" width="30" height="10" rx="2" fill="rgba(184,134,11,0.05)"/>
-                <rect x="215" y="372" width="30" height="10" rx="2" fill="rgba(184,134,11,0.04)"/>
-
-                <!-- CHIMNEY (굴뚝) - traditional Korean chimney on side -->
-                <rect x="392" y="200" width="16" height="60" rx="2" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.10)" stroke-width="0.6"/>
-                <rect x="389" y="196" width="22" height="8" rx="1.5" fill="rgba(245,240,232,0.05)" stroke="rgba(245,240,232,0.10)" stroke-width="0.5"/>
-                <!-- Chimney smoke -->
-                <path d="M400 196 Q398 182 402 170 Q400 160 404 148" stroke="rgba(245,240,232,0.08)" stroke-width="0.8" fill="none">
-                    <animate attributeName="d" dur="5s" repeatCount="indefinite" values="M400 196 Q398 182 402 170 Q400 160 404 148;M400 196 Q402 180 398 168 Q402 156 398 142;M400 196 Q398 182 402 170 Q400 160 404 148"/>
-                </path>
-                <path d="M400 196 Q396 185 400 175 Q398 167 402 158" stroke="rgba(245,240,232,0.05)" stroke-width="0.5" fill="none">
-                    <animate attributeName="d" dur="7s" repeatCount="indefinite" values="M400 196 Q396 185 400 175 Q398 167 402 158;M400 196 Q404 183 400 173 Q402 163 398 152;M400 196 Q396 185 400 175 Q398 167 402 158"/>
-                </path>
-
-                <!-- Decorative cross-beam end (공포) under eave -->
-                <path d="M100 278 L95 270 L90 272 L88 280" stroke="rgba(184,134,11,0.25)" stroke-width="0.8" fill="none"/>
-                <path d="M115 268 L112 262 L108 264 L106 270" stroke="rgba(184,134,11,0.20)" stroke-width="0.6" fill="none"/>
-
-                <!-- Label: 한옥 Hanok (subtle) -->
-                <text x="250" y="460" text-anchor="middle" fill="rgba(184,134,11,0.15)" font-size="11" font-family="'Noto Serif KR', serif" letter-spacing="3">한옥 · 韓屋</text>
-            </svg>
+            <img src="imgs/hanok-45deg-transparent.webp" alt="한옥 韓屋" loading="eager"/>
         </div>
-
-                <div class="azalea-accent azalea-accent-right">
+                        <div class="azalea-accent azalea-accent-right">
             <svg viewBox="0 0 60 60" fill="none">
                 <g fill="rgba(196,114,127,.35)" stroke="none">
                     <g transform="translate(30,22) scale(0.5)">
