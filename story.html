@@ -2011,7 +2011,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
-                    if (key === 'chapter3.philosophy') {
+                    if (key === 'chapter3.philosophy' || key === 'artisan.quote1' || key === 'artisan.quote2' || key === 'artisan.quote3') {
                         el.innerHTML = translations[lang][key];
                     } else {
                         el.textContent = translations[lang][key];
@@ -2033,7 +2033,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             document.querySelectorAll('[data-i18n-kr]').forEach(el => {
                 const key = el.getAttribute('data-i18n-kr');
                 if (lang === 'ko' && krTranslations[key]) {
-                    if (key === 'chapter3.philosophy') {
+                    if (key === 'chapter3.philosophy' || key === 'artisan.quote1' || key === 'artisan.quote2' || key === 'artisan.quote3') {
                         el.innerHTML = krTranslations[key];
                     } else {
                         el.textContent = krTranslations[key];
