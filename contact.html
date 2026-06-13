@@ -451,11 +451,17 @@
                 <input type="email" class="form-input" data-i18n-placeholder="form.email_ph" placeholder="your@email.com">
             </div>
             <div class="form-row">
+                <label class="form-label" data-i18n="form.phone">手机号</label>
+                <input type="tel" class="form-input" data-i18n-placeholder="form.phone_ph" placeholder="您的手机号">
+            </div>
+            <div class="form-row">
                 <label class="form-label" data-i18n="form.subject">主题</label>
                 <select class="form-select" id="subjectSelect">
                     <option value="business" data-i18n="form.sub_business">商务合作</option>
                     <option value="product" data-i18n="form.sub_product">产品咨询</option>
                     <option value="media" data-i18n="form.sub_media">媒体采访</option>
+                    <option value="gift" data-i18n="form.sub_gift">礼盒定制</option>
+                    <option value="corporate" data-i18n="form.sub_corporate">企业定制</option>
                     <option value="other" data-i18n="form.sub_other">其他</option>
                 </select>
             </div>
@@ -473,6 +479,13 @@
         <div class="faq-list">
             <div class="faq-item">
                 <button class="faq-question">
+                    <span data-i18n="faq.q0">如何购买</span>
+                    <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+                </button>
+                <div class="faq-answer"><p data-i18n="faq.a0">目前支持以下购买方式：1. 微信小程序搜索"海兰菹"——在线下单，顺丰冷链到家 2. 添加企业微信 HAILANZU_Official——专属客服为你选品 3. 企业定制/批量采购——发送邮件至 business@hailanzu.com | 首次购买推荐"菹味·初识"礼盒，三味入门 ¥168 起。</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
                     <span data-i18n="faq.q1">配送范围</span>
                     <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
                 </button>
@@ -483,7 +496,7 @@
                     <span data-i18n="faq.q2">保质期与储存</span>
                     <svg class="faq-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
                 </button>
-                <div class="faq-answer"><p data-i18n="faq.a2">未开封冷藏保质期90天，开封后建议7天内食用完毕。冷冻保存可延长至6个月，解冻后口感略有变化。</p></div>
+                <div class="faq-answer"><p data-i18n="faq.a2">未开封冷藏保质期30天。开封后建议7天内食用完毕，冷藏保存。冷冻可延长至6个月，解冻后口感略有变化但不影响风味。我们不加防腐剂，请善待每一坛活着的泡菜。</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-question">
@@ -586,13 +599,14 @@
                 'info.address_title':'地址','info.address':'吉林省延边朝鲜族自治州','info.address_note':'欢迎预约参观',
                 'form.title':'留言给我们','form.subtitle':'每一条信息背后都有一个真实的人',
                 'form.name':'姓名','form.name_ph':'您的姓名',
-                'form.email':'邮箱','form.email_ph':'your@email.com',
-                'form.subject':'主题','form.sub_business':'商务合作','form.sub_product':'产品咨询','form.sub_media':'媒体采访','form.sub_other':'其他',
+                'form.email':'邮箱','form.email_ph':'your@email.com','form.phone':'手机号','form.phone_ph':'您的手机号',
+                'form.subject':'主题','form.sub_business':'商务合作','form.sub_product':'产品咨询','form.sub_media':'媒体采访','form.sub_gift':'礼盒定制','form.sub_corporate':'企业定制','form.sub_other':'其他',
                 'form.message':'留言','form.message_ph':'请输入您的留言...',
                 'form.submit':'提交留言',
                 'faq.title':'常见问题',
+                'faq.q0':'如何购买','faq.a0':'目前支持以下购买方式：1. 微信小程序搜索"海兰菹"——在线下单，顺丰冷链到家 2. 添加企业微信 HAILANZU_Official——专属客服为你选品 3. 企业定制/批量采购——发送邮件至 business@hailanzu.com | 首次购买推荐"菹味·初识"礼盒，三味入门 ¥168 起。',
                 'faq.q1':'配送范围','faq.a1':'目前支持全国顺丰冷链配送，确保泡菜在最佳温度下送达。偏远地区可能需要额外1-2天配送时间。',
-                'faq.q2':'保质期与储存','faq.a2':'未开封冷藏保质期90天，开封后建议7天内食用完毕。冷冻保存可延长至6个月，解冻后口感略有变化。',
+                'faq.q2':'保质期与储存','faq.a2':'未开封冷藏保质期30天。开封后建议7天内食用完毕，冷藏保存。冷冻可延长至6个月，解冻后口感略有变化但不影响风味。我们不加防腐剂，请善待每一坛活着的泡菜。',
                 'faq.q3':'定制周期','faq.a3':'定制礼盒从下单到发货约7-10个工作日，含手写贺卡和定制包装制作时间。大批量订单请提前15天联系。',
                 'faq.q4':'退换政策','faq.a4':'收到商品后如有品质问题，48小时内拍照联系客服，可免费补发。定制商品不支持无理由退换，敬请谅解。',
                 'social.title':'关注我们','social.wechat':'微信','social.official':'公众号','social.douyin':'抖音','social.xiaohongshu':'小红书','wx.guide.line1':'点击右上角 ⋯','wx.guide.line2':'选择「在浏览器中打开」','wx.guide.line3':'即可跳转到对应APP',
@@ -608,13 +622,14 @@
                 'info.address_title':'주소','info.address':'지린성 연변 조선족 자치주','info.address_note':'방문 예약 환영',
                 'form.title':'메시지 보내기','form.subtitle':'모든 메시지 뒤에는 진짜 사람이 있습니다',
                 'form.name':'이름','form.name_ph':'이름을 입력하세요',
-                'form.email':'이메일','form.email_ph':'your@email.com',
-                'form.subject':'주제','form.sub_business':'비즈니스 협력','form.sub_product':'제품 문의','form.sub_media':'미디어 인터뷰','form.sub_other':'기타',
+                'form.email':'이메일','form.email_ph':'your@email.com','form.phone':'전화번호','form.phone_ph':'전화번호 입력',
+                'form.subject':'주제','form.sub_business':'비즈니스 협력','form.sub_product':'제품 문의','form.sub_media':'미디어 인터뷰','form.sub_gift':'선물세트 맞춤','form.sub_corporate':'기업 맞춤','form.sub_other':'기타',
                 'form.message':'메시지','form.message_ph':'메시지를 입력하세요...',
                 'form.submit':'메시지 제출',
                 'faq.title':'자주 묻는 질문',
+                'faq.q0':'구매 방법','faq.a0':'현재 지원하는 구매 방법: 1. 위챗 미니프로그램에서 "해란저" 검색——온라인 주문, 순풍 냉장 배송 2. 기업 위챗 HAILANZU_Official 추가——전용 상담사가 제품 추천 3. 기업 맞춤/대량 구매——business@hailanzu.com으로 메일 발송 | 첫 구매 추천: "저미·첫만남" 선물세트, 세 가지 맛 입문 ¥168부터',
                 'faq.q1':'배송 범위','faq.a1':'전국 순풍 냉장 배송을 지원하며, 김치가 최적의 온도로 배달됩니다. 외곽 지역은 1-2일 추가 소요될 수 있습니다.',
-                'faq.q2':'유통기한 및 보관','faq.a2':'미개봉 냉장 보관 90일, 개봉 후 7일 이내 섭취 권장. 냉동 보관 시 6개월까지 연장 가능하나 해동 후 식감이 약간 달라질 수 있습니다.',
+                'faq.q2':'유통기한 및 보관','faq.a2':'미개봉 냉장 보관 30일. 개봉 후 7일 이내 섭취 권장, 냉장 보관하세요. 냉동 시 6개월까지 연장 가능하며 해동 후 식감은 약간 달라지지만 풍미에는 영향이 없습니다. 방부제를 넣지 않으니 살아 있는 김치 항아리마다 소중히 다뤄주세요.',
                 'faq.q3':'맞춤 주문 기간','faq.a3':'맞춤 선물세트는 주문부터 발송까지 약 7-10 영업일 소요. 대량 주문은 15일 전 연락 바랍니다.',
                 'faq.q4':'교환 및 환불','faq.a4':'수령 후 품질 문제 시 48시간 내 사진과 함께 고객센터 연락 시 무료 재발송. 맞춤 상품은 단순 변심 교환 불가합니다.',
                 'social.title':'팔로우','social.wechat':'위챗','social.official':'공식 계정','social.douyin':'도우인','social.xiaohongshu':'샤오홍슈','wx.guide.line1':'우측 상단 ⋯ 클릭','wx.guide.line2':'브라우저에서 열기 선택','wx.guide.line3':'앱으로 이동합니다',
@@ -630,17 +645,18 @@
                 'info.address_title':'Address','info.address':'Yanbian Korean Autonomous Prefecture, Jilin','info.address_note':'Visits by appointment',
                 'form.title':'Leave a Message','form.subtitle':'Behind every message is a real person',
                 'form.name':'Name','form.name_ph':'Your name',
-                'form.email':'Email','form.email_ph':'your@email.com',
-                'form.subject':'Subject','form.sub_business':'Business Cooperation','form.sub_product':'Product Inquiry','form.sub_media':'Media Interview','form.sub_other':'Other',
+                'form.email':'Email','form.email_ph':'your@email.com','form.phone':'Phone','form.phone_ph':'Your phone number',
+                'form.subject':'Subject','form.sub_business':'Business Cooperation','form.sub_product':'Product Inquiry','form.sub_media':'Media Interview','form.sub_gift':'Gift Set Custom','form.sub_corporate':'Corporate Order','form.sub_other':'Other',
                 'form.message':'Message','form.message_ph':'Enter your message...',
                 'form.submit':'Submit Message',
                 'faq.title':'FAQ',
+                'faq.q0':'How to Purchase','faq.a0':'Available purchase methods: 1. Search "HAILANZU" on WeChat Mini Program——order online, SF cold chain delivery to your door 2. Add Enterprise WeChat HAILANZU_Official——dedicated customer service for product selection 3. Corporate custom / bulk orders——email business@hailanzu.com | First-time recommendation: "First Encounter" gift set, three flavors from ¥168',
                 'faq.q1':'Delivery Range','faq.a1':'Nationwide SF cold chain delivery, ensuring kimchi arrives at optimal temperature. Remote areas may need 1-2 extra days.',
-                'faq.q2':'Shelf Life & Storage','faq.a2':'Unopened refrigerated: 90 days. After opening, consume within 7 days. Freezer storage extends to 6 months with slight texture change after thawing.',
+                'faq.q2':'Shelf Life & Storage','faq.a2':'Unopened refrigerated shelf life: 30 days. After opening, consume within 7 days and keep refrigerated. Freezing extends to 6 months; texture may change slightly after thawing but flavor remains intact. We use no preservatives—please treat every living jar of kimchi with care.',
                 'faq.q3':'Custom Order Timeline','faq.a3':'Custom gift sets take 7-10 business days from order to dispatch, including handwritten card and custom packaging. Bulk orders please contact 15 days ahead.',
                 'faq.q4':'Returns & Exchanges','faq.a4':'Quality issues? Contact us with photos within 48 hours for free replacement. Custom items are not eligible for returns without cause.',
                 'social.title':'Follow Us','social.wechat':'WeChat','social.official':'Official','social.douyin':'Douyin','social.xiaohongshu':'Xiaohongshu','wx.guide.line1':'Tap ⋯ at top right','wx.guide.line2':'Select Open in Browser','wx.guide.line3':'to open the app',
-                'footer.brand':'HAILANZU','footer.desc':'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
+                'footer.brand':'HAILANZU','footer.desc':'Handcrafted Jangajii kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
                 'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
                 'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
             },
@@ -652,13 +668,14 @@
                 'info.address_title':'住所','info.address':'吉林省延辺朝鮮族自治州','info.address_note':'見学予約歓迎',
                 'form.title':'メッセージを送る','form.subtitle':'すべてのメッセージの背には実在の人がいます',
                 'form.name':'お名前','form.name_ph':'お名前を入力',
-                'form.email':'メール','form.email_ph':'your@email.com',
-                'form.subject':'件名','form.sub_business':'ビジネス協力','form.sub_product':'製品相談','form.sub_media':'メディア取材','form.sub_other':'その他',
+                'form.email':'メール','form.email_ph':'your@email.com','form.phone':'電話番号','form.phone_ph':'電話番号を入力',
+                'form.subject':'件名','form.sub_business':'ビジネス協力','form.sub_product':'製品相談','form.sub_media':'メディア取材','form.sub_gift':'ギフトセットカスタム','form.sub_corporate':'法人注文','form.sub_other':'その他',
                 'form.message':'メッセージ','form.message_ph':'メッセージを入力...',
                 'form.submit':'メッセージ送信',
                 'faq.title':'よくある質問',
+                'faq.q0':'購入方法','faq.a0':'ご購入方法：1. WeChatミニプログラムで「海蘭菹」を検索——オンライン注文、順豊冷蔵便でお届け 2. 企業微信 HAILANZU_Official を追加——専属スタッフが製品をご提案 3. 法人カスタム/大量購入——business@hailanzu.com にメール | 初回購入おすすめ：「初遇」ギフトセット、三味入門 ¥168〜',
                 'faq.q1':'配送範囲','faq.a1':'全国順豊冷蔵配送対応。最適な温度でキムチをお届けします。遠隔地は1-2日追加の場合があります。',
-                'faq.q2':'賞味期限と保管','faq.a2':'未開封冷蔵90日、開封後7日以内にお召し上がりください。冷凍保存で6ヶ月延長可能ですが、解凍後食感が若干変わります。',
+                'faq.q2':'賞味期限と保管','faq.a2':'未開封冷蔵30日。開封後7日以内にお召し上がりください、冷蔵保存してください。冷凍で6ヶ月延長可能、解凍後食感は若干変わりますが風味に影響はありません。保存料不使用ですので、生きたキムチの一瓶一瓶を大切に扱ってください。',
                 'faq.q3':'カスタム注文期間','faq.a3':'カスタムギフトは注文から発送まで7-10営業日。大量注文は15日前にご連絡ください。',
                 'faq.q4':'返品・交換','faq.a4':'品質問題の場合、48時間以内に写真付きでご連絡いただければ無料再送。カスタム商品は返品不可です。',
                 'social.title':'フォロー','social.wechat':'WeChat','social.official':'公式アカウント','social.douyin':'抖音','social.xiaohongshu':'小紅書','wx.guide.line1':'右上の ⋯ をタップ','wx.guide.line2':'ブラウザで開くを選択','wx.guide.line3':'アプリにジャンプします',

@@ -561,6 +561,11 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
   .terroir-dot.active{width:36px}
 }
 
+
+/* 菹字释义淡入动画 */
+.hero-tagline-sub{animation:fadeInZu 1.5s ease 1.8s forwards;opacity:0}
+.hero-zu-explain{animation:fadeInZu 1.5s ease 2s forwards}
+@keyframes fadeInZu{to{opacity:.3}}
 </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
@@ -609,6 +614,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 <!-- Sticky product progress -->
 
 <!-- ==================== HERO — 全出血大图 + 极简文案 ==================== -->
+<div class="newbie-bar" style="background:rgba(120,80,50,0.15);text-align:center;padding:6px 0;font-size:12px;letter-spacing:1px;opacity:0.6;cursor:pointer;transition:opacity .3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'" onclick="window.location.href='story.html'"><span data-i18n="newbie.bar">🎯 第一次来？从风土故事开始 →</span></div>
 <section class="hero" id="hero">
   <div class="hero-bg">
     <div class="hero-bg-slide active"></div>
@@ -1050,7 +1056,9 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 })();
 </script>
   <div class="hero-tagline">
-    <div class="hero-tagline-text" data-i18n="hero.tagline">延边古法菹味 · The Art of Korean Fermentation</div>
+    <div class="hero-tagline-text" data-i18n="hero.tagline">延边古法菹味 · The Art of Jangajii Fermentation</div>
+    <div class="hero-tagline-sub" style="font-family:'Noto Serif SC',serif;font-size:clamp(11px,1vw,14px);letter-spacing:2px;opacity:.25;margin-top:8px;color:var(--rice)">海兰江的水，零下八度的霜，三代人不肯放手的手艺</div>
+    <div class="hero-zu-explain" data-i18n="hero.zu.explain" style="font-family:'Noto Serif SC',serif;font-size:clamp(10px,0.8vw,12px);letter-spacing:1px;opacity:0;margin-top:12px;color:var(--rice)">菹 zū · 古法腌制，始于先秦</div>
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -1206,7 +1214,7 @@ try{
       <div class="season-num" data-i18n="seasons.spring.num">01 / Spring</div>
       <div class="season-name" data-i18n="seasons.spring.name">春·腌</div>
       <div class="season-name-kr" data-i18n="seasons.spring.name.sub">봄 · 담그기</div>
-      <div class="season-desc" data-i18n="seasons.spring.desc">霜降后的白菜，最是脆嫩。抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。每一层都均匀、每一抹都用心。</div>
+      <div class="season-desc" data-i18n="seasons.spring.desc">冰雪消融，三月的风还带着寒意。霜降后的白菜最是脆嫩，抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。金达莱花开满山野，坛中的白菜也在悄然蜕变。每一层都均匀、每一抹都用心。</div>
     
       <div class="season-proverb" data-i18n="seasons.spring.proverb">「꽃이 피면 봄이 온다」</div></div>
     <div class="season-card season-summer reveal reveal-delay-2">
@@ -1214,15 +1222,15 @@ try{
       <div class="season-num" data-i18n="seasons.summer.num">02 / Summer</div>
       <div class="season-name" data-i18n="seasons.summer.name">夏·酵</div>
       <div class="season-name-kr" data-i18n="seasons.summer.name.sub">여름 · 발효</div>
-      <div class="season-desc" data-i18n="seasons.summer.desc">温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺其自然。</div>
+      <div class="season-desc" data-i18n="seasons.summer.desc">匠人们调配灵魂酱料，温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺势而为。</div>
     
       <div class="season-proverb" data-i18n="seasons.summer.proverb">「여름 밤은 짧다」</div></div>
     <div class="season-card season-autumn reveal reveal-delay-1">
       <div class="season-char" data-i18n="seasons.autumn.char">秋</div>
       <div class="season-num" data-i18n="seasons.autumn.num">03 / Autumn</div>
-      <div class="season-name" data-i18n="seasons.autumn.name">秋·熟</div>
+      <div class="season-name" data-i18n="seasons.autumn.name">秋·藏</div>
       <div class="season-name-kr" data-i18n="seasons.autumn.name.sub">가을 · 익음</div>
-      <div class="season-desc" data-i18n="seasons.autumn.desc">三个月的等待，酸与辣达成平衡。开坛的瞬间，香气扑面。这是时间赋予的味道，人工无法替代。</div>
+      <div class="season-desc" data-i18n="seasons.autumn.desc">秋风入坛，万物归藏。三十天的等待，酸与辣达成平衡，无人能催的味道。开坛的瞬间，香气扑面，这是时间赋予的味道，人工无法替代。</div>
     
       <div class="season-proverb" data-i18n="seasons.autumn.proverb">「가을 하늘은 높다」</div></div>
     <div class="season-card season-winter reveal reveal-delay-2">
@@ -1230,7 +1238,7 @@ try{
       <div class="season-num" data-i18n="seasons.winter.num">04 / Winter</div>
       <div class="season-name" data-i18n="seasons.winter.name">冬·享</div>
       <div class="season-name-kr" data-i18n="seasons.winter.name.sub">겨울 · 즐김</div>
-      <div class="season-desc" data-i18n="seasons.winter.desc">延边的冬天漫长而寒冷。一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是冬日的仪式。</div>
+      <div class="season-desc" data-i18n="seasons.winter.desc">开坛的瞬间，白气升腾，酸香扑面。延边的冬天漫长而寒冷，一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是延边人最古老的冬日仪式。</div>
       <div class="season-proverb" data-i18n="seasons.winter.proverb">「첫눈이 오면 김치 담근다」</div>
     </div>
   </div>
@@ -1269,6 +1277,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p1.name">原味辣白菜</div>
           <div class="products-slide-kr" data-i18n="products.p1.name.sub">배추김치</div>
           <div class="products-slide-desc" data-i18n="products.p1.desc">经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。</div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'0\']').classList.toggle('show')">查看详情</button>
@@ -1288,6 +1297,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p3.name">茄子干鱿鱼丝</div>
           <div class="products-slide-kr" data-i18n="products.p3.name.sub">가지채 오징어</div>
           <div class="products-slide-desc" data-i18n="products.p3.desc">干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。</div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'2\']').classList.toggle('show')">查看详情</button>
@@ -1307,6 +1317,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p5.name">苏子叶</div>
           <div class="products-slide-kr" data-i18n="products.p5.name.sub">깻잎</div>
           <div class="products-slide-desc" data-i18n="products.p5.desc">一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。</div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'4\']').classList.toggle('show')">查看详情</button>
@@ -1326,6 +1337,7 @@ try{
           <div class="products-slide-name" data-i18n="products.p7.name">香辣明太鱼</div>
           <div class="products-slide-kr" data-i18n="products.p7.name.sub">명태조림</div>
           <div class="products-slide-desc" data-i18n="products.p7.desc">明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。</div>
+          <div class="product-tags" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;opacity:0.4;font-size:10px;letter-spacing:1px"><span>🫧 活性乳酸菌</span><span>🚫 零防腐剂</span><span>🌿 零人工色素</span></div>
           <div class="products-slide-spice">
             <span class="products-slide-spice-label" data-i18n="products.spice">辣度</span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot on"></span><span class="spice-dot"></span><span class="spice-dot"></span>
           <button class="products-slide-detail-btn" data-i18n="products.detail" onclick="document.querySelector('.products-slide-detail[data-product=\'6\']').classList.toggle('show')">查看详情</button>
@@ -1405,7 +1417,7 @@ try{
       <div class="story-num">01</div>
       <div class="story-title" data-i18n="story.s1.title">海兰江畔</div>
       <div class="story-title-kr" data-i18n="story.s1.title.sub">해란강 가에서</div>
-      <div class="story-body" data-i18n="story.s1.body">延边海兰江流域，长白山脚下的沃土。朝鲜族世代在此居住，将发酵的智慧刻进日常。这里的昼夜温差大、水质清冽，是大自然赐予泡菜最好的条件。每一坛海兰菹，都始于这片土地。</div>
+      <div class="story-body" data-i18n="story.s1.body">延边海兰江流域，长白山脚下的沃土。朝鲜族世代在此居住，将发酵的智慧刻进日常。这里的昼夜温差可达二十度，水质清冽，是大自然赐予泡菜最好的条件。每一坛海兰菹，都始于这片土地。</div>
     </div>
   </div>
   <div class="story-block reveal">
@@ -1417,7 +1429,7 @@ try{
       <div class="story-num">02</div>
       <div class="story-title" data-i18n="story.s2.title">古法手作</div>
       <div class="story-title-kr" data-i18n="story.s2.title.sub">전통 수제</div>
-      <div class="story-body" data-i18n="story.s2.body">从选料到入坛，每一步都靠手与经验。抹酱的力道决定入味深浅，码坛的松紧影响发酵均匀。机器可以复制配方，却复制不了那双手的分寸感。三代人的手艺，是海兰菹最珍贵的秘方。</div>
+      <div class="story-body" data-i18n="story.s2.body">从选料到入坛，每一步都靠手与经验。抹酱的力道决定入味深浅，码坛的松紧影响发酵均匀。机器可以复制配方，却复制不了那双手的分寸感。手作不是慢，而是对每一棵白菜的尊重。三代人的手艺，是海兰菹最珍贵的秘方。</div>
     </div>
   </div>
   <div class="story-block reveal">
@@ -1429,7 +1441,7 @@ try{
       <div class="story-num">03</div>
       <div class="story-title" data-i18n="story.s3.title">坛中时光</div>
       <div class="story-title-kr" data-i18n="story.s3.title.sub">항아리 속 시간</div>
-      <div class="story-body" data-i18n="story.s3.body">发酵不是工业流程，是时间的艺术。温度、湿度、天数，每一坛都有自己的"生命节奏"。我们不催促，不加速。等待，是做出好泡菜唯一的方法。每一坛海兰菹，都值得被等待。</div>
+      <div class="story-body" data-i18n="story.s3.body">发酵不是工业流程，是时间的艺术。温度、湿度、天数，每一坛都有自己的"生命节奏"。发酵是和时间交朋友——你不必催它，它自会在最好的时刻回报你。我们不催促，不加速。等待，是做出好泡菜唯一的方法。每一坛海兰菹，都值得被等待。</div>
     </div>
   </div>
   <div class="section-explore reveal">
@@ -1462,7 +1474,7 @@ try{
         <li data-i18n="gift.g1.item2">萝卜块 · 250g</li>
         <li data-i18n="gift.g1.item3">手工牛皮纸礼盒</li>
       </ul>
-      <button class="gift-cta" data-i18n="gift.cta">定制礼盒</button>
+      <button class="gift-cta" data-i18n="gift.cta">立即选购 →</button>
     </div>
     <div class="gift-card reveal reveal-delay-2">
       <div class="gift-tier" data-i18n="gift.g2.tier">Classic</div>
@@ -1475,7 +1487,7 @@ try{
         <li data-i18n="gift.g2.item3">专属手写贺卡</li>
         <li data-i18n="gift.g2.item4">定制木盒礼盒</li>
       </ul>
-      <button class="gift-cta" data-i18n="gift.cta">定制礼盒</button>
+      <button class="gift-cta" data-i18n="gift.cta">立即选购 →</button>
     </div>
     <div class="gift-card featured reveal reveal-delay-3">
       <div class="gift-tier" data-i18n="gift.g3.tier">Supreme</div>
@@ -1489,7 +1501,7 @@ try{
         <li data-i18n="gift.g3.item4">专属手写贺卡</li>
         <li data-i18n="gift.g3.item5">限量陶瓷礼盒</li>
       </ul>
-      <button class="gift-cta" data-i18n="gift.cta">定制礼盒</button>
+      <button class="gift-cta" data-i18n="gift.cta">立即选购 →</button>
     </div>
   </div>
   <div class="section-explore reveal">
@@ -1502,7 +1514,7 @@ try{
 <section class="cta-banner" id="contact">
   <div class="cta-banner-title reveal" data-i18n="cta.title">开启你的菹味之旅</div>
   <div class="cta-banner-sub reveal" data-i18n="cta.sub">Begin Your Journey of Fermentation</div>
-  <a href="products.html" class="cta-banner-btn reveal" data-i18n="cta.btn">探索全部产品</a>
+  <a href="products.html" class="cta-banner-btn reveal" data-i18n="cta.btn">逛逛产品殿堂 →</a>
 
 </section>
 
@@ -1552,7 +1564,7 @@ try{
     <path d="M 56 68 L 56 210 Q 56 256 100 256 Q 144 256 144 210 L 144 68"/>
   </svg>
 </div>
-  <div class="footer-brand-sub" data-i18n="footer.brand.en">The Art of Korean Fermentation</div>
+  <div class="footer-brand-sub" data-i18n="footer.brand.en">The Art of Jangajii Fermentation</div>
     </div>
     <div class="footer-col">
       <div class="footer-col-title" data-i18n="footer.explore">Explore</div>
@@ -1752,7 +1764,10 @@ const i18n = {
   'terroir.s4.title.kr': { zh:'사과배 향기, 산야의 선물', ko:'苹果梨香，山野馈赠', en:'사과배 향기, 산야의 선물', ja:'사과배 향기, 산야의 선물' },
   'terroir.s4.desc': { zh:'延边苹果梨，汁水丰沛、酸甜有度。梨汁入酱，是延边泡菜独有的鲜甜密码——一抹果香，让辣味有了温柔的面孔。', ko:'연변 사과배, 즙이 풍부하고 새콤달콤합니다. 배즙을 양념에 넣는 것은 연변 김치만의 비밀 — 과일 향이 매운맛에 부드러운 얼굴을 만들어줍니다.', en:'Yanbian apple pear, brimming with juice, perfectly balanced in sweet and tart. Pear juice in the seasoning is Yanbian kimchi\u2019s secret code — a touch of fruit that gives spice a gentle face.', ja:'延辺リンゴ梨、果汁豊かで甘酸のバランスが絶妙。梨の汁をタレに加えるのは延辺キムチ独自の秘密——果実の香りが辛味に優しい顔を与える。' },
   'hero.manifesto': { zh:'我们不追赶时间<br>我们让时间<br>成为最珍贵的配料', ko:'우리는 시간을 쫓지 않습니다<br>시간이<br>가장 귀한 재료가 되도록 합니다', en:'We do not chase time.<br>We let time<br>become the finest ingredient.', ja:'時間を追いかけない<br>時間こそが<br>最も尊い素材である' },
-  'hero.tagline': { zh:'延边古法菹味 · The Art of Korean Fermentation', ko:'연변 고법 저미 · The Art of Korean Fermentation', en:'Ancient Craft of Yanbian Fermentation · 延边古法菹味', ja:'延辺古法菹味 · The Art of Korean Fermentation' },
+  'hero.tagline': { zh:'延边古法菹味 · The Art of Jangajii Fermentation', ko:'연변 고법 저미 · The Art of Jangajii Fermentation', en:'Ancient Craft of Yanbian Fermentation · 延边古法菹味', ja:'延辺古法菹味 · The Art of Jangajii Fermentation' },
+  'hero.tagline.sub': { zh:'海兰江的水，零下八度的霜，三代人不肯放手的手艺', ko:'해란강의 물, 영하 8도의 서리, 삼대가 놓지 않은 솜씨', en:'The water of Hailan River, the frost at minus eight, three generations of craft they refuse to let go', ja:'海蘭江の水、零下8度の霜、三代が手放さなかった技' },
+  'hero.zu.explain': { zh:'菹 zū · 古法腌制，始于先秦', ko:'저 zū · 옛법 절임, 진나라 이래', en:'Zū · Ancient curing, since the Qin Dynasty', ja:'菹 zū · 古法漬け、秦より続く' },
+  'newbie.bar': { zh:'🎯 第一次来？从风土故事开始 →', ko:'🎯 처음이신가요? 풍토 이야기부터 →', en:'🎯 First time? Start with the terroir story →', ja:'🎯 初めてですか？風土の物語から →' },
 
   // PRODUCT DETAIL
   'products.detail': { zh:'查看详情', ko:'상세보기', en:'View Details', ja:'詳細を見る' },
@@ -1796,22 +1811,22 @@ const i18n = {
   'seasons.spring.num': { zh:'01 / Spring', ko:'01 / Spring', en:'01 / Spring', ja:'01 / Spring' },
   'seasons.spring.name': { zh:'春·腌', ko:'봄 · 담그기', en:'Spring · Cure', ja:'春・漬' },
   'seasons.spring.name.sub': { zh:'봄 · 담그기', ko:'春·腌', en:'봄 · 담그기', ja:'봄 · 담그기' },
-  'seasons.spring.desc': { zh:'霜降后的白菜，最是脆嫩。抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。每一层都均匀、每一抹都用心。', ko:'서리 내린 후의 배추가 가장 아삭합니다. 고춧가루, 마늘, 젓갈을 발라 항아리에 층층이 담습니다. 매 층마다 고르게, 매 바름마다 정성스럽게.', en:'Napa cabbage after the first frost — at its crispest. Coated with chili powder, garlic, and fish sauce, layered into the jar. Every layer even, every stroke deliberate.', ja:'霜降後の白菜は最もシャキッとします。唐辛子粉、ニンニク、魚醤を塗り、甕に層々と重ねていきます。一層ごとに均等に、一塗りごとに丁寧に。' },
+  'seasons.spring.desc': { zh:'冰雪消融，三月的风还带着寒意。霜降后的白菜最是脆嫩，抹上辣椒粉、蒜泥、鱼露，一层层码入坛中。金达莱花开满山野，坛中的白菜也在悄然蜕变。每一层都均匀、每一抹都用心。', ko:'얼음과 눈이 녹고, 3월 바람에는 아직 한기가 남아 있습니다. 서리 내린 후의 배추가 가장 아삭합니다. 고춧가루, 마늘, 젓갈을 발라 항아리에 층층이 담습니다. 진달래가 온 산에 피어나면, 항아리 속 배추도 조용히 변하기 시작합니다. 매 층마다 고르게, 매 바름마다 정성스럽게.', en:'Ice and snow melt away; March winds still carry a chill. Napa cabbage after the first frost — at its crispest. Coated with chili powder, garlic, and fish sauce, layered into the jar. As azaleas bloom across the hills, the cabbage in the jar quietly transforms. Every layer even, every stroke deliberate.', ja:'雪と氷が溶け、3月の風にはまだ寒さが残る。霜降後の白菜は最もシャキッとする。唐辛子粉、ニンニク、魚醤を塗り、甕に層々と重ねる。ツツジが山野に咲き誇る頃、甕の中の白菜も静かに変わり始める。一層ごとに均等に、一塗りごとに丁寧に。' },
   'seasons.summer.char': { zh:'夏', ko:'여', en:'II', ja:'夏' },
   'seasons.summer.num': { zh:'02 / Summer', ko:'02 / Summer', en:'02 / Summer', ja:'02 / Summer' },
   'seasons.summer.name': { zh:'夏·酵', ko:'여름 · 발효', en:'Summer · Ferment', ja:'夏・酵' },
   'seasons.summer.name.sub': { zh:'여름 · 발효', ko:'夏·酵', en:'여름 · 발효', ja:'여름 · 발효' },
-  'seasons.summer.desc': { zh:'温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺其自然。', ko:'온도가 오르면 유산균이 일하기 시작합니다. 항아리에서 꼬르륵 소리가 나는데, 그것이 발효의 소리입니다. 미생물은 조급함을 모르고, 자연의 순리만 압니다.', en:'As warmth rises, lactobacillus begins its work. The soft gurgle in the jar is the sound of fermentation. Microbes know nothing of haste — only the natural order.', ja:'気温が上がると乳酸菌が働き始めます。甕から聞こえるコポコポという音、それが発酵の声です。微生物は焦りを知らず、自然の理（ことわり）に従うだけ。' },
+  'seasons.summer.desc': { zh:'匠人们调配灵魂酱料，温度上升，乳酸菌开始工作。坛中咕嘟作响，是发酵的声音。微生物不懂急躁，只懂顺势而为。', ko:'장인들이 영혼의 양념을 조합하고, 온도가 오르면 유산균이 일하기 시작합니다. 항아리에서 꼬르륵 소리가 나는데, 그것이 발효의 소리입니다. 미생물은 조급함을 모르고, 순리에 따를 뿐입니다.', en:'Artisans blend the soul of the seasoning. As warmth rises, lactobacillus begins its work. The soft gurgle in the jar is the sound of fermentation. Microbes know nothing of haste — only going with the flow.', ja:'職人が魂の調味料を合わせる。気温が上がると乳酸菌が働き始める。甕から聞こえるコポコポという音、それが発酵の声。微生物は焦りを知らず、ただ流れに従う。' },
   'seasons.autumn.char': { zh:'秋', ko:'추', en:'III', ja:'秋' },
   'seasons.autumn.num': { zh:'03 / Autumn', ko:'03 / Autumn', en:'03 / Autumn', ja:'03 / Autumn' },
-  'seasons.autumn.name': { zh:'秋·熟', ko:'가을 · 익음', en:'Autumn · Mature', ja:'秋・熟' },
-  'seasons.autumn.name.sub': { zh:'가을 · 익음', ko:'秋·熟', en:'가을 · 익음', ja:'가을 · 익음' },
-  'seasons.autumn.desc': { zh:'三个月的等待，酸与辣达成平衡。开坛的瞬间，香气扑面。这是时间赋予的味道，人工无法替代。', ko:'석 달의 기다림 끝에 신맛과 매운맛이 균형을 이룹니다. 항아리를 여는 순간, 향기가 온몸을 감쌉니다. 이것은 시간이 부여한 맛, 인공으로 대신할 수 없습니다.', en:'Three months of patience, and sour meets spice in perfect balance. The moment the jar opens, fragrance fills the air. This is a flavor only time can bestow — no shortcut can replicate it.', ja:'三ヶ月の待ち時間、酸味と辛味が完璧なバランスに達します。甕を開けた瞬間、香りが溢れ出す。これは時間だけが与えられる味、人工では代用できません。' },
+  'seasons.autumn.name': { zh:'秋·藏', ko:'가을 · 장', en:'Autumn · Store', ja:'秋・藏' },
+  'seasons.autumn.name.sub': { zh:'가을 · 장', ko:'秋·藏', en:'가을 · 장', ja:'가을 · 장' },
+  'seasons.autumn.desc': { zh:'秋风入坛，万物归藏。三十天的等待，酸与辣达成平衡，无人能催的味道。开坛的瞬间，香气扑面，这是时间赋予的味道，人工无法替代。', ko:'가을바람이 항아리에 들고, 만물이 감춰집니다. 30일의 기다림 끝에 신맛과 매운맛이 균형을 이루는, 아무도 재촉할 수 없는 맛. 항아리를 여는 순간, 향기가 온몸을 감쌉니다. 이것은 시간이 부여한 맛, 인공으로 대신할 수 없습니다.', en:'Autumn winds enter the jar; all things return to store. Thirty days of patience, and sour meets spice in perfect balance — a flavor no one can rush. The moment the jar opens, fragrance fills the air. This is a flavor only time can bestow — no shortcut can replicate it.', ja:'秋風が甕に入り、万物が蔵する。三十日の待ち時間、酸味と辛味が完璧なバランスに達する、誰も急がせられない味。甕を開けた瞬間、香りが溢れ出す。これは時間だけが与えられる味、人工では代用できない。' },
   'seasons.winter.char': { zh:'冬', ko:'겨', en:'IV', ja:'冬' },
   'seasons.winter.num': { zh:'04 / Winter', ko:'04 / Winter', en:'04 / Winter', ja:'04 / Winter' },
   'seasons.winter.name': { zh:'冬·享', ko:'겨울 · 즐김', en:'Winter · Savor', ja:'冬・享' },
   'seasons.winter.name.sub': { zh:'겨울 · 즐김', ko:'冬·享', en:'겨울 · 즐김', ja:'겨울 · 즐김' },
-  'seasons.winter.desc': { zh:'延边的冬天漫长而寒冷。一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是冬日的仪式。', ko:'연변의 겨울은 길고 춥습니다. 밥 한 그릇, 김치 한 접시면 가장 든든한 만족입니다. 화로에 둘러앉아 저를 먹는 것, 겨울의 의식입니다.', en:'Winter in Yanbian is long and cold. A bowl of rice, a dish of kimchi — the most honest satisfaction. Gathering around the hearth to share fermented preserves is winter\'s ritual.', ja:'延辺の冬は長く、厳しい。ご飯一杯、キムチ一皿、それが何よりの満足。炉を囲んで菹を味わうこと、それは冬の儀式です。' },
+  'seasons.winter.desc': { zh:'开坛的瞬间，白气升腾，酸香扑面。延边的冬天漫长而寒冷，一碗米饭，一碟泡菜，就是最踏实的满足。围炉食菹，是延边人最古老的冬日仪式。', ko:'항아리를 여는 순간, 하얀 김이 피어오르고 새큼한 향이 감쌉니다. 연변의 겨울은 길고 춥습니다. 밥 한 그릇, 김치 한 접시면 가장 든든한 만족입니다. 화로에 둘러앉아 저를 먹는 것, 연변 사람들에게 가장 오래된 겨울 의식입니다.', en:'The moment the jar opens, white vapor rises and tangy aroma fills the air. Winter in Yanbian is long and cold. A bowl of rice, a dish of kimchi — the most honest satisfaction. Gathering around the hearth to share fermented preserves is Yanbian\'s most ancient winter ritual.', ja:'甕を開けた瞬間、白い湯気が立ちのぼり、酸っぱい香りが包む。延辺の冬は長く、厳しい。ご飯一杯、キムチ一皿、それが何よりの満足。炉を囲んで菹を味わうこと、それは延辺の人々にとって最も古い冬の儀式。' },
 
   // PRODUCTS
   'products.label': { zh:'Products · 产品殿堂', ko:'Products · 제품 전시', en:'Products · The Collection', ja:'Products · 製品殿堂' },
@@ -1819,40 +1834,40 @@ const i18n = {
   'products.spice': { zh:'辣度', ko:'매운맛', en:'Spice', ja:'辛さ' },
   'products.p1.name': { zh:'原味辣白菜', ko:'배추김치', en:'Plain Napa Kimchi', ja:'白菜キムチ' },
   'products.p1.name.sub': { zh:'배추김치', ko:'原味辣白菜', en:'배추김치', ja:'배추김치' },
-  'products.p1.desc': { zh:'经典原味，只用盐与时间。霜降白菜的自然甘甜，不着一丝辣意，却回味悠长。', ko:'정통 원맛, 오직 소금과 시간뿐. 서리 배추의 자연스러운 단맛, 매운맛 없이도 여운이 길게 남습니다.', en:'The classic, unadorned. Only salt and time. The natural sweetness of frost-kissed napa, no hint of spice, yet the finish lingers.', ja:'定番の原味、塩と時間だけ。霜降白菜の自然な甘味、辛さは一切ないのに、余韻が長く続く。' },
+  'products.p1.desc': { zh:'经典原味，只用盐与时间。霜降后的白菜，叶脉里藏着冰糖般的甘甜，不着一丝辣意，入口先是脆，然后是甜，最后是悠长的回甘。', ko:'정통 원맛, 오직 소금과 시간뿐. 서리 내린 배추, 잎맥에 얼음사탕 같은 단맛이 숨어 있습니다. 매운맛 없이, 입에 넣으면 먼저 아삭, 그다음 달콤, 마지막으로 긴 여운.', en:'The classic, unadorned. Only salt and time. Frost-kissed napa hides rock-candy sweetness in its veins — no spice, just crispness, then sweetness, then a long lingering finish.', ja:'定番の原味、塩と時間だけ。霜降後の白菜、葉脈に氷砂糖のような甘味が潜む。辛さは一切ない、口に入ればまずシャキッ、次に甘さ、最後に長く続く余韻。' },
   'products.p2.name': { zh:'甜味辣白菜', ko:'맛김치', en:'Sweet Spicy Kimchi', ja:'甘辛白菜キムチ' },
   'products.p2.name.sub': { zh:'맛김치', ko:'甜味辣白菜', en:'맛김치', ja:'맛김치' },
-  'products.p2.desc': { zh:'甜与辣的温柔对话。延边特有的甜辣配方，一入口先是清甜，然后辣意缓缓升起。', ko:'달콤함과 매운맛의 부드러운 대화. 연변 특유의 달콤 매운맛 비법, 입에 넣으면 먼저 달콤함, 그리고 매운맛이 천천히 올라옵니다.', en:'A tender dialogue of sweet and heat. Yanbian\'s signature sweet-spicy formula — first the gentle sweetness, then the warmth slowly rising.', ja:'甘さと辛さの優しい対話。延辺特有の甘辛レシピ、口にすればまず甘さ、そして辛さがゆっくりと広がる。' },
+  'products.p2.desc': { zh:'甜与辣的温柔对话。延边特有的甜辣配方，一入口先是蜜般的清甜，然后辣意如炭火般缓缓升起，舌尖微麻，却停不下筷子。', ko:'달콤함과 매운맛의 부드러운 대화. 연변 특유의 달콤 매운맛 비법, 입에 넣으면 먼저 꿀 같은 단맛, 그리고 매운맛이 숯불처럼 천천히 올라옵니다. 혀끝이 짜릿해도 젓가락을 멈출 수 없습니다.', en:'A tender dialogue of sweet and heat. Yanbian\'s signature sweet-spicy formula — first honeyed sweetness, then warmth rising like embers. A gentle tingle on the tongue, yet you can\'t stop reaching for more.', ja:'甘さと辛さの優しい対話。延辺特有の甘辛レシピ、口にすればまず蜜のような甘さ、そして辛さが炭火のようにゆっくりと広がる。舌先が痺れても、箸が止まらない。' },
   'products.p3.name': { zh:'茄子干鱿鱼丝', ko:'가지채 오징어', en:'Eggplant & Dried Squid', ja:'干し茄子イカ' },
   'products.p3.name.sub': { zh:'가지채 오징어', ko:'茄子干鱿鱼丝', en:'가지채 오징어', ja:'가지채 오징어' },
-  'products.p3.desc': { zh:'干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。', ko:'말린 가지의 씹는 맛과 오징어의 감칠맛이 만나, 한 항아리 안에서 육지와 바다의 풍미가 교차합니다.', en:'The chew of dried eggplant meets the umami of squid. In a single jar, land and sea converge.', ja:'干し茄子の噛みごたえとイカの旨味が出会い、一つの甕の中で陸と海の風味が交差する。' },
+  'products.p3.desc': { zh:'干茄子的嚼劲遇上鱿鱼的鲜香，一坛之内，陆地与海洋的风味交汇。咬开茄子干的瞬间，海味的鲜涌上来，像潮水漫过沙滩。', ko:'말린 가지의 씹는 맛과 오징어의 감칠맛이 만나, 한 항아리 안에서 육지와 바다의 풍미가 교차합니다. 말린 가지를 한 입 베어 물면 바다의 감칠맛이 밀려오는데, 마치 파도가 모래사장을 덮듯.', en:'The chew of dried eggplant meets the umami of squid. In a single jar, land and sea converge. Bite into dried eggplant and the ocean\'s savory rushes in — like a tide washing over sand.', ja:'干し茄子の噛みごたえとイカの旨味が出会い、一つの甕の中で陸と海の風味が交差する。干し茄子をかじれば海の旨味が押し寄せ、波が砂浜を覆うように。' },
   'products.p4.name': { zh:'萝卜块', ko:'깍두기', en:'Radish Cubes', ja:'カクドゥキ' },
   'products.p4.name.sub': { zh:'깍두기', ko:'萝卜块', en:'깍두기', ja:'깍두기' },
-  'products.p4.desc': { zh:'方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。', ko:'모나게 썬 무, 모든 면에 양념이 듬뿍. 한 입 베어 물면 아삭하는 소리, 신선함과 발효의 하모니.', en:'Cubed radish, every face coated in chili paste. The satisfying crunch is a duet of freshness and fermentation.', ja:'四角に切った大根、すべての面に辛味噌がたっぷり。かじりついた時のパリッという音、新鮮さと発酵のハーモニー。' },
+  'products.p4.desc': { zh:'方正的萝卜块，每一面都裹满辣酱。咬下去的脆响，是新鲜与发酵的和鸣。汁水迸裂的瞬间，清爽与浓烈在舌尖拉锯。', ko:'모나게 썬 무, 모든 면에 양념이 듬뿍. 한 입 베어 물면 아삭하는 소리, 신선함과 발효의 하모니. 즙이 터지는 순간, 상쾌함과 진함이 혀끝에서 줄다리기.', en:'Cubed radish, every face coated in chili paste. The satisfying crunch is a duet of freshness and fermentation. The moment juice bursts, crispness and intensity tug-of-war on your tongue.', ja:'四角に切った大根、すべての面に辛味噌がたっぷり。かじりついた時のパリッという音、新鮮さと発酵のハーモニー。汁が弾ける瞬間、爽やかさと濃さが舌先で綱引き。' },
   'products.p5.name': { zh:'苏子叶', ko:'깻잎', en:'Perilla Leaves', ja:'エゴマの葉' },
   'products.p5.name.sub': { zh:'깻잎', ko:'苏子叶', en:'깻잎', ja:'깻잎' },
-  'products.p5.desc': { zh:'一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。', ko:'잎 한 장에 여름이 통째로 숨어 있습니다. 깻잎의 풀내음이 양념에 부드럽게 감싸여, 씹을수록 맛이 깊어집니다.', en:'An entire summer hidden in a single leaf. The herbaceous fragrance of perilla, tenderly wrapped in seasoning — the more you chew, the deeper the flavor.', ja:'一枚の葉に夏がまるごと隠れている。エゴマの草の香りが調味料に優しく包まれ、噛むほどに味が深まる。' },
+  'products.p5.desc': { zh:'一片叶子里藏着一整个夏天。苏子叶的草本清香，被酱料温柔包裹，越嚼越有味。齿间轻碾，芝麻般的香气从叶脉中渗出。', ko:'잎 한 장에 여름이 통째로 숨어 있습니다. 깻잎의 풀내음이 양념에 부드럽게 감싸여, 씹을수록 맛이 깊어집니다. 이빨 사이로 가볍게 으깨면 잎맥에서 참깨 같은 향이 스며나옵니다.', en:'An entire summer hidden in a single leaf. The herbaceous fragrance of perilla, tenderly wrapped in seasoning — the more you chew, the deeper the flavor. Crush it gently between your teeth, and a sesame-like aroma seeps from the veins.', ja:'一枚の葉に夏がまるごと隠れている。エゴマの草の香りが調味料に優しく包まれ、噛むほどに味が深まる。歯の間で軽く砕けば、葉脈から胡麻のような香りが滲み出る。' },
   'products.p6.name': { zh:'牛板筋', ko:'우설건강', en:'Spicy Beef Tendon', ja:'牛スジ辛味和え' },
   'products.p6.name.sub': { zh:'우설건강', ko:'牛板筋', en:'우설건강', ja:'우설건강' },
-  'products.p6.desc': { zh:'牛板筋的韧劲配上辣椒的火热，越嚼越香，是下酒菜的绝对王者。', ko:'소 힘줄의 쫄깃함에 고추의 불맛이 더해져, 씹을수록 고소합니다. 안주의 절대 강자.', en:'The resilient chew of beef tendon meets the fire of chili. The more you chew, the richer it gets — the undisputed king of drinking snacks.', ja:'牛スジのコシに唐辛子の炎が加わり、噛むほどに旨味が増す。酒の肴の絶対王者。' },
+  'products.p6.desc': { zh:'牛板筋的韧劲配上辣椒的火热，越嚼越香，是下酒菜的绝对王者。牙齿与纤维的角力，每一口都在释放深层肉香。', ko:'소 힘줄의 쫄깃함에 고추의 불맛이 더해져, 씹을수록 고소합니다. 안주의 절대 강자. 이빨과 섬유의 씨름, 한 입마다 깊은 육향이 풀려나옵니다.', en:'The resilient chew of beef tendon meets the fire of chili. The more you chew, the richer it gets — the undisputed king of drinking snacks. A wrestling match between teeth and fiber, every bite releasing deep meaty aroma.', ja:'牛スジのコシに唐辛子の炎が加わり、噛むほどに旨味が増す。酒の肴の絶対王者。歯と繊維の格闘、一口ごとに深い肉の香りが解き放たれる。' },
   'products.p7.name': { zh:'香辣明太鱼', ko:'명태조림', en:'Spicy Pollack', ja:'明太子煮' },
   'products.p7.name.sub': { zh:'명태조림', ko:'香辣明太鱼', en:'명태조림', ja:'명태조림' },
-  'products.p7.desc': { zh:'明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。', ko:'명태의 감칠맛에 고추의 매운맛이 더해져, 한 입에 바다의 넓이와 육지의 뜨거움이 함께합니다.', en:'The umami of pollack paired with the intensity of chili — one bite carries the expanse of the sea and the warmth of the land.', ja:'明太魚の旨味に唐辛子の激辛が重なり、一口で海の広がりと陸の熱さが共存する。' },
+  'products.p7.desc': { zh:'明太鱼的鲜配上辣椒的烈，一口下去，海的辽阔与陆的热烈同在。鱼丝在齿间拉出细韧的线条，辣意从喉间温热地蔓延。', ko:'명태의 감칠맛에 고추의 매운맛이 더해져, 한 입에 바다의 넓이와 육지의 뜨거움이 함께합니다. 이빨 사이에서 생선살이 가늘고 질긴 실처럼 늘어나고, 매운맛이 목에서 따뜻하게 퍼집니다.', en:'The umami of pollack paired with the intensity of chili — one bite carries the expanse of the sea and the warmth of the land. Fish strands stretch thin and resilient between your teeth, while heat spreads warmly from the throat.', ja:'明太魚の旨味に唐辛子の激辛が重なり、一口で海の広がりと陸の熱さが共存する。歯の間で魚の身が細く弾力ある糸のように引き伸ばされ、辛さが喉から温かく広がる。' },
   'products.p8.name': { zh:'桔梗', ko:'도라지', en:'Bellflower Root', ja:'キキョウ' },
   'products.p8.name.sub': { zh:'도라지', ko:'桔梗', en:'도라지', ja:'도라지' },
-  'products.p8.desc': { zh:'山间的桔梗根，清苦回甘。撕成细丝拌上辣椒酱，是延边人记忆里的味道。', ko:'산간의 도라지 뿌리, 쌉싸름하게 달콤한 뒷맛. 가늘게 찢어 고추장에 무치면, 연변 사람들의 기억 속 맛.', en:'Bellflower root from the mountains — gently bitter with a sweet return. Shredded fine and tossed with chili paste, it is the taste of Yanbian memory.', ja:'山間のキキョウの根、ほろ苦く甘い後味。細く裂いて唐辛子味噌で和えれば、延辺の人々の記憶の味。' },
+  'products.p8.desc': { zh:'山间的桔梗根，清苦回甘。撕成细丝拌上辣椒酱，是延边人记忆里的味道。入口微苦，像山风掠过舌尖，随后甘甜从喉底漫上来。', ko:'산간의 도라지 뿌리, 쌉싸름하게 달콤한 뒷맛. 가늘게 찢어 고추장에 무치면, 연변 사람들의 기억 속 맛. 입에 넣으면 산바람이 혀끝을 스치듯 쌉싸름하고, 이내 목 깊은 곳에서 달콤함이 번져옵니다.', en:'Bellflower root from the mountains — gently bitter with a sweet return. Shredded fine and tossed with chili paste, it is the taste of Yanbian memory. A faint bitterness first, like mountain wind brushing the tongue, then sweetness welling up from the throat.', ja:'山間のキキョウの根、ほろ苦く甘い後味。細く裂いて唐辛子味噌で和えれば、延辺の人々の記憶の味。口に入れば山風が舌先を撫でるような微かな苦味、やがて喉の奥から甘さが湧き上がる。' },
 
   // STORY
   'story.s1.char': { zh:'江', ko:'강', en:'River', ja:'江' },
   'story.s1.label': { zh:'海兰江 · 해란강', ko:'해란강 · Hailan River', en:'Hailan River · 해란강', ja:'海蘭江 · 해란강' },
   'story.s1.title': { zh:'海兰江畔', ko:'해란강 가에서', en:'By the Hailan River', ja:'海蘭江のほとり' },
   'story.s1.title.sub': { zh:'해란강 가에서', ko:'海兰江畔', en:'해란강 가에서', ja:'해란강 가에서' },
-  'story.s1.body': { zh:'延边海兰江流域，长白山脚下的沃土。朝鲜族世代在此居住，将发酵的智慧刻进日常。这里的昼夜温差大、水质清冽，是大自然赐予泡菜最好的条件。每一坛海兰菹，都始于这片土地。', ko:'연변 해란강 유역, 백두산 자락의 비옥한 땅. 조선족이 대대로 살며 발효의 지혜를 일상에 새겨왔습니다. 일교차가 크고 물이 맑아, 자연이 김치에게 준 최고의 조건입니다. 모든 해란저는 이 땅에서 시작됩니다.', en:'The Hailan River basin in Yanbian — fertile soil at the foot of Changbai Mountain. The Korean community has resided here for generations, weaving the wisdom of fermentation into daily life. The dramatic temperature shifts and pristine water are nature\'s finest gifts to kimchi-making. Every jar of HAILANZU begins here.', ja:'延辺海蘭江流域、白頭山の麓の肥沃な大地。朝鮮族が代々暮らし、発酵の知恵を日常に刻んできた。寒暖差が大きく、水が清らかなこの地は、自然がキムチに与えた最高の条件。海蘭菹のすべては、この土地から始まる。' },
+  'story.s1.body': { zh:'延边海兰江流域，长白山脚下的沃土。朝鲜族世代在此居住，将发酵的智慧刻进日常。这里的昼夜温差可达二十度，水质清冽，是大自然赐予泡菜最好的条件。每一坛海兰菹，都始于这片土地。', ko:'연변 해란강 유역, 백두산 자락의 비옥한 땅. 조선족이 대대로 살며 발효의 지혜를 일상에 새겨왔습니다. 일교차가 20도에 달하고 물이 맑아, 자연이 김치에게 준 최고의 조건입니다. 모든 해란저는 이 땅에서 시작됩니다.', en:'The Hailan River basin in Yanbian — fertile soil at the foot of Changbai Mountain. The Korean community has resided here for generations, weaving the wisdom of fermentation into daily life. The temperature swing between day and night can reach twenty degrees, and the pristine water is nature\'s finest gift to kimchi-making. Every jar of HAILANZU begins here.', ja:'延辺海蘭江流域、白頭山の麓の肥沃な大地。朝鮮族が代々暮らし、発酵の知恵を日常に刻んできた。昼夜の寒暖差は二十度に達し、水が清らかなこの地は、自然がキムチに与えた最高の条件。海蘭菹のすべては、この土地から始まる。' },
   'story.s2.char': { zh:'手', ko:'손', en:'Hands', ja:'手' },
   'story.s2.label': { zh:'手作 · 손맛', ko:'손맛 · Handcrafted', en:'Handcrafted · 손맛', ja:'手作り · 손맛' },
   'story.s2.title': { zh:'古法手作', ko:'전통 수제', en:'Ancient Craft', ja:'古法手作り' },
   'story.s2.title.sub': { zh:'전통 수제', ko:'古法手作', en:'전통 수제', ja:'전통 수제' },
-  'story.s2.body': { zh:'从选料到入坛，每一步都靠手与经验。抹酱的力道决定入味深浅，码坛的松紧影响发酵均匀。机器可以复制配方，却复制不了那双手的分寸感。三代人的手艺，是海兰菹最珍贵的秘方。', ko:'재료 선택부터 항아리에 담기까지, 모든 과정은 손과 경험에 의존합니다. 양념 바르는 힘조절이 맛의 깊이를 결정하고, 항아리 채우는 정도가 발효의 균일함에 영향을 미칩니다. 기계는 배합을 복제할 수 있어도, 그 손의 분량감은 복제할 수 없습니다. 삼대에 걸친 솜씨가 해란저의 가장 소중한 비법입니다.', en:'From selecting ingredients to packing the jar, every step relies on hands and experience. The pressure of each stroke determines depth of flavor; the tightness of packing shapes even fermentation. Machines can replicate a formula — but never the intuition of those hands. Three generations of craft: HAILANZU\'s most treasured secret.', ja:'素材の選別から甕詰めまで、すべての工程は手と経験に頼る。塗る力加減が味の深さを決め、詰め方の加減が発酵の均一さを左右する。機械は配合を再現できても、その手の勘所は再現できない。三代にわたる技こそが、海蘭菹の最も尊しい秘伝。' },
+  'story.s2.body': { zh:'从选料到入坛，每一步都靠手与经验。抹酱的力道决定入味深浅，码坛的松紧影响发酵均匀。机器可以复制配方，却复制不了那双手的分寸感。手作不是慢，而是对每一棵白菜的尊重。三代人的手艺，是海兰菹最珍贵的秘方。', ko:'재료 선택부터 항아리에 담기까지, 모든 과정은 손과 경험에 의존합니다. 양념 바르는 힘조절이 맛의 깊이를 결정하고, 항아리 채우는 정도가 발효의 균일함에 영향을 미칩니다. 기계는 배합을 복제할 수 있어도, 그 손의 분량감은 복제할 수 없습니다. 수작업은 느린 것이 아니라, 배추 하나하나에 대한 존중입니다. 삼대에 걸친 솜씨가 해란저의 가장 소중한 비법입니다.', en:'From selecting ingredients to packing the jar, every step relies on hands and experience. The pressure of each stroke determines depth of flavor; the tightness of packing shapes even fermentation. Machines can replicate a formula — but never the intuition of those hands. Handcraft is not slow — it is respect for every single cabbage. Three generations of craft: HAILANZU\'s most treasured secret.', ja:'素材の選別から甕詰めまで、すべての工程は手と経験に頼る。塗る力加減が味の深さを決め、詰め方の加減が発酵の均一さを左右する。機械は配合を再現できても、その手の勘所は再現できない。手作りは遅いのではない、一つ一つの白菜への敬意だ。三代にわたる技こそが、海蘭菹の最も尊しい秘伝。' },
   'story.s3.char': { zh:'坛', ko:'항', en:'Jar', ja:'壺' },
   'story.s3.label': { zh:'发酵 · 발효', ko:'발효 · Fermentation', en:'Fermentation · 발효', ja:'発酵 · 발효' },
   'story.s3.title': { zh:'坛中时光', ko:'항아리 속 시간', en:'Time in the Jar', ja:'甕の中の時' },
@@ -1861,7 +1876,7 @@ const i18n = {
   'seasons.summer.proverb': { zh:'「여름 밤은 짧다」— 夏夜苦短', ko:'「여름 밤은 짧다」— 여름 밤은 짧다', en:'"Summer nights are all too brief"', ja:'「여름 밤은 짧다」— 夏の夜は短し' },
   'seasons.autumn.proverb': { zh:'「가을 하늘은 높다」— 秋高气爽', ko:'「가을 하늘은 높다」— 가을 하늘은 높다', en:'"The autumn sky stretches high and clear"', ja:'「가을 하늘은 높다」— 秋高く澄む' },
   'seasons.winter.proverb': { zh:'「첫눈이 오면 김치 담근다」— 初雪腌泡菜', ko:'「첫눈이 오면 김치 담근다」— 첫눈이 오면 김치 담근다', en:'"When the first snow falls, it is time to make kimchi"', ja:'「첫눈이 오면 김치 담근다」— 初雪降れどきキムチ仕込み' },
-  'story.s3.body': { zh:'发酵不是工业流程，是时间的艺术。温度、湿度、天数，每一坛都有自己的"生命节奏"。我们不催促，不加速。等待，是做出好泡菜唯一的方法。每一坛海兰菹，都值得被等待。', ko:'발효는 산업 공정이 아니라 시간의 예술입니다. 온도, 습도, 날수 — 매 항아리마다 자신만의 \'생명 리듬\'이 있습니다. 우리는 재촉하지 않고, 앞당기지 않습니다. 기다림이 좋은 김치를 만드는 유일한 방법입니다. 모든 해란저는 기다릴 가치가 있습니다.', en:'Fermentation is not an industrial process — it is the art of time. Temperature, humidity, days — each jar has its own living rhythm. We do not rush. We do not accelerate. Waiting is the only way to make great kimchi. Every jar of HAILANZU is worth the wait.', ja:'発酵は工業プロセスではない、時間の芸術だ。温度、湿度、日数——甕一つ一つに独自の「生命のリズム」がある。急がず、加速しない。待つことこそが、良いキムチを作る唯一の方法。海蘭菹の甕は、どれも待つ価値がある。' },
+  'story.s3.body': { zh:'发酵不是工业流程，是时间的艺术。温度、湿度、天数，每一坛都有自己的"生命节奏"。发酵是和时间交朋友——你不必催它，它自会在最好的时刻回报你。我们不催促，不加速。等待，是做出好泡菜唯一的方法。每一坛海兰菹，都值得被等待。', ko:'발효는 산업 공정이 아니라 시간의 예술입니다. 온도, 습도, 날수 — 매 항아리마다 자신만의 \'생명 리듬\'이 있습니다. 발효는 시간과 친구가 되는 것입니다 — 재촉할 필요 없이, 가장 좋은 순간에 스스로 보답합니다. 우리는 재촉하지 않고, 앞당기지 않습니다. 기다림이 좋은 김치를 만드는 유일한 방법입니다. 모든 해란저는 기다릴 가치가 있습니다.', en:'Fermentation is not an industrial process — it is the art of time. Temperature, humidity, days — each jar has its own living rhythm. Fermentation is befriending time — you need not rush it, and it will reward you at the perfect moment. We do not rush. We do not accelerate. Waiting is the only way to make great kimchi. Every jar of HAILANZU is worth the wait.', ja:'発酵は工業プロセスではない、時間の芸術だ。温度、湿度、日数——甕一つ一つに独自の「生命のリズム」がある。発酵とは時間と友になること——急がなくても、最良の瞬間に応えてくれる。急がず、加速しない。待つことこそが、良いキムチを作る唯一の方法。海蘭菹の甕は、どれも待つ価値がある。' },
 
   // GIFT
   'gift.label': { zh:'Gift Collection · 高端礼盒', ko:'Gift Collection · 프리미엄 선물', en:'Gift Collection · Curated Sets', ja:'Gift Collection · 高級ギフト' },
@@ -1892,13 +1907,13 @@ const i18n = {
   'gift.g3.item3': { zh:'定制刻字坛器', ko:'맞춤 각인 항아리', en:'Custom Engraved Jar', ja:'名入れ甕' },
   'gift.g3.item4': { zh:'专属手写贺卡', ko:'전용 손글씨 축하카드', en:'Handwritten Greeting Card', ja:'手書きメッセージカード' },
   'gift.g3.item5': { zh:'限量陶瓷礼盒', ko:'한정 도자기 선물 상자', en:'Limited Ceramic Gift Box', ja:'限定陶器ギフトボックス' },
-  'gift.cta': { zh:'定制礼盒', ko:'맞춤 선물', en:'Customize Gift', ja:'ギフトをカスタマイズ' },
+  'gift.cta': { zh:'立即选购 →', ko:'바로 구매 →', en:'Shop Now →', ja:'今すぐ購入 →' },
   'gift.cta.temp': { zh:'即将开放', ko:'곧 오픈', en:'Coming Soon', ja:'まもなく公開' },
 
   // CTA BANNER
   'cta.title': { zh:'开启你的菹味之旅', ko:'저미의 여정을 시작하세요', en:'Begin Your Journey of Fermentation', ja:'菹味の旅を始めよう' },
   'cta.sub': { zh:'Begin Your Journey of Fermentation', ko:'Begin Your Journey of Fermentation', en:'延边古法菹味 · 延边古法菹味', ja:'Begin Your Journey of Fermentation' },
-  'cta.btn': { zh:'联系我们', ko:'문의하기', en:'Contact Us', ja:'お問い合わせ' },
+  'cta.btn': { zh:'逛逛产品殿堂 →', ko:'제품 전당 둘러보기 →', en:'Browse the Collection →', ja:'製品殿堂を巡る →' },
   'contact.name': { zh:'姓名', ko:'이름', en:'Name', ja:'お名前' },
   'contact.name.ph': { zh:'请输入姓名', ko:'이름을 입력하세요', en:'Your name', ja:'お名前を入力' },
   'contact.email': { zh:'邮箱', ko:'이메일', en:'Email', ja:'メール' },
@@ -1915,7 +1930,7 @@ const i18n = {
   // FOOTER
   'footer.brand': { zh:'海兰菹 해란저', ko:'해란저 海兰菹', en:'HAILANZU 해란저', ja:'海蘭菹 해란저' },
   'footer.brand.sub': { zh:'延边古法菹味', ko:'연변 고법 저미', en:'Ancient Craft of Yanbian Fermentation', ja:'延辺古法菹味' },
-  'footer.brand.en': { zh:'The Art of Korean Fermentation', ko:'The Art of Korean Fermentation', en:'The Art of Korean Fermentation', ja:'The Art of Korean Fermentation' },
+  'footer.brand.en': { zh:'The Art of Jangajii Fermentation', ko:'The Art of Jangajii Fermentation', en:'The Art of Jangajii Fermentation', ja:'The Art of Jangajii Fermentation' },
   'footer.explore': { zh:'Explore', ko:'둘러보기', en:'Explore', ja:'探索' },
   'footer.shop': { zh:'Shop', ko:'쇼핑', en:'Shop', ja:'ショップ' },
   'footer.contact': { zh:'Contact', ko:'문의', en:'Contact', ja:'お問い合わせ' },
@@ -2265,7 +2280,7 @@ startHeroSlideshow();
 document.querySelectorAll('.gift-cta').forEach(btn => {
   btn.addEventListener('click', () => {
     const tempText = i18n['gift.cta.temp'][currentLang] || 'Coming Soon';
-    const origText = i18n['gift.cta'][currentLang] || '定制礼盒';
+    const origText = i18n['gift.cta'][currentLang] || '立即选购 →';
     btn.textContent = tempText;
     btn.style.borderColor = 'var(--gold)';
     btn.style.color = 'var(--gold)';

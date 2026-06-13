@@ -1597,7 +1597,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 <div class="fermentation-counter">
                     <span class="counter-label" data-i18n="ferment.day">DAY</span>
                     <span class="counter-value" id="dayCounter">1</span>
-                    <span class="counter-unit" data-i18n="ferment.of">/ 90</span>
+                    <span class="counter-unit" data-i18n="ferment.of">/ 30</span>
                 </div>
                 <svg class="temp-curve" viewBox="0 0 300 60">
                     <path id="tempLine" d="M0 35 Q30 38 60 32 T120 36 T180 34 T240 37 T300 33" stroke="rgba(184,134,11,0.5)" stroke-width="2" fill="none"/>
@@ -1620,7 +1620,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                         <circle cx="20" cy="20" r="18" fill="none" stroke="#C8102E" stroke-width="1.5"/>
                         <text x="20" y="26" text-anchor="middle" fill="#C8102E" font-size="20" font-family="serif">"</text>
                     </svg>
-                    <p class="quote-text" data-i18n="artisan.quote1">"种白菜要看天，做泡菜要看心。天时地利人和，缺一样都不对味。"</p>
+                    <p class="quote-text" data-i18n="artisan.quote1">"种白菜要看天，做泡菜要看心。天时地利人和，缺一样都不对味。"<br><br>1962年生的金德浩，在祖母身边长大。祖母每次做泡菜时，都用草绳把白菜扎紧，手抹辣椒酱，一层一层——那个抹酱的动作，刻进了他七岁的记忆。2000年，他把这款泡菜命名为"海兰菹"。</p>
                     <div class="quote-author">
                         <span data-i18n="artisan.name1">金德浩</span>
                         <span class="quote-role" data-i18n="artisan.role1">第三代传承人</span>
@@ -1631,7 +1631,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                         <circle cx="20" cy="20" r="18" fill="none" stroke="#C8102E" stroke-width="1.5"/>
                         <text x="20" y="26" text-anchor="middle" fill="#C8102E" font-size="20" font-family="serif">"</text>
                     </svg>
-                    <p class="quote-text" data-i18n="artisan.quote2">"盐要多少，酱要几遍，这手感用了四十年。不是算出来的，是手记住了。"</p>
+                    <p class="quote-text" data-i18n="artisan.quote2">"盐要多少，酱要几遍，这手感用了四十年。不是算出来的，是手记住了。"<br><br>1980年入行，崔玉顺做了四十年泡菜。他说："手知道酱的厚薄。"——盐多一点会苦，少一点会淡；酱抹一遍不够，抹三遍会腻。每一次抹酱，都是和白菜的一次对话。</p>
                     <div class="quote-author">
                         <span data-i18n="artisan.name2">崔玉顺</span>
                         <span class="quote-role" data-i18n="artisan.role2">手作师傅</span>
@@ -1642,7 +1642,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                         <circle cx="20" cy="20" r="18" fill="none" stroke="#C8102E" stroke-width="1.5"/>
                         <text x="20" y="26" text-anchor="middle" fill="#C8102E" font-size="20" font-family="serif">"</text>
                     </svg>
-                    <p class="quote-text" data-i18n="artisan.quote3">"发酵是和时间交朋友。太急了，它不理你；你肯等，它就给你最好的。"</p>
+                    <p class="quote-text" data-i18n="artisan.quote3">"发酵是和时间交朋友。太急了，它不理你；你肯等，它就给你最好的。"<br><br>发酵是信仰，时间不是成本，是配方的一部分。三十天，是微生物最舒适的节奏——乳酸菌在12-15℃的温度下慢慢工作，把辣驯成柔，把酸炼成甘。急的人等不了，但懂的人知道：最好的味道，从来不赶时间。</p>
                     <div class="quote-author">
                         <span data-i18n="artisan.name3">朴哲</span>
                         <span class="quote-role" data-i18n="artisan.role3">发酵顾问</span>
@@ -1684,6 +1684,13 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                         <div class="timeline-info">
                             <div class="timeline-year">2000</div>
                             <p class="timeline-event" data-i18n="timeline.2000">品牌创立，海兰菹正式命名</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-info">
+                            <div class="timeline-year">2010</div>
+                            <p class="timeline-event" data-i18n="timeline.2010">走出延边，进入全国高端超市</p>
                         </div>
                     </div>
                     <div class="timeline-item reveal">
@@ -1776,7 +1783,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'chapter3.title': '坛中时光',
                 'chapter3.philosophy': '<span class="philo-line">好味道</span><span class="philo-line">急不得</span><span class="philo-line">让时间去说话</span>',
                 'ferment.day': 'DAY',
-                'ferment.of': '/ 90',
+                'ferment.of': '/ 30',
                 'process.select': '选料',
                 'process.wash': '清洗',
                 'process.sauce': '抹酱',
@@ -1785,20 +1792,20 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'process.wait': '等待',
                 'process.open': '开坛',
                 'artisan.title': '匠人心语',
-                'artisan.quote1': '"种白菜要看天，做泡菜要看心。天时地利人和，缺一样都不对味。"',
+                'artisan.quote1': '"种白菜要看天，做泡菜要看心。天时地利人和，缺一样都不对味。"<br><br>1962年生的金德浩，在祖母身边长大。祖母每次做泡菜时，都用草绳把白菜扎紧，手抹辣椒酱，一层一层——那个抹酱的动作，刻进了他七岁的记忆。2000年，他把这款泡菜命名为"海兰菹"。',
                 'artisan.name1': '金德浩',
                 'artisan.role1': '第三代传承人',
-                'artisan.quote2': '"盐要多少，酱要几遍，这手感用了四十年。不是算出来的，是手记住了。"',
+                'artisan.quote2': '"盐要多少，酱要几遍，这手感用了四十年。不是算出来的，是手记住了。"<br><br>1980年入行，崔玉顺做了四十年泡菜。他说："手知道酱的厚薄。"——盐多一点会苦，少一点会淡；酱抹一遍不够，抹三遍会腻。每一次抹酱，都是和白菜的一次对话。',
                 'artisan.name2': '崔玉顺',
                 'artisan.role2': '手作师傅',
-                'artisan.quote3': '"发酵是和时间交朋友。太急了，它不理你；你肯等，它就给你最好的。"',
+                'artisan.quote3': '"发酵是和时间交朋友。太急了，它不理你；你肯等，它就给你最好的。"<br><br>发酵是信仰，时间不是成本，是配方的一部分。三十天，是微生物最舒适的节奏——乳酸菌在12-15℃的温度下慢慢工作，把辣驯成柔，把酸炼成甘。急的人等不了，但懂的人知道：最好的味道，从来不赶时间。',
                 'artisan.name3': '朴哲',
                 'artisan.role3': '发酵顾问',
                 'timeline.title': '品牌历程',
                 'timeline.1950': '延边山村，第一坛手工泡菜诞生',
                 'timeline.1980': '技艺传承，从祖父到父亲',
                 'timeline.2000': '品牌创立，海兰菹正式命名',
-                'timeline.2026': '走向全国，让世界品尝延边',
+                'timeline.2010': '走出延边，进入全国高端超市','timeline.2026': '走向全国，让世界品尝延边',
                 'footer.brand': '海兰菹',
                 'footer.desc': '源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
                 'footer.nav': '导航',
@@ -1831,7 +1838,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'chapter3.title': '항아리 속 시간',
                 'chapter3.philosophy': '<span class="philo-line">좋은 맛은 서두를 수 없습니다</span><span class="philo-line">시간이 말하게 하세요</span>',
                 'ferment.day': '일차',
-                'ferment.of': '/ 90',
+                'ferment.of': '/ 30',
                 'process.select': '선별',
                 'process.wash': '세척',
                 'process.sauce': '양념',
@@ -1840,22 +1847,22 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'process.wait': '대기',
                 'process.open': '개봉',
                 'artisan.title': '장인의 마음',
-                'artisan.quote1': '"배추 심기는 하늘을 보고, 김치 만들기는 마음을 봅니다. 천시지리인화, 하나라도 부족하면 맛이 다릅니다."',
+                'artisan.quote1': '"배추 심기는 하늘을 보고, 김치 만들기는 마음을 봅니다. 천시지리인화, 하나라도 부족하면 맛이 다릅니다."<br><br>1962년에 태어난 김덕호는 할머니 곁에서 자랐습니다. 할머니가 매번 김치를 만들 때, 짚으로 배추를 꼭 묶고 손으로 고추장을 발라 한 겹 한 겹——그런 발라주는 동작이 일곱 살 그의 기억에 새겨졌습니다. 2000년, 그는 이 김치에 "해란저"라는 이름을 붙였습니다.',
                 'artisan.name1': '김덕호',
                 'artisan.role1': '제3대 전승인',
-                'artisan.quote2': '"소금은 얼마나, 양념은 몇 번—이 손맛은 40년이 걸렸습니다. 계산해서 나온 게 아니라 손이 기억하는 것입니다."',
+                'artisan.quote2': '"소금은 얼마나, 양념은 몇 번—이 손맛은 40년이 걸렸습니다. 계산해서 나온 게 아니라 손이 기억하는 것입니다."<br><br>1980년 입문, 최옥순은 40년간 김치를 만들어왔습니다. 그녀는 말합니다: "손은 양념의 걸쭉함을 압니다." — 소금이 조금만 많으면 쓰고, 적으면 싱거워집니다; 양념을 한 번 바르면 부족하고, 세 번 바르면 느끼해집니다. 양념을 바르는 매번은 배추와의 대화입니다.',
                 'artisan.name2': '최옥순',
                 'artisan.role2': '수작업 장인',
-                'artisan.quote3': '"발효는 시간과 친구가 되는 것입니다. 너무 서두르면 외면하고, 기다려주면 가장 좋은 것을 줍니다."',
+                'artisan.quote3': '"발효는 시간과 친구가 되는 것입니다. 너무 서두르면 외면하고, 기다려주면 가장 좋은 것을 줍니다."<br><br>발효는 신앙입니다. 시간은 비용이 아니라 레시피의 일부입니다. 30일은 미생물이 가장 편안한 템포——유산균이 12-15℃에서 천천히 일하며, 매운 것을 부드럽게 길들이고, 신맛을 단맛으로 정제합니다. 조급해하는 사람은 기다릴 수 없지만, 이해하는 사람들은 압니다: 가장 좋은 맛은 절대 서두르지 않습니다.',
                 'artisan.name3': '박철',
                 'artisan.role3': '발효 고문',
                 'timeline.title': '브랜드 연혁',
                 'timeline.1950': '연변 산촌, 첫 수제 김치 항아리 탄생',
                 'timeline.1980': '기술 전승, 할아버지에서 아버지로',
                 'timeline.2000': '브랜드 창립, 해란저 공식 명명',
-                'timeline.2026': '전국 진출, 세계에 연변의 맛을 알리다',
+                'timeline.2010': '연변 밖으로, 전국 고급 마트에 진출','timeline.2026': '전국 진출, 세계에 연변의 맛을 알리다',
                 'footer.brand': '해란저',
-                'footer.desc': '연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
+                'footer.desc': '연변 조선족 전통 수제 장아찌, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
                 'footer.nav': '내비게이션',
                 'footer.connect': '연락처',
                 'footer.follow': '팔로우',
@@ -1885,7 +1892,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'chapter3.title': 'Time in the Jar',
                 'chapter3.philosophy': '<span class="philo-line">Great flavor cannot be rushed.</span><span class="philo-line">Let time speak.</span>',
                 'ferment.day': 'DAY',
-                'ferment.of': '/ 90',
+                'ferment.of': '/ 30',
                 'process.select': 'Select',
                 'process.wash': 'Wash',
                 'process.sauce': 'Season',
@@ -1894,22 +1901,22 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'process.wait': 'Wait',
                 'process.open': 'Open',
                 'artisan.title': 'Artisan Voices',
-                'artisan.quote1': '"Growing cabbage depends on heaven, making kimchi depends on the heart. When heaven, earth, and people align—only then is the flavor right."',
+                'artisan.quote1': '"Growing cabbage depends on heaven, making kimchi depends on the heart. When heaven, earth, and people align—only then is the flavor right."<br><br>Born in 1962, Kim Deokho grew up beside his grandmother. Every time she made kimchi, she tied cabbages tight with straw rope, spreading chili sauce layer by layer — that spreading motion etched into his seven-year-old memory. In 2000, he named this kimchi "HAILANZU."',
                 'artisan.name1': 'Kim Deokho',
                 'artisan.role1': 'Third Generation Master',
                 'artisan.quote2': '"How much salt, how many layers of sauce—this touch took forty years. It wasn\'t calculated, the hand remembered."',
                 'artisan.name2': 'Choi Oksoon',
                 'artisan.role2': 'Master Craftsman',
-                'artisan.quote3': '"Fermentation is befriending time. Rush it, and it ignores you. Wait patiently, and it gives you its best."',
+                'artisan.quote3': '"Fermentation is befriending time. Rush it, and it ignores you. Wait patiently, and it gives you its best."<br><br>Fermentation is faith. Time is not a cost — it is part of the recipe. Thirty days is the rhythm microbes are most comfortable with — lactic acid bacteria work slowly at 12-15°C, taming fire into softness, refining sourness into sweetness. Those who rush cannot wait, but those who understand know: the best flavor never hurries.',
                 'artisan.name3': 'Park Cheol',
                 'artisan.role3': 'Fermentation Consultant',
                 'timeline.title': 'Our Journey',
                 'timeline.1950': 'Yanbian village, the first handmade kimchi jar is born',
                 'timeline.1980': 'Skills pass from grandfather to father',
                 'timeline.2000': 'Brand founded, HAILANZU officially named',
-                'timeline.2026': 'Going nationwide, sharing Yanbian with the world',
+                'timeline.2010': 'Beyond Yanbian, entering premium supermarkets nationwide','timeline.2026': 'Going nationwide, sharing Yanbian with the world',
                 'footer.brand': 'HAILANZU',
-                'footer.desc': 'Handcrafted Korean kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
+                'footer.desc': 'Handcrafted Jangajii kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
                 'footer.nav': 'Navigate',
                 'footer.connect': 'Connect',
                 'footer.follow': 'Follow',
@@ -1940,7 +1947,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'chapter3.title': '瓶の中の時間',
                 'chapter3.philosophy': '<span class="philo-line">良い味は急いでは作れません</span><span class="philo-line">時間に語らせましょう</span>',
                 'ferment.day': '日目',
-                'ferment.of': '/ 90',
+                'ferment.of': '/ 30',
                 'process.select': '選材',
                 'process.wash': '洗浄',
                 'process.sauce': '味噌塗り',
@@ -1949,22 +1956,22 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                 'process.wait': '待機',
                 'process.open': '開封',
                 'artisan.title': '匠の言葉',
-                'artisan.quote1': '"白菜を植えるには天を見、キムチを作るには心を見ます。天時地利人和、一つ欠けても味が違います。"',
+                'artisan.quote1': '"白菜を植えるには天を見、キムチを作るには心を見ます。天時地利人和、一つ欠けても味が違います。"<br><br>1962年生まれの金徳浩は祖母のそばで育った。祖母がキムチを作るたび、藁縄で白菜を縛り、手で唐辛子醤を塗り、一層ずつ——その塗る動作が七歳の記憶に刻み込まれた。2000年、彼はこのキムチに「海蘭菹」と名付けた。',
                 'artisan.name1': '金徳浩',
                 'artisan.role1': '第3代伝承者',
-                'artisan.quote2': '"塩はどれくらい、味噌は何度塗るか——この手感は40年かかりました。計算ではなく、手が覚えたものです。"',
+                'artisan.quote2': '"塩はどれくらい、味噌は何度塗るか——この手感は40年かかりました。計算ではなく、手が覚えたものです。"<br><br>1980年入行、崔玉順は40年間キムチを作り続けた。彼女は言う：「手は醤の厚薄を知る」——塩が少し多いと苦く、少ないと薄くなり; 醤を一回塗りでは足りず、三回塗りではくどくなる。毎回の塗りは、白菜との対話である。',
                 'artisan.name2': '崔玉順',
                 'artisan.role2': '手作り職人',
-                'artisan.quote3': '"発酵は時間と友達になることです。急ぎすぎれば無視され、待っていれば最良のものを与えてくれます。"',
+                'artisan.quote3': '"発酵は時間と友達になることです。急ぎすぎれば無視され、待っていれば最良のものを与えてくれます。"<br><br>発酵は信仰である。時間はコストではなく、レシピの一部である。30日は微生物が最も快適なリズム——乳酸菌が12-15℃で穏やかに働き、辛さを柔らかに驯らし、酸味を甘露に炼成する。急ぐ人は待てないが、分かる人は知っている：最良の味は決して急がない。',
                 'artisan.name3': '朴哲',
                 'artisan.role3': '発酵顧問',
                 'timeline.title': 'ブランドの歴史',
                 'timeline.1950': '延辺の山村、初の手作りキムチ瓶が誕生',
                 'timeline.1980': '技術伝承、祖父から父へ',
                 'timeline.2000': 'ブランド創立、海蘭菹が正式に命名',
-                'timeline.2026': '全国へ進出、世界に延辺の味を届ける',
+                'timeline.2010': '延辺を出て、全国の高級超市に進出','timeline.2026': '全国へ進出、世界に延辺の味を届ける',
                 'footer.brand': '海蘭菹',
-                'footer.desc': '延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
+                'footer.desc': '延辺朝鮮族の伝統手作jangajii、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
                 'footer.nav': 'ナビゲーション',
                 'footer.connect': '連絡先',
                 'footer.follow': 'フォロー',
@@ -2130,7 +2137,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
         function animateFermentation() {
             let day = 1;
-            const maxDay = 90;
+            const maxDay = 30;
             const fillHeight = 244;
             
             const interval = setInterval(() => {
