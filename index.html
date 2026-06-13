@@ -284,23 +284,24 @@ ul,ol{list-style:none}
 .spice-dot{width:6px;height:14px;border-radius:3px 3px 2px 2px;background:currentColor;opacity:.1;transition:all .4s ease;transform:rotate(-15deg)}
 .spice-dot.on{opacity:1;background:var(--seal);box-shadow:0 0 6px var(--seal-glow)}
 /* Carousel nav — premium redesign */
-.carousel-nav{position:absolute;bottom:clamp(28px,5vw,56px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:10;padding:0;background:none;border:none;border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+.carousel-nav{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);display:flex;align-items:center;justify-content:space-between;z-index:10;padding:0 clamp(16px,3vw,40px);pointer-events:none}
 .carousel-dot{width:20px;height:2px;background:var(--rice);opacity:.2;cursor:pointer;transition:all .5s var(--ease-out);border-radius:1px}
 .carousel-dot.active{opacity:1;width:40px;background:var(--gold);box-shadow:0 0 10px rgba(184,134,11,.35)}
-.carousel-arrow{width:32px;height:32px;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:.4;transition:all .4s var(--ease-out);background:rgba(245,240,232,.04)}
-.carousel-arrow:hover{opacity:1;color:var(--gold);background:rgba(184,134,11,.1)}
+.carousel-arrow{width:44px;height:44px;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--rice);opacity:0;transition:all .4s var(--ease-out);background:rgba(245,240,232,.06);pointer-events:all;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.carousel-arrow:hover{opacity:1;color:var(--gold);background:rgba(184,134,11,.15)}
+.products-carousel:hover .carousel-arrow{opacity:.5}
 .carousel-counter{display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:11px;letter-spacing:2px;color:var(--rice);opacity:.5;min-width:56px;justify-content:center}
 .carousel-counter-current{display:inline;font-family:'Playfair Display',var(--font-serif);font-size:14px;color:var(--gold);opacity:1;letter-spacing:1px}
 .carousel-counter-sep{opacity:.35;font-size:10px}
 .carousel-counter-total{opacity:.45;font-size:11px}
 /* Product slide colors */
-.slide-0{color:var(--ink-deep)}.slide-0 .spice-dot.on{background:var(--seal)}.slide-0 .sticky-header-label,.slide-0 .sticky-header-title{color:var(--ink-deep)}.slide-0 .products-slide-spice-label{color:var(--ink);opacity:.5}.slide-0 .carousel-arrow{color:var(--ink);background:rgba(0,0,0,.04)}
+.slide-0{color:var(--ink-deep)}.slide-0 .spice-dot.on{background:var(--seal)}.slide-0 .sticky-header-label,.slide-0 .sticky-header-title{color:var(--ink-deep)}.slide-0 .products-slide-spice-label{color:var(--ink);opacity:.5}.slide-0 .carousel-arrow{color:var(--ink);background:rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .slide-1{color:var(--rice)}.slide-1 .spice-dot.on{background:var(--seal)}
 .slide-2{color:var(--rice)}.slide-2 .spice-dot.on{background:var(--seal)}
 .slide-3{color:var(--rice)}.slide-3 .spice-dot.on{background:var(--seal)}
 .slide-4{color:var(--rice)}.slide-4 .spice-dot.on{background:var(--seal)}
 .slide-5{color:var(--rice)}.slide-5 .spice-dot.on{background:var(--seal)}
-.slide-6{color:var(--ink-deep)}.slide-6 .spice-dot.on{background:var(--seal)}.slide-6 .sticky-header-label,.slide-6 .sticky-header-title{color:var(--ink-deep)}.slide-6 .products-slide-spice-label{color:var(--ink);opacity:.5}.slide-6 .carousel-arrow{color:var(--ink);background:rgba(0,0,0,.04)}
+.slide-6{color:var(--ink-deep)}.slide-6 .spice-dot.on{background:var(--seal)}.slide-6 .sticky-header-label,.slide-6 .sticky-header-title{color:var(--ink-deep)}.slide-6 .products-slide-spice-label{color:var(--ink);opacity:.5}.slide-6 .carousel-arrow{color:var(--ink);background:rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .slide-7{color:var(--rice)}.slide-7 .spice-dot.on{background:var(--seal)}
 /* Mobile: stack layout */
 @media(max-width:768px){
@@ -315,8 +316,9 @@ ul,ol{list-style:none}
   .sticky-header{padding:20px 20px 8px}
   .sticky-header-title{font-size:clamp(18px,4.5vw,24px)}
   .products-watermark{display:none}
-  .carousel-nav{gap:10px;bottom:clamp(20px,4vw,36px);padding:8px 16px}
-  .carousel-arrow{width:28px;height:28px;opacity:.5}
+  .carousel-nav{padding:0 12px}
+  .carousel-arrow{opacity:.6;width:36px;height:36px}
+
   .carousel-counter{font-size:10px;min-width:44px}
   .carousel-counter-current{font-size:12px}
   .carousel-dot{width:16px;height:2px}
@@ -1436,8 +1438,8 @@ try{
     </div>
   </div>
 <div class="carousel-nav" id="carouselNav">
-      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12,4 6,10 12,16"/></svg></button>
-      <button class="carousel-arrow" id="carouselNext" aria-label="Next"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="8,4 14,10 8,16"/></svg></button>
+      <button class="carousel-arrow" id="carouselPrev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,4 8,12 15,20"/></svg></button>
+      <button class="carousel-arrow" id="carouselNext" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,4 16,12 9,20"/></svg></button>
     </div>
   </div>
   <div class="section-explore reveal">
