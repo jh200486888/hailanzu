@@ -588,7 +588,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         .process-flow {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
         }
 
@@ -596,10 +596,10 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.75rem;
-            width: 100px;
+            gap: 0.5rem;
+            width: 90px;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: all 0.6s var(--ease-out);
         }
 
@@ -609,43 +609,98 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         }
 
         .process-icon {
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--azalea);
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--azalea);
+            color: var(--gold-light);
             position: relative;
+            background: rgba(184,134,11,.06);
+            border: 1.5px solid rgba(184,134,11,.25);
+            transition: all .4s var(--ease-out);
+        }
+
+        .process-step:hover .process-icon {
+            border-color: rgba(184,134,11,.5);
+            background: rgba(184,134,11,.1);
+            box-shadow: 0 0 16px rgba(184,134,11,.12);
         }
 
         .process-icon svg {
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
         }
 
         .process-step:not(:last-child)::after {
             content: '';
             position: absolute;
-            left: calc(100% + 0.75rem);
+            left: calc(100% + 0.6rem);
             top: 50%;
-            width: calc(1.5rem + 0.75rem);
-            height: 2px;
-            background: linear-gradient(90deg, var(--azalea), transparent);
+            width: calc(1.2rem + 0.6rem);
+            height: 1px;
+            background: linear-gradient(90deg, rgba(184,134,11,.3), transparent);
         }
 
         @media (max-width: 768px) {
             .process-flow {
                 flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding-left: 2rem;
+                position: relative;
+            }
+            .process-flow::before {
+                content: '';
+                position: absolute;
+                left: 10px;
+                top: 26px;
+                bottom: 26px;
+                width: 1px;
+                background: linear-gradient(180deg, rgba(184,134,11,.35), rgba(184,134,11,.08));
+            }
+            .process-step {
+                flex-direction: row;
                 align-items: center;
+                gap: 1rem;
+                width: auto;
+                padding: 0.7rem 0;
             }
             .process-step:not(:last-child)::after {
-                left: 50%;
-                top: calc(100% + 0.75rem);
-                width: 2px;
-                height: calc(1.5rem + 0.75rem);
-                background: linear-gradient(180deg, var(--azalea), transparent);
+                display: none;
+            }
+            .process-icon {
+                width: 20px;
+                height: 20px;
+                min-width: 20px;
+                background: none;
+                border: none;
+                padding: 0;
+                position: relative;
+                z-index: 2;
+            }
+            .process-icon svg {
+                display: none;
+            }
+            .process-icon::after {
+                content: '';
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(184,134,11,.5);
+                border: 2px solid var(--ink-deep);
+                display: block;
+            }
+            .process-step:hover .process-icon {
+                border-color: none;
+                background: none;
+                box-shadow: none;
+            }
+            .process-text {
+                display: flex;
+                flex-direction: column;
+                gap: 0.1rem;
             }
         }
 
@@ -654,13 +709,29 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             font-size: 0.8rem;
             color: var(--rice);
             text-align: center;
+            letter-spacing: 1px;
         }
 
         .process-label-kr {
             font-family: var(--font-sans-kr);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--rice-dim);
-            opacity: 0.7;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .process-label {
+                font-size: 0.85rem;
+                text-align: left;
+                color: var(--rice);
+                letter-spacing: 2px;
+            }
+            .process-label-kr {
+                font-size: 0.65rem;
+                text-align: left;
+                opacity: 0.4;
+            }
         }
 
         .handcraft-detail {
@@ -1409,68 +1480,90 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
                     <div class="process-flow">
                         <div class="process-step" data-step="1">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2L12 6M12 6C9 6 6 9 6 12C6 15 9 18 12 18C15 18 18 15 18 12C18 9 15 6 12 6Z"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8z"/>
+                                    <circle cx="12" cy="10" r="3"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.select">选料</span>
-                            <span class="process-label-kr" data-i18n-kr="process.select.kr">선별</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.select">选料</span>
+                                <span class="process-label-kr" data-i18n-kr="process.select.kr">선별</span>
+                            </div>
                         </div>
                         <div class="process-step" data-step="2">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 3V21M12 3C9 3 6 6 6 9M12 3C15 3 18 6 18 9"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2v6M8 5c0 0-3 2-3 6s3 6 3 6M16 5c0 0 3 2 3 6s-3 6-3 6"/>
+                                    <path d="M9 12h6" opacity="0.5"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.wash">清洗</span>
-                            <span class="process-label-kr" data-i18n-kr="process.wash.kr">세척</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.wash">清洗</span>
+                                <span class="process-label-kr" data-i18n-kr="process.wash.kr">세척</span>
+                            </div>
                         </div>
                         <div class="process-step" data-step="3">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M4 15L12 7L20 15M4 15V19M20 15V19"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 20h16"/>
+                                    <path d="M8 20V8l4-4 4 4v12"/>
+                                    <path d="M10 12h4M10 16h4"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.sauce">抹酱</span>
-                            <span class="process-label-kr">양념</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.sauce">抹酱</span>
+                                <span class="process-label-kr">양념</span>
+                            </div>
                         </div>
                         <div class="process-step" data-step="4">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M8 3H16V7L18 21H6L8 7V3Z"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M8 3h8v2l1 4H7l1-4V3z"/>
+                                    <path d="M7 9c-1 1-2 3-2 5v5a2 2 0 002 2h10a2 2 0 002-2v-5c0-2-1-4-2-5"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.jar">入坛</span>
-                            <span class="process-label-kr">항아리</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.jar">入坛</span>
+                                <span class="process-label-kr">항아리</span>
+                            </div>
                         </div>
                         <div class="process-step" data-step="5">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="8" width="18" height="12" rx="2"/>
-                                    <path d="M7 8V6C7 4 9 2 12 2C15 2 17 4 17 6V8"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="11" width="14" height="10" rx="2"/>
+                                    <path d="M8 11V7a4 4 0 018 0v4"/>
+                                    <circle cx="12" cy="16" r="1.5"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.seal">封存</span>
-                            <span class="process-label-kr" data-i18n-kr="process.seal.kr">밀봉</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.seal">封存</span>
+                                <span class="process-label-kr" data-i18n-kr="process.seal.kr">밀봉</span>
+                            </div>
                         </div>
                         <div class="process-step" data-step="6">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="9"/>
-                                    <path d="M12 6V12L16 14"/>
+                                    <path d="M12 7v5l3 3"/>
+                                    <path d="M17 3.5l1 1M7 3.5l-1 1" opacity="0.4"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.wait">等待</span>
-                            <span class="process-label-kr" data-i18n-kr="process.wait.kr">대기</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.wait">等待</span>
+                                <span class="process-label-kr" data-i18n-kr="process.wait.kr">대기</span>
+                            </div>
                         </div>
                         <div class="process-step" data-step="7">
                             <div class="process-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2L15 8H21L16 12L18 19L12 15L6 19L8 12L3 8H9L12 2Z"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2l2.4 5.5H20l-4.4 3.8 1.6 5.7L12 13.5l-5.2 3.5 1.6-5.7L4 7.5h5.6L12 2z"/>
+                                    <path d="M5 2l1 2M19 2l-1 2M22 8h-2M2 8h2M12 20v2" opacity="0.3"/>
                                 </svg>
                             </div>
-                            <span class="process-label" data-i18n="process.open">开坛</span>
-                            <span class="process-label-kr" data-i18n-kr="process.open.kr">개봉</span>
+                            <div class="process-text">
+                                <span class="process-label" data-i18n="process.open">开坛</span>
+                                <span class="process-label-kr" data-i18n-kr="process.open.kr">개봉</span>
+                            </div>
                         </div>
                     </div>
                     <div class="handcraft-detail">
