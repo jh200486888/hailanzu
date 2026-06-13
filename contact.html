@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>联系我们 — 海兰菹 HAILANZU | 定制咨询</title>
-  <meta name="description" content="联系海兰菹：产品咨询、礼盒定制、企业合作。微信号HAILANZU_Official，24小时内回复。">
+  <title>合作·联系 — 海兰菹 HAILANZU | 合作咨询</title>
+  <meta name="description" content="海兰菹合作咨询：OEM代工、达人带货、代理批发、招商加盟。微信号HAILANZU_Official，24小时内回复。">
   <meta name="keywords" content="海兰菹联系,泡菜定制咨询,企业合作,微信号,延边泡菜订购,해란저문의">
   <meta property="og:title" content="联系我们 — 海兰菹 HAILANZU">
-  <meta property="og:description" content="联系海兰菹：产品咨询、礼盒定制、企业合作。微信号HAILANZU_Official，24小时内回复。">
+  <meta property="og:description" content="海兰菹合作咨询：OEM代工、达人带货、代理批发、招商加盟。微信号HAILANZU_Official，24小时内回复。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jh200486888.github.io/hailanzu/contact.html">
   <meta property="og:locale" content="zh_CN">
@@ -17,14 +17,14 @@
   <meta property="og:image" content="https://jh200486888.github.io/hailanzu/imgs/terroir/hailanzu-terroir-changbai.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="联系我们 — 海兰菹 HAILANZU">
-  <meta name="twitter:description" content="联系海兰菹：产品咨询、礼盒定制、企业合作。微信号HAILANZU_Official，24小时内回复。">
+  <meta name="twitter:description" content="海兰菹合作咨询：OEM代工、达人带货、代理批发、招商加盟。微信号HAILANZU_Official，24小时内回复。">
   <link rel="canonical" href="https://jh200486888.github.io/hailanzu/contact.html">
   <script type="application/ld+json">
   {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "联系我们 — 海兰菹",
-  "description": "联系海兰菹：产品咨询、礼盒定制、企业合作",
+  "description": "海兰菹合作咨询：OEM代工、达人带货、代理批发、招商加盟",
   "url": "https://jh200486888.github.io/hailanzu/contact.html"
 }
   </script>
@@ -49,7 +49,7 @@
 }
   </script>
 
-    <title>联系我们 | 海兰菹 HAILANZU</title>
+    <title>合作·联系 | 海兰菹 HAILANZU</title>
 <link rel="stylesheet" href="fonts/fonts.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
     <style>
                 *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
@@ -436,6 +436,520 @@
 .sidebar-item:hover .sidebar-tooltip{opacity:1}
 @media(max-width:768px){.community-sidebar{top:auto;bottom:100px;transform:none;flex-direction:column;right:8px;gap:4px}.sidebar-item{width:38px;height:38px;border-radius:10px;border:1px solid rgba(184,134,11,0.15);font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}.sidebar-item:active{transform:scale(0.92)}.sidebar-tooltip{display:none}}
 
+
+/* ===== Cooperation Section ===== */
+.coop-section {
+    background: var(--ink);
+    padding: 5rem 2rem;
+    color: var(--rice);
+    position: relative;
+}
+.coop-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.coop-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--rice);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+.coop-subtitle {
+    font-family: var(--font-serif-kr);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--azalea);
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+}
+.coop-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.5rem auto 0;
+}
+
+/* Tab Navigation */
+.coop-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 3rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 4px;
+}
+.coop-tabs::-webkit-scrollbar { display: none; }
+.coop-tab {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--rice-dim);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    position: relative;
+    transition: all 0.3s var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+}
+.coop-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s var(--ease-out);
+}
+.coop-tab:hover { color: var(--rice); }
+.coop-tab.active {
+    color: var(--gold-light);
+}
+.coop-tab.active::after {
+    width: 70%;
+}
+.coop-tab-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+.coop-tab.active .coop-tab-icon {
+    opacity: 1;
+}
+.coop-tab-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Tab Content */
+.coop-content {
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: 300px;
+}
+.coop-panel {
+    display: none;
+    animation: coopFadeIn 0.4s var(--ease-out);
+}
+.coop-panel.active {
+    display: block;
+}
+@keyframes coopFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Panel shared */
+.coop-panel-slogan {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--rice);
+    opacity: 0.9;
+}
+.coop-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+@media (max-width: 600px) {
+    .coop-card-grid { grid-template-columns: 1fr; }
+}
+.coop-card {
+    background: rgba(42,31,24,0.6);
+    border: 1px solid rgba(184,134,11,0.12);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    transition: all 0.3s var(--ease-out);
+}
+.coop-card:hover {
+    border-color: rgba(184,134,11,0.3);
+    background: rgba(42,31,24,0.8);
+}
+.coop-card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+}
+.coop-card-title {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+}
+.coop-card-desc {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--rice-dim);
+    line-height: 1.6;
+}
+
+/* Process / Flow */
+.coop-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+.coop-flow-step {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+.coop-flow-node {
+    padding: 0.6rem 1.2rem;
+    background: rgba(184,134,11,0.1);
+    border: 1px solid rgba(184,134,11,0.2);
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--rice);
+    white-space: nowrap;
+}
+.coop-flow-arrow {
+    margin: 0 0.5rem;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 0.8rem;
+}
+
+/* CTA Button */
+.coop-cta {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto 0;
+    padding: 0.9rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    -webkit-tap-highlight-color: transparent;
+}
+.coop-cta:hover {
+    background: rgba(184,134,11,0.12);
+    box-shadow: 0 0 20px rgba(184,134,11,0.15);
+}
+
+/* Influencer tiers */
+.coop-tier-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+.coop-tier {
+    text-align: center;
+    padding: 1.5rem 1.8rem;
+    background: rgba(42,31,24,0.5);
+    border: 1px solid rgba(184,134,11,0.15);
+    border-radius: 12px;
+    min-width: 140px;
+    transition: all 0.3s var(--ease-out);
+}
+.coop-tier:hover {
+    border-color: rgba(184,134,11,0.3);
+}
+.coop-tier-name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+}
+.coop-tier-commission {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--rice-dim);
+}
+.coop-tier-badge {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.6rem;
+}
+
+/* Store Map Section */
+.coop-map-wrap {
+    text-align: center;
+}
+.coop-map-svg {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    display: block;
+}
+.coop-map-region {
+    fill: rgba(26,60,52,0.6);
+    stroke: rgba(184,134,11,0.25);
+    stroke-width: 1;
+    cursor: pointer;
+    transition: fill 0.3s;
+}
+.coop-map-region:hover,
+.coop-map-region.active {
+    fill: rgba(196,114,127,0.2);
+    stroke: rgba(196,134,11,0.5);
+}
+.coop-map-dot {
+    fill: var(--gold);
+    opacity: 0.9;
+}
+.coop-map-dot-pulse {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1;
+    opacity: 0;
+    animation: mapPulse 2s ease-out infinite;
+}
+@keyframes mapPulse {
+    0% { r: 4; opacity: 0.6; }
+    100% { r: 12; opacity: 0; }
+}
+
+.coop-filter-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.coop-filter-btn {
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(245,240,232,0.15);
+    border-radius: 20px;
+    color: var(--rice-dim);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+.coop-filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+}
+.coop-filter-btn.active {
+    background: rgba(184,134,11,0.15);
+    border-color: var(--gold);
+    color: var(--gold-light);
+}
+.coop-store-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.coop-store-item {
+    padding: 1rem;
+    background: rgba(42,31,24,0.4);
+    border: 1px solid rgba(184,134,11,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+.coop-store-city {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    white-space: nowrap;
+}
+.coop-store-info {
+    flex: 1;
+}
+.coop-store-name {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--rice);
+    margin-bottom: 0.3rem;
+}
+.coop-store-type {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    background: rgba(184,134,11,0.1);
+    border-radius: 4px;
+    color: var(--gold);
+    display: inline-block;
+}
+.coop-store-more {
+    text-align: center;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--rice-dim);
+    opacity: 0.6;
+    padding: 1rem;
+}
+
+/* Franchise Stats */
+.coop-stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+.coop-stat {
+    text-align: center;
+}
+.coop-stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+.coop-stat-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--rice-dim);
+}
+
+/* Franchise modes */
+.coop-mode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+@media (max-width: 700px) {
+    .coop-mode-grid { grid-template-columns: 1fr; }
+}
+.coop-mode-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: rgba(42,31,24,0.5);
+    border: 1px solid rgba(184,134,11,0.15);
+    border-radius: 12px;
+    transition: all 0.3s var(--ease-out);
+}
+.coop-mode-card:hover {
+    border-color: rgba(184,134,11,0.3);
+    transform: translateY(-2px);
+}
+.coop-mode-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+}
+.coop-mode-name {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--rice);
+    margin-bottom: 0.3rem;
+}
+.coop-mode-size {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--rice-dim);
+    margin-bottom: 1rem;
+}
+.coop-mode-invest {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--gold-light);
+}
+
+/* Franchise support flow */
+.coop-support-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.coop-support-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+.coop-support-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(184,134,11,0.1);
+    border: 1px solid rgba(184,134,11,0.2);
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+.coop-support-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--rice-dim);
+}
+.coop-support-arrow {
+    margin: 0 0.5rem;
+    color: var(--gold);
+    opacity: 0.4;
+    font-size: 1.2rem;
+    align-self: center;
+    margin-top: -1rem;
+}
+
+/* Agent requirements */
+.coop-req-list {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+.coop-req-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(245,240,232,0.06);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--rice-dim);
+}
+.coop-req-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .coop-section { padding: 3rem 1.2rem; }
+    .coop-tab { padding: 0.7rem 0.8rem; font-size: 0.75rem; }
+    .coop-tab-icon svg { width: 18px; height: 18px; }
+    .coop-stats-row { gap: 1.5rem; }
+    .coop-flow { gap: 0.3rem; }
+    .coop-flow-node { padding: 0.5rem 0.8rem; font-size: 0.72rem; }
+    .coop-tier-row { gap: 1rem; }
+    .coop-tier { min-width: 110px; padding: 1rem 1.2rem; }
+    .coop-map-svg { max-width: 100%; }
+    .coop-store-list { grid-template-columns: 1fr; }
+    .coop-support-arrow { margin: 0 0.3rem; }
+    .coop-mode-invest { font-size: 1rem; }
+}
+
 </style>
 <link rel="preload" href="css/common.css" as="style"><link rel="preload" href="js/common.js" as="script">
 <link rel="stylesheet" href="css/common.css">
@@ -469,7 +983,7 @@
             <a href="story.html" class="nav-link" data-i18n="nav.story">延边风土</a>
             <a href="gift.html" class="nav-link" data-i18n="nav.gift">高端礼盒</a>
             <a href="recipes.html" class="nav-link" data-i18n="nav.recipes">菹味食谱</a>
-        <a href="contact.html" class="nav-link active" data-i18n="nav.contact">联系我们</a>
+        <a href="contact.html" class="nav-link active" data-i18n="nav.contact">合作·联系</a>
         </div>        <div class="lang-switch">
             <button class="lang-btn active" data-lang="zh">中</button>
             <button class="lang-btn" data-lang="ko">한</button>
@@ -488,7 +1002,7 @@
     <a class="nav-panel-item" href="story.html"><span data-i18n="nav.story">延边风土</span><span class="nav-panel-item-kr" data-i18n="nav.story.sub">연변 풍토</span></a>
     <a class="nav-panel-item" href="gift.html"><span data-i18n="nav.gift">高端礼盒</span><span class="nav-panel-item-kr" data-i18n="nav.gift.sub">프리미엄 선물</span></a>
     <a class="nav-panel-item" href="recipes.html"><span data-i18n="nav.recipes">菹味食谱</span><span class="nav-panel-item-kr" data-i18n="nav.recipes.sub">저 레시피</span></a>
-    <a class="nav-panel-item" href="contact.html" style="opacity:1!important"><span data-i18n="nav.contact">联系我们</span><span class="nav-panel-item-kr" data-i18n="nav.contact.sub">문의하기</span></a>
+    <a class="nav-panel-item" href="contact.html" style="opacity:1!important"><span data-i18n="nav.contact">合作·联系</span><span class="nav-panel-item-kr" data-i18n="nav.contact.sub">문의하기</span></a>
   </div>
   <button class="nav-panel-close" id="navPanelClose">&#10005;</button>
   <div class="nav-panel-lang">
@@ -514,7 +1028,7 @@
         <div class="hero-content">
             <div class="hero-title-wrap">
                 <span class="hero-subtitle-kr" data-i18n-kr="hero.title.kr">문의하기</span>
-                <span class="hero-title-zh" data-i18n="hero.title">联系我们</span>
+                <span class="hero-title-zh" data-i18n="hero.title">合作·联系</span>
                 <svg class="hero-seal" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="46" fill="none" stroke="#C8102E" stroke-width="2.5"/>
                     <circle cx="50" cy="50" r="39" fill="none" stroke="#C8102E" stroke-width="1.2"/>
@@ -550,6 +1064,325 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Cooperation Section -->
+    <section class="coop-section reveal" id="cooperation">
+        <div class="coop-header">
+            <h2 class="coop-title" data-i18n="coop.title">携手海兰菹 · 共酿好味道</h2>
+            <p class="coop-subtitle" data-i18n="coop.subtitle">함께 만드는 맛</p>
+            <div class="coop-divider"></div>
+        </div>
+
+        <div class="coop-tabs" id="coopTabs">
+            <button class="coop-tab active" data-tab="oem">
+                <span class="coop-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 6V4a2 2 0 012-2h8a2 2 0 012 2v2"/><circle cx="12" cy="13" r="2"/></svg></span>
+                <span data-i18n="coop.tab.oem">OEM代工</span>
+            </button>
+            <button class="coop-tab" data-tab="influencer">
+                <span class="coop-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 015 5v1a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M12 18v2"/><path d="M8 20h8"/></svg></span>
+                <span data-i18n="coop.tab.influencer">达人带货</span>
+            </button>
+            <button class="coop-tab" data-tab="agent">
+                <span class="coop-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+                <span data-i18n="coop.tab.agent">代理批发</span>
+            </button>
+            <button class="coop-tab" data-tab="store">
+                <span class="coop-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
+                <span data-i18n="coop.tab.store">线下门店</span>
+            </button>
+            <button class="coop-tab" data-tab="map">
+                <span class="coop-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 10-16 0c0 3 2.7 7 8 11.7z"/></svg></span>
+                <span data-i18n="coop.tab.map">全国网点</span>
+            </button>
+            <button class="coop-tab" data-tab="franchise">
+                <span class="coop-tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
+                <span data-i18n="coop.tab.franchise">招商加盟</span>
+            </button>
+        </div>
+
+        <div class="coop-content" id="coopContent">
+            <!-- Tab 1: OEM -->
+            <div class="coop-panel active" id="panel-oem">
+                <p class="coop-panel-slogan" data-i18n="coop.oem.slogan">你的品牌，我们的手艺</p>
+                <div class="coop-card-grid">
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🏭</div>
+                        <div class="coop-card-title" data-i18n="coop.oem.c1t">产能保障</div>
+                        <div class="coop-card-desc" data-i18n="coop.oem.c1d">日产500坛，旺季可扩至2000坛</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🧪</div>
+                        <div class="coop-card-title" data-i18n="coop.oem.c2t">品控体系</div>
+                        <div class="coop-card-desc" data-i18n="coop.oem.c2d">从原料到成品12道检测</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🎨</div>
+                        <div class="coop-card-title" data-i18n="coop.oem.c3t">灵活定制</div>
+                        <div class="coop-card-desc" data-i18n="coop.oem.c3d">口味/辣度/包装/规格全定制</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">📋</div>
+                        <div class="coop-card-title" data-i18n="coop.oem.c4t">资质齐全</div>
+                        <div class="coop-card-desc" data-i18n="coop.oem.c4d">SC认证 · 出口许可 · 有机认证</div>
+                    </div>
+                </div>
+                <div class="coop-flow">
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.oem.s1">需求沟通</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.oem.s2">样品打样</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.oem.s3">签约生产</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.oem.s4">交付验收</span></div>
+                </div>
+                <button class="coop-cta" onclick="openQR('wechat-work')" data-i18n="coop.oem.cta">获取OEM方案</button>
+            </div>
+
+            <!-- Tab 2: Influencer -->
+            <div class="coop-panel" id="panel-influencer">
+                <p class="coop-panel-slogan" data-i18n="coop.inf.slogan">好味道，值得被看见</p>
+                <div class="coop-card-grid">
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🎁</div>
+                        <div class="coop-card-title" data-i18n="coop.inf.c1t">免费试吃装</div>
+                        <div class="coop-card-desc" data-i18n="coop.inf.c1d">甄选3款经典口味寄送</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">💰</div>
+                        <div class="coop-card-title" data-i18n="coop.inf.c2t">佣金分成</div>
+                        <div class="coop-card-desc" data-i18n="coop.inf.c2d">成交额15%-25%佣金</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">📦</div>
+                        <div class="coop-card-title" data-i18n="coop.inf.c3t">一件代发</div>
+                        <div class="coop-card-desc" data-i18n="coop.inf.c3d">无需囤货，品牌方直发</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🎯</div>
+                        <div class="coop-card-title" data-i18n="coop.inf.c4t">专属素材</div>
+                        <div class="coop-card-desc" data-i18n="coop.inf.c4d">产品图/视频/品牌故事素材包</div>
+                    </div>
+                </div>
+                <div class="coop-tier-row">
+                    <div class="coop-tier">
+                        <div class="coop-tier-badge">🌰</div>
+                        <div class="coop-tier-name" data-i18n="coop.inf.bronze">铜橡果</div>
+                        <div class="coop-tier-commission" data-i18n="coop.inf.bronze.desc">15% 佣金</div>
+                    </div>
+                    <div class="coop-tier">
+                        <div class="coop-tier-badge">🌰✦</div>
+                        <div class="coop-tier-name" data-i18n="coop.inf.silver">银橡果</div>
+                        <div class="coop-tier-commission" data-i18n="coop.inf.silver.desc">20% 佣金</div>
+                    </div>
+                    <div class="coop-tier">
+                        <div class="coop-tier-badge">🌰✦✦</div>
+                        <div class="coop-tier-name" data-i18n="coop.inf.gold">金橡果</div>
+                        <div class="coop-tier-commission" data-i18n="coop.inf.gold.desc">25% 佣金 + 专属权益</div>
+                    </div>
+                </div>
+                <button class="coop-cta" onclick="openQR('wechat-work')" data-i18n="coop.inf.cta">申请达人合作</button>
+            </div>
+
+            <!-- Tab 3: Agent -->
+            <div class="coop-panel" id="panel-agent">
+                <p class="coop-panel-slogan" data-i18n="coop.agt.slogan">一坛好泡菜，一座城的味道</p>
+                <div class="coop-card-grid">
+                    <div class="coop-card">
+                        <div class="coop-card-icon">💎</div>
+                        <div class="coop-card-title" data-i18n="coop.agt.c1t">独家区域保护</div>
+                        <div class="coop-card-desc" data-i18n="coop.agt.c1d">一城一代理，保障独家经营权</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">📊</div>
+                        <div class="coop-card-title" data-i18n="coop.agt.c2t">高复购率</div>
+                        <div class="coop-card-desc" data-i18n="coop.agt.c2d">30天复购率达68%</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🚚</div>
+                        <div class="coop-card-title" data-i18n="coop.agt.c3t">冷链物流支持</div>
+                        <div class="coop-card-desc" data-i18n="coop.agt.c3d">品牌方承担首批发货运费</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">📈</div>
+                        <div class="coop-card-title" data-i18n="coop.agt.c4t">营销赋能</div>
+                        <div class="coop-card-desc" data-i18n="coop.agt.c4d">品牌物料 · 活动方案 · 培训支持</div>
+                    </div>
+                </div>
+                <ul class="coop-req-list">
+                    <li class="coop-req-item"><span class="coop-req-dot"></span><span data-i18n="coop.agt.r1">首批进货量 ≥ ¥20,000</span></li>
+                    <li class="coop-req-item"><span class="coop-req-dot"></span><span data-i18n="coop.agt.r2">具备冷链仓储条件</span></li>
+                    <li class="coop-req-item"><span class="coop-req-dot"></span><span data-i18n="coop.agt.r3">认同品牌理念与品质标准</span></li>
+                </ul>
+                <button class="coop-cta" onclick="openQR('wechat-work')" data-i18n="coop.agt.cta">获取代理政策</button>
+            </div>
+
+            <!-- Tab 4: Store -->
+            <div class="coop-panel" id="panel-store">
+                <p class="coop-panel-slogan" data-i18n="coop.str.slogan">让好味道走进更多人的日常</p>
+                <div class="coop-card-grid">
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🛒</div>
+                        <div class="coop-card-title" data-i18n="coop.str.c1t">精品超市</div>
+                        <div class="coop-card-desc" data-i18n="coop.str.c1d">Ole\u2019 · 盒马 · City Super</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🏪</div>
+                        <div class="coop-card-title" data-i18n="coop.str.c2t">日韩食材专门店</div>
+                        <div class="coop-card-desc" data-i18n="coop.str.c2d">专业食材渠道精准客群</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🍽️</div>
+                        <div class="coop-card-title" data-i18n="coop.str.c3t">高端餐饮供货</div>
+                        <div class="coop-card-desc" data-i18n="coop.str.c3d">星级主厨指定品牌</div>
+                    </div>
+                    <div class="coop-card">
+                        <div class="coop-card-icon">🎁</div>
+                        <div class="coop-card-title" data-i18n="coop.str.c4t">礼品渠道</div>
+                        <div class="coop-card-desc" data-i18n="coop.str.c4d">机场 · 酒店 · 企业福利</div>
+                    </div>
+                </div>
+                <button class="coop-cta" onclick="openQR('wechat-work')" data-i18n="coop.str.cta">洽谈入驻</button>
+            </div>
+
+            <!-- Tab 5: Map -->
+            <div class="coop-panel" id="panel-map">
+                <p class="coop-panel-slogan" data-i18n="coop.map.slogan">全国百城，一坛可达</p>
+                <div class="coop-map-wrap">
+                    <svg class="coop-map-svg" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" id="chinaMap">
+                        <!-- Simplified China map by regions -->
+                        <!-- Northeast 东北 -->
+                        <path class="coop-map-region" data-region="northeast" d="M420,30 L490,30 L530,60 L540,120 L520,170 L480,200 L440,190 L400,160 L380,120 L390,70 Z"/>
+                        <!-- North 华北 -->
+                        <path class="coop-map-region" data-region="north" d="M320,120 L390,70 L400,160 L440,190 L420,230 L380,250 L330,240 L290,200 L280,160 Z"/>
+                        <!-- East 华东 -->
+                        <path class="coop-map-region" data-region="east" d="M330,240 L380,250 L420,230 L450,270 L460,330 L430,380 L380,390 L340,370 L300,330 L290,280 Z"/>
+                        <!-- South 华南 -->
+                        <path class="coop-map-region" data-region="south" d="M300,330 L340,370 L380,390 L370,430 L340,460 L300,470 L260,450 L240,400 L260,360 Z"/>
+                        <!-- Southwest 西南 -->
+                        <path class="coop-map-region" data-region="southwest" d="M160,280 L260,260 L290,280 L300,330 L260,360 L240,400 L200,410 L150,380 L130,330 Z"/>
+                        <!-- Northwest 西北 -->
+                        <path class="coop-map-region" data-region="northwest" d="M80,50 L200,30 L280,60 L320,120 L280,160 L290,200 L260,260 L160,280 L130,230 L100,180 L70,120 Z"/>
+                        <!-- City dots -->
+                        <circle class="coop-map-dot" cx="470" cy="90" r="5" data-city="changchun"/>
+                        <circle class="coop-map-dot-pulse" cx="470" cy="90" r="5"/>
+                        <circle class="coop-map-dot" cx="490" cy="140" r="5" data-city="shenyang"/>
+                        <circle class="coop-map-dot-pulse" cx="490" cy="140" r="5"/>
+                        <circle class="coop-map-dot" cx="460" cy="180" r="4" data-city="yanji"/>
+                        <circle class="coop-map-dot-pulse" cx="460" cy="180" r="4"/>
+                        <circle class="coop-map-dot" cx="370" cy="170" r="5" data-city="beijing"/>
+                        <circle class="coop-map-dot-pulse" cx="370" cy="170" r="5"/>
+                        <circle class="coop-map-dot" cx="400" cy="300" r="5" data-city="shanghai"/>
+                        <circle class="coop-map-dot-pulse" cx="400" cy="300" r="5"/>
+                        <circle class="coop-map-dot" cx="360" cy="350" r="4" data-city="hangzhou"/>
+                        <circle class="coop-map-dot-pulse" cx="360" cy="350" r="4"/>
+                        <circle class="coop-map-dot" cx="310" cy="410" r="4" data-city="guangzhou"/>
+                        <circle class="coop-map-dot-pulse" cx="310" cy="410" r="4"/>
+                        <circle class="coop-map-dot" cx="330" cy="440" r="4" data-city="shenzhen"/>
+                        <circle class="coop-map-dot-pulse" cx="330" cy="440" r="4"/>
+                        <circle class="coop-map-dot" cx="200" cy="340" r="4" data-city="chengdu"/>
+                        <circle class="coop-map-dot-pulse" cx="200" cy="340" r="4"/>
+                        <circle class="coop-map-dot" cx="170" cy="120" r="4" data-city="xian"/>
+                        <circle class="coop-map-dot-pulse" cx="170" cy="120" r="4"/>
+                    </svg>
+
+                    <div class="coop-filter-row" id="storeFilter">
+                        <button class="coop-filter-btn active" data-filter="all" data-i18n="coop.map.all">全部</button>
+                        <button class="coop-filter-btn" data-filter="exclusive" data-i18n="coop.map.exclusive">专卖店</button>
+                        <button class="coop-filter-btn" data-filter="supermarket" data-i18n="coop.map.supermarket">精品超市</button>
+                        <button class="coop-filter-btn" data-filter="restaurant" data-i18n="coop.map.restaurant">餐饮渠道</button>
+                    </div>
+
+                    <div class="coop-store-list" id="storeList"></div>
+                    <p class="coop-store-more" data-i18n="coop.map.more">更多城市持续拓展中…</p>
+                </div>
+                <button class="coop-cta" onclick="openQR('wechat-work')" data-i18n="coop.map.cta">申请入驻你所在的城市</button>
+            </div>
+
+            <!-- Tab 6: Franchise -->
+            <div class="coop-panel" id="panel-franchise">
+                <p class="coop-panel-slogan" data-i18n="coop.fra.slogan">与匠人同行，做有温度的生意</p>
+                <div class="coop-stats-row">
+                    <div class="coop-stat">
+                        <div class="coop-stat-num">2018</div>
+                        <div class="coop-stat-label" data-i18n="coop.fra.s1">创立年份</div>
+                    </div>
+                    <div class="coop-stat">
+                        <div class="coop-stat-num">30+</div>
+                        <div class="coop-stat-label" data-i18n="coop.fra.s2">核心SKU</div>
+                    </div>
+                    <div class="coop-stat">
+                        <div class="coop-stat-num">68%</div>
+                        <div class="coop-stat-label" data-i18n="coop.fra.s3">复购率</div>
+                    </div>
+                    <div class="coop-stat">
+                        <div class="coop-stat-num">4.9</div>
+                        <div class="coop-stat-label" data-i18n="coop.fra.s4">用户评分</div>
+                    </div>
+                </div>
+                <div class="coop-mode-grid">
+                    <div class="coop-mode-card">
+                        <div class="coop-mode-icon">🏠</div>
+                        <div class="coop-mode-name" data-i18n="coop.fra.m1">旗舰体验店</div>
+                        <div class="coop-mode-size" data-i18n="coop.fra.m1s">80-150㎡ · 核心商圈 · 全品类体验</div>
+                        <div class="coop-mode-invest">¥30-50万</div>
+                    </div>
+                    <div class="coop-mode-card">
+                        <div class="coop-mode-icon">🏪</div>
+                        <div class="coop-mode-name" data-i18n="coop.fra.m2">社区专营店</div>
+                        <div class="coop-mode-size" data-i18n="coop.fra.m2s">30-60㎡ · 社区+线上 · 精选SKU</div>
+                        <div class="coop-mode-invest">¥10-20万</div>
+                    </div>
+                    <div class="coop-mode-card">
+                        <div class="coop-mode-icon">📦</div>
+                        <div class="coop-mode-name" data-i18n="coop.fra.m3">档口专柜</div>
+                        <div class="coop-mode-size" data-i18n="coop.fra.m3s">10-20㎡ · 超市/市场 · 爆款单品</div>
+                        <div class="coop-mode-invest">¥3-8万</div>
+                    </div>
+                </div>
+                <div class="coop-support-row">
+                    <div class="coop-support-step">
+                        <div class="coop-support-icon">📍</div>
+                        <div class="coop-support-label" data-i18n="coop.fra.sp1">选址评估</div>
+                    </div>
+                    <span class="coop-support-arrow">→</span>
+                    <div class="coop-support-step">
+                        <div class="coop-support-icon">🎨</div>
+                        <div class="coop-support-label" data-i18n="coop.fra.sp2">装修设计</div>
+                    </div>
+                    <span class="coop-support-arrow">→</span>
+                    <div class="coop-support-step">
+                        <div class="coop-support-icon">📚</div>
+                        <div class="coop-support-label" data-i18n="coop.fra.sp3">开业培训</div>
+                    </div>
+                    <span class="coop-support-arrow">→</span>
+                    <div class="coop-support-step">
+                        <div class="coop-support-icon">📣</div>
+                        <div class="coop-support-label" data-i18n="coop.fra.sp4">营销推广</div>
+                    </div>
+                    <span class="coop-support-arrow">→</span>
+                    <div class="coop-support-step">
+                        <div class="coop-support-icon">🚚</div>
+                        <div class="coop-support-label" data-i18n="coop.fra.sp5">供应链保障</div>
+                    </div>
+                </div>
+                <div class="coop-flow" style="margin-bottom:1rem">
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.fra.f1">在线申请</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.fra.f2">品牌初审</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.fra.f3">实地考察</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.fra.f4">签约筹备</span></div>
+                    <span class="coop-flow-arrow">→</span>
+                    <div class="coop-flow-step"><span class="coop-flow-node" data-i18n="coop.fra.f5">开业运营</span></div>
+                </div>
+                <button class="coop-cta" onclick="openQR('wechat-work')" data-i18n="coop.fra.cta">预约深度沟通</button>
+            </div>
+        </div>
+    </section>
+
+
 
     <!-- Contact Form -->
     <section class="form-section">
@@ -685,6 +1518,7 @@
           <div class="community-card-desc" data-i18n="community.wechat-work.desc">扫码加入 · 专属试吃装</div>
         </div>
       <div class="community-perk"><span class="community-perk-icon">🎁</span><span data-i18n="community.perk">新成员专享：首次加入领取试吃装</span></div>
+      </div>
     </div>
   </section>
 
@@ -710,7 +1544,7 @@
             <div class="footer-col">
                 <h4 data-i18n="footer.connect">联系</h4>
                 <a href="recipes.html" data-i18n="nav.recipes">菹味食谱</a>
-        <a href="contact.html" data-i18n="nav.contact">联系我们</a><br>
+        <a href="contact.html" data-i18n="nav.contact">合作·联系</a><br>
                 <p>business@hailanzu.com</p>
             </div>
             <div class="footer-col">
@@ -727,8 +1561,8 @@
     <script>
         const translations = {
             zh: {
-                'nav.home':'首页','nav.home.sub':'홈','nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.recipes':'菹味食谱','nav.contact':'联系我们',
-                'hero.title':'联系我们',
+                'nav.home':'首页','nav.home.sub':'홈','nav.seasons':'四季发酵','nav.products':'产品殿堂','nav.story':'延边风土','nav.gift':'高端礼盒','nav.recipes':'菹味食谱','nav.contact':'合作·联系',
+                'hero.title':'合作·联系',
                 'info.email_title':'邮箱','info.email_note':'24小时内回复',
                 'info.wechat_title':'微信','info.wechat_note':'添加请备注来意',
                 'info.address_title':'地址','info.address':'吉林省延边朝鲜族自治州','info.address_note':'欢迎预约参观',
@@ -751,11 +1585,24 @@
                 'social.title':'关注我们','social.wechat':'微信','social.official':'公众号','social.douyin':'抖音','social.xiaohongshu':'小红书','wx.guide.line1':'点击右上角 ⋯','wx.guide.line2':'选择「在浏览器中打开」','wx.guide.line3':'即可跳转到对应APP',
                 'sidebar.wechat':'加入社群','sidebar.gift':'高端礼盒','sidebar.contact':'联系我们','sidebar.xiaohongshu':'小紅書','sidebar.douyin':'抖音','sidebar.backtop':'トップへ','sidebar.xiaohongshu':'Xiaohongshu','sidebar.douyin':'Douyin','sidebar.backtop':'Back to Top','sidebar.xiaohongshu':'샤오홍슈','sidebar.douyin':'도우인','sidebar.backtop':'맨 위로','sidebar.xiaohongshu':'小红书','sidebar.douyin':'抖音','sidebar.backtop':'返回顶部','footer.brand':'海兰菹','footer.desc':'源自延边朝鲜族传统手工泡菜，以四季发酵技艺，匠心守护每一坛风味。',
                 'footer.nav':'导航','footer.connect':'联系','footer.follow':'关注',
-                'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有'
+                'footer.wechat':'微信公众号','footer.weibo':'微博 @海兰菹','footer.rights':'版权所有','coop.title':'携手海兰菹 · 共酿好味道','coop.subtitle':'함께 만드는 맛',
+                'coop.tab.oem':'OEM代工','coop.tab.influencer':'达人带货','coop.tab.agent':'代理批发','coop.tab.store':'线下门店','coop.tab.map':'全国网点','coop.tab.franchise':'招商加盟',
+                'coop.oem.slogan':'你的品牌，我们的手艺','coop.oem.c1t':'产能保障','coop.oem.c1d':'日产500坛，旺季可扩至2000坛','coop.oem.c2t':'品控体系','coop.oem.c2d':'从原料到成品12道检测','coop.oem.c3t':'灵活定制','coop.oem.c3d':'口味/辣度/包装/规格全定制','coop.oem.c4t':'资质齐全','coop.oem.c4d':'SC认证 · 出口许可 · 有机认证',
+                'coop.oem.s1':'需求沟通','coop.oem.s2':'样品打样','coop.oem.s3':'签约生产','coop.oem.s4':'交付验收','coop.oem.cta':'获取OEM方案',
+                'coop.inf.slogan':'好味道，值得被看见','coop.inf.c1t':'免费试吃装','coop.inf.c1d':'甄选3款经典口味寄送','coop.inf.c2t':'佣金分成','coop.inf.c2d':'成交额15%-25%佣金','coop.inf.c3t':'一件代发','coop.inf.c3d':'无需囤货，品牌方直发','coop.inf.c4t':'专属素材','coop.inf.c4d':'产品图/视频/品牌故事素材包',
+                'coop.inf.bronze':'铜橡果','coop.inf.bronze.desc':'15% 佣金','coop.inf.silver':'银橡果','coop.inf.silver.desc':'20% 佣金','coop.inf.gold':'金橡果','coop.inf.gold.desc':'25% 佣金 + 专属权益','coop.inf.cta':'申请达人合作',
+                'coop.agt.slogan':'一坛好泡菜，一座城的味道','coop.agt.c1t':'独家区域保护','coop.agt.c1d':'一城一代理，保障独家经营权','coop.agt.c2t':'高复购率','coop.agt.c2d':'30天复购率达68%','coop.agt.c3t':'冷链物流支持','coop.agt.c3d':'品牌方承担首批发货运费','coop.agt.c4t':'营销赋能','coop.agt.c4d':'品牌物料 · 活动方案 · 培训支持',
+                'coop.agt.r1':'首批进货量 ≥ ¥20,000','coop.agt.r2':'具备冷链仓储条件','coop.agt.r3':'认同品牌理念与品质标准','coop.agt.cta':'获取代理政策',
+                'coop.str.slogan':'让好味道走进更多人的日常','coop.str.c1t':'精品超市','coop.str.c1d':'Ole\u2019 · 盒马 · City Super','coop.str.c2t':'日韩食材专门店','coop.str.c2d':'专业食材渠道精准客群','coop.str.c3t':'高端餐饮供货','coop.str.c3d':'星级主厨指定品牌','coop.str.c4t':'礼品渠道','coop.str.c4d':'机场 · 酒店 · 企业福利','coop.str.cta':'洽谈入驻',
+                'coop.map.slogan':'全国百城，一坛可达','coop.map.all':'全部','coop.map.exclusive':'专卖店','coop.map.supermarket':'精品超市','coop.map.restaurant':'餐饮渠道','coop.map.more':'更多城市持续拓展中…','coop.map.cta':'申请入驻你所在的城市',
+                'coop.fra.slogan':'与匠人同行，做有温度的生意','coop.fra.s1':'创立年份','coop.fra.s2':'核心SKU','coop.fra.s3':'复购率','coop.fra.s4':'用户评分',
+                'coop.fra.m1':'旗舰体验店','coop.fra.m1s':'80-150㎡ · 核心商圈 · 全品类体验','coop.fra.m2':'社区专营店','coop.fra.m2s':'30-60㎡ · 社区+线上 · 精选SKU','coop.fra.m3':'档口专柜','coop.fra.m3s':'10-20㎡ · 超市/市场 · 爆款单品',
+                'coop.fra.sp1':'选址评估','coop.fra.sp2':'装修设计','coop.fra.sp3':'开业培训','coop.fra.sp4':'营销推广','coop.fra.sp5':'供应链保障',
+                'coop.fra.f1':'在线申请','coop.fra.f2':'品牌初审','coop.fra.f3':'实地考察','coop.fra.f4':'签约筹备','coop.fra.f5':'开业运营','coop.fra.cta':'预约深度沟通'
             },
             ko: {
-                'nav.home':'홈','nav.home.sub':'홈','nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.recipes':'저 레시피','nav.contact':'연락처',
-                'hero.title':'연락처',
+                'nav.home':'홈','nav.home.sub':'홈','nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.recipes':'저 레시피','nav.contact':'협력·연락',
+                'hero.title':'협력·연락',
                 'info.email_title':'이메일','info.email_note':'24시간 이내 회신',
                 'info.wechat_title':'위챗','info.wechat_note':'추가 시 용도를 남겨주세요',
                 'info.address_title':'주소','info.address':'지린성 연변 조선족 자치주','info.address_note':'방문 예약 환영',
@@ -778,11 +1625,24 @@
                 'social.title':'팔로우','social.wechat':'위챗','social.official':'공식 계정','social.douyin':'도우인','social.xiaohongshu':'샤오홍슈','wx.guide.line1':'우측 상단 ⋯ 클릭','wx.guide.line2':'브라우저에서 열기 선택','wx.guide.line3':'앱으로 이동합니다',
                 'sidebar.wechat':'커뮤니티 가입','sidebar.gift':'고급 선물','sidebar.contact':'문의하기','sidebar.xiaohongshu':'小紅書','sidebar.douyin':'抖音','sidebar.backtop':'トップへ','sidebar.xiaohongshu':'Xiaohongshu','sidebar.douyin':'Douyin','sidebar.backtop':'Back to Top','sidebar.xiaohongshu':'샤오홍슈','sidebar.douyin':'도우인','sidebar.backtop':'맨 위로','sidebar.xiaohongshu':'小红书','sidebar.douyin':'抖音','sidebar.backtop':'返回顶部','footer.brand':'해란저','footer.desc':'연변 조선족 전통 수제 김치, 사계절 발효 기술로 매 항아리의 풍미를 정성껏 지킵니다.',
                 'footer.nav':'내비게이션','footer.connect':'연락처','footer.follow':'팔로우',
-                'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유'
+                'footer.wechat':'위챗 공식 계정','footer.weibo':'웨이보 @해란저','footer.rights':'모든 권리 보유','coop.title':'해란저와 함께 · 맛을 빚다','coop.subtitle':'함께 만드는 맛',
+                'coop.tab.oem':'OEM 생산','coop.tab.influencer':'인플루언서','coop.tab.agent':'총판·도매','coop.tab.store':'오프라인 매장','coop.tab.map':'전국 매장','coop.tab.franchise':'가맹 모집',
+                'coop.oem.slogan':'당신의 브랜드, 우리의 장인정신','coop.oem.c1t':'생산 능력 보장','coop.oem.c1d':'일일 500항아리, 성수기 2000항아리 확장 가능','coop.oem.c2t':'품질 관리 체계','coop.oem.c2d':'원료부터 완성품까지 12단계 검사','coop.oem.c3t':'유연한 커스터마이징','coop.oem.c3d':'맛/매운맛/포장/규격 전면 커스텀','coop.oem.c4t':'인증 완비','coop.oem.c4d':'SC인증 · 수출허가 · 유기인증',
+                'coop.oem.s1':'요구사항 논의','coop.oem.s2':'샘플 제작','coop.oem.s3':'계약 생산','coop.oem.s4':'납품 검수','coop.oem.cta':'OEM 제안 받기',
+                'coop.inf.slogan':'좋은 맛은 보일 가치가 있다','coop.inf.c1t':'무료 시식 팩','coop.inf.c1d':'클래식 3종 엄선 배송','coop.inf.c2t':'수수료 분배','coop.inf.c2d':'매출액 15%-25% 수수료','coop.inf.c3t':'개별 배송','coop.inf.c3d':'재고 없이 브랜드 직배송','coop.inf.c4t':'전용 소재','coop.inf.c4d':'제품 사진/영상/브랜드 스토리 소재팩',
+                'coop.inf.bronze':'동도토리','coop.inf.bronze.desc':'15% 수수료','coop.inf.silver':'은도토리','coop.inf.silver.desc':'20% 수수료','coop.inf.gold':'금도토리','coop.inf.gold.desc':'25% 수수료 + 전용 혜택','coop.inf.cta':'인플루언서 신청',
+                'coop.agt.slogan':'좋은 김치 한 항아리, 한 도시의 맛','coop.agt.c1t':'독점 지역 보호','coop.agt.c1d':'한 도시 한 총판, 독점 경영권 보장','coop.agt.c2t':'높은 재구매율','coop.agt.c2d':'30일 재구매율 68%','coop.agt.c3t':'냉장 물류 지원','coop.agt.c3d':'첫 출하 운임 브랜드 부담','coop.agt.c4t':'마케팅 지원','coop.agt.c4d':'브랜드 자료 · 프로모션 · 교육 지원',
+                'coop.agt.r1':'첫 입하량 ≥ ¥20,000','coop.agt.r2':'냉장 보관 시설 구비','coop.agt.r3':'브랜드 철학과 품질 기준 공감','coop.agt.cta':'총판 정책 받기',
+                'coop.str.slogan':'좋은 맛을 더 많은 사람의 일상으로','coop.str.c1t':'프리미엄 마켓','coop.str.c1d':'Ole\u2019 · 훠마 · City Super','coop.str.c2t':'한일 식재료 전문점','coop.str.c2d':'전문 식재료 채널 정밀 타겟','coop.str.c3t':'프리미엄 식당 공급','coop.str.c3d':'미쉐린 셰프 지정 브랜드','coop.str.c4t':'선물 채널','coop.str.c4d':'공항 · 호텔 · 기업 복지','coop.str.cta':'입점 상담',
+                'coop.map.slogan':'전국 백도시, 한 항아리면 닿는다','coop.map.all':'전체','coop.map.exclusive':'전문점','coop.map.supermarket':'프리미엄 마켓','coop.map.restaurant':'식당 채널','coop.map.more':'더 많은 도시가 계속 확장 중…','coop.map.cta':'당신의 도시에 입점 신청',
+                'coop.fra.slogan':'장인과 함께, 따뜻한 비즈니스를','coop.fra.s1':'설립 연도','coop.fra.s2':'핵심 SKU','coop.fra.s3':'재구매율','coop.fra.s4':'고객 평점',
+                'coop.fra.m1':'플래그십 체험점','coop.fra.m1s':'80-150㎡ · 핵심 상권 · 전품목 체험','coop.fra.m2':'커뮤니티 전문점','coop.fra.m2s':'30-60㎡ · 커뮤니티+온라인 · 엄선 SKU','coop.fra.m3':'매장 코너','coop.fra.m3s':'10-20㎡ · 마켓/시장 · 인기 단품',
+                'coop.fra.sp1':'입지 평가','coop.fra.sp2':'인테리어 디자인','coop.fra.sp3':'오픈 교육','coop.fra.sp4':'마케팅','coop.fra.sp5':'공급망 보장',
+                'coop.fra.f1':'온라인 신청','coop.fra.f2':'브랜드 심사','coop.fra.f3':'현장 방문','coop.fra.f4':'계약 준비','coop.fra.f5':'오픈 운영','coop.fra.cta':'깊이 있는 상담 예약'
             },
             en: {
-                'nav.home':'Home','nav.home.sub':'Home','nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.recipes':'Recipes','nav.contact':'Contact Us',
-                'hero.title':'Contact Us',
+                'nav.home':'Home','nav.home.sub':'Home','nav.seasons':'Seasonal Fermentation','nav.products':'Products','nav.story':'Yanbian Heritage','nav.gift':'Luxury Gift Sets','nav.recipes':'Recipes','nav.contact':'Partner & Contact',
+                'hero.title':'Partner & Contact',
                 'info.email_title':'Email','info.email_note':'Reply within 24 hours',
                 'info.wechat_title':'WeChat','info.wechat_note':'Please note your purpose',
                 'info.address_title':'Address','info.address':'Yanbian Korean Autonomous Prefecture, Jilin','info.address_note':'Visits by appointment',
@@ -805,11 +1665,24 @@
                 'social.title':'Follow Us','social.wechat':'WeChat','social.official':'Official','social.douyin':'Douyin','social.xiaohongshu':'Xiaohongshu','wx.guide.line1':'Tap ⋯ at top right','wx.guide.line2':'Select Open in Browser','wx.guide.line3':'to open the app',
                 'sidebar.wechat':'Join Community','sidebar.gift':'Gift Boxes','sidebar.contact':'Contact Us','sidebar.xiaohongshu':'小紅書','sidebar.douyin':'抖音','sidebar.backtop':'トップへ','sidebar.xiaohongshu':'Xiaohongshu','sidebar.douyin':'Douyin','sidebar.backtop':'Back to Top','sidebar.xiaohongshu':'샤오홍슈','sidebar.douyin':'도우인','sidebar.backtop':'맨 위로','sidebar.xiaohongshu':'小红书','sidebar.douyin':'抖音','sidebar.backtop':'返回顶部','footer.brand':'HAILANZU','footer.desc':'Handcrafted Jangajii kimchi from Yanbian, preserving authentic flavors through seasonal fermentation.',
                 'footer.nav':'Navigate','footer.connect':'Connect','footer.follow':'Follow',
-                'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved'
+                'footer.wechat':'WeChat Official','footer.weibo':'Weibo @HAILANZU','footer.rights':'All rights reserved','coop.title':'Partner with HAILANZU','coop.subtitle':'Crafting Flavor Together',
+                'coop.tab.oem':'OEM','coop.tab.influencer':'Influencer','coop.tab.agent':'Distribution','coop.tab.store':'Retail','coop.tab.map':'Store Map','coop.tab.franchise':'Franchise',
+                'coop.oem.slogan':'Your Brand, Our Craftsmanship','coop.oem.c1t':'Production Capacity','coop.oem.c1d':'500 jars/day, scalable to 2,000 in peak season','coop.oem.c2t':'Quality Control','coop.oem.c2d':'12-point inspection from raw materials to finished product','coop.oem.c3t':'Flexible Customization','coop.oem.c3d':'Full customization: flavor, spice level, packaging, specifications','coop.oem.c4t':'Certifications','coop.oem.c4d':'SC Certified · Export License · Organic Certification',
+                'coop.oem.s1':'Requirements','coop.oem.s2':'Sampling','coop.oem.s3':'Contract Production','coop.oem.s4':'Delivery & QC','coop.oem.cta':'Get OEM Proposal',
+                'coop.inf.slogan':'Great Flavor Deserves to Be Seen','coop.inf.c1t':'Free Tasting Kit','coop.inf.c1d':'3 classic flavors curated and shipped','coop.inf.c2t':'Commission','coop.inf.c2d':'15%-25% of sales revenue','coop.inf.c3t':'Direct Shipping','coop.inf.c3d':'No inventory needed, brand ships directly','coop.inf.c4t':'Brand Assets','coop.inf.c4d':'Product photos, videos, and brand story kit',
+                'coop.inf.bronze':'Bronze Acorn','coop.inf.bronze.desc':'15% Commission','coop.inf.silver':'Silver Acorn','coop.inf.silver.desc':'20% Commission','coop.inf.gold':'Gold Acorn','coop.inf.gold.desc':'25% Commission + Exclusive Perks','coop.inf.cta':'Apply as Influencer',
+                'coop.agt.slogan':'One Jar of Kimchi, One City\u2019s Flavor','coop.agt.c1t':'Exclusive Territory','coop.agt.c1d':'One distributor per city, exclusive rights guaranteed','coop.agt.c2t':'High Repurchase Rate','coop.agt.c2d':'68% repurchase rate within 30 days','coop.agt.c3t':'Cold Chain Support','coop.agt.c3d':'Brand covers first shipment freight','coop.agt.c4t':'Marketing Enablement','coop.agt.c4d':'Brand assets · Campaign plans · Training support',
+                'coop.agt.r1':'First order ≥ ¥20,000','coop.agt.r2':'Cold storage capability required','coop.agt.r3':'Alignment with brand values and quality standards','coop.agt.cta':'Get Distribution Policy',
+                'coop.str.slogan':'Bringing Great Flavor to Everyday Life','coop.str.c1t':'Premium Supermarkets','coop.str.c1d':'Ole\u2019 · Hema · City Super','coop.str.c2t':'Korean & Japanese Specialty Stores','coop.str.c2d':'Targeted customer base through specialty channels','coop.str.c3t':'Fine Dining Supply','coop.str.c3d':'Michelin-starred chef\u2019s brand of choice','coop.str.c4t':'Gift Channels','coop.str.c4d':'Airports · Hotels · Corporate Gifts','coop.str.cta':'Discuss Placement',
+                'coop.map.slogan':'Nationwide Coverage, One Jar Away','coop.map.all':'All','coop.map.exclusive':'Flagship','coop.map.supermarket':'Premium Market','coop.map.restaurant':'Restaurant','coop.map.more':'More cities coming soon…','coop.map.cta':'Bring HAILANZU to Your City',
+                'coop.fra.slogan':'Craft a Business with Warmth','coop.fra.s1':'Founded','coop.fra.s2':'Core SKUs','coop.fra.s3':'Repurchase Rate','coop.fra.s4':'User Rating',
+                'coop.fra.m1':'Flagship Store','coop.fra.m1s':'80-150㎡ · Prime Location · Full Experience','coop.fra.m2':'Community Store','coop.fra.m2s':'30-60㎡ · Community + Online · Curated SKUs','coop.fra.m3':'Kiosk Counter','coop.fra.m3s':'10-20㎡ · Supermarket/Market · Bestsellers',
+                'coop.fra.sp1':'Site Selection','coop.fra.sp2':'Interior Design','coop.fra.sp3':'Training','coop.fra.sp4':'Marketing','coop.fra.sp5':'Supply Chain',
+                'coop.fra.f1':'Apply Online','coop.fra.f2':'Brand Review','coop.fra.f3':'Site Visit','coop.fra.f4':'Contract & Prep','coop.fra.f5':'Grand Opening','coop.fra.cta':'Schedule a Consultation'
             },
             ja: {
-                'nav.home':'ホーム','nav.home.sub':'ホーム','nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.recipes':'レシピ','nav.contact':'お問い合わせ',
-                'hero.title':'お問い合わせ',
+                'nav.home':'ホーム','nav.home.sub':'ホーム','nav.seasons':'四季発酵','nav.products':'製品展示','nav.story':'延辺風土','nav.gift':'高級ギフト','nav.recipes':'レシピ','nav.contact':'協力·お問い合わせ',
+                'hero.title':'協力·お問い合わせ',
                 'info.email_title':'メール','info.email_note':'24時間以内に返信',
                 'info.wechat_title':'微信','info.wechat_note':'追加時にご用件をお書きください',
                 'info.address_title':'住所','info.address':'吉林省延辺朝鮮族自治州','info.address_note':'見学予約歓迎',
@@ -832,7 +1705,20 @@
                 'social.title':'フォロー','social.wechat':'WeChat','social.official':'公式アカウント','social.douyin':'抖音','social.xiaohongshu':'小紅書','wx.guide.line1':'右上の ⋯ をタップ','wx.guide.line2':'ブラウザで開くを選択','wx.guide.line3':'アプリにジャンプします',
                 'sidebar.wechat':'コミュニティ参加','sidebar.gift':'ギフトボックス','sidebar.contact':'お問い合わせ','sidebar.xiaohongshu':'小紅書','sidebar.douyin':'抖音','sidebar.backtop':'トップへ','sidebar.xiaohongshu':'Xiaohongshu','sidebar.douyin':'Douyin','sidebar.backtop':'Back to Top','sidebar.xiaohongshu':'샤오홍슈','sidebar.douyin':'도우인','sidebar.backtop':'맨 위로','sidebar.xiaohongshu':'小红书','sidebar.douyin':'抖音','sidebar.backtop':'返回顶部','footer.brand':'海蘭菹','footer.desc':'延辺朝鮮族の伝統手作りキムチ、四季の発酵技術で一瓶一瓶の風味を大切に守ります。',
                 'footer.nav':'ナビゲーション','footer.connect':'連絡先','footer.follow':'フォロー',
-                'footer.wechat':'微信公式アカウント','footer.weibo':'微博 @海蘭菹','footer.rights':'全著作権保有'
+                'footer.wechat':'微信公式アカウント','footer.weibo':'微博 @海蘭菹','footer.rights':'全著作権保有','coop.title':'海蘭菹とともに · 味を醸す','coop.subtitle':'共に創る味',
+                'coop.tab.oem':'OEM製造','coop.tab.influencer':'インフルエンサー','coop.tab.agent':'代理卸売','coop.tab.store':'実店舗','coop.tab.map':'店舗マップ','coop.tab.franchise':'フランチャイズ',
+                'coop.oem.slogan':'あなたのブランド、私たちの職人技','coop.oem.c1t':'生産能力','coop.oem.c1d':'日産500瓶、繁忙期は2000瓶まで拡張可','coop.oem.c2t':'品質管理','coop.oem.c2d':'原料から完成品まで12段階検査','coop.oem.c3t':'フレキシブルカスタム','coop.oem.c3d':'味/辛さ/パッケージ/仕様すべてカスタム可','coop.oem.c4t':'認証完備','coop.oem.c4d':'SC認証 · 輸出許可 · オーガニック認証',
+                'coop.oem.s1':'要件ヒアリング','coop.oem.s2':'サンプル制作','coop.oem.s3':'契約生産','coop.oem.s4':'納品検収','coop.oem.cta':'OEM提案を取得',
+                'coop.inf.slogan':'美味しさは見られる価値がある','coop.inf.c1t':'無料試食セット','coop.inf.c1d':'定番3種セレクト配送','coop.inf.c2t':'コミッション','coop.inf.c2d':'売上の15%-25%','coop.inf.c3t':'個別発送','coop.inf.c3d':'在庫不要、ブランド直送','coop.inf.c4t':'専用素材','coop.inf.c4d':'商品写真/動画/ブランドストーリーキット',
+                'coop.inf.bronze':'銅どんぐり','coop.inf.bronze.desc':'15% コミッション','coop.inf.silver':'銀どんぐり','coop.inf.silver.desc':'20% コミッション','coop.inf.gold':'金どんぐり','coop.inf.gold.desc':'25% コミッション + 専用特典','coop.inf.cta':'インフルエンサー応募',
+                'coop.agt.slogan':'良いキムチ一瓶、一都市の味','coop.agt.c1t':'独占地域保護','coop.agt.c1d':'一都市一代理、独占経営権保障','coop.agt.c2t':'高いリピート率','coop.agt.c2d':'30日リピート率68%','coop.agt.c3t':'冷蔵物流サポート','coop.agt.c3d':'初回出荷運賃ブランド負担','coop.agt.c4t':'マーケティング支援','coop.agt.c4d':'ブランド素材 · キャンペーン · トレーニング',
+                'coop.agt.r1':'初回発注額 ≥ ¥20,000','coop.agt.r2':'冷蔵保管施設必須','coop.agt.r3':'ブランド理念と品質基準への共感','coop.agt.cta':'代理店ポリシーを取得',
+                'coop.str.slogan':'良い味をより多くの人の日常に','coop.str.c1t':'プレミアムスーパー','coop.str.c1d':'Ole\u2019 · 盒馬 · City Super','coop.str.c2t':'日韓食材専門店','coop.str.c2d':'専門チャネルで的確なターゲット','coop.str.c3t':'高級飲食供給','coop.str.c3d':'ミシュランシェフ指定ブランド','coop.str.c4t':'ギフトチャネル','coop.str.c4d':'空港 · ホテル · 企業福利','coop.str.cta':'出店相談',
+                'coop.map.slogan':'全国百都市、一瓶で届く','coop.map.all':'すべて','coop.map.exclusive':'専門店','coop.map.supermarket':'プレミアムマーケット','coop.map.restaurant':'飲食チャネル','coop.map.more':'より多くの都市に順次拡大中…','coop.map.cta':'お住まいの都市に出店申請',
+                'coop.fra.slogan':'職人と歩む、温かいビジネス','coop.fra.s1':'設立年','coop.fra.s2':'コアSKU','coop.fra.s3':'リピート率','coop.fra.s4':'ユーザー評価',
+                'coop.fra.m1':'フラッグシップ店','coop.fra.m1s':'80-150㎡ · 中心商圏 · 全品目体験','coop.fra.m2':'コミュニティ店','coop.fra.m2s':'30-60㎡ · コミュニティ+オンライン · セレクトSKU','coop.fra.m3':'売場コーナー','coop.fra.m3s':'10-20㎡ · スーパー/市場 · 人気商品',
+                'coop.fra.sp1':'立地評価','coop.fra.sp2':'内装デザイン','coop.fra.sp3':'オープントレーニング','coop.fra.sp4':'マーケティング','coop.fra.sp5':'サプライチェーン',
+                'coop.fra.f1':'オンライン申請','coop.fra.f2':'ブランド審査','coop.fra.f3':'実地訪問','coop.fra.f4':'契約準備','coop.fra.f5':'オープン','coop.fra.cta':'深い相談を予約'
             }
         };
 
@@ -1039,6 +1925,118 @@
         document.addEventListener('DOMContentLoaded', () => setLanguage(currentLang));
     </script>
 
+<script>
+
+// === Cooperation Tab Switching ===
+(function(){
+    var tabs = document.querySelectorAll('.coop-tab');
+    var panels = document.querySelectorAll('.coop-panel');
+    function switchTab(tabName) {
+        tabs.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === tabName); });
+        panels.forEach(function(p) { p.classList.toggle('active', p.id === 'panel-' + tabName); });
+        if (tabName === 'map') { renderStores('all'); }
+        if (history.replaceState) {
+            history.replaceState(null, '', location.pathname + '#' + tabName);
+        }
+    }
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() { switchTab(tab.dataset.tab); });
+    });
+    var hash = location.hash.replace('#','');
+    if (hash && document.querySelector('.coop-tab[data-tab="'+hash+'"]')) {
+        switchTab(hash);
+    }
+})();
+
+// === Store Data & Rendering ===
+var storeData = {
+    northeast: [
+        { city: '延吉', name: '海兰菹旗舰店', type: 'exclusive', typeName: '专卖店' },
+        { city: '长春', name: "Ole\u2019 精品超市", type: 'supermarket', typeName: '精品超市' },
+        { city: '沈阳', name: '万象城精品超市', type: 'supermarket', typeName: '精品超市' }
+    ],
+    north: [
+        { city: '北京', name: 'SKP精品超市', type: 'supermarket', typeName: '精品超市' },
+        { city: '北京', name: '海兰菹望京体验店', type: 'exclusive', typeName: '专卖店' },
+        { city: '天津', name: '银河国际精品超市', type: 'supermarket', typeName: '精品超市' }
+    ],
+    east: [
+        { city: '上海', name: '环贸iapm精品超市', type: 'supermarket', typeName: '精品超市' },
+        { city: '杭州', name: '万象城Ole\u2019', type: 'supermarket', typeName: '精品超市' },
+        { city: '南京', name: '德基广场专柜', type: 'exclusive', typeName: '专卖店' }
+    ],
+    south: [
+        { city: '广州', name: '太古汇精品超市', type: 'supermarket', typeName: '精品超市' },
+        { city: '深圳', name: '万象天地专柜', type: 'exclusive', typeName: '专卖店' }
+    ],
+    southwest: [
+        { city: '成都', name: 'IFS国际金融中心', type: 'supermarket', typeName: '精品超市' },
+        { city: '重庆', name: '星光天地专柜', type: 'exclusive', typeName: '专卖店' }
+    ],
+    northwest: [
+        { city: '西安', name: 'SKP精品超市', type: 'supermarket', typeName: '精品超市' }
+    ]
+};
+
+function renderStores(filter) {
+    var list = document.getElementById('storeList');
+    if (!list) return;
+    var html = '';
+    var regions = ['northeast','north','east','south','southwest','northwest'];
+    regions.forEach(function(region) {
+        var stores = storeData[region] || [];
+        stores.forEach(function(s) {
+            if (filter !== 'all' && s.type !== filter) return;
+            html += '<div class="coop-store-item">' +
+                '<span class="coop-store-city">' + s.city + '</span>' +
+                '<div class="coop-store-info">' +
+                '<div class="coop-store-name">' + s.name + '</div>' +
+                '<span class="coop-store-type">' + s.typeName + '</span>' +
+                '</div></div>';
+        });
+    });
+    list.innerHTML = html || '<p style="text-align:center;color:var(--rice-dim);font-size:0.85rem;padding:1rem">暂无该类型门店</p>';
+}
+
+// Store filter buttons
+document.querySelectorAll('.coop-filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.coop-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        renderStores(btn.dataset.filter);
+    });
+});
+
+// Map region click
+document.querySelectorAll('.coop-map-region').forEach(function(region) {
+    region.addEventListener('click', function() {
+        document.querySelectorAll('.coop-map-region').forEach(function(r) { r.classList.remove('active'); });
+        region.classList.add('active');
+        var regionName = region.dataset.region;
+        var stores = storeData[regionName] || [];
+        var list = document.getElementById('storeList');
+        if (!list) return;
+        var html = '';
+        stores.forEach(function(s) {
+            var currentFilter = document.querySelector('.coop-filter-btn.active');
+            if (currentFilter && currentFilter.dataset.filter !== 'all' && s.type !== currentFilter.dataset.filter) return;
+            html += '<div class="coop-store-item">' +
+                '<span class="coop-store-city">' + s.city + '</span>' +
+                '<div class="coop-store-info">' +
+                '<div class="coop-store-name">' + s.name + '</div>' +
+                '<span class="coop-store-type">' + s.typeName + '</span>' +
+                '</div></div>';
+        });
+        list.innerHTML = html || '<p style="text-align:center;color:var(--rice-dim);font-size:0.85rem;padding:1rem">该区域暂无门店</p>';
+    });
+});
+
+// Initial render
+if (document.querySelector('.coop-panel.active#panel-map')) {
+    renderStores('all');
+}
+
+</script>
 <script src="js/common.js"></script>
 
   <div class="qr-overlay" id="qrOverlay">
@@ -1149,7 +2147,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="community-sidebar" id="communitySidebar">
 <div class="sidebar-item" onclick="openQR('wechat-work')"><span>&#x1F4AC;</span><span class="sidebar-tooltip" data-i18n="sidebar.wechat">加入社群</span></div>
 <div class="sidebar-item" onclick="window.location.href='gift.html'"><span>&#x1F381;</span><span class="sidebar-tooltip" data-i18n="sidebar.gift">高端礼盒</span></div>
-<div class="sidebar-item" onclick="window.location.href='contact.html'"><span>&#x1F4DE;</span><span class="sidebar-tooltip" data-i18n="sidebar.contact">联系我们</span></div>
+<div class="sidebar-item" onclick="window.location.href='contact.html'"><span>&#x1F4DE;</span><span class="sidebar-tooltip" data-i18n="sidebar.contact">合作·联系</span></div>
 
 <div class="sidebar-item" onclick="window.open('https://www.xiaohongshu.com/search_result?keyword=%E6%B5%B7%E5%85%B0%E8%8F%B9&source=web_search_result_note','_blank')" data-app="xhs"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="2" x2="9" y2="22"/><path d="M14.5 9.5c-.8-.8-2-.8-2.5 0-.5-.8-1.7-.8-2.5 0-1 1 0 2.5 2.5 4 2.5-1.5 3.5-3 2.5-4z" fill="currentColor" stroke="none"/></svg><span class="sidebar-tooltip" data-i18n="sidebar.xiaohongshu">小红书</span></div>
 <div class="sidebar-item" onclick="window.open('https://www.douyin.com/search/%E6%B5%B7%E5%85%B0%E8%8F%B9','_blank')" data-pending="douyin"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4v11"/><path d="M10 4c2.5 0 4.5 2 4.5 4.5"/><circle cx="8" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="10" y1="15" x2="18" y2="13"/></svg><span class="sidebar-tooltip" data-i18n="sidebar.douyin">抖音</span></div>
