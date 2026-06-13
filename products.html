@@ -1210,6 +1210,35 @@ document.addEventListener('touchmove', function(e) {
         }
     }
 }, { passive: false });
+
+// Horizontal swipe fix for .detail-related-list inside scrollable parent
+(function(){
+  var _sx=0,_sy=0;
+  document.getElementById('detailContainer').addEventListener('touchstart',function(e){
+    var t=e.target;
+    while(t&&t!==this){
+      if(t.classList&&t.classList.contains('detail-related-list')){
+        _sx=e.touches[0].clientX;_sy=e.touches[0].clientY;
+        break;
+      }
+      t=t.parentElement;
+    }
+  },{passive:true});
+  document.getElementById('detailContainer').addEventListener('touchmove',function(e){
+    var t=e.target;
+    while(t&&t!==this){
+      if(t.classList&&t.classList.contains('detail-related-list')){
+        var dx=Math.abs(e.touches[0].clientX-_sx);
+        var dy=Math.abs(e.touches[0].clientY-_sy);
+        if(dx>dy&&dx>5){
+          e.stopPropagation();
+        }
+        break;
+      }
+      t=t.parentElement;
+    }
+  },{passive:true});
+})();
 </script>
 
 <script>
