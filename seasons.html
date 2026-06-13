@@ -831,15 +831,72 @@
         </div>
         <div class="season-inner">
             <div class="season-visual">
-                <svg class="season-totem" viewBox="0 0 200 200" fill="none" stroke="rgba(123,143,161,0.6)" stroke-width="1.5">
-                    <path d="M100 50 L105 70 L90 60 L110 60 L95 70Z"/>
-                    <path d="M75 85 L80 105 L65 95 L85 95 L70 105Z"/>
-                    <path d="M125 85 L130 105 L115 95 L135 95 L120 105Z"/>
-                    <path d="M100 120 L105 140 L90 130 L110 130 L95 140Z"/>
-                    <path d="M60 155 L65 175 L50 165 L70 165 L55 175Z"/>
-                    <path d="M140 155 L145 175 L130 165 L150 165 L135 175Z"/>
-                    <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(123,143,161,0.15)" stroke-width="0.8"/>
-                    <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(123,143,161,0.1)" stroke-width="0.8"/>
+                <svg class="season-totem" viewBox="0 0 200 200" fill="none" stroke="rgba(123,143,161,0.55)" stroke-width="1.2" stroke-linecap="round">
+                    <defs>
+                        <!-- 6-branched snowflake: 3 lines through center + small branches -->
+                        <g id="snowflake-sm">
+                            <line x1="0" y1="-10" x2="0" y2="10"/>
+                            <line x1="-8.66" y1="-5" x2="8.66" y2="5"/>
+                            <line x1="-8.66" y1="5" x2="8.66" y2="-5"/>
+                            <!-- small branches -->
+                            <line x1="0" y1="-7" x2="-2.5" y2="-5"/>
+                            <line x1="0" y1="-7" x2="2.5" y2="-5"/>
+                            <line x1="0" y1="7" x2="-2.5" y2="5"/>
+                            <line x1="0" y1="7" x2="2.5" y2="5"/>
+                        </g>
+                        <g id="snowflake-md">
+                            <line x1="0" y1="-16" x2="0" y2="16"/>
+                            <line x1="-13.86" y1="-8" x2="13.86" y2="8"/>
+                            <line x1="-13.86" y1="8" x2="13.86" y2="-8"/>
+                            <!-- branches at 2 levels -->
+                            <line x1="0" y1="-11" x2="-4" y2="-8"/>
+                            <line x1="0" y1="-11" x2="4" y2="-8"/>
+                            <line x1="0" y1="11" x2="-4" y2="8"/>
+                            <line x1="0" y1="11" x2="4" y2="8"/>
+                            <line x1="0" y1="-5.5" x2="-2" y2="-4"/>
+                            <line x1="0" y1="-5.5" x2="2" y2="-4"/>
+                            <line x1="0" y1="5.5" x2="-2" y2="4"/>
+                            <line x1="0" y1="5.5" x2="2" y2="4"/>
+                        </g>
+                        <g id="snowflake-lg">
+                            <line x1="0" y1="-22" x2="0" y2="22"/>
+                            <line x1="-19.05" y1="-11" x2="19.05" y2="11"/>
+                            <line x1="-19.05" y1="11" x2="19.05" y2="-11"/>
+                            <!-- branches at 3 levels -->
+                            <line x1="0" y1="-15" x2="-5" y2="-11.5"/>
+                            <line x1="0" y1="-15" x2="5" y2="-11.5"/>
+                            <line x1="0" y1="15" x2="-5" y2="11.5"/>
+                            <line x1="0" y1="15" x2="5" y2="11.5"/>
+                            <line x1="0" y1="-8" x2="-3" y2="-6"/>
+                            <line x1="0" y1="-8" x2="3" y2="-6"/>
+                            <line x1="0" y1="8" x2="-3" y2="6"/>
+                            <line x1="0" y1="8" x2="3" y2="6"/>
+                            <line x1="0" y1="-3" x2="-1.5" y2="-2"/>
+                            <line x1="0" y1="-3" x2="1.5" y2="-2"/>
+                            <line x1="0" y1="3" x2="-1.5" y2="2"/>
+                            <line x1="0" y1="3" x2="1.5" y2="2"/>
+                            <!-- diamond tip -->
+                            <line x1="0" y1="-22" x2="-2" y2="-20"/>
+                            <line x1="0" y1="-22" x2="2" y2="-20"/>
+                            <line x1="0" y1="22" x2="-2" y2="20"/>
+                            <line x1="0" y1="22" x2="2" y2="20"/>
+                        </g>
+                    </defs>
+                    <!-- Large central snowflake -->
+                    <use href="#snowflake-lg" x="100" y="95" stroke-width="1.3" opacity="0.7"/>
+                    <!-- Medium snowflakes -->
+                    <use href="#snowflake-md" x="60" y="55" stroke-width="1.1" opacity="0.5" transform="rotate(15,60,55)"/>
+                    <use href="#snowflake-md" x="145" y="60" stroke-width="1.1" opacity="0.5" transform="rotate(-10,145,60)"/>
+                    <use href="#snowflake-md" x="65" y="140" stroke-width="1.1" opacity="0.45" transform="rotate(20,65,140)"/>
+                    <use href="#snowflake-md" x="150" y="145" stroke-width="1.1" opacity="0.45" transform="rotate(-18,150,145)"/>
+                    <!-- Small snowflakes -->
+                    <use href="#snowflake-sm" x="45" y="95" stroke-width="0.9" opacity="0.35" transform="rotate(25,45,95)"/>
+                    <use href="#snowflake-sm" x="155" y="100" stroke-width="0.9" opacity="0.35" transform="rotate(-22,155,100)"/>
+                    <use href="#snowflake-sm" x="100" y="40" stroke-width="0.9" opacity="0.3" transform="rotate(8,100,40)"/>
+                    <use href="#snowflake-sm" x="100" y="160" stroke-width="0.9" opacity="0.3" transform="rotate(-12,100,160)"/>
+                    <!-- Subtle circles for atmosphere -->
+                    <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(123,143,161,0.12)" stroke-width="0.8"/>
+                    <circle cx="100" cy="100" r="50" fill="none" stroke="rgba(123,143,161,0.08)" stroke-width="0.8"/>
                 </svg>
             </div>
             <div class="season-text">
