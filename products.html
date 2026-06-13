@@ -210,8 +210,8 @@ section,footer{overflow:hidden}
 .btn-buy:hover{background:rgba(245,240,232,0.08);border-color:rgba(245,240,232,0.9);color:rgba(245,240,232,0.95)}
 .detail-related{margin-top:28px;padding-top:20px;border-top:1px solid rgba(245,240,232,0.06)}
 .detail-related-title{font-size:11px;letter-spacing:2px;opacity:0.45;margin-bottom:12px;color:var(--rice)}
-.detail-related-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
-.detail-related-list::-webkit-scrollbar{height:2px}
+.detail-related-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch;touch-action:pan-x;scrollbar-width:none}
+.detail-related-list::-webkit-scrollbar{display:none}
 .detail-related-list::-webkit-scrollbar-thumb{background:rgba(245,240,232,0.1);border-radius:2px}
 .detail-related-item{flex-shrink:0;width:80px;padding:8px;border-radius:8px;background:rgba(245,240,232,0.03);border:1px solid rgba(245,240,232,0.05);cursor:pointer;transition:all 0.3s;text-align:center}
 .detail-related-item:hover{background:rgba(245,240,232,0.06);border-color:rgba(245,240,232,0.12)}
@@ -1099,7 +1099,7 @@ function stopCarouselAuto() {
 
 function lockBodyScroll() {
     _detailOpen = true;
-    document.body.style.touchAction = 'none';
+    document.body.style.touchAction = 'pan-y';
     document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 }
