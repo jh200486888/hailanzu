@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海兰菹 · 方案D 分屏滚动（10系列版）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1A3C34;--seal:#C8102E;--rice:#F5F0E8;--gold:#B8860B;--ink-deep:#0d1f1a}
+body{background:#0a0a0a;color:var(--rice);font-family:-apple-system,"Noto Serif SC",serif;overflow-x:hidden}
+.page-header{text-align:center;padding:48px 24px 8px;letter-spacing:10px;font-size:18px;font-weight:600}
+.page-sub{text-align:center;font-size:12px;opacity:.3;letter-spacing:4px;margin-bottom:48px}
+
+.scene{max-width:1400px;margin:0 auto;padding:0 24px 80px}
+.gallery{width:100%;height:80vh;min-height:560px;background:var(--ink-deep);border-radius:16px;overflow:hidden;border:1px solid rgba(245,240,232,.06);position:relative}
+
+/* Section layout */
+.section{display:flex;height:100%}
+.sec-left{width:30%;padding:40px 32px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(245,240,232,.06)}
+.sec-cat{font-size:9px;letter-spacing:5px;color:var(--gold);opacity:.5;margin-bottom:10px}
+.sec-title{font-size:28px;letter-spacing:6px;font-weight:700;margin-bottom:4px;line-height:1.3}
+.sec-kr{font-size:12px;opacity:.2;letter-spacing:3px;margin-bottom:14px}
+.sec-tagline{font-size:11px;opacity:.45;line-height:1.7;margin-bottom:16px;max-width:280px}
+.sec-line{width:32px;height:1px;background:rgba(245,240,232,.1);margin-bottom:16px}
+.sec-culture{font-size:9px;opacity:.3;line-height:1.8;margin-bottom:16px;max-width:280px}
+.sec-count{font-size:10px;color:var(--gold);opacity:.4;letter-spacing:3px}
+
+/* Line tabs in section */
+.sec-tabs{display:flex;gap:6px;margin-top:16px}
+.sec-tab{padding:4px 12px;border-radius:3px;font-size:9px;letter-spacing:2px;cursor:pointer;transition:all .3s;border:1px solid rgba(245,240,232,.06);opacity:.4}
+.sec-tab.active{opacity:1;border-color:rgba(245,240,232,.15);background:rgba(245,240,232,.04)}
+.sec-tab:hover{opacity:.6}
+
+/* Right grid */
+.sec-right{flex:1;padding:20px;overflow-y:auto;display:flex;align-items:center}
+.sec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}
+.sec-card{border-radius:10px;overflow:hidden;position:relative;aspect-ratio:1/1.15;cursor:pointer;transition:transform .3s}
+.sec-card:hover{transform:translateY(-2px)}
+.sec-card-bg{position:absolute;inset:0}
+.sec-card-icon{position:absolute;top:12%;left:50%;transform:translateX(-50%);width:50%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:20px;color:rgba(245,240,232,.12)}
+.sec-card-tag{position:absolute;top:8px;right:8px;padding:2px 6px;border-radius:2px;font-size:7px;letter-spacing:1px;background:rgba(0,0,0,.3);opacity:.5}
+.sec-card-info{position:absolute;bottom:0;left:0;right:0;padding:8px;text-align:center}
+.sec-card-name{font-size:10px;letter-spacing:1.5px;font-weight:600;margin-bottom:1px}
+.sec-card-kr{font-size:7px;opacity:.25;letter-spacing:1px;margin-bottom:1px}
+.sec-card-spec{font-size:7px;opacity:.2;margin-bottom:3px}
+.sec-card-spice{display:flex;gap:2px;justify-content:center}
+.sec-card-spice span{width:4px;height:4px;border-radius:50%;background:rgba(245,240,232,.1)}
+.sec-card-spice span.on{background:var(--seal)}
+/* Light */
+.sec-card.light .sec-card-name{color:var(--ink)}
+.sec-card.light .sec-card-kr{color:rgba(26,60,52,.3)}
+.sec-card.light .sec-card-spec{color:rgba(26,60,52,.2)}
+.sec-card.light .sec-card-tag{background:rgba(0,0,0,.06);color:var(--ink)}
+.sec-card.light .sec-card-spice span{background:rgba(26,60,52,.1)}
+.sec-card.light .sec-card-spice span.on{background:var(--seal)}
+
+/* Bottom nav */
+.nav-bar{position:absolute;bottom:0;left:0;right:0;height:50px;display:flex;align-items:center;justify-content:center;gap:5px;z-index:5;background:linear-gradient(transparent,rgba(13,31,26,.9))}
+.nav-dot{width:20px;height:2px;border-radius:1px;background:rgba(245,240,232,.1);cursor:pointer;transition:all .3s}
+.nav-dot.active{width:36px;background:var(--gold)}
+
+/* Scroll hint */
+.scroll-hint{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:8px;letter-spacing:3px;opacity:.15;writing-mode:vertical-rl}
+
+/* Section label */
+.sec-label{position:absolute;bottom:14px;left:30%;font-size:8px;letter-spacing:3px;opacity:.2;z-index:5}
+</style>
+</head>
+<body>
+<div class="page-header">海兰菹 · 产品殿堂</div>
+<div class="page-sub">方案D · 分屏滚动 · Section-per-Category · 10系列</div>
+
+<div class="scene">
+<div class="gallery" id="gallery">
+  <div id="content"></div>
+  <div class="nav-bar" id="nav"></div>
+  <div class="scroll-hint">SCROLL ↓</div>
+  <div class="sec-label" id="label">01 / 10 系列</div>
+</div>
+</div>
+
+<script>
+const SERIES=[
+{id:"jur-yun",name:"菹韵",kr:"저운",tagline:"一切从\u201c菹\u201d开始",culture:"\u201c菹\u201d文化原点——菹，古字，腌菜之总称。三千年前《周礼》已载菹法。海兰菹的名字就在这里——不是泡菜，是菹。",color:"#C8102E",aux:"#B8860B",icon:"🥬",light:false,
+lines:[{id:"classic",name:"经典",nameKr:"경전",color:"#C8102E",products:[{name:"棵状辣白菜",kr:"포기김치",spec:"整棵/坛装",tag:"旗舰",spice:2},{name:"精品辣白菜",kr:"프리미엄김치",spec:"切段/袋装",tag:"旗舰",spice:2},{name:"萝卜块泡菜",kr:"깍두기",spec:"块状/袋装",tag:"旗舰",spice:3},{name:"苹果梨辣白菜",kr:"사과배김치",spec:"切段/袋装",tag:"地域特色",spice:2},{name:"韩式辣白菜（大）",kr:"양념김치（대）",spec:"大袋",tag:"家庭装",spice:2},{name:"韩式辣白菜（小）",kr:"양념김치（소）",spec:"小袋",tag:"试吃装",spice:2},{name:"香葱泡菜",kr:"실파김치",spec:"袋装",tag:"深度专业",spice:2},{name:"樱菜泡菜",kr:"갓김치",spec:"袋装",tag:"风味小众",spice:3},{name:"青年萝卜泡菜",kr:"총각무김치",spec:"袋装",tag:"风味补充",spice:3},{name:"酱油辣椒干",kr:"간장고추장아찌",spec:"罐装",tag:"长尾",spice:2},{name:"酱茄子干辣椒",kr:"가지장아찌",spec:"罐装",tag:"长尾",spice:2},{name:"酱茄子干辣椒（小）",kr:"가지장아찌（소）",spec:"小袋",tag:"长尾",spice:2}]},
+{id:"reserve",name:"窖藏",nameKr:"귀장",color:"#B8860B",products:[{name:"活菌辣白菜",kr:"생균김치",spec:"坛装/礼盒",tag:"窖藏旗舰",spice:2},{name:"低盐辣白菜",kr:"저염김치",spec:"袋装",tag:"健康轻食",spice:1},{name:"年份窖藏辣白菜",kr:"숙성김치",spec:"收藏礼盒",tag:"收藏级",spice:2},{name:"活菌萝卜块泡菜",kr:"생균깍두기",spec:"坛装",tag:"酵母延伸",spice:3},{name:"低盐桔梗泡菜",kr:"저염도라지",spec:"袋装",tag:"健康小众",spice:1},{name:"窖藏苏子叶泡菜",kr:"숙성깻잎",spec:"坛装",tag:"收藏级",spice:2}]}]},
+{id:"jang-xiang",name:"酱香",kr:"장향",tagline:"做泡菜的人做的酱",culture:"大酱\u201c五德\u201d哲学——时、水、手、坛、心。五德齐备，酱方成。和泡菜共享同一个发酵宇宙。",color:"#6B4226",aux:"#C4A35A",icon:"🫙",light:false,lines:[],
+products:[{name:"延边黄豆酱",kr:"연변된장",spec:"坛装/罐装",tag:"旗舰",spice:1},{name:"籽辣椒酱",kr:"씨고추장",spec:"罐装",tag:"风味核心",spice:3},{name:"剁椒酱",kr:"다진고추장",spec:"罐装",tag:"风味扩展",spice:4},{name:"辣白菜拌料",kr:"김치양념",spec:"袋装",tag:"菹韵关联",spice:3},{name:"苹果梨辣白菜酱料",kr:"사과배김치소스",spec:"瓶装",tag:"菹韵关联",spice:2},{name:"吸吸袋料理酱",kr:"주머니소스",spec:"袋装",tag:"便利场景",spice:2},{name:"吸吸袋拌饭酱",kr:"주머니비빔장",spec:"袋装",tag:"便利场景",spice:3}]},
+{id:"on-po",name:"温饱",kr:"온포",tagline:"米谷为礼，团圆为味",culture:"米谷之礼·团圆之味——一碟泡菜一碗米肠一杯米酒，就是延边的\u201c温饱\u201d。",color:"#D4CFC4",aux:"#8B7355",icon:"🍚",light:true,lines:[],
+products:[{name:"米肠",kr:"순대",spec:"真空装",tag:"旗舰",spice:1},{name:"延边炒年糕",kr:"떡볶이",spec:"袋装",tag:"经典小吃",spice:2},{name:"糯米米酒",kr:"찹쌀막걸리",spec:"瓶装",tag:"旗舰饮品",spice:0},{name:"玉米米酒",kr:"옥수수막걸리",spec:"瓶装",tag:"经典饮品",spice:0},{name:"青提米酒",kr:"청포도막걸리",spec:"瓶装",tag:"新式风味",spice:0},{name:"草莓米酒",kr:"딸기막걸리",spec:"瓶装",tag:"新式风味",spice:0},{name:"奶油米酒",kr:"크림막걸리",spec:"瓶装",tag:"新式风味",spice:0},{name:"香辣明太鱼",kr:"고추명태",spec:"袋装",tag:"海味",spice:3},{name:"火辣明太鱼",kr:"불명태",spec:"袋装",tag:"海味",spice:4},{name:"干明太鱼丝",kr:"북어채",spec:"袋装",tag:"海味",spice:0},{name:"拌明太鱼丝",kr:"무침북어채",spec:"袋装",tag:"海味",spice:2}]},
+{id:"jang-su",name:"长寿·水食",kr:"장수·수식",tagline:"一碗面，祈百岁",culture:"长寿祈愿·五行和谐——朝鲜族寿宴必上冷面，细长的面条象征长寿绵延。",color:"#5A8A7A",aux:"#E8F0ED",icon:"🍜",light:false,lines:[],
+products:[{name:"荞麦冷面",kr:"메밀냉면",spec:"袋装/套盒",tag:"旗舰",spice:1},{name:"小麦冷面",kr:"밀냉면",spec:"袋装/套盒",tag:"经典",spice:1},{name:"玉米温面",kr:"옥수수온면",spec:"袋装",tag:"季节互补",spice:0},{name:"韩式炸酱面",kr:"자장면",spec:"袋装/套盒",tag:"经典",spice:1},{name:"火辣炸酱面",kr:"매운자장면",spec:"袋装/套盒",tag:"风味升级",spice:3},{name:"大酱汤",kr:"된장찌개",spec:"袋装/即食",tag:"场景搭配",spice:1}]},
+{id:"cheong-so",name:"清素",kr:"청소",tagline:"山寺岁时，清净素心",culture:"清净素心·山寺岁时——朝鲜族寺院饮食传统，不沾荤腥，以山野时蔬入馔。",color:"#7A9E7E",aux:"#F0EDE5",icon:"🌿",light:false,lines:[],
+products:[{name:"素辣白菜",kr:"채소김치",spec:"袋装",tag:"素食入口",spice:2},{name:"拌桔梗",kr:"도라지무침",spec:"袋装",tag:"山野经典",spice:2},{name:"拌苏子叶",kr:"깻잎무침",spec:"袋装",tag:"山野经典",spice:2},{name:"单片苏子叶",kr:"깻잎장아찌",spec:"罐装",tag:"深度款",spice:1},{name:"酸甜小黄瓜",kr:"오이소박이",spec:"袋装",tag:"清爽系",spice:1},{name:"糖醋蒜",kr:"장아찌마늘",spec:"罐装",tag:"调味系",spice:0},{name:"酸菜",kr:"동치미",spec:"袋装/坛装",tag:"清汤系",spice:0},{name:"香辣萝卜干",kr:"매운무말랭이",spec:"袋装",tag:"耐存放",spice:3}]},
+{id:"sam-yang",name:"参养",kr:"삼양",tagline:"长白百草，参养之道",culture:"长白百草·参养之道——参不是补品，是长白山给延边的礼物。参养之道，不在贵重，在日常。",color:"#8B6F47",aux:"#A0522D",icon:"🫚",light:false,lines:[],
+products:[{name:"参鸡汤",kr:"삼계탕",spec:"即食/礼盒",tag:"旗舰",spice:0},{name:"鲜人参",kr:"생삼",spec:"盒装",tag:"原料型",spice:0},{name:"人参蜜片",kr:"인삼정과",spec:"盒装",tag:"便携零食",spice:0},{name:"红参膏/黑参膏",kr:"홍삼액/흑삼액",spec:"瓶装/礼盒",tag:"高端礼品",spice:0},{name:"人参酒",kr:"인삼주",spec:"瓶装",tag:"礼品",spice:0},{name:"人参米酒",kr:"인삼막걸리",spec:"瓶装",tag:"融合款",spice:0}]},
+{id:"so-jo-mi",name:"烧烤调味",kr:"소조미",tagline:"延边夜市的烟火秘方",culture:"延边夜市烟火气·蘸腌撒鲜——延边烧烤的灵魂不在火，在料。",color:"#D4763A",aux:"#4A4A4A",icon:"🔥",light:false,lines:[],
+products:[{name:"烧烤干料",kr:"불고기양념（건）",spec:"袋装",tag:"旗舰·蘸",spice:3},{name:"烧烤湿料",kr:"불고기양념（습）",spec:"瓶装",tag:"旗舰·刷",spice:2},{name:"烤肉腌料酱",kr:"불고기마리네이드",spec:"瓶装",tag:"旗舰·腌",spice:2},{name:"辣椒粉",kr:"고추가루",spec:"袋装",tag:"基础调味",spice:4},{name:"紫苏子粉",kr:"들깨가루",spec:"袋装",tag:"延边特色",spice:0},{name:"松茸鲜",kr:"송이버섯조미료",spec:"袋装",tag:"高端提鲜",spice:0}]},
+{id:"hwa-ral",name:"火辣即食",kr:"화랄",tagline:"夜市江湖，辣味即行",culture:"夜市烟火·辣味江湖——延边夜市的热辣不在白天，在深夜。",color:"#E74C3C",aux:"#6C3483",icon:"🌶️",light:false,lines:[],
+products:[{name:"香辣牛板筋",kr:"매운우설",spec:"袋装",tag:"旗舰",spice:4},{name:"拌牛板筋片",kr:"우설무침",spec:"袋装",tag:"风味变体",spice:3},{name:"火辣肥肠",kr:"매운곱창",spec:"袋装",tag:"重口味",spice:5},{name:"火辣鸡爪",kr:"매운닭발",spec:"袋装",tag:"经典下酒",spice:4},{name:"酱牛肉",kr:"장조림",spec:"罐装",tag:"经典款",spice:1},{name:"酱杂菜",kr:"잡채장조림",spec:"罐装",tag:"经典款",spice:1}]},
+{id:"pung-mul",name:"风物",kr:"풍물",tagline:"朝鲜族生活的仪式感",culture:"民俗生活之美——甘酒是夏日午后的清凉，松饼是秋夕祭祖的供品。风物不是商品，是生活的仪式。",color:"#C4727F",aux:"#E8C170",icon:"🌸",light:false,lines:[],
+products:[{name:"甘酒（甜米露）",kr:"식혜",spec:"瓶装",tag:"旗舰饮品",spice:0},{name:"五味子茶",kr:"오미자차",spec:"瓶装",tag:"传统饮品",spice:0},{name:"松饼",kr:"송편",spec:"盒装/限定",tag:"节气伴手礼",spice:0},{name:"艾蒿糕",kr:"쑥떡",spec:"盒装",tag:"春季限定",spice:0},{name:"彩虹糕",kr:"무지개떡",spec:"盒装",tag:"视觉款",spice:0},{name:"大麦茶",kr:"보리차",spec:"袋装",tag:"日常饮品",spice:0}]},
+{id:"dong-nyeon",name:"童年·集趣",kr:"동년·집취",tagline:"街巷深处的童年甜味",culture:"街巷记忆·童年趣食——放学路上的江米条，冬天的冻梨干——这些不是零食，是延边孩子的集体记忆。",color:"#F0C75E",aux:"#8B6914",icon:"🍬",light:true,lines:[],
+products:[{name:"江米条（油蜜果）",kr:"약과",spec:"袋装/盒装",tag:"旗舰",spice:0},{name:"糖稀扭结",kr:"엿가위",spec:"袋装",tag:"经典零嘴",spice:0},{name:"芝麻糖",kr:"깨엿",spec:"袋装",tag:"经典零嘴",spice:0},{name:"松子糖",kr:"잣엿",spec:"盒装",tag:"高级款",spice:0},{name:"冻梨干",kr:"동냉이말랭이",spec:"袋装",tag:"延边特色",spice:0},{name:"炕土豆",kr:"구운감자",spec:"袋装",tag:"街巷记忆",spice:0}]}
+];
+
+let cur=0,curL=0;
+function cnt(s){if(s.lines&&s.lines.length){let t=0;s.lines.forEach(l=>t+=l.products.length);return t}return(s.products||[]).length}
+function adj(hex,a){hex=hex.replace('#','');let r=Math.min(255,Math.max(0,parseInt(hex.substr(0,2),16)+a)),g=Math.min(255,Math.max(0,parseInt(hex.substr(2,2),16)+a)),b=Math.min(255,Math.max(0,parseInt(hex.substr(4,2),16)+a));return '#'+[r,g,b].map(c=>c.toString(16).padStart(2,'0')).join('')}
+function sd(n,l){let s='';for(let i=0;i<5;i++)s+='<span'+(i<l?' class="on"':'')+'></span>';return s}
+
+function render(idx){
+  cur=idx;curL=0;
+  const s=SERIES[idx];
+  let prods,cc;
+  if(s.lines&&s.lines.length){const l=s.lines[0];prods=l.products;cc=l.color}else{prods=s.products;cc=s.color}
+  
+  let tabsH='';
+  if(s.lines&&s.lines.length){
+    s.lines.forEach((l,i)=>{tabsH+=`<div class="sec-tab${i===0?' active':''}" onclick="switchLine(${i})" style="${i===0?'border-color:'+l.color:''}">${l.name} ${l.nameKr}</div>`});
+  }
+  
+  let gridH='';
+  prods.forEach((p,i)=>{
+    const bg=`linear-gradient(150deg,${adj(cc,-30+i*5)},${adj(cc,-50+i*5)})`;
+    gridH+=`<div class="sec-card${s.light?' light':''}"><div class="sec-card-bg" style="background:${bg}"></div><div class="sec-card-icon">${s.icon}</div><div class="sec-card-tag">${p.tag}</div><div class="sec-card-info"><div class="sec-card-name">${p.name}</div><div class="sec-card-kr">${p.kr}</div><div class="sec-card-spec">${p.spec}</div><div class="sec-card-spice">${sd(5,p.spice)}</div></div></div>`;
+  });
+
+  document.getElementById('content').innerHTML=`<div class="section"><div class="sec-left" style="background:${adj(s.color,-40)}"><div class="sec-cat">系列 ${String(idx+1).padStart(2,'0')}</div><div class="sec-title">${s.name}</div><div class="sec-kr">${s.kr}</div><div class="sec-tagline">${s.tagline}</div><div class="sec-line"></div><div class="sec-culture">${s.culture}</div><div class="sec-count">${cnt(s)} 款产品</div>${tabsH?'<div class="sec-tabs">'+tabsH+'</div>':''}</div><div class="sec-right"><div class="sec-grid">${gridH}</div></div></div>`;
+  
+  renderNav();
+  document.getElementById('label').textContent=String(idx+1).padStart(2,'0')+' / 10 系列';
+}
+
+function switchLine(li){
+  curL=li;
+  const s=SERIES[cur];
+  const l=s.lines[li];
+  const right=document.querySelector('.sec-right .sec-grid');
+  let gridH='';
+  l.products.forEach((p,i)=>{
+    const bg=`linear-gradient(150deg,${adj(l.color,-30+i*5)},${adj(l.color,-50+i*5)})`;
+    gridH+=`<div class="sec-card${s.light?' light':''}"><div class="sec-card-bg" style="background:${bg}"></div><div class="sec-card-icon">${s.icon}</div><div class="sec-card-tag">${p.tag}</div><div class="sec-card-info"><div class="sec-card-name">${p.name}</div><div class="sec-card-kr">${p.kr}</div><div class="sec-card-spec">${p.spec}</div><div class="sec-card-spice">${sd(5,p.spice)}</div></div></div>`;
+  });
+  right.innerHTML=gridH;
+  document.querySelectorAll('.sec-tab').forEach((t,i)=>{t.className='sec-tab'+(i===li?' active':'');t.style.borderColor=i===li?l.color:''});
+}
+
+function renderNav(){
+  const nav=document.getElementById('nav');
+  nav.innerHTML='';
+  SERIES.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='nav-dot'+(i===cur?' active':'');
+    d.style.background=i===cur?s.color:'';
+    d.onclick=()=>render(i);
+    d.title=s.name;
+    nav.appendChild(d);
+  });
+}
+
+render(0);
+</script>
+</body>
+</html>

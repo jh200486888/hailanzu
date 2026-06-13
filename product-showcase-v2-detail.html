@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海兰菹 · 产品殿堂 — 方案C 产品详情演示</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1A3C34;--seal:#C8102E;--azalea:#C4727F;--rice:#F5F0E8;--gold:#B8860B;--ink-deep:#0d1f1a}
+html{overflow-x:hidden;scroll-behavior:smooth}
+body{background:#0a0a0a;color:var(--rice);font-family:-apple-system,"Noto Serif SC",serif;overflow-x:hidden}
+
+/* --- Page Header --- */
+.page-header{text-align:center;padding:32px 24px 4px;letter-spacing:10px;font-size:18px;font-weight:600}
+.page-sub{text-align:center;font-size:11px;opacity:.25;letter-spacing:3px;margin-bottom:4px}
+.page-hint{text-align:center;font-size:10px;opacity:.15;letter-spacing:2px;margin-bottom:20px}
+
+/* --- Scroll container --- */
+.scroll-wrap{max-width:1400px;margin:0 auto;padding:0 24px 40px}
+.scroll-page{height:calc(100vh - 100px);min-height:460px;display:flex;flex-direction:column;gap:12px;scroll-snap-align:start}
+
+/* --- Each series row --- */
+.s-row{flex:1;position:relative;background:var(--ink-deep);border-radius:14px;overflow:hidden;border:1px solid rgba(245,240,232,.05);display:flex}
+
+/* Accent bar */
+.s-accent{position:absolute;left:0;top:0;width:3px;height:100%;z-index:4}
+
+/* Left Panel */
+.s-left{width:26%;padding:16px 18px;display:flex;flex-direction:column;justify-content:center;z-index:3;border-right:1px solid rgba(245,240,232,.06)}
+.s-left-title{font-size:24px;letter-spacing:5px;font-weight:700;line-height:1.2}
+.s-left-kr{font-size:11px;opacity:.2;letter-spacing:2px;margin-top:3px}
+
+/* Series Tabs */
+.s-left-tabs{display:flex;flex-direction:column;gap:5px;margin-top:12px}
+.s-left-tab{padding:4px 10px;border-radius:3px;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all .3s;border:1px solid rgba(245,240,232,.08);opacity:.4;text-align:center;line-height:1.4}
+.s-left-tab .tab-zh{display:block;font-size:10px;letter-spacing:2px}
+.s-left-tab .tab-kr{display:block;font-size:8px;opacity:.5;letter-spacing:1px}
+.s-left-tab.active{opacity:1;border-color:rgba(245,240,232,.2);background:rgba(245,240,232,.06)}
+.s-left-tab:hover{opacity:.7}
+
+/* Product nav */
+.s-left-nav{margin-top:10px;display:flex;align-items:center;gap:6px}
+.s-left-nav-btn{width:26px;height:26px;border-radius:50%;border:1px solid rgba(245,240,232,.1);background:transparent;color:var(--rice);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .3s;opacity:.4}
+.s-left-nav-btn:hover{opacity:1;border-color:rgba(245,240,232,.3)}
+.s-left-nav-counter{font-size:9px;letter-spacing:1px;opacity:.25}
+
+/* Right: product card */
+.s-product{width:74%;display:flex;align-items:center;justify-content:center;padding:20px 24px}
+
+.s-card{width:100%;height:100%;border-radius:14px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer}
+.s-card:hover{transform:scale(1.005);box-shadow:0 0 30px rgba(245,240,232,.04)}
+.s-card-bg{position:absolute;inset:0;transition:background .5s}
+.s-card-img{position:absolute;top:8%;left:50%;transform:translateX(-50%);width:32%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:40px;transition:all .3s}
+.s-card-info{position:absolute;bottom:0;left:0;right:0;padding:18px;text-align:center}
+.s-card-name{font-size:18px;letter-spacing:4px;font-weight:600;margin-bottom:4px}
+.s-card-kr{font-size:11px;opacity:.22;letter-spacing:2px;margin-bottom:5px}
+.s-card-spec{font-size:10px;opacity:.2;letter-spacing:1px;margin-bottom:6px}
+.s-card-spice{display:flex;gap:4px;justify-content:center}
+.s-card-spice span{width:6px;height:6px;border-radius:50%;background:rgba(245,240,232,.1)}
+.s-card-spice span.on{background:var(--seal)}
+.s-card-tag{position:absolute;top:12px;right:14px;padding:3px 10px;border-radius:3px;font-size:9px;letter-spacing:1px;background:rgba(0,0,0,.3);opacity:.5}
+.s-card-cta{position:absolute;top:12px;left:14px;padding:3px 10px;border-radius:3px;font-size:8px;letter-spacing:1px;background:rgba(245,240,232,.08);opacity:0;transition:opacity .3s;border:1px solid rgba(245,240,232,.1)}
+.s-card:hover .s-card-cta{opacity:.6}
+
+/* Light background */
+.s-card.light-bg .s-card-name{color:var(--ink)}
+.s-card.light-bg .s-card-kr{color:rgba(26,60,52,.3)}
+.s-card.light-bg .s-card-spec{color:rgba(26,60,52,.3)}
+.s-card.light-bg .s-card-tag{background:rgba(0,0,0,.08);color:var(--ink);opacity:.7}
+.s-card.light-bg .s-card-spice span{background:rgba(26,60,52,.1)}
+.s-card.light-bg .s-card-spice span.on{background:var(--seal)}
+.s-card.light-bg .s-card-img{background:rgba(255,255,255,.15)}
+.s-card.light-bg .s-card-cta{background:rgba(26,60,52,.08);color:var(--ink);border-color:rgba(26,60,52,.15)}
+
+/* Scroll hint */
+.scroll-hint{text-align:center;font-size:9px;letter-spacing:3px;opacity:.12;margin-top:8px}
+.scroll-hint::after{content:" ↓";animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+
+/* =============================================
+   PRODUCT DETAIL OVERLAY
+   ============================================= */
+.detail-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.detail-overlay.open{opacity:1;visibility:visible}
+
+.detail-container{position:absolute;inset:0;display:flex;align-items:stretch;max-width:1200px;margin:0 auto;padding:24px}
+
+/* Close button */
+.detail-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(245,240,232,.12);background:rgba(245,240,232,.04);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all .3s}
+.detail-close:hover{border-color:rgba(245,240,232,.3);background:rgba(245,240,232,.08)}
+.detail-close svg{width:16px;height:16px;stroke:var(--rice);stroke-width:2;fill:none;opacity:.5}
+
+/* Left: Product visual */
+.detail-left{width:48%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 30px;position:relative}
+
+.detail-carousel{width:300px;position:relative;margin-bottom:24px}
+.detail-carousel-track{position:relative;width:280px;height:280px;margin:0 auto;overflow:hidden;border-radius:50%}
+.detail-carousel-slide{position:absolute;inset:0;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .6s ease,transform .6s ease;transform:scale(.92);pointer-events:none}
+.detail-carousel-slide.active{opacity:1;transform:scale(1);pointer-events:auto}
+.detail-carousel-bg{position:absolute;inset:0;border-radius:50%}
+.detail-carousel-ring{position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(245,240,232,.08)}
+.detail-carousel-glow{position:absolute;inset:-24px;border-radius:50%;opacity:.12;filter:blur(40px)}
+.detail-carousel-icon{font-size:72px;position:relative;z-index:2;filter:drop-shadow(0 4px 20px rgba(0,0,0,.3));margin-bottom:4px}
+.detail-carousel-label{font-size:9px;letter-spacing:2px;opacity:.35;position:relative;z-index:2;margin-top:6px}
+
+.detail-carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+.detail-carousel-dot{width:20px;height:3px;border-radius:2px;background:rgba(245,240,232,.12);cursor:pointer;transition:all .4s}
+.detail-carousel-dot.active{width:32px;background:rgba(245,240,232,.5)}
+
+.detail-carousel-arrows{position:absolute;top:50%;left:0;right:0;display:flex;justify-content:space-between;transform:translateY(-50%);pointer-events:none;z-index:5;padding:0 4px}
+.detail-carousel-arrow{width:28px;height:28px;border-radius:50%;border:1px solid rgba(245,240,232,.1);background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:auto;transition:all .3s;opacity:.4}
+.detail-carousel-arrow:hover{opacity:1;border-color:rgba(245,240,232,.3);background:rgba(0,0,0,.5)}
+.detail-carousel-arrow svg{width:10px;height:10px;stroke:var(--rice);stroke-width:2;fill:none;opacity:.6}
+
+/* Light carousel variant */
+.detail-overlay.light-overlay .detail-carousel-dot{background:rgba(26,60,52,.12)}
+.detail-overlay.light-overlay .detail-carousel-dot.active{background:rgba(26,60,52,.45)}
+.detail-overlay.light-overlay .detail-carousel-arrow{border-color:rgba(26,60,52,.15);background:rgba(255,255,255,.3)}
+.detail-overlay.light-overlay .detail-carousel-arrow svg{stroke:var(--ink)}
+
+.detail-badge{display:flex;align-items:center;gap:6px;margin-top:8px}
+.detail-badge-item{padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:1.5px;border:1px solid rgba(245,240,232,.1);background:rgba(245,240,232,.04)}
+
+.detail-spice-row{display:flex;align-items:center;gap:5px;margin-top:12px}
+.detail-spice-label{font-size:9px;letter-spacing:1px;opacity:.25;margin-right:4px}
+.detail-spice span{width:8px;height:8px;border-radius:50%;background:rgba(245,240,232,.1)}
+.detail-spice span.on{background:var(--seal);box-shadow:0 0 6px rgba(200,16,46,.4)}
+
+/* Right: Product info */
+.detail-right{width:52%;display:flex;flex-direction:column;justify-content:center;padding:40px 30px 40px 20px;border-left:1px solid rgba(245,240,232,.06)}
+
+.detail-series{font-size:10px;letter-spacing:3px;opacity:.25;margin-bottom:8px;text-transform:uppercase}
+.detail-name{font-size:32px;letter-spacing:6px;font-weight:700;line-height:1.2;margin-bottom:4px}
+.detail-name-kr{font-size:14px;letter-spacing:3px;opacity:.2;margin-bottom:20px}
+
+.detail-divider{width:40px;height:1px;background:linear-gradient(90deg,rgba(245,240,232,.2),transparent);margin-bottom:20px}
+
+.detail-desc{font-size:13px;line-height:2;opacity:.55;letter-spacing:.5px;margin-bottom:24px;max-width:420px}
+.detail-desc strong{opacity:1;font-weight:600;letter-spacing:1px}
+
+/* Specs grid */
+.detail-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.detail-spec-item{padding:10px 14px;border-radius:8px;background:rgba(245,240,232,.03);border:1px solid rgba(245,240,232,.05)}
+.detail-spec-label{font-size:9px;letter-spacing:2px;opacity:.2;margin-bottom:4px}
+.detail-spec-value{font-size:12px;letter-spacing:1px;opacity:.6}
+
+/* CTA */
+.detail-cta-row{display:flex;gap:10px;margin-top:8px}
+.detail-cta{padding:10px 24px;border-radius:6px;font-size:11px;letter-spacing:2px;cursor:pointer;transition:all .3s;font-family:inherit;border:none}
+.detail-cta-primary{background:var(--seal);color:#fff}
+.detail-cta-primary:hover{background:#d42038;box-shadow:0 4px 20px rgba(200,16,46,.3)}
+.detail-cta-secondary{background:rgba(245,240,232,.06);color:var(--rice);border:1px solid rgba(245,240,232,.1)}
+.detail-cta-secondary:hover{background:rgba(245,240,232,.1);border-color:rgba(245,240,232,.2)}
+
+/* Related products */
+.detail-related{margin-top:28px;padding-top:20px;border-top:1px solid rgba(245,240,232,.06)}
+.detail-related-title{font-size:10px;letter-spacing:2px;opacity:.2;margin-bottom:12px}
+.detail-related-list{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.detail-related-list::-webkit-scrollbar{height:2px}
+.detail-related-list::-webkit-scrollbar-thumb{background:rgba(245,240,232,.1);border-radius:2px}
+.detail-related-item{flex-shrink:0;width:80px;padding:8px;border-radius:8px;background:rgba(245,240,232,.03);border:1px solid rgba(245,240,232,.05);cursor:pointer;transition:all .3s;text-align:center}
+.detail-related-item:hover{background:rgba(245,240,232,.06);border-color:rgba(245,240,232,.12)}
+.detail-related-item.active{border-color:rgba(245,240,232,.2);background:rgba(245,240,232,.08)}
+.detail-related-icon{font-size:22px;margin-bottom:4px}
+.detail-related-name{font-size:9px;letter-spacing:1px;opacity:.5;line-height:1.3}
+
+/* Light variant for detail */
+.detail-overlay.light-overlay .detail-name{color:var(--ink)}
+.detail-overlay.light-overlay .detail-name-kr{color:rgba(26,60,52,.3)}
+.detail-overlay.light-overlay .detail-desc{color:var(--ink)}
+.detail-overlay.light-overlay .detail-spec-item{background:rgba(26,60,52,.04);border-color:rgba(26,60,52,.08)}
+.detail-overlay.light-overlay .detail-spec-label{color:rgba(26,60,52,.3)}
+.detail-overlay.light-overlay .detail-spec-value{color:rgba(26,60,52,.7)}
+.detail-overlay.light-overlay .detail-cta-secondary{background:rgba(26,60,52,.06);color:var(--ink);border-color:rgba(26,60,52,.12)}
+.detail-overlay.light-overlay .detail-related-item{background:rgba(26,60,52,.03);border-color:rgba(26,60,52,.06)}
+.detail-overlay.light-overlay .detail-related-name{color:rgba(26,60,52,.5)}
+.detail-overlay.light-overlay .detail-badge-item{background:rgba(26,60,52,.04);border-color:rgba(26,60,52,.1);color:var(--ink)}
+.detail-overlay.light-overlay .detail-divider{background:linear-gradient(90deg,rgba(26,60,52,.2),transparent)}
+.detail-overlay.light-overlay .detail-related-title{color:rgba(26,60,52,.3)}
+.detail-overlay.light-overlay .detail-related-item.active{border-color:rgba(26,60,52,.2);background:rgba(26,60,52,.08)}
+
+/* Mobile */
+@media(max-width:768px){
+  .scroll-page{height:calc(100vh - 80px);min-height:400px;gap:8px}
+  .s-left{width:30%;padding:12px 14px}
+  .s-product{width:70%;padding:14px 16px}
+  .s-left-title{font-size:20px;letter-spacing:4px}
+  .s-card-name{font-size:15px;letter-spacing:3px}
+  .s-card-img{font-size:32px;width:28%}
+  .s-card-info{padding:14px}
+  
+  .detail-container{flex-direction:column;padding:16px}
+  .detail-left{width:100%;padding:20px 16px 10px}
+  .detail-carousel{width:220px}
+  .detail-carousel-track{width:180px;height:180px}
+  .detail-carousel-icon{font-size:48px}
+  .detail-carousel-arrow{width:24px;height:24px}
+  .detail-carousel-arrow svg{width:8px;height:8px}
+  .detail-right{width:100%;padding:10px 16px 20px;border-left:none;border-top:1px solid rgba(245,240,232,.06)}
+  .detail-name{font-size:24px;letter-spacing:4px}
+  .detail-specs{grid-template-columns:1fr 1fr;gap:8px}
+  .detail-close{top:12px;right:12px;width:32px;height:32px}
+  .detail-related-list{gap:8px}
+  .detail-related-item{width:68px;padding:6px}
+  .detail-cta-row{flex-direction:column}
+  .detail-cta{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">海兰菹 · 产品殿堂</div>
+<div class="page-sub">해란저 · PRODUCT SANCTUARY</div>
+<div class="page-hint">点击产品卡片查看详情</div>
+
+<div class="scroll-wrap">
+  <div id="scrollContainer"></div>
+</div>
+
+<!-- Detail Overlay -->
+<div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail-close" onclick="closeDetail()">
+    <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </div>
+  <div class="detail-container" id="detailContainer">
+    <div class="detail-left" id="detailLeft">
+      <div class="detail-carousel" id="detailCarousel">
+        <div class="detail-carousel-arrows">
+          <div class="detail-carousel-arrow" id="carouselPrev">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </div>
+          <div class="detail-carousel-arrow" id="carouselNext">
+            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+          </div>
+        </div>
+        <div class="detail-carousel-track" id="carouselTrack"></div>
+        <div class="detail-carousel-dots" id="carouselDots"></div>
+      </div>
+      <div class="detail-badge" id="detailBadge"></div>
+      <div class="detail-spice-row" id="detailSpiceRow"></div>
+    </div>
+    <div class="detail-right" id="detailRight">
+      <div class="detail-series" id="detailSeries"></div>
+      <div class="detail-name" id="detailName"></div>
+      <div class="detail-name-kr" id="detailNameKr"></div>
+      <div class="detail-divider"></div>
+      <div class="detail-desc" id="detailDesc"></div>
+      <div class="detail-specs" id="detailSpecs"></div>
+      <div class="detail-cta-row">
+        <button class="detail-cta detail-cta-primary">立即选购</button>
+        <button class="detail-cta detail-cta-secondary">加入心愿单</button>
+      </div>
+      <div class="detail-related" id="detailRelated"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SERIES = [
+  {
+    id:"jur-yun", name:"菹韵", kr:"저운",
+    color:"#C8102E", aux:"#B8860B", icon:"🥬", light:false,
+    lines:[
+      {id:"classic",name:"经典",nameKr:"경전",color:"#C8102E",products:[
+        {name:"棵状辣白菜",kr:"포기김치",spec:"整棵/坛装",tag:"旗舰",spice:2,desc:"整棵大白菜入坛发酵，<strong>延边最正统的泡菜形态</strong>。手撕佐料层层抹入菜叶，自然发酵7天以上，酸辣鲜脆，一坛尝尽菹韵经典。",origin:"延边朝鲜族自治州",weight:"坛装 2kg / 5kg",shelf:"冷藏90天",pairing:"烤肉·石锅拌饭·清汤"},
+        {name:"精品辣白菜",kr:"프리미엄김치",spec:"切段/袋装",tag:"旗舰",spice:2,desc:"精选白菜切段入味，<strong>免去手撕的麻烦</strong>，保留传统风味的同时更方便取食。小家庭与独居者的首选。",origin:"延边朝鲜族自治州",weight:"袋装 500g / 1kg",shelf:"冷藏60天",pairing:"白米饭·火锅·日常佐餐"},
+        {name:"萝卜块泡菜",kr:"깍두기",spec:"块状/袋装",tag:"旗舰",spice:3,desc:"脆萝卜切成方丁，裹上辣椒酱料发酵，<strong>嘎嘣脆的口感是它最大的魅力</strong>。拌饭拌面俱佳，延边人家的常备小菜。",origin:"延边朝鲜族自治州",weight:"袋装 500g / 1kg",shelf:"冷藏60天",pairing:"拌饭·冷面·清粥"},
+        {name:"苹果梨辣白菜",kr:"사과배김치",spec:"切段/袋装",tag:"地域特色",spice:2,desc:"延边特产苹果梨入馅，<strong>梨的清甜融入泡菜的酸辣</strong>，形成独特的果香泡菜。只在延边能尝到的地域风味。",origin:"延边·龙井苹果梨产区",weight:"袋装 500g",shelf:"冷藏60天",pairing:"白切肉·清蒸鱼·清淡主菜"},
+        {name:"韩式辣白菜（大）",kr:"양념김치（대）",spec:"大袋",tag:"家庭装",spice:2,desc:"大包装家庭装，<strong>一袋搞定全家人的泡菜需求</strong>。传统配方，适合日常佐餐、火锅底料、炒饭配料。",origin:"延边朝鲜族自治州",weight:"大袋 2kg",shelf:"冷藏90天",pairing:"火锅·炒饭·汤底"},
+        {name:"韩式辣白菜（小）",kr:"양념김치（소）",spec:"小袋",tag:"试吃装",spice:2,desc:"小包装试吃装，<strong>第一次认识海兰菹的窗口</strong>。分量刚好尝鲜，喜欢再回购大装。",origin:"延边朝鲜族自治州",weight:"小袋 250g",shelf:"冷藏30天",pairing:"白米饭·便当·单餐佐食"}
+      ]},
+      {id:"reserve",name:"窖藏",nameKr:"귀장",color:"#B8860B",products:[
+        {name:"活菌辣白菜",kr:"생균김치",spec:"坛装/礼盒",tag:"窖藏旗舰",spice:2,desc:"未经过高温杀菌，<strong>保留活菌发酵状态</strong>，口感随时间持续变化。从出厂到食用，每一天的味道都不一样——这是活的泡菜。",origin:"延边·窖藏工坊",weight:"坛装 1.5kg / 礼盒装",shelf:"冷藏120天（活菌持续发酵）",pairing:"品鉴·礼赠·收藏"},
+        {name:"低盐辣白菜",kr:"저염김치",spec:"袋装",tag:"健康轻食",spice:1,desc:"盐度降低40%，<strong>不减风味只减负担</strong>。适合控盐人群和清淡口味爱好者，发酵时间略长以补偿风味。",origin:"延边朝鲜族自治州",weight:"袋装 500g",shelf:"冷藏45天",pairing:"轻食·沙拉·低盐饮食"},
+        {name:"年份窖藏辣白菜",kr:"숙성김치",spec:"收藏礼盒",tag:"收藏级",spice:2,desc:"<strong>窖藏180天以上的深度发酵</strong>，酸度圆润醇厚，口感与新鲜泡菜完全不同。限量编号，收藏级礼盒包装。",origin:"延边·窖藏工坊",weight:"收藏礼盒 1kg",shelf:"冷藏180天+",pairing:"品鉴·高级礼赠"},
+        {name:"活菌萝卜块泡菜",kr:"생균깍두기",spec:"坛装",tag:"酵母延伸",spice:3,desc:"活菌发酵的萝卜块泡菜，<strong>比常规版多一层鲜味和气泡感</strong>，咬下去有微微的\u201C噗\u201D声，是活菌的证明。",origin:"延边·窖藏工坊",weight:"坛装 1kg",shelf:"冷藏120天",pairing:"冷面·拌饭·品鉴"},
+        {name:"低盐桔梗泡菜",kr:"저염도라지",spec:"袋装",tag:"健康小众",spice:1,desc:"低盐版桔梗泡菜，<strong>保留山野的清苦与回甘</strong>，盐分减少后桔梗的本味更突出。小众但忠实的爱好者群体。",origin:"延边·山地桔梗产区",weight:"袋装 300g",shelf:"冷藏30天",pairing:"白粥·清淡小菜·药膳搭配"},
+        {name:"窖藏苏子叶泡菜",kr:"숙성깻잎",spec:"坛装",tag:"收藏级",spice:2,desc:"苏子叶经窖藏深度发酵，<strong>叶脉中的香气被彻底释放</strong>，入口即化。数量极少，每年秋季限定。",origin:"延边·窖藏工坊",weight:"坛装 500g",shelf:"冷藏180天+",pairing:"白米饭·烤肉包裹·品鉴"}
+      ]}
+    ]
+  },
+  {
+    id:"jang-xiang", name:"酱香", kr:"장향",
+    color:"#6B4226", aux:"#C4A35A", icon:"🫙", light:false,
+    lines:[], products:[
+      {name:"延边黄豆酱",kr:"연변된장",spec:"坛装/罐装",tag:"旗舰",spice:1,desc:"<strong>春煮、夏晒、秋酿、冬藏</strong>——一年只出一缸的延边黄豆酱。大酱的五德：时、水、手、坛、心，缺一不可。",origin:"延边·传统酱缸",weight:"坛装 2kg / 罐装 500g",shelf:"常温12个月",pairing:"大酱汤·蘸生菜·拌饭"},
+      {name:"籽辣椒酱",kr:"씨고추장",spec:"罐装",tag:"风味核心",spice:3,desc:"辣椒籽不去，研磨成酱，<strong>籽的油脂和辣味双倍释放</strong>。比普通辣椒酱多一层坚果香和颗粒感。",origin:"延边朝鲜族自治州",weight:"罐装 350g",shelf:"常温6个月（开封后冷藏）",pairing:"拌饭·烤肉蘸料·炒菜调味"},
+      {name:"剁椒酱",kr:"다진고추장",spec:"罐装",tag:"风味扩展",spice:4,desc:"鲜辣椒粗剁入酱，<strong>看得见的辣椒颗粒，尝得到的鲜辣</strong>。比辣椒酱更猛，比干辣椒更鲜。",origin:"延边朝鲜族自治州",weight:"罐装 350g",shelf:"常温6个月",pairing:"蒸鱼·拌面·火锅蘸料"},
+      {name:"辣白菜拌料",kr:"김치양념",spec:"袋装",tag:"菹韵关联",spice:3,desc:"<strong>自己做泡菜的调料包</strong>，海兰菹同款佐料配方。买白菜回家自己腌，体验从手到坛的完整过程。",origin:"延边朝鲜族自治州",weight:"袋装 200g",shelf:"常温12个月",pairing:"自制泡菜·拌菜·调味"},
+      {name:"苹果梨辣白菜酱料",kr:"사과배김치소스",spec:"瓶装",tag:"菹韵关联",spice:2,desc:"从苹果梨辣白菜中提取的<strong>风味酱汁</strong>，可直接拌饭拌面，或作为沙拉酱、蘸料使用。",origin:"延边·龙井苹果梨产区",weight:"瓶装 250ml",shelf:"常温6个月（开封后冷藏）",pairing:"拌饭·沙拉·蘸料"},
+      {name:"吸吸袋料理酱",kr:"주머니소스",spec:"袋装",tag:"便利场景",spice:2,desc:"<strong>挤一挤就能调味</strong>的便携酱料袋，野餐、露营、办公室都能用。不用开罐不用勺子，随时随地。",origin:"延边朝鲜族自治州",weight:"袋装 80g",shelf:"常温6个月",pairing:"便当·户外·快速调味"},
+      {name:"吸吸袋拌饭酱",kr:"주머니비빔장",spec:"袋装",tag:"便利场景",spice:3,desc:"拌饭专用便携酱，<strong>一袋拌一碗</strong>，辣甜咸鲜四味均衡。延边拌饭的灵魂就在这袋里。",origin:"延边朝鲜族自治州",weight:"袋装 80g",shelf:"常温6个月",pairing:"拌饭·拌面·便当"}
+    ]
+  },
+  {
+    id:"on-po", name:"温饱", kr:"온포",
+    color:"#D4CFC4", aux:"#8B7355", icon:"🍚", light:true,
+    lines:[], products:[
+      {name:"米肠",kr:"순대",spec:"真空装",tag:"旗舰",spice:1,desc:"糯米、猪血、蔬菜灌入肠衣，<strong>节庆才有的大菜变成日常美味</strong>。蒸切装盘，蘸盐或辣酱，一口回到延边街头。",origin:"延边朝鲜族自治州",weight:"真空装 500g",shelf:"冷藏7天",pairing:"蘸盐·辣酱·米酒"},
+      {name:"延边炒年糕",kr:"떡볶이",spec:"袋装",tag:"经典小吃",spice:2,desc:"不同于韩式甜辣酱炒年糕，<strong>延边炒年糕用的是辣椒酱直炒</strong>，咸辣鲜香，年糕条更有嚼劲。",origin:"延边朝鲜族自治州",weight:"袋装 400g",shelf:"冷藏15天",pairing:"街头小吃·下午茶·夜宵"},
+      {name:"糯米米酒",kr:"찹쌀막걸리",spec:"瓶装",tag:"旗舰饮品",spice:0,desc:"<strong>糯米发酵的微甜低度酒</strong>，乳白色液体里有细密的气泡，入口即化。团圆桌上不可或缺的那一杯。",origin:"延边·传统酒坊",weight:"瓶装 750ml",shelf:"冷藏30天",pairing:"米肠·烤肉·节庆餐桌"},
+      {name:"青提米酒",kr:"청포도막걸리",spec:"瓶装",tag:"新式风味",spice:0,desc:"青提果肉融入糯米酒，<strong>果香与米香交织的清新口感</strong>，是年轻人进入米酒世界的第一杯。",origin:"延边·传统酒坊",weight:"瓶装 500ml",shelf:"冷藏20天",pairing:"下午茶·甜品·夏日清凉"},
+      {name:"香辣明太鱼",kr:"고추명태",spec:"袋装",tag:"海味·经典",spice:3,desc:"明太鱼干裹上辣椒酱，<strong>延边最经典的即食海味</strong>。撕着吃、蘸着吃、配酒吃，怎么吃都对。",origin:"延边·明太鱼加工区",weight:"袋装 200g",shelf:"常温90天",pairing:"啤酒·米酒·下酒菜"}
+    ]
+  },
+  {
+    id:"jang-su", name:"长寿·水食", kr:"장수·수식",
+    color:"#5A8A7A", aux:"#E8F0ED", icon:"🍜", light:false,
+    lines:[], products:[
+      {name:"荞麦冷面",kr:"메밀냉면",spec:"袋装/套盒",tag:"旗舰",spice:1,desc:"<strong>荞麦面+冷面汤+配菜</strong>完整套盒，寿宴上的长寿面。冰爽酸甜的冷面汤，配上劲道的荞麦面，一口入夏。",origin:"延边朝鲜族自治州",weight:"套盒 480g",shelf:"冷藏30天",pairing:"烤肉·泡菜·夏日餐桌"},
+      {name:"小麦冷面",kr:"밀냉면",spec:"袋装/套盒",tag:"经典",spice:1,desc:"小麦粉制的冷面，<strong>比荞麦面更软糯顺滑</strong>，适合不喜欢粗粮口感的人。经典延边冷面的另一个面孔。",origin:"延边朝鲜族自治州",weight:"套盒 450g",shelf:"冷藏30天",pairing:"烤肉·拌饭·夏日餐桌"},
+      {name:"韩式炸酱面",kr:"자장면",spec:"袋装/套盒",tag:"经典",spice:1,desc:"<strong>延边中朝融合的经典面食</strong>，黑酱浓香裹住每一根面条。简单加热即食，比外卖更快更好吃。",origin:"延边朝鲜族自治州",weight:"套盒 420g",shelf:"冷藏30天",pairing:"凉拌小菜·煎饺·单餐速食"}
+    ]
+  },
+  {
+    id:"cheong-so", name:"清素", kr:"청소",
+    color:"#7A9E7E", aux:"#F0EDE5", icon:"🌿", light:false,
+    lines:[], products:[
+      {name:"拌桔梗",kr:"도라지무침",spec:"袋装",tag:"山野经典",spice:2,desc:"山间采挖的桔梗，撕条拌酱，<strong>清苦之后有回甘</strong>。寺院饮食传统中的代表，清净不寡淡。",origin:"延边·山地桔梗产区",weight:"袋装 300g",shelf:"冷藏15天",pairing:"白粥·清饭·素餐桌"},
+      {name:"拌苏子叶",kr:"깻잎무침",spec:"袋装",tag:"山野经典",spice:2,desc:"苏子叶拌辣椒酱，<strong>叶脉里的香气被辣酱激发</strong>，一口一片停不下来。延边人家的万能小菜。",origin:"延边朝鲜族自治州",weight:"袋装 200g",shelf:"冷藏15天",pairing:"白米饭·烤肉包菜·拌饭"},
+      {name:"酸甜小黄瓜",kr:"오이소박이",spec:"袋装",tag:"清爽系",spice:1,desc:"小黄瓜对切夹馅，<strong>酸、甜、辣、脆四味一体</strong>。夏末黄瓜最嫩时制作，清爽到心。",origin:"延边朝鲜族自治州",weight:"袋装 300g",shelf:"冷藏15天",pairing:"清汤·粥·夏日小菜"}
+    ]
+  },
+  {
+    id:"sam-yang", name:"参养", kr:"삼양",
+    color:"#8B6F47", aux:"#A0522D", icon:"🫚", light:false,
+    lines:[], products:[
+      {name:"参鸡汤",kr:"삼계탕",spec:"即食/礼盒",tag:"旗舰",spice:0,desc:"<strong>整只童子鸡塞入糯米、人参、红枣、栗子</strong>，慢炖至骨肉分离。加热即食，是延边滋补第一汤。",origin:"延边·长白山参区",weight:"即食装 800g / 礼盒装",shelf:"冷藏7天 / 冷冻30天",pairing:"夏日补身·病后调理·节庆"},
+      {name:"人参蜜片",kr:"인삼정과",spec:"盒装",tag:"便携零食",spice:0,desc:"鲜人参切薄片蜜渍，<strong>甘甜微苦，随时含一片</strong>。办公室、旅途、睡前，把参养变成日常。",origin:"延边·长白山参区",weight:"盒装 60g",shelf:"常温12个月",pairing:"日常养生·便携零食·伴手礼"},
+      {name:"红参膏/黑参膏",kr:"홍삼액/흑삼액",spec:"瓶装/礼盒",tag:"高端礼品",spice:0,desc:"<strong>九蒸九晒的工艺精华</strong>，浓缩成膏。红参温补，黑参更温和。送长辈、送贵客的不二之选。",origin:"延边·长白山参区",weight:"瓶装 240ml / 礼盒装",shelf:"常温24个月",pairing:"高端礼赠·日常滋补·术后调理"}
+    ]
+  },
+  {
+    id:"so-jo-mi", name:"烧烤调味", kr:"소조미",
+    color:"#D4763A", aux:"#4A4A4A", icon:"🔥", light:false,
+    lines:[], products:[
+      {name:"烧烤干料",kr:"불고기양념（건）",spec:"袋装",tag:"旗舰·蘸",spice:3,desc:"<strong>撒一把，焦香翻倍</strong>。延边烧烤的灵魂干料，辣椒粉+苏子粉+芝麻+秘制香料，直接蘸或撒在烤肉上。",origin:"延边·烧烤调料坊",weight:"袋装 100g",shelf:"常温12个月",pairing:"烤肉·烤鱼·炸鸡"},
+      {name:"烧烤湿料",kr:"불고기양념（습）",spec:"瓶装",tag:"旗舰·刷",spice:2,desc:"<strong>刷一层，肉汁锁住</strong>。酱料浓稠挂在肉上，烤时翻面不脱落。甜咸微辣，延边夜市的经典刷料。",origin:"延边·烧烤调料坊",weight:"瓶装 300ml",shelf:"常温6个月（开封后冷藏）",pairing:"烤肉·烤蔬菜·刷鸡腿"},
+      {name:"烤肉腌料酱",kr:"불고기마리네이드",spec:"瓶装",tag:"旗舰·腌",spice:2,desc:"<strong>腌一夜，入味到骨</strong>。梨汁+酱油+蒜+芝麻油的传统腌料配方，腌出来的肉嫩且多汁。",origin:"延边·烧烤调料坊",weight:"瓶装 350ml",shelf:"常温6个月",pairing:"腌牛肉·腌猪肉·腌鸡翅"}
+    ]
+  },
+  {
+    id:"hwa-ral", name:"火辣即食", kr:"화랄",
+    color:"#E74C3C", aux:"#6C3483", icon:"🌶️", light:false,
+    lines:[], products:[
+      {name:"香辣牛板筋",kr:"매운우설",spec:"袋装",tag:"旗舰",spice:4,desc:"<strong>嚼到腮帮酸也停不下来的牛板筋</strong>，辣椒酱渗透每一条纤维。延边夜市的头号辣味零食。",origin:"延边朝鲜族自治州",weight:"袋装 120g",shelf:"常温90天",pairing:"啤酒·米酒·深夜追剧"},
+      {name:"火辣肥肠",kr:"매운곱창",spec:"袋装",tag:"重口味",spice:5,desc:"<strong>辣到冒汗也要吃完的肥肠</strong>，Q弹有嚼劲，辣味与油脂交融。重口味爱好者的终极挑战。",origin:"延边朝鲜族自治州",weight:"袋装 150g",shelf:"常温90天",pairing:"啤酒·烧酒·夜宵"},
+      {name:"火辣鸡爪",kr:"매운닭발",spec:"袋装",tag:"经典下酒",spice:4,desc:"脱骨鸡爪泡在辣酱里，<strong>连骨头都入了味</strong>。啃到最后一根指尖都不想放过。",origin:"延边朝鲜族自治州",weight:"袋装 200g",shelf:"常温90天",pairing:"啤酒·烧酒·深夜食堂"}
+    ]
+  },
+  {
+    id:"pung-mul", name:"风物", kr:"풍물",
+    color:"#C4727F", aux:"#E8C170", icon:"🌸", light:false,
+    lines:[], products:[
+      {name:"甘酒（甜米露）",kr:"식혜",spec:"瓶装",tag:"旗舰·饮品",spice:0,desc:"<strong>糯米发酵的天然甜饮</strong>，不含酒精，有细密的米粒和松子点缀。夏日午后一碗清凉，是朝鲜族生活的仪式感。",origin:"延边·传统酿造坊",weight:"瓶装 500ml",shelf:"冷藏15天",pairing:"饭后甜饮·夏日清凉·无酒精饮品"},
+      {name:"松饼",kr:"송편",spec:"盒装/限定",tag:"节气伴手礼",spice:0,desc:"<strong>秋夕祭祖的供品</strong>，半月形米糕里包着芝麻或豆沙，蒸时垫松针染上清香。不是零食，是一份敬意。",origin:"延边·传统糕坊",weight:"盒装 300g",shelf:"冷藏3天",pairing:"秋夕祭祖·节庆伴手礼·茶点"},
+      {name:"艾蒿糕",kr:"쑥떡",spec:"盒装",tag:"春季限定",spice:0,desc:"春日的青草味揉进米糕，<strong>艾蒿的微苦与糯米的甜糯</strong>，是春天才能吃到的限定风味。",origin:"延边·传统糕坊",weight:"盒装 250g",shelf:"冷藏5天",pairing:"春季茶点·清明·日常甜品"}
+    ]
+  },
+  {
+    id:"dong-nyeon", name:"童年·集趣", kr:"동년·집취",
+    color:"#F0C75E", aux:"#8B6914", icon:"🍬", light:true,
+    lines:[], products:[
+      {name:"江米条（油蜜果）",kr:"약과",spec:"袋装/盒装",tag:"旗舰·记忆入口",spice:0,desc:"<strong>放学路上最期待的那一口</strong>，酥脆的江米条裹着蜂蜜，咬下去咔嚓一声，是延边孩子的集体记忆。",origin:"延边·传统糕坊",weight:"袋装 200g / 盒装 400g",shelf:"常温60天",pairing:"茶点·零食·童年回忆"},
+      {name:"芝麻糖",kr:"깨엿",spec:"袋装",tag:"经典零嘴",spice:0,desc:"白芝麻+麦芽糖，<strong>掰一块拉出糖丝</strong>，越嚼越香。庙会上最古老的那味甜。",origin:"延边·传统糖坊",weight:"袋装 150g",shelf:"常温90天",pairing:"茶点·零嘴·伴手礼"},
+      {name:"冻梨干",kr:"동냉이말랭이",spec:"袋装",tag:"延边特色",spice:0,desc:"<strong>冬天冻梨的自然甜味锁进果干</strong>，酸甜软糯，只有延边的冬天才有这个味道。",origin:"延边·冻梨加工区",weight:"袋装 100g",shelf:"常温180天",pairing:"零食·泡茶·冬日限定"}
+    ]
+  }
+];
+
+// State per section
+const sectionState = {};
+
+function adjustBrightness(hex, amount) {
+  hex = hex.replace('#','');
+  let r = Math.min(255, Math.max(0, parseInt(hex.substr(0,2),16) + amount));
+  let g = Math.min(255, Math.max(0, parseInt(hex.substr(2,2),16) + amount));
+  let b = Math.min(255, Math.max(0, parseInt(hex.substr(4,2),16) + amount));
+  return '#' + [r,g,b].map(c => c.toString(16).padStart(2,'0')).join('');
+}
+
+function spiceDots(level, size) {
+  size = size || 6;
+  let s = '';
+  for (let i = 0; i < 5; i++) {
+    s += '<span' + (i < level ? ' class="on"' : '') + ' style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:'+(i<level?'var(--seal)':'rgba(245,240,232,.1)')+'"></span>';
+  }
+  return s;
+}
+
+function getProducts(series, lineIdx) {
+  if (series.lines && series.lines.length > 0) {
+    return series.lines[lineIdx] ? series.lines[lineIdx].products : series.lines[0].products;
+  }
+  return series.products || [];
+}
+
+function renderCard(seriesId, productIdx) {
+  const s = SERIES.find(x => x.id === seriesId);
+  if (!s) return;
+  const st = sectionState[seriesId];
+  const products = getProducts(s, st.line);
+  if (productIdx < 0) productIdx = 0;
+  if (productIdx >= products.length) productIdx = products.length - 1;
+  st.product = productIdx;
+
+  const p = products[productIdx];
+  let cardColor = s.color;
+  if (s.lines && s.lines.length > 0 && s.lines[st.line]) {
+    cardColor = s.lines[st.line].color;
+  }
+
+  const bgColor = s.light
+    ? 'linear-gradient(150deg, ' + s.color + ', ' + adjustBrightness(s.color, -15) + ')'
+    : 'linear-gradient(150deg, ' + adjustBrightness(cardColor, -30) + ', ' + adjustBrightness(cardColor, -50) + ')';
+
+  const cardEl = document.getElementById('card-' + seriesId);
+  cardEl.className = 's-card' + (s.light ? ' light-bg' : '');
+  cardEl.querySelector('.s-card-bg').style.background = bgColor;
+  cardEl.querySelector('.s-card-img').textContent = s.icon;
+  cardEl.querySelector('.s-card-tag').textContent = p.tag;
+  cardEl.querySelector('.s-card-name').textContent = p.name;
+  cardEl.querySelector('.s-card-kr').textContent = p.kr;
+  cardEl.querySelector('.s-card-spec').textContent = p.spec;
+  cardEl.querySelector('.s-card-spice').innerHTML = spiceDots(p.spice);
+
+  const counterEl = document.getElementById('counter-' + seriesId);
+  counterEl.textContent = (productIdx + 1) + ' / ' + products.length;
+}
+
+function switchLine(seriesId, lineIdx) {
+  const s = SERIES.find(x => x.id === seriesId);
+  const st = sectionState[seriesId];
+  st.line = lineIdx;
+
+  const tabsEl = document.getElementById('tabs-' + seriesId);
+  const tabs = tabsEl.querySelectorAll('.s-left-tab');
+  tabs.forEach(function(t, i) {
+    t.className = 's-left-tab' + (i === lineIdx ? ' active' : '');
+    if (i === lineIdx && s.lines[i]) {
+      t.style.borderColor = s.lines[i].color;
+      t.style.background = s.lines[i].color + '18';
+    } else {
+      t.style.borderColor = '';
+      t.style.background = '';
+    }
+    t.innerHTML = '<span class="tab-zh">' + s.lines[i].name + '</span><span class="tab-kr">' + s.lines[i].nameKr + '</span>';
+  });
+
+  st.product = 0;
+  renderCard(seriesId, 0);
+}
+
+function prevProduct(seriesId) {
+  const st = sectionState[seriesId];
+  renderCard(seriesId, st.product - 1);
+}
+
+function nextProduct(seriesId) {
+  const st = sectionState[seriesId];
+  renderCard(seriesId, st.product + 1);
+}
+
+/* =============================================
+   DETAIL OVERLAY
+   ============================================= */
+var carouselTimer = null;
+var carouselIdx = 0;
+
+function buildCarouselSlides(s, p, cardColor) {
+  var slides = [
+    {icon: s.icon, label: '\u4EA7\u54C1\u5C55\u793A', brightness: 0},
+    {icon: '\u2728', label: '\u539F\u6599\u7EC6\u8282', brightness: -10},
+    {icon: '\uD83C\uDF7D\uFE0F', label: '\u98DF\u7528\u573A\u666F', brightness: 15}
+  ];
+  var track = document.getElementById('carouselTrack');
+  track.innerHTML = '';
+  slides.forEach(function(sl, i) {
+    var div = document.createElement('div');
+    div.className = 'detail-carousel-slide' + (i === 0 ? ' active' : '');
+    var gradStart = adjustBrightness(cardColor, -40 + sl.brightness);
+    var gradEnd = adjustBrightness(cardColor, -60 + sl.brightness);
+    if (s.light) {
+      gradStart = adjustBrightness(s.color, -20 + sl.brightness);
+      gradEnd = adjustBrightness(s.color, -35 + sl.brightness);
+    }
+    div.innerHTML = '<div class="detail-carousel-glow" style="background:' + cardColor + '"></div>'
+      + '<div class="detail-carousel-ring"></div>'
+      + '<div class="detail-carousel-bg" style="background:linear-gradient(150deg,' + gradStart + ',' + gradEnd + ')"></div>'
+      + '<div class="detail-carousel-icon">' + sl.icon + '</div>'
+      + '<div class="detail-carousel-label">' + sl.label + '</div>';
+    track.appendChild(div);
+  });
+
+  // Dots
+  var dots = document.getElementById('carouselDots');
+  dots.innerHTML = '';
+  slides.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'detail-carousel-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = function() { goToSlide(i); };
+    dots.appendChild(dot);
+  });
+
+  carouselIdx = 0;
+  startCarouselAuto();
+}
+
+function goToSlide(idx) {
+  var slides = document.querySelectorAll('.detail-carousel-slide');
+  var dots = document.querySelectorAll('.detail-carousel-dot');
+  if (slides.length === 0) return;
+  carouselIdx = ((idx % slides.length) + slides.length) % slides.length;
+  slides.forEach(function(s, i) {
+    s.className = 'detail-carousel-slide' + (i === carouselIdx ? ' active' : '');
+  });
+  dots.forEach(function(d, i) {
+    d.className = 'detail-carousel-dot' + (i === carouselIdx ? ' active' : '');
+  });
+}
+
+function startCarouselAuto() {
+  stopCarouselAuto();
+  carouselTimer = setInterval(function() {
+    goToSlide(carouselIdx + 1);
+  }, 3000);
+}
+
+function stopCarouselAuto() {
+  if (carouselTimer) {
+    clearInterval(carouselTimer);
+    carouselTimer = null;
+  }
+}
+
+function openDetail(seriesId, productIdx) {
+  const s = SERIES.find(function(x){return x.id===seriesId});
+  if (!s) return;
+  const st = sectionState[seriesId];
+  const products = getProducts(s, st.line);
+  const p = products[productIdx || st.product];
+  if (!p) return;
+
+  const overlay = document.getElementById('detailOverlay');
+
+  // Light mode
+  overlay.className = 'detail-overlay open' + (s.light ? ' light-overlay' : '');
+
+  // Carousel
+  let cardColor = s.color;
+  if (s.lines && s.lines.length > 0 && s.lines[st.line]) {
+    cardColor = s.lines[st.line].color;
+  }
+  buildCarouselSlides(s, p, cardColor);
+
+  // Badge
+  var badgeHtml = '';
+  if (p.tag) badgeHtml += '<div class="detail-badge-item">' + p.tag + '</div>';
+  if (p.spec) badgeHtml += '<div class="detail-badge-item">' + p.spec + '</div>';
+  document.getElementById('detailBadge').innerHTML = badgeHtml;
+
+  // Spice
+  var spiceLabel = '';
+  var spiceNames = ['不辣','微辣','中辣','辣','很辣','极辣'];
+  if (p.spice !== undefined) {
+    spiceLabel = '<span class="detail-spice-label">辣度</span><div class="detail-spice">' + spiceDots(p.spice, 8) + '</div><span style="font-size:9px;opacity:.3;margin-left:4px">' + spiceNames[p.spice] + '</span>';
+  } else {
+    spiceLabel = '<span class="detail-spice-label">辣度</span><div class="detail-spice">' + spiceDots(0, 8) + '</div><span style="font-size:9px;opacity:.3;margin-left:4px">不辣</span>';
+  }
+  document.getElementById('detailSpiceRow').innerHTML = spiceLabel;
+
+  // Info
+  document.getElementById('detailSeries').textContent = s.name + ' · ' + s.kr;
+  document.getElementById('detailName').textContent = p.name;
+  document.getElementById('detailNameKr').textContent = p.kr;
+  document.getElementById('detailDesc').innerHTML = p.desc || '';
+
+  // Specs grid
+  var specsHtml = '';
+  if (p.origin) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">产地</div><div class="detail-spec-value">' + p.origin + '</div></div>';
+  if (p.weight) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">规格</div><div class="detail-spec-value">' + p.weight + '</div></div>';
+  if (p.shelf) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">保质期</div><div class="detail-spec-value">' + p.shelf + '</div></div>';
+  if (p.pairing) specsHtml += '<div class="detail-spec-item"><div class="detail-spec-label">搭配推荐</div><div class="detail-spec-value">' + p.pairing + '</div></div>';
+  document.getElementById('detailSpecs').innerHTML = specsHtml;
+
+  // Related products (same series, exclude current)
+  var relHtml = '<div class="detail-related-title">同系列其他产品</div><div class="detail-related-list">';
+  products.forEach(function(rp, ri) {
+    if (ri === (productIdx || st.product)) {
+      relHtml += '<div class="detail-related-item active"><div class="detail-related-icon">' + s.icon + '</div><div class="detail-related-name">' + rp.name + '</div></div>';
+    } else {
+      relHtml += '<div class="detail-related-item" onclick="openDetail(\'' + seriesId + '\',' + ri + ')"><div class="detail-related-icon">' + s.icon + '</div><div class="detail-related-name">' + rp.name + '</div></div>';
+    }
+  });
+  relHtml += '</div>';
+  document.getElementById('detailRelated').innerHTML = relHtml;
+
+  lockBodyScroll();
+}
+
+function closeDetail() {
+  var overlay = document.getElementById('detailOverlay');
+  overlay.className = 'detail-overlay';
+  unlockBodyScroll();
+  stopCarouselAuto();
+}
+
+// Escape key to close
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeDetail();
+});
+
+// Carousel arrows
+document.getElementById('carouselPrev').addEventListener('click', function() {
+  goToSlide(carouselIdx - 1);
+  startCarouselAuto();
+});
+document.getElementById('carouselNext').addEventListener('click', function() {
+  goToSlide(carouselIdx + 1);
+  startCarouselAuto();
+});
+
+// Prevent background scroll when detail overlay is open (mobile touch)
+var _detailOpen = false;
+document.addEventListener('touchmove', function(e) {
+  if (_detailOpen) {
+    var container = document.getElementById('detailContainer');
+    if (container && !container.contains(e.target)) {
+      e.preventDefault();
+    }
+  }
+}, {passive: false});
+
+// Also lock body scroll via CSS when overlay opens
+var _origBodyTouchAction = '';
+function lockBodyScroll() {
+  _detailOpen = true;
+  _origBodyTouchAction = document.body.style.touchAction;
+  document.body.style.touchAction = 'none';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+}
+function unlockBodyScroll() {
+  _detailOpen = false;
+  document.body.style.touchAction = _origBodyTouchAction || '';
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+}
+
+function buildRow(s) {
+  sectionState[s.id] = { line: 0, product: 0 };
+
+  var row = document.createElement('div');
+  row.className = 's-row';
+  row.id = 'section-' + s.id;
+
+  var accent = document.createElement('div');
+  accent.className = 's-accent';
+  accent.style.background = s.color;
+  row.appendChild(accent);
+
+  var left = document.createElement('div');
+  left.className = 's-left';
+
+  var title = document.createElement('div');
+  title.className = 's-left-title';
+  title.textContent = s.name;
+  left.appendChild(title);
+
+  var kr = document.createElement('div');
+  kr.className = 's-left-kr';
+  kr.textContent = s.kr;
+  left.appendChild(kr);
+
+  if (s.lines && s.lines.length > 0) {
+    var tabs = document.createElement('div');
+    tabs.className = 's-left-tabs';
+    tabs.id = 'tabs-' + s.id;
+    s.lines.forEach(function(line, li) {
+      var tab = document.createElement('div');
+      tab.className = 's-left-tab' + (li === 0 ? ' active' : '');
+      tab.innerHTML = '<span class="tab-zh">' + line.name + '</span><span class="tab-kr">' + line.nameKr + '</span>';
+      if (li === 0) {
+        tab.style.borderColor = line.color;
+        tab.style.background = line.color + '18';
+      }
+      tab.onclick = function() { switchLine(s.id, li); };
+      tabs.appendChild(tab);
+    });
+    left.appendChild(tabs);
+  }
+
+  var nav = document.createElement('div');
+  nav.className = 's-left-nav';
+
+  var prevBtn = document.createElement('div');
+  prevBtn.className = 's-left-nav-btn';
+  prevBtn.innerHTML = '◀';
+  prevBtn.onclick = function() { prevProduct(s.id); };
+  nav.appendChild(prevBtn);
+
+  var counter = document.createElement('div');
+  counter.className = 's-left-nav-counter';
+  counter.id = 'counter-' + s.id;
+  counter.textContent = '1 / ' + getProducts(s, 0).length;
+  nav.appendChild(counter);
+
+  var nextBtn = document.createElement('div');
+  nextBtn.className = 's-left-nav-btn';
+  nextBtn.innerHTML = '▶';
+  nextBtn.onclick = function() { nextProduct(s.id); };
+  nav.appendChild(nextBtn);
+
+  left.appendChild(nav);
+  row.appendChild(left);
+
+  var productArea = document.createElement('div');
+  productArea.className = 's-product';
+
+  var cardColor = s.color;
+  if (s.lines && s.lines.length > 0) cardColor = s.lines[0].color;
+  var bgColor = s.light
+    ? 'linear-gradient(150deg, ' + s.color + ', ' + adjustBrightness(s.color, -15) + ')'
+    : 'linear-gradient(150deg, ' + adjustBrightness(cardColor, -30) + ', ' + adjustBrightness(cardColor, -50) + ')';
+
+  var firstProduct = getProducts(s, 0)[0];
+
+  var card = document.createElement('div');
+  card.className = 's-card' + (s.light ? ' light-bg' : '');
+  card.id = 'card-' + s.id;
+  card.innerHTML = '<div class="s-card-bg" style="background:' + bgColor + '"></div>'
+    + '<div class="s-card-img">' + s.icon + '</div>'
+    + '<div class="s-card-tag">' + firstProduct.tag + '</div>'
+    + '<div class="s-card-cta">点击查看详情 →</div>'
+    + '<div class="s-card-info">'
+    + '<div class="s-card-name">' + firstProduct.name + '</div>'
+    + '<div class="s-card-kr">' + firstProduct.kr + '</div>'
+    + '<div class="s-card-spec">' + firstProduct.spec + '</div>'
+    + '<div class="s-card-spice">' + spiceDots(firstProduct.spice) + '</div>'
+    + '</div>';
+  card.onclick = function() { openDetail(s.id); };
+  productArea.appendChild(card);
+  row.appendChild(productArea);
+
+  return row;
+}
+
+function buildPage() {
+  var container = document.getElementById('scrollContainer');
+
+  for (var i = 0; i < SERIES.length; i += 2) {
+    var page = document.createElement('div');
+    page.className = 'scroll-page';
+
+    page.appendChild(buildRow(SERIES[i]));
+    if (i + 1 < SERIES.length) {
+      page.appendChild(buildRow(SERIES[i + 1]));
+    }
+
+    if (i === 0) {
+      var hint = document.createElement('div');
+      hint.className = 'scroll-hint';
+      hint.textContent = '上下滑动浏览更多系列';
+      page.appendChild(hint);
+    }
+
+    container.appendChild(page);
+  }
+}
+
+function setupSwipe() {
+  SERIES.forEach(function(s) {
+    var card = document.getElementById('card-' + s.id);
+    if (!card) return;
+    var startX = 0;
+    var isDragging = false;
+
+    card.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, {passive: true});
+
+    card.addEventListener('touchend', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      var diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 40) {
+        if (diff < 0) nextProduct(s.id);
+        else prevProduct(s.id);
+      }
+    }, {passive: true});
+  });
+}
+
+buildPage();
+setupSwipe();
+</script>
+</body>
+</html>

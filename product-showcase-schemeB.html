@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>海兰菹 · 方案B 品类色块（10系列版）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1A3C34;--seal:#C8102E;--rice:#F5F0E8;--gold:#B8860B;--ink-deep:#0d1f1a}
+body{background:#0a0a0a;color:var(--rice);font-family:-apple-system,"Noto Serif SC",serif;overflow-x:hidden}
+.page-header{text-align:center;padding:48px 24px 8px;letter-spacing:10px;font-size:18px;font-weight:600}
+.page-sub{text-align:center;font-size:12px;opacity:.3;letter-spacing:4px;margin-bottom:48px}
+
+.scene{max-width:1400px;margin:0 auto;padding:0 24px 80px}
+.gallery{width:100%;height:80vh;min-height:560px;background:var(--ink-deep);border-radius:16px;overflow:hidden;border:1px solid rgba(245,240,232,.06);display:flex}
+
+/* 2 rows x 5 cols layout */
+.cats-grid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:1fr 1fr;height:100%;gap:1px;background:rgba(245,240,232,.03)}
+.cat{position:relative;overflow:hidden;cursor:pointer;transition:flex .4s,opacity .3s;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cat:hover{opacity:.85}
+.cat-bg{position:absolute;inset:0;transition:transform .6s}
+.cat:hover .cat-bg{transform:scale(1.03)}
+.cat-glow{position:absolute;top:25%;left:50%;transform:translateX(-50%);width:60%;height:35%;background:radial-gradient(ellipse,rgba(245,240,232,.05),transparent 70%);pointer-events:none}
+.cat-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.cat-icon{font-size:32px;margin-bottom:8px;opacity:.5}
+.cat-name{font-size:13px;letter-spacing:4px;font-weight:600;margin-bottom:2px}
+.cat-kr{font-size:8px;opacity:.3;letter-spacing:2px;margin-bottom:4px}
+.cat-line{width:24px;height:1px;background:rgba(245,240,232,.1);margin:8px auto}
+.cat-count{font-size:9px;color:var(--gold);opacity:.5;letter-spacing:2px}
+.cat-tagline{font-size:8px;opacity:.3;letter-spacing:1px;margin-top:6px;max-width:80%;line-height:1.5}
+
+/* Light series overrides */
+.cat.light .cat-name{color:var(--ink)}
+.cat.light .cat-kr{color:rgba(26,60,52,.3)}
+.cat.light .cat-count{color:var(--ink);opacity:.5}
+.cat.light .cat-tagline{color:rgba(26,60,52,.4)}
+.cat.light .cat-line{background:rgba(26,60,52,.1)}
+.cat.light .cat-icon{opacity:.6}
+
+/* Hover: show mini product list */
+.cat-products{position:absolute;bottom:0;left:0;right:0;padding:10px 12px;background:linear-gradient(transparent,rgba(0,0,0,.6));opacity:0;transition:opacity .3s;z-index:3;display:flex;flex-direction:column;gap:2px}
+.cat:hover .cat-products{opacity:1}
+.cat-products-item{font-size:8px;letter-spacing:1px;opacity:.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+</style>
+</head>
+<body>
+<div class="page-header">海兰菹 · 产品殿堂</div>
+<div class="page-sub">方案B · 品类色块 · Category Portals · 10系列</div>
+
+<div class="scene">
+<div class="gallery" id="gallery">
+  <div class="cats-grid" id="grid"></div>
+</div>
+</div>
+
+<script>
+const SERIES=[
+{id:"jur-yun",name:"菹韵",kr:"저운",tagline:"一切从\u201c菹\u201d开始",color:"#C8102E",aux:"#B8860B",icon:"🥬",light:false,
+products:["棵状辣白菜","精品辣白菜","萝卜块泡菜","苹果梨辣白菜","香葱泡菜","活菌辣白菜","年份窖藏辣白菜","…共18款"]},
+{id:"jang-xiang",name:"酱香",kr:"장향",tagline:"做泡菜的人做的酱",color:"#6B4226",aux:"#C4A35A",icon:"🫙",light:false,
+products:["延边黄豆酱","籽辣椒酱","剁椒酱","辣白菜拌料","吸吸袋拌饭酱","…共7款"]},
+{id:"on-po",name:"温饱",kr:"온포",tagline:"米谷为礼，团圆为味",color:"#D4CFC4",aux:"#8B7355",icon:"🍚",light:true,
+products:["米肠","糯米米酒","玉米米酒","草莓米酒","香辣明太鱼","…共14款"]},
+{id:"jang-su",name:"长寿·水食",kr:"장수·수식",tagline:"一碗面，祈百岁",color:"#5A8A7A",aux:"#E8F0ED",icon:"🍜",light:false,
+products:["荞麦冷面","小麦冷面","玉米温面","韩式炸酱面","大酱汤","…共9款"]},
+{id:"cheong-so",name:"清素",kr:"청소",tagline:"山寺岁时，清净素心",color:"#7A9E7E",aux:"#F0EDE5",icon:"🌿",light:false,
+products:["素辣白菜","拌桔梗","拌苏子叶","酸甜小黄瓜","酸菜","…共14款"]},
+{id:"sam-yang",name:"参养",kr:"삼양",tagline:"长白百草，参养之道",color:"#8B6F47",aux:"#A0522D",icon:"🫚",light:false,
+products:["参鸡汤","鲜人参","人参蜜片","红参膏","人参酒","…共13款"]},
+{id:"so-jo-mi",name:"烧烤调味",kr:"소조미",tagline:"延边夜市的烟火秘方",color:"#D4763A",aux:"#4A4A4A",icon:"🔥",light:false,
+products:["烧烤干料","烧烤湿料","烤肉腌料酱","辣椒粉","松茸鲜","…共9款"]},
+{id:"hwa-ral",name:"火辣即食",kr:"화랄",tagline:"夜市江湖，辣味即行",color:"#E74C3C",aux:"#6C3483",icon:"🌶️",light:false,
+products:["香辣牛板筋","火辣肥肠","火辣鸡爪","酱牛肉","酱杂菜","…共8款"]},
+{id:"pung-mul",name:"风物",kr:"풍물",tagline:"朝鲜族生活的仪式感",color:"#C4727F",aux:"#E8C170",icon:"🌸",light:false,
+products:["甘酒","五味子茶","松饼","艾蒿糕","大麦茶","…共10款"]},
+{id:"dong-nyeon",name:"童年·集趣",kr:"동년·집취",tagline:"街巷深处的童年甜味",color:"#F0C75E",aux:"#8B6914",icon:"🍬",light:true,
+products:["江米条","芝麻糖","松子糖","冻梨干","炕土豆","…共9款"]}
+];
+
+function adj(hex,a){hex=hex.replace('#','');let r=Math.min(255,Math.max(0,parseInt(hex.substr(0,2),16)+a)),g=Math.min(255,Math.max(0,parseInt(hex.substr(2,2),16)+a)),b=Math.min(255,Math.max(0,parseInt(hex.substr(4,2),16)+a));return '#'+[r,g,b].map(c=>c.toString(16).padStart(2,'0')).join('')}
+
+const grid=document.getElementById('grid');
+SERIES.forEach((s,i)=>{
+  const d=document.createElement('div');
+  d.className='cat'+(s.light?' light':'');
+  const bg=`linear-gradient(160deg,${s.color},${adj(s.color,-25)})`;
+  let prodsHtml=s.products.map(p=>`<div class="cat-products-item">${p}</div>`).join('');
+  d.innerHTML=`<div class="cat-bg" style="background:${bg}"></div><div class="cat-glow"></div><div class="cat-content"><div class="cat-icon">${s.icon}</div><div class="cat-name">${s.name}</div><div class="cat-kr">${s.kr}</div><div class="cat-line"></div><div class="cat-count">${s.products[s.products.length-1].replace('…','').replace('共','').replace('款','')} 款</div><div class="cat-tagline">${s.tagline}</div></div><div class="cat-products">${prodsHtml}</div>`;
+  grid.appendChild(d);
+});
+</script>
+</body>
+</html>
