@@ -349,6 +349,8 @@
 .floating-cta-text{display:none}
 .floating-cta svg{width:20px;height:20px}
 }
+
+@media(max-width:768px){.qr-mobile-hint{display:block!important}}
 </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
@@ -801,6 +803,7 @@
       <div class="qr-popup-title" id="qrPopupTitle"></div>
       <div class="qr-popup-img" id="qrPopupImg"><div class="qr-placeholder"><svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" opacity="0.3"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm11-2h2v2h-2v-2zm-4 0h2v6h-2v-6zm6 0h2v2h-2v-2zm0 4h2v4h-4v-2h2v-2zm-2 2h-2v2h2v-2z"/></svg><div class="qr-placeholder-text" data-i18n="qr.placeholder">二维码即将上线</div></div></div>
       <div class="qr-popup-hint" id="qrPopupHint"></div>
+      <div class="qr-mobile-hint" id="qrMobileHint" style="display:none;margin-top:12px;padding:8px 16px;background:rgba(184,134,11,0.12);border-radius:6px;font-size:13px;color:var(--rice);opacity:0.8"><span data-i18n="qr.longpress">📱 长按识别二维码</span></div>
     </div>
   </div>
   <div class="floating-cta" id="floatingCta">
@@ -853,6 +856,37 @@ var _cm=document.getElementById('community')||document.querySelector('.community
 if(_cm)_cm.scrollIntoView({behavior:'smooth',block:'center'});
 });
 }
+}catch(e){}
+</script>
+
+<script>
+try{
+(function(){
+  var isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  var isWeChat=/MicroMessenger/i.test(navigator.userAgent);
+  function showMobileHint(){
+    var h=document.getElementById('qrMobileHint');
+    if(h)h.style.display=(isMobile)?'block':'none';
+    var hints=document.querySelectorAll('.community-action-desc');
+    if(isMobile){
+      document.querySelectorAll('[data-i18n="community.wechat-work.desc"]').forEach(function(el){
+        el.textContent=el.textContent.replace('扫码加入','长按识别加入').replace('스캔하여 가입','길게 눌러 가입').replace('Scan to join','Long press to join').replace('スキャンして参加','長押しで参加');
+      });
+      document.querySelectorAll('[data-i18n="community.official.desc"]').forEach(function(el){
+        el.textContent=el.textContent.replace('扫码关注','长按识别关注').replace('스캔하여 팔로우','길게 눌러 팔로우').replace('Scan to follow','Long press to follow').replace('スキャンしてフォロー','長押しでフォロー');
+      });
+    }
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',showMobileHint)}else{showMobileHint()}
+  // Re-apply after language change
+  var origSetLang=window.setLanguage;
+  if(origSetLang){
+    window.setLanguage=function(lang){
+      origSetLang(lang);
+      setTimeout(showMobileHint,50);
+    };
+  }
+})();
 }catch(e){}
 </script>
 </body>
