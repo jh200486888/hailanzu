@@ -287,10 +287,10 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
         @media (max-width: 768px) {
             .hero {
-                min-height: 100svh;
-                min-height: calc(var(--vh, 1vh) * 100);
+                height: calc(var(--vh, 1vh) * 100);
+                min-height: auto;
                 align-items: center;
-                padding: 70px 1.5rem 90px;
+                padding: 100px 1.5rem 70px;
             }
             .hero-seal { width: 110px; height: 110px; }
             .hero-title-wrap { gap: 1rem; }
@@ -1117,8 +1117,8 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 @media(max-width:768px){.community-sidebar{top:auto;bottom:100px;transform:none;flex-direction:column;right:8px;gap:4px}.sidebar-item{width:38px;height:38px;border-radius:10px;border:1px solid rgba(184,134,11,0.15);font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,0.2)}.sidebar-tooltip{display:none}}
 
 </style>
-<link rel="preload" href="css/common.css" as="style">
-<link rel="stylesheet" href="css/common.css">
+<link rel="preload" href="css/common.css?v=20260613" as="style">
+<link rel="stylesheet" href="css/common.css?v=20260613">
 <script>
         // Fix mobile 100vh issue: set --vh to actual visual viewport
         function setVH() {
