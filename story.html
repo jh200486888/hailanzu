@@ -8,7 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+                *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
         a, button { -webkit-tap-highlight-color: transparent; outline: none; }
 :root{
   --azalea:#C4727F;--azalea-dark:#8B4A5A;
@@ -1057,11 +1058,11 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             position: absolute; pointer-events: none; z-index: 0;
         }
         .azalea-right {
-            right: -20px; top: 8%; width: 350px; height: 450px; opacity: 0.1;
+            right: 0; top: 8%; width: 330px; height: 450px; opacity: 0.1;
             animation: azaleaSway 8s ease-in-out infinite;
         }
         .azalea-left {
-            left: -40px; bottom: 8%; width: 250px; height: 320px; opacity: 0.07;
+            left: 0; bottom: 8%; width: 250px; height: 320px; opacity: 0.07;
             animation: azaleaSwayLeft 10s ease-in-out infinite;
         }
         @keyframes azaleaSway {
