@@ -249,22 +249,15 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
         }
 
         .hero-silhouette {
-            position: absolute;
-            opacity: 0.06;
-            pointer-events: none;
+            display: none;
         }
 
         .hero-silhouette-1 {
-            left: 0;
-            top: 15%;
-            width: 300px;
+            display: none;
         }
 
         .hero-silhouette-2 {
-            right: 0;
-            bottom: 20%;
-            width: 280px;
-            transform: scaleX(-1);
+            display: none;
         }
 
         .hero-content { text-align: center; position: relative; z-index: 2; }
@@ -1053,25 +1046,47 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
             opacity: 0.6;
         }
 
-        /* Azalea silhouettes */
-        .azalea-silhouette {
-            position: absolute; pointer-events: none; z-index: 0;
+        /* Village skyline silhouettes */
+        .village-skyline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            pointer-events: none;
+            z-index: 1;
         }
-        .azalea-right {
-            right: 0; top: 8%; width: 330px; height: 450px; opacity: 0.1;
-            animation: azaleaSway 8s ease-in-out infinite;
+        .village-skyline svg {
+            width: 100%;
+            display: block;
         }
-        .azalea-left {
-            left: 0; bottom: 8%; width: 250px; height: 320px; opacity: 0.07;
-            animation: azaleaSwayLeft 10s ease-in-out infinite;
+        /* Azalea accent (small, side) */
+        .azalea-accent {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.12;
+        }
+        .azalea-accent-left {
+            left: 3%;
+            bottom: 25%;
+            width: 80px;
+            height: 80px;
+            animation: azaleaSway 10s ease-in-out infinite;
+        }
+        .azalea-accent-right {
+            right: 5%;
+            top: 18%;
+            width: 60px;
+            height: 60px;
+            animation: azaleaSwayLeft 12s ease-in-out infinite;
         }
         @keyframes azaleaSway {
             0%, 100% { transform: translateX(0) rotate(0deg); }
-            50% { transform: translateX(-6px) rotate(0.8deg); }
+            50% { transform: translateX(-4px) rotate(0.5deg); }
         }
         @keyframes azaleaSwayLeft {
             0%, 100% { transform: scaleX(-1) translateX(0) rotate(0deg); }
-            50% { transform: scaleX(-1) translateX(-6px) rotate(0.8deg); }
+            50% { transform: scaleX(-1) translateX(-4px) rotate(0.5deg); }
         }
 
         /* i18n */
@@ -1185,53 +1200,154 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Azalea silhouette right -->
-        <div class="azalea-silhouette azalea-right">
-            <svg viewBox="0 0 400 400" fill="none">
-                <g fill="rgba(196,114,127,.35)" stroke="none">
-                    <g transform="translate(280,80) scale(1.2)">
-                        <ellipse cx="0" cy="-18" rx="12" ry="20" transform="rotate(0)"/>
-                        <ellipse cx="0" cy="-18" rx="12" ry="20" transform="rotate(72)"/>
-                        <ellipse cx="0" cy="-18" rx="12" ry="20" transform="rotate(144)"/>
-                        <ellipse cx="0" cy="-18" rx="12" ry="20" transform="rotate(216)"/>
-                        <ellipse cx="0" cy="-18" rx="12" ry="20" transform="rotate(288)"/>
-                        <circle cx="0" cy="0" r="5"/>
-                    </g>
-                    <g transform="translate(320,150) scale(0.8)">
-                        <ellipse cx="0" cy="-14" rx="9" ry="15" transform="rotate(0)"/>
-                        <ellipse cx="0" cy="-14" rx="9" ry="15" transform="rotate(72)"/>
-                        <ellipse cx="0" cy="-14" rx="9" ry="15" transform="rotate(144)"/>
-                        <ellipse cx="0" cy="-14" rx="9" ry="15" transform="rotate(216)"/>
-                        <ellipse cx="0" cy="-14" rx="9" ry="15" transform="rotate(288)"/>
-                        <circle cx="0" cy="0" r="4"/>
-                    </g>
-                    <g transform="translate(240,40) scale(0.55)">
-                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(10)"/>
-                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(82)"/>
-                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(154)"/>
-                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(226)"/>
-                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(298)"/>
-                        <circle cx="0" cy="0" r="3"/>
-                    </g>
-                    <path d="M280 80 Q300 160 310 230 Q315 270 300 310 Q290 350 280 400" fill="none" stroke="rgba(196,114,127,.25)" stroke-width="2"/>
-                    <path d="M305 210 Q335 200 350 220 Q330 215 305 210"/>
-                    <path d="M295 270 Q265 262 252 282 Q270 272 295 270"/>
+        <!-- Village skyline - Korean traditional houses silhouette -->
+        <div class="village-skyline">
+            <svg viewBox="0 0 1440 320" preserveAspectRatio="none" fill="none">
+                <!-- Sky glow -->
+                <rect x="0" y="0" width="1440" height="320" fill="url(#village-sky-gradient)" opacity="0.15"/>
+                <defs>
+                    <linearGradient id="village-sky-gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(184,134,11,0.2)"/>
+                        <stop offset="100%" stop-color="rgba(26,60,52,0)"/>
+                    </linearGradient>
+                </defs>
+                <!-- Far mountains -->
+                <path d="M0 280 Q120 220 240 250 Q360 200 480 230 Q600 180 720 210 Q840 170 960 200 Q1080 160 1200 190 Q1320 170 1440 210 L1440 320 L0 320 Z" fill="rgba(26,60,52,0.15)" stroke="none"/>
+                <!-- Near hills -->
+                <path d="M0 300 Q100 260 200 280 Q300 250 400 270 Q500 240 600 260 Q700 230 800 255 Q900 225 1000 250 Q1100 230 1200 255 Q1300 240 1440 260 L1440 320 L0 320 Z" fill="rgba(26,60,52,0.25)" stroke="none"/>
+                <!-- Village houses - Korean traditional style (hanok) -->
+                <g stroke="rgba(245,240,232,0.08)" stroke-width="0.8" fill="none">
+                    <!-- House 1 - large hanok left -->
+                    <path d="M60 295 L80 270 Q95 258 110 270 L130 295"/>
+                    <line x1="75" y1="295" x2="75" y2="280"/>
+                    <line x1="115" y1="295" x2="115" y2="280"/>
+                    <path d="M80 280 L95 268 L110 280"/>
+                    <rect x="70" y="295" width="50" height="8" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.06)"/>
+                    <!-- House 2 -->
+                    <path d="M140 295 L155 275 Q165 266 175 275 L190 295"/>
+                    <path d="M150 283 L165 272 L180 283"/>
+                    <rect x="145" y="295" width="40" height="6" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                    <!-- House 3 - tall hanok -->
+                    <path d="M220 295 L245 260 Q260 248 275 260 L300 295"/>
+                    <path d="M230 270 L260 250 L290 270"/>
+                    <path d="M240 280 L260 265 L280 280"/>
+                    <rect x="225" y="295" width="70" height="10" fill="rgba(245,240,232,0.05)" stroke="rgba(245,240,232,0.07)"/>
+                    <line x1="260" y1="295" x2="260" y2="270"/>
+                    <!-- House 4 - small -->
+                    <path d="M330 295 L342 280 Q350 273 358 280 L370 295"/>
+                    <path d="M335 285 L350 277 L365 285"/>
+                    <rect x="332" y="295" width="36" height="5" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.04)"/>
+                    <!-- House 5 - medium center -->
+                    <path d="M430 295 L455 268 Q468 257 481 268 L506 295"/>
+                    <path d="M440 278 L468 262 L496 278"/>
+                    <path d="M448 286 L468 274 L488 286"/>
+                    <rect x="435" y="295" width="66" height="8" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.06)"/>
+                    <line x1="468" y1="295" x2="468" y2="275"/>
+                    <!-- House 6 -->
+                    <path d="M540 295 L558 272 Q568 264 578 272 L596 295"/>
+                    <path d="M548 280 L568 270 L588 280"/>
+                    <rect x="542" y="295" width="52" height="7" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                    <!-- House 7 - large hanok right-center -->
+                    <path d="M640 295 L670 255 Q685 242 700 255 L730 295"/>
+                    <path d="M650 268 L685 248 L720 268"/>
+                    <path d="M658 278 L685 262 L712 278"/>
+                    <rect x="645" y="295" width="80" height="10" fill="rgba(245,240,232,0.05)" stroke="rgba(245,240,232,0.07)"/>
+                    <line x1="670" y1="295" x2="670" y2="268"/>
+                    <line x1="700" y1="295" x2="700" y2="268"/>
+                    <!-- House 8 -->
+                    <path d="M770 295 L785 278 Q793 271 801 278 L816 295"/>
+                    <path d="M775 283 L793 275 L811 283"/>
+                    <rect x="772" y="295" width="42" height="6" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                    <!-- House 9 -->
+                    <path d="M850 295 L870 272 Q880 264 890 272 L910 295"/>
+                    <path d="M858 280 L880 270 L902 280"/>
+                    <rect x="852" y="295" width="56" height="7" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                    <!-- House 10 - tall center-right -->
+                    <path d="M950 295 L978 258 Q992 245 1006 258 L1034 295"/>
+                    <path d="M960 270 L992 250 L1024 270"/>
+                    <path d="M968 280 L992 266 L1016 280"/>
+                    <rect x="955" y="295" width="74" height="9" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.06)"/>
+                    <line x1="992" y1="295" x2="992" y2="270"/>
+                    <!-- House 11 -->
+                    <path d="M1080 295 L1095 278 Q1103 271 1111 278 L1126 295"/>
+                    <path d="M1085 283 L1103 275 L1121 283"/>
+                    <rect x="1082" y="295" width="42" height="6" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                    <!-- House 12 - medium -->
+                    <path d="M1170 295 L1192 270 Q1203 260 1214 270 L1236 295"/>
+                    <path d="M1178 280 L1203 267 L1228 280"/>
+                    <rect x="1172" y="295" width="62" height="8" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.06)"/>
+                    <!-- House 13 - small right -->
+                    <path d="M1280 295 L1295 280 Q1303 273 1311 280 L1326 295"/>
+                    <path d="M1285 285 L1303 277 L1321 285"/>
+                    <rect x="1282" y="295" width="42" height="6" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                    <!-- House 14 -->
+                    <path d="M1370 295 L1388 275 Q1396 268 1404 275 L1422 295"/>
+                    <path d="M1376 282 L1396 273 L1416 282"/>
+                    <rect x="1372" y="295" width="48" height="6" fill="rgba(245,240,232,0.03)" stroke="rgba(245,240,232,0.05)"/>
+                </g>
+                <!-- Ground line -->
+                <line x1="0" y1="303" x2="1440" y2="303" stroke="rgba(184,134,11,0.12)" stroke-width="0.6"/>
+                <!-- Smoke wisps -->
+                <g stroke="rgba(245,240,232,0.06)" stroke-width="0.5" fill="none">
+                    <path d="M260 258 Q258 245 262 235 Q260 225 264 215">
+                        <animate attributeName="d" dur="6s" repeatCount="indefinite" values="M260 258 Q258 245 262 235 Q260 225 264 215;M260 258 Q262 243 258 233 Q262 223 258 210;M260 258 Q258 245 262 235 Q260 225 264 215"/>
+                    </path>
+                    <path d="M685 248 Q683 238 687 228 Q685 220 689 210">
+                        <animate attributeName="d" dur="8s" repeatCount="indefinite" values="M685 248 Q683 238 687 228 Q685 220 689 210;M685 248 Q687 236 683 226 Q687 216 683 205;M685 248 Q683 238 687 228 Q685 220 689 210"/>
+                    </path>
+                    <path d="M992 248 Q990 238 994 228 Q992 220 996 212">
+                        <animate attributeName="d" dur="7s" repeatCount="indefinite" values="M992 248 Q990 238 994 228 Q992 220 996 212;M992 248 Q994 236 990 226 Q994 218 990 208;M992 248 Q990 238 994 228 Q992 220 996 212"/>
+                    </path>
                 </g>
             </svg>
         </div>
-        <!-- Background patterns -->
+        
+        <!-- Azalea accent (small, side) -->
+        <div class="azalea-accent azalea-accent-left">
+            <svg viewBox="0 0 80 80" fill="none">
+                <g fill="rgba(196,114,127,.4)" stroke="none">
+                    <g transform="translate(40,30) scale(0.7)">
+                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(15)"/>
+                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(87)"/>
+                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(159)"/>
+                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(231)"/>
+                        <ellipse cx="0" cy="-12" rx="7" ry="12" transform="rotate(303)"/>
+                        <circle cx="0" cy="0" r="3"/>
+                    </g>
+                    <path d="M40 42 Q38 55 36 70" fill="none" stroke="rgba(196,114,127,.3)" stroke-width="1.5"/>
+                    <path d="M38 55 Q32 52 28 56" fill="none" stroke="rgba(196,114,127,.2)" stroke-width="1"/>
+                </g>
+            </svg>
+        </div>
+        <div class="azalea-accent azalea-accent-right">
+            <svg viewBox="0 0 60 60" fill="none">
+                <g fill="rgba(196,114,127,.35)" stroke="none">
+                    <g transform="translate(30,22) scale(0.5)">
+                        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(10)"/>
+                        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(82)"/>
+                        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(154)"/>
+                        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(226)"/>
+                        <ellipse cx="0" cy="-10" rx="6" ry="10" transform="rotate(298)"/>
+                        <circle cx="0" cy="0" r="2.5"/>
+                    </g>
+                    <path d="M30 32 Q29 42 28 52" fill="none" stroke="rgba(196,114,127,.2)" stroke-width="1"/>
+                </g>
+            </svg>
+        </div>
+        
+        <!-- Hero wave (bottom transition) -->
         <svg class="hero-wave" viewBox="0 0 1440 150" preserveAspectRatio="none">
-            <path d="M0,64 C320,120 480,40 720,80 C960,120 1120,60 1440,100 L1440,150 L0,150 Z" fill="rgba(196,114,127,0.1)"/>
-            <path d="M0,80 C240,40 400,100 640,60 C880,20 1040,80 1440,40 L1440,150 L0,150 Z" fill="rgba(196,114,127,0.05)"/>
+            <path d="M0,64 C320,120 480,40 720,80 C960,120 1120,60 1440,100 L1440,150 L0,150 Z" fill="rgba(26,60,52,0.6)"/>
+            <path d="M0,80 C240,40 400,100 640,60 C880,20 1040,80 1440,40 L1440,150 L0,150 Z" fill="rgba(26,60,52,0.3)"/>
         </svg>
         
-        <!-- Azalea silhouettes -->
+        <!-- Hidden legacy silhouettes (kept for structure) -->
         <svg class="hero-silhouette hero-silhouette-1" viewBox="0 0 400 300">
-            <path d="M200 280 C180 280 160 260 160 240 C160 220 180 200 200 180 C220 200 240 220 240 240 C240 260 220 280 200 280 M150 260 C130 260 110 240 110 220 C110 200 130 180 150 180 C170 180 190 200 200 220 C210 200 230 180 250 180 C270 180 290 200 290 220 C290 240 270 260 250 260 M100 240 C80 240 60 220 60 200 C60 180 80 160 100 160 C120 160 140 180 150 200 C160 180 180 160 200 160 C220 160 240 180 240 200 C240 220 220 240 200 240 C180 240 160 220 150 200 C140 220 120 240 100 240" fill="rgba(196,114,127,0.3)"/>
+            <path d="M200 280 C180 280 160 260 160 240 C160 220 180 200 200 180" fill="none"/>
         </svg>
         
         <svg class="hero-silhouette hero-silhouette-2" viewBox="0 0 350 250">
-            <path d="M175 230 C155 230 135 210 135 190 C135 170 155 150 175 130 C195 150 215 170 215 190 C215 210 195 230 175 230 M125 210 C105 210 85 190 85 170 C85 150 105 130 125 130 C145 130 165 150 175 170 C185 150 205 130 225 130 C245 130 265 150 265 170 C265 190 245 210 225 210 C205 210 185 190 175 170 C165 190 145 210 125 210" fill="rgba(196,114,127,0.3)"/>
+            <path d="M175 230 C155 230 135 210 135 190" fill="none"/>
         </svg>
 
         <div class="hero-content">
@@ -1270,7 +1386,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
     <!-- Chapter 1: Haianjiang -->
     <section class="narrative-section chapter-1">
-        <div class="azalea-silhouette azalea-left">
+        <div class="azalea-accent azalea-accent-left">
             <svg viewBox="0 0 400 400" fill="none">
                 <g fill="rgba(196,114,127,.2)" stroke="none">
                     <g transform="translate(120,100) scale(0.7)">
@@ -1356,7 +1472,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
     <!-- Chapter 2: Handcraft -->
     <section class="narrative-section chapter-2">
-        <div class="azalea-silhouette azalea-right">
+        <div class="azalea-accent azalea-accent-right">
             <svg viewBox="0 0 400 400" fill="none">
                 <g fill="rgba(196,114,127,.25)" stroke="none">
                     <g transform="translate(300,60) scale(0.9)">
@@ -1466,7 +1582,7 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
     <!-- Chapter 3: Fermentation -->
     <section class="narrative-section chapter-3">
-        <div class="azalea-silhouette azalea-left">
+        <div class="azalea-accent azalea-accent-left">
             <svg viewBox="0 0 400 400" fill="none">
                 <g fill="rgba(196,114,127,.2)" stroke="none">
                     <g transform="translate(100,80) scale(0.65)">
