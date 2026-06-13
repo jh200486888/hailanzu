@@ -213,7 +213,9 @@ ul,ol{list-style:none}
 /* 底部宣言 */
 .hero-tagline{position:absolute;bottom:clamp(50px,7vw,80px);left:0;right:0;z-index:5;text-align:center;animation:heroReveal 1s var(--ease-out) 1.4s both}
 .hero-tagline-text{font-family:var(--font-display);font-style:italic;font-size:clamp(11px,1.1vw,14px);letter-spacing:3px;opacity:.25;display:inline-flex;align-items:center;gap:16px}
-.hero-tagline-text::before,.hero-tagline-text::after{content:'';width:32px;height:1px;background:var(--rice);opacity:.15}
+.hero-tagline-text::before,.hero-tagline-text::after{content:'\2744';font-size:14px;color:var(--rice);opacity:.35;animation:snowflakeFall 3s ease-in-out infinite}
+.hero-tagline-text::after{animation-delay:1.5s}
+@keyframes snowflakeFall{0%{transform:translateY(0) rotate(0deg);opacity:.35}50%{transform:translateY(4px) rotate(180deg);opacity:.5}100%{transform:translateY(0) rotate(360deg);opacity:.35}}
 /* 滚动提示 */
 .hero-scroll{position:absolute;bottom:clamp(16px,2.5vw,28px);left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:6px;animation:heroReveal .8s var(--ease-out) 1.8s both}
 .hero-scroll span{display:none}
@@ -456,7 +458,7 @@ ul,ol{list-style:none}
   .hero-manifesto{right:clamp(12px,4vw,24px);max-width:120px;opacity:.9}
   .hero-manifesto-text{font-size:clamp(11px,2.5vw,14px);letter-spacing:2px;opacity:.5}
   .hero-tagline-text{font-size:clamp(9px,2vw,12px);letter-spacing:2px;gap:10px}
-  .hero-tagline-text::before,.hero-tagline-text::after{width:20px}
+  .hero-tagline-text::before,.hero-tagline-text::after{font-size:10px}
   .seasons-grid{grid-template-columns:1fr}
   .story-block{grid-template-columns:1fr;min-height:auto}
   .story-block:nth-child(even){direction:ltr}

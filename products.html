@@ -159,7 +159,9 @@ section,footer{overflow:hidden}
 .detail-container{position:absolute;inset:0;display:flex;align-items:stretch;max-width:1200px;margin:0 auto;padding:24px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .detail-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(245,240,232,0.12);background:rgba(245,240,232,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s}
 .detail-close:hover{border-color:rgba(245,240,232,0.3);background:rgba(245,240,232,0.08)}
-.detail-close svg{width:16px;height:16px;stroke:var(--rice);stroke-width:2;fill:none;opacity:0.5}
+.detail-close svg{width:16px;height:16px;stroke:var(--rice);stroke-width:2;fill:none;opacity:0.5}.detail-back{position:absolute;top:20px;left:24px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(245,240,232,0.12);background:rgba(245,240,232,0.04);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all 0.3s}
+.detail-back:hover{border-color:rgba(245,240,232,0.3);background:rgba(245,240,232,0.08)}
+.detail-back svg{width:16px;height:16px;stroke:var(--rice);stroke-width:2;fill:none;opacity:0.5}
 .detail-left{width:48%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 30px;position:relative}
 .detail-carousel{width:300px;position:relative;margin-bottom:24px}
 .detail-carousel-track{position:relative;width:280px;height:280px;margin:0 auto;overflow:hidden;border-radius:50%}
@@ -237,7 +239,9 @@ section,footer{overflow:hidden}
 .detail-overlay.light-overlay{background:rgba(245,240,232,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .detail-overlay.light-overlay .detail-close{border-color:rgba(26,60,52,0.12);background:rgba(26,60,52,0.04)}
 .detail-overlay.light-overlay .detail-close:hover{border-color:rgba(26,60,52,0.25);background:rgba(26,60,52,0.08)}
-.detail-overlay.light-overlay .detail-close svg{stroke:var(--ink)}
+.detail-overlay.light-overlay .detail-close svg{stroke:var(--ink)}.detail-overlay.light-overlay .detail-back{border-color:rgba(26,60,52,0.12);background:rgba(26,60,52,0.04)}
+.detail-overlay.light-overlay .detail-back:hover{border-color:rgba(26,60,52,0.25);background:rgba(26,60,52,0.08)}
+.detail-overlay.light-overlay .detail-back svg{stroke:var(--ink)}
 .detail-overlay.light-overlay .detail-carousel-ring{border-color:rgba(26,60,52,0.08)}
 .detail-overlay.light-overlay .detail-spice span{background:rgba(26,60,52,0.1)}
 .detail-overlay.light-overlay .detail-spice span.on{background:var(--seal);box-shadow:0 0 6px rgba(200,16,46,0.3)}
@@ -341,6 +345,7 @@ section,footer{overflow:hidden}
 .detail-name{font-size:24px;letter-spacing:4px}
 .detail-specs{grid-template-columns:1fr 1fr;gap:8px}
 .detail-close{top:12px;right:12px;width:32px;height:32px}
+.detail-back{top:12px;left:12px;width:32px;height:32px}
 .detail-related-list{gap:8px}
 .detail-related-item{width:68px;padding:6px}
 .detail-cta-row{flex-direction:column}
@@ -426,6 +431,7 @@ section,footer{overflow:hidden}
 </section>
 
 <div class="detail-overlay" id="detailOverlay">
+<div class="detail-back" id="detailBack"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
 <div class="detail-close" id="detailClose"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></div>
 <div class="detail-container" id="detailContainer">
 <div class="detail-left" id="detailLeft">
@@ -1191,6 +1197,7 @@ document.getElementById('carouselNext').addEventListener('click', function() {
 });
 
 document.getElementById('detailClose').addEventListener('click', closeDetail);
+document.getElementById('detailBack').addEventListener('click', closeDetail);
 
 document.getElementById('detailOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeDetail();
