@@ -287,10 +287,13 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 
         @media (max-width: 768px) {
             .hero {
-                align-items: flex-start;
-                padding-top: 8vh;
-                padding-bottom: 130px;
+                min-height: 100svh;
+                min-height: calc(var(--vh, 1vh) * 100);
+                align-items: center;
+                padding: 90px 1.5rem 90px;
             }
+            .hero-seal { width: 90px; height: 90px; }
+            .hero-title-wrap { gap: 1rem; }
         }
 
         
@@ -1116,7 +1119,15 @@ body{font-family:var(--font-sans);color:var(--rice);background:var(--ink-deep);-
 </style>
 <link rel="preload" href="css/common.css" as="style">
 <link rel="stylesheet" href="css/common.css">
-</head>
+<script>
+        // Fix mobile 100vh issue: set --vh to actual visual viewport
+        function setVH() {
+            document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+        }
+        setVH();
+        window.addEventListener('resize', setVH);
+        </script>
+        </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
