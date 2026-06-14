@@ -2285,7 +2285,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // ====== COMMUNITY SIDEBAR SCROLL HIDE/SHOW ======
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   var sidebar = document.getElementById('communitySidebar');
   if (!sidebar) return;
   var scrollTimer = null;
@@ -2305,10 +2305,10 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       hiding = false;
     }, 700);
   }, { passive: true });
-})();
+});
 
 // ====== FLOATING CTA SCROLL HIDE/SHOW ======
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   var cta = document.getElementById('floatingCta');
   if (!cta) return;
   var scrollTimer = null;
@@ -2332,7 +2332,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       hiding = false;
     }, 700);
   }, { passive: true });
-})();
+});
 
 // ====== PRODUCTS CAROUSEL ======
 const carouselInner = document.getElementById('carouselInner');
