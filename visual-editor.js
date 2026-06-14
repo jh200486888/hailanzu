@@ -38,6 +38,14 @@
 
     createUI();
     hookSetLanguage();
+
+    // Re-render DOM with saved changes applied to i18n/translations objects
+    // (page's own setLanguage already ran before our script loaded)
+    if (typeof window.setLanguage === 'function') {
+      window.setLanguage(currentLang);
+    } else {
+      applyChangesToDOM();
+    }
   }
 
   function detectPage() {
@@ -141,13 +149,45 @@
 
   function applySavedChanges() {
     if (!i18nObj) return;
-    Object.keys(changes).forEach(function(key) {
+    var pageChanges = Object.keys(changes).filter(function(k) {
+      return k.indexOf(currentPage + '::') === 0;
+    });
+    if (pageChanges.length === 0) return;
+    pageChanges.forEach(function(key) {
       var parts = key.split('::');
-      var page = parts[0];
       var i18nKey = parts[1];
       var lang = parts[2];
-      if (page !== currentPage) return;
       setI18nValue(i18nKey, lang, changes[key]);
+    });
+  }
+
+  // Directly apply saved changes to DOM elements (fallback when setLanguage not available)
+  function applyChangesToDOM() {
+    var pageChanges = Object.keys(changes).filter(function(k) {
+      return k.indexOf(currentPage + '::') === 0;
+    });
+    if (pageChanges.length === 0) return;
+    pageChanges.forEach(function(key) {
+      var parts = key.split('::');
+      var i18nKey = parts[1];
+      var lang = parts[2];
+      if (lang !== currentLang) return;
+      var el = document.querySelector('[data-i18n="' + i18nKey + '"]');
+      if (!el) return;
+      var tag = el.tagName.toLowerCase();
+      if (tag === 'text') {
+        el.textContent = changes[key];
+      } else if (tag === 'title') {
+        document.title = changes[key];
+      } else {
+        var origVal = getOriginalValue(i18nKey, currentLang);
+        var useHtml = origVal && typeof origVal === 'string' && (origVal.indexOf('<br') >= 0 || origVal.indexOf('<em') >= 0 || origVal.indexOf('<strong') >= 0 || origVal.indexOf('<span') >= 0);
+        if (useHtml) {
+          el.innerHTML = changes[key];
+        } else {
+          el.textContent = changes[key];
+        }
+      }
     });
   }
 
