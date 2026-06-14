@@ -2284,10 +2284,11 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-// ====== COMMUNITY SIDEBAR SCROLL HIDE/SHOW ======
+// ====== COMMUNITY SIDEBAR SCROLL HIDE/SHOW (keep backToTop & CTA visible) ======
 document.addEventListener('DOMContentLoaded', function(){
   var sidebar = document.getElementById('communitySidebar');
   if (!sidebar) return;
+  var backToTop = document.getElementById('backToTop');
   var scrollTimer = null;
   var hiding = false;
   window.addEventListener('scroll', function(){
@@ -2295,6 +2296,15 @@ document.addEventListener('DOMContentLoaded', function(){
       sidebar.style.right = '-80px';
       sidebar.style.opacity = '0';
       sidebar.style.pointerEvents = 'none';
+      // Keep backToTop visible
+      if (backToTop) {
+        backToTop.style.position = 'fixed';
+        backToTop.style.right = '14px';
+        backToTop.style.bottom = '100px';
+        backToTop.style.opacity = window.scrollY > 400 ? '1' : '0';
+        backToTop.style.zIndex = '801';
+        backToTop.style.pointerEvents = window.scrollY > 400 ? 'auto' : 'none';
+      }
       hiding = true;
     }
     if (scrollTimer) clearTimeout(scrollTimer);
@@ -2302,33 +2312,14 @@ document.addEventListener('DOMContentLoaded', function(){
       sidebar.style.right = '';
       sidebar.style.opacity = '';
       sidebar.style.pointerEvents = '';
-      hiding = false;
-    }, 700);
-  }, { passive: true });
-});
-
-// ====== FLOATING CTA SCROLL HIDE/SHOW ======
-document.addEventListener('DOMContentLoaded', function(){
-  var cta = document.getElementById('floatingCta');
-  if (!cta) return;
-  var scrollTimer = null;
-  var hiding = false;
-  // Show CTA after 2s
-  setTimeout(function(){ cta.classList.add('visible'); }, 2000);
-  // Hide on scroll, show after scroll stops
-  window.addEventListener('scroll', function(){
-    if (!cta.classList.contains('visible')) return;
-    if (!hiding) {
-      cta.style.opacity = '0';
-      cta.style.transform = 'translateX(80px)';
-      cta.style.pointerEvents = 'none';
-      hiding = true;
-    }
-    if (scrollTimer) clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(function(){
-      cta.style.opacity = '';
-      cta.style.transform = '';
-      cta.style.pointerEvents = '';
+      // Reset backToTop to sidebar child positioning
+      if (backToTop) {
+        backToTop.style.position = '';
+        backToTop.style.right = '';
+        backToTop.style.bottom = '';
+        backToTop.style.zIndex = '';
+        backToTop.style.pointerEvents = '';
+      }
       hiding = false;
     }, 700);
   }, { passive: true });
