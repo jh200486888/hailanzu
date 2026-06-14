@@ -2289,16 +2289,24 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   var cta = document.getElementById('floatingCta');
   if (!cta) return;
   var scrollTimer = null;
+  var hiding = false;
   // Show CTA after 2s
   setTimeout(function(){ cta.classList.add('visible'); }, 2000);
   // Hide on scroll, show after scroll stops
-  var lastScroll = 0;
   window.addEventListener('scroll', function(){
     if (!cta.classList.contains('visible')) return;
-    cta.classList.add('scroll-hide');
+    if (!hiding) {
+      cta.style.opacity = '0';
+      cta.style.transform = 'translateX(80px)';
+      cta.style.pointerEvents = 'none';
+      hiding = true;
+    }
     if (scrollTimer) clearTimeout(scrollTimer);
     scrollTimer = setTimeout(function(){
-      cta.classList.remove('scroll-hide');
+      cta.style.opacity = '';
+      cta.style.transform = '';
+      cta.style.pointerEvents = '';
+      hiding = false;
     }, 700);
   }, { passive: true });
 })();
