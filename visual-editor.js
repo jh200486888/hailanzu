@@ -479,8 +479,7 @@
       '<div class="ve-sep"></div>' +
       '<span class="ve-count" style="white-space:nowrap">\u4FEE\u6539: <span class="ve-badge">0</span></span>' +
       '<div class="ve-sep ve-hide-mobile"></div>' +
-      '<button class="ve-btn-gold" id="ve-export">\u5BFC\u51FA</button>' +
-      '<button id="ve-apply" class="ve-hide-mobile">\u5E94\u7528\u811A\u672C</button>' +
+      '<button class="ve-btn-gold" id="ve-export">\u5BFC\u51FA JSON</button>' +
       '<button class="ve-btn-red" id="ve-reset">\u91CD\u7F6E</button>';
     document.body.appendChild(toolbar);
 
@@ -490,7 +489,6 @@
       }
     });
     document.getElementById('ve-export').addEventListener('click', exportJSON);
-    document.getElementById('ve-apply').addEventListener('click', showApplyModal);
     document.getElementById('ve-reset').addEventListener('click', resetChanges);
   }
 
@@ -526,61 +524,6 @@
     a.remove();
     URL.revokeObjectURL(url);
     showToast('\u4FEE\u6539\u5DF2\u5BFC\u51FA\u4E3A JSON', 'success');
-  }
-
-  // ===== APPLY MODAL =====
-  function showApplyModal() {
-    var grouped = {};
-    Object.keys(changes).forEach(function(key) {
-      var parts = key.split('::');
-      var page = parts[0];
-      var i18nKey = parts[1];
-      var lang = parts[2];
-      if (!grouped[page]) grouped[page] = {};
-      if (!grouped[page][i18nKey]) grouped[page][i18nKey] = {};
-      grouped[page][i18nKey][lang] = changes[key];
-    });
-
-    var json = JSON.stringify(grouped, null, 2);
-
-    var overlay = document.createElement('div');
-    overlay.className = 've-modal-overlay';
-    overlay.innerHTML =
-      '<div class="ve-modal">' +
-        '<h3>\u5E94\u7528\u4FEE\u6539\u5230\u6E90\u7801</h3>' +
-        '<p style="margin:0 0 12px;color:rgba(245,240,232,0.7);font-size:13px">\u590D\u5236\u4EE5\u4E0B JSON \u53D1\u9001\u7ED9\u5F00\u53D1\u8005\u66F4\u65B0\u6E90\u7801\u6587\u4EF6:</p>' +
-        '<textarea readonly id="ve-apply-text">' + json.replace(/</g, '&lt;') + '</textarea>' +
-        '<div class="ve-modal-actions">' +
-          '<button class="ve-btn-gold" id="ve-copy-json">\u590D\u5236\u5230\u526A\u8D34\u677F</button>' +
-          '<button id="ve-close-modal">\u5173\u95ED</button>' +
-        '</div>' +
-      '</div>';
-    document.body.appendChild(overlay);
-
-    requestAnimationFrame(function() { overlay.classList.add('visible'); });
-
-    document.getElementById('ve-copy-json').addEventListener('click', function() {
-      var ta = document.getElementById('ve-apply-text');
-      ta.select();
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(ta.value).then(function() {
-          showToast('\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F', 'success');
-        });
-      } else {
-        document.execCommand('copy');
-        showToast('\u5DF2\u590D\u5236', 'success');
-      }
-    });
-    document.getElementById('ve-close-modal').addEventListener('click', function() {
-      overlay.classList.remove('visible');
-      setTimeout(function() { overlay.remove(); }, 300);
-    });
-    overlay.addEventListener('click', function(e) {
-      if (e.target === overlay) {
-        overlay.classList.remove('visible');
-        setTimeout(function() { overlay.remove(); }, 300);
-      }
-    });
   }
 
   // ===== RESET =====
