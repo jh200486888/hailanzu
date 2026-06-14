@@ -186,6 +186,23 @@ body.ve-editing .ve-editable:focus {
 .ve-toast.ve-success { border-left-color: #2E7D32; }
 .ve-toast.ve-error { border-left-color: #C8102E; }
 
+/* --- Edit mode active indicator --- */
+body.ve-editing::after {
+  content: '\7F16\8F91\4E2D';
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  z-index: 100000;
+  background: rgba(26,60,52,0.9);
+  color: #B8860B;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  pointer-events: none;
+  border: 1px solid rgba(184,134,11,0.3);
+}
+
 /* --- Key tooltip on hover --- */
 .ve-keytip {
   position: fixed;

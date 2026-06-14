@@ -1,5 +1,5 @@
 // ============================================
-// HAILANZU Visual Editor v2.0
+// HAILANZU Visual Editor v2.1
 // Inline contenteditable editor for all pages
 // Supports: regular text, SVG text, marquee, placeholders
 // ============================================
@@ -22,6 +22,8 @@
   var i18nObj = null;
   var keytipEl = null;
   var svgEditOverlay = null;
+  var saveTimer = null;
+  var hasUnsaved = false;
 
   // ===== INIT =====
   function init() {
@@ -62,11 +64,9 @@
       var saved = localStorage.getItem(ORIGINALS_KEY);
       if (saved) {
         originals = JSON.parse(saved);
-        // Check if we need to re-snapshot (page may have been updated)
         var needsResnapshot = false;
         var sampleKey = currentPage + '::nav.seasons::zh';
         if (originals[sampleKey] === undefined && i18nObj) {
-          // Might need resnapshot - check if there are translations we're missing
           var testVal = getI18nValueDirect('nav.seasons', 'zh');
           if (testVal !== null && testVal !== undefined) {
             needsResnapshot = true;
@@ -76,7 +76,6 @@
       }
     } catch(e) {}
 
-    // Snapshot from the i18n object
     originals = {};
     if (i18nType === 'i18n') {
       Object.keys(i18nObj).forEach(function(key) {
@@ -120,7 +119,11 @@
   function saveChanges() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(changes));
-    } catch(e) {}
+    } catch(e) {
+      showToast('保存失败，本地存储空间不足', 'error');
+      return;
+    }
+    hasUnsaved = false;
   }
 
   function getOriginalValue(i18nKey, lang) {
@@ -172,28 +175,29 @@
     if (editMode) {
       toggle.classList.add('active');
       toggle.textContent = '\u2715';
+      toggle.title = '关闭编辑模式';
       toolbar.classList.add('visible');
       document.body.classList.add('ve-toolbar-active', 've-editing');
       makeEditable();
       updateChangesCount();
+      showToast('已进入编辑模式，点击文字即可修改', 'success');
     } else {
       toggle.classList.remove('active');
       toggle.textContent = '\u270E';
+      toggle.title = '开启编辑模式';
       toolbar.classList.remove('visible');
       document.body.classList.remove('ve-toolbar-active', 've-editing');
       removeEditable();
       hideKeytip();
       closeSvgEditor();
+      showToast('已退出编辑模式', 'success');
     }
   }
 
   function makeEditable() {
-    // Regular data-i18n elements
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var tag = el.tagName.toLowerCase();
-      // Skip title element (handled separately)
       if (tag === 'title') return;
-      // SVG text elements need special handling
       if (tag === 'text') {
         setupSvgTextEdit(el);
         return;
@@ -206,7 +210,6 @@
       el.addEventListener('mouseenter', showKeytip);
       el.addEventListener('mouseleave', hideKeytip);
 
-      // Mark changed elements
       var key = el.getAttribute('data-i18n');
       var changeKey = currentPage + '::' + key + '::' + currentLang;
       if (changes[changeKey]) {
@@ -214,7 +217,6 @@
       }
     });
 
-    // Placeholder elements
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
       el.addEventListener('mouseenter', showKeytipPlaceholder);
       el.addEventListener('mouseleave', hideKeytip);
@@ -237,7 +239,6 @@
       el.removeEventListener('mouseleave', hideKeytip);
       el.removeEventListener('dblclick', editPlaceholder);
     });
-    // Remove SVG click handlers
     document.querySelectorAll('svg text[data-i18n]').forEach(function(el) {
       el.style.cursor = '';
       el.style.fill = '';
@@ -266,10 +267,26 @@
 
     saveChanges();
     updateChangesCount();
+    hasUnsaved = true;
+
+    // Debounced save toast
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function() {
+      if (hasUnsaved) {
+        showToast('已自动保存', 'success');
+        hasUnsaved = false;
+      }
+    }, 800);
   }
 
   function handleBlur(e) {
+    // Ensure final save
     handleInput(e);
+    clearTimeout(saveTimer);
+    if (hasUnsaved) {
+      showToast('已保存', 'success');
+      hasUnsaved = false;
+    }
   }
 
   // ===== SVG TEXT EDITING =====
@@ -323,7 +340,7 @@
     btnRow.style.cssText = 'margin-top:6px;display:flex;gap:6px;';
 
     var saveBtn = document.createElement('button');
-    saveBtn.textContent = 'Save';
+    saveBtn.textContent = '\u4FDD\u5B58';
     saveBtn.style.cssText = 'padding:3px 12px;border-radius:4px;background:#B8860B;color:#fff;border:none;cursor:pointer;font-size:12px;';
     saveBtn.addEventListener('click', function() {
       var newVal = input.value;
@@ -340,10 +357,11 @@
       saveChanges();
       updateChangesCount();
       closeSvgEditor();
+      showToast('已保存', 'success');
     });
 
     var cancelBtn = document.createElement('button');
-    cancelBtn.textContent = 'Cancel';
+    cancelBtn.textContent = '\u53D6\u6D88';
     cancelBtn.style.cssText = 'padding:3px 12px;border-radius:4px;background:transparent;color:#F5F0E8;border:1px solid rgba(245,240,232,0.2);cursor:pointer;font-size:12px;';
     cancelBtn.addEventListener('click', closeSvgEditor);
 
@@ -355,7 +373,6 @@
     input.focus();
     input.select();
 
-    // Close on outside click
     setTimeout(function() {
       document.addEventListener('click', closeSvgEditorOutside);
     }, 100);
@@ -382,7 +399,7 @@
     if (!key) return;
 
     var origVal = getOriginalValue(key, currentLang) || el.placeholder;
-    var newVal = prompt('Edit placeholder (' + key + '):', el.placeholder);
+    var newVal = prompt('\u7F16\u8F91\u5360\u4F4D\u6587\u5B57 (' + key + '):', el.placeholder);
     if (newVal === null) return;
 
     el.placeholder = newVal;
@@ -395,6 +412,7 @@
     }
     saveChanges();
     updateChangesCount();
+    showToast('已保存', 'success');
   }
 
   // ===== KEY TOOLTIP =====
@@ -440,35 +458,32 @@
 
   // ===== UI =====
   function createUI() {
-    // Floating toggle button
     var toggle = document.createElement('button');
     toggle.className = 've-toggle';
     toggle.textContent = '\u270E';
-    toggle.title = 'Toggle Visual Editor';
+    toggle.title = '\u5F00\u542F\u7F16\u8F91\u6A21\u5F0F';
     toggle.addEventListener('click', toggleEditMode);
     document.body.appendChild(toggle);
 
-    // Toolbar
     var toolbar = document.createElement('div');
     toolbar.className = 've-toolbar';
     toolbar.innerHTML =
-      '<span class="ve-brand">\u270E Visual Editor</span>' +
+      '<span class="ve-brand">\u270E \u53EF\u89C6\u5316\u7F16\u8F91</span>' +
       '<div class="ve-sep"></div>' +
-      '<label style="color:#F5F0E8;font-size:12px;white-space:nowrap">Lang:</label>' +
+      '<label style="color:#F5F0E8;font-size:12px;white-space:nowrap">\u8BED\u8A00:</label>' +
       '<select class="ve-lang-sel">' +
         LANGS.map(function(l) {
           return '<option value="' + l + '"' + (l === currentLang ? ' selected' : '') + '>' + LANG_NAMES[l] + '</option>';
         }).join('') +
       '</select>' +
       '<div class="ve-sep"></div>' +
-      '<span class="ve-count" style="white-space:nowrap">Changes: <span class="ve-badge">0</span></span>' +
+      '<span class="ve-count" style="white-space:nowrap">\u4FEE\u6539: <span class="ve-badge">0</span></span>' +
       '<div class="ve-sep ve-hide-mobile"></div>' +
-      '<button class="ve-btn-gold" id="ve-export">Export</button>' +
-      '<button id="ve-apply" class="ve-hide-mobile">Apply Script</button>' +
-      '<button class="ve-btn-red" id="ve-reset">Reset</button>';
+      '<button class="ve-btn-gold" id="ve-export">\u5BFC\u51FA</button>' +
+      '<button id="ve-apply" class="ve-hide-mobile">\u5E94\u7528\u811A\u672C</button>' +
+      '<button class="ve-btn-red" id="ve-reset">\u91CD\u7F6E</button>';
     document.body.appendChild(toolbar);
 
-    // Events
     toolbar.querySelector('.ve-lang-sel').addEventListener('change', function(e) {
       if (typeof window.setLanguage === 'function') {
         window.setLanguage(e.target.value);
@@ -510,7 +525,7 @@
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
-    showToast('Changes exported as JSON', 'success');
+    showToast('\u4FEE\u6539\u5DF2\u5BFC\u51FA\u4E3A JSON', 'success');
   }
 
   // ===== APPLY MODAL =====
@@ -532,12 +547,12 @@
     overlay.className = 've-modal-overlay';
     overlay.innerHTML =
       '<div class="ve-modal">' +
-        '<h3>Apply Changes to Source</h3>' +
-        '<p style="margin:0 0 12px;color:rgba(245,240,232,0.7);font-size:13px">Copy the JSON below and send it to your developer to update the source files:</p>' +
+        '<h3>\u5E94\u7528\u4FEE\u6539\u5230\u6E90\u7801</h3>' +
+        '<p style="margin:0 0 12px;color:rgba(245,240,232,0.7);font-size:13px">\u590D\u5236\u4EE5\u4E0B JSON \u53D1\u9001\u7ED9\u5F00\u53D1\u8005\u66F4\u65B0\u6E90\u7801\u6587\u4EF6:</p>' +
         '<textarea readonly id="ve-apply-text">' + json.replace(/</g, '&lt;') + '</textarea>' +
         '<div class="ve-modal-actions">' +
-          '<button class="ve-btn-gold" id="ve-copy-json">Copy to Clipboard</button>' +
-          '<button id="ve-close-modal">Close</button>' +
+          '<button class="ve-btn-gold" id="ve-copy-json">\u590D\u5236\u5230\u526A\u8D34\u677F</button>' +
+          '<button id="ve-close-modal">\u5173\u95ED</button>' +
         '</div>' +
       '</div>';
     document.body.appendChild(overlay);
@@ -549,11 +564,11 @@
       ta.select();
       if (navigator.clipboard) {
         navigator.clipboard.writeText(ta.value).then(function() {
-          showToast('Copied to clipboard!', 'success');
+          showToast('\u5DF2\u590D\u5236\u5230\u526A\u8D34\u677F', 'success');
         });
       } else {
         document.execCommand('copy');
-        showToast('Copied!', 'success');
+        showToast('\u5DF2\u590D\u5236', 'success');
       }
     });
     document.getElementById('ve-close-modal').addEventListener('click', function() {
@@ -574,10 +589,10 @@
       return k.indexOf(currentPage + '::') === 0;
     });
     if (pageChanges.length === 0) {
-      showToast('No changes to reset', 'error');
+      showToast('\u6CA1\u6709\u4FEE\u6539\u53EF\u91CD\u7F6E', 'error');
       return;
     }
-    if (!confirm('Reset all changes on this page? This cannot be undone.')) return;
+    if (!confirm('\u786E\u5B9A\u91CD\u7F6E\u672C\u9875\u6240\u6709\u4FEE\u6539\uFF1F\u6B64\u64CD\u4F5C\u4E0D\u53EF\u64A4\u9500\u3002')) return;
 
     pageChanges.forEach(function(k) { delete changes[k]; });
     saveChanges();
@@ -587,6 +602,9 @@
 
   // ===== TOAST =====
   function showToast(msg, type) {
+    // Remove existing toasts first
+    document.querySelectorAll('.ve-toast').forEach(function(t) { t.remove(); });
+
     var toast = document.createElement('div');
     toast.className = 've-toast' + (type ? ' ve-' + type : '');
     toast.textContent = msg;
@@ -595,17 +613,15 @@
     setTimeout(function() {
       toast.classList.remove('visible');
       setTimeout(function() { toast.remove(); }, 300);
-    }, 2500);
+    }, 2000);
   }
 
   // ===== KEYBOARD SHORTCUTS =====
   document.addEventListener('keydown', function(e) {
-    // Ctrl+Shift+E to toggle edit mode
     if (e.ctrlKey && e.shiftKey && e.key === 'E') {
       e.preventDefault();
       toggleEditMode();
     }
-    // Escape to close edit mode
     if (e.key === 'Escape' && editMode) {
       if (svgEditOverlay) {
         closeSvgEditor();
