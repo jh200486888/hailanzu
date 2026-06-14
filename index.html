@@ -233,9 +233,9 @@ ul,ol{list-style:none}
 .hero-bg-slide:nth-child(6){background:radial-gradient(ellipse 120% 80% at 50% 55%,#3A3A42 0%,#2A2A32 40%,#1A1A22 70%,#0F0F18 100%)}
 .hero-bg-vignette{position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 60% 50% at 50% 45%,transparent 0%,rgba(10,10,10,.55) 100%);pointer-events:none}
 /* 幻灯片指示器 */
-.hero-dots{position:absolute;bottom:clamp(90px,10vw,120px);left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:8px;align-items:center;animation:heroReveal .8s var(--ease-out) 2s both}
-.hero-dot{width:4px;height:4px;border-radius:50%;background:var(--rice);opacity:.15;cursor:pointer;transition:all .5s var(--ease-out)}
-.hero-dot.active{opacity:.6;width:20px;border-radius:2px}
+.hero-dots{display:none}
+.hero-dot{display:none}
+.hero-dot.active{display:none}
 
 /* 极简文案 —— 只有一句话 */
 .hero-flower{position:absolute;z-index:3;pointer-events:none;opacity:0;transition:opacity 2s ease-in-out}
@@ -517,7 +517,6 @@ ul,ol{list-style:none}
   .hero-declaration-kr{font-size:clamp(18px,5vw,30px);letter-spacing:clamp(6px,2vw,14px)}
   .hero-seal-wrap{padding-top:clamp(10px,2vw,20px)}
   .hero-seal{width:clamp(44px,10vw,64px);height:clamp(44px,10vw,64px);font-size:clamp(18px,4vw,26px)}
-  .hero-dots{display:none}
   .hero-tagline{bottom:clamp(40px,8vw,60px)}
   .hero-manifesto{right:clamp(12px,4vw,24px);max-width:120px;opacity:.9}
   .hero-manifesto-text{font-size:clamp(11px,2.5vw,14px);letter-spacing:2px;opacity:.5}
