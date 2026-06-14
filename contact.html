@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>合作·联系 — 海兰菹 HAILANZU | 合作咨询</title>
+  <title data-i18n="page.title">合作·联系 — 海兰菹 HAILANZU | 合作咨询</title>
   <meta name="description" content="海兰菹合作咨询：OEM代工、达人带货、代理批发、招商加盟。微信号HAILANZU_Official，24小时内回复。">
   <meta name="keywords" content="海兰菹联系,泡菜定制咨询,企业合作,微信号,延边泡菜订购,해란저문의">
   <meta property="og:title" content="联系我们 — 海兰菹 HAILANZU">
@@ -49,7 +49,7 @@
 }
   </script>
 
-    <title>合作·联系 | 海兰菹 HAILANZU</title>
+    <title data-i18n="page.title">合作·联系 | 海兰菹 HAILANZU</title>
 <link rel="stylesheet" href="fonts/fonts.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="fonts/fonts.css"></noscript>
     <style>
                 *, *::before, *::after { -webkit-tap-highlight-color: transparent; }
@@ -959,6 +959,7 @@
 <link rel="prefetch" href="story.html">
 <link rel="prefetch" href="seasons.html">
 <link rel="prefetch" href="gift.html">
+  <link rel="stylesheet" href="visual-editor.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -1032,7 +1033,7 @@
                 <svg class="hero-seal" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="46" fill="none" stroke="#C8102E" stroke-width="2.5"/>
                     <circle cx="50" cy="50" r="39" fill="none" stroke="#C8102E" stroke-width="1.2"/>
-                    <text x="50" y="43" text-anchor="middle" fill="#C8102E" font-size="12" font-weight="700" font-family="'Noto Serif SC', serif">海兰菹</text>
+                    <text x="50" y="43" text-anchor="middle" fill="#C8102E" font-size="12" font-weight="700" font-family="'Noto Serif SC', serif" data-i18n="seal.brand">海兰菹</text>
                     <text x="50" y="58" text-anchor="middle" fill="#C8102E" font-size="7" font-weight="600" font-family="'Inter', sans-serif" letter-spacing="1">HAILANZU</text>
                     <circle cx="50" cy="70" r="3" fill="#C8102E"/>
                 </svg>
@@ -1545,7 +1546,7 @@
                 <h4 data-i18n="footer.connect">联系</h4>
                 <a href="recipes.html" data-i18n="nav.recipes">菹味食谱</a>
         <a href="contact.html" data-i18n="nav.contact">合作·联系</a><br>
-                <p>business@hailanzu.com</p>
+                <p data-i18n="footer.email">business@hailanzu.com</p>
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footer.follow">关注</h4>
@@ -1598,8 +1599,11 @@
                 'coop.fra.slogan':'与匠人同行，做有温度的生意','coop.fra.s1':'创立年份','coop.fra.s2':'核心SKU','coop.fra.s3':'复购率','coop.fra.s4':'用户评分',
                 'coop.fra.m1':'旗舰体验店','coop.fra.m1s':'80-150㎡ · 核心商圈 · 全品类体验','coop.fra.m2':'社区专营店','coop.fra.m2s':'30-60㎡ · 社区+线上 · 精选SKU','coop.fra.m3':'档口专柜','coop.fra.m3s':'10-20㎡ · 超市/市场 · 爆款单品',
                 'coop.fra.sp1':'选址评估','coop.fra.sp2':'装修设计','coop.fra.sp3':'开业培训','coop.fra.sp4':'营销推广','coop.fra.sp5':'供应链保障',
-                'coop.fra.f1':'在线申请','coop.fra.f2':'品牌初审','coop.fra.f3':'实地考察','coop.fra.f4':'签约筹备','coop.fra.f5':'开业运营','coop.fra.cta':'预约深度沟通'
-            },
+                'coop.fra.f1':'在线申请','coop.fra.f2':'品牌初审','coop.fra.f3':'实地考察','coop.fra.f4':'签约筹备','coop.fra.f5':'开业运营','coop.fra.cta':'预约深度沟通',
+    'page.title': '合作·联系 — 海兰菹 HAILANZU | 合作咨询',
+    'footer.email': 'business@hailanzu.com',
+    'seal.brand': '海兰菹'
+  },
             ko: {
                 'nav.home':'홈','nav.home.sub':'홈','nav.seasons':'사계절 발효','nav.products':'제품 전시','nav.story':'연변 풍토','nav.gift':'고급 선물세트','nav.recipes':'저 레시피','nav.contact':'협력·연락',
                 'hero.title':'협력·연락',
@@ -1732,7 +1736,9 @@
             currentLang = lang;
   loadLanguageFont(lang);
             localStorage.setItem('hailanzu-lang', lang);
-            document.querySelectorAll('[data-i18n]').forEach(el => {
+            // Update page title
+    if (translations[lang] && translations[lang]['page.title']) document.title = translations[lang]['page.title'];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang] && translations[lang][key]) {
                     el.textContent = translations[lang][key];
@@ -2154,5 +2160,6 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="sidebar-item" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="opacity:0;transition:opacity .3s"><span>&#x2191;</span><span class="sidebar-tooltip" data-i18n="sidebar.backtop">返回顶部</span></div>
 </div>
 
+  <script src="visual-editor.js"></script>
 </body>
 </html>

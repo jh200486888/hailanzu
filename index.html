@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>海兰菹 — 延边古法菹味 | HAILANZU 해란저</title>
+<title data-i18n="page.title">海兰菹 — 延边古法菹味 | HAILANZU 해란저</title>
 <meta name="description" content="海兰菹，延边朝鲜族古法泡菜。21款手作菹味，从海兰江畔到您的餐桌。高端礼盒定制，四季发酵的艺术。">
   <meta name="keywords" content="海兰菹,延边泡菜,朝鲜族泡菜,古法发酵,高端泡菜,韩国泡菜,延边特产,김치,HAILANZU">
   <meta property="og:title" content="海兰菹 HAILANZU — 延边古法菹味">
@@ -694,6 +694,7 @@ body[data-lang="ja"] .nav-logo-cn,body[data-lang="ja"] .hero-declaration,body[da
 <link rel="prefetch" href="seasons.html">
 <link rel="prefetch" href="gift.html">
 <link rel="prefetch" href="contact.html">
+  <link rel="stylesheet" href="visual-editor.css">
 </head>
 <body>
 
@@ -1944,6 +1945,7 @@ earStory.addEventListener('click', () => {
 
 // ====== I18N — 四语切换系统 ======
 const i18n = {
+  'page.title': { zh:'海兰菹 — 延边古法菹味 | HAILANZU 해란저', ko:'해란저 — 연변 고법 저미 | HAILANZU 해란저', en:'HAILANZU — The Art of Jangajii Fermentation', ja:'海蘭菹 — 延辺古法菹味 | HAILANZU 해란저' },
   // NAV
   'nav.logo.main': { zh:'海兰菹', ko:'해란저', en:'HAILANZU', ja:'海蘭菹' },
   'nav.logo.sub': { zh:'해란저', ko:'海兰菹', en:'해란저', ja:'해란저' },
@@ -2229,6 +2231,8 @@ function setLanguage(lang) {
   loadLanguageFont(lang);
   localStorage.setItem('hailanzu-lang', lang);
   document.documentElement.lang = langMap[lang] || 'zh-CN';
+  // Update page title
+  if (i18n['page.title'] && i18n['page.title'][lang]) document.title = i18n['page.title'][lang];
   document.body.setAttribute('data-lang', lang);
 
   // Update all data-i18n elements
@@ -2618,5 +2622,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
 </div>
 
+  <script src="visual-editor.js"></script>
 </body>
 </html>

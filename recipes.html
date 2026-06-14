@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>菹味食谱 | 海兰菹 HAILANZU</title>
+    <title data-i18n="page.title">菹味食谱 | 海兰菹 HAILANZU</title>
     <meta name="description" content="泡菜怎么吃？海兰菹为你带来延边朝鲜族传统泡菜食谱：泡菜锅、泡菜拌饭、泡菜五花肉等经典做法，3分钟上手。">
     <meta name="keywords" content="泡菜食谱,泡菜怎么吃,泡菜锅,泡菜拌饭,朝鲜族泡菜做法,海兰菹,延边泡菜">
     <meta property="og:title" content="菹味食谱 — 海兰菹 HAILANZU">
@@ -607,6 +607,7 @@
 <link rel="prefetch" href="seasons.html">
 <link rel="prefetch" href="gift.html">
 <link rel="prefetch" href="contact.html">
+  <link rel="stylesheet" href="visual-editor.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -678,7 +679,7 @@
                 <svg class="hero-seal" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="46" fill="none" stroke="#C8102E" stroke-width="2.5"/>
                     <circle cx="50" cy="50" r="39" fill="none" stroke="#C8102E" stroke-width="1.2"/>
-                    <text x="50" y="43" text-anchor="middle" fill="#C8102E" font-size="12" font-weight="700" font-family="'Noto Serif SC', serif">海兰菹</text>
+                    <text x="50" y="43" text-anchor="middle" fill="#C8102E" font-size="12" font-weight="700" font-family="'Noto Serif SC', serif" data-i18n="seal.brand">海兰菹</text>
                     <text x="50" y="58" text-anchor="middle" fill="#C8102E" font-size="7" font-weight="600" font-family="'Inter', sans-serif" letter-spacing="1">HAILANZU</text>
                     <circle cx="50" cy="70" r="3" fill="#C8102E"/>
                 </svg>
@@ -711,17 +712,17 @@
                     <div class="recipe-carousel-slide active" data-slide="0">
                         <div class="recipe-carousel-slide-bg" id="carouselBg0"></div>
                         <div class="recipe-carousel-emoji" id="carouselEmoji0">🍲</div>
-                        <div class="recipe-carousel-label" id="carouselLabel0">成品展示</div>
+                        <div class="recipe-carousel-label" id="carouselLabel0" data-i18n="recipe.carousel.finished">成品展示</div>
                     </div>
                     <div class="recipe-carousel-slide" data-slide="1">
                         <div class="recipe-carousel-slide-bg" id="carouselBg1"></div>
                         <div class="recipe-carousel-emoji" id="carouselEmoji1">🥬</div>
-                        <div class="recipe-carousel-label" id="carouselLabel1">食材特写</div>
+                        <div class="recipe-carousel-label" id="carouselLabel1" data-i18n="recipe.carousel.ingredients">食材特写</div>
                     </div>
                     <div class="recipe-carousel-slide" data-slide="2">
                         <div class="recipe-carousel-slide-bg" id="carouselBg2"></div>
                         <div class="recipe-carousel-emoji" id="carouselEmoji2">🔥</div>
-                        <div class="recipe-carousel-label" id="carouselLabel2">制作过程</div>
+                        <div class="recipe-carousel-label" id="carouselLabel2" data-i18n="recipe.carousel.process">制作过程</div>
                     </div>
                     <div class="recipe-carousel-arrows">
                         <div class="recipe-carousel-arrow" id="carouselPrev">
@@ -763,7 +764,7 @@
             </div>
             <div class="footer-col">
                 <h4 data-i18n="footer.connect">联系</h4>
-                <p>business@hailanzu.com</p>
+                <p data-i18n="footer.email">business@hailanzu.com</p>
                 <p data-i18n="footer.wechat">微信公众号</p>
             </div>
             <div class="footer-col">
@@ -787,7 +788,14 @@
             spice: 3,
             time: '25min',
             servings: '2-3\u4EBA\u4EFD',
-            zh: { title:'\u6CE1\u83DC\u9505', subtitle:'\u97E9\u5F0F\u6CE1\u83DC\u7096\u6C64 | \uAE40\uCE58\uCC0C\u9505', desc:'\u97E9\u5F0F\u6CE1\u83DC\u9505\u662F\u671D\u9C9C\u65CF\u5BB6\u5EAD\u7684\u7075\u9B42\u83DC\uFF0C\u4E00\u575B\u53D1\u9175\u5230\u4F4D\u7684\u6CE1\u83DC\uFF0C\u52A0\u4E0A\u4E94\u82B1\u8089\u548C\u5AE9\u8C46\u8150\uFF0C\u7096\u51FA\u6765\u7684\u6C64\u6C41\u6D53\u90C1\u8C03\u5473\u6B63\u3002', ingredients:['\u6CE1\u83DC 200g','\u4E94\u82B1\u8089 150g','\u5AE9\u8C46\u8150 \u534A\u5757','\u6D0B\u8471 \u534A\u4E2A','\u5927\u8471 1\u6839','\u8FA3\u6912\u7C89 1\u52FA','\u97E9\u5F0F\u8FA3\u9171 1\u52FA','\u7CD6 1\u52FA'], steps:['\u6CE1\u83DC\u5207\u6BB5\uFF0C\u4E94\u82B1\u8089\u5207\u7247\uFF0C\u8C46\u8150\u5207\u5757\uFF0C\u6D0B\u8471\u5207\u4E1D\uFF0C\u5927\u8471\u5207\u6BB5','\u9505\u4E2D\u5C11\u8BB8\u6CB9\uFF0C\u4E0B\u8FA3\u6912\u7C89\u548C\u97E9\u5F0F\u8FA3\u9171\u5C0F\u706B\u714E\u51FA\u9999\u5473','\u52A0\u5165\u6CE1\u83DC\u7FFB\u7092\uFF0C\u8BA9\u6BCF\u4E00\u7247\u83DC\u53F6\u90FD\u88F9\u4E0A\u7EA2\u8272','\u52A0\u6C34\u6CA1\u8FC7\u98DF\u6750\uFF0C\u5927\u706B\u70ED\u540E\u8F6C\u5C0F\u706B\u7096\u7EA615\u5206\u949F','\u52A0\u5165\u8C46\u8150\u548C\u5927\u8471\uFF0C\u7EE7\u7EED\u70965\u5206\u949F','\u52A0\u7CD6\u8C03\u5473\uFF0C\u6492\u6D0B\u8471\u4E1D\u51FA\u9505'], tip:'\u6CE1\u83DC\u9009\u53D1\u9175\u5230\u4F4D\u7684\uFF0C\u6C64\u5E95\u624D\u6D53\u90C1\u3002\u6D77\u5170\u83F9\u7684\u83F9\u97F5\u00B7\u7ECF\u5178\u7CFB\u5217\uFF0C30\u5929\u81EA\u7136\u53D1\u9175\uFF0C\u7096\u9505\u521A\u597D\u3002' },
+            zh: { title:'\u6CE1\u83DC\u9505', subtitle:'\u97E9\u5F0F\u6CE1\u83DC\u7096\u6C64 | \uAE40\uCE58\uCC0C\u9505', desc:'\u97E9\u5F0F\u6CE1\u83DC\u9505\u662F\u671D\u9C9C\u65CF\u5BB6\u5EAD\u7684\u7075\u9B42\u83DC\uFF0C\u4E00\u575B\u53D1\u9175\u5230\u4F4D\u7684\u6CE1\u83DC\uFF0C\u52A0\u4E0A\u4E94\u82B1\u8089\u548C\u5AE9\u8C46\u8150\uFF0C\u7096\u51FA\u6765\u7684\u6C64\u6C41\u6D53\u90C1\u8C03\u5473\u6B63\u3002', ingredients:['\u6CE1\u83DC 200g','\u4E94\u82B1\u8089 150g','\u5AE9\u8C46\u8150 \u534A\u5757','\u6D0B\u8471 \u534A\u4E2A','\u5927\u8471 1\u6839','\u8FA3\u6912\u7C89 1\u52FA','\u97E9\u5F0F\u8FA3\u9171 1\u52FA','\u7CD6 1\u52FA'], steps:['\u6CE1\u83DC\u5207\u6BB5\uFF0C\u4E94\u82B1\u8089\u5207\u7247\uFF0C\u8C46\u8150\u5207\u5757\uFF0C\u6D0B\u8471\u5207\u4E1D\uFF0C\u5927\u8471\u5207\u6BB5','\u9505\u4E2D\u5C11\u8BB8\u6CB9\uFF0C\u4E0B\u8FA3\u6912\u7C89\u548C\u97E9\u5F0F\u8FA3\u9171\u5C0F\u706B\u714E\u51FA\u9999\u5473','\u52A0\u5165\u6CE1\u83DC\u7FFB\u7092\uFF0C\u8BA9\u6BCF\u4E00\u7247\u83DC\u53F6\u90FD\u88F9\u4E0A\u7EA2\u8272','\u52A0\u6C34\u6CA1\u8FC7\u98DF\u6750\uFF0C\u5927\u706B\u70ED\u540E\u8F6C\u5C0F\u706B\u7096\u7EA615\u5206\u949F','\u52A0\u5165\u8C46\u8150\u548C\u5927\u8471\uFF0C\u7EE7\u7EED\u70965\u5206\u949F','\u52A0\u7CD6\u8C03\u5473\uFF0C\u6492\u6D0B\u8471\u4E1D\u51FA\u9505'], tip:'\u6CE1\u83DC\u9009\u53D1\u9175\u5230\u4F4D\u7684\uFF0C\u6C64\u5E95\u624D\u6D53\u90C1\u3002\u6D77\u5170\u83F9\u7684\u83F9\u97F5\u00B7\u7ECF\u5178\u7CFB\u5217\uFF0C30\u5929\u81EA\u7136\u53D1\u9175\uFF0C\u7096\u9505\u521A\u597D\u3002',
+    'page.title': '菹味食谱 | 海兰菹 HAILANZU',
+    'footer.email': 'business@hailanzu.com',
+    'recipe.carousel.finished': '成品展示',
+    'recipe.carousel.ingredients': '食材特写',
+    'recipe.carousel.process': '制作过程',
+    'seal.brand': '海兰菹'
+  },
             ko: { title:'\uAE40\uCE58\uCC0C\u9505', subtitle:'\uAE40\uCE58\uCC0C\uCC0C\uAC1C | Kimchi Jjigae', desc:'\uB3C8\uC744 \uC798 \uC7A1\uC740 \uC7A5\uC544\uCE58 \uAE40\uCE58\uCC0C\uC640 \uB3FC\uACE0\uAE30, \uBD84\uC720\uB0A0 \uC57C\uCE58\uAC00 \uB4E4\uC5B4\uAC00\uBA74 \uC544\uC8FC \uB9CC\uC871\uC2A4\uB7FD\uB2E4.' },
             en: { title:'Kimchi Stew', subtitle:'Kimchi Jjigae', desc:'The soul food of every Korean household. Well-fermented kimchi, pork belly and soft tofu\u2014the broth is deeply satisfying.' },
             ja: { title:'\u30AD\u30E0\u30C1\u934B', subtitle:'\u30AD\u30E0\u30C1\u30C1\u30B2 | Kimchi Jjigae', desc:'\u97D3\u56FD\u5BB6\u5EAD\u306E\u9B42\u306E\u6599\u7406\u3002\u3088\u304F\u767A\u9175\u3057\u305F\u30AD\u30E0\u30C1\u3068\u4E09\u5C64\u8089\u3001\u8C46\u8150\u3067\u6DF1\u307F\u306E\u3042\u308B\u30B9\u30FC\u30D7\u3002' }
@@ -1121,7 +1129,9 @@
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('hailanzu-lang', lang);
-        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        // Update page title
+    if (translations[lang] && translations[lang]['page.title']) document.title = translations[lang]['page.title'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
             var key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
                 el.textContent = translations[lang][key];
@@ -1229,5 +1239,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
 </div>
 
+  <script src="visual-editor.js"></script>
 </body>
 </html>
